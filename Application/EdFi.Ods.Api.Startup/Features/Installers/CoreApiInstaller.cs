@@ -30,6 +30,7 @@ using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Http.Context;
 using EdFi.Ods.Common.Metadata;
+using EdFi.Ods.Common.InversionOfControl;
 using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Models.Graphs;
@@ -46,7 +47,7 @@ using FluentValidation;
 
 namespace EdFi.Ods.Api.Startup.Features.Installers
 {
-    public class CoreApiInstaller : IWindsorInstaller
+    public class CoreApiInstaller : RegistrationMethodsInstallerBase
     {
         private const string DescriptorCacheAbsoluteExpirationSecondsKey = "caching:descriptors:absoluteExpirationSeconds";
         private const string PersonCacheAbsoluteExpirationSecondsKey = "caching:personUniqueIdToUsi:absoluteExpirationSeconds";
@@ -70,37 +71,7 @@ namespace EdFi.Ods.Api.Startup.Features.Installers
             // TODO JSM - remove the calls using this once we move to the api assembly in ODS-2152. This makes it easy to find the specific locations in the file for now
             _apiAssembly = installedAssemblies.SingleOrDefault(x => x.GetName().Name.Equals("EdFi.Ods.Api"));
         }
-
-        public void Install(IWindsorContainer container, IConfigurationStore store)
-        {
-            RegisterDomainModel(container);
-            RegisterAuthenticationProvider(container);
-            RegisterContextProviders(container);
-            RegisterContextStorage(container);
-            RegisterCacheProvider(container);
-            RegisterDomainModelDefinitionsProvider(container);
-            RegisterDatabaseMetadataProvider(container);
-            RegisterEdFiDescriptorReflectionProvider(container);
-            RegisterOAuthTokenValidator(container);
-            RegisterClaims(container);
-            RegisterEdFiOdsInstanceIdentificationProvider(container);
-            RegisterETagProvider(container);
-            RegisterUniqueIdToUsiValueMapper(container);
-            RegisterPersonUniqueIdToUsiCache(container);
-            RegisterValidators(container);
-            RegisterEdFiOdsBasedPersonIdentifiersProvider(container);
-            RegisterDescriptorCache(container);
-            RegisterTokenRequestHandlers(container);
-            RegisterExceptionHandling(container);
-            RegisterSecureHashing(container);
-            RegisterPipeline(container);
-            RegisterResourceLoadGraphFactory(container);
-            RegisterApiControllers(container);
-            RegisterProfilesProcessing(container);
-            RegisterApiVersionProvider(container);
-            RegisterDefaultPageSizeLimitProvider(container);
-        }
-
+        
         private void RegisterDefaultPageSizeLimitProvider(IWindsorContainer container)
         {
             container.Register(Component.For<IDefaultPageSizeLimitProvider>().ImplementedBy<DefaultPageSizeLimitProvider>());
