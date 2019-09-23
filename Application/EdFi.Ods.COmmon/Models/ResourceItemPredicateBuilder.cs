@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using EdFi.Ods.Common.Models.Resource;
 
-namespace EdFi.Ods.Api.Models
+namespace EdFi.Ods.Common.Models
 {
     public static class ResourceItemPredicateBuilder
     {

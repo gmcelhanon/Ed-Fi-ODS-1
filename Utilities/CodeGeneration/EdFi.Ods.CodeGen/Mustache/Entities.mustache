@@ -14,6 +14,7 @@ using EdFi.Ods.Api.NHibernate;
 using EdFi.Ods.Api.NHibernate.Architecture;
 using EdFi.Ods.Api.Validation;
 using EdFi.Ods.Common;
+using EdFi.Ods.Common.Dependencies;
 using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Extensions;
 {{#HasExtensionDerivedFromEdFiBaseEntity}}
@@ -623,12 +624,14 @@ namespace {{AggregateNamespace}}
         // =========================================
         //        Synchronization Context
         // -----------------------------------------
-        private {{NamespacePrefix}}{{ClassName}}SynchronizationContext _synchronizationContext;
-            
+        private Lazy<{{NamespacePrefix}}{{ClassName}}SynchronizationContext> _synchronizationContext =
+            new Lazy<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>(() =>
+                GeneratedArtifactStaticDependencies.SynchronizationContextProvider.GetSynchronizationContext<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>());
+
         {{NamespacePrefix}}{{ClassName}}SynchronizationContext IHasSynchronizationContext<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>.SynchronizationContext
         {
-            get { return _synchronizationContext; }
-            set { _synchronizationContext = value; }
+            get { return _synchronizationContext.Value; }
+            set { } // No Op
         }
         // -----------------------------------------
         {{/IsAbstract}}

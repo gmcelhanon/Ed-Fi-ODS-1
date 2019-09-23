@@ -7,7 +7,7 @@ using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Utils.Profiles;
 
-namespace EdFi.Ods.Api.Models
+namespace EdFi.Ods.Common.Models
 {
     public interface ISynchronizationContextProvider
     {
@@ -76,43 +76,48 @@ namespace EdFi.Ods.Api.Models
                 var arguments = constructorInfo
                     .GetParameters()
                     .Select(
-                        p =>
+                        parameterInfo =>
                         {
-                            if (!p.Name.StartsWith("is"))
-                            {
-                                throw new Exception(
-                                    $"Constructor argument '{p.Name}' of '{typeof(TSynchronizationContext).FullName}' did not conform to expected naming convention of isXxxxSupported or isXxxxIncluded.");
-                            }
-
-                            if (p.Name == "supportedExtensions")
+                            if (parameterInfo.Name == "supportedExtensions")
                             {
                                 //string memberName = "SupportedExtensions";
 
                                 // SPIKE NOTE: Is this the correct name to use for the extension?
                                 return profileResource.Extensions.Select(x => x.PropertyName).ToArray();
                             }
-                            
-                            if (p.Name.EndsWith("Supported"))
+
+                            if (!parameterInfo.Name.StartsWith("is"))
                             {
-                                string memberName = p.Name.Substring(2, p.Name.Length - "Supported".Length - 2);
+                                throw new Exception(
+                                    $"Constructor argument '{parameterInfo.Name}' of '{typeof(TSynchronizationContext).FullName}' did not conform to expected naming convention of isXxxxSupported or isXxxxIncluded.");
+                            }
+
+                            if (parameterInfo.Name.EndsWith("Supported"))
+                            {
+                                string memberName = parameterInfo.Name.Substring(2, parameterInfo.Name.Length - "Supported".Length - 2);
 
                                 return (object) profileResource.FilterContext.MemberFilter.ShouldInclude(memberName);
                             }
 
-                            if (p.Name.EndsWith("Included"))
+                            if (parameterInfo.Name.EndsWith("Included"))
                             {
-                                string memberName = p.Name.Substring(2, p.Name.Length - "Included".Length - 2);
+                                string memberName = parameterInfo.Name.Substring(2, parameterInfo.Name.Length - "Included".Length - 2);
 
                                 string collectionName = CompositeTermInflector.MakePlural(memberName);
-                                Type itemType = p.ParameterType.GenericTypeArguments[0];
+                                
+                                if (profileResource.CollectionByName.TryGetValue(collectionName, out var collection))
+                                {
+                                    Type itemType = parameterInfo.ParameterType.GenericTypeArguments[0];
 
-                                return ResourceItemPredicateBuilder.Build(
-                                    itemType,
-                                    profileResource.CollectionByName[collectionName].ValueFilters);
+                                    return ResourceItemPredicateBuilder.Build(itemType, collection.ValueFilters);
+                                }
+
+                                // No predicate necessary because the collection itself is not included by this profile
+                                return null;
                             }
 
                             throw new Exception(
-                                $"Constructor argument '{p.Name}' of '{typeof(TSynchronizationContext).FullName}' did not conform to expected naming convention of isXxxxSupported or isXxxxIncluded.");
+                                $"Constructor argument '{parameterInfo.Name}' of '{typeof(TSynchronizationContext).FullName}' did not conform to expected naming convention of isXxxxSupported or isXxxxIncluded.");
                         })
                     .ToArray();
 

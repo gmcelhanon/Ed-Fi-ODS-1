@@ -10,6 +10,7 @@ using EdFi.Ods.Api.Caching;
 using EdFi.Ods.Api.ETag;
 using EdFi.Ods.Api.ExceptionHandling;
 using EdFi.Ods.Api.IdentityValueMappers;
+using EdFi.Ods.Api.Models;
 using EdFi.Ods.Api.NHibernate.Architecture;
 using EdFi.Ods.Api.Pipelines.Factories;
 using EdFi.Ods.Api.Services.Authentication;
@@ -22,6 +23,7 @@ using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Context;
 using EdFi.Ods.Common.Conventions;
+using EdFi.Ods.Common.Dependencies;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Http.Context;
 using EdFi.Ods.Common.Metadata;
@@ -344,6 +346,17 @@ namespace EdFi.Ods.Api.Startup.Features.Installers
                 Component.For<IApiVersionProvider>()
                     .ImplementedBy<EnterpriseApiVersionProvider>()
                     .IsFallback());
+        }
+
+        protected virtual void RegisterISynchronizationContextProvider(IWindsorContainer container)
+        {
+            container.Register(
+                Component
+                    .For<ISynchronizationContextProvider>()
+                    .ImplementedBy<SynchronizationContextProvider>());
+            
+            GeneratedArtifactStaticDependencies.Resolvers
+                .Set(() => container.Resolve<ISynchronizationContextProvider>());
         }
     }
 }

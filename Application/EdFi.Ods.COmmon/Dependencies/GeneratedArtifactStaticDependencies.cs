@@ -4,12 +4,10 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
-using EdFi.Ods.Api.Models;
 using EdFi.Ods.Common.Models;
-using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Security.Claims;
 
-namespace EdFi.Ods.Api.Dependencies
+namespace EdFi.Ods.Common.Dependencies
 {
     /// <summary>
     /// Provides static references to the specific services used by the generated artifacts.
@@ -18,14 +16,10 @@ namespace EdFi.Ods.Api.Dependencies
     {
         private static Lazy<IAuthorizationContextProvider> _authorizationContextProvider;
         private static Lazy<IResourceModelProvider> _resourceModelProvider;
-        private static Lazy<IProfileResourceModelProvider> _profileResourceModelProvider;
-        private static Lazy<IProfileRequestContextProvider> _profileRequestContextProvider;
         private static Lazy<ISynchronizationContextProvider> _synchronizationContextProvider;
 
         public static IAuthorizationContextProvider AuthorizationContextProvider => _authorizationContextProvider?.Value;
         public static IResourceModelProvider ResourceModelProvider => _resourceModelProvider?.Value;
-        public static IProfileResourceModelProvider ProfileResourceModelProvider => _profileResourceModelProvider?.Value;
-        public static IProfileRequestContextProvider ProfileRequestContextProvider => _profileRequestContextProvider?.Value;
         public static ISynchronizationContextProvider SynchronizationContextProvider => _synchronizationContextProvider?.Value;
 
         /// <summary>
@@ -39,24 +33,14 @@ namespace EdFi.Ods.Api.Dependencies
                 _authorizationContextProvider = new Lazy<IAuthorizationContextProvider>(resolver);
             }
 
-            public static void Set(Func<ISynchronizationContextProvider> resolver)
-            {
-                _synchronizationContextProvider = new Lazy<ISynchronizationContextProvider>(resolver);
-            }
-
             public static void Set(Func<IResourceModelProvider> resolver)
             {
                 _resourceModelProvider = new Lazy<IResourceModelProvider>(resolver);
             }
-            
-            public static void Set(Func<IProfileResourceModelProvider> resolver)
+
+            public static void Set(Func<ISynchronizationContextProvider> resolver)
             {
-                _profileResourceModelProvider = new Lazy<IProfileResourceModelProvider>(resolver);
-            }
-            
-            public static void Set(Func<IProfileRequestContextProvider> resolver)
-            {
-                _profileRequestContextProvider = new Lazy<IProfileRequestContextProvider>(resolver);
+                _synchronizationContextProvider = new Lazy<ISynchronizationContextProvider>(resolver);
             }
         }
     }
