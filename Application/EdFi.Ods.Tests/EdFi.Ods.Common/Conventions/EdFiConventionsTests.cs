@@ -13,7 +13,6 @@ using NUnit.Framework;
 using Test.Common;
 using StaffEntity = EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi.Staff;
 using StaffResource = EdFi.Ods.Api.Models.Resources.Staff.EdFi.Staff;
-using StaffProfileResource = EdFi.Ods.Api.Models.Resources.Staff.EdFi.Test_Profile_StaffOnly_Resource_IncludeAll_Writable.Staff;
 
 namespace EdFi.Ods.Tests.EdFi.Ods.Common.Conventions
 {
@@ -37,7 +36,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Conventions
             [Test]
             public void Should_return_true()
             {
-                Assert.That(EdFiConventions.IsProfileAssembly(typeof(StaffProfileResource).Assembly), Is.True);
+                Assert.That(EdFiConventions.IsProfileAssembly(typeof(Marker_EdFi_Ods_Profiles_Test).Assembly), Is.True);
             }
         }
 

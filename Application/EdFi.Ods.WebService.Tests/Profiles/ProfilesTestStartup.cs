@@ -26,6 +26,7 @@ using EdFi.Ods.Common.Context;
 using EdFi.Ods.Common.Database;
 using EdFi.Ods.Common.Metadata;
 using EdFi.Ods.Common.Models;
+using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Repositories;
 using EdFi.Ods.Common.Security;
 using EdFi.Ods.Pipelines;
@@ -104,7 +105,9 @@ namespace EdFi.Ods.WebService.Tests.Profiles
                 new ProfilesAwareHttpControllerSelector(
                     httpConfig,
                     Container.Resolve<IProfileResourceNamesProvider>(),
-                    Container.Resolve<ISchemaNameMapProvider>()));
+                    Container.Resolve<ISchemaNameMapProvider>(),
+                    Container.Resolve<IHttpRouteDataProvider>(),
+                    Container.Resolve<IProfileRequestContextProvider>()));
 
             //httpConfig.EnableSystemDiagnosticsTracing();
             httpConfig.EnableCors(new EnableCorsAttribute("*", "*", "*", "*"));

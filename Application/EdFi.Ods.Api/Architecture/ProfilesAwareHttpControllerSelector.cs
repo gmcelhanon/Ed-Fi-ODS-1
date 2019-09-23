@@ -19,6 +19,8 @@ using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Inflection;
 using EdFi.Ods.Common.Metadata;
+using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Utils.Profiles;
 
 namespace EdFi.Ods.Api.Architecture
@@ -26,7 +28,7 @@ namespace EdFi.Ods.Api.Architecture
     public class ProfilesAwareHttpControllerSelector : DefaultHttpControllerSelector
     {
         private const string ControllerKey = "controller";
-        private const string ResourceOwnerKey = "schema";
+        private const string SchemaKey = "schema";
         private const string CompositeControllerName = "CompositeResource";
 
         private readonly HttpConfiguration _configuration;
@@ -34,11 +36,15 @@ namespace EdFi.Ods.Api.Architecture
         private readonly HashSet<string> _duplicates;
         private readonly IProfileResourceNamesProvider _profileResourceNamesProvider;
         private readonly ISchemaNameMapProvider _schemaNameMapProvider;
+        private readonly IHttpRouteDataProvider _httpRouteDataProvider;
+        private readonly IProfileRequestContextProvider _profileRequestContextProvider;
 
         public ProfilesAwareHttpControllerSelector(
             HttpConfiguration config,
             IProfileResourceNamesProvider profileResourceNamesProvider,
-            ISchemaNameMapProvider schemaNameMapProvider)
+            ISchemaNameMapProvider schemaNameMapProvider,
+            IHttpRouteDataProvider httpRouteDataProvider,
+            IProfileRequestContextProvider profileRequestContextProvider)
             : base(config)
         {
             _configuration = config;
@@ -46,6 +52,8 @@ namespace EdFi.Ods.Api.Architecture
             _duplicates = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             _controllers = new Lazy<Dictionary<string, HttpControllerDescriptor>>(InitializeControllerDictionary);
             _schemaNameMapProvider = schemaNameMapProvider;
+            _httpRouteDataProvider = httpRouteDataProvider;
+            _profileRequestContextProvider = profileRequestContextProvider;
         }
 
         private Dictionary<string, HttpControllerDescriptor> InitializeControllerDictionary()
@@ -125,7 +133,7 @@ namespace EdFi.Ods.Api.Architecture
                            The following controllers have been detected as duplicates: {string.Join(", ", _duplicates)}"));
             }
 
-            IHttpRouteData routeData = request.GetRouteData();
+            IHttpRouteData routeData = _httpRouteDataProvider.GetRouteData(request);
 
             if (routeData == null)
             {
@@ -135,7 +143,7 @@ namespace EdFi.Ods.Api.Architecture
             string controllerName = GetRouteVariable<string>(routeData, ControllerKey);
 
             // schema section of url ie /data/v3/{schema}/{resource} ex: /data/v3/ed-fi/schools
-            string resourceSchema = GetRouteVariable<string>(routeData, ResourceOwnerKey);
+            string resourceSchema = GetRouteVariable<string>(routeData, SchemaKey);
 
             if (ShouldUseDefaultSelectController(controllerName, resourceSchema))
             {
@@ -188,34 +196,30 @@ namespace EdFi.Ods.Api.Architecture
                 profileContentTypeDetails =
                     (from a in request.Headers.Accept
                      where a.MediaType.StartsWith("application/vnd.ed-fi.")
-                     let details = a.MediaType.GetContentTypeDetails()
-                     select details)
+                     select a.MediaType.GetContentTypeDetails())
                    .SingleOrDefault();
             }
             else if (request.Method == HttpMethod.Put || request.Method == HttpMethod.Post)
             {
-                if (request.Content != null)
+                var contentType = request.Content?.Headers.ContentType;
+                
+                // check that there was a content type on the request
+                if (contentType != null)
                 {
-                    var contentType = request.Content.Headers.ContentType;
-
-                    // check that there was a content type on the request
-                    if (contentType != null)
+                    // check if the content type is a profile specific content type
+                    if (contentType.MediaType.StartsWith("application/vnd.ed-fi."))
                     {
-                        // check if the content type is a profile specific content type
-                        if (contentType.MediaType.StartsWith("application/vnd.ed-fi."))
-                        {
-                            // parse the profile specific content type string into the object.
-                            profileContentTypeDetails = contentType.MediaType.GetContentTypeDetails();
+                        // parse the profile specific content type string into the object.
+                        profileContentTypeDetails = contentType.MediaType.GetContentTypeDetails();
 
-                            // Was a profile-specific content type for the controller/resource found and was it parseable?
-                            // if it was not parsable but started with "application/vnd.ed-fi." then throw an error
-                            if (profileContentTypeDetails == null)
-                            {
-                                throw new HttpResponseException(
-                                    BadRequestHttpResponseMessage(
-                                        request,
-                                        "Content type not valid on this resource."));
-                            }
+                        // Was a profile-specific content type for the controller/resource found and was it parseable?
+                        // if it was not parsable but started with "application/vnd.ed-fi." then throw an error
+                        if (profileContentTypeDetails == null)
+                        {
+                            throw new HttpResponseException(
+                                BadRequestHttpResponseMessage(
+                                    request,
+                                    "Content type not valid on this resource."));
                         }
                     }
                 }
@@ -223,14 +227,15 @@ namespace EdFi.Ods.Api.Architecture
 
             HttpControllerDescriptor controllerDescriptor;
             string key;
-            bool profileControllerNotFound = false;
+            bool profileResourceNotFound = false;
 
             // Was a profile-specific content type for the controller/resource found?
+            string resourceName = CompositeTermInflector.MakeSingular(controllerName);
+            
             if (profileContentTypeDetails != null)
             {
-                // Ensure that the content type resource matchs requested resource
-                if (!profileContentTypeDetails.Resource
-                                              .EqualsIgnoreCase(CompositeTermInflector.MakeSingular(controllerName)))
+                // Ensure that the content type resource matches requested resource
+                if (!profileContentTypeDetails.Resource.EqualsIgnoreCase(resourceName))
                 {
                     throw new HttpResponseException(
                         BadRequestHttpResponseMessage(
@@ -257,24 +262,31 @@ namespace EdFi.Ods.Api.Architecture
                             "The resource is not accessible through the profile specified by the content type."));
                 }
 
-                // Use the profile name as the namespace for controller matching
-                string profileName = profileContentTypeDetails.Profile.Replace('-', '_'); // + "_" + profileContentTypeDetails.Usage;
-
-                // Find a matching controller.
-                // ex : EdFi.Ods.Api.Services.Controllers.AcademicHonorCategoryTypes.Academic_Week_Readable_Excludes_Optional_References.AcademicHonorCategoryTypes
-                key = string.Format(
-                    CultureInfo.InvariantCulture,
-                    "{0}.{1}.{2}",
-                    resourceSchemaNamespace,
-                    profileName,
-                    controllerName);
-
-                if (_controllers.Value.TryGetValue(key, out controllerDescriptor))
+                // Find a matching profile name
+                string actualProfileName = _profileResourceNamesProvider.GetProfileResourceNames()
+                    .Where(
+                        x =>
+                            x.ProfileName.EqualsIgnoreCase(profileContentTypeDetails.Profile)
+                            && x.ResourceName.EqualsIgnoreCase(resourceName))
+                    .Select(x => x.ProfileName)
+                    .FirstOrDefault();
+                
+                if (actualProfileName != null)
                 {
-                    return controllerDescriptor;
+                    string physicalSchemaName = _schemaNameMapProvider
+                        .GetSchemaMapByUriSegment(resourceSchema)
+                        .PhysicalName;
+
+                    var resourceFullName = new FullName(physicalSchemaName, resourceName);
+                    
+                    _profileRequestContextProvider.SetProfileRequestContext(
+                        new ProfileRequestContext(
+                            actualProfileName,
+                            resourceFullName,
+                            profileContentTypeDetails.Usage));
                 }
 
-                profileControllerNotFound = true;
+                profileResourceNotFound = (actualProfileName == null);
             }
 
             // Find a matching controller.
@@ -288,7 +300,7 @@ namespace EdFi.Ods.Api.Architecture
             if (_controllers.Value.TryGetValue(key, out controllerDescriptor))
             {
                 // If there is a controller, just not with the content type specified, it's a bad request
-                if (profileControllerNotFound)
+                if (profileResourceNotFound)
                 {
                     // If the profile does not exist in this installation of the api throw an error dependent on the http method
                     if (!ProfileExists(profileContentTypeDetails.Profile))
@@ -310,7 +322,7 @@ namespace EdFi.Ods.Api.Architecture
                             request,
                             string.Format(
                                 "The '{0}' resource is not accessible through the '{1}' profile specified by the content type.",
-                                CompositeTermInflector.MakeSingular(controllerName),
+                                resourceName,
                                 profileContentTypeDetails.Profile)));
                 }
 
