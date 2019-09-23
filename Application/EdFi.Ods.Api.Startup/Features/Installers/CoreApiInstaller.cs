@@ -1,9 +1,3 @@
-// SPDX-License-Identifier: Apache-2.0
-// Licensed to the Ed-Fi Alliance under one or more agreements.
-// The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
-// See the LICENSE and NOTICES files in the project root for more information.
-
-using System;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
@@ -11,6 +5,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using EdFi.Ods.Sandbox.Security;
+using EdFi.Ods.Api.Architecture;
 using EdFi.Ods.Api.Caching;
 using EdFi.Ods.Api.ETag;
 using EdFi.Ods.Api.ExceptionHandling;
@@ -35,6 +30,7 @@ using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Models.Graphs;
 using EdFi.Ods.Common.Models.Resource;
+using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Security;
 using EdFi.Ods.Common.Security.Claims;
 using EdFi.Ods.Common.Validation;
@@ -317,6 +313,22 @@ namespace EdFi.Ods.Api.Startup.Features.Installers
                     .FromAssembly(_apiAssembly)
                     .BasedOn<IPipelineStepsProvider>()
                     .WithServiceFirstInterface());
+        }
+
+        protected virtual void RegisterIHttpRouteDataProvider(IWindsorContainer container)
+        {
+            container.Register(
+                Component
+                    .For<IHttpRouteDataProvider>()
+                    .ImplementedBy<HttpRouteDataProvider>());
+        }
+
+        protected virtual void RegisterIProfileRequestContextProvider(IWindsorContainer container)
+        {
+            container.Register(
+                Component
+                    .For<IProfileRequestContextProvider>()
+                    .ImplementedBy<ProfileRequestContextProvider>());
         }
 
         private void RegisterProfilesProcessing(IWindsorContainer container)
