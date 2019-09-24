@@ -55,107 +55,109 @@ namespace EdFi.Ods.Common.Extensions
         /// <param name="target"></param>
         /// <returns></returns>
         public static bool SynchronizeExtensionsTo<TSource, TTarget>(this TSource source, TTarget target)
-            where TSource : ISynchronizable, IHasExtensions, IHasExtensionsSynchronizationContext
+            where TSource : ISynchronizable, IHasExtensions //, IHasExtensionsSynchronizationContext
             where TTarget : IHasExtensions
         {
-            if (source == null || source.Extensions == null)
-            {
-                return false;
-            }
-
-            if (target == null || target.Extensions == null)
-            {
-                return false;
-            }
-
-            bool isModified = false;
-
-            var extensionsSynchronizationContextSource = (source as IHasExtensionsSynchronizationContext);
-
-            if (extensionsSynchronizationContextSource == null)
-            {
-                throw new Exception(
-                    $"The source type '{source.GetType().FullName}' does not implement the {typeof(IExtensionsSynchronizationContext).Name} interface which is required for synchronizing extensions.");
-            }
-
-            var extensionsSynchronizationContext = extensionsSynchronizationContextSource.SynchronizationContext;
+            throw new NotImplementedException();
             
-            // Iterate through the target's extensions
-            foreach (string extensionName in target.Extensions.Keys)
-            {
-                // If the extension isn't supported by the source, don't map it.
-                //   For entities, all extensions present will be supported.
-                //   For non-profile constrained resources, all extensions will be supported.
-                //   For profile constrained resources, some extensions may not be supported.
-                if (extensionsSynchronizationContext?.IsExtensionSupported(extensionName) == false)
-                {
-                    // extensionsSynchronizationContextContext.SetExtensionSupported(extensionName, false);
-                    continue;
-                }
-                
-                if (!source.Extensions.Contains(extensionName))
-                {
-                    throw new Exception(
-                        $"The extension '{extensionName}' is supported as a synchronization source but the extension was not provided.");
-                }
-
-                // Get the source extension object
-                var sourceExtensionObjectList = source.Extensions[extensionName] as IList;
-
-                if (sourceExtensionObjectList == null)
-                {
-                    throw new Exception($"Synchronization source extension '{extensionName}' was not an IList implementation.");
-                }
-
-                var sourceExtensionObject = sourceExtensionObjectList[0] as ISynchronizable;
-
-                if (sourceExtensionObject == null)
-                {
-                    object obj = source.Extensions[extensionName];
-
-                    throw new Exception(
-                        $"The source entity extension type '{obj.GetType().FullName}' does not implement the {typeof(ISynchronizable).Name} interface which is required for synchronizing extensions.");
-                }
-
-                // Get the target extension object (always an NHibernate persistent bag)
-                var targetExtensionObjectList = target.Extensions[extensionName] as IList;
-
-                if (targetExtensionObjectList == null)
-                {
-                    throw new Exception($"Synchronization target extension '{extensionName}' was not an IList implementation.");
-                }
-
-                ISynchronizable targetExtensionObject;
-
-                // Is there an extension object in the bag?
-                if (targetExtensionObjectList.Count == 0)
-                {
-                    // No target extensions object yet exists in the persistent list (i.e. it's not a required extension)
-                    // Create it now based on the source extension object type (synchronization always happens between NHibernate entities)
-                    // ... and add it to the list
-                    targetExtensionObject = (ISynchronizable) Activator.CreateInstance(sourceExtensionObject.GetType());
-                    targetExtensionObjectList.Add(targetExtensionObject);
-                    ((IChildEntity) targetExtensionObject).SetParent(target);
-                }
-                else
-                {
-                    // Get the existing target extensions object (i.e. it's a required extension object, which is created when the entity in instantiated)
-                    targetExtensionObject = targetExtensionObjectList[0] as ISynchronizable;
-                }
-
-                if (targetExtensionObject == null)
-                {
-                    object obj = targetExtensionObjectList[0];
-
-                    throw new Exception(
-                        $"The target entity extension type '{obj.GetType().FullName}' does not implement the {typeof(ISynchronizable).Name} interface which is required for synchronizing extensions.");
-                }
-
-                // Synchronize the extension object to the target extension object
-                isModified |= sourceExtensionObject.Synchronize(targetExtensionObject);
-            }
-
-            return isModified;
+            // if (source == null || source.Extensions == null)
+            // {
+            //     return false;
+            // }
+            //
+            // if (target == null || target.Extensions == null)
+            // {
+            //     return false;
+            // }
+            //
+            // bool isModified = false;
+            //
+            // var extensionsSynchronizationContextSource = (source as IHasExtensionsSynchronizationContext);
+            //
+            // if (extensionsSynchronizationContextSource == null)
+            // {
+            //     throw new Exception(
+            //         $"The source type '{source.GetType().FullName}' does not implement the {typeof(IExtensionsSynchronizationContext).Name} interface which is required for synchronizing extensions.");
+            // }
+            //
+            // var extensionsSynchronizationContext = extensionsSynchronizationContextSource.SynchronizationContext;
+            //
+            // // Iterate through the target's extensions
+            // foreach (string extensionName in target.Extensions.Keys)
+            // {
+            //     // If the extension isn't supported by the source, don't map it.
+            //     //   For entities, all extensions present will be supported.
+            //     //   For non-profile constrained resources, all extensions will be supported.
+            //     //   For profile constrained resources, some extensions may not be supported.
+            //     if (extensionsSynchronizationContext?.IsExtensionSupported(extensionName) == false)
+            //     {
+            //         // extensionsSynchronizationContextContext.SetExtensionSupported(extensionName, false);
+            //         continue;
+            //     }
+            //     
+            //     if (!source.Extensions.Contains(extensionName))
+            //     {
+            //         throw new Exception(
+            //             $"The extension '{extensionName}' is supported as a synchronization source but the extension was not provided.");
+            //     }
+            //
+            //     // Get the source extension object
+            //     var sourceExtensionObjectList = source.Extensions[extensionName] as IList;
+            //
+            //     if (sourceExtensionObjectList == null)
+            //     {
+            //         throw new Exception($"Synchronization source extension '{extensionName}' was not an IList implementation.");
+            //     }
+            //
+            //     var sourceExtensionObject = sourceExtensionObjectList[0] as ISynchronizable;
+            //
+            //     if (sourceExtensionObject == null)
+            //     {
+            //         object obj = source.Extensions[extensionName];
+            //
+            //         throw new Exception(
+            //             $"The source entity extension type '{obj.GetType().FullName}' does not implement the {typeof(ISynchronizable).Name} interface which is required for synchronizing extensions.");
+            //     }
+            //
+            //     // Get the target extension object (always an NHibernate persistent bag)
+            //     var targetExtensionObjectList = target.Extensions[extensionName] as IList;
+            //
+            //     if (targetExtensionObjectList == null)
+            //     {
+            //         throw new Exception($"Synchronization target extension '{extensionName}' was not an IList implementation.");
+            //     }
+            //
+            //     ISynchronizable targetExtensionObject;
+            //
+            //     // Is there an extension object in the bag?
+            //     if (targetExtensionObjectList.Count == 0)
+            //     {
+            //         // No target extensions object yet exists in the persistent list (i.e. it's not a required extension)
+            //         // Create it now based on the source extension object type (synchronization always happens between NHibernate entities)
+            //         // ... and add it to the list
+            //         targetExtensionObject = (ISynchronizable) Activator.CreateInstance(sourceExtensionObject.GetType());
+            //         targetExtensionObjectList.Add(targetExtensionObject);
+            //         ((IChildEntity) targetExtensionObject).SetParent(target);
+            //     }
+            //     else
+            //     {
+            //         // Get the existing target extensions object (i.e. it's a required extension object, which is created when the entity in instantiated)
+            //         targetExtensionObject = targetExtensionObjectList[0] as ISynchronizable;
+            //     }
+            //
+            //     if (targetExtensionObject == null)
+            //     {
+            //         object obj = targetExtensionObjectList[0];
+            //
+            //         throw new Exception(
+            //             $"The target entity extension type '{obj.GetType().FullName}' does not implement the {typeof(ISynchronizable).Name} interface which is required for synchronizing extensions.");
+            //     }
+            //
+            //     // Synchronize the extension object to the target extension object
+            //     isModified |= sourceExtensionObject.Synchronize(targetExtensionObject);
+            // }
+            //
+            // return isModified;
         }
 
         /// <summary>
@@ -263,7 +265,7 @@ namespace EdFi.Ods.Common.Extensions
                 }
 
                 // Map the extension objects
-                sourceExtensionObject.Map(targetExtensionObject, extensionsSynchronizationContext?.ExtensionSynchronizationContextByName[availableExtensionName]);
+                sourceExtensionObject.Map(targetExtensionObject);
 
                 // Set the parent back-reference (relevant only for entity extension classes)
                 var targetExtensionObjectAsChildEntity = targetExtensionObject as IChildEntity;

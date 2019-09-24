@@ -21,8 +21,8 @@ namespace EdFi.Ods.Common.Extensions
         /// <returns><b>true</b> if the extension is supported as a source for synchronization; otherwise <b>false</b>.</returns>
         bool IsExtensionSupported(string name);
 
-        // SPIKE NOTE: Supply documentation.
-        IDictionary<string, ISynchronizationContext> ExtensionSynchronizationContextByName { get; }
+        // SPIKE NOTE: Revisit or probably just remove.
+        //IDictionary<string, ISynchronizationContext> ExtensionSynchronizationContextByName { get; }
     }
 
     // /// <summary>

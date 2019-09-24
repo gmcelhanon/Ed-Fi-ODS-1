@@ -71,6 +71,7 @@ namespace EdFi.Ods.CodeGen.Generators
             return new
             {
                 ModelName = resourceClass.Name,
+                ModelSchema = resourceClass.FullName.Schema,
                 ModelParentName = resourceClass.Entity?.Parent?.Name ?? resourceClass.Name.TrimSuffix("Extension"),
                 ExtensionName = TemplateContext.SchemaProperCaseName,
                 IsEntityExtension = resourceClass.IsResourceExtensionClass,

@@ -15,6 +15,6 @@ namespace EdFi.Ods.Common
         /// Copies all properties of the current object to an uninitialized object of the same entity abstraction.
         /// </summary>
         /// <param name="target">An uninitialized instance (of the same abstract entity type) to be mapped from the current object.</param>
-        void Map(object target, object synchronizationContext);
+        void Map(object target);
     }
 }

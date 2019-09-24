@@ -146,7 +146,7 @@ namespace {{AggregateNamespace}}
     [Serializable, Schema("{{SchemaName}}")]
     [ExcludeFromCodeCoverage]
     public {{#IsAbstract}}abstract {{/IsAbstract}}class {{ClassName}}{{#IsConcreteEntityBaseClass}}Base{{/IsConcreteEntityBaseClass}}{{#IsConcreteEntityChildClassForBase}}ForBase{{/IsConcreteEntityChildClassForBase}} : {{#IsDerived}}{{BaseAggregateRootRelativeNamespace}}{{#IsConcreteEntityBaseClass}}Base{{/IsConcreteEntityBaseClass}}{{/IsDerived}}{{^IsDerived}}{{#IsAggregateRoot}}AggregateRootWithCompositeKey{{/IsAggregateRoot}}{{^IsAggregateRoot}}EntityWithCompositeKey{{/IsAggregateRoot}}{{/IsDerived}},{{^IsAggregateRoot}} IChildEntity,{{/IsAggregateRoot}}{{#AllowsPrimaryKeyUpdates}} IHasCascadableKeyValues,{{/AllowsPrimaryKeyUpdates}}
-        {{NamespacePrefix}}I{{ClassName}}, {{RecordNamespacePrefix}}I{{ClassName}}Record, IHasPrimaryKeyValues{{#HasAlternateKeyValues}}, IHasAlternateKeyValues{{/HasAlternateKeyValues}}, IHasLookupColumnPropertyMap{{^IsAbstract}}, IHasSynchronizationContext<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>{{/IsAbstract}}{{#IsDescriptor}}, IEdFiDescriptor{{/IsDescriptor}}{{#IsExtendable}}{{^ExtendableConcreteBase}}, IHasExtensions, IHasExtensionsSynchronizationContext{{/ExtendableConcreteBase}}{{/IsExtendable}}
+        {{NamespacePrefix}}I{{ClassName}}, {{RecordNamespacePrefix}}I{{ClassName}}Record, IHasPrimaryKeyValues{{#HasAlternateKeyValues}}, IHasAlternateKeyValues{{/HasAlternateKeyValues}}, IHasLookupColumnPropertyMap{{#IsDescriptor}}, IEdFiDescriptor{{/IsDescriptor}}{{#IsExtendable}}{{^ExtendableConcreteBase}}, IHasExtensions{{/ExtendableConcreteBase}}{{/IsExtendable}}
     {
         {{^IsDerived}}
         public virtual void SuspendReferenceAssignmentCheck() { }
@@ -607,9 +607,9 @@ namespace {{AggregateNamespace}}
             return this.SynchronizeTo(({{NamespacePrefix}}I{{ClassName}})target);
         }
 
-        void IMappable.Map(object target, object synchronizationContext)
+        void IMappable.Map(object target)
         {
-            this.{{#IsDerivedExtensionEntityOfConcreteBase}}MapDerivedTo{{/IsDerivedExtensionEntityOfConcreteBase}}{{^IsDerivedExtensionEntityOfConcreteBase}}MapTo{{/IsDerivedExtensionEntityOfConcreteBase}}(({{NamespacePrefix}}I{{ClassName}}) target, synchronizationContext, null);
+            this.{{#IsDerivedExtensionEntityOfConcreteBase}}MapDerivedTo{{/IsDerivedExtensionEntityOfConcreteBase}}{{^IsDerivedExtensionEntityOfConcreteBase}}MapTo{{/IsDerivedExtensionEntityOfConcreteBase}}(({{NamespacePrefix}}I{{ClassName}}) target, null);
         }
 
         {{/IsAbstract}}
@@ -619,29 +619,6 @@ namespace {{AggregateNamespace}}
             {{EntityParentClassName}} = ({{EntityParentClassNamespacePrefix}}{{EntityParentClassName}}{{#IsConcreteEntityChildClassForBase}}Base{{/IsConcreteEntityChildClassForBase}}) value;
         }
         {{/HasParent}}
-        {{^IsAbstract}}
-
-        // =========================================
-        //        Synchronization Context
-        // -----------------------------------------
-        private Lazy<{{NamespacePrefix}}{{ClassName}}SynchronizationContext> _synchronizationContext =
-            new Lazy<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>(() =>
-                GeneratedArtifactStaticDependencies.SynchronizationContextProvider.GetSynchronizationContext<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>());
-
-        {{NamespacePrefix}}{{ClassName}}SynchronizationContext IHasSynchronizationContext<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>.SynchronizationContext
-        {
-            get { return _synchronizationContext.Value; }
-            set { } // No Op
-        }
-        // -----------------------------------------
-        {{/IsAbstract}}
-        {{#IsExtendable}}
-        {{^ExtendableConcreteBase}}
-    
-        IExtensionsSynchronizationContext IHasExtensionsSynchronizationContext.SynchronizationContext 
-                => (IExtensionsSynchronizationContext) _synchronizationContext; 
-        {{/ExtendableConcreteBase}}
-        {{/IsExtendable}}
     }
         {{/IsImplicitExtension}}
     {{/Classes}}

@@ -2,7 +2,7 @@
     /// An implicitly created entity extension class to enable entity mapping and sychronization behavior for the {{EntityParentClassName}} entity's aggregate extensions.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public class {{ClassName}} : I{{ClassName}}, IHasSynchronizationContext<{{ClassName}}SynchronizationContext>, IChildEntity, IImplicitEntityExtension, IHasPrimaryKeyValues
+    public class {{ClassName}} : I{{ClassName}}, IChildEntity, IImplicitEntityExtension, IHasPrimaryKeyValues
     {
         // =============================================================
         //                         Primary Key
@@ -107,9 +107,9 @@
         {{/NavigableChildren}}
         // -------------------------------------------------------------
 
-        void IMappable.Map(object target, object synchronizationContext)
+        void IMappable.Map(object target)
         {
-            this.MapTo((I{{ClassName}}) target, synchronizationContext, null);
+            this.MapTo((I{{ClassName}}) target, null);
         }
 
         bool ISynchronizable.Synchronize(object target)
@@ -126,17 +126,6 @@
         {
             return ({{EntityParentFieldName}} as IHasPrimaryKeyValues).GetPrimaryKeyValues();
         }
-
-        // =========================================
-        //        Synchronization Context
-        // -----------------------------------------
-        private {{NamespacePrefix}}{{ClassName}}SynchronizationContext _synchronizationContext;
-
-        {{NamespacePrefix}}{{ClassName}}SynchronizationContext IHasSynchronizationContext<{{NamespacePrefix}}{{ClassName}}SynchronizationContext>.SynchronizationContext
-        {
-            get { return _synchronizationContext; }
-            set { _synchronizationContext = value; }
-        }
-
+    
         void IGetByExample.SuspendReferenceAssignmentCheck() { }
     }

@@ -109,13 +109,12 @@ namespace {{EntitiesBaseNamespace}}
 
         bool ISynchronizationContext.IsMemberSupported(string memberName)
         {
-            switch case(memberName)
+            switch (memberName)
             {
     {{#SynchronizationContextMembers}}
         {{^ItemTypeName}}
                 case "{{PropertyName}}":
                     return Is{{PropertyName}}Supported;
-                    break;
         {{/ItemTypeName}}
     {{/SynchronizationContextMembers}}
                 default:

@@ -74,10 +74,9 @@ namespace EdFi.Ods.Api.Extensions
             return isModified;
         }
 
-        public static void MapCollectionTo<TSource, TTarget, TSynchronizationContext>(
+        public static void MapCollectionTo<TSource, TTarget>(
             this ICollection<TSource> sourceList,
             ICollection<TTarget> targetList,
-            TSynchronizationContext synchronizationContext,
             object parent = null)
             where TSource : IMappable
         {
@@ -101,7 +100,7 @@ namespace EdFi.Ods.Api.Extensions
                 if (parent != null)
                     (targetItem as IChildEntity)?.SetParent(parent);
 
-                sourceItem.Map(targetItem, synchronizationContext);
+                sourceItem.Map(targetItem);
                 targetList.Add(targetItem);
             }
         }

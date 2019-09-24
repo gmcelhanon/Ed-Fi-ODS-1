@@ -522,7 +522,8 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Entities.Common
 
             protected override void Act()
             {
-                _suppliedSourceObject.MapExtensionsTo(_suppliedTargetObject);
+                // SPIKE NOTE: Fix this test (just passed in a null)
+                _suppliedSourceObject.MapExtensionsTo(_suppliedTargetObject, null);
             }
 
             [Assert]
@@ -640,7 +641,8 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Entities.Common
 
             protected override void Act()
             {
-                _suppliedSourceObject.MapExtensionsTo(_suppliedTargetObject);
+                // SPIKE NOTE: Fix this test (just passed in an additional null)
+                _suppliedSourceObject.MapExtensionsTo(_suppliedTargetObject, null);
             }
 
             [Assert]
@@ -991,7 +993,8 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Entities.Common
 
             protected override void Act()
             {
-                _suppliedSourceObject.MapExtensionsTo(_suppliedTargetObject);
+                // SPIKE NOTE: Fix this test properly (just passed in null)
+                _suppliedSourceObject.MapExtensionsTo(_suppliedTargetObject, null);
             }
 
             [Assert]
@@ -1002,7 +1005,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Entities.Common
         }
     }
 
-    internal class FakeEntityWithExtensions : ISynchronizable, IHasExtensions, IHasExtensionsSynchronizationContext, IMappable
+    internal class FakeEntityWithExtensions : ISynchronizable, IHasExtensions, IMappable
     {
         private readonly IDictionary<string, bool> _supportedByExtensionName
             = new Dictionary<string, bool>();

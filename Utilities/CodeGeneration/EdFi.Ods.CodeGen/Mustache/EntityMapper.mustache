@@ -9,6 +9,7 @@ using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Dependencies;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models;
+using EdFi.Ods.Common.Models.Domain;
 {{#HasDerivedResources}}
 using EdFi.Ods.Entities.Common.EdFi;
 {{/HasDerivedResources}}
@@ -25,8 +26,11 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
         {
             bool isModified = false;
 
-            var synchronizationContext = (source as IHasSynchronizationContext<{{ModelName}}SynchronizationContext>)
-                .SynchronizationContext;
+            // Get the current synchronization context for mapping
+            var synchronizationContext = ({{ModelName}}SynchronizationContext) GeneratedArtifactStaticDependencies
+                .SynchronizationContextProvider
+                .GetSynchronizationContext(new FullName("{{ModelSchema}}", "{{ModelName}}"));
+
             {{#IsEntityExtension}}
 
             // SPIKE NOTE: Need to deal with this.
@@ -172,9 +176,14 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
         public static void MapDerivedTo(this I{{ModelName}} source, I{{ModelName}} target, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
         {{/IsBaseClassConcrete}}
         {{^IsBaseClassConcrete}}
-        public static void MapTo(this I{{ModelName}} source, I{{ModelName}} target, {{ModelName}}SynchronizationContext synchronizationContext, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
+        public static void MapTo(this I{{ModelName}} source, I{{ModelName}} target, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
         {{/IsBaseClassConcrete}}
         {
+            // Get the current synchronization context for mapping
+            var synchronizationContext = ({{ModelName}}SynchronizationContext) GeneratedArtifactStaticDependencies
+                .SynchronizationContextProvider
+                .GetSynchronizationContext(new FullName("{{ModelSchema}}", "{{ModelName}}"));
+
             {{#IsBaseEntity}}
             // =======================================================================================
             // Detect and map derived types (compiler is unable to correctly link to appropriate 
@@ -256,7 +265,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                         var itemType = itemProperty.PropertyType;
                         object target{{OtherClassName}} = Activator.CreateInstance(itemType);
                         (target{{OtherClassName}} as IChildEntity)?.SetParent(target{{#IsEntityExtension}}.{{ModelParentName}}{{/IsEntityExtension}});
-                        source.{{PropertyName}}.Map(target{{OtherClassName}}, synchronizationContext?.{{PropertyName}}SynchronizationContext);
+                        source.{{PropertyName}}.Map(target{{OtherClassName}});
                         
                         // Update the target reference appropriately
                         target.{{PropertyName}} = (I{{OtherClassName}}) target{{OtherClassName}};
@@ -274,7 +283,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
 
             if (synchronizationContext?.Is{{OtherClassPlural}}Supported != false)
             {
-                source.{{OtherClassPlural}}.MapCollectionTo(target.{{OtherClassPlural}}, synchronizationContext?.{{OtherClassPlural}}SynchronizationContext, target);
+                source.{{OtherClassPlural}}.MapCollectionTo(target.{{OtherClassPlural}}, target);
             }
             {{/BaseNavigableChildrenList}}
             {{/IsDerivedEntity}}
@@ -284,7 +293,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
 
             if (synchronizationContext?.Is{{ChildClassPlural}}Supported != false)
             {    
-                source.{{ChildClassPlural}}.MapCollectionTo(target.{{ChildClassPlural}}, synchronizationContext?.{{OtherClassPlural}}SynchronizationContext, {{#IsCollectionAggregateExtension}}target.{{ParentName}}{{/IsCollectionAggregateExtension}}{{^IsCollectionAggregateExtension}}target{{/IsCollectionAggregateExtension}});
+                source.{{ChildClassPlural}}.MapCollectionTo(target.{{ChildClassPlural}}, {{#IsCollectionAggregateExtension}}target.{{ParentName}}{{/IsCollectionAggregateExtension}}{{^IsCollectionAggregateExtension}}target{{/IsCollectionAggregateExtension}});
             }
             {{/NavigableChildrenList}}
 

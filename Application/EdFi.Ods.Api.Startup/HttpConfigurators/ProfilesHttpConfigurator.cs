@@ -10,6 +10,7 @@ using EdFi.Ods.Api.Architecture;
 using EdFi.Ods.Api.Services.Filters;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Metadata;
+using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Security;
 
@@ -17,6 +18,8 @@ namespace EdFi.Ods.Api.Startup.HttpConfigurators
 {
     public class ProfilesHttpConfigurator : IHttpConfigurator
     {
+        private readonly IProfileResourceModelProvider _profileResourceModelProvider;
+        private readonly ISynchronizationContextProvider _synchronizationContextProvider;
         private readonly IApiKeyContextProvider _apiKeyContextProvider;
         private readonly IProfileResourceNamesProvider _profileResourceNamesProvider;
         private readonly IHttpRouteDataProvider _httpRouteDataProvider;
@@ -27,14 +30,19 @@ namespace EdFi.Ods.Api.Startup.HttpConfigurators
             // SPIKE NOTE: These dependencies were injected here so they could be provided to the controller selector,
             // which was removed in the interim from when the spike was done to current development. This needs clean up.
             IHttpRouteDataProvider httpRouteDataProvider,
-            IProfileRequestContextProvider profileRequestContextProvider)
+            IProfileRequestContextProvider profileRequestContextProvider,
+            ISynchronizationContextProvider synchronizationContextProvider,
+            IProfileResourceModelProvider profileResourceModelProvider)
         {
+            _profileResourceModelProvider = Preconditions.ThrowIfNull(profileResourceModelProvider, nameof(profileResourceModelProvider));
             _apiKeyContextProvider = Preconditions.ThrowIfNull(apiKeyContextProvider, nameof(apiKeyContextProvider));
 
             _profileResourceNamesProvider = Preconditions.ThrowIfNull(
                 profileResourceNamesProvider, nameof(profileResourceNamesProvider));
 
             _profileRequestContextProvider = Preconditions.ThrowIfNull(profileRequestContextProvider, nameof(profileRequestContextProvider));
+            _synchronizationContextProvider = Preconditions.ThrowIfNull(synchronizationContextProvider, nameof(synchronizationContextProvider));
+
             _httpRouteDataProvider = Preconditions.ThrowIfNull(httpRouteDataProvider, nameof(httpRouteDataProvider));
         }
 
@@ -45,7 +53,11 @@ namespace EdFi.Ods.Api.Startup.HttpConfigurators
             ConfigureProfilesJsonSerializer(config);
             ConfigureProfilesAuthorizationFilter(config);
 
-            HttpConfigHelper.ConfigureJsonFormatter(config);
+            HttpConfigHelper.ConfigureJsonFormatter(
+                config, 
+                _profileRequestContextProvider, 
+                _synchronizationContextProvider,
+                _profileResourceModelProvider);
         }
 
 
