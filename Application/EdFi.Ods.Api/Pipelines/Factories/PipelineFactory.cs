@@ -21,11 +21,11 @@ namespace EdFi.Ods.Pipelines.Factories
     public class PipelineFactory : IPipelineFactory
     {
         private readonly IServiceLocator _locator;
-        private readonly IDeletePipelineStepsProvider _deletePipelineStepsProvider;
-        private readonly IGetBySpecificationPipelineStepsProvider _getBySpecificationPipelineStepsProvider;
-        private readonly IGetPipelineStepsProvider _getPipelineStepsProvider;
-        private readonly IGetDeletedResourceIdsPipelineStepsProvider _getDeletedResourceIdsPipelineStepsProvider;
-        private readonly IPutPipelineStepsProvider _putPipelineStepsProvider;
+        private readonly IDeletePipelineStepsProvider deletePipelineStepsProvider;
+        private readonly IGetBySpecificationPipelineStepsProvider getBySpecificationPipelineStepsProvider;
+        private readonly IGetPipelineStepsProvider getPipelineStepsProvider;
+        private readonly IGetDeletedResourceIdsPipelineStepsProvider getDeletedResourceIdsPipelineStepsProvider;
+        private readonly IPutPipelineStepsProvider putPipelineStepsProvider;
 
         public PipelineFactory(
             IServiceLocator locator,
@@ -36,60 +36,60 @@ namespace EdFi.Ods.Pipelines.Factories
             IDeletePipelineStepsProvider deletePipelineStepsProvider)
         {
             _locator = locator;
-            _getPipelineStepsProvider = getPipelineStepsProvider;
-            _getBySpecificationPipelineStepsProvider = getBySpecificationPipelineStepsProvider;
-            _getDeletedResourceIdsPipelineStepsProvider = getDeletedResourceIdsPipelineStepsProvider;
-            _putPipelineStepsProvider = putPipelineStepsProvider;
-            _deletePipelineStepsProvider = deletePipelineStepsProvider;
+            this.getPipelineStepsProvider = getPipelineStepsProvider;
+            this.getBySpecificationPipelineStepsProvider = getBySpecificationPipelineStepsProvider;
+            this.getDeletedResourceIdsPipelineStepsProvider = getDeletedResourceIdsPipelineStepsProvider;
+            this.putPipelineStepsProvider = putPipelineStepsProvider;
+            this.deletePipelineStepsProvider = deletePipelineStepsProvider;
         }
 
-        public GetPipeline<TResourceModel, TEntityModel> CreateGetPipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        public GetPipeline<TResourceModel, TEntityModel> CreateGetPipeline<TResourceModel, TEntityModel>()
             where TResourceModel : IHasETag
             where TEntityModel : class
         {
-            var stepTypes = _getPipelineStepsProvider.GetSteps();
-            var steps = ResolvePipelineSteps<GetContext<TEntityModel>, GetResult<TResourceModel>, TResourceModel, TEntityModel, TSynchronizationContext>(stepTypes);
+            var stepTypes = getPipelineStepsProvider.GetSteps();
+            var steps = ResolvePipelineSteps<GetContext<TEntityModel>, GetResult<TResourceModel>, TResourceModel, TEntityModel>(stepTypes);
             return new GetPipeline<TResourceModel, TEntityModel>(steps);
         }
 
-        public GetManyPipeline<TResourceModel, TEntityModel> CreateGetManyPipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        public GetManyPipeline<TResourceModel, TEntityModel> CreateGetManyPipeline<TResourceModel, TEntityModel>()
             where TResourceModel : IHasETag
             where TEntityModel : class
         {
-            var stepTypes = _getBySpecificationPipelineStepsProvider.GetSteps();
+            var stepTypes = getBySpecificationPipelineStepsProvider.GetSteps();
 
             var steps =
-                ResolvePipelineSteps<GetManyContext<TResourceModel, TEntityModel>, GetManyResult<TResourceModel>, TResourceModel, TEntityModel, TSynchronizationContext>(
+                ResolvePipelineSteps<GetManyContext<TResourceModel, TEntityModel>, GetManyResult<TResourceModel>, TResourceModel, TEntityModel>(
                     stepTypes);
 
             return new GetManyPipeline<TResourceModel, TEntityModel>(steps);
         }
 
-        public GetDeletedResourcePipeline<TEntityModel> CreateGetDeletedResourcePipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        public GetDeletedResourcePipeline<TEntityModel> CreateGetDeletedResourcePipeline<TResourceModel, TEntityModel>()
             where TEntityModel : class
         {
-            var stepsTypes = _getDeletedResourceIdsPipelineStepsProvider.GetSteps();
-            var steps = ResolvePipelineSteps<GetDeletedResourceContext<TEntityModel>, GetDeletedResourceResult, TResourceModel, TEntityModel, TSynchronizationContext>(stepsTypes);
+            var stepsTypes = getDeletedResourceIdsPipelineStepsProvider.GetSteps();
+            var steps = ResolvePipelineSteps<GetDeletedResourceContext<TEntityModel>, GetDeletedResourceResult, TResourceModel, TEntityModel>(stepsTypes);
             return new GetDeletedResourcePipeline<TEntityModel>(steps);
         }
 
-        public PutPipeline<TResourceModel, TEntityModel> CreatePutPipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        public PutPipeline<TResourceModel, TEntityModel> CreatePutPipeline<TResourceModel, TEntityModel>()
             where TEntityModel : class, IHasIdentifier, new()
             where TResourceModel : IHasETag
         {
-            var stepTypes = _putPipelineStepsProvider.GetSteps();
-            var steps = ResolvePipelineSteps<PutContext<TResourceModel, TEntityModel>, PutResult, TResourceModel, TEntityModel, TSynchronizationContext>(stepTypes);
+            var stepTypes = putPipelineStepsProvider.GetSteps();
+            var steps = ResolvePipelineSteps<PutContext<TResourceModel, TEntityModel>, PutResult, TResourceModel, TEntityModel>(stepTypes);
             return new PutPipeline<TResourceModel, TEntityModel>(steps);
         }
 
-        public DeletePipeline CreateDeletePipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        public DeletePipeline CreateDeletePipeline<TResourceModel, TEntityModel>()
         {
-            var stepTypes = _deletePipelineStepsProvider.GetSteps();
-            var steps = ResolvePipelineSteps<DeleteContext, DeleteResult, TResourceModel, TEntityModel, TSynchronizationContext>(stepTypes);
+            var stepTypes = deletePipelineStepsProvider.GetSteps();
+            var steps = ResolvePipelineSteps<DeleteContext, DeleteResult, TResourceModel, TEntityModel>(stepTypes);
             return new DeletePipeline(steps);
         }
 
-        private IStep<TContext, TResult>[] ResolvePipelineSteps<TContext, TResult, TResourceModel, TEntityModel, TSynchronizationContext>(IEnumerable<Type> stepTypes)
+        private IStep<TContext, TResult>[] ResolvePipelineSteps<TContext, TResult, TResourceModel, TEntityModel>(IEnumerable<Type> stepTypes)
         {
             var pipelineStepTypes = new List<IStep<TContext, TResult>>();
 
@@ -102,7 +102,7 @@ namespace EdFi.Ods.Pipelines.Factories
                     var typeArgsNames = pipelineStepType.GetGenericArguments()
                                                         .Select(x => x.Name);
 
-                    var typeArgs = GetGenericTypes<TContext, TResult, TResourceModel, TEntityModel, TSynchronizationContext>(typeArgsNames);
+                    var typeArgs = GetGenericTypes<TContext, TResult, TResourceModel, TEntityModel>(typeArgsNames);
 
                     resolutionType = pipelineStepType.MakeGenericType(typeArgs.ToArray());
                 }
@@ -117,7 +117,7 @@ namespace EdFi.Ods.Pipelines.Factories
             return pipelineStepTypes.ToArray();
         }
 
-        private IEnumerable<Type> GetGenericTypes<TContext, TResult, TResourceModel, TEntityModel, TSynchronizationContext>(IEnumerable<string> genericArgNames)
+        private IEnumerable<Type> GetGenericTypes<TContext, TResult, TResourceModel, TEntityModel>(IEnumerable<string> genericArgNames)
         {
             foreach (var genericArgName in genericArgNames)
             {
@@ -143,11 +143,6 @@ namespace EdFi.Ods.Pipelines.Factories
 
                         break;
 
-                    case "TSynchronizationContext":
-                        yield return typeof(TSynchronizationContext);
-
-                        break;
-                    
                     default:
 
                         // Defensive programming

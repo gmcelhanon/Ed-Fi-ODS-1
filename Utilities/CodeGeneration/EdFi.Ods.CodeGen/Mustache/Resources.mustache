@@ -1176,13 +1176,13 @@ namespace {{ResourceClassesNamespace}}
             return {{NamespacePrefix}}{{EntityName}}Mapper.SynchronizeTo(this, ({{NamespacePrefix}}I{{EntityName}})target);
         }
 
-        void IMappable.Map(object target, object synchronizationContext)
+        void IMappable.Map(object target)
         {
             {{^IsBaseClassConcrete}}
-            {{NamespacePrefix}}{{EntityName}}Mapper.MapTo(this, ({{NamespacePrefix}}I{{EntityName}})target, synchronizationContext, null);
+            {{NamespacePrefix}}{{EntityName}}Mapper.MapTo(this, ({{NamespacePrefix}}I{{EntityName}})target, null);
             {{/IsBaseClassConcrete}}
             {{#IsBaseClassConcrete}}
-            {{NamespacePrefix}}{{EntityName}}Mapper.MapDerivedTo(this, ({{NamespacePrefix}}I{{EntityName}})target, synchronizationContext, null);
+            {{NamespacePrefix}}{{EntityName}}Mapper.MapDerivedTo(this, ({{NamespacePrefix}}I{{EntityName}})target, null);
             {{/IsBaseClassConcrete}}
         }
         // -------------------------------------------------------------

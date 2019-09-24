@@ -14,21 +14,21 @@ namespace EdFi.Ods.Pipelines.Factories
 {
     public interface IPipelineFactory
     {
-        GetPipeline<TResourceModel, TEntityModel> CreateGetPipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        GetPipeline<TResourceModel, TEntityModel> CreateGetPipeline<TResourceModel, TEntityModel>()
             where TResourceModel : IHasETag
             where TEntityModel : class;
 
-        GetManyPipeline<TResourceModel, TEntityModel> CreateGetManyPipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        GetManyPipeline<TResourceModel, TEntityModel> CreateGetManyPipeline<TResourceModel, TEntityModel>()
             where TResourceModel : IHasETag
             where TEntityModel : class;
 
-        GetDeletedResourcePipeline<TEntityModel> CreateGetDeletedResourcePipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        GetDeletedResourcePipeline<TEntityModel> CreateGetDeletedResourcePipeline<TResourceModel, TEntityModel>()
             where TEntityModel : class;
 
-        PutPipeline<TResourceModel, TEntityModel> CreatePutPipeline<TResourceModel, TEntityModel, TSynchronizationContext>()
+        PutPipeline<TResourceModel, TEntityModel> CreatePutPipeline<TResourceModel, TEntityModel>()
             where TEntityModel : class, IHasIdentifier, new()
             where TResourceModel : IHasETag;
 
-        DeletePipeline CreateDeletePipeline<TResourceModel, TEntityModel, TSynchronizationContext>();
+        DeletePipeline CreateDeletePipeline<TResourceModel, TEntityModel>();
     }
 }

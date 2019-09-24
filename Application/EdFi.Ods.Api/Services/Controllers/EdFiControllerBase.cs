@@ -46,16 +46,8 @@ namespace EdFi.Ods.Api.Services.Controllers
     // TPatchRequest (Requests.Students.StudentPatch)
 
     [Authenticate]
-    public abstract class EdFiControllerBase<
-            TResourceReadModel, 
-            TResourceWriteModel, 
-            TEntityInterface, 
-            TAggregateRoot, 
-            TPutRequest, 
-            TPostRequest,
-            TDeleteRequest, 
-            TGetByExampleRequest,
-            TSynchronizationContext>
+    public abstract class EdFiControllerBase<TResourceReadModel, TResourceWriteModel, TEntityInterface, TAggregateRoot, TPutRequest, TPostRequest,
+                                             TDeleteRequest, TGetByExampleRequest>
         : ApiController
         where TResourceReadModel : IHasIdentifier, IHasETag, new()
         where TResourceWriteModel : IHasIdentifier, IHasETag, new()
@@ -92,19 +84,19 @@ namespace EdFi.Ods.Api.Services.Controllers
             this.defaultPageSizeLimitProvider = defaultPageSizeLimitProvider;
 
             getByIdPipeline = new Lazy<GetPipeline<TResourceReadModel, TAggregateRoot>>
-                (pipelineFactory.CreateGetPipeline<TResourceReadModel, TAggregateRoot, TSynchronizationContext>);
+                (pipelineFactory.CreateGetPipeline<TResourceReadModel, TAggregateRoot>);
 
             getManyPipeline = new Lazy<GetManyPipeline<TResourceReadModel, TAggregateRoot>>
-                (pipelineFactory.CreateGetManyPipeline<TResourceReadModel, TAggregateRoot, TSynchronizationContext>);
+                (pipelineFactory.CreateGetManyPipeline<TResourceReadModel, TAggregateRoot>);
 
             getDeletedResourcePipeline = new Lazy<GetDeletedResourcePipeline<TAggregateRoot>>
-                (pipelineFactory.CreateGetDeletedResourcePipeline<TResourceReadModel, TAggregateRoot, TSynchronizationContext>);
+                (pipelineFactory.CreateGetDeletedResourcePipeline<TResourceReadModel, TAggregateRoot>);
 
             putPipeline = new Lazy<PutPipeline<TResourceWriteModel, TAggregateRoot>>
-                (pipelineFactory.CreatePutPipeline<TResourceWriteModel, TAggregateRoot, TSynchronizationContext>);
+                (pipelineFactory.CreatePutPipeline<TResourceWriteModel, TAggregateRoot>);
 
             deletePipeline = new Lazy<DeletePipeline>
-                (pipelineFactory.CreateDeletePipeline<TResourceReadModel, TAggregateRoot, TSynchronizationContext>);
+                (pipelineFactory.CreateDeletePipeline<TResourceReadModel, TAggregateRoot>);
         }
 
         protected ILog Logger
