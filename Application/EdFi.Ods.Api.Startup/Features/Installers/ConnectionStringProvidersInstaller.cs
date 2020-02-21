@@ -88,13 +88,9 @@ namespace EdFi.Ods.Api.Startup.Features.Installers
                     .For<IDatabaseConnectionStringProvider>()
                     .NamedForDatabase(Databases.Ods)
                     .ImplementedBy<PrototypeWithDatabaseNameTokenReplacementConnectionStringProvider>()
-                    .DependsOn(Dependency.OnValue(PrototypeConnectionStringName, Databases.Ods.GetConnectionStringName()))
-                    .DependsOn(
-                        Dependency.OnComponent(
-                            typeof(IDatabaseNameReplacementTokenProvider), DatabaseNameReplacementTokenStrategyRegistrationKeys.YearSpecific)),
+                    .DependsOn(Dependency.OnValue(PrototypeConnectionStringName, Databases.Ods.GetConnectionStringName())),
                 Component
                     .For<IDatabaseNameReplacementTokenProvider>()
-                    .Named(DatabaseNameReplacementTokenStrategyRegistrationKeys.YearSpecific)
                     .ImplementedBy<YearSpecificDatabaseNameReplacementTokenProvider>()
             );
         }
@@ -108,16 +104,12 @@ namespace EdFi.Ods.Api.Startup.Features.Installers
                     .NamedForDatabase(Databases.Ods)
                     .ImplementedBy<PrototypeWithDatabaseNameTokenReplacementConnectionStringProvider>()
                     .DependsOn(Dependency.OnValue(PrototypeConnectionStringName, EdFiOds))
-                    .DependsOn(
-                        Dependency.OnComponent(
-                            typeof(IDatabaseNameReplacementTokenProvider), DatabaseNameReplacementTokenStrategyRegistrationKeys.Sandbox))
                     .IsFallback(),
 
                 // Returns value that replaces token found in database connection string
                 Component
                     .For<IDatabaseNameReplacementTokenProvider>()
                     .ImplementedBy<SandboxDatabaseNameReplacementTokenProvider>()
-                    .Named(DatabaseNameReplacementTokenStrategyRegistrationKeys.Sandbox)
                     .IsFallback()
             );
         }
@@ -129,13 +121,9 @@ namespace EdFi.Ods.Api.Startup.Features.Installers
                     .For<IDatabaseConnectionStringProvider>()
                     .NamedForDatabase(Databases.Ods)
                     .ImplementedBy<PrototypeWithDatabaseNameTokenReplacementConnectionStringProvider>()
-                    .DependsOn(Dependency.OnValue(PrototypeConnectionStringName, Databases.Ods.GetConnectionStringName()))
-                    .DependsOn(
-                        Dependency.OnComponent(
-                            typeof(IDatabaseNameReplacementTokenProvider), DatabaseNameReplacementTokenStrategyRegistrationKeys.DistrictSpecific)),
+                    .DependsOn(Dependency.OnValue(PrototypeConnectionStringName, Databases.Ods.GetConnectionStringName())),
                 Component
                     .For<IDatabaseNameReplacementTokenProvider>()
-                    .Named(DatabaseNameReplacementTokenStrategyRegistrationKeys.DistrictSpecific)
                     .ImplementedBy<DistrictSpecificDatabaseNameReplacementTokenProvider>()
             );
         }
