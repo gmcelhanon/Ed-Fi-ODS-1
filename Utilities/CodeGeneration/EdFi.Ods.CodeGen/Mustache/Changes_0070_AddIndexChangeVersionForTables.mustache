@@ -1,0 +1,8 @@
+{{#NonDerivedAggregateRoots}}
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'{{Schema}}.{{TableName}}') AND name = N'UX_{{TableName}}_ChangeVersion')
+    CREATE INDEX [UX_{{TableName}}_ChangeVersion] ON [{{Schema}}].[{{TableName}}] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+{{/NonDerivedAggregateRoots}}

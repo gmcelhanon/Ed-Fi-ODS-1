@@ -1,0 +1,12 @@
+{{#AllAggregateRootEntities}}
+CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedDelete]
+(
+    {{#PrimaryKeyColumns}}
+       {{ColumnName}} {{DataType}} NOT NULL,
+    {{/PrimaryKeyColumns}}
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       CONSTRAINT PK_{{Schema}}_{{TableName}}_TrackedDelete PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+
+{{/AllAggregateRootEntities}}

@@ -1,0 +1,41 @@
+{{#AggregateRoots}}
+{{#IsDerived}}
+CREATE TRIGGER [{{Schema}}].[{{Schema}}_{{TableName}}_TR_DeleteTracking] ON [{{Schema}}].[{{TableName}}] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [changes].[{{Schema}}_{{TableName}}_TrackedDelete]({{#PrimaryKeyColumns}}{{ColumnName}}, {{/PrimaryKeyColumns}}Id, ChangeVersion)
+    SELECT  {{#PrimaryKeyColumns}}d.{{ColumnName}}, {{/PrimaryKeyColumns}}Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN {{BaseTableSchema}}.{{BaseTableName}} b ON {{#PrimaryKeyColumns}}{{^IsFirst}} AND {{/IsFirst}}d.{{ColumnName}} = b.{{BaseColumnName}}{{/PrimaryKeyColumns}}
+END
+GO
+
+ALTER TABLE [{{Schema}}].[{{TableName}}] ENABLE TRIGGER [{{Schema}}_{{TableName}}_TR_DeleteTracking]
+GO
+
+
+{{/IsDerived}}
+{{^IsDerived}}
+CREATE TRIGGER [{{Schema}}].[{{Schema}}_{{TableName}}_TR_DeleteTracking] ON [{{Schema}}].[{{TableName}}] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [changes].[{{Schema}}_{{TableName}}_TrackedDelete]({{#PrimaryKeyColumns}}{{ColumnName}}, {{/PrimaryKeyColumns}}Id, ChangeVersion)
+    SELECT  {{#PrimaryKeyColumns}}{{ColumnName}}, {{/PrimaryKeyColumns}}Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [{{Schema}}].[{{TableName}}] ENABLE TRIGGER [{{Schema}}_{{TableName}}_TR_DeleteTracking]
+GO
+
+
+{{/IsDerived}}
+{{/AggregateRoots}}

@@ -1,0 +1,12 @@
+{{#NonDerivedAggregateRoots}}
+CREATE TRIGGER [{{Schema}}].[{{Schema}}_{{TableName}}_TR_UpdateChangeVersion] ON [{{Schema}}].[{{TableName}}] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [{{Schema}}].[{{TableName}}]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [{{Schema}}].[{{TableName}}] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
+{{/NonDerivedAggregateRoots}}
