@@ -9,6 +9,7 @@ CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedDelete]
     {{/PrimaryKeyColumns}}
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
+       Discriminator nvarchar(128) NULL,
        CONSTRAINT PK_{{Schema}}_{{TableName}}_TrackedDelete PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 
