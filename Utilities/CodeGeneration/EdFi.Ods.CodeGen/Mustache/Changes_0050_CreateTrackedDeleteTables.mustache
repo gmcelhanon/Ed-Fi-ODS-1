@@ -2,7 +2,10 @@
 CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedDelete]
 (
     {{#PrimaryKeyColumns}}
-       {{ColumnName}} {{DataType}} NOT NULL,
+       Old{{ColumnName}} {{DataType}} NOT NULL,
+    {{/PrimaryKeyColumns}}
+    {{#PrimaryKeyColumns}}
+       New{{ColumnName}} {{DataType}} NULL,
     {{/PrimaryKeyColumns}}
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
