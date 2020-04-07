@@ -134,12 +134,20 @@ namespace EdFi.Ods.Common.Models.Domain
         public static bool IsAbstractRequiringNoCompositeId(this Entity entity) => entity.IsAbstract && entity.Identifier.Properties.Count == 1;
 
         /// <summary>
-        /// Checks if the entity is a descriptor
+        /// Checks if the entity is the well-known Ed-Fi base Descriptor entity.
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
+        /// <param name="entity">The <see cref="Entity"/> that is being inspected.</param>
+        /// <returns><b>true</b> if the entity is the base descriptor entity; otherwise <b>false</b>.</returns>
         public static bool IsDescriptorBaseEntity(this Entity entity)
             => entity.FullName.Equals(new FullName(EdFiConventions.PhysicalSchemaName, "Descriptor"));
+
+        /// <summary>
+        /// Checks if the entity is the well-known Ed-Fi SchoolYearType entity.
+        /// </summary>
+        /// <param name="entity">The <see cref="Entity"/> that is being inspected.</param>
+        /// <returns><b>true</b> if the entity is the base descriptor entity; otherwise <b>false</b>.</returns>
+        public static bool IsSchoolYearTypeEntity(this Entity entity)
+            => entity.FullName.Equals(new FullName(EdFiConventions.PhysicalSchemaName, "SchoolYearType"));
 
         /// <summary>
         /// Indicates whether the supplied <see cref="Entity"/> has a discriminator.
@@ -156,12 +164,12 @@ namespace EdFi.Ods.Common.Models.Domain
             if (entity.IsDerived)
                 return false;
 
-            // Ed-Fi descriptors cannot be derived
+            // The base Ed-Fi "Descriptor" type is handled differently from other base types 
             if (entity.IsDescriptorBaseEntity())
                 return false;
 
             // SchoolYearType is also not derivable
-            if (entity.FullName.Equals(new FullName(EdFiConventions.PhysicalSchemaName, "SchoolYearType")))
+            if (entity.IsSchoolYearTypeEntity())
                 return false;
 
             return true;
