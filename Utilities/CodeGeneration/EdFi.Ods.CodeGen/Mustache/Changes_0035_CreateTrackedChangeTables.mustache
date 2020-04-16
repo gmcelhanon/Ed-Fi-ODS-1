@@ -1,7 +1,4 @@
 {{#AllAggregateRootEntities}}
-DROP TABLE IF EXISTS [changes].[{{Schema}}_{{TableName}}_TrackedDelete]
-DROP TABLE IF EXISTS [changes].[{{Schema}}_{{TableName}}_TrackedChange]
-
 CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedChange]
 (
     {{#ChangeDataColumns}}

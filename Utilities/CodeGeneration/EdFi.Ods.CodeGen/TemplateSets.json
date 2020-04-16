@@ -132,16 +132,16 @@
       "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
     },
     {
+      "Name": "Changes_0035_CreateTrackedChangeTables",
+      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0035-CreateTrackedChangeTables.sql"
+    },
+    {
       "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
       "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
-    },
-    {
-      "Name": "Changes_0050_CreateTrackedDeleteTables",
-      "Driver": "Changes_0050_CreateTrackedDeleteTables",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0050-CreateTrackedDeleteTables.sql"
     },
     {
       "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
@@ -262,16 +262,16 @@
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
     },
     {
+      "Name": "Changes_0035_CreateTrackedChangeTables",
+      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0035-CreateTrackedChangeTables.sql"
+    },
+    {
       "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
       "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
-    },
-    {
-      "Name": "Changes_0050_CreateTrackedDeleteTables",
-      "Driver": "Changes_0050_CreateTrackedDeleteTables",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0050-CreateTrackedDeleteTables.sql"
     },
     {
       "Name": "Changes_0060_CreateDeletedForTrackingTriggers",

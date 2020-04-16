@@ -7,7 +7,7 @@ using EdFi.Ods.Common.Specifications;
 
 namespace EdFi.Ods.CodeGen.TemplateModels
 {
-    public class Changes_0050_CreateTrackedDeleteTables : TemplateModelBase
+    public class Changes_0035_CreateTrackedChangeTables : TemplateModelBase
     {
         private Func<Entity, bool> _shouldRenderEntityForSchema;
 
@@ -34,14 +34,16 @@ namespace EdFi.Ods.CodeGen.TemplateModels
                         .Select(p => new
                     {
                         ColumnName = p. PropertyName,
-                        DataType = "[" 
-                            + p.PropertyType.ToSql().Replace("(", "](").ToUpper()
-                            + (p.PropertyType.ToSql().Contains("(") ? string.Empty : "]")
+                        DataType = p.PropertyType.ToSql(),
+                        // To match MetaEd plugin character-for-character
+                        // DataType = "[" 
+                        //     + p.PropertyType.ToSql().Replace("(", "](").ToUpper()
+                        //     + (p.PropertyType.ToSql().Contains("(") ? string.Empty : "]")
                     })
                 })
                 .OrderBy(e => e.TableName + "_", StringComparer.Ordinal);
 
-            return new { AllAggregateRootEntities = allAggregateRootEntities};
+            return new { AllAggregateRootEntities = allAggregateRootEntities };
         }
     }
 }
