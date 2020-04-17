@@ -4,16 +4,16 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
-using System.Runtime.Serialization;
 
 namespace EdFi.Ods.Api.ChangeQueries
 {
     public class DeletedResource
     {
-        [DataMember(Name="id")]
+        [JsonProperty("id")]
+        [JsonConverter(typeof(GuidConverter))]
         public Guid Id { get; set; }
 
-        [DataMember(Name="changeVersion")]
+        [JsonProperty("changeVersion")]
         public long ChangeVersion { get; set; }
     }
 }
