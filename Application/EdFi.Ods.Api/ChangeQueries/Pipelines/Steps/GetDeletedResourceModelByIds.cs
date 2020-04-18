@@ -18,9 +18,9 @@ namespace EdFi.Ods.Api.ChangeQueries.Pipelines.Steps
         where TResult : PipelineResultBase
         where TEntityModel : class, IHasIdentifier
     {
-        private readonly IGetDeletedResourceIds _repository;
+        private readonly IGetDeletedResources _repository;
 
-        public GetDeletedResourceModelByIds(IGetDeletedResourceIds repository)
+        public GetDeletedResourceModelByIds(IGetDeletedResources repository)
         {
             _repository = repository;
         }

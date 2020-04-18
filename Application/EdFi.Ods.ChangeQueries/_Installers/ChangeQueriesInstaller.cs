@@ -47,8 +47,8 @@ namespace EdFi.Ods.ChangeQueries._Installers
         {
             container.Register(
                 Component
-                   .For<IGetDeletedResourceIds>()
-                   .ImplementedBy<GetDeletedResourceIds>());
+                   .For<IGetDeletedResources>()
+                   .ImplementedBy<GetDeletedResources>());
         }
 
         private void RegisterOpenApiMetadata(IWindsorContainer container)

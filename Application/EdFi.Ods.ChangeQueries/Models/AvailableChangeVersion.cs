@@ -3,7 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace EdFi.Ods.ChangeQueries.Models
 {
@@ -15,13 +15,13 @@ namespace EdFi.Ods.ChangeQueries.Models
         /// <summary>
         /// Gets or sets the earliest (oldest) change version that is available, or 0 if no version is available.
         /// </summary>
-        [DataMember(Name = "oldestChangeVersion")]
+        [JsonProperty("oldestChangeVersion")]
         public long OldestChangeVersion { get; set; }
 
         /// <summary>
         /// Gets or sets the most recent (newest) change version that is available, or 0 if no version is available.
         /// </summary>
-        [DataMember(Name = "newestChangeVersion")]
+        [JsonProperty("newestChangeVersion")]
         public long NewestChangeVersion { get; set; }
     }
 }

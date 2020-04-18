@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using System.Collections.Generic;
 
 namespace EdFi.Ods.Api.ChangeQueries
 {
@@ -15,5 +16,8 @@ namespace EdFi.Ods.Api.ChangeQueries
 
         [JsonProperty("changeVersion")]
         public long ChangeVersion { get; set; }
+        
+        [JsonProperty("keyValues")]
+        public IDictionary<string, object> KeyValues { get; set; }
     }
 }

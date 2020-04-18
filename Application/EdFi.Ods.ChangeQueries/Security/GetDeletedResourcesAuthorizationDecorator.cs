@@ -12,15 +12,15 @@ using EdFi.Security.DataAccess.Repositories;
 
 namespace EdFi.Ods.ChangeQueries.Security
 {
-    public class GetDeletedResourceIdsAuthorizationDecorator<T>
-        : RepositoryOperationAuthorizationDecoratorBase<T>, IGetDeletedResourceIds
+    public class GetDeletedResourcesAuthorizationDecorator<T>
+        : RepositoryOperationAuthorizationDecoratorBase<T>, IGetDeletedResources
         where T : class, IHasIdentifier, IDateVersionedEntity
     {
-        private readonly IGetDeletedResourceIds _next;
+        private readonly IGetDeletedResources _next;
         private readonly ISecurityRepository _securityRepository;
 
-        public GetDeletedResourceIdsAuthorizationDecorator(
-            IGetDeletedResourceIds next,
+        public GetDeletedResourcesAuthorizationDecorator(
+            IGetDeletedResources next,
             ISecurityRepository securityRepository,
             IAuthorizationContextProvider authorizationContextProvider,
             IEdFiAuthorizationProvider authorizationProvider)
@@ -30,9 +30,9 @@ namespace EdFi.Ods.ChangeQueries.Security
             _securityRepository = securityRepository;
         }
 
-        public IReadOnlyList<DeletedResource> Execute(string schema, string resource, IQueryParameters queryParameters)
+        public DeletedResourcesResponse Execute(string schema, string resource, IQueryParameters queryParameters)
         {
-            return null;
+            return new DeletedResourcesResponse();
         }
     }
 }

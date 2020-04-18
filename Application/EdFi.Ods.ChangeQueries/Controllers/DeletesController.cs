@@ -3,6 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System.Net.Http;
 using System.Web.Http;
 using EdFi.Ods.Api.ChangeQueries;
 using EdFi.Ods.Api.Services.Authentication;
@@ -13,11 +14,11 @@ namespace EdFi.Ods.ChangeQueries.Controllers
     [Authenticate]
     public class DeletesController : ApiController
     {
-        private readonly IGetDeletedResourceIds _getDeletedResourceIdsRepository;
+        private readonly IGetDeletedResources _getDeletedResourcesRepository;
 
-        public DeletesController(IGetDeletedResourceIds getDeletedResourceIds)
+        public DeletesController(IGetDeletedResources getDeletedResources)
         {
-            _getDeletedResourceIdsRepository = getDeletedResourceIds;
+            _getDeletedResourcesRepository = getDeletedResources;
         }
 
         [HttpGet]
@@ -25,9 +26,17 @@ namespace EdFi.Ods.ChangeQueries.Controllers
         {
             var queryParameter = new QueryParameters(urlQueryParametersRequest);
 
-            var result = _getDeletedResourceIdsRepository.Execute(schema, resource, queryParameter);
+            var deletedItemsResponse = _getDeletedResourcesRepository.Execute(schema, resource, queryParameter);
 
-            return Json(result);
+            var response = Request.CreateResponse(HttpStatusCode.OK, deletedItemsResponse.DeletedResources);
+
+            // Add the count header, if requested
+            if (urlQueryParametersRequest.TotalCount)
+            {
+                response.Headers.Add("Total-Count", deletedItemsResponse.Count.ToString());
+            }
+
+            return ResponseMessage(response);
         }
     }
 }
