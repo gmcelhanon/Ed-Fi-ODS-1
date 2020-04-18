@@ -91,10 +91,8 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
                 {
                     string cmdCountSql = GetDeletesCountSql(queryMetadata, queryParameters);
 
-                    var count = sessionScope.Session.CreateSQLQuery(cmdCountSql)
-                        .UniqueResult<long>();
-
-                    deletesResponse.Count = count;
+                    var count = sessionScope.Session.CreateSQLQuery(cmdCountSql).UniqueResult();
+                    deletesResponse.Count = Convert.ToInt64(count);
                 }
             }
 
@@ -258,7 +256,7 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
 
             var cmdSql = $@"
 {selectClause}
-FROM [{ChangeQueriesDatabaseConstants.SchemaName}].{queryMetadata.SourceTableSchema}_{queryMetadata.SourceTableName}{ChangeQueriesDatabaseConstants.TrackedChangeTableNameSuffix} AS d
+FROM [{ChangeQueriesDatabaseConstants.SchemaName}].{queryMetadata.SourceTableSchema}_{queryMetadata.SourceTableName}{ChangeQueriesDatabaseConstants.TrackedChangeTableNameSuffix} AS {TrackedChangesAlias}
 LEFT JOIN {queryMetadata.SourceTableSchema}.{queryMetadata.SourceTableName} src 
     ON {queryMetadata.SourceTableJoinCriteria}
     {sourceTableChangeVersionCriteria}
