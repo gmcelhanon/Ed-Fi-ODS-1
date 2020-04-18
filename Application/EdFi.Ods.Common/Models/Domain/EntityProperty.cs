@@ -231,6 +231,35 @@ namespace EdFi.Ods.Common.Models.Domain
             }
         }
 
+        public EntityProperty BaseProperty
+        {
+            get
+            {
+                if (Entity.BaseAssociation == null)
+                {
+                    return null;
+                }
+
+                if (!IsIdentifying)
+                {
+                    return null;
+                }
+                
+                PropertyMapping mapping;
+
+                if (!Entity.BaseAssociation.PropertyMappingByThisName.TryGetValue(PropertyName, out mapping))
+                {
+                    throw new Exception(
+                        string.Format(
+                            "Unable to find property '{0}' in the base type association view of entity '{1}'.",
+                            PropertyName,
+                            Entity.Name));
+                }
+
+                return mapping.OtherProperty;
+            }
+        }
+        
         /// <summary>
         /// Indicates whether a role name has been applied to the property as part of an incoming association.
         /// </summary>

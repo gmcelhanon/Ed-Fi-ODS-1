@@ -20,6 +20,7 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
     {
         private const string TrackedChangesAlias = "c";
         private const string SourceTableAlias = "src";
+        private const string SourceBaseTableAlias = "src_base";
         
         private readonly ISessionFactory _sessionFactory;
         private readonly IDomainModelProvider _domainModelProvider;
@@ -52,7 +53,7 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
             }
 
             var queryMetadata = _deletesQueryMetadataByResourceName.GetOrAdd(resource.FullName, 
-                fn => GetTrackedDeletesQueryMetadata(resource));
+                fn => CreateTrackedDeletesQueryMetadata(resource));
 
             return GetDeletedItemsResponse(queryMetadata, queryParameters);
         }
@@ -99,18 +100,40 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
             return deletesResponse;
         }
 
-        private TrackedDeletesQueryMetadata GetTrackedDeletesQueryMetadata(Resource resource)
+        private TrackedDeletesQueryMetadata CreateTrackedDeletesQueryMetadata(Resource resource)
         {
+            string discriminatorCriteria = null;
+            string sourceBaseTableJoin = null;
+            string sourceChangeVersionTableAlias = SourceTableAlias;
+            
+            if (resource.IsDerived)
+            {
+                sourceChangeVersionTableAlias = SourceBaseTableAlias;
+                
+                discriminatorCriteria = resource.IsDerived
+                    ? $" AND {TrackedChangesAlias}.Discriminator = '{resource.Entity.FullName}'"
+                    : null;
+
+                var baseTableJoinSegments = resource.Entity.BaseAssociation.PropertyMappings.Select(pm => $"{SourceTableAlias}.{pm.ThisProperty.PropertyName} = {SourceBaseTableAlias}.{pm.OtherProperty.PropertyName}");
+
+                string baseTableJoinSegmentsSql = string.Join(" AND ", baseTableJoinSegments);
+
+                sourceBaseTableJoin = resource.IsDerived
+                    ? $" LEFT JOIN {resource.Entity.BaseEntity.Schema}.{resource.Entity.BaseEntity.Name} {SourceBaseTableAlias} "
+                    + $" ON {baseTableJoinSegmentsSql}"
+                    : null;
+            }
+            
             var identifierProjections = resource
                 .IdentifyingProperties
                 .Select(
-                    p => new ProjectionMetadata
+                    rp => new ProjectionMetadata
                     {
-                        JsonPropertyName = p.JsonPropertyName,
-                        SelectColumns = GetSelectColumns(p).ToArray(),
-                        ChangeTableJoinColumnName = $"Old{p.EntityProperty.PropertyName}",
-                        SourceTableJoinColumnName = p.EntityProperty.PropertyName,
-                        IsDescriptorProperty = p.IsLookup,
+                        JsonPropertyName = rp.JsonPropertyName,
+                        SelectColumns = GetSelectColumns(rp).ToArray(),
+                        ChangeTableJoinColumnName = $"Old{(rp.EntityProperty.BaseProperty ?? rp.EntityProperty).PropertyName}",
+                        SourceTableJoinColumnName = rp.EntityProperty.PropertyName,
+                        IsDescriptorProperty = rp.IsLookup,
                     })
                 .ToArray();
 
@@ -124,7 +147,7 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
                                 ? $"{TrackedChangesAlias}.{x.ColumnName}"
                                 : $"{TrackedChangesAlias}.{x.ColumnName} AS {x.ColumnAlias}"));
 
-            string deletesOnlyCriteria = $" AND {TrackedChangesAlias}.New{resource.Entity.Identifier.Properties.First().PropertyName} IS NULL";
+            string deletesOnlyCriteria = $" AND {TrackedChangesAlias}.New{(resource.Entity.BaseEntity ?? resource.Entity).Identifier.Properties.First().PropertyName} IS NULL";
 
             string sourceTableJoinCriteria = string.Join(
                 " AND ",
@@ -133,11 +156,16 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
             string sourceTableExclusionCriteria = $"{SourceTableAlias}.{identifierProjections.Select(x => x.SourceTableJoinColumnName).First()} IS NULL";
 
             var queryMetadata = new TrackedDeletesQueryMetadata(
+                (resource.Entity.BaseEntity ?? resource.Entity).Schema,
+                (resource.Entity.BaseEntity ?? resource.Entity).Name,
                 resource.Entity.Schema,
                 resource.Entity.Name,
                 selectColumnsSql,
                 deletesOnlyCriteria,
+                discriminatorCriteria,
                 sourceTableJoinCriteria,
+                sourceBaseTableJoin,
+                sourceChangeVersionTableAlias,
                 sourceTableExclusionCriteria,
                 identifierProjections);
 
@@ -160,14 +188,96 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
                     ColumnAlias = null,
                 };
             }
-            else // if (PersonEntitySpecification.IsPersonIdentifier(resourceProperty.PropertyName))
+            else
             {
-                yield return new SelectColumn
+                if (resourceProperty.EntityProperty.IsInheritedIdentifyingRenamed)
                 {
-                    ColumnName = $"Old{resourceProperty.PropertyName}",
-                    ColumnAlias = resourceProperty.JsonPropertyName
-                };
+                    yield return new SelectColumn
+                    {
+                        ColumnName = $"Old{resourceProperty.EntityProperty.BaseProperty.PropertyName}",
+                        ColumnAlias = resourceProperty.JsonPropertyName
+                    };
+                }
+                else
+                {
+                    yield return new SelectColumn
+                    {
+                        ColumnName = $"Old{resourceProperty.PropertyName}",
+                        ColumnAlias = resourceProperty.JsonPropertyName
+                    };
+                }
             }
+        }
+
+        private string GetDeletesSql(TrackedDeletesQueryMetadata queryMetadata, IQueryParameters queryParameters)
+        {
+            string selectClauseFormat = $"SELECT {TrackedChangesAlias}.Id, {TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName}, {{0}}";
+            string orderByClause = $"ORDER BY {TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName}";
+            
+            return BuildCompleteDeletesSql(queryMetadata, queryParameters, selectClauseFormat, orderByClause);
+        }
+
+        private string GetDeletesCountSql(TrackedDeletesQueryMetadata queryMetadata, IQueryParameters queryParameters)
+        {
+            string selectClauseFormat = $"SELECT Count(1)";
+
+            return BuildCompleteDeletesSql(queryMetadata, queryParameters, selectClauseFormat);
+        }
+
+        private string BuildCompleteDeletesSql(
+            TrackedDeletesQueryMetadata queryMetadata,
+            IQueryParameters queryParameters,
+            string selectClauseFormat,
+            string orderByClause = null)
+        {
+            string sourceTableChangeVersionCriteria = null;
+            string deletedChangeVersionCriteria = null;
+
+            if (queryParameters.MinChangeVersion.HasValue)
+            {
+                deletedChangeVersionCriteria +=
+                    $" {TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} >= {queryParameters.MinChangeVersion.Value}";
+
+                sourceTableChangeVersionCriteria +=
+                    $" {queryMetadata.SourceChangeVersionTableAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} >= {queryParameters.MinChangeVersion.Value}";
+            }
+
+            if (queryParameters.MaxChangeVersion.HasValue)
+            {
+                deletedChangeVersionCriteria +=
+                    $" {AndIfNeeded(deletedChangeVersionCriteria)}{TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} <= {queryParameters.MaxChangeVersion.Value}";
+
+                sourceTableChangeVersionCriteria +=
+                    $" {AndIfNeeded(sourceTableChangeVersionCriteria)}{queryMetadata.SourceChangeVersionTableAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} <= {queryParameters.MaxChangeVersion.Value}";
+            }
+
+            if (!string.IsNullOrEmpty(deletedChangeVersionCriteria))
+            {
+                deletedChangeVersionCriteria = $" AND {deletedChangeVersionCriteria}";
+            }
+
+            if (!string.IsNullOrEmpty(sourceTableChangeVersionCriteria))
+            {
+                sourceTableChangeVersionCriteria =
+                    $" AND (({sourceTableChangeVersionCriteria}) OR {queryMetadata.SourceChangeVersionTableAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} IS NULL)";
+            }
+
+            string selectClause = string.Format(selectClauseFormat, queryMetadata.SelectColumnsListSql);
+
+            var cmdSql = $@"
+{selectClause}
+FROM {ChangeQueriesDatabaseConstants.SchemaName}.{queryMetadata.ChangeTableSchema}_{queryMetadata.ChangeTableName}{ChangeQueriesDatabaseConstants.TrackedChangeTableNameSuffix} AS {TrackedChangesAlias}
+LEFT JOIN {queryMetadata.SourceTableSchema}.{queryMetadata.SourceTableName} src 
+    ON {queryMetadata.SourceTableJoinCriteria}
+{queryMetadata.SourceBaseTableJoin}
+    {sourceTableChangeVersionCriteria}
+WHERE {queryMetadata.SourceTableExclusionCriteria}
+    {queryMetadata.DeletesOnlyWhereClause}
+    {queryMetadata.DiscriminatorCriteria}
+    {deletedChangeVersionCriteria}
+{orderByClause}";
+
+            return cmdSql;
         }
 
         private static Dictionary<string, object> GetIdentifierKeyValues(
@@ -197,75 +307,6 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
             }
 
             return keyValues;
-        }
-
-        private string GetDeletesSql(TrackedDeletesQueryMetadata queryMetadata, IQueryParameters queryParameters)
-        {
-            string selectClauseFormat = $"SELECT {TrackedChangesAlias}.Id, {TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName}, {{0}}";
-            string orderByClause = $"ORDER BY {TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName}";
-            
-            return BuildCompleteDeletesSql(queryMetadata, queryParameters, selectClauseFormat, orderByClause);
-        }
-
-        private string GetDeletesCountSql(TrackedDeletesQueryMetadata queryMetadata, IQueryParameters queryParameters)
-        {
-            string selectClauseFormat = $"SELECT Count(1)";
-
-            return BuildCompleteDeletesSql(queryMetadata, queryParameters, selectClauseFormat);
-        }
-        
-        private string BuildCompleteDeletesSql(
-            TrackedDeletesQueryMetadata queryMetadata,
-            IQueryParameters queryParameters,
-            string selectClauseFormat,
-            string orderByClause = null)
-        {
-            string sourceTableChangeVersionCriteria = null;
-            string deletedChangeVersionCriteria = null;
-
-            if (queryParameters.MinChangeVersion.HasValue)
-            {
-                deletedChangeVersionCriteria +=
-                    $" {TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} >= {queryParameters.MinChangeVersion.Value}";
-
-                sourceTableChangeVersionCriteria +=
-                    $" {SourceTableAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} >= {queryParameters.MinChangeVersion.Value}";
-            }
-
-            if (queryParameters.MaxChangeVersion.HasValue)
-            {
-                deletedChangeVersionCriteria +=
-                    $" {AndIfNeeded(deletedChangeVersionCriteria)}{TrackedChangesAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} <= {queryParameters.MaxChangeVersion.Value}";
-
-                sourceTableChangeVersionCriteria +=
-                    $" {AndIfNeeded(sourceTableChangeVersionCriteria)}{SourceTableAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} <= {queryParameters.MaxChangeVersion.Value}";
-            }
-
-            if (!string.IsNullOrEmpty(deletedChangeVersionCriteria))
-            {
-                deletedChangeVersionCriteria = $" AND {deletedChangeVersionCriteria}";
-            }
-
-            if (!string.IsNullOrEmpty(sourceTableChangeVersionCriteria))
-            {
-                sourceTableChangeVersionCriteria =
-                    $" AND (({sourceTableChangeVersionCriteria}) OR {SourceTableAlias}.{ChangeQueriesDatabaseConstants.ChangeVersionColumnName} IS NULL)";
-            }
-
-            string selectClause = string.Format(selectClauseFormat, queryMetadata.SelectColumnsListSql);
-
-            var cmdSql = $@"
-{selectClause}
-FROM [{ChangeQueriesDatabaseConstants.SchemaName}].{queryMetadata.SourceTableSchema}_{queryMetadata.SourceTableName}{ChangeQueriesDatabaseConstants.TrackedChangeTableNameSuffix} AS {TrackedChangesAlias}
-LEFT JOIN {queryMetadata.SourceTableSchema}.{queryMetadata.SourceTableName} src 
-    ON {queryMetadata.SourceTableJoinCriteria}
-    {sourceTableChangeVersionCriteria}
-WHERE {queryMetadata.SourceTableExclusionCriteria}
-    {queryMetadata.DeletesOnlyWhereClause}
-    {deletedChangeVersionCriteria}
-{orderByClause}";
-
-            return cmdSql;
         }
 
         private string AndIfNeeded(string criteria)
