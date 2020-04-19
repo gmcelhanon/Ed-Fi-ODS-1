@@ -9,8 +9,11 @@ namespace EdFi.Ods.CodeGen.TemplateModels.Changes
         public static IEnumerable<EntityProperty> GetChangeQueriesPropertiesForColumns(Entity e)
         {
             return e.Identifier.Properties
-                .Union(e.AlternateIdentifiers.SelectMany(i => i.Properties.Where(p => p.PropertyName != "Id")))
-                .Union(e.BaseEntity?.AlternateIdentifiers.SelectMany(i => i.Properties.Where(p => p.PropertyName != "Id")) ?? Enumerable.Empty<EntityProperty>());
+                .Union(e.AlternateIdentifiers.SelectMany(i => i.Properties.Where(p => !IsResourceIdentifier(p))))
+                .Union(e.BaseEntity?.AlternateIdentifiers.SelectMany(i => i.Properties.Where(p => !IsResourceIdentifier(p))) 
+                    ?? Enumerable.Empty<EntityProperty>());
+
+            bool IsResourceIdentifier(EntityProperty property) => property.PropertyName == "Id";
         }
     }
 }

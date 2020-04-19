@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using EdFi.Ods.CodeGen.TemplateModels.Changes;
+using EdFi.Ods.CodeGen.TemplateModels.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
 
 namespace EdFi.Ods.CodeGen.TemplateModels
@@ -22,22 +23,30 @@ namespace EdFi.Ods.CodeGen.TemplateModels
                 .Select(a => a.AggregateRoot)
                 .Where(e => !e.IsDerived)
                 .Where(e => _shouldRenderEntityForSchema(e))
-                .Select(e => new Changes_0060_CreateDeletedForTrackingTriggers.ChangeDataTable
+                .Select(e => new ChangeDataTable
                 {
                     Schema = e.Schema,
                     TableName = e.Name,
                     HasDiscriminator = e.HasDiscriminator(),
-                    KeyIsUpdatable = e.Identifier.IsUpdatable,
+                    KeyValuesCanChange = false, // Key Changes and resulting cascading changes not yet supported.
+                    IdentifyingColumns = (e.Identifier.Properties.Any(p => p.IsServerAssigned) && e.AlternateIdentifiers.Any() 
+                            ? e.AlternateIdentifiers.First() 
+                            : e.Identifier)
+                                .Properties.Select((p, i) => 
+                                    new SimpleColumn
+                                    {
+                                        IsFirst = i == 0,
+                                        ColumnName = p.PropertyName
+                                    }),
                     ChangeDataColumns = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
                         .SelectMany((p, i) => p.ExpandForApiResourceData(i))
-                        .Select(
-                            (p, i) => new Changes_0060_CreateDeletedForTrackingTriggers.ChangeDataColumn
-                            {
-                                IsFirst = i == 0,
-                                ColumnName = p.PropertyName,
-                                SourceSelectExpression = p.SourceSelectExpression,
-                                BaseColumnName = null as string
-                            }),
+                        .Select((c, i) => 
+                                new ChangeDataColumn
+                                {
+                                    IsFirst = i == 0,
+                                    ColumnName = c.ColumnName,
+                                    SourceSelectExpression = c.SelectExpression,
+                                }),
                     Joins = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
                         .SelectMany((p, i) => p.JoinForApiResourceData(i))
                 })

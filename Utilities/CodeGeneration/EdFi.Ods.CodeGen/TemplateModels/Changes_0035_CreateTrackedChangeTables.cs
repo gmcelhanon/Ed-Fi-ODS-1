@@ -1,9 +1,8 @@
 using System;
 using System.Linq;
-using EdFi.Ods.CodeGen.Extensions;
 using EdFi.Ods.CodeGen.TemplateModels.Changes;
+using EdFi.Ods.CodeGen.TemplateModels.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
-using EdFi.Ods.Common.Specifications;
 
 namespace EdFi.Ods.CodeGen.TemplateModels
 {
@@ -24,23 +23,25 @@ namespace EdFi.Ods.CodeGen.TemplateModels
                 .Select(a => a.AggregateRoot)
                 .Where(e => !e.IsSchoolYearTypeEntity())
                 .Where(e => _shouldRenderEntityForSchema(e))
-                .Select(e => new
-                {
-                    Schema = e.Schema,
-                    TableName = e.Name,
-                    HasDiscriminator = e.HasDiscriminator(),
-                    ChangeDataColumns = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
-                        .SelectMany((p, i) => p.ExpandForApiResourceData(i))
-                        .Select(p => new
+                .Select(e => 
+                    new ChangeDataTable
                     {
-                        ColumnName = p. PropertyName,
-                        DataType = p.PropertyType.ToSql(),
-                        // To match MetaEd plugin character-for-character
-                        // DataType = "[" 
-                        //     + p.PropertyType.ToSql().Replace("(", "](").ToUpper()
-                        //     + (p.PropertyType.ToSql().Contains("(") ? string.Empty : "]")
+                        Schema = e.Schema,
+                        TableName = e.Name,
+                        HasDiscriminator = e.HasDiscriminator(),
+                        ChangeDataColumns = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
+                            .SelectMany((p, i) => p.ExpandForApiResourceData(i))
+                            .Select(c => 
+                                new ChangeDataColumn
+                                {
+                                    ColumnName = c.ColumnName,
+                                    ColumnDataType = c.ColumnDataType,
+                                    // To match MetaEd plugin character-for-character
+                                    // ColumnDataType = "[" 
+                                    //     + c.ColumnDataType.Replace("(", "](").ToUpper()
+                                    //     + (c.ColumnDataType.Contains("(") ? string.Empty : "]")
+                                })
                     })
-                })
                 .OrderBy(e => e.TableName + "_", StringComparer.Ordinal);
 
             return new { AllAggregateRootEntities = allAggregateRootEntities };

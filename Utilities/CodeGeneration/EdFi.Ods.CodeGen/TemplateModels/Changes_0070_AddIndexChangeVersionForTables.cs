@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using EdFi.Ods.CodeGen.TemplateModels.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
 
 namespace EdFi.Ods.CodeGen.TemplateModels
@@ -21,11 +22,12 @@ namespace EdFi.Ods.CodeGen.TemplateModels
                 .Select(a => a.AggregateRoot)
                 .Where(e => !e.IsDerived)
                 .Where(e => _shouldRenderEntityForSchema(e))
-                .Select(e => new
-                {
-                    Schema = e.Schema,
-                    TableName = e.Name
-                })
+                .Select(e => 
+                    new SimpleTable
+                    {
+                        Schema = e.Schema,
+                        TableName = e.Name
+                    })
                 .OrderBy(e => e.TableName, StringComparer.Ordinal);
 
             return new { NonDerivedAggregateRoots = nonDerivedAggregateRoots};

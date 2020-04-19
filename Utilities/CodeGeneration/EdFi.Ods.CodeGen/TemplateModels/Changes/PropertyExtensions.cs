@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EdFi.Ods.CodeGen.Extensions;
+using EdFi.Ods.CodeGen.TemplateModels.Changes.Models;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Domain;
 
@@ -8,18 +9,18 @@ namespace EdFi.Ods.CodeGen.TemplateModels.Changes
 {
     public static class PropertyExtensions
     {
-        public static IEnumerable<Property> ExpandForApiResourceData(this EntityProperty property, int joinAliasIndex)
+        public static IEnumerable<SimpleColumn> ExpandForApiResourceData(this EntityProperty property, int joinAliasIndex)
         {
-            yield return new Property(property);
+            yield return new SimpleColumn(property);
 
             if (property.IsLookup)
             {
-                yield return new Property(
+                yield return new SimpleColumn(
                     property.PropertyName.ReplaceSuffix("Id", "Namespace"),
                     property.LookupEntity.BaseEntity.PropertyByName["Namespace"].PropertyType,
                     $"j{joinAliasIndex}.{property.LookupEntity.BaseEntity.PropertyByName["Namespace"].PropertyName}");
 
-                yield return new Property(
+                yield return new SimpleColumn(
                     property.PropertyName.ReplaceSuffix("Id", "CodeValue"),
                     property.LookupEntity.BaseEntity.PropertyByName["CodeValue"].PropertyType,
                     $"j{joinAliasIndex}.{property.LookupEntity.BaseEntity.PropertyByName["CodeValue"].PropertyName}");
@@ -28,18 +29,18 @@ namespace EdFi.Ods.CodeGen.TemplateModels.Changes
             {
                 var personEntity = property.PersonEntity();
 
-                yield return new Property(
+                yield return new SimpleColumn(
                     property.PropertyName.ReplaceSuffix("USI", "UniqueId"),
                     personEntity.PropertyByName[personEntity + "UniqueId"].PropertyType, 
                     $"j{joinAliasIndex}.{personEntity.PropertyByName[personEntity + "UniqueId"].PropertyName}");
             }
         }
 
-        public static IEnumerable<Join> JoinForApiResourceData(this EntityProperty property, int joinAliasIndex)
+        public static IEnumerable<SingleColumnJoin> JoinForApiResourceData(this EntityProperty property, int joinAliasIndex)
         {
             if (property.IsLookup)
             {
-                yield return new Join(
+                yield return new SingleColumnJoin(
                     property.LookupEntity.BaseEntity.Schema,
                     property.LookupEntity.BaseEntity.Name,
                     $"j{joinAliasIndex}",
@@ -52,7 +53,7 @@ namespace EdFi.Ods.CodeGen.TemplateModels.Changes
             {
                 var personEntity = property.PersonEntity();
 
-                yield return new Join(
+                yield return new SingleColumnJoin(
                     personEntity.Schema, 
                     personEntity.Name,
                     $"j{joinAliasIndex}",
@@ -61,31 +62,6 @@ namespace EdFi.Ods.CodeGen.TemplateModels.Changes
                     personEntity.Identifier.Properties.Single().PropertyName
                 );
             }
-        }
-
-        public class Join
-        {
-            public Join(string schema, string tableName, string joinAlias, bool isLeftJoin, string thisJoinColumnName, string otherJoinColumnName)
-            {
-                Schema = schema;
-                TableName = tableName;
-                JoinAlias = joinAlias;
-                IsLeftJoin = isLeftJoin;
-                ThisJoinColumnName = thisJoinColumnName;
-                OtherJoinColumnName = otherJoinColumnName;
-            }
-
-            public string Schema { get; }
-
-            public string TableName { get; }
-
-            public string JoinAlias { get; }
-
-            public bool IsLeftJoin { get; }
-
-            public string ThisJoinColumnName { get; set; }
-
-            public string OtherJoinColumnName { get; set; }
         }
     }
 }

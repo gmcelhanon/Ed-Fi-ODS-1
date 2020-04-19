@@ -9,16 +9,17 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [{{Schema}}].[{{TableName}}] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-    {{#KeyIsUpdatable}}
-
-    INSERT INTO changes.{{Schema}}_{{TableName}}_TrackedChange({{#ChangeDataColumns}}Old{{ColumnName}}, {{/ChangeDataColumns}}{{#ChangeDataColumns}}New{{ColumnName}}, {{/ChangeDataColumns}}Id, {{#HasDiscriminator}}Discriminator{{/HasDiscriminator}}, ChangeVersion)
+{{#KeyValuesCanChange}}
+    
+    INSERT INTO changes.{{Schema}}_{{TableName}}_TrackedChange(
+        {{#ChangeDataColumns}}Old{{ColumnName}}, {{/ChangeDataColumns}}
+        {{#ChangeDataColumns}}New{{ColumnName}}, {{/ChangeDataColumns}}
+        Id, {{#HasDiscriminator}}Discriminator, {{/HasDiscriminator}}ChangeVersion)
     SELECT 
         {{#ChangeDataColumns}}{{#SourceSelectExpression}}d{{SourceSelectExpression}}{{/SourceSelectExpression}}{{^SourceSelectExpression}}d.{{ColumnName}}{{/SourceSelectExpression}}, {{/ChangeDataColumns}}
         {{#ChangeDataColumns}}{{#SourceSelectExpression}}i{{SourceSelectExpression}}{{/SourceSelectExpression}}{{^SourceSelectExpression}}i.{{ColumnName}}{{/SourceSelectExpression}}, {{/ChangeDataColumns}}
         d.Id, {{#HasDiscriminator}}d.Discriminator, {{/HasDiscriminator}}(NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
+    FROM deleted d INNER JOIN inserted i ON d.Id = i.Id
         {{#Joins}}
         {{#IsLeftJoin}}LEFT {{/IsLeftJoin}}{{^IsLeftJoin}}INNER {{/IsLeftJoin}}JOIN {{Schema}}.{{TableName}} d{{JoinAlias}}
             ON d.{{ThisJoinColumnName}} = d{{JoinAlias}}.{{OtherJoinColumnName}}
@@ -27,7 +28,9 @@ BEGIN
         {{#IsLeftJoin}}LEFT {{/IsLeftJoin}}{{^IsLeftJoin}}INNER {{/IsLeftJoin}}JOIN {{Schema}}.{{TableName}} i{{JoinAlias}}
             ON d.{{ThisJoinColumnName}} = i{{JoinAlias}}.{{OtherJoinColumnName}}
         {{/Joins}}
-    {{/KeyIsUpdatable}}
+    WHERE 
+        {{#IdentifyingColumns}}{{^IsFirst}} OR {{/IsFirst}}d.{{ColumnName}} <> i.{{ColumnName}}{{/IdentifyingColumns}}
+{{/KeyValuesCanChange}}    
 END	
 GO
 

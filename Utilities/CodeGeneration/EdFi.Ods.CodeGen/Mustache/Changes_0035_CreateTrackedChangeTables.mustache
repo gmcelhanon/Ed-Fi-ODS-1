@@ -2,10 +2,10 @@
 CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedChange]
 (
     {{#ChangeDataColumns}}
-       Old{{ColumnName}} {{DataType}} NOT NULL,
+       Old{{ColumnName}} {{ColumnDataType}} NOT NULL,
     {{/ChangeDataColumns}}
     {{#ChangeDataColumns}}
-       New{{ColumnName}} {{DataType}} NULL,
+       New{{ColumnName}} {{ColumnDataType}} NULL,
     {{/ChangeDataColumns}}
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
