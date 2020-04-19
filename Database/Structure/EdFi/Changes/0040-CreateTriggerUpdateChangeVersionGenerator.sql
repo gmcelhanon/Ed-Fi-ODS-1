@@ -151,15 +151,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[ClassPeriod] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_ClassPeriod_TrackedChange(OldClassPeriodName, OldSchoolId, NewClassPeriodName, NewSchoolId, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.ClassPeriodName, d.SchoolId, 
-        i.ClassPeriodName, i.SchoolId, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
 END	
 GO
 
@@ -407,27 +398,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[Grade] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_Grade_TrackedChange(OldBeginDate, OldGradeTypeDescriptorId, OldGradeTypeDescriptorNamespace, OldGradeTypeDescriptorCodeValue, OldGradingPeriodDescriptorId, OldGradingPeriodDescriptorNamespace, OldGradingPeriodDescriptorCodeValue, OldGradingPeriodSchoolYear, OldGradingPeriodSequence, OldLocalCourseCode, OldSchoolId, OldSchoolYear, OldSectionIdentifier, OldSessionName, OldStudentUSI, OldStudentUniqueId, NewBeginDate, NewGradeTypeDescriptorId, NewGradeTypeDescriptorNamespace, NewGradeTypeDescriptorCodeValue, NewGradingPeriodDescriptorId, NewGradingPeriodDescriptorNamespace, NewGradingPeriodDescriptorCodeValue, NewGradingPeriodSchoolYear, NewGradingPeriodSequence, NewLocalCourseCode, NewSchoolId, NewSchoolYear, NewSectionIdentifier, NewSessionName, NewStudentUSI, NewStudentUniqueId, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.BeginDate, d.GradeTypeDescriptorId, dj1.Namespace, dj1.CodeValue, d.GradingPeriodDescriptorId, dj2.Namespace, dj2.CodeValue, d.GradingPeriodSchoolYear, d.GradingPeriodSequence, d.LocalCourseCode, d.SchoolId, d.SchoolYear, d.SectionIdentifier, d.SessionName, d.StudentUSI, dj10.StudentUniqueId, 
-        i.BeginDate, i.GradeTypeDescriptorId, ij1.Namespace, ij1.CodeValue, i.GradingPeriodDescriptorId, ij2.Namespace, ij2.CodeValue, i.GradingPeriodSchoolYear, i.GradingPeriodSequence, i.LocalCourseCode, i.SchoolId, i.SchoolYear, i.SectionIdentifier, i.SessionName, i.StudentUSI, ij10.StudentUniqueId, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
-        INNER JOIN edfi.Descriptor dj1
-            ON d.GradeTypeDescriptorId = dj1.DescriptorId
-        INNER JOIN edfi.Descriptor dj2
-            ON d.GradingPeriodDescriptorId = dj2.DescriptorId
-        INNER JOIN edfi.Student dj10
-            ON d.StudentUSI = dj10.StudentUSI
-        INNER JOIN edfi.Descriptor ij1
-            ON d.GradeTypeDescriptorId = ij1.DescriptorId
-        INNER JOIN edfi.Descriptor ij2
-            ON d.GradingPeriodDescriptorId = ij2.DescriptorId
-        INNER JOIN edfi.Student ij10
-            ON d.StudentUSI = ij10.StudentUSI
 END	
 GO
 
@@ -441,15 +411,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[GradebookEntry] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_GradebookEntry_TrackedChange(OldDateAssigned, OldGradebookEntryTitle, OldLocalCourseCode, OldSchoolId, OldSchoolYear, OldSectionIdentifier, OldSessionName, NewDateAssigned, NewGradebookEntryTitle, NewLocalCourseCode, NewSchoolId, NewSchoolYear, NewSectionIdentifier, NewSessionName, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.DateAssigned, d.GradebookEntryTitle, d.LocalCourseCode, d.SchoolId, d.SchoolYear, d.SectionIdentifier, d.SessionName, 
-        i.DateAssigned, i.GradebookEntryTitle, i.LocalCourseCode, i.SchoolId, i.SchoolYear, i.SectionIdentifier, i.SessionName, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
 END	
 GO
 
@@ -554,15 +515,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[Location] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_Location_TrackedChange(OldClassroomIdentificationCode, OldSchoolId, NewClassroomIdentificationCode, NewSchoolId, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.ClassroomIdentificationCode, d.SchoolId, 
-        i.ClassroomIdentificationCode, i.SchoolId, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
 END	
 GO
 
@@ -693,15 +645,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[Section] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_Section_TrackedChange(OldLocalCourseCode, OldSchoolId, OldSchoolYear, OldSectionIdentifier, OldSessionName, NewLocalCourseCode, NewSchoolId, NewSchoolYear, NewSectionIdentifier, NewSessionName, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.LocalCourseCode, d.SchoolId, d.SchoolYear, d.SectionIdentifier, d.SessionName, 
-        i.LocalCourseCode, i.SchoolId, i.SchoolYear, i.SectionIdentifier, i.SessionName, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
 END	
 GO
 
@@ -728,15 +671,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[Session] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_Session_TrackedChange(OldSchoolId, OldSchoolYear, OldSessionName, NewSchoolId, NewSchoolYear, NewSessionName, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.SchoolId, d.SchoolYear, d.SessionName, 
-        i.SchoolId, i.SchoolYear, i.SessionName, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
 END	
 GO
 
@@ -1062,19 +996,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[StudentSchoolAssociation] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_StudentSchoolAssociation_TrackedChange(OldEntryDate, OldSchoolId, OldStudentUSI, OldStudentUniqueId, NewEntryDate, NewSchoolId, NewStudentUSI, NewStudentUniqueId, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.EntryDate, d.SchoolId, d.StudentUSI, dj2.StudentUniqueId, 
-        i.EntryDate, i.SchoolId, i.StudentUSI, ij2.StudentUniqueId, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
-        INNER JOIN edfi.Student dj2
-            ON d.StudentUSI = dj2.StudentUSI
-        INNER JOIN edfi.Student ij2
-            ON d.StudentUSI = ij2.StudentUSI
 END	
 GO
 
@@ -1101,19 +1022,6 @@ BEGIN
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [edfi].[StudentSectionAssociation] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-
-    INSERT INTO changes.edfi_StudentSectionAssociation_TrackedChange(OldBeginDate, OldLocalCourseCode, OldSchoolId, OldSchoolYear, OldSectionIdentifier, OldSessionName, OldStudentUSI, OldStudentUniqueId, NewBeginDate, NewLocalCourseCode, NewSchoolId, NewSchoolYear, NewSectionIdentifier, NewSessionName, NewStudentUSI, NewStudentUniqueId, Id, Discriminator, ChangeVersion)
-    SELECT 
-        d.BeginDate, d.LocalCourseCode, d.SchoolId, d.SchoolYear, d.SectionIdentifier, d.SessionName, d.StudentUSI, dj6.StudentUniqueId, 
-        i.BeginDate, i.LocalCourseCode, i.SchoolId, i.SchoolYear, i.SectionIdentifier, i.SessionName, i.StudentUSI, ij6.StudentUniqueId, 
-        d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM	deleted d 
-        INNER JOIN inserted i
-            ON d.Id = i.Id
-        INNER JOIN edfi.Student dj6
-            ON d.StudentUSI = dj6.StudentUSI
-        INNER JOIN edfi.Student ij6
-            ON d.StudentUSI = ij6.StudentUSI
 END	
 GO
 
