@@ -110,7 +110,8 @@ namespace EdFi.Ods.ChangeQueries.NHibernate
             {
                 sourceChangeVersionTableAlias = SourceBaseTableAlias;
                 
-                discriminatorCriteria = resource.IsDerived
+                // Include discriminator filter if resource is derived and not a descriptor
+                discriminatorCriteria = resource.IsDerived && !resource.Entity.IsLookup
                     ? $" AND {TrackedChangesAlias}.Discriminator = '{resource.Entity.FullName}'"
                     : null;
 
