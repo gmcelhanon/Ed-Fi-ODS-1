@@ -2,19 +2,17 @@
 // Licensed to the Ed-Fi Alliance under one or more agreements.
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
- 
+
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using EdFi.Ods.Api.NHibernate.Architecture;
+using EdFi.Ods.Api.Common.Infrastructure.Architecture;
 using EdFi.Ods.Common;
-using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Repositories;
 using EdFi.Ods.Common.Security.Authorization;
 using EdFi.Ods.Common.Security.Claims;
 using EdFi.Ods.Security.Authorization.Filtering;
 using NHibernate;
-using NHibernate.Context;
 
 namespace EdFi.Ods.Security.Authorization.Repositories
 {
@@ -61,6 +59,7 @@ namespace EdFi.Ods.Security.Authorization.Repositories
         /// </summary>
         /// <param name="specification">An entity instance that has all the primary key properties assigned with values.</param>
         /// <param name="queryParameters">The additional query parameter to apply the results (e.g. paging, sorting).</param>
+        /// <param name="cancellationToken"></param>
         /// <returns>A list of matching resources, or an empty result.</returns>
         public async Task<GetBySpecificationResult<TEntity>> GetBySpecificationAsync(TEntity specification,
             IQueryParameters queryParameters, CancellationToken cancellationToken)
