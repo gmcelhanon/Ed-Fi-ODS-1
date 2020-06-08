@@ -14,30 +14,37 @@ namespace EdFi.Ods.Common.Models.Resource
     // Resource (non-top-level) only
     public class ResourceChildItem : ResourceClassBase, IHasParent
     {
-        internal ResourceChildItem(IResourceModel resourceModel, Entity entity, FilterContext childContext, ResourceClassBase parentResource)
+        internal ResourceChildItem(
+            IResourceModel resourceModel,
+            Entity entity,
+            FilterContext childContext,
+            ResourceMemberBase parentMember)
             : base(resourceModel, entity, childContext)
         {
-            Parent = parentResource;
+            Parent = parentMember.ResourceClass;
+            ParentMember = parentMember;
         }
 
         internal ResourceChildItem(
             IResourceModel resourceModel,
             Entity entity,
             FilterContext childContext,
-            ResourceClassBase parentResource,
-            Func<IEnumerable<AssociationView>> collectionAssociations,
-            Func<IEnumerable<AssociationView>> embeddedObjectAssociations)
-            : base(resourceModel, entity, childContext, collectionAssociations, embeddedObjectAssociations)
+            ResourceMemberBase parentMember,
+            IReadOnlyList<AssociationView> collectionAssociations,
+            IReadOnlyList<AssociationView> embeddedObjectAssociations)
+            : base(resourceModel, entity, childContext, () => collectionAssociations, () => embeddedObjectAssociations)
         {
-            Parent = parentResource;
+            Parent = parentMember.ResourceClass;
+            ParentMember = parentMember;
         }
 
-        internal ResourceChildItem(ResourceChildItem[] resourceChildItems, ResourceClassBase parentResource)
+        internal ResourceChildItem(ResourceChildItem[] resourceChildItems, ResourceMemberBase parentMember)
             : base(
                 resourceChildItems.Cast<ResourceClassBase>()
                                   .ToArray())
         {
-            Parent = parentResource;
+            Parent = parentMember.ResourceClass;
+            ParentMember = parentMember;
         }
 
         /// <summary>
@@ -46,22 +53,26 @@ namespace EdFi.Ods.Common.Models.Resource
         /// <param name="name">The name to be given to the resource class.</param>
         /// <param name="parentResource">The containing (parent) resource for the new child item.</param>
         /// <remarks>This constructor was introduced for use in building Composite resources.</remarks>
-        public ResourceChildItem(string name, ResourceClassBase parentResource)
+        public ResourceChildItem(string name, ResourceClassBase parentResource, ResourceMemberBase parentMember)
             : base(name)
         {
+            // NOTE: This is used from the CompositeResourceModelBuilder and should be carefully inspected before removing
+            // the 'parentResource' parameter. Can the 'parentMember' be used to obtain the 'parentResource' safely in this case?
             Parent = parentResource;
+            ParentMember = parentMember;
         }
 
         public ResourceChildItem(
             IResourceModel resourceModel,
             FullName fullName,
-            ResourceClassBase parentResource,
-            Func<IEnumerable<AssociationView>> collectionAssociations,
-            Func<IEnumerable<AssociationView>> embeddedObjectAssociations,
-            FilterContext filterContext)
-            : base(resourceModel, fullName, collectionAssociations, embeddedObjectAssociations, filterContext)
+            FilterContext filterContext,
+            ResourceMemberBase parentMember,
+            IReadOnlyList<AssociationView> collectionAssociations,
+            IReadOnlyList<AssociationView> embeddedObjectAssociations)
+            : base(resourceModel, fullName, () => collectionAssociations, () => embeddedObjectAssociations, filterContext)
         {
-            Parent = parentResource;
+            Parent = parentMember.ResourceClass;
+            ParentMember = parentMember;
         }
 
         /// <summary>
@@ -70,6 +81,27 @@ namespace EdFi.Ods.Common.Models.Resource
         public override Resource ResourceRoot => GetLineage()
                                                 .Cast<Resource>()
                                                 .First();
+
+        /// <summary>
+        /// The member of the parent resource class that contains the instance(s) of the current resource class.
+        /// </summary>
+        public ResourceMemberBase ParentMember { get; }
+
+        /// <summary>
+        /// Gets the JSON path for this resource class within the resource.
+        /// </summary>
+        public override string JsonPath
+        {
+            get
+            {
+                if (ParentMember is Collection)
+                {
+                    return $"{ParentMember.JsonPath}[*]";
+                }
+
+                return $"{ParentMember.JsonPath}";
+            }
+        }
 
         /// <summary>
         /// Indicates whether the resource class is part of an extension to an Ed-Fi standard resource (i.e. a "resource extension" as opposed to being part of a new "extension resource").

@@ -250,6 +250,11 @@ namespace EdFi.Ods.Common.Models.Resource
             private set { _pluralName = value; }
         }
 
+        /// <summary>
+        /// Gets the JSON path for this resource class within the resource.
+        /// </summary>
+        public abstract string JsonPath { get; }
+
         public Entity Entity { get; }
 
         /// <summary>
@@ -442,9 +447,9 @@ namespace EdFi.Ods.Common.Models.Resource
                                                     ext.Association,
                                                     FilterContext.GetExtensionContext(ext.SchemaProperCaseName),
                                                     collectionAssociations:
-                                                    () => extensionCollections.Where(a => a.OtherEntity.Schema == ext.SchemaPhysicalName),
+                                                    extensionCollections.Where(a => a.OtherEntity.Schema == ext.SchemaPhysicalName).ToArray(),
                                                     embeddedObjectAssociations:
-                                                    () => extensionOneToOnes.Where(a => a.OtherEntity.Schema == ext.SchemaPhysicalName)
+                                                    extensionOneToOnes.Where(a => a.OtherEntity.Schema == ext.SchemaPhysicalName).ToArray()
                                                 ))
                                            .ToList();
 
@@ -454,68 +459,45 @@ namespace EdFi.Ods.Common.Models.Resource
                                                            .Distinct()
 
                                                             // Where the new schema isn't already in the explicit extensions class
-                                                           .Where(
-                                                                properCaseName => !extensions.Any(
-                                                                    x => x.PropertyName.EqualsIgnoreCase(properCaseName)))
-                                                           .Select(
-                                                                properCaseName => new
-                                                                                  {
-                                                                                      SchemaProperCaseName = properCaseName, SchemaPhysicalName =
-                                                                                          schemaNameMapProvider
-                                                                                             .GetSchemaMapByProperCaseName(properCaseName)
-                                                                                             .PhysicalName
-                                                                                  })
-
-                                                            // Create an implicit extension class
-                                                           .Select(
-                                                                x => new Extension(
-                                                                    this,
-                                                                    new ResourceChildItem(
-                                                                        ResourceModel,
-                                                                        new FullName(x.SchemaPhysicalName, $"{entity.Name}Extension"),
-                                                                        this,
-                                                                        () => extensionCollections.Where(
-                                                                            a => a.OtherEntity.Schema == x.SchemaPhysicalName),
-                                                                        () => extensionOneToOnes.Where(
-                                                                            a => a.OtherEntity.Schema == x.SchemaPhysicalName),
-                                                                        FilterContext.GetExtensionContext(x.SchemaProperCaseName)),
-                                                                    x.SchemaProperCaseName));
+                                                           .Where(properCaseName => 
+                                                               !extensions.Any(x => x.PropertyName.EqualsIgnoreCase(properCaseName)))
+                                                           // Create an implicit extension class
+                                                           .Select(properCaseName => CreateImplicitExtension(properCaseName, GetSchemaPhysicalName(properCaseName)));
 
                     extensions.AddRange(implicitExtensionsFromCollections);
 
                     var implicitExtensionsFromEmbeddedObjects = extensionOneToOnes
 
-                                                                // Where the new schema isn't already in the explicit extensions class
                                                                .Select(GetExtensionClassSchemaProperCaseName)
                                                                .Distinct()
-                                                               .Where(
-                                                                    properCaseName => !extensions.Any(
-                                                                        x => x.PropertyName.EqualsIgnoreCase(properCaseName)))
-                                                               .Select(
-                                                                    properCaseName => new
-                                                                                      {
-                                                                                          SchemaProperCaseName = properCaseName, SchemaPhysicalName =
-                                                                                              schemaNameMapProvider
-                                                                                                 .GetSchemaMapByProperCaseName(properCaseName)
-                                                                                                 .PhysicalName
-                                                                                      })
-                                                               .Select(
-                                                                    x => new Extension(
-                                                                        this,
-                                                                        new ResourceChildItem(
-                                                                            ResourceModel,
-                                                                            new FullName(x.SchemaPhysicalName, $"{entity.Name}Extension"),
-                                                                            this,
-                                                                            () => extensionCollections.Where(
-                                                                                a => a.OtherEntity.Schema == x.SchemaPhysicalName),
-                                                                            () => extensionOneToOnes.Where(
-                                                                                a => a.OtherEntity.Schema == x.SchemaPhysicalName),
-                                                                            FilterContext.GetExtensionContext(x.SchemaProperCaseName)),
-                                                                        x.SchemaProperCaseName));
+                                                               // Where the new schema isn't already in the explicit extensions class
+                                                               .Where(properCaseName => 
+                                                                   !extensions.Any(x => x.PropertyName.EqualsIgnoreCase(properCaseName)))
+                                                                // Create an implicit extension class
+                                                               .Select(properCaseName => CreateImplicitExtension(properCaseName, GetSchemaPhysicalName(properCaseName)));
 
                     extensions.AddRange(implicitExtensionsFromEmbeddedObjects);
 
                     return extensions;
+
+                    string GetSchemaPhysicalName(string s)
+                    {
+                        return schemaNameMapProvider
+                            .GetSchemaMapByProperCaseName(s)
+                            .PhysicalName;
+                    }
+
+                    Extension CreateImplicitExtension(string schemaProperCaseName, string schemaPhysicalName)
+                    {
+                        return new Extension(
+                            this,
+                            entity,
+                            FilterContext.GetExtensionContext(schemaProperCaseName),
+                            schemaPhysicalName,
+                            extensionCollections.Where(a => a.OtherEntity.Schema == schemaPhysicalName).ToArray(),
+                            extensionOneToOnes.Where(a => a.OtherEntity.Schema == schemaPhysicalName).ToArray(),
+                            schemaProperCaseName);
+                    }
                 });
         }
 

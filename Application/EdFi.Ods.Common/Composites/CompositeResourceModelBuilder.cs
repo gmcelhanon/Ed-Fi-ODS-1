@@ -290,7 +290,8 @@ namespace EdFi.Ods.Common.Composites
                        RootResource = parentingBuilderContext.RootResource, ParentResource = parentingBuilderContext.CurrentResource,
                        CurrentResource = new ResourceChildItem(
                            childProcessorContext.CurrentResourceClass.Name,
-                           parentingBuilderContext.CurrentResource)
+                           parentingBuilderContext.CurrentResource,
+                           childProcessorContext.CurrentResourceMember)
                    };
         }
 

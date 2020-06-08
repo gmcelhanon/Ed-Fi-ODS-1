@@ -49,6 +49,11 @@ namespace EdFi.Ods.Common.Models.Resource
         public string JsonPropertyName => _jsonPropertyName.Value;
 
         /// <summary>
+        /// Gets the JSON path for this resource class within the resource.
+        /// </summary>
+        public string JsonPath => $"{ResourceClass.JsonPath}.{JsonPropertyName}";
+        
+        /// <summary>
         /// Gets the name of the resource class containing the current member.
         /// </summary>
         public abstract FullName ParentFullName { get; }

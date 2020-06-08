@@ -60,8 +60,11 @@ namespace EdFi.Ods.Common.Models.Resource
                     new Dictionary<string, LinkedCollection>());
         }
 
-        public bool IsEdFiCore { get; set; }
-
+        /// <summary>
+        /// Gets the JSON path for this resource class within the resource.
+        /// </summary>
+        public override string JsonPath => "$";
+        
         /// <summary>
         /// Gets the root <see cref="Resource" /> class for the current resource.
         /// </summary>

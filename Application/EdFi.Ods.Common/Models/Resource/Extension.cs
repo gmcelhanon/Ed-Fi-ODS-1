@@ -12,39 +12,54 @@ namespace EdFi.Ods.Common.Models.Resource
 {
     public class Extension : ResourceMemberBase
     {
-        public Extension(ResourceClassBase resourceClass, ResourceChildItem extensionObjectType, string displayName)
-            : base(resourceClass, displayName, displayName.ToCamelCase())
+        internal Extension(
+            ResourceClassBase resourceClass,
+            Entity entity,
+            FilterContext childFilterContext,
+            string schemaPhysicalName,
+            IReadOnlyList<AssociationView> extensionCollections,
+            IReadOnlyList<AssociationView> extensionOneToOnes,
+            string displayName)
+        : base(resourceClass, displayName, displayName.ToCamelCase())
         {
-            ObjectType = extensionObjectType;
+            ObjectType = new ResourceChildItem(
+                resourceClass.ResourceModel,
+                new FullName(schemaPhysicalName, $"{entity.Name}Extension"),
+                childFilterContext,
+                this,
+                extensionCollections,
+                extensionOneToOnes);
 
             if (resourceClass.Entity != null)
             {
                 ParentFullName = resourceClass.Entity.FullName;
             }
         }
-
+        
         internal Extension(
             ResourceClassBase resourceClass,
             AssociationView association,
             FilterContext childFilterContext,
-            Func<IEnumerable<AssociationView>> collectionAssociations,
-            Func<IEnumerable<AssociationView>> embeddedObjectAssociations)
+            IReadOnlyList<AssociationView> collectionAssociations,
+            IReadOnlyList<AssociationView> embeddedObjectAssociations)
             : base(resourceClass, association.Name)
         {
-            Association = association;
-
             ObjectType = new ResourceChildItem(
                 resourceClass.ResourceModel,
                 association.OtherEntity,
                 childFilterContext,
-                resourceClass,
+                this,
                 collectionAssociations,
                 embeddedObjectAssociations);
 
-            ParentFullName = Association.ThisEntity.FullName;
+            ParentFullName = association.ThisEntity.FullName;
         }
 
-        public AssociationView Association { get; }
+        // /// <summary>
+        // /// Returns the AssociationView for the extension if it exists; otherwise (the Extension member has been implicitly added
+        // /// for the sake of child collections and/or embedded objects) <b>null</b>.
+        // /// </summary>
+        // public AssociationView Association { get; }
 
         public ResourceChildItem ObjectType { get; }
 

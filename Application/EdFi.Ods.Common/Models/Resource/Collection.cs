@@ -18,7 +18,7 @@ namespace EdFi.Ods.Common.Models.Resource
             Association = association;
             FilterContext = filterContext ?? FilterContext.NullFilterContext;
 
-            ItemType = new ResourceChildItem(resourceClass.ResourceModel, association.OtherEntity, FilterContext, resourceClass);
+            ItemType = new ResourceChildItem(resourceClass.ResourceModel, association.OtherEntity, FilterContext, this);
 
             if (FilterContext.Definition != null)
             {
@@ -64,8 +64,8 @@ namespace EdFi.Ods.Common.Models.Resource
 
             ItemType = new ResourceChildItem(
                 collections.Select(c => c.ItemType)
-                           .ToArray(),
-                ResourceClass);
+                    .ToArray(), 
+                this);
 
             // Combine all the value filters from all the composed collections.
             ValueFilters = collections.SelectMany(c => c.ValueFilters)
