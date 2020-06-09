@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using EdFi.Ods.Common.Extensions;
 using log4net;
 using QuickGraph;
 using QuickGraph.Algorithms;
@@ -16,20 +17,21 @@ namespace EdFi.Ods.Common.Models.Graphs
     {
         private static readonly ILog _logger = LogManager.GetLogger(typeof(BidirectionalGraphExtensions));
         
-        public static IReadOnlyList<Cycle<TVertex>> GetCycles<TVertex, TEdge>(
+        public static IReadOnlyList<Cycle<TVertex, TEdge>> GetCycles<TVertex, TEdge>(
             this BidirectionalGraph<TVertex, TEdge> graph)
             where TEdge : IEdge<TVertex>
         {
             // Initialize vertex, and current stack tracking 
             var visited = new HashSet<TVertex>(); 
             var stack = new List<TVertex>();
-            var cycles = new List<Cycle<TVertex>>();
+            var edgesStack = new List<TEdge>();
+            var cycles = new List<Cycle<TVertex, TEdge>>();
             
             // Call the recursive helper function to detect cycle in different DFS trees
             foreach (var vertex in graph.Vertices)
             {
                 _logger.Debug($"Probing node '{vertex}' for cyclical dependencies...");
-                graph.FindCycles(vertex, visited, stack, cycles);
+                graph.FindCycles(vertex, visited, stack, edgesStack, cycles);
             }
 
             return cycles;
@@ -51,7 +53,10 @@ namespace EdFi.Ods.Common.Models.Graphs
                     ? "dependency"
                     : "dependencies");
 
-                throw new NonAcyclicGraphException($@"Circular {dependencyPluralization} found:{Environment.NewLine}{cycleExplanations}");
+                var exception = new NonAcyclicGraphException($@"Circular {dependencyPluralization} found:{Environment.NewLine}{cycleExplanations}");
+                exception.Data["Cycles"] = cycles.ToArray();
+
+                throw exception;
             }
         }
 
@@ -60,18 +65,21 @@ namespace EdFi.Ods.Common.Models.Graphs
             TVertex vertex, 
             HashSet<TVertex> visited, 
             List<TVertex> stack, 
-            List<Cycle<TVertex>> cycles)
+            List<TEdge> edgesStack, 
+            List<Cycle<TVertex, TEdge>> cycles)
             where TEdge : IEdge<TVertex>
         {
             // Do we have a circular dependency?
             if (stack.Contains(vertex))
             {
-                var cycle = new Cycle<TVertex>
+                var cycle = new Cycle<TVertex, TEdge>
                             {
-                                Vertex = vertex.ToString(), 
+                                Vertex = vertex.ToString(),
                                 Path = stack.SkipWhile(x => !x.Equals(vertex))
                                             .Concat(new[] { vertex })
-                                            .ToList()
+                                            .ToList(),
+                                StartingVertex = vertex,
+                                Edges = edgesStack.SkipWhile(e => !Equals(e.Source, vertex)).ToList(),
                             };
 
                 if (_logger.IsDebugEnabled)
@@ -94,22 +102,31 @@ namespace EdFi.Ods.Common.Models.Graphs
 
             try
             {
-                var children = executionGraph
+                var outEdges = executionGraph
                               .OutEdges(vertex)
-                              .Select(x => x.Target)
+                              // .Select(x => x.Target)
                               .ToList();
 
                 if (_logger.IsDebugEnabled)
                 {
-                    if (children.Any())
+                    if (outEdges.Any())
                     {
-                        _logger.Debug($"Children of {vertex}: {string.Join(" => ", children.Select(x => x.ToString()))}");
+                        _logger.Debug($"Children of {vertex}: {string.Join(" => ", outEdges.Select(x => x.ToString()))}");
                     }
                 }
                 
-                foreach (var child in children)
+                foreach (var outEdge in outEdges)
                 {
-                    executionGraph.FindCycles(child, visited, stack, cycles);
+                    edgesStack.Add(outEdge);
+
+                    try
+                    {
+                        executionGraph.FindCycles(outEdge.Target, visited, stack, edgesStack, cycles);
+                    }
+                    finally
+                    {
+                        edgesStack.Remove(outEdge);
+                    }
                 }
             }
             finally
@@ -128,7 +145,7 @@ namespace EdFi.Ods.Common.Models.Graphs
         /// <typeparam name="TEdge">The <see cref="Type" /> of the edges of the graph.</typeparam>
         /// <returns>The list of edges that were removed to break the cycle(s).</returns>
         /// <exception cref="NonAcyclicGraphException">Occurs if one or more of the cycles present in the graph cannot be broken by removing one of its edges.</exception>
-        public static IReadOnlyList<TEdge> BreakCycles<TVertex, TEdge>(this BidirectionalGraph<TVertex, TEdge> graph, Func<TEdge, bool> isRemovable)
+        public static IReadOnlyList<Cycle<TVertex, TEdge>> BreakCycles<TVertex, TEdge>(this BidirectionalGraph<TVertex, TEdge> graph, Func<TEdge, bool> isRemovable)
             where TEdge : IEdge<TVertex>
         {
             var removedEdges = new List<TEdge>();
@@ -166,7 +183,7 @@ namespace EdFi.Ods.Common.Models.Graphs
                     throw new NonAcyclicGraphException();
                 }
 
-                // Remove the chosen graph edge(s) to break the cyclical dependency
+                // Remove the chosen graph edge(s) to break the cyclical dependency to allow processing to proceed
                 foreach (TEdge edge in sacrificialDependency.CycleEdges.ToArray())
                 {
                     if (_logger.IsDebugEnabled)
@@ -187,24 +204,36 @@ namespace EdFi.Ods.Common.Models.Graphs
 {string.Join(Environment.NewLine, removedEdges.Select(x => x.ToString()))}");
             }
             
-            return removedEdges;
-        } 
+            return cycles;
+        }
+    }
+
+    /// <summary>
+    /// Represents a cycle in the graph.
+    /// </summary>
+    /// <typeparam name="TVertex">The <see cref="Type" /> of the vertices in the graph.</typeparam>
+    /// <typeparam name="TEdge">The <see cref="Type" /> of the edge connecting the vertices in the graph.</typeparam>
+    public class Cycle<TVertex, TEdge>
+        where TEdge : IEdge<TVertex>
+    {
+        /// <summary>
+        /// The string representation of the initial vertex being probed when the cycle was found.
+        /// </summary>
+        public string Vertex { get; set; }
+            
+        /// <summary>
+        /// The list of vertices found that form the cycle, with the first vertex also appearing as the last vertex.
+        /// </summary>
+        public List<TVertex> Path { get; set; }
 
         /// <summary>
-        /// Represents a cycle in the graph.
+        /// The vertex being probed when the cycle was found.
         /// </summary>
-        /// <typeparam name="TVertex">The Type of the vertices in the graph.</typeparam>
-        public class Cycle<TVertex>
-        {
-            /// <summary>
-            /// The string representation of the initial vertex being probed when the cycle was found.
-            /// </summary>
-            public string Vertex { get; set; }
+        public TVertex StartingVertex { get; set; }
             
-            /// <summary>
-            /// The list of vertices found that form the cycle, with the first vertex also appearing as the last vertex.
-            /// </summary>
-            public List<TVertex> Path { get; set; }
-        }
+        /// <summary>
+        /// Contains the edges that form the cycle back to the starting vertex.
+        /// </summary>
+        public List<TEdge> Edges { get; set; }
     }
 }

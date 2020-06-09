@@ -92,7 +92,9 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
             [Test]
             public void Validation_should_throw_a_NonAcyclicGraphException()
             {
-                Should.Throw<NonAcyclicGraphException>(() => _graph.ValidateGraph());
+                var exception = Should.Throw<NonAcyclicGraphException>(() => _graph.ValidateGraph());
+
+                AssertExceptionCycles(exception);
             }
 
             [Test]
@@ -100,24 +102,57 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
             {
                 var clonedGraph = _graph.Clone();
                 clonedGraph.Edges.Any(Is_B_to_C2).ShouldBeTrue();
-                var removedEdges = clonedGraph.BreakCycles(Is_B_to_C2);
+                var cycles = clonedGraph.BreakCycles(Is_B_to_C2);
                 clonedGraph.Edges.Any(Is_B_to_C2).ShouldBeFalse("Removable edge B-to-C2 was not removed.");
                 clonedGraph.Edges.Count().ShouldBe(_graph.Edges.Count() - 1);
-                removedEdges.Single(Is_B_to_C2).ShouldNotBeNull();
+                
+                cycles.Count.ShouldBe(1);
+
+                Assert.That(
+                    cycles.Single().Edges.Select(e => e.ToString()), 
+                    Is.EquivalentTo(
+                    new[]
+                    {
+                        "B->C2",
+                        "C2->E2",
+                        "E2->B"
+                    }));
                 
                 clonedGraph = _graph.Clone();
                 clonedGraph.Edges.Any(Is_C2_to_E2).ShouldBeTrue();
-                removedEdges = clonedGraph.BreakCycles(Is_C2_to_E2);
+                cycles = clonedGraph.BreakCycles(Is_C2_to_E2);
                 clonedGraph.Edges.Any(Is_C2_to_E2).ShouldBeFalse("Removable edge C2-to-E2 was not removed.");
                 clonedGraph.Edges.Count().ShouldBe(_graph.Edges.Count() - 1);
-                removedEdges.Single(Is_C2_to_E2).ShouldNotBeNull();
+
+                cycles.Count.ShouldBe(1);
+
+                Assert.That(
+                    cycles.Single().Edges.Select(e => e.ToString()), 
+                    Is.EquivalentTo(
+                        new[]
+                        {
+                            "B->C2",
+                            "C2->E2",
+                            "E2->B"
+                        }));
                 
                 clonedGraph = _graph.Clone();
                 clonedGraph.Edges.Any(Is_E2_to_B).ShouldBeTrue();
-                removedEdges = clonedGraph.BreakCycles(Is_E2_to_B);
+                cycles = clonedGraph.BreakCycles(Is_E2_to_B);
                 clonedGraph.Edges.Any(Is_E2_to_B).ShouldBeFalse("Removable edge E2-to-B was not removed.");
                 clonedGraph.Edges.Count().ShouldBe(_graph.Edges.Count() - 1);
-                removedEdges.Single(Is_E2_to_B).ShouldNotBeNull();
+                
+                cycles.Count.ShouldBe(1);
+
+                Assert.That(
+                    cycles.Single().Edges.Select(e => e.ToString()), 
+                    Is.EquivalentTo(
+                        new[]
+                        {
+                            "B->C2",
+                            "C2->E2",
+                            "E2->B"
+                        }));
             }
 
             [Test]
@@ -126,10 +161,9 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
                 var clonedGraph = _graph.Clone();
                 clonedGraph.Edges.Count(Is_any_cycle_edge).ShouldBe(3);
                 
-                var removedEdges = clonedGraph.BreakCycles(Is_any_cycle_edge);
+                var cycles = clonedGraph.BreakCycles(Is_any_cycle_edge);
                 clonedGraph.Edges.Any(Is_E2_to_B).ShouldBeFalse("Deepest removable edge B-to-C2 was not the edge removed.");
                 clonedGraph.Edges.Count().ShouldBe(_graph.Edges.Count() - 1);
-                removedEdges.Single(Is_E2_to_B).ShouldNotBeNull();
             }
 
             [Test]
@@ -137,14 +171,35 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
             {
                 var clonedGraph = _graph.Clone();
                 
-                Should.Throw<NonAcyclicGraphException>(() => clonedGraph.BreakCycles(e => !Is_any_cycle_edge(e)));
+                var exception = Should.Throw<NonAcyclicGraphException>(() => clonedGraph.BreakCycles(e => !Is_any_cycle_edge(e)));
+                
+                AssertExceptionCycles(exception);
             }
-            
+
             bool Is_B_to_C2(IEdge<string> e) => e.Source == "B" && e.Target == "C2";
+
             bool Is_C2_to_E2(IEdge<string> e) => e.Source == "C2" && e.Target == "E2";
+
             bool Is_E2_to_B(IEdge<string> e) => e.Source == "E2" && e.Target == "B";
 
             bool Is_any_cycle_edge(IEdge<string> e) => Is_B_to_C2(e) || Is_C2_to_E2(e) || Is_E2_to_B(e);
+
+            private static void AssertExceptionCycles(NonAcyclicGraphException exception)
+            {
+                var cycles = exception.GetCycles<string, IEdge<string>>();
+
+                cycles.Length.ShouldBe(1);
+
+                Assert.That(
+                    cycles.Single().Edges.Select(e => e.ToString()),
+                    Is.EquivalentTo(
+                        new[]
+                        {
+                            "B->C2",
+                            "C2->E2",
+                            "E2->B"
+                        }));
+            }
         }
 
         public class When_a_graph_has_two_cycles_and_a_self_referencing_association : TestFixtureBase
@@ -187,7 +242,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
                 // Add a second cyclical dependency
                 _graph.AddEdge(new Edge<string>("D2", "A"));
                 
-                // Add a self-referencing dependencies
+                // Add a couple self-referencing dependencies
                 _graph.AddEdge(new Edge<string>("B", "B"));
                 _graph.AddEdge(new Edge<string>("C1", "C1"));
             }
@@ -195,7 +250,11 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
             [Test]
             public void Validation_should_fail_initially()
             {
-                Should.Throw<NonAcyclicGraphException>(() => _graph.ValidateGraph());
+                var exception = Should.Throw<NonAcyclicGraphException>(() => _graph.ValidateGraph());
+
+                var cycles = exception.GetCycles<string, IEdge<string>>();
+
+                cycles.Length.ShouldBe(4);
             }
             
             [Test]
@@ -203,27 +262,20 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
             {
                 var clonedGraph = _graph.Clone();
                 
-                IReadOnlyList<IEdge<string>> removedEdges = null;
+                IReadOnlyList<Cycle<string, IEdge<string>>> cycles = null;
 
                 Should.NotThrow(() =>
                 {
-                    removedEdges = clonedGraph.BreakCycles(e => true);
-
-                    Console.WriteLine("Removed edges:");
-                    foreach (IEdge<string> removedEdge in removedEdges)
-                    {
-                        Console.WriteLine(removedEdge);
-                    }
+                    cycles = clonedGraph.BreakCycles(e => true);
                 });
                 Should.NotThrow(() => clonedGraph.ValidateGraph());
                 
                 clonedGraph.Edges.Count().ShouldBe(_graph.Edges.Count() - 4);
                 
-                removedEdges.Count().ShouldBe(4);
-                removedEdges.SingleOrDefault(a => a.Source == "E2" && a.Target == "B").ShouldNotBeNull();
-                removedEdges.SingleOrDefault(a => a.Source == "D2" && a.Target == "A").ShouldNotBeNull();
-                removedEdges.SingleOrDefault(a => a.Source == "C1" && a.Target == "C1").ShouldNotBeNull();
-                removedEdges.SingleOrDefault(a => a.Source == "B" && a.Target == "B").ShouldNotBeNull();
+                clonedGraph.Edges.SingleOrDefault(a => a.Source == "E2" && a.Target == "B").ShouldBeNull();
+                clonedGraph.Edges.SingleOrDefault(a => a.Source == "D2" && a.Target == "A").ShouldBeNull();
+                clonedGraph.Edges.SingleOrDefault(a => a.Source == "C1" && a.Target == "C1").ShouldBeNull();
+                clonedGraph.Edges.SingleOrDefault(a => a.Source == "B" && a.Target == "B").ShouldBeNull();
             }
         }
 
@@ -267,12 +319,11 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Models.Graphs
             {
                 var clonedGraph = _graph.Clone();
                 
-                var removedEdges = clonedGraph.BreakCycles(e => true);
+                var cycles = clonedGraph.BreakCycles(e => true);
+                cycles.Count().ShouldBe(1);
                 
                 clonedGraph.Edges.Count().ShouldBe(_graph.Edges.Count() - 1);
-                
-                removedEdges.Count().ShouldBe(1);
-                removedEdges.SingleOrDefault(a => a.Source == "C" && a.Target == "C").ShouldNotBeNull();
+                clonedGraph.Edges.SingleOrDefault(a => a.Source == "C" && a.Target == "C").ShouldBeNull();
             }
         }
     }
