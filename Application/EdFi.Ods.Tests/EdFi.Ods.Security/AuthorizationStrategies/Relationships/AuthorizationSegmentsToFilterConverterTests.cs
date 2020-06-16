@@ -231,13 +231,6 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
             protected override void Arrange()
             {
-                Given<IClassMetadata>()
-                   .that_returns_property_names(new string[0]);
-
-                Given<ISessionFactory>()
-                   .that_given_entity_type(Supplied("entityType", typeof(TestEntityType)))
-                   .returns(The<IClassMetadata>());
-
                 Given<IEducationOrganizationCache>()
                    .that_given_education_organization_id(999)
                    .returns(new EducationOrganizationIdentifiers(999, "LocalEducationAgency"));
@@ -263,10 +256,23 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             }
 
             [Assert]
-            public void Should_throw_a_NotSupportedException_stating_that_multiple_endpoint_types_were_found_and_are_not_supported()
+            public void Should_NOT_throw_a_NotSupportedException()
             {
-                ActualException.ShouldBeExceptionType<NotSupportedException>();
-                ActualException.Message.ShouldContain("multiple");
+                ActualException.ShouldNotBeOfType<NotSupportedException>();
+            }
+
+            [Assert]
+            public void Should_return_filters_for_each_associated_EdOrg_type()
+            {
+                _actualFilters[0].FilterName.ShouldBe("LocalEducationAgencyIdToSchoolId");
+                _actualFilters[0].ClaimEndpointName.ShouldBe("LocalEducationAgencyId");
+                _actualFilters[0].SubjectEndpointName.ShouldBe("SchoolId");
+                _actualFilters[0].ClaimValues.ShouldBe(new object[] { 999 });
+                
+                _actualFilters[1].FilterName.ShouldBe("SchoolIdToSchoolId");
+                _actualFilters[1].ClaimEndpointName.ShouldBe("SchoolId");
+                _actualFilters[1].SubjectEndpointName.ShouldBe("SchoolId");
+                _actualFilters[1].ClaimValues.ShouldBe(new object[] { 1000 });
             }
         }
 
@@ -277,13 +283,6 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
             protected override void Arrange()
             {
-                Given<IClassMetadata>()
-                   .that_returns_property_names(new string[0]);
-
-                Given<ISessionFactory>()
-                   .that_given_entity_type(Supplied("entityType", typeof(TestEntityType)))
-                   .returns(The<IClassMetadata>());
-
                 Given<IEducationOrganizationCache>()
                    .that_given_education_organization_id(999)
                    .returns(new EducationOrganizationIdentifiers(999, "LocalEducationAgency"));
@@ -338,12 +337,12 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
             protected override void Arrange()
             {
-                Given<IClassMetadata>()
-                   .that_returns_property_names(new string[0]);
-
-                Given<ISessionFactory>()
-                   .that_given_entity_type(Supplied("entityType", typeof(TestEntityType)))
-                   .returns(The<IClassMetadata>());
+                // Given<IClassMetadata>()
+                //    .that_returns_property_names(new string[0]);
+                //
+                // Given<ISessionFactory>()
+                //    .that_given_entity_type(Supplied("entityType", typeof(TestEntityType)))
+                //    .returns(The<IClassMetadata>());
 
                 Given<IEducationOrganizationCache>()
                    .that_given_education_organization_id(999)
@@ -369,7 +368,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             public void Should_not_include_redundant_values_in_the_filter_values()
             {
                 var actualFilter = _actualFilters.Single();
-                var parameterValues = actualFilter.ClaimValues as object[];
+                var parameterValues = actualFilter.ClaimValues;
 
                 parameterValues.Count().ShouldBe(1);
 

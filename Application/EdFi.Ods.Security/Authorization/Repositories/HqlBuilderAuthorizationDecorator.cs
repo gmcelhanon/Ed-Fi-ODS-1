@@ -358,10 +358,18 @@ namespace EdFi.Ods.Security.Authorization.Repositories
                         // Copy over the values of the named parameters, but only if they are actually present in the filter
                         var authorizationFilterDetails = filterInfo.Value;
 
-                        if (filterHql.Contains($":{authorizationFilterDetails.ClaimEndpointName}"))
+                        string parameterName = authorizationFilterDetails.ClaimEndpointName;
+
+                        if (filterHql.Contains($":{parameterName}"))
                         {
-                            builderContext.CurrentQueryFilterParameterValueByName[authorizationFilterDetails.ClaimEndpointName] =
-                                authorizationFilterDetails.ClaimValues;
+                            if (authorizationFilterDetails.ClaimValues.Length == 1)
+                            {
+                                builderContext.CurrentQueryFilterParameterValueByName[parameterName] = authorizationFilterDetails.ClaimValues.Single();
+                            }
+                            else
+                            {
+                                builderContext.CurrentQueryFilterParameterValueByName[parameterName] = authorizationFilterDetails.ClaimValues;
+                            }
                         }
                     }
                 }

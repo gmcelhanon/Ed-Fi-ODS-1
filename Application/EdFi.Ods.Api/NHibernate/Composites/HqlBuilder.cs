@@ -284,10 +284,10 @@ namespace EdFi.Ods.Api.NHibernate.Composites
                             : "1");
 
                     // Set the filter values
-                    object[] parametersAsObjects;
+                    object parametersAsObject;
 
                     // Is this a first time parameter value assignment?
-                    if (!builderContext.CurrentQueryFilterParameterValueByName.TryGetValue(parameterName, out parametersAsObjects))
+                    if (!builderContext.CurrentQueryFilterParameterValueByName.TryGetValue(parameterName, out parametersAsObject))
                     {
                         // Process filters into the query
                         filterWhere.AppendFormat(
@@ -310,7 +310,7 @@ namespace EdFi.Ods.Api.NHibernate.Composites
                     {
                         // Concatenate the current filter's values to the existing parameter list
                         builderContext.CurrentQueryFilterParameterValueByName[parameterName]
-                            = parametersAsObjects
+                            = (parametersAsObject as int[])
                              .Concat(
                                   valueFilter.Values
                                              .Select(x => _descriptorsCache.GetId(filterProperty.LookupTypeName, x))
@@ -1024,23 +1024,17 @@ namespace EdFi.Ods.Api.NHibernate.Composites
                 // Add the value to the parameter value collection
                 builderContext.CurrentQueryFilterParameterValueByName.Add(
                     rangeBeginParameterName,
-                    new []
-                    {
-                        ConvertParameterValueForProperty(
-                            targetProperty,
-                            rangeQueryMatch.Groups["BeginValue"]
-                                .Value)    
-                    });
+                    ConvertParameterValueForProperty(
+                        targetProperty,
+                        rangeQueryMatch.Groups["BeginValue"]
+                                       .Value));
 
                 builderContext.CurrentQueryFilterParameterValueByName.Add(
                     rangeEndParameterName,
-                    new []
-                    {
-                        ConvertParameterValueForProperty(
-                            targetProperty,
-                            rangeQueryMatch.Groups["EndValue"]
-                                .Value)    
-                    });
+                    ConvertParameterValueForProperty(
+                        targetProperty,
+                        rangeQueryMatch.Groups["EndValue"]
+                                       .Value));
 
                 // Add the query criteria to the HQL query
                 builderContext.SpecificationWhere.AppendFormat(
@@ -1059,52 +1053,52 @@ namespace EdFi.Ods.Api.NHibernate.Composites
             }
         }
 
-        // TODO: Delete
-        // private void SetQueryParameters(IQuery query, IDictionary<string, object> parameterValueByName)
-        // {
-        //     foreach (var kvp in parameterValueByName)
-        //     {
-        //         string parameterName = kvp.Key;
-        //         object value = kvp.Value;
-        //
-        //         if (parameterName.EndsWith("_Id"))
-        //         {
-        //             // Parameter is a GUID resource Id
-        //             query.SetParameter(parameterName, new Guid((string) value));
-        //         }
-        //         else if (!(value is string) && value is IEnumerable)
-        //         {
-        //             _parameterListSetter.SetParameterList(query, parameterName, value as IEnumerable);
-        //         }
-        //         else
-        //         {
-        //             query.SetParameter(parameterName, value);
-        //         }
-        //     }
-        // }
-
-        private void SetQueryParameters(IQuery query, IDictionary<string, object[]> parameterValueByName)
+        private void SetQueryParameters(IQuery query, IDictionary<string, object> parameterValueByName)
         {
             foreach (var kvp in parameterValueByName)
             {
                 string parameterName = kvp.Key;
-                object[] values = kvp.Value;
-
+                object value = kvp.Value;
+        
                 if (parameterName.EndsWith("_Id"))
                 {
                     // Parameter is a GUID resource Id
-                    query.SetParameter(parameterName, new Guid((string) values[0]));
+                    query.SetParameter(parameterName, new Guid((string) value));
                 }
-                else if (values.Length > 1)
+                else if (!(value is string) && value is IEnumerable)
                 {
-                    _parameterListSetter.SetParameterList(query, parameterName, values);
+                    _parameterListSetter.SetParameterList(query, parameterName, value as IEnumerable);
                 }
                 else
                 {
-                    query.SetParameter(parameterName, values[0]);
+                    query.SetParameter(parameterName, value);
                 }
             }
         }
+
+        // TODO: Delete
+        // private void SetQueryParameters(IQuery query, IDictionary<string, object[]> parameterValueByName)
+        // {
+        //     foreach (var kvp in parameterValueByName)
+        //     {
+        //         string parameterName = kvp.Key;
+        //         object[] values = kvp.Value;
+        //
+        //         if (parameterName.EndsWith("_Id"))
+        //         {
+        //             // Parameter is a GUID resource Id
+        //             query.SetParameter(parameterName, new Guid((string) values[0]));
+        //         }
+        //         else if (values.Length > 1)
+        //         {
+        //             _parameterListSetter.SetParameterList(query, parameterName, values);
+        //         }
+        //         else
+        //         {
+        //             query.SetParameter(parameterName, values[0]);
+        //         }
+        //     }
+        // }
 
         private static CompositeQuery CreateHierarchicalCompositeQuery(
             CompositeQuery parentResult,

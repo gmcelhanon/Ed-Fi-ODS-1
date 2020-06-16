@@ -246,10 +246,24 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             }
 
             [Assert]
-            public void Should_throw_a_NotSupportedException_with_a_message_related_to_multiple_education_organization_types()
+            public void Should_NOT_throw_a_NotSupportedException()
             {
-                ActualException.ShouldBeExceptionType<NotSupportedException>();
-                ActualException.Message.ShouldContain("multiple types");
+                ActualException.ShouldNotBeOfType<NotSupportedException>();
+            }
+            
+            
+            [Assert]
+            public void Should_call_segments_converter_to_convert_segments_built_based_on_the_supplied_claims_with_the_supplied_entity_type_and_filter_builder()
+            {
+                int expectedSegmentLength = Supplied<string[]>("propertyNames").Length;
+
+                A.CallTo(
+                        () =>
+                            Given<segments_to_filters_converter>()
+                                .Convert(
+                                    A<IReadOnlyList<ClaimsAuthorizationSegment>>.That.Matches(
+                                        asc => asc.Count == expectedSegmentLength)))
+                    .MustHaveHappened();
             }
         }
 

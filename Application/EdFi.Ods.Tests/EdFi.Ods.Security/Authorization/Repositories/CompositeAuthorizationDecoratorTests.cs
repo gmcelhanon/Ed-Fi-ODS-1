@@ -256,7 +256,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.Authorization.Repositories
                 
                 Assert.That(
                     _hqlBuilderContext.CurrentQueryFilterParameterValueByName[SuppliedParameterName],
-                    Is.EquivalentTo(new object[] { SuppliedParameterValue }));
+                    Is.EqualTo(SuppliedParameterValue));
             }
         }
 

@@ -23,12 +23,12 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
     {
         public IReadOnlyList<AuthorizationFilterDetails> Convert(IReadOnlyList<ClaimsAuthorizationSegment> authorizationSegments)
         {
-            var filters = new List<AuthorizationFilterDetails>();
-
             if (!authorizationSegments.Any())
             {
-                return filters;
+                return new AuthorizationFilterDetails[0];
             }
+
+            var filterByName = new Dictionary<string, AuthorizationFilterDetails>();
 
             foreach (var segment in authorizationSegments)
             {
@@ -56,10 +56,16 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
                         };
                     });
 
-                filters.AddRange(segmentFilters);
+                foreach (var segmentFilter in segmentFilters)
+                {
+                    if (!filterByName.TryGetValue(segmentFilter.FilterName, out AuthorizationFilterDetails filter))
+                    {
+                        filterByName[segmentFilter.FilterName] = segmentFilter;
+                    }
+                }
             }
 
-            return filters;
+            return filterByName.Values.ToArray();
         }
     }
 }
