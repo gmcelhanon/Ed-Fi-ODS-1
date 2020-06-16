@@ -7,38 +7,56 @@ using System.Collections.Generic;
 
 namespace EdFi.Ods.Common.Security.Authorization
 {
-    public class ParameterizedFilterBuilder
-    {
-        public IDictionary<string, IDictionary<string, object>> Value { get; } = new Dictionary<string, IDictionary<string, object>>();
-
-        public FilterDescriptor Filter(string filterName)
-        {
-            if (!Value.ContainsKey(filterName))
-            {
-                Value[filterName] = new Dictionary<string, object>();
-            }
-
-            return new FilterDescriptor(filterName, Value);
-        }
-    }
-
-    public class FilterDescriptor
-    {
-        private readonly string _filterName;
-
-        public FilterDescriptor(string filterName, IDictionary<string, IDictionary<string, object>> filters)
-        {
-            _filterName = filterName;
-            Value = filters;
-        }
-
-        public IDictionary<string, IDictionary<string, object>> Value { get; }
-
-        public FilterDescriptor Set(string parameterName, object parameterValue)
-        {
-            Value[_filterName][parameterName] = parameterValue;
-
-            return this;
-        }
-    }
+    // TODO: Delete
+    // public class ParameterizedFilterBuilder
+    // {
+    //     private readonly IDictionary<string, AuthorizationFilterDetails> _authorizationFilterByFilterName =
+    //         new Dictionary<string, AuthorizationFilterDetails>();
+    //     
+    //     public IDictionary<string, AuthorizationFilterDetails> Value
+    //     {
+    //         get => _authorizationFilterByFilterName;
+    //     } 
+    //
+    //     public FilterDescriptor Filter(string filterName)
+    //     {
+    //         if (!Value.ContainsKey(filterName))
+    //         {
+    //             Value[filterName] = new AuthorizationFilterDetails(filterName);
+    //         }
+    //
+    //         return new FilterDescriptor(Value[filterName]);
+    //     }
+    // }
+    //
+    // public class FilterDescriptor
+    // {
+    //     public FilterDescriptor(AuthorizationFilterDetails filter)
+    //     {
+    //         Value = filter;
+    //     }
+    //
+    //     public AuthorizationFilterDetails Value { get; }
+    //
+    //     public FilterDescriptor Parameter(string parameterName, object parameterValue)
+    //     {
+    //         Value.ParameterValues[parameterName] = parameterValue;
+    //
+    //         return this;
+    //     }
+    //
+    //     public FilterDescriptor Claim(string claimEndpointName)
+    //     {
+    //         Value.ClaimEndpointName = claimEndpointName;
+    //
+    //         return this;
+    //     }
+    //
+    //     public FilterDescriptor Subject(string subjectEndpointName)
+    //     {
+    //         Value.SubjectEndpointName = subjectEndpointName;
+    //
+    //         return this;
+    //     }
+    // }
 }

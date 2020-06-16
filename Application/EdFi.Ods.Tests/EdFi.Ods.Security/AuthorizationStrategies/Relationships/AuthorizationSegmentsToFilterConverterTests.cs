@@ -83,26 +83,24 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
         public class When_converting_to_filters_from_an_empty_segments_collection
             : LegacyScenarioFor<AuthorizationSegmentsToFiltersConverter>
         {
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
+
             protected override void Act()
             {
-                TestSubject.Convert(
-                    typeof(TestEntityType),
-                    new ClaimsAuthorizationSegment[0],
-                    Supplied(new ParameterizedFilterBuilder()));
+                _actualFilters = TestSubject.Convert(new ClaimsAuthorizationSegment[0]);
             }
 
             [Assert]
             public void Should_return_a_null_filters_dictionary()
             {
-                Supplied<ParameterizedFilterBuilder>()
-                   .Value.Count.ShouldBe(0);
+                _actualFilters.Count.ShouldBe(0);
             }
         }
 
         public class When_converting_to_filters_from_a_single_segment_for_a_LocalEducationAgency_claim_to_SchoolId
             : LegacyScenarioFor<AuthorizationSegmentsToFiltersConverter>
         {
-            private IDictionary<string, IDictionary<string, object>> _actualFilters;
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
 
             // Actual values
             protected override void Arrange()
@@ -123,20 +121,13 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
                 builder.ClaimsMustBeAssociatedWith(x => x.SchoolId);
                 Supplied(builder.GetSegments());
-
-                Supplied(new ParameterizedFilterBuilder());
             }
 
             protected override void Act()
             {
                 // Execute code under test
-                TestSubject.Convert(
-                    Supplied<Type>("entityType"),
-                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>(),
-                    Supplied<ParameterizedFilterBuilder>());
-
-                _actualFilters = Supplied<ParameterizedFilterBuilder>()
-                   .Value;
+                _actualFilters = TestSubject.Convert(
+                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>());
             }
 
             [Assert]
@@ -144,19 +135,20 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             {
                 _actualFilters.Count.ShouldBe(1);
 
-                _actualFilters.Keys.Single()
-                              .ShouldBe("LocalEducationAgencyIdToSchoolId");
+                _actualFilters.Single().FilterName.ShouldBe("LocalEducationAgencyIdToSchoolId");
             }
 
             [Assert]
             public void Should_assign_parameter_value_matching_the_claim_education_organization_type_and_value()
             {
-                var parameterValuesByName = _actualFilters.Values.Single();
+                var actualFilter = _actualFilters.Single();
+                var parameterValues = actualFilter.ClaimValues as object[];
 
-                parameterValuesByName.Count()
-                                     .ShouldBe(1);
+                parameterValues.Count().ShouldBe(1);
 
-                parameterValuesByName["LocalEducationAgencyId"]
+                actualFilter.ClaimEndpointName.ShouldBe("LocalEducationAgencyId");
+                
+                parameterValues
                    .ShouldBe(
                         new object[]
                         {
@@ -169,7 +161,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             When_converting_to_filters_from_a_single_segment_for_a_LocalEducationAgency_claim_to_a_StudentUSI_using_an_authorization_path_modifier
             : LegacyScenarioFor<AuthorizationSegmentsToFiltersConverter>
         {
-            private IDictionary<string, IDictionary<string, object>> _actualFilters;
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
 
             // Actual values
             protected override void Arrange()
@@ -190,20 +182,13 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
                 builder.ClaimsMustBeAssociatedWith(x => x.StudentUSI, "OverTheRiverAndThroughTheWoods");
                 Supplied(builder.GetSegments());
-
-                Supplied(new ParameterizedFilterBuilder());
             }
 
             protected override void Act()
             {
                 // Execute code under test
-                TestSubject.Convert(
-                    Supplied<Type>("entityType"),
-                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>(),
-                    Supplied<ParameterizedFilterBuilder>());
-
-                _actualFilters = Supplied<ParameterizedFilterBuilder>()
-                   .Value;
+                _actualFilters = TestSubject.Convert(
+                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>());
             }
 
             [Assert]
@@ -211,20 +196,22 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             {
                 _actualFilters.Count.ShouldBe(1);
 
-                _actualFilters.Keys.Single()
+                _actualFilters.Single().FilterName
                               .ShouldBe("LocalEducationAgencyIdToStudentUSIOverTheRiverAndThroughTheWoods");
             }
 
             [Assert]
             public void Should_assign_parameter_value_matching_the_claim_education_organization_type_and_value()
             {
-                var parameterValuesByName = _actualFilters.Values.Single();
+                var actualFilter = _actualFilters.Single();
+                var parameterValues = actualFilter.ClaimValues as object[];
 
-                parameterValuesByName.Count()
-                                     .ShouldBe(1);
+                parameterValues.Count().ShouldBe(1);
 
-                parameterValuesByName["LocalEducationAgencyId"]
-                   .ShouldBe(
+                actualFilter.ClaimEndpointName.ShouldBe("LocalEducationAgencyId");
+                
+                parameterValues
+                    .ShouldBe(
                         new object[]
                         {
                             999
@@ -238,7 +225,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             // Supplied values
 
             // Actual values
-            private IDictionary<string, IDictionary<string, object>> _actualFilters;
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
 
             // Dependencies
 
@@ -266,20 +253,13 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
                 builder.ClaimsMustBeAssociatedWith(x => x.SchoolId);
                 Supplied(builder.GetSegments());
-
-                Supplied(new ParameterizedFilterBuilder());
             }
 
             protected override void Act()
             {
                 // Execute code under test
-                TestSubject.Convert(
-                    Supplied<Type>("entityType"),
-                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>(),
-                    Supplied<ParameterizedFilterBuilder>());
-
-                _actualFilters = Supplied<ParameterizedFilterBuilder>()
-                   .Value;
+                _actualFilters = TestSubject.Convert(
+                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>());
             }
 
             [Assert]
@@ -293,7 +273,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
         public class When_converting_to_filters_from_a_segment_that_have_the_same_endpoint_types
             : LegacyScenarioFor<AuthorizationSegmentsToFiltersConverter>
         {
-            private IDictionary<string, IDictionary<string, object>> _actualFilters;
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
 
             protected override void Arrange()
             {
@@ -314,20 +294,13 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
                 builder.ClaimsMustBeAssociatedWith(x => x.LocalEducationAgencyId);
                 Supplied(builder.GetSegments());
-
-                Supplied(new ParameterizedFilterBuilder());
             }
 
             protected override void Act()
             {
                 // Execute code under test
-                TestSubject.Convert(
-                    Supplied<Type>("entityType"),
-                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>(),
-                    Supplied<ParameterizedFilterBuilder>());
-
-                _actualFilters = Supplied<ParameterizedFilterBuilder>()
-                   .Value;
+                _actualFilters = TestSubject.Convert(
+                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>());
             }
 
             [Assert]
@@ -335,20 +308,22 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
             {
                 _actualFilters.Count.ShouldBe(1);
 
-                _actualFilters.Keys.Single()
+                _actualFilters.Single().FilterName
                               .ShouldBe("LocalEducationAgencyIdToLocalEducationAgencyId");
             }
 
             [Assert]
             public void Should_assign_parameter_value_matching_the_claim_education_organization_type_and_value()
             {
-                var parameterValuesByName = _actualFilters.Values.Single();
+                var actualFilter = _actualFilters.Single();
+                var parameterValues = actualFilter.ClaimValues as object[];
 
-                parameterValuesByName.Count()
-                                     .ShouldBe(1);
+                parameterValues.Count().ShouldBe(1);
 
-                parameterValuesByName["LocalEducationAgencyId"]
-                   .ShouldBe(
+                actualFilter.ClaimEndpointName.ShouldBe("LocalEducationAgencyId");
+                
+                parameterValues
+                    .ShouldBe(
                         new object[]
                         {
                             999
@@ -359,7 +334,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
         public class When_converting_to_filters_from_multiple_segments_with_the_same_target_types
             : LegacyScenarioFor<AuthorizationSegmentsToFiltersConverter>
         {
-            private IDictionary<string, IDictionary<string, object>> _actualFilters;
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
 
             protected override void Arrange()
             {
@@ -381,31 +356,26 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
                 builder.ClaimsMustBeAssociatedWith(x => x.SchoolId);
                 builder.ClaimsMustBeAssociatedWith(x => x.SchoolId);
                 Supplied(builder.GetSegments());
-
-                Supplied(new ParameterizedFilterBuilder());
             }
 
             protected override void Act()
             {
                 // Execute code under test
-                TestSubject.Convert(
-                    Supplied<Type>("entityType"),
-                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>(),
-                    Supplied<ParameterizedFilterBuilder>());
-
-                _actualFilters = Supplied<ParameterizedFilterBuilder>()
-                   .Value;
+                _actualFilters = TestSubject.Convert(
+                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>());
             }
 
             [Assert]
             public void Should_not_include_redundant_values_in_the_filter_values()
             {
-                var parametersByName = _actualFilters.Single()
-                                                     .Value;
+                var actualFilter = _actualFilters.Single();
+                var parameterValues = actualFilter.ClaimValues as object[];
 
-                parametersByName.Count.ShouldBe(1);
+                parameterValues.Count().ShouldBe(1);
 
-                parametersByName["LocalEducationAgencyId"]
+                actualFilter.ClaimEndpointName.ShouldBe("LocalEducationAgencyId");
+                
+                parameterValues
                    .ShouldBe(
                         new object[]
                         {
@@ -417,7 +387,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
         public class When_converting_to_filters_from_a_segment_with_a_target_endpoint_that_is_a_uniqueId_for_an_entity_WITHOUT_a_uniqueId_property
             : LegacyScenarioFor<AuthorizationSegmentsToFiltersConverter>
         {
-            private IDictionary<string, IDictionary<string, object>> _actualFilters;
+            private IReadOnlyList<AuthorizationFilterDetails> _actualFilters;
 
             protected override void Arrange()
             {
@@ -442,28 +412,20 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
                 builder.ClaimsMustBeAssociatedWith(x => x.StaffUSI);
                 Supplied(builder.GetSegments());
-
-                Supplied(new ParameterizedFilterBuilder());
             }
 
             protected override void Act()
             {
                 // Execute code under test
-                TestSubject.Convert(
-                    Supplied<Type>("entityType"),
-                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>(),
-                    Supplied<ParameterizedFilterBuilder>());
-
-                _actualFilters = Supplied<ParameterizedFilterBuilder>()
-                   .Value;
+                _actualFilters = TestSubject.Convert(
+                    Supplied<IReadOnlyList<ClaimsAuthorizationSegment>>());
             }
 
             [Assert]
-            public void
-                Should_convert_UniqueId_properties_to_USI_in_the_constructed_view_name_when_the_property_DOES_NOT_exist_on_the_targeted_entity()
+            public void Should_convert_UniqueId_properties_to_USI_in_the_constructed_view_name_when_the_property_DOES_NOT_exist_on_the_targeted_entity()
             {
                 var filter = _actualFilters.Single();
-                var viewName = filter.Key;
+                var viewName = filter.FilterName;
 
                 viewName.ShouldNotContain("ToStaffUniqueId");
                 viewName.ShouldContain("ToStaffUSI");

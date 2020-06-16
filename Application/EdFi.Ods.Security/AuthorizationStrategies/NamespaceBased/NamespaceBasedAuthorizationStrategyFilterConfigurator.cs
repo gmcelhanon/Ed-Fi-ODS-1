@@ -26,8 +26,10 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.NamespaceBased
                                   "Namespace",
                                   @"(Namespace IS NOT NULL AND Namespace LIKE :Namespace)",
                                   @"({currentAlias}.Namespace IS NOT NULL AND {currentAlias}.Namespace LIKE :Namespace)",
-                                  (c, p) => c.Add(Restrictions.IsNotNull("Namespace"))
-                                             .Add(Restrictions.Like("Namespace", p["Namespace"])),
+                                  (c, w, p, jt) => 
+                                      w.Add(new AndExpression(
+                                      Restrictions.IsNotNull("Namespace"),
+                                      Restrictions.Like("Namespace", p["Namespace"]))),
                                   (t, p) => !DescriptorEntitySpecification.IsEdFiDescriptorEntity(t) && p.HasPropertyNamed("Namespace")),
                           }.AsReadOnly();
 

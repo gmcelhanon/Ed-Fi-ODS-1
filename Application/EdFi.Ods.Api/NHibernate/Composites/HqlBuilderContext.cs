@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using EdFi.Ods.Common.Composites;
+using EdFi.Ods.Common.Security.Authorization;
 
 namespace EdFi.Ods.Api.NHibernate.Composites
 {
@@ -97,10 +98,10 @@ namespace EdFi.Ods.Api.NHibernate.Composites
         /// <summary>
         /// Get contextual filter parameter values that should be applied to the current query only.
         /// </summary>
-        public IDictionary<string, object> CurrentQueryFilterParameterValueByName { get; } =
-            new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+        public IDictionary<string, object[]> CurrentQueryFilterParameterValueByName { get; } =
+            new Dictionary<string, object[]>(StringComparer.InvariantCultureIgnoreCase);
 
-        public IDictionary<string, IDictionary<string, object>> CurrentQueryFilterByName { get; set; }
+        public IDictionary<string, AuthorizationFilterDetails> CurrentQueryFilterByName { get; set; }
 
         /// <summary>
         /// Gets or sets an ordered list of the property projections for this context.

@@ -171,13 +171,9 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
             protected override void Act()
             {
-                SystemUnderTest.ApplyAuthorizationFilters(
-                    new[]
-                    {
-                        Supplied<Claim>()
-                    },
-                    Supplied<EdFiAuthorizationContext>(),
-                    Supplied(new ParameterizedFilterBuilder()));
+                var authorizationFilters = SystemUnderTest.GetAuthorizationFilters(
+                    new[] {Supplied<Claim>()},
+                    Supplied<EdFiAuthorizationContext>());
             }
 
             [Assert]
@@ -190,10 +186,8 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
                         () =>
                             Given<segments_to_filters_converter>()
                                 .Convert(
-                                    A<Type>.That.IsSameAs(Supplied("entity").GetType()),
                                     A<IReadOnlyList<ClaimsAuthorizationSegment>>.That.Matches(
-                                        asc => asc.Count == expectedSegmentLength),
-                                    A<ParameterizedFilterBuilder>.That.IsSameAs(Supplied<ParameterizedFilterBuilder>())))
+                                        asc => asc.Count == expectedSegmentLength)))
                     .MustHaveHappened();
             }
         }
@@ -243,13 +237,12 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Security.AuthorizationStrategies.Relationships
 
             protected override void Act()
             {
-                SystemUnderTest.ApplyAuthorizationFilters(
+                SystemUnderTest.GetAuthorizationFilters(
                     new[]
                     {
                         Supplied<Claim>()
                     },
-                    Supplied<EdFiAuthorizationContext>(),
-                    Supplied(new ParameterizedFilterBuilder()));
+                    Supplied<EdFiAuthorizationContext>());
             }
 
             [Assert]

@@ -59,10 +59,10 @@ namespace EdFi.Ods.Security.Authorization
                 foreach (var claimEndpointsWithSameName in claimEndpointsGroupedByName)
                 {
                     string claimEndpointName = claimEndpointsWithSameName.Key;
-                    string targetEndpointName = authorizationSegment.TargetEndpoint.Name;
+                    string targetEndpointName = authorizationSegment.SubjectEndpoint.Name;
 
                     var targetEndpointWithValue =
-                        authorizationSegment.TargetEndpoint as AuthorizationSegmentEndpointWithValue;
+                        authorizationSegment.SubjectEndpoint as AuthorizationSegmentEndpointWithValue;
 
                     // This should never happen
                     if (targetEndpointWithValue == null)
@@ -80,7 +80,7 @@ namespace EdFi.Ods.Security.Authorization
                     // Perform defensive checks against the remote possibility of SQL injection attack
                     ValidateTableNameParts(claimEndpointName, targetEndpointName, authorizationSegment.AuthorizationPathModifier);
 
-                    string derivedAuthorizationViewName = BuildAuthorizationViewName(targetEndpointName, claimEndpointName, authorizationSegment.AuthorizationPathModifier);
+                    string derivedAuthorizationViewName = "auth." + ViewNameHelper.GetAuthorizationViewName(targetEndpointName, claimEndpointName, authorizationSegment.AuthorizationPathModifier);
 
                     if (!IsAuthorizationViewSupported(derivedAuthorizationViewName))
                     {
@@ -192,16 +192,6 @@ namespace EdFi.Ods.Security.Authorization
             }
 
             return true;
-        }
-
-        private string BuildAuthorizationViewName(string endpoint1, string endpoint2, string authorizationPathModifier)
-        {
-            if (string.Compare(endpoint1, endpoint2, StringComparison.InvariantCultureIgnoreCase) < 0)
-            {
-                return $"auth.{endpoint1}To{endpoint2}{authorizationPathModifier}";
-            }
-
-            return $"auth.{endpoint2}To{endpoint1}{authorizationPathModifier}";
         }
 
         private string GetMultiValueCriteriaExpression(

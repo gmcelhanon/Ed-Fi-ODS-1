@@ -33,9 +33,8 @@ namespace EdFi.Ods.Common.Security.Authorization
         /// <param name="authorizationContext">The authorization context.</param>
         /// <param name="filterBuilder">A builder used to activate filters and assign parameter values.</param>
         /// <returns>The dictionary containing the filter information as appropriate, or <b>null</b> if no filters are required.</returns>
-        void ApplyAuthorizationFilters(
+        IReadOnlyList<AuthorizationFilterDetails> GetAuthorizationFilters(
             IEnumerable<Claim> relevantClaims,
-            EdFiAuthorizationContext authorizationContext,
-            ParameterizedFilterBuilder filterBuilder);
+            EdFiAuthorizationContext authorizationContext);
     }
 }

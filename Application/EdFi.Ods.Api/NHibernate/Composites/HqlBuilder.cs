@@ -49,7 +49,7 @@ namespace EdFi.Ods.Api.NHibernate.Composites
 
         // Support date and numeric ranges (e.g. [2016-05-23..2016-06-30])
         private static readonly Regex _rangeRegex = new Regex(
-            @"(?<PropertyName>\w+):(?<BeginRangeSymbol>[\[\{])((?<BeginValue>[0-9]{4}-[0-9]{1,2}-[0-9]{1,2})(\.\.\.|\.\.|…)(?<EndValue>[0-9]{4}-[0-9]{1,2}-[0-9]{1,2})|(?<BeginValue>[0-9\.]+?)(\.\.\.|\.\.|…)(?<EndValue>[0-9\.]+?))(?<EndRangeSymbol>[\}\]])",
+            @"(?<PropertyName>\w+):(?<BeginRangeSymbol>[\[\{])((?<BeginValue>[0-9]{4}-[0-9]{1,2}-[0-9]{1,2})(\.\.\.|\.\.|ï¿½)(?<EndValue>[0-9]{4}-[0-9]{1,2}-[0-9]{1,2})|(?<BeginValue>[0-9\.]+?)(\.\.\.|\.\.|ï¿½)(?<EndValue>[0-9\.]+?))(?<EndRangeSymbol>[\}\]])",
             RegexOptions.Compiled);
         private readonly IDescriptorsCache _descriptorsCache;
 
@@ -284,10 +284,10 @@ namespace EdFi.Ods.Api.NHibernate.Composites
                             : "1");
 
                     // Set the filter values
-                    object parametersAsObject;
+                    object[] parametersAsObjects;
 
                     // Is this a first time parameter value assignment?
-                    if (!builderContext.CurrentQueryFilterParameterValueByName.TryGetValue(parameterName, out parametersAsObject))
+                    if (!builderContext.CurrentQueryFilterParameterValueByName.TryGetValue(parameterName, out parametersAsObjects))
                     {
                         // Process filters into the query
                         filterWhere.AppendFormat(
@@ -303,14 +303,14 @@ namespace EdFi.Ods.Api.NHibernate.Composites
                         // Set the parameter values
                         builderContext.CurrentQueryFilterParameterValueByName[parameterName]
                             = valueFilter.Values
-                                         .Select(x => _descriptorsCache.GetId(filterProperty.LookupTypeName, x))
+                                         .Select(x => (object) _descriptorsCache.GetId(filterProperty.LookupTypeName, x))
                                          .ToArray();
                     }
                     else
                     {
                         // Concatenate the current filter's values to the existing parameter list
                         builderContext.CurrentQueryFilterParameterValueByName[parameterName]
-                            = (parametersAsObject as int[])
+                            = parametersAsObjects
                              .Concat(
                                   valueFilter.Values
                                              .Select(x => _descriptorsCache.GetId(filterProperty.LookupTypeName, x))
@@ -1024,17 +1024,23 @@ namespace EdFi.Ods.Api.NHibernate.Composites
                 // Add the value to the parameter value collection
                 builderContext.CurrentQueryFilterParameterValueByName.Add(
                     rangeBeginParameterName,
-                    ConvertParameterValueForProperty(
-                        targetProperty,
-                        rangeQueryMatch.Groups["BeginValue"]
-                                       .Value));
+                    new []
+                    {
+                        ConvertParameterValueForProperty(
+                            targetProperty,
+                            rangeQueryMatch.Groups["BeginValue"]
+                                .Value)    
+                    });
 
                 builderContext.CurrentQueryFilterParameterValueByName.Add(
                     rangeEndParameterName,
-                    ConvertParameterValueForProperty(
-                        targetProperty,
-                        rangeQueryMatch.Groups["EndValue"]
-                                       .Value));
+                    new []
+                    {
+                        ConvertParameterValueForProperty(
+                            targetProperty,
+                            rangeQueryMatch.Groups["EndValue"]
+                                .Value)    
+                    });
 
                 // Add the query criteria to the HQL query
                 builderContext.SpecificationWhere.AppendFormat(
@@ -1053,25 +1059,49 @@ namespace EdFi.Ods.Api.NHibernate.Composites
             }
         }
 
-        private void SetQueryParameters(IQuery query, IDictionary<string, object> parameterValueByName)
+        // TODO: Delete
+        // private void SetQueryParameters(IQuery query, IDictionary<string, object> parameterValueByName)
+        // {
+        //     foreach (var kvp in parameterValueByName)
+        //     {
+        //         string parameterName = kvp.Key;
+        //         object value = kvp.Value;
+        //
+        //         if (parameterName.EndsWith("_Id"))
+        //         {
+        //             // Parameter is a GUID resource Id
+        //             query.SetParameter(parameterName, new Guid((string) value));
+        //         }
+        //         else if (!(value is string) && value is IEnumerable)
+        //         {
+        //             _parameterListSetter.SetParameterList(query, parameterName, value as IEnumerable);
+        //         }
+        //         else
+        //         {
+        //             query.SetParameter(parameterName, value);
+        //         }
+        //     }
+        // }
+
+        private void SetQueryParameters(IQuery query, IDictionary<string, object[]> parameterValueByName)
         {
             foreach (var kvp in parameterValueByName)
             {
                 string parameterName = kvp.Key;
-                object value = kvp.Value;
+                object[] values = kvp.Value;
 
                 if (parameterName.EndsWith("_Id"))
                 {
                     // Parameter is a GUID resource Id
-                    query.SetParameter(parameterName, new Guid((string) value));
+                    query.SetParameter(parameterName, new Guid((string) values[0]));
                 }
-                else if (!(value is string) && value is IEnumerable)
+                else if (values.Length > 1)
                 {
-                    _parameterListSetter.SetParameterList(query, parameterName, value as IEnumerable);
+                    _parameterListSetter.SetParameterList(query, parameterName, values);
                 }
                 else
                 {
-                    query.SetParameter(parameterName, value);
+                    query.SetParameter(parameterName, values[0]);
                 }
             }
         }
