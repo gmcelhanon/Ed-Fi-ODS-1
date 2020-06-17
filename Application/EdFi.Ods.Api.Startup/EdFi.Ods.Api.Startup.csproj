@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Features.OwnershipBasedAuthorization\EdFi.Ods.Features.OwnershipBasedAuthorization.csproj" />
+    <ProjectReference Include="..\..\..\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.Publishing\EdFi.Ods.Extensions.Publishing.csproj" />
     <ProjectReference Include="..\EdFi.Common\EdFi.Common.csproj" />
     <ProjectReference Include="..\EdFi.Security.DataAccess\EdFi.Security.DataAccess.csproj" />
     <ProjectReference Include="..\EdFi.Ods.Standard\EdFi.Ods.Standard.csproj" />
