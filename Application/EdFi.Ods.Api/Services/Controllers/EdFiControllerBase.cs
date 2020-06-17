@@ -301,7 +301,7 @@ namespace EdFi.Ods.Api.Services.Controllers
         }
 
         [CheckModelForNull]
-        public async Task<IHttpActionResult> Delete([FromUri] Guid id)
+        public virtual async Task<IHttpActionResult> Delete([FromUri] Guid id)
         {
             // Read the If-Match header and populate the delete context based on the value (or lack of one)
             string etag;
