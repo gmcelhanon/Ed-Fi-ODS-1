@@ -39,7 +39,7 @@ namespace EdFi.Ods.Api.Startup.HttpConfigurators
 
             var showErrors = config.IncludeErrorDetailPolicy != IncludeErrorDetailPolicy.Never;
 
-            config.Filters.Add(new ExceptionHandlingFilter(showErrors));
+            config.Filters.Add(new ExceptionHandlingFilter(_restErrorProvider, showErrors));
             config.Filters.Add(new SchoolYearContextFilter(_schoolYearContextProvider));
             config.Filters.Add(new EdFiAuthorizationFilter(_edFiAuthorizationProvider, _securityRepository, _restErrorProvider));
         }

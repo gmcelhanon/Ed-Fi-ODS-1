@@ -9,19 +9,39 @@ using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using EdFi.Ods.Api.ExceptionHandling;
 using EdFi.Ods.Api.Services.ActionFilters;
 using EdFi.Ods.Common.Exceptions;
+using FakeItEasy;
 using Microsoft.Owin.Testing;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using Owin;
 using Shouldly;
+using Test.Common;
 
 namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
 {
+    public class FakeRestErrorProvider : IRESTErrorProvider
+    {
+        internal const HttpStatusCode FakeStatusCode = HttpStatusCode.RequestEntityTooLarge;
+        internal const string FakeMessage = "Fake Message";
+
+        public RESTError GetRestErrorFromException(Exception exception)
+        {
+            return new RESTError()
+            {
+                Code = (int) FakeStatusCode,
+                Message = FakeMessage
+            };
+        }
+    }
+    
     public class ExceptionHandlingFilterTests
     {
         [TestFixture]
         public class When_uncaught_error_is_handled_by_error_filter_with_custom_errors
+            : TestFixtureBase
         {
             private class TestController : ApiController { }
 
@@ -41,7 +61,9 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
                 var httpActionContext = new HttpActionContext(httpControllerContext, new ReflectedHttpActionDescriptor());
                 var actionExecutedContext = new HttpActionExecutedContext(httpActionContext, new BadRequestException());
 
-                var exceptionHandlingFilter = new ExceptionHandlingFilter(true);
+                var exceptionHandlingFilter = new ExceptionHandlingFilter(
+                    new FakeRestErrorProvider(),
+                    isCustomErrorEnabled: true);
 
                 exceptionHandlingFilter.ExecuteExceptionFilterAsync(actionExecutedContext, new CancellationToken())
                                        .Wait();
@@ -50,19 +72,21 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
             }
 
             [Test]
-            public void generic_message_should_not_include_stack_trace()
+            public void Should_create_response_with_message_returned_from_the_REST_error_provider()
             {
-                var responseTask = response.Content.ReadAsStringAsync();
-                responseTask.Wait();
-                var result = responseTask.Result;
-                result.ShouldBe(ExpectedErrorMessage);
+                var result = response.Content.ReadAsStringAsync().Result;
+
+                var resultObject = JObject.Parse(result);
+                var resultMessage = resultObject["Message"].Value<string>();
+                
+                resultMessage.ShouldBe(FakeRestErrorProvider.FakeMessage);
             }
 
             [Test]
-            public void Should_create_response_with_internal_server_error_status_code()
+            public void Should_create_response_with_status_code_returned_from_the_REST_error_provider()
             {
                 response.ShouldNotBeNull();
-                response.StatusCode.ShouldBe(HttpStatusCode.InternalServerError);
+                response.StatusCode.ShouldBe(FakeRestErrorProvider.FakeStatusCode);
             }
         }
     }
@@ -79,7 +103,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
 
     public class OwinTests
     {
-        private const string ErrorMessage = "{\"Message\":\"An error has occurred.\"}";
+        private const string GeneralErrorMessage = "An error has occurred.";
 
         [TestFixture]
         public class When_test_controller_throws_uncaught_error_and_custom_errors_is_on
@@ -98,7 +122,11 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
                             controller = "UncaughtErrorTest", action = "Get"
                         });
 
-                    config.Filters.Add(new ExceptionHandlingFilter(true));
+                    config.Filters.Add(
+                        new ExceptionHandlingFilter(
+                            new FakeRestErrorProvider(), 
+                            isCustomErrorEnabled: true));
+                    
                     appBuilder.UseWebApi(config);
                 }
             }
@@ -118,18 +146,20 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
             }
 
             [Test]
-            public void Should_be_generic_error_message()
+            public void Should_create_response_with_message_returned_from_the_REST_error_provider()
             {
-                var resultMessage = result.Content.ReadAsStringAsync()
-                                          .Result;
+                var resultObject = JObject.Parse(result.Content.ReadAsStringAsync().Result);
+                
+                string resultMessage = resultObject["Message"].Value<string>();
 
-                resultMessage.ShouldBe(ErrorMessage);
+                resultMessage.ShouldBe(FakeRestErrorProvider.FakeMessage);
             }
 
             [Test]
-            public void Should_have_error_status_code()
+            public void Should_create_response_with_status_code_returned_from_the_REST_error_provider()
             {
-                result.StatusCode.ShouldBe(HttpStatusCode.InternalServerError);
+                result.ShouldNotBeNull();
+                result.StatusCode.ShouldBe(FakeRestErrorProvider.FakeStatusCode);
             }
         }
 
@@ -150,7 +180,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
                             controller = "UncaughtErrorTest", action = "Get"
                         });
 
-                    config.Filters.Add(new ExceptionHandlingFilter(false));
+                    config.Filters.Add(new ExceptionHandlingFilter(new FakeRestErrorProvider(), false));
                     config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
                     appBuilder.UseWebApi(config);
                 }
@@ -171,18 +201,18 @@ namespace EdFi.Ods.Tests.EdFi.Ods.WebApi
             }
 
             [Test]
-            public void Should_have_error_status_code()
+            public void Should_return_the_InternalServerError_status_code()
             {
                 result.StatusCode.ShouldBe(HttpStatusCode.InternalServerError);
             }
 
             [Test]
-            public void Should_not_be_generic_error_message()
+            public void Should_return_the_general_error_message()
             {
-                var resultMessage = result.Content.ReadAsStringAsync()
-                                          .Result;
+                var resultObject = JObject.Parse(result.Content.ReadAsStringAsync().Result);
+                var resultMessage = resultObject["Message"].Value<string>();
 
-                resultMessage.ShouldNotBe(ErrorMessage);
+                resultMessage.ShouldBe(GeneralErrorMessage);
             }
         }
     }
