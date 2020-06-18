@@ -354,7 +354,7 @@ namespace EdFi.Ods.WebService.Tests.Owin
         protected void RegisterCoreFilters(HttpConfiguration config)
         {
             var showErrors = config.IncludeErrorDetailPolicy != IncludeErrorDetailPolicy.Never;
-            config.Filters.Add(new ExceptionHandlingFilter(showErrors));
+            config.Filters.Add(new ExceptionHandlingFilter(Container.Resolve<IRESTErrorProvider>(), showErrors));
             config.Filters.Add(new SchoolYearContextFilter(Container.Resolve<ISchoolYearContextProvider>()));
         }
 

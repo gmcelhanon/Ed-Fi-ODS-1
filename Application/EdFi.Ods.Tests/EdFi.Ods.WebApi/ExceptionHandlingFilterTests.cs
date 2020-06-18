@@ -12,6 +12,7 @@ using System.Web.Http.Filters;
 using EdFi.Ods.Api.ExceptionHandling;
 using EdFi.Ods.Api.Services.ActionFilters;
 using EdFi.Ods.Common.Exceptions;
+using EdFi.TestFixture;
 using FakeItEasy;
 using Microsoft.Owin.Testing;
 using Newtonsoft.Json.Linq;
