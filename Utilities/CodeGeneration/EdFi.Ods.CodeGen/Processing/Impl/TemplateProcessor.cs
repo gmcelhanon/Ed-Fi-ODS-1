@@ -61,7 +61,7 @@ namespace EdFi.Ods.CodeGen.Processing.Impl
 
                     var model = generator.Generate(templateContext);
 
-                    _logger.Debug($"Generating template data for template {templateSet.Name}");
+                    _logger.Debug($"Generating template data for template '{templateSet.Name}'.");
 
                     string outputPath = Path.Combine(assemblyData.Path, templateSet.OutputPath);
 
@@ -72,7 +72,7 @@ namespace EdFi.Ods.CodeGen.Processing.Impl
                         OutputPath = outputPath
                     };
 
-                    _logger.Debug($"Writing template data for path {outputPath}");
+                    _logger.Debug($"Writing generated output to '{outputPath}'.");
 
                     await _templateWriter.WriteAsync(codeGenWriterData, cancellationToken)
                         .ConfigureAwait(false);
