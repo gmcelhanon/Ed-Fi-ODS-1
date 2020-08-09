@@ -1,0 +1,62 @@
+{{#Aggregates}}
+    {{#AggregateRoot}}
+    -- DROP TABLE {{Schema}}.{{TableName}}
+    -- GO
+    
+    CREATE TABLE {{Schema}}.{{TableName}} (
+        HashKey uniqueidentifier NOT NULL,
+        -- Primary key references
+        {{#IdentifyingReferences}}
+            {{#Column}}
+        {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL,
+            {{/Column}}
+        {{/IdentifyingReferences}}
+        -- Primary key columns
+        {{#PrimaryKey}}
+        {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL,
+        {{/PrimaryKey}}
+        -- Constraints
+        CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (HashKey ASC)
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY]
+    GO
+        {{#HasNonKeyColumns}}
+    {{> MultiYear_0020_Tables__AttributeTable}}
+        {{/HasNonKeyColumns}}
+
+    {{/AggregateRoot}}
+    
+    {{#Members}}
+    CREATE TABLE {{Schema}}.{{TableName}} (
+        HashKey uniqueidentifier NOT NULL
+        -- Identifying references
+        {{#IdentifyingReferences}}
+            {{#Column}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+            {{/Column}}
+        {{/IdentifyingReferences}}
+        -- Contextual primary key
+        {{#ContextualPrimaryKey}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        {{/ContextualPrimaryKey}}
+        -- Constraints
+        CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (
+            HashKey ASC
+        {{#IdentifyingReferences}}
+            {{#Column}}
+            , {{ColumnName}}
+            {{/Column}}
+        {{/IdentifyingReferences}}
+        {{#ContextualPrimaryKey}}
+            , {{ColumnName}}
+        {{/ContextualPrimaryKey}}
+    )
+    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+    ) ON [PRIMARY]
+    GO
+
+        {{#HasNonKeyColumns}}
+    {{> MultiYear_0020_Tables__AttributeTable}}
+        {{/HasNonKeyColumns}}
+    {{/Members}}
+{{/Aggregates}}

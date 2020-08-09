@@ -1,0 +1,5 @@
+-- Foreign key from entity identity table
+ALTER TABLE {{Schema}}.{{TableName}}_Attributes WITH CHECK ADD CONSTRAINT FK_{{TableName}}_Attributes FOREIGN KEY
+(HashKey{{#IdentifyingReferences}}{{#Column}}, {{ColumnName}}{{/Column}}{{/IdentifyingReferences}}) REFERENCES {{Schema}}.{{TableName}} (HashKey{{#ContextualPrimaryKeyColumns}}, {{ColumnName}}{{/ContextualPrimaryKeyColumns}})
+GO
+

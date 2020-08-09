@@ -1,0 +1,42 @@
+    -- DROP TABLE {{Schema}}.{{TableName}}_Attributes
+    -- GO
+
+    CREATE TABLE {{Schema}}.{{TableName}}_Attributes (
+        HashKey uniqueidentifier NOT NULL
+        , SchoolYearContext int NOT NULL
+        {{^IsAggregateRoot}}
+        -- Identifying references
+        {{#IdentifyingReferences}}
+            {{#Column}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+            {{/Column}}
+        {{/IdentifyingReferences}}
+        -- Contextual primary key
+        {{/IsAggregateRoot}}
+        {{#ContextualPrimaryKeyColumns}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        {{/ContextualPrimaryKeyColumns}}
+        {{#HasNonKeyColumns}}
+        -- Attributes
+        {{/HasNonKeyColumns}}
+        {{#NonKeyColumns}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        {{/NonKeyColumns}}
+        -- References
+        {{#References}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        {{/References}}
+        -- Boilerplate
+        {{#BoilerplateColumns}}
+        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        {{/BoilerplateColumns}}
+        -- Constraints
+        , CONSTRAINT {{TableName}}_Attributes_PK PRIMARY KEY CLUSTERED (
+            HashKey ASC
+            , SchoolYearContext ASC
+        {{#ContextualPrimaryKey}}
+            , {{ColumnName}} ASC -- Contextual PK column
+        {{/ContextualPrimaryKey}}
+        ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+    GO

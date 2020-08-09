@@ -1,0 +1,26 @@
+{{#Aggregates}}
+    {{#AggregateRoot}}
+        {{#HasNonKeyColumns}}
+        {{> MultiYear_0030_ForeignKeys__AttributeTable}}
+        {{/HasNonKeyColumns}}
+
+        {{#IdentifyingReferences}}
+    -- Foreign key to identifying reference on aggregate root entity
+    ALTER TABLE {{Schema}}.{{TableName}} WITH CHECK ADD CONSTRAINT {{ConstraintName}} FOREIGN KEY ({{ReferencedTableName}}HashKey)
+    REFERENCES {{ReferencedTableSchema}}.{{ReferencedTableName}} (HashKey)
+
+        {{/IdentifyingReferences}}
+    {{/AggregateRoot}}
+    {{#Members}}
+        {{#IdentifyingReferences}}
+    -- Foreign key to identifying reference on aggregate child entity
+    ALTER TABLE {{Schema}}.{{TableName}} WITH CHECK ADD CONSTRAINT {{ConstraintName}} FOREIGN KEY ({{ReferencedTableName}}HashKey)
+    REFERENCES {{ReferencedTableSchema}}.{{ReferencedTableName}} (HashKey)
+        {{/IdentifyingReferences}}
+
+        {{#HasNonKeyColumns}}
+        {{> MultiYear_0030_ForeignKeys__AttributeTable}}
+        {{/HasNonKeyColumns}}
+
+    {{/Members}}
+{{/Aggregates}}
