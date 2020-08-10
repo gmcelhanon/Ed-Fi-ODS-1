@@ -7,6 +7,12 @@
       "OutputPath": "MsSql\\Structure\\MultiYearOds\\0020-Tables.sql"
     },
     {
+      "Name": "MultiYear_0025_PopulateTables",
+      "Driver": "MultiYear_0025_PopulateTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\MultiYearOds\\0025-PopulateTables.sql"
+    },
+    {
       "Name": "MultiYear_0030_ForeignKeys",
       "Driver": "MultiYear_0030_ForeignKeys",
       "DatabaseEngine": "sqlServer",

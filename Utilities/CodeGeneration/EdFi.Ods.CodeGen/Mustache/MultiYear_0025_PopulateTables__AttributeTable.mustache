@@ -1,0 +1,78 @@
+    INSERT INTO {{Schema}}.{{TableName}}_Attributes (
+        HashKey
+        , SchoolYearContext
+        {{^IsAggregateRoot}}
+        -- Identifying references
+        {{#IdentifyingReferences}}
+            {{#Column}}
+        , {{ColumnName}}
+            {{/Column}}
+        {{/IdentifyingReferences}}
+        {{/IsAggregateRoot}}
+        {{#HasContextualPrimaryKeyColumns}}
+        -- Contextual primary key
+            {{#ContextualPrimaryKeyColumns}}
+        , {{ColumnName}}
+            {{/ContextualPrimaryKeyColumns}}
+        {{/HasContextualPrimaryKeyColumns}}
+        {{#HasNonKeyColumns}}
+        -- Attributes
+            {{#NonKeyColumns}}
+        , {{ColumnName}}
+            {{/NonKeyColumns}}
+        {{/HasNonKeyColumns}}
+        {{#HasReferences}}
+        -- References
+            {{#References}}
+                {{#Column}}
+        , {{ColumnName}}
+                {{/Column}}
+            {{/References}}
+        {{/HasReferences}}
+        -- Boilerplate columns
+        {{#BoilerplateColumns}}
+        , {{ColumnName}}
+        {{/BoilerplateColumns}})
+    SELECT
+        HASHBYTES('sha1', 
+        {{#PrimaryKeyColumns}}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+        {{/PrimaryKeyColumns}})
+        , @schoolYearContext
+        {{^IsAggregateRoot}}
+        -- Identifying references
+        {{#IdentifyingReferences}}
+        , HASHBYTES('sha1', 
+            {{#ReferenceColumns}}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+            {{/ReferenceColumns}}
+        )
+        {{/IdentifyingReferences}}
+        {{/IsAggregateRoot}}
+        {{#HasContextualPrimaryKeyColumns}}
+        -- Contextual primary key
+            {{#ContextualPrimaryKeyColumns}}
+        , {{ColumnName}}
+            {{/ContextualPrimaryKeyColumns}}
+        {{/HasContextualPrimaryKeyColumns}}
+        {{#HasNonKeyColumns}}
+        -- Attributes
+            {{#NonKeyColumns}}
+        , {{ColumnName}}
+            {{/NonKeyColumns}}
+        {{/HasNonKeyColumns}}
+        {{#HasReferences}}
+        -- References
+            {{#References}}
+        , HASHBYTES('sha1', 
+            {{#ReferenceColumns}}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+            {{/ReferenceColumns}}
+        )
+            {{/References}}
+        {{/HasReferences}}
+        -- Boilerplate columns
+        {{#BoilerplateColumns}}
+        , {{ColumnName}}
+        {{/BoilerplateColumns}}
+    FROM EdFi_Ods_Populated_Template.{{Schema}}.{{TableName}}

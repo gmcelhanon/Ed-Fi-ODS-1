@@ -1,28 +1,26 @@
 {{#Aggregates}}
     {{#AggregateRoot}}
-    -- DROP TABLE {{Schema}}.{{TableName}}
-    -- GO
-    
     CREATE TABLE {{Schema}}.{{TableName}} (
         HashKey uniqueidentifier NOT NULL,
         -- Primary key references
         {{#IdentifyingReferences}}
             {{#Column}}
-        {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL,
+        {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL,
             {{/Column}}
         {{/IdentifyingReferences}}
         -- Primary key columns
-        {{#PrimaryKey}}
-        {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL,
-        {{/PrimaryKey}}
+        {{#PrimaryKeyColumns}}
+        {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL,
+        {{/PrimaryKeyColumns}}
         -- Constraints
         CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (HashKey ASC)
     WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
     ) ON [PRIMARY]
     GO
-        {{#HasNonKeyColumns}}
+
+        {{#HasNonKeyColumnsOrReferences}}
     {{> MultiYear_0020_Tables__AttributeTable}}
-        {{/HasNonKeyColumns}}
+        {{/HasNonKeyColumnsOrReferences}}
 
     {{/AggregateRoot}}
     
@@ -32,13 +30,13 @@
         -- Identifying references
         {{#IdentifyingReferences}}
             {{#Column}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
             {{/Column}}
         {{/IdentifyingReferences}}
         -- Contextual primary key
-        {{#ContextualPrimaryKey}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
-        {{/ContextualPrimaryKey}}
+        {{#ContextualPrimaryKeyColumns}}
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
+        {{/ContextualPrimaryKeyColumns}}
         -- Constraints
         CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (
             HashKey ASC
@@ -47,16 +45,17 @@
             , {{ColumnName}}
             {{/Column}}
         {{/IdentifyingReferences}}
-        {{#ContextualPrimaryKey}}
+        {{#ContextualPrimaryKeyColumns}}
             , {{ColumnName}}
-        {{/ContextualPrimaryKey}}
+        {{/ContextualPrimaryKeyColumns}}
     )
     WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
     ) ON [PRIMARY]
     GO
 
-        {{#HasNonKeyColumns}}
+        {{#HasNonKeyColumnsOrReferences}}
     {{> MultiYear_0020_Tables__AttributeTable}}
-        {{/HasNonKeyColumns}}
+
+        {{/HasNonKeyColumnsOrReferences}}
     {{/Members}}
 {{/Aggregates}}

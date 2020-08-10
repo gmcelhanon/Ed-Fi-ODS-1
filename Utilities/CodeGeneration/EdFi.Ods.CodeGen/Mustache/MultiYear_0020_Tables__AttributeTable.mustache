@@ -1,6 +1,3 @@
-    -- DROP TABLE {{Schema}}.{{TableName}}_Attributes
-    -- GO
-
     CREATE TABLE {{Schema}}.{{TableName}}_Attributes (
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext int NOT NULL
@@ -8,35 +5,39 @@
         -- Identifying references
         {{#IdentifyingReferences}}
             {{#Column}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
             {{/Column}}
         {{/IdentifyingReferences}}
         -- Contextual primary key
         {{/IsAggregateRoot}}
         {{#ContextualPrimaryKeyColumns}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
         {{/ContextualPrimaryKeyColumns}}
         {{#HasNonKeyColumns}}
         -- Attributes
         {{/HasNonKeyColumns}}
         {{#NonKeyColumns}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
         {{/NonKeyColumns}}
+        {{#HasReferences}}
         -- References
+        {{/HasReferences}}
         {{#References}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+            {{#Column}}
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
+            {{/Column}}
         {{/References}}
         -- Boilerplate
         {{#BoilerplateColumns}}
-        , {{ColumnName}} {{DataType}} {{^IsNull}}NOT {{/IsNull}}NULL
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
         {{/BoilerplateColumns}}
         -- Constraints
         , CONSTRAINT {{TableName}}_Attributes_PK PRIMARY KEY CLUSTERED (
             HashKey ASC
             , SchoolYearContext ASC
-        {{#ContextualPrimaryKey}}
+        {{#ContextualPrimaryKeyColumns}}
             , {{ColumnName}} ASC -- Contextual PK column
-        {{/ContextualPrimaryKey}}
+        {{/ContextualPrimaryKeyColumns}}
         ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
         ) ON [PRIMARY]
     GO

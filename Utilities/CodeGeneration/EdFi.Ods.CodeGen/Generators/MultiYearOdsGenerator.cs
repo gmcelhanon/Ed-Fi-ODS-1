@@ -9,6 +9,7 @@ using System.Linq;
 using EdFi.Ods.CodeGen.Database.DatabaseSchema;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Models.Domain;
+using Microsoft.VisualBasic.CompilerServices;
 
 namespace EdFi.Ods.CodeGen.Generators
 {
@@ -21,6 +22,12 @@ namespace EdFi.Ods.CodeGen.Generators
     public class MultiYear_0030_ForeignKeys : MultiYearOdsGeneratorBase
     {
         public MultiYear_0030_ForeignKeys(IDatabaseTypeTranslator databaseTypeTranslator)
+            : base(databaseTypeTranslator) { }
+    }
+
+    public class MultiYear_0025_PopulateTables : MultiYearOdsGeneratorBase
+    {
+        public MultiYear_0025_PopulateTables(IDatabaseTypeTranslator databaseTypeTranslator)
             : base(databaseTypeTranslator) { }
     }
 
@@ -47,10 +54,20 @@ namespace EdFi.Ods.CodeGen.Generators
 
             public string TableName { get; set; }
 
-            public IEnumerable<Column> PrimaryKey { get; set; }
+            public IEnumerable<Column> PrimaryKeyColumns { get; set; }
+
+            public bool HasContextualPrimaryKeyColumns
+            {
+                get => ContextualPrimaryKeyColumns.Any();
+            }
 
             public IEnumerable<Column> ContextualPrimaryKeyColumns { get; set; }
 
+            public IEnumerable<Column> ParentPrimaryKeyColumns
+            {
+                get => PrimaryKeyColumns.Where(pkc => !ContextualPrimaryKeyColumns.Any(c => c.ColumnName == pkc.ColumnName));
+            }
+            
             public bool IsAggregateRoot { get; set; }
 
             public bool HasNonKeyColumns
@@ -58,11 +75,21 @@ namespace EdFi.Ods.CodeGen.Generators
                 get => NonKeyColumns.Any();
             }
 
+            public bool HasReferences
+            {
+                get => References.Any();
+            }
+
+            public bool HasNonKeyColumnsOrReferences
+            {
+                get => NonKeyColumns.Any() || References.Any();
+            }
+
             public IEnumerable<Column> NonKeyColumns { get; set; }
             
             public IEnumerable<Column> BoilerplateColumns { get; set; }
 
-            public IEnumerable<Column> References { get; set; }
+            public IEnumerable<HashReference> References { get; set; }
 
             public IEnumerable<HashReference> IdentifyingReferences { get; set; }
         }
@@ -76,6 +103,35 @@ namespace EdFi.Ods.CodeGen.Generators
             public bool IsNullable { get; set; }
 
             public bool? IsFirst { get; set; }
+
+            public bool IsString
+            {
+                get => DataType.StartsWith("nvarchar");
+            }
+            
+            public bool IsGuid
+            {
+                get => DataType == "uniqueidentifier";
+            }
+
+            public bool IsNumber
+            {
+                get => DataType == "bit"
+                    || DataType == "decimal"
+                    || DataType == "int"
+                    || DataType == "money"
+                    || DataType == "smallint";
+            }
+
+            public bool IsDate
+            {
+                get => DataType == "datetime" || DataType == "datetime2" || DataType == "date";
+            }
+            
+            public bool IsTime
+            {
+                get => DataType == "time";
+            }
         }
 
         private class HashReference
@@ -87,6 +143,11 @@ namespace EdFi.Ods.CodeGen.Generators
             public Column Column { get; set; }
 
             public string ConstraintName { get; set; }
+
+            public string ReferenceMemberName { get; set; } // TODO: This needs to be processed for Postgres naming limitations
+
+            // Used for constructing HashKeys for populating the template
+            public IEnumerable<Column> ReferenceColumns { get; set; }
         }
 
         protected override object Build()
@@ -121,7 +182,7 @@ namespace EdFi.Ods.CodeGen.Generators
                     IsAggregateRoot = entity.IsAggregateRoot,
                     Schema = entity.Schema,
                     TableName = entity.TableNameByDatabaseEngine[databaseEngine],
-                    PrimaryKey = entity.Identifier.Properties.Select(
+                    PrimaryKeyColumns = entity.Identifier.Properties.Select(
                         (p, i) => new Column
                         {
                             ColumnName = p.ColumnNameByDatabaseEngine[databaseEngine],
@@ -144,26 +205,10 @@ namespace EdFi.Ods.CodeGen.Generators
                             }),
                     IdentifyingReferences = entity.IncomingAssociations
                         .Where(a => a.IsIdentifying && a.OtherEntity != entity.Parent)
-                            .Select(a => new HashReference
-                                {
-                                    ReferencedTableSchema = a.OtherEntity.Schema,
-                                    ReferencedTableName = a.OtherEntity.TableNameByDatabaseEngine[databaseEngine],
-                                    ConstraintName = GetConstraintName(entity.TableNameByDatabaseEngine[databaseEngine], a.OtherEntity.TableNameByDatabaseEngine[databaseEngine]),
-                                    Column = new Column
-                                    {
-                                        ColumnName = $"{a.Name}HashKey",
-                                        DataType = "uniqueIdentifier",
-                                        IsNullable = !a.IsRequired,
-                                    }
-                                }),
+                        .Select(CreateHashReference),
                     References = entity.IncomingAssociations
                         .Where(a => !a.IsIdentifying)
-                        .Select(a => new Column
-                        {
-                            ColumnName = $"{a.Name}HashKey",
-                            DataType = "uniqueIdentifier",
-                            IsNullable = !a.IsRequired,
-                        }),
+                        .Select(CreateHashReference),
                     NonKeyColumns = entity.Properties
                         .Where(p => !p.IsIdentifying && !p.IncomingAssociations.Any())
                         .Where(p => !p.IsBoilerplate())
@@ -186,14 +231,39 @@ namespace EdFi.Ods.CodeGen.Generators
                         })
                 };
 
-                string GetConstraintName(string thisTableName, string otherTableName)
+                string GetConstraintName(string thisTableName, string otherTableName, string roleName = null)
                 {
-                    string constraintName = $"FK_{thisTableName}_{otherTableName}";
+                    string constraintName = $"FK_{roleName}{thisTableName}_{otherTableName}";
 
                     if (constraintName.Length > 128)
                         return constraintName.Substring(0, 128);
 
                     return constraintName;
+                }
+
+                HashReference CreateHashReference(AssociationView association)
+                {
+                    return new HashReference
+                    {
+                        ReferencedTableSchema = association.OtherEntity.Schema,
+                        ReferencedTableName = association.OtherEntity.TableNameByDatabaseEngine[databaseEngine],
+                        ReferenceMemberName = association.Name,
+                        ConstraintName = GetConstraintName(entity.TableNameByDatabaseEngine[databaseEngine], association.OtherEntity.TableNameByDatabaseEngine[databaseEngine], association.RoleName),
+                        Column = new Column
+                        {
+                            ColumnName = $"{association.Name}HashKey",
+                            DataType = "uniqueIdentifier",
+                            IsNullable = !association.IsRequired,
+                        },
+                        ReferenceColumns = association.ThisProperties
+                            .Select((p, i) => new Column
+                            {
+                                ColumnName = p.PropertyName,
+                                DataType = p.PropertyType.ToSql(),
+                                IsNullable = !p.PropertyType.IsNullable,
+                                IsFirst = i == 0,
+                            }) 
+                    };
                 }
             }
         }
