@@ -1,6 +1,9 @@
 BEGIN
     DECLARE @schoolYearContext AS INT = 2019
 
+    -- disable all constraints
+    EXEC sp_MSforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all"
+
     INSERT INTO edfi.AbsenceEventCategoryDescriptor (
         HashKey
         -- Identifying references (for aggregate root entity)
@@ -114,8 +117,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.TotalInstructionalDays = source.TotalInstructionalDays
         WHEN NOT MATCHED THEN
@@ -215,8 +222,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AccountName = source.AccountName
+            , target.AccountName = source.AccountName
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -327,8 +338,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Rating = source.Rating
+            , target.Rating = source.Rating
             , target.RatingDate = source.RatingDate
             , target.RatingOrganization = source.RatingOrganization
             , target.RatingProgram = source.RatingProgram
@@ -441,8 +456,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AccountCodeDescription = source.AccountCodeDescription
+            , target.AccountCodeDescription = source.AccountCodeDescription
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -545,8 +564,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AmountToDate = source.AmountToDate
+            , target.AmountToDate = source.AmountToDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -708,8 +731,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AdaptiveAssessment = source.AdaptiveAssessment
+            , target.AdaptiveAssessment = source.AdaptiveAssessment
             , target.AssessmentFamily = source.AssessmentFamily
             , target.AssessmentForm = source.AssessmentForm
             , target.AssessmentTitle = source.AssessmentTitle
@@ -857,8 +884,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.PublicationDate = source.PublicationDate
             , target.PublicationYear = source.PublicationYear
@@ -981,8 +1010,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
+            , target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
             , target.IdentificationCode = source.IdentificationCode
         WHEN NOT MATCHED THEN
             INSERT (
@@ -1096,8 +1127,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaximumScore = source.MaximumScore
+            , target.MaximumScore = source.MaximumScore
             , target.MinimumScore = source.MinimumScore
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -1173,8 +1206,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
                 -- References
             , target.AssessmentPeriodDescriptorHashKey = HASHBYTES('sha1', 
@@ -1315,8 +1350,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaximumScore = source.MaximumScore
+            , target.MaximumScore = source.MaximumScore
             , target.MinimumScore = source.MinimumScore
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -1494,8 +1531,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AssessmentItemURI = source.AssessmentItemURI
+            , target.AssessmentItemURI = source.AssessmentItemURI
             , target.CorrectResponse = source.CorrectResponse
             , target.ExpectedTimeAssessed = source.ExpectedTimeAssessed
             , target.ItemText = source.ItemText
@@ -1615,8 +1656,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CorrectResponse = source.CorrectResponse
+            , target.CorrectResponse = source.CorrectResponse
             , target.ResponseDescription = source.ResponseDescription
         WHEN NOT MATCHED THEN
             INSERT (
@@ -1860,8 +1903,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AlternateDayName = source.AlternateDayName
+            , target.AlternateDayName = source.AlternateDayName
             , target.EndTime = source.EndTime
             , target.StartTime = source.StartTime
             , target.TotalInstructionalTime = source.TotalInstructionalTime
@@ -2024,8 +2071,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Amount = source.Amount
+            , target.Amount = source.Amount
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -2100,8 +2151,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- References
-            target.CalendarTypeDescriptorHashKey = HASHBYTES('sha1', 
+            , target.CalendarTypeDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.CalendarTypeDescriptorId)
                 )
         WHEN NOT MATCHED THEN
@@ -2419,8 +2474,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.OfficialAttendancePeriod = source.OfficialAttendancePeriod
+            , target.OfficialAttendancePeriod = source.OfficialAttendancePeriod
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -2536,8 +2595,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CohortDescription = source.CohortDescription
+            , target.CohortDescription = source.CohortDescription
                 -- References
             , target.AcademicSubjectDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.AcademicSubjectDescriptorId)
@@ -2852,8 +2915,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AuthorizedFacilityCapacity = source.AuthorizedFacilityCapacity
+            , target.AuthorizedFacilityCapacity = source.AuthorizedFacilityCapacity
             , target.LicenseEffectiveDate = source.LicenseEffectiveDate
             , target.LicenseExpirationDate = source.LicenseExpirationDate
             , target.LicenseIssueDate = source.LicenseIssueDate
@@ -2984,8 +3051,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CompetencyObjectiveId = source.CompetencyObjectiveId
+            , target.CompetencyObjectiveId = source.CompetencyObjectiveId
             , target.Description = source.Description
             , target.SuccessCriteria = source.SuccessCriteria
         WHEN NOT MATCHED THEN
@@ -3152,8 +3223,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AmountToDate = source.AmountToDate
+            , target.AmountToDate = source.AmountToDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -3270,8 +3345,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CourseDescription = source.CourseDescription
+            , target.CourseDescription = source.CourseDescription
             , target.CourseTitle = source.CourseTitle
             , target.DateCourseAdopted = source.DateCourseAdopted
             , target.HighSchoolCourseRequirement = source.HighSchoolCourseRequirement
@@ -3442,8 +3521,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
+            , target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
             , target.CourseCatalogURL = source.CourseCatalogURL
             , target.IdentificationCode = source.IdentificationCode
         WHEN NOT MATCHED THEN
@@ -3768,8 +3849,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.InstructionalTimePlanned = source.InstructionalTimePlanned
+            , target.InstructionalTimePlanned = source.InstructionalTimePlanned
             , target.LocalCourseTitle = source.LocalCourseTitle
                 -- References
             , target.CourseHashKey = HASHBYTES('sha1', 
@@ -4005,8 +4090,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AlternativeCourseCode = source.AlternativeCourseCode
+            , target.AlternativeCourseCode = source.AlternativeCourseCode
             , target.AlternativeCourseTitle = source.AlternativeCourseTitle
             , target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
             , target.AttemptedCreditConversion = source.AttemptedCreditConversion
@@ -4207,8 +4296,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
+            , target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
             , target.CourseCatalogURL = source.CourseCatalogURL
             , target.IdentificationCode = source.IdentificationCode
         WHEN NOT MATCHED THEN
@@ -4342,8 +4433,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.Credits = source.Credits
+            , target.Credits = source.Credits
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -4414,8 +4507,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EffectiveDate = source.EffectiveDate
+            , target.EffectiveDate = source.EffectiveDate
             , target.ExpirationDate = source.ExpirationDate
             , target.IssuanceDate = source.IssuanceDate
             , target.Namespace = source.Namespace
@@ -4761,8 +4858,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CodeValue = source.CodeValue
+            , target.CodeValue = source.CodeValue
             , target.Description = source.Description
             , target.EffectiveBeginDate = source.EffectiveBeginDate
             , target.EffectiveEndDate = source.EffectiveEndDate
@@ -4998,8 +5099,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ActualDisciplineActionLength = source.ActualDisciplineActionLength
+            , target.ActualDisciplineActionLength = source.ActualDisciplineActionLength
             , target.DisciplineActionLength = source.DisciplineActionLength
             , target.IEPPlacementMeetingIndicator = source.IEPPlacementMeetingIndicator
             , target.ReceivedEducationServicesDuringExpulsion = source.ReceivedEducationServicesDuringExpulsion
@@ -5243,8 +5348,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CaseNumber = source.CaseNumber
+            , target.CaseNumber = source.CaseNumber
             , target.IncidentCost = source.IncidentCost
             , target.IncidentDate = source.IncidentDate
             , target.IncidentDescription = source.IncidentDescription
@@ -5355,8 +5464,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BehaviorDetailedDescription = source.BehaviorDetailedDescription
+            , target.BehaviorDetailedDescription = source.BehaviorDetailedDescription
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -5526,8 +5637,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AdditionalAuthorsIndicator = source.AdditionalAuthorsIndicator
+            , target.AdditionalAuthorsIndicator = source.AdditionalAuthorsIndicator
             , target.Cost = source.Cost
             , target.Description = source.Description
             , target.LearningResourceMetadataURI = source.LearningResourceMetadataURI
@@ -5798,8 +5913,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.NameOfInstitution = source.NameOfInstitution
+            , target.NameOfInstitution = source.NameOfInstitution
             , target.ShortNameOfInstitution = source.ShortNameOfInstitution
             , target.WebSite = source.WebSite
                 -- References
@@ -5913,8 +6032,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
+            , target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
             , target.BuildingSiteNumber = source.BuildingSiteNumber
             , target.CongressionalDistrict = source.CongressionalDistrict
             , target.CountyFIPSCode = source.CountyFIPSCode
@@ -6033,8 +6154,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -6130,8 +6253,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.IdentificationCode = source.IdentificationCode
+            , target.IdentificationCode = source.IdentificationCode
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -6198,8 +6323,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DesignatedBy = source.DesignatedBy
+            , target.DesignatedBy = source.DesignatedBy
             , target.IndicatorValue = source.IndicatorValue
                 -- References
             , target.IndicatorGroupDescriptorHashKey = HASHBYTES('sha1', 
@@ -6282,8 +6409,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -6350,8 +6479,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.TelephoneNumber = source.TelephoneNumber
+            , target.TelephoneNumber = source.TelephoneNumber
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -6418,8 +6549,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AddressLine1 = source.AddressLine1
+            , target.AddressLine1 = source.AddressLine1
             , target.AddressLine2 = source.AddressLine2
             , target.AddressLine3 = source.AddressLine3
             , target.AddressLine4 = source.AddressLine4
@@ -6575,8 +6708,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
@@ -6705,8 +6842,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
@@ -7047,8 +7188,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.FeederRelationshipDescription = source.FeederRelationshipDescription
         WHEN NOT MATCHED THEN
             INSERT (
@@ -7146,8 +7291,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.ServedOutsideOfRegularSession = source.ServedOutsideOfRegularSession
                 -- References
             , target.ReasonExitedDescriptorHashKey = HASHBYTES('sha1', 
@@ -7232,8 +7381,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DesignatedBy = source.DesignatedBy
+            , target.DesignatedBy = source.DesignatedBy
             , target.StatusBeginDate = source.StatusBeginDate
             , target.StatusEndDate = source.StatusEndDate
                 -- References
@@ -7376,8 +7527,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.DiagnosticStatement = source.DiagnosticStatement
+            , target.DiagnosticStatement = source.DiagnosticStatement
             , target.LetterGradeEarned = source.LetterGradeEarned
             , target.NumericGradeEarned = source.NumericGradeEarned
                 -- References
@@ -7498,8 +7653,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DiagnosticStatement = source.DiagnosticStatement
+            , target.DiagnosticStatement = source.DiagnosticStatement
             , target.LetterGradeEarned = source.LetterGradeEarned
             , target.NumericGradeEarned = source.NumericGradeEarned
                 -- References
@@ -7619,8 +7776,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Description = source.Description
+            , target.Description = source.Description
             , target.DueDate = source.DueDate
                 -- References
             , target.GradebookEntryTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -7911,8 +8072,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.TotalInstructionalDays = source.TotalInstructionalDays
         WHEN NOT MATCHED THEN
@@ -8022,8 +8187,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.IndividualPlan = source.IndividualPlan
+            , target.IndividualPlan = source.IndividualPlan
             , target.TotalRequiredCreditConversion = source.TotalRequiredCreditConversion
             , target.TotalRequiredCredits = source.TotalRequiredCredits
                 -- References
@@ -8105,8 +8274,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CreditConversion = source.CreditConversion
+            , target.CreditConversion = source.CreditConversion
             , target.Credits = source.Credits
                 -- References
             , target.CreditTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -8235,8 +8406,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CreditConversion = source.CreditConversion
+            , target.CreditConversion = source.CreditConversion
             , target.Credits = source.Credits
                 -- References
             , target.CreditTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -8324,8 +8497,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CreditConversion = source.CreditConversion
+            , target.CreditConversion = source.CreditConversion
             , target.Credits = source.Credits
                 -- References
             , target.CreditTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -8439,8 +8614,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaximumScore = source.MaximumScore
+            , target.MaximumScore = source.MaximumScore
             , target.MinimumScore = source.MinimumScore
                 -- References
             , target.AssessmentReportingMethodDescriptorHashKey = HASHBYTES('sha1', 
@@ -8545,8 +8722,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaximumScore = source.MaximumScore
+            , target.MaximumScore = source.MaximumScore
             , target.MinimumScore = source.MinimumScore
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -8928,8 +9107,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.MaxDosage = source.MaxDosage
             , target.MinDosage = source.MinDosage
@@ -9333,8 +9516,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.MaxDosage = source.MaxDosage
+            , target.MaxDosage = source.MaxDosage
             , target.MinDosage = source.MinDosage
                 -- References
             , target.DeliveryMethodDescriptorHashKey = HASHBYTES('sha1', 
@@ -9597,8 +9784,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Participants = source.Participants
+            , target.Participants = source.Participants
                 -- References
             , target.DeliveryMethodDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.DeliveryMethodDescriptorId)
@@ -9800,8 +9991,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ImprovementIndex = source.ImprovementIndex
+            , target.ImprovementIndex = source.ImprovementIndex
                 -- References
             , target.InterventionEffectivenessRatingDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.InterventionEffectivenessRatingDescriptorId)
@@ -10056,8 +10249,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Description = source.Description
+            , target.Description = source.Description
             , target.Nomenclature = source.Nomenclature
             , target.Objective = source.Objective
             , target.SuccessCriteria = source.SuccessCriteria
@@ -10161,8 +10358,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.PublicationDate = source.PublicationDate
             , target.PublicationYear = source.PublicationYear
@@ -10325,8 +10524,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CourseTitle = source.CourseTitle
+            , target.CourseTitle = source.CourseTitle
             , target.Description = source.Description
             , target.LearningStandardItemCode = source.LearningStandardItemCode
             , target.Namespace = source.Namespace
@@ -10442,8 +10645,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.PublicationDate = source.PublicationDate
             , target.PublicationYear = source.PublicationYear
@@ -10660,8 +10865,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EffectiveDate = source.EffectiveDate
+            , target.EffectiveDate = source.EffectiveDate
             , target.LearningStandardEquivalenceStrengthDescription = source.LearningStandardEquivalenceStrengthDescription
                 -- References
             , target.LearningStandardEquivalenceStrengthDescriptorHashKey = HASHBYTES('sha1', 
@@ -11001,8 +11210,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- References
-            target.GunFreeSchoolsActReportingStatusDescriptorHashKey = HASHBYTES('sha1', 
+            , target.GunFreeSchoolsActReportingStatusDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.GunFreeSchoolsActReportingStatusDescriptorId)
                 )
             , target.SchoolChoiceImplementStatusDescriptorHashKey = HASHBYTES('sha1', 
@@ -11073,8 +11284,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.InnovativeDollarsSpent = source.InnovativeDollarsSpent
+            , target.InnovativeDollarsSpent = source.InnovativeDollarsSpent
             , target.InnovativeDollarsSpentStrategicPriorities = source.InnovativeDollarsSpentStrategicPriorities
             , target.InnovativeProgramsFundsReceived = source.InnovativeProgramsFundsReceived
             , target.SchoolImprovementAllocation = source.SchoolImprovementAllocation
@@ -11184,8 +11397,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.MaximumNumberOfSeats = source.MaximumNumberOfSeats
+            , target.MaximumNumberOfSeats = source.MaximumNumberOfSeats
             , target.OptimalNumberOfSeats = source.OptimalNumberOfSeats
         WHEN NOT MATCHED THEN
             INSERT (
@@ -11458,8 +11675,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Description = source.Description
+            , target.Description = source.Description
             , target.MaxRawScore = source.MaxRawScore
             , target.Nomenclature = source.Nomenclature
             , target.PercentOfAssessment = source.PercentOfAssessment
@@ -11670,8 +11891,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaximumScore = source.MaximumScore
+            , target.MaximumScore = source.MaximumScore
             , target.MinimumScore = source.MinimumScore
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -11764,8 +11987,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaximumScore = source.MaximumScore
+            , target.MaximumScore = source.MaximumScore
             , target.MinimumScore = source.MinimumScore
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -11870,8 +12095,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.DatePosted = source.DatePosted
+            , target.DatePosted = source.DatePosted
             , target.DatePostingRemoved = source.DatePostingRemoved
             , target.PositionTitle = source.PositionTitle
                 -- References
@@ -12067,8 +12296,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.FirstName = source.FirstName
+            , target.FirstName = source.FirstName
             , target.GenerationCodeSuffix = source.GenerationCodeSuffix
             , target.LastSurname = source.LastSurname
             , target.LoginId = source.LoginId
@@ -12206,8 +12439,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
+            , target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
             , target.BuildingSiteNumber = source.BuildingSiteNumber
             , target.CongressionalDistrict = source.CongressionalDistrict
             , target.CountyFIPSCode = source.CountyFIPSCode
@@ -12326,8 +12561,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -12404,8 +12641,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.PrimaryEmailAddressIndicator = source.PrimaryEmailAddressIndicator
         WHEN NOT MATCHED THEN
             INSERT (
@@ -12479,8 +12718,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AddressLine1 = source.AddressLine1
+            , target.AddressLine1 = source.AddressLine1
             , target.AddressLine2 = source.AddressLine2
             , target.AddressLine3 = source.AddressLine3
             , target.AddressLine4 = source.AddressLine4
@@ -12630,8 +12871,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.FirstName = source.FirstName
+            , target.FirstName = source.FirstName
             , target.GenerationCodeSuffix = source.GenerationCodeSuffix
             , target.LastSurname = source.LastSurname
             , target.MiddleName = source.MiddleName
@@ -12723,8 +12966,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DocumentExpirationDate = source.DocumentExpirationDate
+            , target.DocumentExpirationDate = source.DocumentExpirationDate
             , target.DocumentTitle = source.DocumentTitle
             , target.IssuerDocumentIdentificationCode = source.IssuerDocumentIdentificationCode
             , target.IssuerName = source.IssuerName
@@ -12821,8 +13066,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.OrderOfPriority = source.OrderOfPriority
             , target.TextMessageCapabilityIndicator = source.TextMessageCapabilityIndicator
         WHEN NOT MATCHED THEN
@@ -12968,8 +13215,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AmountToDate = source.AmountToDate
+            , target.AmountToDate = source.AmountToDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -13224,8 +13475,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- References
-            target.PostSecondaryInstitutionHashKey = HASHBYTES('sha1', 
+            , target.PostSecondaryInstitutionHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.PostSecondaryInstitutionId)
                 )
         WHEN NOT MATCHED THEN
@@ -13467,8 +13722,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ProgramId = source.ProgramId
+            , target.ProgramId = source.ProgramId
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -14138,8 +14397,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.GPACumulative = source.GPACumulative
+            , target.GPACumulative = source.GPACumulative
             , target.GPAGivenGradingPeriod = source.GPAGivenGradingPeriod
             , target.NumberOfDaysAbsent = source.NumberOfDaysAbsent
             , target.NumberOfDaysInAttendance = source.NumberOfDaysInAttendance
@@ -14303,8 +14566,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.GradePointAverageValue = source.GradePointAverageValue
+            , target.GradePointAverageValue = source.GradePointAverageValue
             , target.IsCumulative = source.IsCumulative
             , target.MaxGradePointAverageValue = source.MaxGradePointAverageValue
         WHEN NOT MATCHED THEN
@@ -14591,8 +14856,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EventDate = source.EventDate
+            , target.EventDate = source.EventDate
                 -- References
             , target.EducationalEnvironmentDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.EducationalEnvironmentDescriptorId)
@@ -15062,8 +15331,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CurrentSchoolYear = source.CurrentSchoolYear
+            , target.CurrentSchoolYear = source.CurrentSchoolYear
             , target.SchoolYearDescription = source.SchoolYearDescription
         WHEN NOT MATCHED THEN
             INSERT (
@@ -15147,8 +15420,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AvailableCreditConversion = source.AvailableCreditConversion
+            , target.AvailableCreditConversion = source.AvailableCreditConversion
             , target.AvailableCredits = source.AvailableCredits
             , target.OfficialAttendancePeriod = source.OfficialAttendancePeriod
             , target.SectionName = source.SectionName
@@ -15492,8 +15769,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EventDate = source.EventDate
+            , target.EventDate = source.EventDate
                 -- References
             , target.StaffHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.StaffUSI)
@@ -15681,8 +15962,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.TotalInstructionalDays = source.TotalInstructionalDays
                 -- References
@@ -15922,8 +16207,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BirthDate = source.BirthDate
+            , target.BirthDate = source.BirthDate
             , target.FirstName = source.FirstName
             , target.GenerationCodeSuffix = source.GenerationCodeSuffix
             , target.HighlyQualifiedTeacher = source.HighlyQualifiedTeacher
@@ -16097,8 +16386,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
+            , target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
             , target.BuildingSiteNumber = source.BuildingSiteNumber
             , target.CongressionalDistrict = source.CongressionalDistrict
             , target.CountyFIPSCode = source.CountyFIPSCode
@@ -16217,8 +16508,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -16324,8 +16617,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.PrimaryEmailAddressIndicator = source.PrimaryEmailAddressIndicator
         WHEN NOT MATCHED THEN
             INSERT (
@@ -16399,8 +16694,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
+            , target.AssigningOrganizationIdentificationCode = source.AssigningOrganizationIdentificationCode
             , target.IdentificationCode = source.IdentificationCode
         WHEN NOT MATCHED THEN
             INSERT (
@@ -16483,8 +16780,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DocumentExpirationDate = source.DocumentExpirationDate
+            , target.DocumentExpirationDate = source.DocumentExpirationDate
             , target.DocumentTitle = source.DocumentTitle
             , target.IssuerDocumentIdentificationCode = source.IssuerDocumentIdentificationCode
             , target.IssuerName = source.IssuerName
@@ -16575,8 +16874,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AddressLine1 = source.AddressLine1
+            , target.AddressLine1 = source.AddressLine1
             , target.AddressLine2 = source.AddressLine2
             , target.AddressLine3 = source.AddressLine3
             , target.AddressLine4 = source.AddressLine4
@@ -16726,8 +17027,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.FirstName = source.FirstName
+            , target.FirstName = source.FirstName
             , target.GenerationCodeSuffix = source.GenerationCodeSuffix
             , target.LastSurname = source.LastSurname
             , target.MiddleName = source.MiddleName
@@ -16819,8 +17122,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DocumentExpirationDate = source.DocumentExpirationDate
+            , target.DocumentExpirationDate = source.DocumentExpirationDate
             , target.DocumentTitle = source.DocumentTitle
             , target.IssuerDocumentIdentificationCode = source.IssuerDocumentIdentificationCode
             , target.IssuerName = source.IssuerName
@@ -16936,8 +17241,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AchievementCategorySystem = source.AchievementCategorySystem
+            , target.AchievementCategorySystem = source.AchievementCategorySystem
             , target.AchievementTitle = source.AchievementTitle
             , target.Criteria = source.Criteria
             , target.CriteriaURL = source.CriteriaURL
@@ -17050,8 +17357,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.OrderOfPriority = source.OrderOfPriority
             , target.TextMessageCapabilityIndicator = source.TextMessageCapabilityIndicator
         WHEN NOT MATCHED THEN
@@ -17185,8 +17494,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AbsenceEventReason = source.AbsenceEventReason
+            , target.AbsenceEventReason = source.AbsenceEventReason
             , target.HoursAbsent = source.HoursAbsent
         WHEN NOT MATCHED THEN
             INSERT (
@@ -17294,8 +17607,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.StudentRecordAccess = source.StudentRecordAccess
         WHEN NOT MATCHED THEN
             INSERT (
@@ -17449,8 +17766,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.OrderOfAssignment = source.OrderOfAssignment
             , target.PositionTitle = source.PositionTitle
                 -- References
@@ -17556,8 +17877,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ElectronicMailAddress = source.ElectronicMailAddress
+            , target.ElectronicMailAddress = source.ElectronicMailAddress
                 -- References
             , target.ContactTypeDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.ContactTypeDescriptorId)
@@ -17627,8 +17952,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
+            , target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
             , target.BuildingSiteNumber = source.BuildingSiteNumber
             , target.City = source.City
             , target.CongressionalDistrict = source.CongressionalDistrict
@@ -17745,8 +18072,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -17826,8 +18155,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.OrderOfPriority = source.OrderOfPriority
             , target.TextMessageCapabilityIndicator = source.TextMessageCapabilityIndicator
         WHEN NOT MATCHED THEN
@@ -17922,8 +18253,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Department = source.Department
+            , target.Department = source.Department
             , target.EndDate = source.EndDate
             , target.FullTimeEquivalency = source.FullTimeEquivalency
             , target.HourlyWage = source.HourlyWage
@@ -18061,8 +18396,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.Reason = source.Reason
             , target.SubstituteAssigned = source.SubstituteAssigned
         WHEN NOT MATCHED THEN
@@ -18179,8 +18518,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.StudentRecordAccess = source.StudentRecordAccess
         WHEN NOT MATCHED THEN
             INSERT (
@@ -18263,8 +18606,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- References
-            target.CalendarHashKey = HASHBYTES('sha1', 
+            , target.CalendarHashKey = HASHBYTES('sha1', 
                 source.CalendarCode
                 + '|' + CONVERT(nvarchar, source.SchoolId)
                 + '|' + CONVERT(nvarchar, source.SchoolYear)
@@ -18430,8 +18777,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.EndDate = source.EndDate
             , target.HighlyQualifiedTeacher = source.HighlyQualifiedTeacher
             , target.PercentageContribution = source.PercentageContribution
@@ -18573,8 +18924,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CTEGraduationRateInclusion = source.CTEGraduationRateInclusion
+            , target.CTEGraduationRateInclusion = source.CTEGraduationRateInclusion
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -18634,8 +18987,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.FederalProgramsFundingAllocation = source.FederalProgramsFundingAllocation
+            , target.FederalProgramsFundingAllocation = source.FederalProgramsFundingAllocation
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -18690,8 +19045,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.BirthCity = source.BirthCity
+            , target.BirthCity = source.BirthCity
             , target.BirthDate = source.BirthDate
             , target.BirthInternationalProvince = source.BirthInternationalProvince
             , target.DateEnteredUS = source.DateEnteredUS
@@ -18842,8 +19201,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DocumentExpirationDate = source.DocumentExpirationDate
+            , target.DocumentExpirationDate = source.DocumentExpirationDate
             , target.DocumentTitle = source.DocumentTitle
             , target.IssuerDocumentIdentificationCode = source.IssuerDocumentIdentificationCode
             , target.IssuerName = source.IssuerName
@@ -18934,8 +19295,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.FirstName = source.FirstName
+            , target.FirstName = source.FirstName
             , target.GenerationCodeSuffix = source.GenerationCodeSuffix
             , target.LastSurname = source.LastSurname
             , target.MiddleName = source.MiddleName
@@ -19027,8 +19390,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DocumentExpirationDate = source.DocumentExpirationDate
+            , target.DocumentExpirationDate = source.DocumentExpirationDate
             , target.DocumentTitle = source.DocumentTitle
             , target.IssuerDocumentIdentificationCode = source.IssuerDocumentIdentificationCode
             , target.IssuerName = source.IssuerName
@@ -19164,8 +19529,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.CumulativeAttemptedCreditConversion = source.CumulativeAttemptedCreditConversion
+            , target.CumulativeAttemptedCreditConversion = source.CumulativeAttemptedCreditConversion
             , target.CumulativeAttemptedCredits = source.CumulativeAttemptedCredits
             , target.CumulativeEarnedCreditConversion = source.CumulativeEarnedCreditConversion
             , target.CumulativeEarnedCredits = source.CumulativeEarnedCredits
@@ -19318,8 +19687,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AchievementCategorySystem = source.AchievementCategorySystem
+            , target.AchievementCategorySystem = source.AchievementCategorySystem
             , target.AchievementTitle = source.AchievementTitle
             , target.Criteria = source.Criteria
             , target.CriteriaURL = source.CriteriaURL
@@ -19426,8 +19797,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ClassRank = source.ClassRank
+            , target.ClassRank = source.ClassRank
             , target.ClassRankingDate = source.ClassRankingDate
             , target.PercentageRanking = source.PercentageRanking
             , target.TotalNumberInClass = source.TotalNumberInClass
@@ -19516,8 +19889,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AchievementCategorySystem = source.AchievementCategorySystem
+            , target.AchievementCategorySystem = source.AchievementCategorySystem
             , target.AchievementTitle = source.AchievementTitle
             , target.Criteria = source.Criteria
             , target.CriteriaURL = source.CriteriaURL
@@ -19647,8 +20022,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.GradePointAverageValue = source.GradePointAverageValue
+            , target.GradePointAverageValue = source.GradePointAverageValue
             , target.IsCumulative = source.IsCumulative
             , target.MaxGradePointAverageValue = source.MaxGradePointAverageValue
         WHEN NOT MATCHED THEN
@@ -19733,8 +20110,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AchievementCategorySystem = source.AchievementCategorySystem
+            , target.AchievementCategorySystem = source.AchievementCategorySystem
             , target.AchievementTitle = source.AchievementTitle
             , target.Criteria = source.Criteria
             , target.CriteriaURL = source.CriteriaURL
@@ -19904,8 +20283,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AdministrationDate = source.AdministrationDate
+            , target.AdministrationDate = source.AdministrationDate
             , target.AdministrationEndDate = source.AdministrationEndDate
             , target.EventDescription = source.EventDescription
             , target.SerialNumber = source.SerialNumber
@@ -20087,8 +20470,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AssessmentResponse = source.AssessmentResponse
+            , target.AssessmentResponse = source.AssessmentResponse
             , target.DescriptiveFeedback = source.DescriptiveFeedback
             , target.RawScoreResult = source.RawScoreResult
             , target.TimeAssessed = source.TimeAssessed
@@ -20208,8 +20593,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PerformanceLevelMet = source.PerformanceLevelMet
+            , target.PerformanceLevelMet = source.PerformanceLevelMet
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -20293,8 +20680,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.Result = source.Result
+            , target.Result = source.Result
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.ResultDatatypeTypeDescriptorId)
@@ -20434,8 +20823,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PerformanceLevelMet = source.PerformanceLevelMet
+            , target.PerformanceLevelMet = source.PerformanceLevelMet
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -20523,8 +20914,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.Result = source.Result
+            , target.Result = source.Result
                 -- References
             , target.ResultDatatypeTypeDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.ResultDatatypeTypeDescriptorId)
@@ -20643,8 +21036,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -20800,8 +21197,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.DiagnosticStatement = source.DiagnosticStatement
+            , target.DiagnosticStatement = source.DiagnosticStatement
                 -- References
             , target.CompetencyLevelDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.CompetencyLevelDescriptorId)
@@ -21117,8 +21518,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CIPCode = source.CIPCode
+            , target.CIPCode = source.CIPCode
             , target.CTEProgramCompletionIndicator = source.CTEProgramCompletionIndicator
             , target.PrimaryCTEProgramIndicator = source.PrimaryCTEProgramIndicator
         WHEN NOT MATCHED THEN
@@ -21211,8 +21614,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.CIPCode = source.CIPCode
+            , target.CIPCode = source.CIPCode
             , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
@@ -21308,8 +21713,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -21395,8 +21802,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- References
-            target.StudentParticipationCodeDescriptorHashKey = HASHBYTES('sha1', 
+            , target.StudentParticipationCodeDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.StudentParticipationCodeDescriptorId)
                 )
         WHEN NOT MATCHED THEN
@@ -21473,8 +21884,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BehaviorDetailedDescription = source.BehaviorDetailedDescription
+            , target.BehaviorDetailedDescription = source.BehaviorDetailedDescription
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -21545,8 +21958,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.HispanicLatinoEthnicity = source.HispanicLatinoEthnicity
+            , target.HispanicLatinoEthnicity = source.HispanicLatinoEthnicity
             , target.LoginId = source.LoginId
             , target.ProfileThumbnail = source.ProfileThumbnail
                 -- References
@@ -21678,8 +22095,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
+            , target.ApartmentRoomSuiteNumber = source.ApartmentRoomSuiteNumber
             , target.BuildingSiteNumber = source.BuildingSiteNumber
             , target.CongressionalDistrict = source.CongressionalDistrict
             , target.CountyFIPSCode = source.CountyFIPSCode
@@ -21802,8 +22221,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -21914,8 +22335,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DisabilityDiagnosis = source.DisabilityDiagnosis
+            , target.DisabilityDiagnosis = source.DisabilityDiagnosis
             , target.OrderOfDisability = source.OrderOfDisability
                 -- References
             , target.DisabilityDeterminationSourceTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -22034,8 +22457,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.PrimaryEmailAddressIndicator = source.PrimaryEmailAddressIndicator
         WHEN NOT MATCHED THEN
             INSERT (
@@ -22113,8 +22538,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.AddressLine1 = source.AddressLine1
+            , target.AddressLine1 = source.AddressLine1
             , target.AddressLine2 = source.AddressLine2
             , target.AddressLine3 = source.AddressLine3
             , target.AddressLine4 = source.AddressLine4
@@ -22272,8 +22699,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.BeginDate = source.BeginDate
+            , target.BeginDate = source.BeginDate
             , target.DesignatedBy = source.DesignatedBy
             , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
@@ -22406,8 +22835,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DesignatedBy = source.DesignatedBy
+            , target.DesignatedBy = source.DesignatedBy
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -22474,8 +22905,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -22552,8 +22985,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.IdentificationCode = source.IdentificationCode
+            , target.IdentificationCode = source.IdentificationCode
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -22621,8 +23056,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DesignatedBy = source.DesignatedBy
+            , target.DesignatedBy = source.DesignatedBy
             , target.Indicator = source.Indicator
             , target.IndicatorGroup = source.IndicatorGroup
         WHEN NOT MATCHED THEN
@@ -22694,8 +23131,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -22772,8 +23211,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DoNotPublishIndicator = source.DoNotPublishIndicator
+            , target.DoNotPublishIndicator = source.DoNotPublishIndicator
             , target.OrderOfPriority = source.OrderOfPriority
             , target.TextMessageCapabilityIndicator = source.TextMessageCapabilityIndicator
         WHEN NOT MATCHED THEN
@@ -22894,8 +23335,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -23012,8 +23457,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.DateFulfilled = source.DateFulfilled
+            , target.DateFulfilled = source.DateFulfilled
             , target.DiagnosticStatement = source.DiagnosticStatement
             , target.LetterGradeEarned = source.LetterGradeEarned
             , target.NumericGradeEarned = source.NumericGradeEarned
@@ -23221,8 +23670,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -23333,8 +23784,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.DiagnosticStatement = source.DiagnosticStatement
+            , target.DiagnosticStatement = source.DiagnosticStatement
             , target.Dosage = source.Dosage
                 -- References
             , target.CohortHashKey = HASHBYTES('sha1', 
@@ -23448,8 +23903,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.ImprovementIndex = source.ImprovementIndex
+            , target.ImprovementIndex = source.ImprovementIndex
                 -- References
             , target.InterventionEffectivenessRatingDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.InterventionEffectivenessRatingDescriptorId)
@@ -23560,8 +24017,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AttendanceEventReason = source.AttendanceEventReason
+            , target.AttendanceEventReason = source.AttendanceEventReason
             , target.EventDuration = source.EventDuration
             , target.InterventionDuration = source.InterventionDuration
                 -- References
@@ -23752,8 +24213,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- References
-            target.MonitoredDescriptorHashKey = HASHBYTES('sha1', 
+            , target.MonitoredDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.MonitoredDescriptorId)
                 )
             , target.ParticipationDescriptorHashKey = HASHBYTES('sha1', 
@@ -23865,8 +24328,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -23979,8 +24444,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.DiagnosticStatement = source.DiagnosticStatement
+            , target.DiagnosticStatement = source.DiagnosticStatement
                 -- References
             , target.CompetencyLevelDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.CompetencyLevelDescriptorId)
@@ -24309,8 +24778,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -24509,8 +24980,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -24590,8 +25063,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ContactPriority = source.ContactPriority
+            , target.ContactPriority = source.ContactPriority
             , target.ContactRestrictions = source.ContactRestrictions
             , target.EmergencyContactStatus = source.EmergencyContactStatus
             , target.LivesWith = source.LivesWith
@@ -24769,8 +25246,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -24885,8 +25364,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.AttendanceEventReason = source.AttendanceEventReason
+            , target.AttendanceEventReason = source.AttendanceEventReason
             , target.EventDuration = source.EventDuration
             , target.ProgramAttendanceDuration = source.ProgramAttendanceDuration
                 -- References
@@ -24980,8 +25463,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EmployedWhileEnrolled = source.EmployedWhileEnrolled
+            , target.EmployedWhileEnrolled = source.EmployedWhileEnrolled
             , target.ExitWithdrawDate = source.ExitWithdrawDate
             , target.FullTimeEquivalency = source.FullTimeEquivalency
             , target.PrimarySchool = source.PrimarySchool
@@ -25238,8 +25725,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ArrivalTime = source.ArrivalTime
+            , target.ArrivalTime = source.ArrivalTime
             , target.AttendanceEventReason = source.AttendanceEventReason
             , target.DepartureTime = source.DepartureTime
             , target.EventDuration = source.EventDuration
@@ -25434,8 +25925,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -25544,8 +26037,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.EndDate = source.EndDate
+            , target.EndDate = source.EndDate
             , target.HomeroomIndicator = source.HomeroomIndicator
             , target.TeacherStudentDataLinkExclusion = source.TeacherStudentDataLinkExclusion
                 -- References
@@ -25679,8 +26176,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ArrivalTime = source.ArrivalTime
+            , target.ArrivalTime = source.ArrivalTime
             , target.AttendanceEventReason = source.AttendanceEventReason
             , target.DepartureTime = source.DepartureTime
             , target.EventDuration = source.EventDuration
@@ -25911,8 +26412,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.DisabilityDiagnosis = source.DisabilityDiagnosis
+            , target.DisabilityDiagnosis = source.DisabilityDiagnosis
             , target.OrderOfDisability = source.OrderOfDisability
                 -- References
             , target.DisabilityDeterminationSourceTypeDescriptorHashKey = HASHBYTES('sha1', 
@@ -26049,8 +26552,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryProvider = source.PrimaryProvider
+            , target.PrimaryProvider = source.PrimaryProvider
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -26137,8 +26642,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -26234,8 +26741,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryProvider = source.PrimaryProvider
+            , target.PrimaryProvider = source.PrimaryProvider
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -26415,8 +26924,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -26509,8 +27020,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.PrimaryIndicator = source.PrimaryIndicator
+            , target.PrimaryIndicator = source.PrimaryIndicator
             , target.ServiceBeginDate = source.ServiceBeginDate
             , target.ServiceEndDate = source.ServiceEndDate
         WHEN NOT MATCHED THEN
@@ -26582,8 +27095,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.NumberAdministered = source.NumberAdministered
+            , target.NumberAdministered = source.NumberAdministered
             , target.SurveyTitle = source.SurveyTitle
                 -- References
             , target.EducationOrganizationHashKey = HASHBYTES('sha1', 
@@ -26832,8 +27349,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.QuestionText = source.QuestionText
+            , target.QuestionText = source.QuestionText
                 -- References
             , target.QuestionFormDescriptorHashKey = HASHBYTES('sha1', 
                 CONVERT(nvarchar, source.QuestionFormDescriptorId)
@@ -26920,8 +27441,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaxRawScore = source.MaxRawScore
+            , target.MaxRawScore = source.MaxRawScore
             , target.MinRawScore = source.MinRawScore
         WHEN NOT MATCHED THEN
             INSERT (
@@ -26991,8 +27514,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.NumericValue = source.NumericValue
+            , target.NumericValue = source.NumericValue
             , target.TextValue = source.TextValue
         WHEN NOT MATCHED THEN
             INSERT (
@@ -27079,8 +27604,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.Comment = source.Comment
+            , target.Comment = source.Comment
             , target.NoResponse = source.NoResponse
         WHEN NOT MATCHED THEN
             INSERT (
@@ -27153,8 +27682,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.MaxNumericResponse = source.MaxNumericResponse
+            , target.MaxNumericResponse = source.MaxNumericResponse
             , target.MinNumericResponse = source.MinNumericResponse
             , target.NoResponse = source.NoResponse
             , target.NumericResponse = source.NumericResponse
@@ -27237,8 +27768,10 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
                 -- Attributes
-            target.NumericResponse = source.NumericResponse
+            , target.NumericResponse = source.NumericResponse
             , target.TextResponse = source.TextResponse
         WHEN NOT MATCHED THEN
             INSERT (
@@ -27314,8 +27847,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.ElectronicMailAddress = source.ElectronicMailAddress
+            , target.ElectronicMailAddress = source.ElectronicMailAddress
             , target.FullName = source.FullName
             , target.Location = source.Location
             , target.ResponseDate = source.ResponseDate
@@ -27641,8 +28178,12 @@ BEGIN
         )
         WHEN MATCHED THEN
             UPDATE SET
+                -- Boilerplate columns
+            CreateDate = source.CreateDate
+            , Id = source.Id
+            , LastModifiedDate = source.LastModifiedDate
                 -- Attributes
-            target.SectionRating = source.SectionRating
+            , target.SectionRating = source.SectionRating
         WHEN NOT MATCHED THEN
             INSERT (
                 HashKey
@@ -28041,4 +28582,7 @@ BEGIN
     )
 
     
+
+    -- enable all constraints
+    EXEC sp_MSforeachtable @command1="print '?'", @command2="ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all"
 END

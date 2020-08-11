@@ -64,12 +64,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AcademicWeek_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AcademicWeek_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AccommodationDescriptor (
@@ -109,12 +114,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Account_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Account_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AccountAccountCode (
@@ -158,12 +168,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AccountabilityRating_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AccountabilityRating_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AccountClassificationDescriptor (
@@ -205,12 +220,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AccountCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AccountCode_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AchievementCategoryDescriptor (
@@ -251,12 +271,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Actual_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Actual_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AdditionalCreditTypeDescriptor (
@@ -346,12 +371,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Assessment_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Assessment_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AssessmentAcademicSubject (
@@ -398,7 +428,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , BeginDate date NULL
             , EndDate date NULL
@@ -412,12 +441,17 @@
             , PublicationStatusDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentContentStandard_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentContentStandard_AttributesHistory))
         GO
     CREATE TABLE edfi.AssessmentContentStandardAuthor (
         HashKey uniqueidentifier NOT NULL
@@ -452,18 +486,22 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentIdentificationSystemDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AssigningOrganizationIdentificationCode nvarchar(60) NULL
             , IdentificationCode nvarchar(60) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentIdentificationCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentIdentificationCode_AttributesHistory))
         GO
     CREATE TABLE edfi.AssessmentLanguage (
         HashKey uniqueidentifier NOT NULL
@@ -501,7 +539,6 @@
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
             , PerformanceLevelDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , MaximumScore nvarchar(35) NULL
             , MinimumScore nvarchar(35) NULL
@@ -509,12 +546,17 @@
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentPerformanceLevel_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentPerformanceLevel_AttributesHistory))
         GO
     CREATE TABLE edfi.AssessmentPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -532,7 +574,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , BeginDate date NULL
             , EndDate date NULL
@@ -540,12 +581,17 @@
             , AssessmentPeriodDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.AssessmentPlatformType (
         HashKey uniqueidentifier NOT NULL
@@ -594,7 +640,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , MaximumScore nvarchar(35) NULL
             , MinimumScore nvarchar(35) NULL
@@ -602,12 +647,17 @@
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentScore_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentScore_AttributesHistory))
         GO
     CREATE TABLE edfi.AssessmentSection (
         HashKey uniqueidentifier NOT NULL
@@ -681,12 +731,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentItem_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentItem_AttributesHistory))
         GO
     
     CREATE TABLE edfi.AssessmentItemLearningStandard (
@@ -728,13 +783,18 @@
             , ResponseDescription nvarchar(1024) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT AssessmentItemPossibleResponse_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , ResponseValue ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.AssessmentItemPossibleResponse_AttributesHistory))
         GO
     CREATE TABLE edfi.AssessmentItemCategoryDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -859,12 +919,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT BellSchedule_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.BellSchedule_AttributesHistory))
         GO
     
     CREATE TABLE edfi.BellScheduleClassPeriod (
@@ -933,12 +998,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Budget_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Budget_AttributesHistory))
         GO
     
     CREATE TABLE edfi.Calendar (
@@ -965,12 +1035,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Calendar_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Calendar_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CalendarGradeLevel (
@@ -1124,12 +1199,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ClassPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ClassPeriod_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ClassPeriodMeetingTime (
@@ -1188,12 +1268,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Cohort_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Cohort_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CohortProgram (
@@ -1289,13 +1374,17 @@
             , ProviderCategoryDescriptorHashKey uniqueIdentifier NOT NULL
             , ProviderProfitabilityDescriptorHashKey uniqueIdentifier NULL
             , ProviderStatusDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CommunityProvider_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CommunityProvider_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CommunityProviderLicense (
@@ -1329,12 +1418,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CommunityProviderLicense_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CommunityProviderLicense_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CompetencyLevelDescriptor (
@@ -1377,12 +1471,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CompetencyObjective_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CompetencyObjective_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ContactTypeDescriptor (
@@ -1453,12 +1552,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ContractedStaff_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ContractedStaff_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CostRateDescriptor (
@@ -1528,12 +1632,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Course_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Course_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CourseCompetencyLevel (
@@ -1569,19 +1678,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , CourseIdentificationSystemDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AssigningOrganizationIdentificationCode nvarchar(60) NULL
             , CourseCatalogURL nvarchar(255) NULL
             , IdentificationCode nvarchar(60) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CourseIdentificationCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CourseIdentificationCode_AttributesHistory))
         GO
     CREATE TABLE edfi.CourseLearningObjective (
         HashKey uniqueidentifier NOT NULL
@@ -1737,12 +1850,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CourseOffering_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CourseOffering_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CourseOfferingCourseLevelCharacteristic (
@@ -1847,12 +1965,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CourseTranscript_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CourseTranscript_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CourseTranscriptAcademicSubject (
@@ -1888,19 +2011,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , CourseIdentificationSystemDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AssigningOrganizationIdentificationCode nvarchar(60) NULL
             , CourseCatalogURL nvarchar(255) NULL
             , IdentificationCode nvarchar(60) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CourseTranscriptAlternativeCourseIdentificationCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CourseTranscriptAlternativeCourseIdentificationCode_AttributesHistory))
         GO
     CREATE TABLE edfi.CourseTranscriptCreditCategory (
         HashKey uniqueidentifier NOT NULL
@@ -1935,17 +2062,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AdditionalCreditTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , Credits decimal(9,3) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT CourseTranscriptEarnedAdditionalCredits_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.CourseTranscriptEarnedAdditionalCredits_AttributesHistory))
         GO
     CREATE TABLE edfi.Credential (
         HashKey uniqueidentifier NOT NULL,
@@ -1977,12 +2108,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Credential_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Credential_AttributesHistory))
         GO
     
     CREATE TABLE edfi.CredentialAcademicSubject (
@@ -2151,12 +2287,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Descriptor_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Descriptor_AttributesHistory))
         GO
     
     CREATE TABLE edfi.DiagnosisDescriptor (
@@ -2274,12 +2415,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT DisciplineAction_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.DisciplineAction_AttributesHistory))
         GO
     
     CREATE TABLE edfi.DisciplineActionDiscipline (
@@ -2384,12 +2530,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT DisciplineIncident_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.DisciplineIncident_AttributesHistory))
         GO
     
     CREATE TABLE edfi.DisciplineIncidentBehavior (
@@ -2411,17 +2562,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , BehaviorDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , BehaviorDetailedDescription nvarchar(1024) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT DisciplineIncidentBehavior_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.DisciplineIncidentBehavior_AttributesHistory))
         GO
     CREATE TABLE edfi.DisciplineIncidentExternalParticipant (
         HashKey uniqueidentifier NOT NULL
@@ -2519,12 +2674,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationContent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationContent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.EducationContentAppropriateGradeLevel (
@@ -2647,12 +2807,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganization_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganization_AttributesHistory))
         GO
     
     CREATE TABLE edfi.EducationOrganizationAddress (
@@ -2700,7 +2865,11 @@
             , LocaleDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
@@ -2709,6 +2878,7 @@
                 , StreetNumberName ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationAddressPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -2734,13 +2904,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationAddressPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationAddressPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationCategory (
         HashKey uniqueidentifier NOT NULL
@@ -2775,17 +2950,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , EducationOrganizationIdentificationSystemDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , IdentificationCode nvarchar(60) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationIdentificationCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationIdentificationCode_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationIndicator (
         HashKey uniqueidentifier NOT NULL
@@ -2806,7 +2985,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , IndicatorDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DesignatedBy nvarchar(60) NULL
             , IndicatorValue nvarchar(35) NULL
@@ -2815,12 +2993,17 @@
             , IndicatorLevelDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationIndicator_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationIndicator_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationIndicatorPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -2846,13 +3029,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationIndicatorPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationIndicatorPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationInstitutionTelephone (
         HashKey uniqueidentifier NOT NULL
@@ -2873,17 +3061,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , InstitutionTelephoneNumberTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , TelephoneNumber nvarchar(24) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationInstitutionTelephone_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationInstitutionTelephone_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationInternationalAddress (
         HashKey uniqueidentifier NOT NULL
@@ -2904,7 +3096,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AddressLine1 nvarchar(150) NOT NULL
             , AddressLine2 nvarchar(150) NULL
@@ -2918,12 +3109,17 @@
             , CountryDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationInternationalAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationInternationalAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.EducationOrganizationCategoryDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -2978,12 +3174,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationInterventionPrescriptionAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationInterventionPrescriptionAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.EducationOrganizationNetwork (
@@ -3003,13 +3204,17 @@
             , SchoolYearContext int NOT NULL
             -- References
             , NetworkPurposeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationNetwork_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationNetwork_AttributesHistory))
         GO
     
     CREATE TABLE edfi.EducationOrganizationNetworkAssociation (
@@ -3036,12 +3241,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationOrganizationNetworkAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationOrganizationNetworkAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.EducationOrganizationPeerAssociation (
@@ -3091,13 +3301,17 @@
             , SchoolYearContext int NOT NULL
             -- References
             , StateEducationAgencyHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT EducationServiceCenter_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.EducationServiceCenter_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ElectronicMailTypeDescriptor (
@@ -3209,12 +3423,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT FeederSchoolAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.FeederSchoolAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.GeneralStudentProgramAssociation (
@@ -3248,12 +3467,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GeneralStudentProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GeneralStudentProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.GeneralStudentProgramAssociationParticipationStatus (
@@ -3272,7 +3496,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , DesignatedBy nvarchar(60) NULL
             , StatusBeginDate date NULL
@@ -3281,12 +3504,17 @@
             , ParticipationStatusDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GeneralStudentProgramAssociationParticipationStatus_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GeneralStudentProgramAssociationParticipationStatus_AttributesHistory))
         GO
     CREATE TABLE edfi.Grade (
         HashKey uniqueidentifier NOT NULL,
@@ -3325,12 +3553,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Grade_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Grade_AttributesHistory))
         GO
     
     CREATE TABLE edfi.GradeLearningStandardGrade (
@@ -3352,7 +3585,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , LearningStandardHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DiagnosticStatement nvarchar(1024) NULL
             , LetterGradeEarned nvarchar(20) NULL
@@ -3361,12 +3593,17 @@
             , PerformanceBaseConversionDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GradeLearningStandardGrade_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GradeLearningStandardGrade_AttributesHistory))
         GO
     CREATE TABLE edfi.GradebookEntry (
         HashKey uniqueidentifier NOT NULL,
@@ -3399,12 +3636,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GradebookEntry_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GradebookEntry_AttributesHistory))
         GO
     
     CREATE TABLE edfi.GradebookEntryLearningObjective (
@@ -3519,12 +3761,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GradingPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GradingPeriod_AttributesHistory))
         GO
     
     CREATE TABLE edfi.GradingPeriodDescriptor (
@@ -3570,12 +3817,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GraduationPlan_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GraduationPlan_AttributesHistory))
         GO
     
     CREATE TABLE edfi.GraduationPlanCreditsByCourse (
@@ -3606,13 +3858,18 @@
             , WhenTakenGradeLevelDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GraduationPlanCreditsByCourse_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , CourseSetName ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GraduationPlanCreditsByCourse_AttributesHistory))
         GO
     CREATE TABLE edfi.GraduationPlanCreditsByCourseCourse (
         HashKey uniqueidentifier NOT NULL
@@ -3647,7 +3904,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , CreditCategoryDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , CreditConversion decimal(9,2) NULL
             , Credits decimal(9,3) NOT NULL
@@ -3655,12 +3911,17 @@
             , CreditTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GraduationPlanCreditsByCreditCategory_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GraduationPlanCreditsByCreditCategory_AttributesHistory))
         GO
     CREATE TABLE edfi.GraduationPlanCreditsBySubject (
         HashKey uniqueidentifier NOT NULL
@@ -3681,7 +3942,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AcademicSubjectDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , CreditConversion decimal(9,2) NULL
             , Credits decimal(9,3) NOT NULL
@@ -3689,12 +3949,17 @@
             , CreditTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GraduationPlanCreditsBySubject_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GraduationPlanCreditsBySubject_AttributesHistory))
         GO
     CREATE TABLE edfi.GraduationPlanRequiredAssessment (
         HashKey uniqueidentifier NOT NULL
@@ -3726,7 +3991,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , MaximumScore nvarchar(35) NULL
             , MinimumScore nvarchar(35) NULL
@@ -3736,12 +4000,17 @@
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GraduationPlanRequiredAssessmentPerformanceLevel_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GraduationPlanRequiredAssessmentPerformanceLevel_AttributesHistory))
         GO
     CREATE TABLE edfi.GraduationPlanRequiredAssessmentScore (
         HashKey uniqueidentifier NOT NULL
@@ -3762,7 +4031,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , MaximumScore nvarchar(35) NULL
             , MinimumScore nvarchar(35) NULL
@@ -3770,12 +4038,17 @@
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT GraduationPlanRequiredAssessmentScore_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.GraduationPlanRequiredAssessmentScore_AttributesHistory))
         GO
     CREATE TABLE edfi.GraduationPlanTypeDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -3973,12 +4246,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Intervention_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Intervention_AttributesHistory))
         GO
     
     CREATE TABLE edfi.InterventionAppropriateGradeLevel (
@@ -4177,12 +4455,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT InterventionPrescription_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.InterventionPrescription_AttributesHistory))
         GO
     
     CREATE TABLE edfi.InterventionPrescriptionAppropriateGradeLevel (
@@ -4309,12 +4592,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT InterventionStudy_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.InterventionStudy_AttributesHistory))
         GO
     
     CREATE TABLE edfi.InterventionStudyAppropriateGradeLevel (
@@ -4384,19 +4672,23 @@
             , DiagnosisDescriptorHashKey uniqueIdentifier NOT NULL
             , GradeLevelDescriptorHashKey uniqueIdentifier NOT NULL
             , PopulationServedDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , ImprovementIndex int NULL
             -- References
             , InterventionEffectivenessRatingDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT InterventionStudyInterventionEffectiveness_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.InterventionStudyInterventionEffectiveness_AttributesHistory))
         GO
     CREATE TABLE edfi.InterventionStudyLearningResourceMetadataURI (
         HashKey uniqueidentifier NOT NULL
@@ -4522,12 +4814,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LearningObjective_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LearningObjective_AttributesHistory))
         GO
     
     CREATE TABLE edfi.LearningObjectiveAcademicSubject (
@@ -4560,7 +4857,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , BeginDate date NULL
             , EndDate date NULL
@@ -4574,12 +4870,17 @@
             , PublicationStatusDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LearningObjectiveContentStandard_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LearningObjectiveContentStandard_AttributesHistory))
         GO
     CREATE TABLE edfi.LearningObjectiveContentStandardAuthor (
         HashKey uniqueidentifier NOT NULL
@@ -4652,12 +4953,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LearningStandard_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LearningStandard_AttributesHistory))
         GO
     
     CREATE TABLE edfi.LearningStandardAcademicSubject (
@@ -4690,7 +4996,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , BeginDate date NULL
             , EndDate date NULL
@@ -4704,12 +5009,17 @@
             , PublicationStatusDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LearningStandardContentStandard_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LearningStandardContentStandard_AttributesHistory))
         GO
     CREATE TABLE edfi.LearningStandardContentStandardAuthor (
         HashKey uniqueidentifier NOT NULL
@@ -4808,12 +5118,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LearningStandardEquivalenceAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LearningStandardEquivalenceAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.LearningStandardEquivalenceStrengthDescriptor (
@@ -4935,13 +5250,17 @@
             , EducationServiceCenterHashKey uniqueIdentifier NULL
             , LocalEducationAgencyCategoryDescriptorHashKey uniqueIdentifier NOT NULL
             , StateEducationAgencyHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LocalEducationAgency_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LocalEducationAgency_AttributesHistory))
         GO
     
     CREATE TABLE edfi.LocalEducationAgencyAccountability (
@@ -4963,18 +5282,22 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- References
             , GunFreeSchoolsActReportingStatusDescriptorHashKey uniqueIdentifier NULL
             , SchoolChoiceImplementStatusDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LocalEducationAgencyAccountability_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LocalEducationAgencyAccountability_AttributesHistory))
         GO
     CREATE TABLE edfi.LocalEducationAgencyFederalFunds (
         HashKey uniqueidentifier NOT NULL
@@ -5007,13 +5330,18 @@
             , SupplementalEducationalServicesPerPupilExpenditure money NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT LocalEducationAgencyFederalFunds_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , FiscalYear ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.LocalEducationAgencyFederalFunds_AttributesHistory))
         GO
     CREATE TABLE edfi.LocalEducationAgencyCategoryDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -5052,12 +5380,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Location_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Location_AttributesHistory))
         GO
     
     CREATE TABLE edfi.MagnetSpecialProgramEmphasisSchoolDescriptor (
@@ -5201,12 +5534,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ObjectiveAssessment_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ObjectiveAssessment_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ObjectiveAssessmentAssessmentItem (
@@ -5273,7 +5611,6 @@
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
             , PerformanceLevelDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , MaximumScore nvarchar(35) NULL
             , MinimumScore nvarchar(35) NULL
@@ -5281,12 +5618,17 @@
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ObjectiveAssessmentPerformanceLevel_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ObjectiveAssessmentPerformanceLevel_AttributesHistory))
         GO
     CREATE TABLE edfi.ObjectiveAssessmentScore (
         HashKey uniqueidentifier NOT NULL
@@ -5307,7 +5649,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , MaximumScore nvarchar(35) NULL
             , MinimumScore nvarchar(35) NULL
@@ -5315,12 +5656,17 @@
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ObjectiveAssessmentScore_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ObjectiveAssessmentScore_AttributesHistory))
         GO
     CREATE TABLE edfi.OldEthnicityDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -5365,12 +5711,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT OpenStaffPosition_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.OpenStaffPosition_AttributesHistory))
         GO
     
     CREATE TABLE edfi.OpenStaffPositionAcademicSubject (
@@ -5459,12 +5810,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Parent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Parent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ParentAddress (
@@ -5512,7 +5868,11 @@
             , LocaleDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
@@ -5521,6 +5881,7 @@
                 , StreetNumberName ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.ParentAddressPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -5546,13 +5907,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentAddressPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentAddressPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.ParentElectronicMail (
         HashKey uniqueidentifier NOT NULL
@@ -5582,13 +5948,18 @@
             , PrimaryEmailAddressIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentElectronicMail_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , ElectronicMailAddress ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentElectronicMail_AttributesHistory))
         GO
     CREATE TABLE edfi.ParentInternationalAddress (
         HashKey uniqueidentifier NOT NULL
@@ -5609,7 +5980,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AddressLine1 nvarchar(150) NOT NULL
             , AddressLine2 nvarchar(150) NULL
@@ -5623,12 +5993,17 @@
             , CountryDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentInternationalAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentInternationalAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.ParentLanguage (
         HashKey uniqueidentifier NOT NULL
@@ -5677,7 +6052,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , OtherNameTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , FirstName nvarchar(75) NOT NULL
             , GenerationCodeSuffix nvarchar(10) NULL
@@ -5686,12 +6060,17 @@
             , PersonalTitlePrefix nvarchar(30) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentOtherName_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentOtherName_AttributesHistory))
         GO
     CREATE TABLE edfi.ParentPersonalIdentificationDocument (
         HashKey uniqueidentifier NOT NULL
@@ -5715,7 +6094,6 @@
             -- Identifying references
             , IdentificationDocumentUseDescriptorHashKey uniqueIdentifier NOT NULL
             , PersonalInformationVerificationDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DocumentExpirationDate date NULL
             , DocumentTitle nvarchar(60) NULL
@@ -5725,12 +6103,17 @@
             , IssuerCountryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentPersonalIdentificationDocument_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentPersonalIdentificationDocument_AttributesHistory))
         GO
     CREATE TABLE edfi.ParentTelephone (
         HashKey uniqueidentifier NOT NULL
@@ -5761,13 +6144,18 @@
             , TextMessageCapabilityIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ParentTelephone_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , TelephoneNumber ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ParentTelephone_AttributesHistory))
         GO
     CREATE TABLE edfi.ParticipationDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -5823,12 +6211,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Payroll_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Payroll_AttributesHistory))
         GO
     
     CREATE TABLE edfi.PerformanceBaseConversionDescriptor (
@@ -5954,12 +6347,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT PostSecondaryEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.PostSecondaryEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.PostSecondaryEventCategoryDescriptor (
@@ -5994,13 +6392,17 @@
             -- References
             , AdministrativeFundingControlDescriptorHashKey uniqueIdentifier NULL
             , PostSecondaryInstitutionLevelDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT PostSecondaryInstitution_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.PostSecondaryInstitution_AttributesHistory))
         GO
     
     CREATE TABLE edfi.PostSecondaryInstitutionMediumOfInstruction (
@@ -6069,12 +6471,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Program_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Program_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ProgramCharacteristic (
@@ -6417,12 +6824,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ReportCard_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ReportCard_AttributesHistory))
         GO
     
     CREATE TABLE edfi.ReportCardGrade (
@@ -6458,19 +6870,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , GradePointAverageTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , GradePointAverageValue decimal(18,4) NOT NULL
             , IsCumulative bit NULL
             , MaxGradePointAverageValue decimal(18,4) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT ReportCardGradePointAverage_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.ReportCardGradePointAverage_AttributesHistory))
         GO
     CREATE TABLE edfi.ReportCardStudentCompetencyObjective (
         HashKey uniqueidentifier NOT NULL
@@ -6582,12 +6998,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT RestraintEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.RestraintEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.RestraintEventProgram (
@@ -6685,13 +7106,17 @@
             , SchoolTypeDescriptorHashKey uniqueIdentifier NULL
             , CharterApprovalSchoolYearTypeHashKey uniqueIdentifier NULL
             , TitleIPartASchoolDesignationDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT School_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.School_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SchoolCategory (
@@ -6799,12 +7224,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SchoolYearType_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SchoolYearType_AttributesHistory))
         GO
     
     CREATE TABLE edfi.Section (
@@ -6844,12 +7274,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Section_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Section_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SectionCharacteristic (
@@ -6952,12 +7387,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SectionAttendanceTakenEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SectionAttendanceTakenEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SectionCharacteristicDescriptor (
@@ -7044,12 +7484,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Session_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Session_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SessionAcademicWeek (
@@ -7174,12 +7619,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Staff_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Staff_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffAddress (
@@ -7227,7 +7677,11 @@
             , LocaleDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
@@ -7236,6 +7690,7 @@
                 , StreetNumberName ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffAddressPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -7261,13 +7716,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffAddressPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffAddressPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffCredential (
         HashKey uniqueidentifier NOT NULL
@@ -7311,13 +7771,18 @@
             , PrimaryEmailAddressIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffElectronicMail_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , ElectronicMailAddress ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffElectronicMail_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffIdentificationCode (
         HashKey uniqueidentifier NOT NULL
@@ -7338,18 +7803,22 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , StaffIdentificationSystemDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AssigningOrganizationIdentificationCode nvarchar(60) NULL
             , IdentificationCode nvarchar(60) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffIdentificationCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffIdentificationCode_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffIdentificationDocument (
         HashKey uniqueidentifier NOT NULL
@@ -7373,7 +7842,6 @@
             -- Identifying references
             , IdentificationDocumentUseDescriptorHashKey uniqueIdentifier NOT NULL
             , PersonalInformationVerificationDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DocumentExpirationDate date NULL
             , DocumentTitle nvarchar(60) NULL
@@ -7383,12 +7851,17 @@
             , IssuerCountryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffIdentificationDocument_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffIdentificationDocument_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffInternationalAddress (
         HashKey uniqueidentifier NOT NULL
@@ -7409,7 +7882,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AddressLine1 nvarchar(150) NOT NULL
             , AddressLine2 nvarchar(150) NULL
@@ -7423,12 +7895,17 @@
             , CountryDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffInternationalAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffInternationalAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffLanguage (
         HashKey uniqueidentifier NOT NULL
@@ -7477,7 +7954,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , OtherNameTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , FirstName nvarchar(75) NOT NULL
             , GenerationCodeSuffix nvarchar(10) NULL
@@ -7486,12 +7962,17 @@
             , PersonalTitlePrefix nvarchar(30) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffOtherName_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffOtherName_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffPersonalIdentificationDocument (
         HashKey uniqueidentifier NOT NULL
@@ -7515,7 +7996,6 @@
             -- Identifying references
             , IdentificationDocumentUseDescriptorHashKey uniqueIdentifier NOT NULL
             , PersonalInformationVerificationDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DocumentExpirationDate date NULL
             , DocumentTitle nvarchar(60) NULL
@@ -7525,12 +8005,17 @@
             , IssuerCountryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffPersonalIdentificationDocument_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffPersonalIdentificationDocument_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffRace (
         HashKey uniqueidentifier NOT NULL
@@ -7565,7 +8050,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , RecognitionTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AchievementCategorySystem nvarchar(60) NULL
             , AchievementTitle nvarchar(60) NULL
@@ -7582,12 +8066,17 @@
             , AchievementCategoryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffRecognition_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffRecognition_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffTelephone (
         HashKey uniqueidentifier NOT NULL
@@ -7618,13 +8107,18 @@
             , TextMessageCapabilityIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffTelephone_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , TelephoneNumber ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffTelephone_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffTribalAffiliation (
         HashKey uniqueidentifier NOT NULL
@@ -7679,12 +8173,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffAbsenceEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffAbsenceEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffClassificationDescriptor (
@@ -7727,12 +8226,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffCohortAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffCohortAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffDisciplineIncidentAssociation (
@@ -7797,12 +8301,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffEducationOrganizationAssignmentAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffEducationOrganizationAssignmentAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffEducationOrganizationContactAssociation (
@@ -7831,12 +8340,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffEducationOrganizationContactAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffEducationOrganizationContactAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffEducationOrganizationContactAssociationAddress (
@@ -7855,7 +8369,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , ApartmentRoomSuiteNumber nvarchar(50) NULL
             , BuildingSiteNumber nvarchar(20) NULL
@@ -7874,12 +8387,17 @@
             , StateAbbreviationDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffEducationOrganizationContactAssociationAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffEducationOrganizationContactAssociationAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffEducationOrganizationContactAssociationAddressPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -7905,13 +8423,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffEducationOrganizationContactAssociationAddressPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffEducationOrganizationContactAssociationAddressPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffEducationOrganizationContactAssociationTelephone (
         HashKey uniqueidentifier NOT NULL
@@ -7942,13 +8465,18 @@
             , TextMessageCapabilityIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffEducationOrganizationContactAssociationTelephone_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , TelephoneNumber ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffEducationOrganizationContactAssociationTelephone_AttributesHistory))
         GO
     CREATE TABLE edfi.StaffEducationOrganizationEmploymentAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -7984,12 +8512,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffEducationOrganizationEmploymentAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffEducationOrganizationEmploymentAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffIdentificationSystemDescriptor (
@@ -8032,12 +8565,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffLeave_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffLeave_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffLeaveEventCategoryDescriptor (
@@ -8081,12 +8619,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffSchoolAssociation (
@@ -8115,12 +8658,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffSchoolAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffSchoolAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StaffSchoolAssociationAcademicSubject (
@@ -8184,12 +8732,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StaffSectionAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StaffSectionAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StateAbbreviationDescriptor (
@@ -8239,17 +8792,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , CTEGraduationRateInclusion bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StateEducationAgencyAccountability_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StateEducationAgencyAccountability_AttributesHistory))
         GO
     CREATE TABLE edfi.StateEducationAgencyFederalFunds (
         HashKey uniqueidentifier NOT NULL
@@ -8275,13 +8832,18 @@
             , FederalProgramsFundingAllocation money NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StateEducationAgencyFederalFunds_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , FiscalYear ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StateEducationAgencyFederalFunds_AttributesHistory))
         GO
     CREATE TABLE edfi.Student (
         HashKey uniqueidentifier NOT NULL,
@@ -8320,12 +8882,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Student_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Student_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentIdentificationDocument (
@@ -8350,7 +8917,6 @@
             -- Identifying references
             , IdentificationDocumentUseDescriptorHashKey uniqueIdentifier NOT NULL
             , PersonalInformationVerificationDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DocumentExpirationDate date NULL
             , DocumentTitle nvarchar(60) NULL
@@ -8360,12 +8926,17 @@
             , IssuerCountryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentIdentificationDocument_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentIdentificationDocument_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentOtherName (
         HashKey uniqueidentifier NOT NULL
@@ -8386,7 +8957,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , OtherNameTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , FirstName nvarchar(75) NOT NULL
             , GenerationCodeSuffix nvarchar(10) NULL
@@ -8395,12 +8965,17 @@
             , PersonalTitlePrefix nvarchar(30) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentOtherName_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentOtherName_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentPersonalIdentificationDocument (
         HashKey uniqueidentifier NOT NULL
@@ -8424,7 +8999,6 @@
             -- Identifying references
             , IdentificationDocumentUseDescriptorHashKey uniqueIdentifier NOT NULL
             , PersonalInformationVerificationDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DocumentExpirationDate date NULL
             , DocumentTitle nvarchar(60) NULL
@@ -8434,12 +9008,17 @@
             , IssuerCountryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentPersonalIdentificationDocument_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentPersonalIdentificationDocument_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentVisa (
         HashKey uniqueidentifier NOT NULL
@@ -8500,12 +9079,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAcademicRecord_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAcademicRecord_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentAcademicRecordAcademicHonor (
@@ -8546,13 +9130,18 @@
             , AchievementCategoryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAcademicRecordAcademicHonor_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , HonorDescription ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAcademicRecordAcademicHonor_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAcademicRecordClassRanking (
         HashKey uniqueidentifier NOT NULL
@@ -8570,7 +9159,6 @@
             HashKey uniqueidentifier NOT NULL
             , SchoolYearContext int NOT NULL
             -- Identifying references
-            -- Contextual primary key
             -- Attributes
             , ClassRank int NOT NULL
             , ClassRankingDate date NULL
@@ -8578,12 +9166,17 @@
             , TotalNumberInClass int NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAcademicRecordClassRanking_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAcademicRecordClassRanking_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAcademicRecordDiploma (
         HashKey uniqueidentifier NOT NULL
@@ -8625,13 +9218,18 @@
             , DiplomaLevelDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAcademicRecordDiploma_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , DiplomaAwardDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAcademicRecordDiploma_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAcademicRecordGradePointAverage (
         HashKey uniqueidentifier NOT NULL
@@ -8652,19 +9250,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , GradePointAverageTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , GradePointAverageValue decimal(18,4) NOT NULL
             , IsCumulative bit NULL
             , MaxGradePointAverageValue decimal(18,4) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAcademicRecordGradePointAverage_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAcademicRecordGradePointAverage_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAcademicRecordRecognition (
         HashKey uniqueidentifier NOT NULL
@@ -8685,7 +9287,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , RecognitionTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AchievementCategorySystem nvarchar(60) NULL
             , AchievementTitle nvarchar(60) NULL
@@ -8702,12 +9303,17 @@
             , AchievementCategoryDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAcademicRecordRecognition_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAcademicRecordRecognition_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAcademicRecordReportCard (
         HashKey uniqueidentifier NOT NULL
@@ -8760,12 +9366,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAssessment_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAssessment_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentAssessmentAccommodation (
@@ -8801,7 +9412,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentItemHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AssessmentResponse nvarchar(60) NULL
             , DescriptiveFeedback nvarchar(1024) NULL
@@ -8812,12 +9422,17 @@
             , ResponseIndicatorDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAssessmentItem_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAssessmentItem_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAssessmentPerformanceLevel (
         HashKey uniqueidentifier NOT NULL
@@ -8841,17 +9456,21 @@
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
             , PerformanceLevelDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PerformanceLevelMet bit NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAssessmentPerformanceLevel_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAssessmentPerformanceLevel_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAssessmentScoreResult (
         HashKey uniqueidentifier NOT NULL
@@ -8872,19 +9491,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , Result nvarchar(35) NOT NULL
             -- References
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAssessmentScoreResult_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAssessmentScoreResult_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAssessmentStudentObjectiveAssessment (
         HashKey uniqueidentifier NOT NULL
@@ -8922,17 +9545,21 @@
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
             , PerformanceLevelDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PerformanceLevelMet bit NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAssessmentStudentObjectiveAssessmentPerformanceLevel_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAssessmentStudentObjectiveAssessmentPerformanceLevel_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentAssessmentStudentObjectiveAssessmentScoreResult (
         HashKey uniqueidentifier NOT NULL
@@ -8953,19 +9580,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AssessmentReportingMethodDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , Result nvarchar(35) NOT NULL
             -- References
             , ResultDatatypeTypeDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentAssessmentStudentObjectiveAssessmentScoreResult_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentAssessmentStudentObjectiveAssessmentScoreResult_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentCharacteristicDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -9006,12 +9637,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentCohortAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentCohortAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentCohortAssociationSection (
@@ -9060,12 +9696,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentCompetencyObjective_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentCompetencyObjective_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentCompetencyObjectiveGeneralStudentProgramAssociation (
@@ -9121,13 +9762,17 @@
             , PrivateCTEProgram bit NULL
             -- References
             , TechnicalSkillsAssessmentDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentCTEProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentCTEProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentCTEProgramAssociationCTEProgram (
@@ -9149,19 +9794,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , CareerPathwayDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , CIPCode nvarchar(120) NULL
             , CTEProgramCompletionIndicator bit NULL
             , PrimaryCTEProgramIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentCTEProgramAssociationCTEProgram_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentCTEProgramAssociationCTEProgram_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentCTEProgramAssociationCTEProgramService (
         HashKey uniqueidentifier NOT NULL
@@ -9182,7 +9831,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , CTEProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , CIPCode nvarchar(120) NULL
             , PrimaryIndicator bit NULL
@@ -9190,12 +9838,17 @@
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentCTEProgramAssociationCTEProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentCTEProgramAssociationCTEProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentCTEProgramAssociationService (
         HashKey uniqueidentifier NOT NULL
@@ -9216,19 +9869,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , ServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentCTEProgramAssociationService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentCTEProgramAssociationService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentDisciplineIncidentAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -9254,12 +9911,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentDisciplineIncidentAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentDisciplineIncidentAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentDisciplineIncidentAssociationBehavior (
@@ -9281,17 +9943,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , BehaviorDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , BehaviorDetailedDescription nvarchar(1024) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentDisciplineIncidentAssociationBehavior_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentDisciplineIncidentAssociationBehavior_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -9322,12 +9988,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentEducationOrganizationAssociationAddress (
@@ -9375,7 +10046,11 @@
             , LocaleDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
@@ -9384,6 +10059,7 @@
                 , StreetNumberName ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationAddressPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -9409,13 +10085,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationAddressPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationAddressPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationCohortYear (
         HashKey uniqueidentifier NOT NULL
@@ -9452,7 +10133,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , DisabilityDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DisabilityDiagnosis nvarchar(80) NULL
             , OrderOfDisability int NULL
@@ -9460,12 +10140,17 @@
             , DisabilityDeterminationSourceTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationDisability_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationDisability_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationDisabilityDesignation (
         HashKey uniqueidentifier NOT NULL
@@ -9509,13 +10194,18 @@
             , PrimaryEmailAddressIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationElectronicMail_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , ElectronicMailAddress ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationElectronicMail_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationInternationalAddress (
         HashKey uniqueidentifier NOT NULL
@@ -9536,7 +10226,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , AddressLine1 nvarchar(150) NOT NULL
             , AddressLine2 nvarchar(150) NULL
@@ -9550,12 +10239,17 @@
             , CountryDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationInternationalAddress_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationInternationalAddress_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationLanguage (
         HashKey uniqueidentifier NOT NULL
@@ -9604,19 +10298,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , ProgramTypeDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , BeginDate date NULL
             , DesignatedBy nvarchar(60) NULL
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationProgramParticipation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationProgramParticipation_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationProgramParticipationProgramCharacteristic (
         HashKey uniqueidentifier NOT NULL
@@ -9665,17 +10363,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , StudentCharacteristicDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DesignatedBy nvarchar(60) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationStudentCharacteristic_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationStudentCharacteristic_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationStudentCharacteristicPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -9701,13 +10403,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationStudentCharacteristicPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationStudentCharacteristicPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationStudentIdentificationCode (
         HashKey uniqueidentifier NOT NULL
@@ -9736,13 +10443,18 @@
             , IdentificationCode nvarchar(60) NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationStudentIdentificationCode_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , AssigningOrganizationIdentificationCode ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationStudentIdentificationCode_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationStudentIndicator (
         HashKey uniqueidentifier NOT NULL
@@ -9770,13 +10482,18 @@
             , IndicatorGroup nvarchar(200) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationStudentIndicator_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , IndicatorName ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationStudentIndicator_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationStudentIndicatorPeriod (
         HashKey uniqueidentifier NOT NULL
@@ -9802,13 +10519,18 @@
             , EndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationStudentIndicatorPeriod_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , BeginDate ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationStudentIndicatorPeriod_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationTelephone (
         HashKey uniqueidentifier NOT NULL
@@ -9839,13 +10561,18 @@
             , TextMessageCapabilityIndicator bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationAssociationTelephone_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , TelephoneNumber ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationAssociationTelephone_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentEducationOrganizationAssociationTribalAffiliation (
         HashKey uniqueidentifier NOT NULL
@@ -9887,12 +10614,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentEducationOrganizationResponsibilityAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentEducationOrganizationResponsibilityAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentGradebookEntry (
@@ -9930,12 +10662,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentGradebookEntry_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentGradebookEntry_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentHomelessProgramAssociation (
@@ -9963,13 +10700,17 @@
             , HomelessUnaccompaniedYouth bit NULL
             -- References
             , HomelessPrimaryNighttimeResidenceDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentHomelessProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentHomelessProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentHomelessProgramAssociationHomelessProgramService (
@@ -9991,19 +10732,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , HomelessProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentHomelessProgramAssociationHomelessProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentHomelessProgramAssociationHomelessProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentIdentificationSystemDescriptor (
         HashKey uniqueidentifier NOT NULL,
@@ -10046,12 +10791,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentInterventionAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentInterventionAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentInterventionAssociationInterventionEffectiveness (
@@ -10079,19 +10829,23 @@
             , DiagnosisDescriptorHashKey uniqueIdentifier NOT NULL
             , GradeLevelDescriptorHashKey uniqueIdentifier NOT NULL
             , PopulationServedDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , ImprovementIndex int NULL
             -- References
             , InterventionEffectivenessRatingDescriptorHashKey uniqueIdentifier NOT NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentInterventionAssociationInterventionEffectiveness_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentInterventionAssociationInterventionEffectiveness_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentInterventionAttendanceEvent (
         HashKey uniqueidentifier NOT NULL,
@@ -10124,12 +10878,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentInterventionAttendanceEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentInterventionAttendanceEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentLanguageInstructionProgramAssociation (
@@ -10155,13 +10914,17 @@
             -- Attributes
             , Dosage int NULL
             , EnglishLearnerParticipation bit NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentLanguageInstructionProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentLanguageInstructionProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentLanguageInstructionProgramAssociationEnglishLanguageProficiencyAssessment (
@@ -10183,7 +10946,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- References
             , MonitoredDescriptorHashKey uniqueIdentifier NULL
             , ParticipationDescriptorHashKey uniqueIdentifier NULL
@@ -10191,12 +10953,17 @@
             , ProgressDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentLanguageInstructionProgramAssociationEnglishLanguageProficiencyAssessment_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentLanguageInstructionProgramAssociationEnglishLanguageProficiencyAssessment_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentLanguageInstructionProgramAssociationLanguageInstructionProgramService (
         HashKey uniqueidentifier NOT NULL
@@ -10217,19 +10984,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , LanguageInstructionProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentLanguageInstructionProgramAssociationLanguageInstructionProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentLanguageInstructionProgramAssociationLanguageInstructionProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentLearningObjective (
         HashKey uniqueidentifier NOT NULL,
@@ -10262,12 +11033,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentLearningObjective_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentLearningObjective_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentLearningObjectiveGeneralStudentProgramAssociation (
@@ -10329,13 +11105,17 @@
             , USMostRecentEntry date NULL
             -- References
             , ContinuationOfServicesReasonDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentMigrantEducationProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentMigrantEducationProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentMigrantEducationProgramAssociationMigrantEducationProgramService (
@@ -10357,19 +11137,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , MigrantEducationProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentMigrantEducationProgramAssociationMigrantEducationProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentMigrantEducationProgramAssociationMigrantEducationProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentNeglectedOrDelinquentProgramAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -10395,13 +11179,17 @@
             , NeglectedOrDelinquentProgramDescriptorHashKey uniqueIdentifier NULL
             , ELAProgressLevelDescriptorHashKey uniqueIdentifier NULL
             , MathematicsProgressLevelDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentNeglectedOrDelinquentProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentNeglectedOrDelinquentProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentNeglectedOrDelinquentProgramAssociationNeglectedOrDelinquentProgramService (
@@ -10423,19 +11211,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , NeglectedOrDelinquentProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentNeglectedOrDelinquentProgramAssociationNeglectedOrDelinquentProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentNeglectedOrDelinquentProgramAssociationNeglectedOrDelinquentProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentParentAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -10466,12 +11258,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentParentAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentParentAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentParticipationCodeDescriptor (
@@ -10526,19 +11323,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , ServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentProgramAssociationService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentProgramAssociationService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentProgramAttendanceEvent (
         HashKey uniqueidentifier NOT NULL,
@@ -10574,12 +11375,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentProgramAttendanceEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentProgramAttendanceEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSchoolAssociation (
@@ -10622,12 +11428,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSchoolAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSchoolAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSchoolAssociationAlternativeGraduationPlan (
@@ -10693,12 +11504,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSchoolAttendanceEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSchoolAttendanceEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSchoolFoodServiceProgramAssociation (
@@ -10723,13 +11539,17 @@
             , SchoolYearContext int NOT NULL
             -- Attributes
             , DirectCertification bit NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSchoolFoodServiceProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSchoolFoodServiceProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSchoolFoodServiceProgramAssociationSchoolFoodServiceProgramService (
@@ -10751,19 +11571,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , SchoolFoodServiceProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSchoolFoodServiceProgramAssociationSchoolFoodServiceProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSchoolFoodServiceProgramAssociationSchoolFoodServiceProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentSectionAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -10798,12 +11622,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSectionAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSectionAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSectionAttendanceEvent (
@@ -10842,12 +11671,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSectionAttendanceEvent_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSectionAttendanceEvent_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSpecialEducationProgramAssociation (
@@ -10882,13 +11716,17 @@
             , SpecialEducationHoursPerWeek decimal(5,2) NULL
             -- References
             , SpecialEducationSettingDescriptorHashKey uniqueIdentifier NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSpecialEducationProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSpecialEducationProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentSpecialEducationProgramAssociationDisability (
@@ -10910,7 +11748,6 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , DisabilityDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , DisabilityDiagnosis nvarchar(80) NULL
             , OrderOfDisability int NULL
@@ -10918,12 +11755,17 @@
             , DisabilityDeterminationSourceTypeDescriptorHashKey uniqueIdentifier NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSpecialEducationProgramAssociationDisability_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSpecialEducationProgramAssociationDisability_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentSpecialEducationProgramAssociationDisabilityDesignation (
         HashKey uniqueidentifier NOT NULL
@@ -10958,17 +11800,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , StaffHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryProvider bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSpecialEducationProgramAssociationServiceProvider_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSpecialEducationProgramAssociationServiceProvider_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentSpecialEducationProgramAssociationSpecialEducationProgramService (
         HashKey uniqueidentifier NOT NULL
@@ -10989,19 +11835,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , SpecialEducationProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSpecialEducationProgramAssociationSpecialEducationProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSpecialEducationProgramAssociationSpecialEducationProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentSpecialEducationProgramAssociationSpecialEducationProgramServiceProvider (
         HashKey uniqueidentifier NOT NULL
@@ -11022,17 +11872,21 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , StaffHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryProvider bit NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentSpecialEducationProgramAssociationSpecialEducationProgramServiceProvider_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentSpecialEducationProgramAssociationSpecialEducationProgramServiceProvider_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentTitleIPartAProgramAssociation (
         HashKey uniqueidentifier NOT NULL,
@@ -11056,13 +11910,17 @@
             , SchoolYearContext int NOT NULL
             -- References
             , TitleIPartAParticipantDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Boilerplate
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentTitleIPartAProgramAssociation_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentTitleIPartAProgramAssociation_AttributesHistory))
         GO
     
     CREATE TABLE edfi.StudentTitleIPartAProgramAssociationService (
@@ -11084,19 +11942,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , ServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentTitleIPartAProgramAssociationService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentTitleIPartAProgramAssociationService_AttributesHistory))
         GO
     CREATE TABLE edfi.StudentTitleIPartAProgramAssociationTitleIPartAProgramService (
         HashKey uniqueidentifier NOT NULL
@@ -11117,19 +11979,23 @@
             , SchoolYearContext int NOT NULL
             -- Identifying references
             , TitleIPartAProgramServiceDescriptorHashKey uniqueIdentifier NOT NULL
-            -- Contextual primary key
             -- Attributes
             , PrimaryIndicator bit NULL
             , ServiceBeginDate date NULL
             , ServiceEndDate date NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT StudentTitleIPartAProgramAssociationTitleIPartAProgramService_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.StudentTitleIPartAProgramAssociationTitleIPartAProgramService_AttributesHistory))
         GO
     CREATE TABLE edfi.Survey (
         HashKey uniqueidentifier NOT NULL,
@@ -11158,12 +12024,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT Survey_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.Survey_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SurveyCategoryDescriptor (
@@ -11257,12 +12128,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyQuestion_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyQuestion_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SurveyQuestionMatrix (
@@ -11290,13 +12166,18 @@
             , MinRawScore int NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyQuestionMatrix_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , MatrixElement ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyQuestionMatrix_AttributesHistory))
         GO
     CREATE TABLE edfi.SurveyQuestionResponseChoice (
         HashKey uniqueidentifier NOT NULL
@@ -11323,13 +12204,18 @@
             , TextValue nvarchar(255) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyQuestionResponseChoice_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , SortOrder ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyQuestionResponseChoice_AttributesHistory))
         GO
     CREATE TABLE edfi.SurveyQuestionResponse (
         HashKey uniqueidentifier NOT NULL,
@@ -11357,12 +12243,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyQuestionResponse_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyQuestionResponse_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SurveyQuestionResponseSurveyQuestionMatrixElementResponse (
@@ -11393,13 +12284,18 @@
             , TextResponse nvarchar(2048) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyQuestionResponseSurveyQuestionMatrixElementResponse_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , MatrixElement ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyQuestionResponseSurveyQuestionMatrixElementResponse_AttributesHistory))
         GO
     CREATE TABLE edfi.SurveyQuestionResponseValue (
         HashKey uniqueidentifier NOT NULL
@@ -11426,13 +12322,18 @@
             , TextResponse nvarchar(2048) NULL
             -- Boilerplate
             , CreateDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyQuestionResponseValue_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
                 , SurveyQuestionResponseValueIdentifier ASC -- Contextual PK column
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyQuestionResponseValue_AttributesHistory))
         GO
     CREATE TABLE edfi.SurveyResponse (
         HashKey uniqueidentifier NOT NULL,
@@ -11465,12 +12366,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveyResponse_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveyResponse_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SurveyResponseSurveyLevel (
@@ -11585,12 +12491,17 @@
             , CreateDate datetime2 NOT NULL
             , Id uniqueidentifier NOT NULL
             , LastModifiedDate datetime2 NOT NULL
-            -- Constraints
+            -- Temporal table artifacts
+            , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+            , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+            , PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)
+            -- Primary Key Constraint
             , CONSTRAINT SurveySectionResponse_Attributes_PK PRIMARY KEY CLUSTERED (
                 HashKey ASC
                 , SchoolYearContext ASC
             ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
             ) ON [PRIMARY]
+            WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = edfi.SurveySectionResponse_AttributesHistory))
         GO
     
     CREATE TABLE edfi.SurveySectionResponseEducationOrganizationTargetAssociation (
