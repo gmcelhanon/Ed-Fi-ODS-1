@@ -65,7 +65,15 @@ namespace EdFi.Ods.CodeGen.Generators
 
             public IEnumerable<Column> ParentPrimaryKeyColumns
             {
-                get => PrimaryKeyColumns.Where(pkc => !ContextualPrimaryKeyColumns.Any(c => c.ColumnName == pkc.ColumnName));
+                get => PrimaryKeyColumns
+                    .Where(pkc => !ContextualPrimaryKeyColumns.Any(c => c.ColumnName == pkc.ColumnName))
+                    .Select((pkc, i) => new Column
+                    {
+                        ColumnName = pkc.ColumnName,
+                        DataType = pkc.DataType,
+                        IsNullable = pkc.IsNullable,
+                        IsFirst = i == 0,
+                    });
             }
             
             public bool IsAggregateRoot { get; set; }
@@ -148,6 +156,8 @@ namespace EdFi.Ods.CodeGen.Generators
 
             // Used for constructing HashKeys for populating the template
             public IEnumerable<Column> ReferenceColumns { get; set; }
+
+            public bool IsFirst { get; set; }
         }
 
         protected override object Build()
@@ -241,7 +251,7 @@ namespace EdFi.Ods.CodeGen.Generators
                     return constraintName;
                 }
 
-                HashReference CreateHashReference(AssociationView association)
+                HashReference CreateHashReference(AssociationView association, int index)
                 {
                     return new HashReference
                     {
@@ -262,7 +272,8 @@ namespace EdFi.Ods.CodeGen.Generators
                                 DataType = p.PropertyType.ToSql(),
                                 IsNullable = !p.PropertyType.IsNullable,
                                 IsFirst = i == 0,
-                            }) 
+                            }) ,
+                        IsFirst = index == 0
                     };
                 }
             }
