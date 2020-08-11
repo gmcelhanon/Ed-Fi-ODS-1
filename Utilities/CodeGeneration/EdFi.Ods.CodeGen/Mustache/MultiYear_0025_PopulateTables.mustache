@@ -1,6 +1,9 @@
 BEGIN
     DECLARE @schoolYearContext AS INT = 2019
 
+    -- disable all constraints
+    EXEC sp_MSforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all"
+
 {{#Aggregates}}
     {{#AggregateRoot}}
     INSERT INTO {{Schema}}.{{TableName}} (
@@ -107,4 +110,6 @@ BEGIN
         {{/HasNonKeyColumnsOrReferences}}
     {{/Members}}
 {{/Aggregates}}
+    -- enable all constraints
+    EXEC sp_MSforeachtable @command1="print '?'", @command2="ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all"
 END

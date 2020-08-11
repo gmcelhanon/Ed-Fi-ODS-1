@@ -94,6 +94,11 @@ namespace EdFi.Ods.CodeGen.Generators
             }
 
             public IEnumerable<Column> NonKeyColumns { get; set; }
+
+            public bool HasBoilerplateColumns
+            {
+                get => BoilerplateColumns.Any();
+            }
             
             public IEnumerable<Column> BoilerplateColumns { get; set; }
 
