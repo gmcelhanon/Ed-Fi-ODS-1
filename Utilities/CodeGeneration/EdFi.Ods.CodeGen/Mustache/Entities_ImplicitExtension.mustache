@@ -107,9 +107,9 @@
         {{/NavigableChildren}}
         // -------------------------------------------------------------
 
-        void IMappable.Map(object target)
+        void IMappable.Map(object target, object synchronizationContext)
         {
-            this.MapTo((I{{ClassName}}) target, null);
+            this.MapTo((I{{ClassName}}) target, synchronizationContext, null);
         }
 
         bool ISynchronizable.Synchronize(object target)

@@ -607,9 +607,9 @@ namespace {{AggregateNamespace}}
             return this.SynchronizeTo(({{NamespacePrefix}}I{{ClassName}})target);
         }
 
-        void IMappable.Map(object target)
+        void IMappable.Map(object target, object synchronizationContext)
         {
-            this.{{#IsDerivedExtensionEntityOfConcreteBase}}MapDerivedTo{{/IsDerivedExtensionEntityOfConcreteBase}}{{^IsDerivedExtensionEntityOfConcreteBase}}MapTo{{/IsDerivedExtensionEntityOfConcreteBase}}(({{NamespacePrefix}}I{{ClassName}}) target, null);
+            this.{{#IsDerivedExtensionEntityOfConcreteBase}}MapDerivedTo{{/IsDerivedExtensionEntityOfConcreteBase}}{{^IsDerivedExtensionEntityOfConcreteBase}}MapTo{{/IsDerivedExtensionEntityOfConcreteBase}}(({{NamespacePrefix}}I{{ClassName}}) target, synchronizationContext, null);
         }
 
         {{/IsAbstract}}

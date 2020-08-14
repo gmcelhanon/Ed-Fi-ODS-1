@@ -95,27 +95,27 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             //   Synch One-to-one relationships
             // ----------------------------------            
             {{#OneToOneClassList}}
-            // {{OtherClassName}}
-            if (synchronizationContext?.Is{{OtherClassName}}Supported != false)
+            // {{PropertyName}} ({{OtherClassName}})
+            if (synchronizationContext?.Is{{PropertyName}}Supported != false)
             {
-                if (source.{{OtherClassName}} == null)
+                if (source.{{PropertyName}} == null)
                 {
-                    if (target.{{OtherClassName}} != null)
+                    if (target.{{PropertyName}} != null)
                     {
-                        target.{{OtherClassName}} = null;
+                        target.{{PropertyName}} = null;
                         isModified = true;
                     }
                 }
                 else
                 {
-                    if (target.{{OtherClassName}} == null)
+                    if (target.{{PropertyName}} == null)
                     {
-                        var itemType = target.GetType().GetProperty("{{OtherClassName}}").PropertyType;
+                        var itemType = target.GetType().GetProperty("{{PropertyName}}").PropertyType;
                         var newItem = Activator.CreateInstance(itemType);
-                        target.{{OtherClassName}} = (I{{OtherClassName}}) newItem;
+                        target.{{PropertyName}} = (I{{OtherClassName}}) newItem;
                     }
 
-                    isModified |= source.{{OtherClassName}}.Synchronize(target.{{OtherClassName}});
+                    isModified |= source.{{PropertyName}}.Synchronize(target.{{PropertyName}});
                 }
             }
             {{/OneToOneClassList}}
@@ -172,12 +172,9 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
         public static void MapDerivedTo(this I{{ModelName}} source, I{{ModelName}} target, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
         {{/IsBaseClassConcrete}}
         {{^IsBaseClassConcrete}}
-        public static void MapTo(this I{{ModelName}} source, I{{ModelName}} target, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
+        public static void MapTo(this I{{ModelName}} source, I{{ModelName}} target, {{ModelName}}SynchronizationContext synchronizationContext, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
         {{/IsBaseClassConcrete}}
         {
-            var synchronizationContext = (source as IHasSynchronizationContext<{{ModelName}}SynchronizationContext>).SynchronizationContext;
-            (target as IHasSynchronizationContext<{{ModelName}}SynchronizationContext>).SynchronizationContext = synchronizationContext;
-
             {{#IsBaseEntity}}
             // =======================================================================================
             // Detect and map derived types (compiler is unable to correctly link to appropriate 
@@ -243,26 +240,26 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // ----------------------------------
             {{#HasOneToOneRelationships}}
             {{#OneToOneClassList}}
-            // {{OtherClassName}} (Source)
-            if (synchronizationContext?.Is{{OtherClassName}}Supported != false)
+            // {{PropertyName}} ({{OtherClassName}}) (Source)
+            if (synchronizationContext?.Is{{PropertyName}}Supported != false)
             {
-                var itemProperty = target.GetType().GetProperty("{{OtherClassName}}");
+                var itemProperty = target.GetType().GetProperty("{{PropertyName}}");
                 
                 if (itemProperty != null)
                 {                    
-                    if (source.{{OtherClassName}} == null)
+                    if (source.{{PropertyName}} == null)
                     {
-                        target.{{OtherClassName}} = null;
+                        target.{{PropertyName}} = null;
                     }
                     else
                     {
                         var itemType = itemProperty.PropertyType;
                         object target{{OtherClassName}} = Activator.CreateInstance(itemType);
                         (target{{OtherClassName}} as IChildEntity)?.SetParent(target{{#IsEntityExtension}}.{{ModelParentName}}{{/IsEntityExtension}});
-                        source.{{OtherClassName}}.Map(target{{OtherClassName}});
+                        source.{{PropertyName}}.Map(target{{OtherClassName}}, synchronizationContext?.{{PropertyName}}SynchronizationContext);
                         
                         // Update the target reference appropriately
-                        target.{{OtherClassName}} = (I{{OtherClassName}}) target{{OtherClassName}};
+                        target.{{PropertyName}} = (I{{OtherClassName}}) target{{OtherClassName}};
                     }
                 }
             }
@@ -277,7 +274,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
 
             if (synchronizationContext?.Is{{OtherClassPlural}}Supported != false)
             {
-                source.{{OtherClassPlural}}.MapCollectionTo(target.{{OtherClassPlural}}, target);
+                source.{{OtherClassPlural}}.MapCollectionTo(target.{{OtherClassPlural}}, synchronizationContext?.{{OtherClassPlural}}SynchronizationContext, target);
             }
             {{/BaseNavigableChildrenList}}
             {{/IsDerivedEntity}}
@@ -287,13 +284,13 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
 
             if (synchronizationContext?.Is{{ChildClassPlural}}Supported != false)
             {    
-                source.{{ChildClassPlural}}.MapCollectionTo(target.{{ChildClassPlural}}, {{#IsCollectionAggregateExtension}}target.{{ParentName}}{{/IsCollectionAggregateExtension}}{{^IsCollectionAggregateExtension}}target{{/IsCollectionAggregateExtension}});
+                source.{{ChildClassPlural}}.MapCollectionTo(target.{{ChildClassPlural}}, synchronizationContext?.{{OtherClassPlural}}SynchronizationContext, {{#IsCollectionAggregateExtension}}target.{{ParentName}}{{/IsCollectionAggregateExtension}}{{^IsCollectionAggregateExtension}}target{{/IsCollectionAggregateExtension}});
             }
             {{/NavigableChildrenList}}
 
             {{#IsExtendable}}
             // Map extensions
-            source.MapExtensionsTo(target);
+            source.MapExtensionsTo(target, synchronizationContext);
             {{/IsExtendable}}
 
             var eTagProvider = new ETagProvider();

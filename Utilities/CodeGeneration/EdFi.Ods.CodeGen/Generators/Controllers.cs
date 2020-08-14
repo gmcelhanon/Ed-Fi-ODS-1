@@ -45,12 +45,13 @@ namespace EdFi.Ods.CodeGen.Generators
                 ControllerClass = string.Format("{0}Controller", resourceData.ResolvedResource.PluralName),
                 ResourceReadModel = FormatResourceReadModel(resourceData),
                 ResourceWriteModel = FormatResourceWriteModel(resourceData),
-                EntityInterface = FormatEntityInterface(resourceData.ResolvedResource),
+                EntityInterface = FormatModelArtifact(resourceData.ResolvedResource, "I{0}"),
                 AggregateRoot = FormatAggregateRoot(resourceData.ResolvedResource),
                 PutRequest = FormatWritableRequest(resourceData, "Put"),
                 PostRequest = FormatWritableRequest(resourceData, "Post"),
                 DeleteRequest = FormatDeleteRequest(resourceData),
                 GetByExampleRequest = FormatReadableRequest(resourceData, "GetByExample"),
+                SynchronizationContext = FormatModelArtifact(resourceData.ResolvedResource, "{0}SynchronizationContext"),
                 ResourceName = resourceData.ResolvedResource.Name,
                 MapAllExpression = FormatReadExpressions(resourceData, r => r.AllRequestProperties()),
                 ResourceCollectionName = resourceData.ResolvedResource.PluralName.ToCamelCase(),
@@ -296,7 +297,14 @@ namespace EdFi.Ods.CodeGen.Generators
                 requestType);
         }
 
-        private string FormatEntityInterface(ResourceClassBase resource)
+        /// <summary>
+        /// Gets the name of an artifact based on the common resource/entity model _abstraction_, formatted using
+        /// the provided format specifier.
+        /// </summary>
+        /// <param name="resource">The resource class.</param>
+        /// <param name="artifactNameFormatSpecifier">The format specifier for the artifact, with the '0' parameter to be replaced by the resource class name.</param>
+        /// <returns></returns>
+        private string FormatModelArtifact(ResourceClassBase resource, string artifactNameFormatSpecifier)
         {
             string properCaseName = resource.IsEdFiResource()
                 ? TemplateContext.SchemaProperCaseName
@@ -305,12 +313,8 @@ namespace EdFi.Ods.CodeGen.Generators
                     .ProperCaseName;
 
             return RemoveEdFiNamespacePrefix(
-                string.Format(
-                    "{0}.I{1}",
-                    EdFiConventions.BuildNamespace(
-                        Namespaces.Entities.Common.BaseNamespace,
-                        properCaseName),
-                    resource.Name));
+                $"{EdFiConventions.BuildNamespace(Namespaces.Entities.Common.BaseNamespace, properCaseName)}."
+                + string.Format(artifactNameFormatSpecifier, resource.Name));
         }
 
         private string FormatAggregateRoot(ResourceClassBase resource)

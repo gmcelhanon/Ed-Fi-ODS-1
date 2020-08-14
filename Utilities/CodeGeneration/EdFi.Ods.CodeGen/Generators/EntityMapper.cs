@@ -104,7 +104,11 @@ namespace EdFi.Ods.CodeGen.Generators
                 HasOneToOneRelationships = resourceClass.EmbeddedObjects.Any(),
                 OneToOneClassList = resourceClass.EmbeddedObjects
                     .Select(
-                        x => new {OtherClassName = x.PropertyName}),
+                        x => new
+                        {
+                            PropertyName = x.PropertyName,
+                            OtherClassName = x.ObjectType.Name,
+                        }),
                 BaseNavigableChildrenList = resourceClass.Collections
                     .Where(c => c.IsInherited)
                     .Select(

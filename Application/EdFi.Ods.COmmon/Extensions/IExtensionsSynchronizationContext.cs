@@ -3,6 +3,9 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System.Collections.Generic;
+using EdFi.Ods.Common.Models;
+
 namespace EdFi.Ods.Common.Extensions
 {
     /// <summary>
@@ -17,6 +20,9 @@ namespace EdFi.Ods.Common.Extensions
         /// <param name="name">The name of the extension.</param>
         /// <returns><b>true</b> if the extension is supported as a source for synchronization; otherwise <b>false</b>.</returns>
         bool IsExtensionSupported(string name);
+
+        // SPIKE NOTE: Supply documentation.
+        IDictionary<string, ISynchronizationContext> ExtensionSynchronizationContextByName { get; }
     }
 
     // /// <summary>

@@ -69,7 +69,7 @@ namespace {{EntitiesBaseNamespace}}
     /// is supported by a model implementation being used as the source in a "synchronization"
     /// operation.
     /// </summary>
-    public class {{ModelName}}SynchronizationContext{{#IsExtendable}} : IExtensionsSynchronizationContext{{/IsExtendable}}
+    public class {{ModelName}}SynchronizationContext : ISynchronizationContext{{#IsExtendable}}, IExtensionsSynchronizationContext{{/IsExtendable}}
     {
         public {{ModelName}}SynchronizationContext(
     {{#SynchronizationContextMembers}}
@@ -106,6 +106,23 @@ namespace {{EntitiesBaseNamespace}}
         public Func<I{{ItemTypeName}}, bool> Is{{ItemTypeName}}Included { get; }
         {{/ItemTypeName}}
     {{/SynchronizationContextMembers}}
+
+        bool ISynchronizationContext.IsMemberSupported(string memberName)
+        {
+            switch case(memberName)
+            {
+    {{#SynchronizationContextMembers}}
+        {{^ItemTypeName}}
+                case "{{PropertyName}}":
+                    return Is{{PropertyName}}Supported;
+                    break;
+        {{/ItemTypeName}}
+    {{/SynchronizationContextMembers}}
+                default:
+                    throw new Exception($"Unknown member '{memberName}'.");
+            }
+        }
+    
     {{#IsExtendable}}
         public IReadOnlyList<string> SupportedExtensions { get; }
         

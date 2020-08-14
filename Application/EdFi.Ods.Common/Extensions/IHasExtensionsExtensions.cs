@@ -166,8 +166,11 @@ namespace EdFi.Ods.Common.Extensions
         /// <param name="source"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static void MapExtensionsTo<TSource, TTarget>(this TSource source, TTarget target)
-            where TSource : IMappable, IHasExtensions, IHasExtensionsSynchronizationContext
+        public static void MapExtensionsTo<TSource, TTarget>(
+            this TSource source, 
+            TTarget target, 
+            IExtensionsSynchronizationContext extensionsSynchronizationContext)
+            where TSource : IMappable, IHasExtensions//, IHasExtensionsSynchronizationContext
             where TTarget : IHasExtensions
         {
             // SPIKE NOTE: These modifications need careful attention.
@@ -182,21 +185,21 @@ namespace EdFi.Ods.Common.Extensions
                 throw new ArgumentNullException(nameof(target));
             }
 
-            // If source has no extensions present, don't map anything and leave target in its initialized state
+            // If source has no extensions available/present, don't map anything and leave target in its initialized state
             if (source.Extensions == null)
             {
                 return;
             }
 
-            var extensionsSynchronizationContextSource = (source as IHasExtensionsSynchronizationContext);
-            
-            if (extensionsSynchronizationContextSource == null)
-            {
-                throw new ArgumentException(
-                    $"The source type '{source.GetType().FullName}' does not implement the {nameof(IHasExtensionsSynchronizationContext)} interface and cannot be mapped.");
-            }
-
-            var extensionsSynchronizationContext = extensionsSynchronizationContextSource.SynchronizationContext;
+            // var extensionsSynchronizationContextSource = (source as IExtensionsSynchronizationContext);
+            //
+            // if (extensionsSynchronizationContextSource == null)
+            // {
+            //     throw new ArgumentException(
+            //         $"The source type '{source.GetType().FullName}' does not implement the {nameof(IHasExtensionsSynchronizationContext)} interface and cannot be mapped.");
+            // }
+            //
+            // var extensionsSynchronizationContext = extensionsSynchronizationContextSource.SynchronizationContext;
 
             // var targetExtensionsSynchronizationContext = (target as IHasExtensionsSynchronizationContext)
             //     ?.ExtensionsSynchronizationContextContext;
@@ -210,27 +213,30 @@ namespace EdFi.Ods.Common.Extensions
             // Get all the extensions present in the source object
             //   For entities, this will be all the extensions loaded from the ODS
             //   For resources, this will be all the extensions submitted by the API client
-            string[] extensionNames = new string[source.Extensions.Count];
-            source.Extensions.Keys.CopyTo(extensionNames, 0);
+            string[] availableExtensionNames = new string[source.Extensions.Count];
+            source.Extensions.Keys.CopyTo(availableExtensionNames, 0);
 
             // Process extensions alphabetically from source to target
-            foreach (string extensionName in extensionNames.OrderBy(x => x))
+            foreach (string availableExtensionName in availableExtensionNames.OrderBy(x => x))
             {
                 // If the extension isn't supported by the source, don't map it.
                 //   For entities, all extensions present will be supported.
                 //   For non-profile constrained resources, all extensions will be supported.
                 //   For profile constrained resources, some extensions may not be supported.
-                if (extensionsSynchronizationContext?.IsExtensionSupported(extensionName) == false)
+                if (extensionsSynchronizationContext != null && !extensionsSynchronizationContext.IsExtensionSupported(availableExtensionName))
                 {
                     // extensionsSynchronizationContextContext.SetExtensionSupported(extensionName, false);
                     continue;
                 }
 
                 // Mark the extension as available on the target
+                // SPIKE NOTE: Identify the specific scenario this "available" context supports
+                // -- It is probably related to supporting semantics for setting an extension to
+                // null explicitly to remove it (rather than it not being present). Needs to be confirmed.
                 // extensionsSynchronizationContextContext.SetExtensionAvailable(extensionName, true);
 
                 // Identify the source extension instance
-                var sourceExtensionObject = GetMappableSourceExtensionObject(source, extensionName);
+                var sourceExtensionObject = GetMappableSourceExtensionObject(source, availableExtensionName);
 
                 // If no source extension object is present, do not instantiate and map the corresponding target.
                 if (sourceExtensionObject == null)
@@ -242,13 +248,14 @@ namespace EdFi.Ods.Common.Extensions
                 }
 
                 // If the source entity extension is an implicit entity extension and it is empty, don't map for outbound serialization
+                // SPIKE NOTE: Investigate this suspicious cast
                 if ((sourceExtensionObject as IImplicitEntityExtension)?.IsEmpty() == true)
                     continue;
 
                 // Identify the target extension instance
                 //   For entities, this will force the API client-supplied extension in the resource to match to a known/registered entity extension type
                 //   For resources, this will instantiate the appropriate resource extension loaded from the database.
-                var targetExtensionObject = GetMappableTargetExtensionObject(target, extensionName);
+                var targetExtensionObject = GetMappableTargetExtensionObject(target, availableExtensionName);
 
                 if (targetExtensionObject == null)
                 {
@@ -256,7 +263,7 @@ namespace EdFi.Ods.Common.Extensions
                 }
 
                 // Map the extension objects
-                sourceExtensionObject.Map(targetExtensionObject);
+                sourceExtensionObject.Map(targetExtensionObject, extensionsSynchronizationContext?.ExtensionSynchronizationContextByName[availableExtensionName]);
 
                 // Set the parent back-reference (relevant only for entity extension classes)
                 var targetExtensionObjectAsChildEntity = targetExtensionObject as IChildEntity;
@@ -278,7 +285,7 @@ namespace EdFi.Ods.Common.Extensions
                     target.Extensions = new OrderedDictionary();
                 }
 
-                target.Extensions[extensionName] = targetExtensionObject;
+                target.Extensions[availableExtensionName] = targetExtensionObject;
 
                 // Indicate that the extension is supported
                 //   For entities, this will allow the transient entity just mapped to have the extension data subsequently synchronized to the persistent entity

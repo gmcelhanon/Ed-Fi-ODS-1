@@ -37,7 +37,8 @@ namespace {{ControllersNamespace}}
         {{PutRequest}},
         {{PostRequest}},
         {{DeleteRequest}},
-        {{GetByExampleRequest}}>
+        {{GetByExampleRequest}},
+        {{SynchronizationContext}}>
     {
         public {{ControllerClass}}(IPipelineFactory pipelineFactory, ISchoolYearContextProvider schoolYearContextProvider, IRESTErrorProvider restErrorProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider)
             : base(pipelineFactory, schoolYearContextProvider, restErrorProvider, defaultPageSizeLimitProvider)
@@ -48,7 +49,7 @@ namespace {{ControllersNamespace}}
         {
         {{#MapAllExpression}}
             {{#HasProperties}}
-                        // Copy all existing values
+            // Copy all existing values
             specification.SuspendReferenceAssignmentCheck();
             {{/HasProperties}}
             {{#Properties}}
@@ -58,7 +59,7 @@ namespace {{ControllersNamespace}}
             throw new NotSupportedException("Profile only has a Write Content Type defined for this resource, and so the controller does not support read operations.");
             {{/HasProperties}}
         {{/MapAllExpression}}
-                    }
+        }   
 
         protected override string GetResourceCollectionName()
         {
