@@ -20,162 +20,168 @@ namespace EdFi.Ods.CodeGen.Generators
         protected override object Build()
         {
             var resources = ResourceModelProvider.GetResourceModel()
-                                                 .GetAllResources();
+                .GetAllResources();
 
             var aggregates = resources
-                            .Select(
-                                 r => new
-                                      {
-                                          ResourceName = r.Name, ResourceClasses =
+                .Select(
+                    r => new
+                    {
+                        ResourceName = r.Name,
+                        ResourceClasses =
 
-                                              // Add the root resource class (if it's not abstract or it has a composite id)
-                                              (r.Entity?.IsAbstractRequiringNoCompositeId() != true && TemplateContext.ShouldRenderResourceClass(r)
-                                                  ? new ResourceClassBase[]
-                                                    {
-                                                        r
-                                                    }
-                                                  : new ResourceClassBase[0])
+                            // Add the root resource class (if it's not abstract or it has a composite id)
+                            (r.Entity?.IsAbstractRequiringNoCompositeId() != true && TemplateContext.ShouldRenderResourceClass(r)
+                                ? new ResourceClassBase[] {r}
+                                : new ResourceClassBase[0])
 
-                                              // Add in non-inherited child items
-                                             .Concat(
-                                                  r.AllContainedItemTypes
-                                                   .Where(
-                                                        t => TemplateContext.ShouldRenderResourceClass(t)
-                                                             && !t.IsInheritedChildItem))
-                                             .ToList()
-                                      })
-                            .Where(x => x.ResourceClasses.Any())
-                            .OrderBy(x => x.ResourceName)
-                            .Select(
-                                 x => new
-                                      {
-                                          AggregateName = x.ResourceName, Mappers = x.ResourceClasses
-                                                                                     .OrderBy(y => y.Name)
-                                                                                     .Select(BuildMapper)
-                                      });
+                            // Add in non-inherited child items
+                            .Concat(
+                                r.AllContainedItemTypes
+                                    .Where(
+                                        t => TemplateContext.ShouldRenderResourceClass(t)
+                                            && !t.IsInheritedChildItem))
+                            .ToList()
+                    })
+                .Where(x => x.ResourceClasses.Any())
+                .OrderBy(x => x.ResourceName)
+                .Select(
+                    x => new
+                    {
+                        AggregateName = x.ResourceName,
+                        Mappers = x.ResourceClasses
+                            .OrderBy(y => y.Name)
+                            .Select(BuildMapper)
+                    });
 
             var hasDerivedResources = resources.Any(r => r.IsDerived);
 
             return new
-                   {
-                       HasDerivedResources = hasDerivedResources, NamespaceName =
-                           EdFiConventions.BuildNamespace(
-                               Namespaces.Entities.Common.BaseNamespace,
-                               TemplateContext.SchemaProperCaseName),
-                       Aggregates = aggregates
-                   };
+            {
+                HasDerivedResources = hasDerivedResources,
+                NamespaceName =
+                    EdFiConventions.BuildNamespace(
+                        Namespaces.Entities.Common.BaseNamespace,
+                        TemplateContext.SchemaProperCaseName),
+                Aggregates = aggregates
+            };
         }
 
         private object BuildMapper(ResourceClassBase resourceClass)
         {
             return new
-                   {
-                       ModelName = resourceClass.Name,
-                       ModelParentName = resourceClass.Entity?.Parent?.Name ?? resourceClass.Name.TrimSuffix("Extension"),
-                       ExtensionName = TemplateContext.SchemaProperCaseName, IsEntityExtension = resourceClass.IsResourceExtensionClass,
-                       BaseClassName = resourceClass.Entity?.BaseEntity?.Name, AllowPrimaryKeyUpdates = resourceClass.Entity?.Identifier.IsUpdatable,
-                       AnnotatedLocalPrimaryKeyList = AnnotateLocalIdentifyingPropertyKeys(resourceClass.Entity), BackSynchedPrimaryKeyList =
-                           resourceClass.IdentifyingProperties
-                                        .Where(p => !IsDefiningUniqueId(resourceClass, p))
-                                        .OrderBy(x => x.PropertyName)
-                                        .Select(
-                                             x => new
-                                                  {
-                                                      CSharpSafePrimaryKeyName = x.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)
-                                                  }),
-                       IsDerivedEntity = resourceClass.Entity?.IsDerived, BaseClassNonPkPropertyList = resourceClass.NonIdentifyingProperties
-                                                                                                                    .Where(
-                                                                                                                         p => p.IsInherited &&
-                                                                                                                              p.IsSynchronizedProperty())
-                                                                                                                    .OrderBy(p => p.PropertyName)
-                                                                                                                    .Select(
-                                                                                                                         p => new
-                                                                                                                              {
-                                                                                                                                  BasePropertyName =
-                                                                                                                                      p.PropertyName
-                                                                                                                              }),
-                       NonPrimaryKeyList = resourceClass.NonIdentifyingProperties
-                                                        .Where(p => !p.IsInherited && p.IsSynchronizedProperty())
+            {
+                ModelName = resourceClass.Name,
+                ModelParentName = resourceClass.Entity?.Parent?.Name ?? resourceClass.Name.TrimSuffix("Extension"),
+                ExtensionName = TemplateContext.SchemaProperCaseName,
+                IsEntityExtension = resourceClass.IsResourceExtensionClass,
+                BaseClassName = resourceClass.Entity?.BaseEntity?.Name,
+                AllowPrimaryKeyUpdates = resourceClass.Entity?.Identifier.IsUpdatable,
+                AnnotatedLocalPrimaryKeyList = AnnotateLocalIdentifyingPropertyKeys(resourceClass.Entity),
+                BackSynchedPrimaryKeyList =
+                    resourceClass.IdentifyingProperties
+                        .Where(p => !IsDefiningUniqueId(resourceClass, p))
+                        .OrderBy(x => x.PropertyName)
+                        .Select(
+                            x => new {CSharpSafePrimaryKeyName = x.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)}),
+                IsDerivedEntity = resourceClass.Entity?.IsDerived,
+                BaseClassNonPkPropertyList = resourceClass.NonIdentifyingProperties
+                    .Where( 
+                        p => p.IsInherited &&
+                            p.IsSynchronizedProperty())
+                    .OrderBy(p => p.PropertyName)
+                    .Select(
+                        p => new
+                        {
+                            BasePropertyName =
+                                p.PropertyName
+                        }),
+                NonPrimaryKeyList = resourceClass.NonIdentifyingProperties
+                    .Where(p => !p.IsInherited && p.IsSynchronizedProperty())
 
-                                                         // Add mappings for UniqueId values defined on Person resources
-                                                        .Concat(resourceClass.IdentifyingProperties.Where(p => IsDefiningUniqueId(resourceClass, p)))
-                                                        .OrderBy(p => p.PropertyName)
-                                                        .Select(
-                                                             p => new
-                                                                  {
-                                                                      p.PropertyName, CSharpSafePropertyName =
-                                                                          p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)
-                                                                  }),
-                       HasOneToOneRelationships = resourceClass.EmbeddedObjects.Any(), OneToOneClassList = resourceClass.EmbeddedObjects
-                                                                                                                        .Select(
-                                                                                                                             x => new
-                                                                                                                                  {
-                                                                                                                                      OtherClassName =
-                                                                                                                                          x.PropertyName
-                                                                                                                                  }),
-                       BaseNavigableChildrenList = resourceClass.Collections
-                                                                .Where(c => c.IsInherited)
-                                                                .Select(
-                                                                     c => new
-                                                                          {
-                                                                              OtherClassPlural = c.PropertyName, OtherClassSingular = c.ItemType.Name
-                                                                          }),
-                       NavigableChildrenList = resourceClass.Collections
-                                                            .Where(c => !c.IsInherited)
-                                                            .Select(
-                                                                 c => new
-                                                                      {
-                                                                          IsExtensionClass = resourceClass.IsResourceExtensionClass,
-                                                                          IsCollectionAggregateExtension = c.ItemType.Entity.IsAggregateExtensionTopLevelEntity,
-                                                                          ParentName = (resourceClass as ResourceChildItem)?.Parent.Name,
-                                                                          ChildClassPlural = c.PropertyName, ChildClassSingular = c.ItemType.Name
-                                                                      }),
+                    // Add mappings for UniqueId values defined on Person resources
+                    .Concat(resourceClass.IdentifyingProperties.Where(p => IsDefiningUniqueId(resourceClass, p)))
+                    .OrderBy(p => p.PropertyName)
+                    .Select(
+                        p => new
+                        {
+                            PropertyName = p.PropertyName,
+                            CSharpSafePropertyName =
+                                p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)
+                        }),
+                HasOneToOneRelationships = resourceClass.EmbeddedObjects.Any(),
+                OneToOneClassList = resourceClass.EmbeddedObjects
+                    .Select(
+                        x => new
+                        {
+                            OtherClassName =
+                                x.PropertyName
+                        }),
+                BaseNavigableChildrenList = resourceClass.Collections
+                    .Where(c => c.IsInherited)
+                    .Select(
+                        c => new
+                        {
+                            OtherClassPlural = c.PropertyName,
+                            OtherClassSingular = c.ItemType.Name
+                        }),
+                NavigableChildrenList = resourceClass.Collections
+                    .Where(c => !c.IsInherited)
+                    .Select(
+                        c => new
+                        {
+                            IsExtensionClass = resourceClass.IsResourceExtensionClass,
+                            IsCollectionAggregateExtension = c.ItemType.Entity.IsAggregateExtension,
+                            ParentName = (resourceClass as ResourceChildItem)?.Parent.Name,
+                            ChildClassPlural = c.PropertyName,
+                            ChildClassSingular = c.ItemType.Name
+                        }),
 
-                       // Only Ed-Fi Standard entities that are non-lookups can have extensions
-                       IsExtendable = resourceClass.IsEdFiStandardResource
-                                      && !resourceClass.IsLookup()
-                                      && !resourceClass.IsDescriptorEntity()
-                                      && !resourceClass.IsAbstract(),
-                       IsBaseClassConcrete = IsBaseClassConcrete(resourceClass), IsBaseEntity = resourceClass.Entity?.IsBase,
-                       DerivedEntitiesList = BuildDerivedEntities(resourceClass), IsRootEntity = resourceClass is Resource, ContextualKeysList =
-                           resourceClass.IdentifyingProperties
-                                        .OrderBy(p => p.PropertyName)
-                                        .Select(
-                                             p => new
-                                                  {
-                                                      CSharpSafePropertyName = p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)
-                                                  }),
-                       SourceSupportPropertyList = BuildSourceSupportProperties(resourceClass), FilterDelegatePropertyList = resourceClass.Collections
-                                                                                                                                          .OrderBy(
-                                                                                                                                               c => c
-                                                                                                                                                   .ItemType
-                                                                                                                                                   .Name)
-                                                                                                                                          .Select(
-                                                                                                                                               c => new
-                                                                                                                                                    {
-                                                                                                                                                        PropertyName
-                                                                                                                                                            = c
-                                                                                                                                                             .ItemType
-                                                                                                                                                             .Name
-                                                                                                                                                    }),
-                       HasAggregateReferences =
-                           resourceClass.Entity?.GetAssociationsToReferenceableAggregateRoots(includeInherited: true).Any(),
-                       AggregateReferences =
-                           resourceClass.Entity?.GetAssociationsToReferenceableAggregateRoots(includeInherited: true)
-                                        .OrderBy(a => a.Name)
-                                        .Select(
-                                             a => new
-                                                  {
-                                                      AggregateReferenceName = a.Name,
-                                                      MappedReferenceDataHasDiscriminator = a.OtherEntity.HasDiscriminator()
-                                                  })
-                   };
+                // Only Ed-Fi Standard entities that are non-lookups can have extensions
+                IsExtendable = resourceClass.IsEdFiStandardResource
+                    && !resourceClass.IsLookup()
+                    && !resourceClass.IsDescriptorEntity()
+                    && !resourceClass.IsAbstract(),
+                IsBaseClassConcrete = IsBaseClassConcrete(resourceClass),
+                IsBaseEntity = resourceClass.Entity?.IsBase,
+                DerivedEntitiesList = BuildDerivedEntities(resourceClass),
+                IsRootEntity = resourceClass is Resource,
+                ContextualKeysList =
+                    resourceClass.IdentifyingProperties
+                        .OrderBy(p => p.PropertyName)
+                        .Select(
+                            p => new {CSharpSafePropertyName = p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)}),
+                SourceSupportPropertyList = BuildSourceSupportProperties(resourceClass),
+                FilterDelegatePropertyList = resourceClass.Collections
+                    .OrderBy(
+                        c => c
+                            .ItemType
+                            .Name)
+                    .Select(
+                        c => new
+                        {
+                            PropertyName
+                                = c
+                                    .ItemType
+                                    .Name
+                        }),
+                HasAggregateReferences =
+                    resourceClass.Entity?.GetAssociationsToReferenceableAggregateRoots(includeInherited: true).Any(),
+                AggregateReferences =
+                    resourceClass.Entity?.GetAssociationsToReferenceableAggregateRoots(includeInherited: true)
+                        .OrderBy(a => a.Name)
+                        .Select(
+                            a => new
+                            {
+                                AggregateReferenceName = a.Name,
+                                MappedReferenceDataHasDiscriminator = a.OtherEntity.HasDiscriminator()
+                            })
+            };
         }
 
         private static bool IsDefiningUniqueId(ResourceClassBase resourceClass, ResourceProperty property)
         {
             return UniqueIdSpecification.IsUniqueId(property.PropertyName)
-                   && PersonEntitySpecification.IsPersonEntity(resourceClass.Name);
+                && PersonEntitySpecification.IsPersonEntity(resourceClass.Name);
         }
 
         private bool IsBaseClassConcrete(ResourceClassBase resourceClass)
@@ -186,8 +192,8 @@ namespace EdFi.Ods.CodeGen.Generators
             }
 
             return resourceClass.Entity.IsDerived
-                   && resourceClass.Entity.BaseEntity != null
-                   && !resourceClass.Entity.BaseEntity.IsAbstractRequiringNoCompositeId();
+                && resourceClass.Entity.BaseEntity != null
+                && !resourceClass.Entity.BaseEntity.IsAbstractRequiringNoCompositeId();
         }
 
         private IEnumerable<object> BuildDerivedEntities(ResourceClassBase resourceClass)
@@ -198,12 +204,9 @@ namespace EdFi.Ods.CodeGen.Generators
             }
 
             return resourceClass.Entity.DerivedEntities
-                                .Select(
-                                     x => new
-                                          {
-                                              DerivedEntityName = x.Name
-                                          })
-                                .OrderBy(x => x.DerivedEntityName);
+                .Select(
+                    x => new {DerivedEntityName = x.Name})
+                .OrderBy(x => x.DerivedEntityName);
         }
 
         /// <summary>
@@ -220,9 +223,9 @@ namespace EdFi.Ods.CodeGen.Generators
             }
 
             var contextualIdList = entity.ContextualIdentifyingProperties
-                                         .Select(x => x.GetModelsInterfacePropertyName())
-                                         .OrderBy(s => s)
-                                         .ToList();
+                .Select(x => x.GetModelsInterfacePropertyName())
+                .OrderBy(s => s)
+                .ToList();
 
             if (!contextualIdList.Any())
             {
@@ -234,35 +237,34 @@ namespace EdFi.Ods.CodeGen.Generators
 
             return contextualIdList.Select(
                 x => new
-                     {
-                         PrimaryKeyName = x, NotFirst = x != first, IsLast = x == last
-                     });
+                {
+                    PrimaryKeyName = x,
+                    NotFirst = x != first,
+                    IsLast = x == last
+                });
         }
 
         private IEnumerable<object> BuildSourceSupportProperties(ResourceClassBase resourceClass)
         {
             return resourceClass.AllProperties
 
-                                 // Don't include properties that are not sychronizable
-                                .Where(p => p.IsSynchronizedProperty())
+                // Don't include properties that are not sychronizable
+                .Where(p => p.IsSynchronizedProperty())
 
-                                 // Don't include identifying properties, with the exception of where UniqueIds are defined
-                                .Where(p => !p.IsIdentifying || IsDefiningUniqueId(resourceClass, p))
-                                .Select(p => p.PropertyName)
+                // Don't include identifying properties, with the exception of where UniqueIds are defined
+                .Where(p => !p.IsIdentifying || IsDefiningUniqueId(resourceClass, p))
+                .Select(p => p.PropertyName)
 
-                                 // Add embedded object properties
-                                .Concat(
-                                     resourceClass.EmbeddedObjects.Cast<ResourceMemberBase>()
-                                                  .Concat(resourceClass.Extensions)
-                                                  .Concat(resourceClass.Collections)
-                                                  .Select(rc => rc.PropertyName))
-                                .Distinct()
-                                .OrderBy(pn => pn)
-                                .Select(
-                                     pn => new
-                                           {
-                                               PropertyName = pn
-                                           });
+                // Add embedded object properties
+                .Concat(
+                    resourceClass.EmbeddedObjects.Cast<ResourceMemberBase>()
+                        .Concat(resourceClass.Extensions)
+                        .Concat(resourceClass.Collections)
+                        .Select(rc => rc.PropertyName))
+                .Distinct()
+                .OrderBy(pn => pn)
+                .Select(
+                    pn => new {PropertyName = pn});
         }
     }
 }
