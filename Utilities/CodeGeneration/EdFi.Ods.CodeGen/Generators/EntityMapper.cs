@@ -139,10 +139,8 @@ namespace EdFi.Ods.CodeGen.Generators
                         .OrderBy(p => p.PropertyName)
                         .Select(
                             p => new {CSharpSafePropertyName = p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)}),
-                SourceSupportPropertyList = BuildSourceSupportProperties(resourceClass),
-                FilterDelegatePropertyList = resourceClass.Collections
-                    .OrderBy(c => c.ItemType.Name)
-                    .Select(c => new {PropertyName = c.ItemType.Name}),
+                SourceSupportPropertyList = GetSynchronizationContextProperties(resourceClass),
+                FilterDelegatePropertyList = GetSynchronizationContextFilterDelegates(resourceClass),
                 HasAggregateReferences =
                     resourceClass.Entity?.GetAssociationsToReferenceableAggregateRoots(includeInherited: true).Any(),
                 AggregateReferences =
@@ -222,7 +220,7 @@ namespace EdFi.Ods.CodeGen.Generators
                 });
         }
 
-        private IEnumerable<object> BuildSourceSupportProperties(ResourceClassBase resourceClass)
+        private IEnumerable<object> GetSynchronizationContextProperties(ResourceClassBase resourceClass)
         {
             return resourceClass.AllProperties
 
@@ -242,6 +240,13 @@ namespace EdFi.Ods.CodeGen.Generators
                 .Distinct()
                 .OrderBy(pn => pn)
                 .Select(pn => new {PropertyName = pn});
+        }
+
+        private static IEnumerable<object> GetSynchronizationContextFilterDelegates(ResourceClassBase resourceClass)
+        {
+            return resourceClass.Collections
+                .OrderBy(c => c.ItemType.Name)
+                .Select(c => new {PropertyName = c.ItemType.Name});
         }
     }
 }

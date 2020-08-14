@@ -24,7 +24,8 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
         {
             bool isModified = false;
 
-            var sourceSupport = source as I{{ModelName}}SynchronizationSourceSupport;
+            var synchronizationContext = (source as I{{ModelName}}HasSynchronizationContext<{{ModelName}}SynchronizationContext>)
+                .SynchronizationContext;
             {{#IsEntityExtension}}
 
             var sourceExtensionSupport = source.{{ModelParentName}} as IExtensionsSynchronizationSourceSupport;
@@ -67,7 +68,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
 
             {{#BaseClassNonPkPropertyList}}
 
-            if ((sourceSupport == null || sourceSupport.Is{{BasePropertyName}}Supported)
+            if ((synchronizationContext?.Is{{BasePropertyName}}Supported != false)
                 && target.{{BasePropertyName}} != source.{{BasePropertyName}})
             {
                 target.{{BasePropertyName}} = source.{{BasePropertyName}};
@@ -79,7 +80,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // Copy non-PK properties
             {{#NonPrimaryKeyList}}
 
-            if ((sourceSupport == null || sourceSupport.Is{{PropertyName}}Supported)
+            if ((synchronizationContext?.Is{{PropertyName}}Supported != false)
                 && target.{{CSharpSafePropertyName}} != source.{{CSharpSafePropertyName}})
             {
                 target.{{CSharpSafePropertyName}} = source.{{CSharpSafePropertyName}};
@@ -93,7 +94,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // ----------------------------------            
             {{#OneToOneClassList}}
             // {{OtherClassName}}
-            if (sourceSupport == null || sourceSupport.Is{{OtherClassName}}Supported)
+            if (synchronizationContext?.Is{{OtherClassName}}Supported != false)
             {
                 if (source.{{OtherClassName}} == null)
                 {
@@ -123,16 +124,20 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
 
             // Synch inherited lists
             {{#BaseNavigableChildrenList}}
-            if (sourceSupport == null || sourceSupport.Is{{OtherClassPlural}}Supported)
-                isModified |= source.{{OtherClassPlural}}.SynchronizeCollectionTo(target.{{OtherClassPlural}}, child => child.{{BaseClassName}} = target,
-                                sourceSupport == null ? null : sourceSupport.Is{{OtherClassSingular}}Included);
+            if (synchronizationContext?.Is{{OtherClassPlural}}Supported != false)
+            {
+                isModified |= 
+                    source.{{OtherClassPlural}}.SynchronizeCollectionTo(
+                        target.{{OtherClassPlural}}, 
+                        onChildAdded: child => child.{{BaseClassName}} = target,
+                        includeItem: item => synchronizationContext?.Is{{OtherClassSingular}}Included != false);
 
             {{/BaseNavigableChildrenList}}
             {{/IsDerivedEntity}}
 
             // Sync lists
             {{#NavigableChildrenList}}
-            if (sourceSupport == null || sourceSupport.Is{{ChildClassPlural}}Supported)
+            if (synchronizationContext?.Is{{ChildClassPlural}}Supported != false)
             {
                 isModified |= 
                     source.{{ChildClassPlural}}.SynchronizeCollectionTo(
@@ -146,9 +151,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                                 (child as IChildEntity)?.SetParent(target.{{ParentName}});
                 {{/IsExtensionClass}}
                             },
-                        includeItem: sourceSupport == null 
-                            ? null 
-                            : sourceSupport.Is{{ChildClassSingular}}Included);
+                        includeItem: item => synchronizationContext?.Is{{ChildClassSingular}}Included != false);
             }
 
             {{/NavigableChildrenList}}
@@ -169,8 +172,8 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
         public static void MapTo(this I{{ModelName}} source, I{{ModelName}} target, Action<I{{ModelName}}, I{{ModelName}}> onMapped)
         {{/IsBaseClassConcrete}}
         {
-            var sourceSynchSupport = source as I{{ModelName}}SynchronizationSourceSupport;
-            var targetSynchSupport = target as I{{ModelName}}SynchronizationSourceSupport;
+            var synchronizationContext = (source as IHasSynchronizationContext<{{ModelName}}>).SynchronizationContext;
+            (target as IHasSynchronizationContext<{{ModelName}}>).SynchronizationContext = synchronizationContext;
 
             {{#IsBaseEntity}}
             // =======================================================================================
@@ -204,20 +207,16 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // Copy inherited non-PK properties
             {{#BaseClassNonPkPropertyList}}
 
-            if (sourceSynchSupport.Is{{BasePropertyName}}Supported)
+            if (synchronizationContext?.Is{{BasePropertyName}}Supported != false)
                 target.{{BasePropertyName}} = source.{{BasePropertyName}};
-            else
-                targetSynchSupport.Is{{BasePropertyName}}Supported = false;
             {{/BaseClassNonPkPropertyList}}
             {{/IsDerivedEntity}}    
 
             // Copy non-PK properties
             {{#NonPrimaryKeyList}}
 
-            if (sourceSynchSupport.Is{{PropertyName}}Supported)
+            if (synchronizationContext?.Is{{PropertyName}}Supported != false)
                 target.{{CSharpSafePropertyName}} = source.{{CSharpSafePropertyName}};
-            else
-                targetSynchSupport.Is{{PropertyName}}Supported = false;
             {{/NonPrimaryKeyList}}
 
             // Copy Aggregate Reference Data
@@ -242,7 +241,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             {{#HasOneToOneRelationships}}
             {{#OneToOneClassList}}
             // {{OtherClassName}} (Source)
-            if (sourceSynchSupport.Is{{OtherClassName}}Supported)
+            if (synchronizationContext?.Is{{OtherClassName}}Supported != false)
             {
                 var itemProperty = target.GetType().GetProperty("{{OtherClassName}}");
                 
@@ -264,10 +263,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                     }
                 }
             }
-            else
-            {
-                targetSynchSupport.Is{{OtherClassName}}Supported = false; 
-            }
+
             {{/OneToOneClassList}}
             // -------------------------------------------------------------
             {{/HasOneToOneRelationships}}
@@ -276,14 +272,9 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // Map inherited lists
             {{#BaseNavigableChildrenList}}
 
-            if (sourceSynchSupport.Is{{OtherClassPlural}}Supported)
+            if (synchronizationContext?.Is{{OtherClassPlural}}Supported != false)
             {
-                targetSynchSupport.Is{{OtherClassSingular}}Included = sourceSynchSupport.Is{{OtherClassSingular}}Included;
                 source.{{OtherClassPlural}}.MapCollectionTo(target.{{OtherClassPlural}}, target);
-            }
-            else
-            {
-                targetSynchSupport.Is{{OtherClassPlural}}Supported = false;
             }
             {{/BaseNavigableChildrenList}}
             {{/IsDerivedEntity}}
@@ -291,14 +282,9 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // Map lists
             {{#NavigableChildrenList}}
 
-            if (sourceSynchSupport.Is{{ChildClassPlural}}Supported)
+            if (synchronizationContext?.Is{{ChildClassPlural}}Supported != false)
             {    
-                targetSynchSupport.Is{{ChildClassSingular}}Included = sourceSynchSupport.Is{{ChildClassSingular}}Included;
                 source.{{ChildClassPlural}}.MapCollectionTo(target.{{ChildClassPlural}}, {{#IsCollectionAggregateExtension}}target.{{ParentName}}{{/IsCollectionAggregateExtension}}{{^IsCollectionAggregateExtension}}target{{/IsCollectionAggregateExtension}});
-            }
-            else
-            {
-                targetSynchSupport.Is{{ChildClassPlural}}Supported = false;
             }
             {{/NavigableChildrenList}}
 
@@ -322,21 +308,6 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             if (dateVersionedEntity != null && etagSource != null)
                 dateVersionedEntity.LastModifiedDate = eTagProvider.GetDateTime(etagSource.ETag);
         }
-    }
-
-    /// <summary>
-    /// Defines properties that indicate whether a particular property of the model abstraction 
-    /// is supported by a model implementation being used as the source in a "synchronization"
-    /// operation.
-    /// </summary>
-    public interface I{{ModelName}}SynchronizationSourceSupport {{#IsExtendable}}: IExtensionsSynchronizationSourceSupport{{/IsExtendable}}
-    {
-        {{#SourceSupportPropertyList}}
-        bool Is{{PropertyName}}Supported { get; set; }
-        {{/SourceSupportPropertyList}}
-        {{#FilterDelegatePropertyList}}
-        Func<I{{PropertyName}}, bool> Is{{PropertyName}}Included { get; set; }
-        {{/FilterDelegatePropertyList}}
     }
  
 {{/Mappers}}

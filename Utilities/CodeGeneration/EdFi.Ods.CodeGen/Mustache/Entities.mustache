@@ -620,29 +620,9 @@ namespace {{AggregateNamespace}}
         {{^IsAbstract}}
 
         // =========================================
-        //        Synchronization Support
+        //        Synchronization Context
         // -----------------------------------------
-
-        {{#SynchronizationSupport}}
-            {{#Properties}}
-        private bool _is{{PropertyName}}Supported = true;
-        bool {{NamespacePrefix}}I{{ClassName}}SynchronizationSourceSupport.Is{{PropertyName}}Supported
-        {
-            get { return _is{{PropertyName}}Supported; }
-            set { _is{{PropertyName}}Supported = value; }
-        }
-
-            {{/Properties}}
-            {{#CollectionClasses}}
-        private Func<{{ChildCollectionRelativeNamespace}}I{{ChildCollectionClassName}}, bool> _is{{ChildCollectionRoleName}}{{ChildCollectionClassName}}Included;
-        Func<{{ChildCollectionRelativeNamespace}}I{{ChildCollectionClassName}}, bool> {{NamespacePrefix}}I{{ClassName}}SynchronizationSourceSupport.Is{{ChildCollectionRoleName}}{{ChildCollectionClassName}}Included
-        {
-            get { return _is{{ChildCollectionClassName}}Included; }
-            set { _is{{ChildCollectionClassName}}Included = value; }
-        }
-
-            {{/CollectionClasses}}
-        {{/SynchronizationSupport}}
+        {{NamespacePrefix}}{{ClassName}}SynchronizationContext IHasSynchronizationContext.SynchronizationContext { get; set; }
         // -----------------------------------------
         {{/IsAbstract}}
         {{#IsExtendable}}

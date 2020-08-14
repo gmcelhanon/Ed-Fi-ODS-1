@@ -267,7 +267,7 @@ namespace {{ResourceClassesNamespace}}
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    public {{#IsAbstract}}abstract {{/IsAbstract}}class {{ClassName}} : {{NamespacePrefix}}I{{EntityName}}{{DerivedName}}{{#IsAggregateRoot}}, IHasETag{{/IsAggregateRoot}}, {{NamespacePrefix}}I{{EntityName}}SynchronizationSourceSupport
+    public {{#IsAbstract}}abstract {{/IsAbstract}}class {{ClassName}} : {{NamespacePrefix}}I{{EntityName}}{{DerivedName}}{{#IsAggregateRoot}}, IHasETag{{/IsAggregateRoot}}, IHasSynchronizationContext<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>
     {
 #pragma warning disable 414
         private bool _SuspendReferenceAssignmentCheck = false;
@@ -978,14 +978,15 @@ namespace {{ResourceClassesNamespace}}
             {
                 _{{PropertyFieldName}} = value;
 
-                var synchSourceSupport = (I{{ResourceName}}SynchronizationSourceSupport) this;
+                var synchronizationContext = ((IHasSynchronizationContext<{{ResourceName}}SynchronizationContext>) this)
+                    .SynchronizationContext;
 
                 var covariantList = new CovariantCollectionAdapterWithAddNotifications<{{ItemTypeNamespacePrefix}}I{{ItemType}}, {{BaseEntity}}.{{PropertyNamespace}}{{ItemType}}>(value);
                 covariantList.AddingItem += (s, e) =>
                 {
                     var item = ({{ItemTypeNamespacePrefix}}I{{ItemType}}) e.Item;
 
-                    if (!synchSourceSupport.Is{{ItemType}}Included(item))
+                    if (!synchronizationContext.Is{{ItemType}}Included(item))
                         e.Cancel = true;
                 };
 
@@ -1075,26 +1076,29 @@ namespace {{ResourceClassesNamespace}}
             set
             {
                 if (value == null) return;
+
+                var synchronizationContext = ((IHasSynchronizationContext<{{BaseEntity}}SynchronizationContext>) this)
+                    .SynchronizationContext;
+
                 // Initialize primary list with notifying adapter immediately wired up so existing items are associated with the parent
                 var list = new CollectionAdapterWithAddNotifications<{{ItemType}}>(value,
                     (s, e) => (({{ItemTypeNamespacePrefix}}I{{ItemType}})e.Item).{{ParentName}} = this,
-                    (s, e) => ((I{{BaseEntity}}SynchronizationSourceSupport) this)
-                                    .Is{{ItemType}}Included(({{ItemTypeNamespacePrefix}}I{{ItemType}}) e.Item));
+                    (s, e) => synchronizationContext.Is{{ItemType}}Included(({{ItemTypeNamespacePrefix}}I{{ItemType}}) e.Item));
+            
                 _{{PropertyFieldName}} = list;
 
                 // Initialize covariant list with notifying adapter with deferred wireup so only new items are processed (optimization)
                 var covariantList = new CovariantCollectionAdapterWithAddNotifications<{{ItemTypeNamespacePrefix}}I{{ItemType}}, {{ItemType}}>(value);
                 covariantList.ItemAdded += (s, e) => (({{ItemTypeNamespacePrefix}}I{{ItemType}})e.Item).{{ParentName}} = this;
 
-                var synchSourceSupport = (I{{BaseEntity}}SynchronizationSourceSupport) this;
-
                 covariantList.AddingItem += (s, e) =>
                 {
                     var item = ({{ItemTypeNamespacePrefix}}I{{ItemType}}) e.Item;
 
-                    if (!synchSourceSupport.Is{{ItemType}}Included(item))
+                    if (!synchronizationContext.Is{{ItemType}}Included(item))
                         e.Cancel = true;
                 };
+            
                 _{{PropertyFieldName}}Covariant = covariantList;
             }
         }
@@ -1183,37 +1187,16 @@ namespace {{ResourceClassesNamespace}}
         // -------------------------------------------------------------
 
         // =============================================================
-        //                Synchronization Source Support
+        //                Synchronization Context
         // -------------------------------------------------------------
-        {{#SynchronizationSourceSupport}}
-        bool {{NamespacePrefix}}I{{ParentName}}SynchronizationSourceSupport.{{SourceSupport}} { get { return {{^IsExcluded}}true{{/IsExcluded}}{{#IsExcluded}}false{{/IsExcluded}}; } set { } }
-        {{/SynchronizationSourceSupport}}
-        {{#HasCollections}}
+        private Lazy<{{EntityName}}SynchronizationContext> _synchronizationContext =
+            new Lazy<{{EntityName}}SynchronizationContext>(() => 
+                GeneratedArtifactStaticDependencies.SynchronizationContextProvider.GetSynchronizationContext<{{EntityName}}SynchronizationContext>());
 
-        // Child collection item filter delegates
-        {{/HasCollections}}
-        {{#FilteredDelegates}}
-        {{#Standard}}
-        Func<{{ItemTypeNamespacePrefix}}I{{ItemType}}, bool> {{NamespacePrefix}}I{{ParentName}}SynchronizationSourceSupport.Is{{ItemType}}Included
-        { 
-            get { return null; }
-            set { }
+        {{NamespacePrefix}}{{EntityName}}SynchronizationContext IHasSynchronizationContext<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>.SynchronizationContext
+        {
+            get { return _synchronizationContext; }
         }
-        {{/Standard}}
-        {{#Filtered}}
-        Func<{{ItemTypeNamespacePrefix}}I{{ItemType}}, bool> {{NamespacePrefix}}I{{ParentName}}SynchronizationSourceSupport.Is{{ItemType}}Included
-        { 
-            get 
-            { 
-                return x => 
-                    {{#FilteredValues}}
-                    {{#NotFirst}}{{#IsIncluded}}||{{/IsIncluded}}{{^IsIncluded}}&&{{/IsIncluded}}{{/NotFirst}} {{^IsIncluded}}!{{/IsIncluded}}x.{{FilteredPropertyName}}.EqualsIgnoreCase("{{FilteredValue}}"){{#IsLast}};{{/IsLast}}
-                    {{/FilteredValues}}
-            }
-            set { } // Not supported for resources
-        }
-        {{/Filtered}}
-        {{/FilteredDelegates}}
         // -------------------------------------------------------------
 
         {{#IsExtendable}}
