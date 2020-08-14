@@ -1,7 +1,10 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using EdFi.Ods.Api.Models;
 using EdFi.Ods.Common;
+using EdFi.Ods.Common.Extensions;
+using EdFi.Ods.Common.Models;
 #pragma warning disable 108,114
 
 namespace {{EntitiesBaseNamespace}}
@@ -66,7 +69,7 @@ namespace {{EntitiesBaseNamespace}}
     /// is supported by a model implementation being used as the source in a "synchronization"
     /// operation.
     /// </summary>
-    public class {{ModelName}}SynchronizationContext {{#IsExtendable}}: IExtensionsSynchronizationSourceSupport{{/IsExtendable}}
+    public class {{ModelName}}SynchronizationContext{{#IsExtendable}} : IExtensionsSynchronizationContext{{/IsExtendable}}
     {
         public {{ModelName}}SynchronizationContext(
     {{#SynchronizationContextMembers}}
@@ -74,18 +77,25 @@ namespace {{EntitiesBaseNamespace}}
             bool is{{PropertyName}}Supported{{^IsLast}},{{/IsLast}}
        {{/ItemTypeName}}
        {{#ItemTypeName}}
-            Func<I{{ItemTypeName}}, bool> is{{PropertyName}}Included{{^IsLast}},{{/IsLast}}
+            Func<I{{ItemTypeName}}, bool> is{{ItemTypeName}}Included{{^IsLast}},{{/IsLast}}
        {{/ItemTypeName}}
     {{/SynchronizationContextMembers}}
+    {{#IsExtendable}}
+            IReadOnlyList<string> supportedExtensions
+    {{/IsExtendable}}
+            )
         {
     {{#SynchronizationContextMembers}}
         {{^ItemTypeName}}
             Is{{PropertyName}}Supported = is{{PropertyName}}Supported;
         {{/ItemTypeName}}
         {{#ItemTypeName}}
-            Is{{PropertyName}}Included = is{{PropertyName}}Included;
+            Is{{ItemTypeName}}Included = is{{ItemTypeName}}Included;
         {{/ItemTypeName}}
     {{/SynchronizationContextMembers}}
+    {{#IsExtendable}}
+            SupportedExtensions = supportedExtensions;
+    {{/IsExtendable}}
         }
     
     {{#SynchronizationContextMembers}}
@@ -93,9 +103,17 @@ namespace {{EntitiesBaseNamespace}}
         public bool Is{{PropertyName}}Supported { get; }
         {{/ItemTypeName}}
         {{#ItemTypeName}}
-        public Func<I{{ItemTypeName}}, bool> Is{{PropertyName}}Included { get; }
+        public Func<I{{ItemTypeName}}, bool> Is{{ItemTypeName}}Included { get; }
         {{/ItemTypeName}}
     {{/SynchronizationContextMembers}}
+    {{#IsExtendable}}
+        public IReadOnlyList<string> SupportedExtensions { get; }
+        
+        public bool IsExtensionSupported(string name)
+        {
+            return SupportedExtensions.Contains(name);    
+        }
+    {{/IsExtendable}}
     }
 {{/Interfaces}}
 }

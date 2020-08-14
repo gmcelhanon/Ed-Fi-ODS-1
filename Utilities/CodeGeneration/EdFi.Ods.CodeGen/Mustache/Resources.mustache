@@ -7,6 +7,7 @@ using System.Net;
 using System.Diagnostics.CodeAnalysis;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common;
+using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Serialization;
 using EdFi.Ods.Api.Dependencies;
 using EdFi.Ods.Api.Models;
@@ -267,7 +268,7 @@ namespace {{ResourceClassesNamespace}}
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    public {{#IsAbstract}}abstract {{/IsAbstract}}class {{ClassName}} : {{NamespacePrefix}}I{{EntityName}}{{DerivedName}}{{#IsAggregateRoot}}, IHasETag{{/IsAggregateRoot}}, IHasSynchronizationContext<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>
+    public {{#IsAbstract}}abstract {{/IsAbstract}}class {{ClassName}} : {{NamespacePrefix}}I{{EntityName}}{{DerivedName}}{{#IsAggregateRoot}}, IHasETag{{/IsAggregateRoot}}, IHasSynchronizationContext<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>{{#IsExtendable}}, IHasExtensionsSynchronizationContext{{/IsExtendable}}
     {
 #pragma warning disable 414
         private bool _SuspendReferenceAssignmentCheck = false;
@@ -1189,29 +1190,21 @@ namespace {{ResourceClassesNamespace}}
         // =============================================================
         //                Synchronization Context
         // -------------------------------------------------------------
-        private Lazy<{{EntityName}}SynchronizationContext> _synchronizationContext =
-            new Lazy<{{EntityName}}SynchronizationContext>(() => 
-                GeneratedArtifactStaticDependencies.SynchronizationContextProvider.GetSynchronizationContext<{{EntityName}}SynchronizationContext>());
+        private Lazy<{{NamespacePrefix}}{{EntityName}}SynchronizationContext> _synchronizationContext =
+            new Lazy<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>(() => 
+                GeneratedArtifactStaticDependencies.SynchronizationContextProvider.GetSynchronizationContext<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>());
 
         {{NamespacePrefix}}{{EntityName}}SynchronizationContext IHasSynchronizationContext<{{NamespacePrefix}}{{EntityName}}SynchronizationContext>.SynchronizationContext
         {
-            get { return _synchronizationContext; }
+            get { return _synchronizationContext.Value; }
+            set { } // No Op
         }
-        // -------------------------------------------------------------
-
+    
         {{#IsExtendable}}
-        {{#IsProfileProject}}
-        bool IExtensionsSynchronizationSourceSupport.IsExtensionSupported(string name) { {{#HasSupportedExtensions}}return new [] { {{#SupportedExtensions}}"{{ExtensionName}}", {{/SupportedExtensions}} }.Contains(name);{{/HasSupportedExtensions}}{{^HasSupportedExtensions}}return false;{{/HasSupportedExtensions}} }
-        void IExtensionsSynchronizationSourceSupport.SetExtensionSupported(string name, bool isSupported) { }
-        {{/IsProfileProject}}
-        {{^IsProfileProject}}
-        bool IExtensionsSynchronizationSourceSupport.IsExtensionSupported(string name) { return true; }
-        void IExtensionsSynchronizationSourceSupport.SetExtensionSupported(string name, bool isSupported) { }
-        {{/IsProfileProject}}
-        bool IExtensionsSynchronizationSourceSupport.IsExtensionAvailable(string name) { return true; }
-        void IExtensionsSynchronizationSourceSupport.SetExtensionAvailable(string name, bool isSupported) { }
-
+        IExtensionsSynchronizationContext IHasExtensionsSynchronizationContext.SynchronizationContext 
+                => _synchronizationContext.Value;
         {{/IsExtendable}}
+        // -------------------------------------------------------------
 
         // =================================================================
         //                    Resource Reference Data

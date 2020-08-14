@@ -145,7 +145,8 @@ namespace EdFi.Ods.CodeGen.Generators
                                                 a.OtherEntity.HasDiscriminator()
                                         })
                                     .ToList(),
-                            SynchronizationContextMembers = GetSynchronizationContextMembers(r)
+                            SynchronizationContextMembers = GetSynchronizationContextMembers(r),
+                            IsExtendable = r.IsExtendable()
                             // SynchronizationContextProperties = GetSynchronizationContextProperties(r),
                             // SynchronizationContextFilterDelegateProperties = GetSynchronizationContextFilterDelegates(resourceClass),
                         })
@@ -202,6 +203,7 @@ namespace EdFi.Ods.CodeGen.Generators
             if (resourceClass.IsExtendable())
             {
                 AddInterface("IHasExtensions", interfaceStringBuilder);
+                AddInterface("IHasExtensionsSynchronizationContext", interfaceStringBuilder);
             }
 
             if (resourceClass is Resource)
@@ -275,7 +277,9 @@ namespace EdFi.Ods.CodeGen.Generators
                     ItemTypeName = c.ItemType.Name
                 });
 
-            var members = properties.Concat(collections).ToList();
+            var members = properties
+                .Concat(collections)
+                .ToList();
 
             return members.Select(
                 x =>
@@ -283,7 +287,7 @@ namespace EdFi.Ods.CodeGen.Generators
                     {
                         PropertyName = x.PropertyName,
                         ItemTypeName = x.ItemTypeName,
-                        IsLast = x == members.Last()
+                        IsLast = x == members.Last() && !resourceClass.IsExtendable()
                     });
         }
 
