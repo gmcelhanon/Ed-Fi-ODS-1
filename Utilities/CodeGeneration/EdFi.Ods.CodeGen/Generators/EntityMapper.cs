@@ -85,16 +85,9 @@ namespace EdFi.Ods.CodeGen.Generators
                             x => new {CSharpSafePrimaryKeyName = x.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)}),
                 IsDerivedEntity = resourceClass.Entity?.IsDerived,
                 BaseClassNonPkPropertyList = resourceClass.NonIdentifyingProperties
-                    .Where( 
-                        p => p.IsInherited &&
-                            p.IsSynchronizedProperty())
+                    .Where(p => p.IsInherited && p.IsSynchronizedProperty())
                     .OrderBy(p => p.PropertyName)
-                    .Select(
-                        p => new
-                        {
-                            BasePropertyName =
-                                p.PropertyName
-                        }),
+                    .Select(p => new {BasePropertyName = p.PropertyName}),
                 NonPrimaryKeyList = resourceClass.NonIdentifyingProperties
                     .Where(p => !p.IsInherited && p.IsSynchronizedProperty())
 
@@ -111,11 +104,7 @@ namespace EdFi.Ods.CodeGen.Generators
                 HasOneToOneRelationships = resourceClass.EmbeddedObjects.Any(),
                 OneToOneClassList = resourceClass.EmbeddedObjects
                     .Select(
-                        x => new
-                        {
-                            OtherClassName =
-                                x.PropertyName
-                        }),
+                        x => new {OtherClassName = x.PropertyName}),
                 BaseNavigableChildrenList = resourceClass.Collections
                     .Where(c => c.IsInherited)
                     .Select(
@@ -152,18 +141,8 @@ namespace EdFi.Ods.CodeGen.Generators
                             p => new {CSharpSafePropertyName = p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)}),
                 SourceSupportPropertyList = BuildSourceSupportProperties(resourceClass),
                 FilterDelegatePropertyList = resourceClass.Collections
-                    .OrderBy(
-                        c => c
-                            .ItemType
-                            .Name)
-                    .Select(
-                        c => new
-                        {
-                            PropertyName
-                                = c
-                                    .ItemType
-                                    .Name
-                        }),
+                    .OrderBy(c => c.ItemType.Name)
+                    .Select(c => new {PropertyName = c.ItemType.Name}),
                 HasAggregateReferences =
                     resourceClass.Entity?.GetAssociationsToReferenceableAggregateRoots(includeInherited: true).Any(),
                 AggregateReferences =
@@ -204,8 +183,7 @@ namespace EdFi.Ods.CodeGen.Generators
             }
 
             return resourceClass.Entity.DerivedEntities
-                .Select(
-                    x => new {DerivedEntityName = x.Name})
+                .Select(x => new {DerivedEntityName = x.Name})
                 .OrderBy(x => x.DerivedEntityName);
         }
 
@@ -248,7 +226,7 @@ namespace EdFi.Ods.CodeGen.Generators
         {
             return resourceClass.AllProperties
 
-                // Don't include properties that are not sychronizable
+                // Don't include properties that are not synchronizable
                 .Where(p => p.IsSynchronizedProperty())
 
                 // Don't include identifying properties, with the exception of where UniqueIds are defined
@@ -263,8 +241,7 @@ namespace EdFi.Ods.CodeGen.Generators
                         .Select(rc => rc.PropertyName))
                 .Distinct()
                 .OrderBy(pn => pn)
-                .Select(
-                    pn => new {PropertyName = pn});
+                .Select(pn => new {PropertyName = pn});
         }
     }
 }
