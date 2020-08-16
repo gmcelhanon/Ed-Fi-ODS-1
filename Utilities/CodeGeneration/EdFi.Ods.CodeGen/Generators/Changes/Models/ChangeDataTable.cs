@@ -1,3 +1,8 @@
+// SPDX-License-Identifier: Apache-2.0
+// Licensed to the Ed-Fi Alliance under one or more agreements.
+// The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
+// See the LICENSE and NOTICES files in the project root for more information.
+
 using System.Collections.Generic;
 
 namespace EdFi.Ods.CodeGen.Generators.Changes.Models
@@ -27,7 +32,7 @@ namespace EdFi.Ods.CodeGen.Generators.Changes.Models
         /// Gets the columns that effectively identify the record which may be primary key columns, or alternate key columns
         /// if the table's primary key is a surrogate key (identity column in SQL Server).
         /// </summary>
-        public IEnumerable<SimpleColumn> IdentifyingColumns { get; set; }
+        public IEnumerable<Column> IdentifyingColumns { get; set; }
 
         /// <summary>
         /// Indicates whether the primary key values can change by either being updated on the current resource, or is downstream
