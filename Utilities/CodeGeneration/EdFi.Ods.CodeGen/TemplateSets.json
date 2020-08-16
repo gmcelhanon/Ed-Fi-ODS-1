@@ -134,14 +134,14 @@
     {
       "Name": "Changes_0035_CreateTrackedChangeTables",
       "Driver": "Changes_0035_CreateTrackedChangeTables",
-      "OutputName": "not-used",
-      "OutputPath": "Structure\\EdFi\\Changes\\0035-CreateTrackedChangeTables.sql"
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0035-CreateTrackedChangeTables.sql"
     },
     {
       "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
       "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
-      "OutputName": "not-used",
-      "OutputPath": "Structure\\EdFi\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
     },
     {
       "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
@@ -264,14 +264,14 @@
     {
       "Name": "Changes_0035_CreateTrackedChangeTables",
       "Driver": "Changes_0035_CreateTrackedChangeTables",
-      "OutputName": "not-used",
-      "OutputPath": "SupportingArtifacts\\Database\\Structure\\EdFi\\Changes\\0035_CreateTrackedChangeTables"
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0035_CreateTrackedChangeTables"
     },
     {
       "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
       "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
-      "OutputName": "not-used",
-      "OutputPath": "SupportingArtifacts\\Database\\Structure\\EdFi\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
     },
     {
       "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
