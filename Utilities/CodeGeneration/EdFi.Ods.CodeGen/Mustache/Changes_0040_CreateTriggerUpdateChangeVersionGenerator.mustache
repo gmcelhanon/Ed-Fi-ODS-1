@@ -1,4 +1,4 @@
-{{#NonDerivedAggregateRoots}}
+{{#TrackedTables}}
 DROP TRIGGER IF EXISTS [{{Schema}}].[{{Schema}}_{{TableName}}_TR_UpdateChangeVersion]
 GO
 
@@ -34,4 +34,4 @@ BEGIN
 END	
 GO
 
-{{/NonDerivedAggregateRoots}}
+{{/TrackedTables}}

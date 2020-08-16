@@ -1,4 +1,4 @@
-{{#AggregateRoots}}
+{{#TrackedTables}}
 {{#IsDerived}}
 DROP TRIGGER IF EXISTS [{{Schema}}].[{{Schema}}_{{TableName}}_TR_DeleteTracking]
 GO
@@ -48,4 +48,4 @@ GO
 
 
 {{/IsDerived}}
-{{/AggregateRoots}}
+{{/TrackedTables}}

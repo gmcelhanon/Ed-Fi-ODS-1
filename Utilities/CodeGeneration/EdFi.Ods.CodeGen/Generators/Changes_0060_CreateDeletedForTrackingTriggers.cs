@@ -55,26 +55,26 @@ namespace EdFi.Ods.CodeGen.Generators
                         Schema = e.Schema,
                         TableName = e.Name,
                         HasDiscriminator = e.HasDiscriminator(),
-                        ChangeDataColumns = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
-                            .SelectMany((p, i) => PropertyExtensions.ExpandForApiResourceData(p, i))
+                        ChangeDataColumns = ChangesHelpers.GetIdentifyingPropertiesForChangeTracking(e)
+                            .SelectMany((p, i) => ChangesHelpers.CreateChangeTrackingDataColumns(p, i, TemplateContext))
                             .Select((c, i) => 
                                 new ChangeDataColumn
                                 {
                                     IsFirst = i == 0,
                                     ColumnName = c.ColumnName,
-                                    SourceSelectExpression = c.SelectExpression,
+                                    SourceSelectExpression = c.SourceSelectExpression,
                                 }),
-                        Joins = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
+                        Joins = ChangesHelpers.GetIdentifyingPropertiesForChangeTracking(e)
                             .SelectMany((p, i) => p.JoinForApiResourceData(i))
                     });
 
-            var aggregateRoots = 
+            var trackedTables = 
                 derivedAggregateRoots
                 .Concat(nonDerivedAggregateRoots)
                 // Sort necessary only to achieve byte-level match with MetaEd plugin output
                 .OrderBy(e => e.TableName + "_", StringComparer.Ordinal);
 
-            return new { AggregateRoots = aggregateRoots};
+            return new { TrackedTables = trackedTables};
         }
     }
 }

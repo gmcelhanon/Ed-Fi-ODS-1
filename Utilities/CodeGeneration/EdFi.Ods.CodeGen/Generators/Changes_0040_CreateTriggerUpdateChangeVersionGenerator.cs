@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using EdFi.Ods.CodeGen.Extensions;
 using EdFi.Ods.CodeGen.Generators.Changes;
 using EdFi.Ods.CodeGen.Generators.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
@@ -19,40 +20,39 @@ namespace EdFi.Ods.CodeGen.Generators
         {
             var domainModel = TemplateContext.DomainModelProvider.GetDomainModel();
 
-            var nonDerivedAggregateRoots = domainModel.Aggregates
+            var trackedTables = domainModel.Aggregates
                 .Select(a => a.AggregateRoot)
                 .Where(e => !e.IsDerived)
                 .Where(e => _shouldRenderEntityForSchema(e))
-                .Select(e => new ChangeDataTable
-                {
-                    Schema = e.Schema,
-                    TableName = e.Name,
-                    HasDiscriminator = e.HasDiscriminator(),
-                    KeyValuesCanChange = false, // Key Changes and resulting cascading changes not yet supported.
-                    IdentifyingColumns = (e.Identifier.Properties.Any(p => p.IsServerAssigned) && e.AlternateIdentifiers.Any() 
-                            ? e.AlternateIdentifiers.First() 
-                            : e.Identifier)
-                                .Properties.Select((p, i) => 
-                                    new SimpleColumn
-                                    {
-                                        IsFirst = i == 0,
-                                        ColumnName = p.PropertyName
-                                    }),
-                    ChangeDataColumns = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
-                        .SelectMany((p, i) => PropertyExtensions.ExpandForApiResourceData(p, i))
-                        .Select((c, i) => 
-                                new ChangeDataColumn
+                .Select(e => 
+                    new ChangeDataTable
+                    {
+                        Schema = e.Schema,
+                        TableName = e.Name,
+                        HasDiscriminator = e.HasDiscriminator(),
+                        KeyValuesCanChange = false, // Key Changes and resulting cascading changes are not yet supported.
+                        IdentifyingColumns = e.GetNaturalIdentifierOrDefault().Properties
+                            .Select((p, i) => 
+                                new Column
                                 {
                                     IsFirst = i == 0,
-                                    ColumnName = c.ColumnName,
-                                    SourceSelectExpression = c.SelectExpression,
+                                    ColumnName = p.PropertyName
                                 }),
-                    Joins = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
-                        .SelectMany((p, i) => p.JoinForApiResourceData(i))
-                })
+                        ChangeDataColumns = ChangesHelpers.GetIdentifyingPropertiesForChangeTracking(e)
+                            .SelectMany((p, i) => ChangesHelpers.CreateChangeTrackingDataColumns(p, i, TemplateContext))
+                            .Select((c, i) => 
+                                    new ChangeDataColumn
+                                    {
+                                        IsFirst = i == 0,
+                                        ColumnName = c.ColumnName,
+                                        SourceSelectExpression = c.SourceSelectExpression,
+                                    }),
+                        Joins = ChangesHelpers.GetIdentifyingPropertiesForChangeTracking(e)
+                            .SelectMany((p, i) => p.JoinForApiResourceData(i))
+                    })
                 .OrderBy(e => e.TableName, StringComparer.Ordinal);
 
-            return new { NonDerivedAggregateRoots = nonDerivedAggregateRoots};
+            return new { TrackedTables = trackedTables};
         }
     }
 }

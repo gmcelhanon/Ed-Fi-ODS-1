@@ -23,7 +23,7 @@ namespace EdFi.Ods.CodeGen.Generators
                 .Where(e => !e.IsDerived)
                 .Where(e => _shouldRenderEntityForSchema(e))
                 .Select(e => 
-                    new SimpleTable
+                    new Table
                     {
                         Schema = e.Schema,
                         TableName = e.Name

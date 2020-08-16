@@ -1,4 +1,4 @@
-{{#AllAggregateRootEntities}}
+{{#TrackedTables}}
 CREATE TABLE [tracked_deletes_{{Schema}}].[{{TableName}}]
 (
     {{#ChangeDataColumns}}
@@ -15,4 +15,4 @@ CREATE TABLE [tracked_deletes_{{Schema}}].[{{TableName}}]
        CONSTRAINT PK_{{TableName}} PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 
-{{/AllAggregateRootEntities}}
+{{/TrackedTables}}

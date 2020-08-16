@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using EdFi.Ods.CodeGen.Extensions;
 using EdFi.Ods.CodeGen.Generators.Changes;
 using EdFi.Ods.CodeGen.Generators.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
@@ -19,7 +20,7 @@ namespace EdFi.Ods.CodeGen.Generators
         {
             var domainModel = TemplateContext.DomainModelProvider.GetDomainModel();
 
-            var allAggregateRootEntities = domainModel.Aggregates
+            var trackedTables = domainModel.Aggregates
                 .Select(a => a.AggregateRoot)
                 .Where(e => !e.IsSchoolYearTypeEntity())
                 .Where(e => _shouldRenderEntityForSchema(e))
@@ -27,10 +28,10 @@ namespace EdFi.Ods.CodeGen.Generators
                     new ChangeDataTable
                     {
                         Schema = e.Schema,
-                        TableName = e.Name,
+                        TableName = e.TableNameForContext(TemplateContext),
                         HasDiscriminator = e.HasDiscriminator(),
-                        ChangeDataColumns = ChangesHelpers.GetChangeQueriesPropertiesForColumns(e)
-                            .SelectMany((p, i) => PropertyExtensions.ExpandForApiResourceData(p, i))
+                        ChangeDataColumns = ChangesHelpers.GetIdentifyingPropertiesForChangeTracking(e)
+                            .SelectMany((p, i) => ChangesHelpers.CreateChangeTrackingDataColumns(p, i, TemplateContext))
                             .Select(c => 
                                 new ChangeDataColumn
                                 {
@@ -42,9 +43,10 @@ namespace EdFi.Ods.CodeGen.Generators
                                     //     + (c.ColumnDataType.Contains("(") ? string.Empty : "]")
                                 })
                     })
+                // For matching MetaEd Change Queries sort order
                 .OrderBy(e => e.TableName + "_", StringComparer.Ordinal);
 
-            return new { AllAggregateRootEntities = allAggregateRootEntities };
+            return new { TrackedTables = trackedTables };
         }
     }
 }
