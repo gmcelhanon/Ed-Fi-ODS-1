@@ -100,6 +100,48 @@
       "Driver": "EntityOrmMappingsForViews",
       "DatabaseEngine": "postgreSql",
       "OutputPath": "EntityOrmMappings\\PgSql\\EntityOrmMappingsForViews.generated.hbm.xml"
+    },
+    {
+      "Name": "Changes_0010_CreateChangesSchema",
+      "Driver": "Changes_0010_CreateChangesSchema",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0010-CreateChangesSchema.sql"
+    },
+    {
+      "Name": "Changes_0020_CreateChangeVersionSequence",
+      "Driver": "Changes_0020_CreateChangeVersionSequence",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0020-CreateChangeVersionSequence.sql"
+    },
+    {
+      "Name": "Changes_0030_AddColumnChangeVersionForTables",
+      "Driver": "Changes_0030_AddColumnChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
+    },
+    {
+      "Name": "Changes_0035_CreateTrackedChangeTables",
+      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0035-CreateTrackedChangeTables.sql"
+    },
+    {
+      "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+    },
+    {
+      "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "Driver": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0060-CreateDeletedForTrackingTriggers.sql"
+    },
+    {
+      "Name": "Changes_0070_AddIndexChangeVersionForTables",
+      "Driver": "Changes_0070_AddIndexChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0070-AddIndexChangeVersionForTables.sql"
     }
   ],
   "database": [
@@ -112,48 +154,6 @@
       "Name": "ResourceClaimMetadata.pgsql",
       "Driver": "ResourceClaimMetadata",
       "OutputPath": "PgSql\\Data\\Security\\0001-ResourceClaimMetadata_generated.sql"
-    },
-    {
-      "Name": "Changes_0010_CreateChangesSchema",
-      "Driver": "Changes_0010_CreateChangesSchema",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0010-CreateChangesSchema.sql"
-    },
-    {
-      "Name": "Changes_0020_CreateChangeVersionSequence",
-      "Driver": "Changes_0020_CreateChangeVersionSequence",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0020-CreateChangeVersionSequence.sql"
-    },
-    {
-      "Name": "Changes_0030_AddColumnChangeVersionForTables",
-      "Driver": "Changes_0030_AddColumnChangeVersionForTables",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
-    },
-    {
-      "Name": "Changes_0035_CreateTrackedChangeTables",
-      "Driver": "Changes_0035_CreateTrackedChangeTables",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0035-CreateTrackedChangeTables.sql"
-    },
-    {
-      "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
-      "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
-    },
-    {
-      "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
-      "Driver": "Changes_0060_CreateDeletedForTrackingTriggers",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0060-CreateDeletedForTrackingTriggers.sql"
-    },
-    {
-      "Name": "Changes_0070_AddIndexChangeVersionForTables",
-      "Driver": "Changes_0070_AddIndexChangeVersionForTables",
-      "DatabaseEngine": "sqlServer",
-      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0070-AddIndexChangeVersionForTables.sql"
     }
   ],
   "profile": [
