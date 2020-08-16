@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EdFi.Ods.CodeGen.TemplateModels.Changes.Models
+namespace EdFi.Ods.CodeGen.Generators.Changes.Models
 {
     /// <summary>
     /// Contains information necessary for rendering SQL artifacts based on 

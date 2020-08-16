@@ -1,4 +1,4 @@
-namespace EdFi.Ods.CodeGen.TemplateModels.Changes.Models
+namespace EdFi.Ods.CodeGen.Generators.Changes.Models
 {
     public class SimpleTable
     {

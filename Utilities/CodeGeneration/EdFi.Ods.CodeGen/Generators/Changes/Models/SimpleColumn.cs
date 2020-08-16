@@ -1,6 +1,6 @@
 using EdFi.Ods.Common.Models.Domain;
 
-namespace EdFi.Ods.CodeGen.TemplateModels.Changes.Models
+namespace EdFi.Ods.CodeGen.Generators.Changes.Models
 {
     /// <summary>
     /// Represents a column with just a name.

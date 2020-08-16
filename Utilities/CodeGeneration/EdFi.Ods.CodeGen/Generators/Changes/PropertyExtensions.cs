@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using EdFi.Ods.CodeGen.Extensions;
-using EdFi.Ods.CodeGen.TemplateModels.Changes.Models;
+using EdFi.Ods.CodeGen.Generators.Changes.Models;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Domain;
 
-namespace EdFi.Ods.CodeGen.TemplateModels.Changes 
+namespace EdFi.Ods.CodeGen.Generators.Changes 
 {
     public static class PropertyExtensions
     {

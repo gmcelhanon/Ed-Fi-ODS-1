@@ -1,5 +1,5 @@
 {{#AllAggregateRootEntities}}
-CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedChange]
+CREATE TABLE [tracked_deletes_{{Schema}}].[{{TableName}}]
 (
     {{#ChangeDataColumns}}
        Old{{ColumnName}} {{ColumnDataType}} NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE [changes].[{{Schema}}_{{TableName}}_TrackedChange]
     {{#HasDiscriminator}}
        Discriminator nvarchar(128) NULL,
     {{/HasDiscriminator}}
-       CONSTRAINT PK_{{Schema}}_{{TableName}}_TrackedDelete PRIMARY KEY CLUSTERED (ChangeVersion)
+       CONSTRAINT PK_{{TableName}} PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 
 {{/AllAggregateRootEntities}}
