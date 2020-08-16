@@ -23,7 +23,7 @@ namespace EdFi.Ods.CodeGen.Generators
         {
             var domainModel = TemplateContext.DomainModelProvider.GetDomainModel();
 
-            var nonDerivedAggregateRoots = domainModel.Aggregates
+            var trackedTables = domainModel.Aggregates
                 .Select(a => a.AggregateRoot)
                 .Where(e => !e.IsDerived)
                 .Where(e => _shouldRenderEntityForSchema(e))
@@ -35,7 +35,7 @@ namespace EdFi.Ods.CodeGen.Generators
                     })
                 .OrderBy(e => e.TableName, StringComparer.Ordinal);
 
-            return new { NonDerivedAggregateRoots = nonDerivedAggregateRoots};
+            return new { TrackedTables = trackedTables};
         }
     }
 }
