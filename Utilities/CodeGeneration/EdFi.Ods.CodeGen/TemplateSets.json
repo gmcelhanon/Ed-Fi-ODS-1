@@ -1,0 +1,289 @@
+{
+  "standard": [
+    {
+      "Name": "DatabaseMetadata",
+      "Driver": "DatabaseMetadataProvider",
+      "OutputPath": "ExceptionHandling\\DatabaseMetadata.generated.cs"
+    },
+    {
+      "Name": "DatabaseViews",
+      "Driver": "DatabaseViews",
+      "OutputPath": "Artifacts\\Metadata\\DatabaseViews.generated.json"
+    },
+    {
+      "Name": "Entities",
+      "Driver": "Entities",
+      "OutputPath": "Models\\Entities\\Entities.generated.cs"
+    },
+    {
+      "Name": "EntitiesForQueries",
+      "Driver": "EntitiesForQueries",
+      "OutputPath": "Models\\Entities\\EntitiesForQueries.generated.cs"
+    },
+    {
+      "Name": "EntitiesForQueriesViews",
+      "Driver": "EntitiesForQueriesViews",
+      "OutputPath": "Models\\Entities\\EntitiesForQueriesViews.generated.cs"
+    },
+    {
+      "Name": "EntityInterfaces",
+      "Driver": "EntityInterfaces",
+      "OutputPath": "Models\\Interfaces\\EntityInterfaces.generated.cs"
+    },
+    {
+      "Name": "EntityRecordInterfaces",
+      "Driver": "EntityRecordInterfaces",
+      "OutputPath": "Models\\Interfaces\\EntityRecordInterfaces.generated.cs"
+    },
+    {
+      "Name": "EntityMapper",
+      "Driver": "EntityMapper",
+      "OutputPath": "Models\\Mappers\\EntityMapper.generated.cs"
+    },
+    {
+      "Name": "CreateOrUpdatePipelines",
+      "Driver": "CreateOrUpdatePipelines",
+      "OutputPath": "Pipelines\\CreateOrUpdatePipelines.generated.cs"
+    },
+    {
+      "Name": "Controllers",
+      "Driver": "Controllers",
+      "OutputPath": "Controllers\\Controllers.generated.cs"
+    },
+    {
+      "Name": "Requests",
+      "Driver": "Requests",
+      "OutputPath": "Requests\\Requests.generated.cs"
+    },
+    {
+      "Name": "Resources",
+      "Driver": "Resources",
+      "OutputPath": "Resources\\Resources.generated.cs"
+    },
+    {
+      "Name": "EntityAuthorizationContextProviders",
+      "Driver": "EntityAuthorizationContextProviders",
+      "OutputPath": "Security\\Authorization\\EntityAuthorizationContextProviders.generated.cs"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappings",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "EntityOrmMappings\\MsSql\\EntityOrmMappings.generated.hbm.xml"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappingsForQueries",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "EntityOrmMappings\\MsSql\\EntityOrmMappingsForQueries.generated.hbm.xml"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappingsForViews",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "EntityOrmMappings\\MsSql\\EntityOrmMappingsForViews.generated.hbm.xml"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappings",
+      "DatabaseEngine": "postgreSql",
+      "OutputPath": "EntityOrmMappings\\PgSql\\EntityOrmMappings.generated.hbm.xml"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappingsForQueries",
+      "DatabaseEngine": "postgreSql",
+      "OutputPath": "EntityOrmMappings\\PgSql\\EntityOrmMappingsForQueries.generated.hbm.xml"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappingsForViews",
+      "DatabaseEngine": "postgreSql",
+      "OutputPath": "EntityOrmMappings\\PgSql\\EntityOrmMappingsForViews.generated.hbm.xml"
+    }
+  ],
+  "database": [
+    {
+      "Name": "ResourceClaimMetadata",
+      "Driver": "ResourceClaimMetadata",
+      "OutputPath": "MsSql\\Data\\Security\\0001-ResourceClaimMetadata_generated.sql"
+    },
+    {
+      "Name": "ResourceClaimMetadata.pgsql",
+      "Driver": "ResourceClaimMetadata",
+      "OutputPath": "PgSql\\Data\\Security\\0001-ResourceClaimMetadata_generated.sql"
+    },
+    {
+      "Name": "Changes_0010_CreateChangesSchema",
+      "Driver": "Changes_0010_CreateChangesSchema",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0010-CreateChangesSchema.sql"
+    },
+    {
+      "Name": "Changes_0020_CreateChangeVersionSequence",
+      "Driver": "Changes_0020_CreateChangeVersionSequence",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0020-CreateChangeVersionSequence.sql"
+    },
+    {
+      "Name": "Changes_0030_AddColumnChangeVersionForTables",
+      "Driver": "Changes_0030_AddColumnChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
+    },
+    {
+      "Name": "Changes_0035_CreateTrackedChangeTables",
+      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "OutputName": "not-used",
+      "OutputPath": "Structure\\EdFi\\Changes\\0035-CreateTrackedChangeTables.sql"
+    },
+    {
+      "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "OutputName": "not-used",
+      "OutputPath": "Structure\\EdFi\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+    },
+    {
+      "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "Driver": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0060-CreateDeletedForTrackingTriggers.sql"
+    },
+    {
+      "Name": "Changes_0070_AddIndexChangeVersionForTables",
+      "Driver": "Changes_0070_AddIndexChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "MsSql\\Structure\\Ods\\Changes\\0070-AddIndexChangeVersionForTables.sql"
+    }
+  ],
+  "profile": [
+    {
+      "Name": "Controllers",
+      "Driver": "Controllers",
+      "OutputPath": "Controllers\\Controllers.generated.cs"
+    },
+    {
+      "Name": "CreateOrUpdatePipelines",
+      "Driver": "CreateOrUpdatePipelines",
+      "OutputPath": "Pipelines\\CreateOrUpdatePipelines.generated.cs"
+    },
+    {
+      "Name": "Requests",
+      "Driver": "Requests",
+      "OutputPath": "Requests\\Requests.generated.cs"
+    },
+    {
+      "Name": "Resources",
+      "Driver": "Resources",
+      "OutputPath": "Resources\\Resources.generated.cs"
+    }
+  ],
+  "extension": [
+    {
+      "Name": "EntityAuthorizationContextProviders",
+      "Driver": "EntityAuthorizationContextProviders",
+      "OutputPath": "Authorization\\EntityAuthorizationContextProviders.generated.cs"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappings",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "EntityOrmMappings\\MsSql\\EntityOrmMappings.generated.hbm.xml"
+    },
+    {
+      "Name": "EntityOrmMappings",
+      "Driver": "EntityOrmMappings",
+      "DatabaseEngine": "postgreSql",
+      "OutputPath": "EntityOrmMappings\\PgSql\\EntityOrmMappings.generated.hbm.xml"
+    },
+    {
+      "Name": "DatabaseMetadata",
+      "Driver": "DatabaseMetadataProvider",
+      "OutputPath": "ExceptionHandling\\DatabaseMetadata.generated.cs"
+    },
+    {
+      "Name": "Entities",
+      "Driver": "Entities",
+      "OutputName": "Entities.generated.cs",
+      "OutputPath": "Models\\Entities\\Entities.generated.cs"
+    },
+    {
+      "Name": "EntityInterfaces",
+      "Driver": "EntityInterfaces",
+      "OutputPath": "Models\\Interfaces\\EntityInterfaces.generated.cs"
+    },
+    {
+      "Name": "EntityRecordInterfaces",
+      "Driver": "EntityRecordInterfaces",
+      "OutputPath": "Models\\Interfaces\\EntityRecordInterfaces.generated.cs"
+    },
+    {
+      "Name": "EntityMapper",
+      "Driver": "EntityMapper",
+      "OutputName": "EntityMapper.generated.cs",
+      "OutputPath": "Models\\Mappers\\EntityMapper.generated.cs"
+    },
+    {
+      "Name": "CreateOrUpdatePipelines",
+      "Driver": "CreateOrUpdatePipelines",
+      "OutputPath": "Pipelines\\CreateOrUpdatePipelines.generated.cs"
+    },
+    {
+      "Name": "Controllers",
+      "Driver": "Controllers",
+      "OutputPath": "Controllers\\Controllers.generated.cs"
+    },
+    {
+      "Name": "Requests",
+      "Driver": "Requests",
+      "OutputPath": "Requests\\Requests.generated.cs"
+    },
+    {
+      "Name": "Resources",
+      "Driver": "Resources",
+      "OutputPath": "Resources\\Resources.generated.cs"
+    },
+    {
+      "Name": "Changes_0010_CreateChangesSchema",
+      "Driver": "Changes_0010_CreateChangesSchema",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0010-CreateChangesSchema.sql"
+    },
+    {
+      "Name": "Changes_0020_CreateChangeVersionSequence",
+      "Driver": "Changes_0020_CreateChangeVersionSequence",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0020-CreateChangeVersionSequence.sql"
+    },
+    {
+      "Name": "Changes_0030_AddColumnChangeVersionForTables",
+      "Driver": "Changes_0030_AddColumnChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
+    },
+    {
+      "Name": "Changes_0035_CreateTrackedChangeTables",
+      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "OutputName": "not-used",
+      "OutputPath": "SupportingArtifacts\\Database\\Structure\\EdFi\\Changes\\0035_CreateTrackedChangeTables"
+    },
+    {
+      "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "OutputName": "not-used",
+      "OutputPath": "SupportingArtifacts\\Database\\Structure\\EdFi\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+    },
+    {
+      "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "Driver": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0060-CreateDeletedForTrackingTriggers.sql"
+    },
+    {
+      "Name": "Changes_0070_AddIndexChangeVersionForTables",
+      "Driver": "Changes_0070_AddIndexChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0070-AddIndexChangeVersionForTables.sql"
+    }
+  ]
+}
