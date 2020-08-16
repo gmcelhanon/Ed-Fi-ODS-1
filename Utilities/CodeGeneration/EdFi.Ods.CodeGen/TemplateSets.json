@@ -120,6 +120,12 @@
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
     },
     {
+      "Name": "Changes_0032_CreateTrackedChangeSchema",
+      "Driver": "Changes_0032_CreateTrackedChangeSchema",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0032-CreateTrackedChangeSchema.sql"
+    },
+    {
       "Name": "Changes_0035_CreateTrackedChangeTables",
       "Driver": "Changes_0035_CreateTrackedChangeTables",
       "DatabaseEngine": "sqlServer",
