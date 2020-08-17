@@ -28,14 +28,17 @@ namespace EdFi.Ods.CodeGen.Generators.Changes
         {
             yield return new Column(context, property);
 
+            // Is this a descriptor?
             if (property.IsLookup)
             {
+                // Add a Namespace column
                 yield return new Column(
                     context,
                     property.PropertyName.ReplaceSuffix("Id", "Namespace"),
                     property.LookupEntity.BaseEntity.PropertyByName["Namespace"].PropertyType,
                     $"j{joinAliasIndex}.{property.LookupEntity.BaseEntity.PropertyByName["Namespace"].PropertyName}");
 
+                // Add a CodeValue column
                 yield return new Column(
                     context,
                     property.PropertyName.ReplaceSuffix("Id", "CodeValue"),
@@ -46,6 +49,7 @@ namespace EdFi.Ods.CodeGen.Generators.Changes
             {
                 var personEntity = property.DefiningEntity;
 
+                // Add a UniqueId column
                 yield return new Column(
                     context,
                     property.PropertyName.ReplaceSuffix("USI", "UniqueId"),
