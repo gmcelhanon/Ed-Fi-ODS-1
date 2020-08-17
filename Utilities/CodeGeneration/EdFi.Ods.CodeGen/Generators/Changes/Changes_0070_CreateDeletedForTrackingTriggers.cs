@@ -5,13 +5,12 @@
 
 using System;
 using System.Linq;
-using EdFi.Ods.CodeGen.Generators.Changes;
 using EdFi.Ods.CodeGen.Generators.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
 
-namespace EdFi.Ods.CodeGen.Generators
+namespace EdFi.Ods.CodeGen.Generators.Changes
 {
-    public class Changes_0060_CreateDeletedForTrackingTriggers : GeneratorBase
+    public class Changes_0070_CreateDeletedForTrackingTriggers : GeneratorBase
     {
         private Func<Entity, bool> _shouldRenderEntityForSchema;
 

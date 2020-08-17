@@ -3,11 +3,9 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
-
-namespace EdFi.Ods.CodeGen.Generators
+namespace EdFi.Ods.CodeGen.Generators.Changes
 {
-    public class Changes_0032_CreateTrackedChangeSchema : GeneratorBase
+    public class Changes_0040_CreateTrackedDeletesSchema : GeneratorBase
     {
         protected override object Build()
         {

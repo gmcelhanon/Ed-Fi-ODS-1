@@ -8,7 +8,7 @@ using System.Linq;
 using EdFi.Ods.CodeGen.Generators.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
 
-namespace EdFi.Ods.CodeGen.Generators
+namespace EdFi.Ods.CodeGen.Generators.Changes
 {
     public class Changes_0030_AddColumnChangeVersionForTables : GeneratorBase
     {

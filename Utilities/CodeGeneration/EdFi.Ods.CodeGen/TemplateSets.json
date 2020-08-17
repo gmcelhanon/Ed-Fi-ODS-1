@@ -102,52 +102,52 @@
       "OutputPath": "EntityOrmMappings\\PgSql\\EntityOrmMappingsForViews.generated.hbm.xml"
     },
     {
-      "Name": "Changes_0010_CreateChangesSchema",
+      "Name": "Changes.0010-CreateChangesSchema",
       "Driver": "Changes_0010_CreateChangesSchema",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0010-CreateChangesSchema.sql"
     },
     {
-      "Name": "Changes_0020_CreateChangeVersionSequence",
+      "Name": "Changes.0020-CreateChangeVersionSequence",
       "Driver": "Changes_0020_CreateChangeVersionSequence",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0020-CreateChangeVersionSequence.sql"
     },
     {
-      "Name": "Changes_0030_AddColumnChangeVersionForTables",
+      "Name": "Changes.0030-AddColumnChangeVersionForTables",
       "Driver": "Changes_0030_AddColumnChangeVersionForTables",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
     },
     {
-      "Name": "Changes_0032_CreateTrackedChangeSchema",
-      "Driver": "Changes_0032_CreateTrackedChangeSchema",
+      "Name": "Changes.0040-CreateTrackedDeletesSchema",
+      "Driver": "Changes_0040_CreateTrackedDeletesSchema",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0032-CreateTrackedChangeSchema.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTrackedDeletesSchema.sql"
     },
     {
-      "Name": "Changes_0035_CreateTrackedChangeTables",
-      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "Name": "Changes.0050-CreateTrackedDeletesTables",
+      "Driver": "Changes_0050_CreateTrackedDeletesTables",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0035-CreateTrackedChangeTables.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0050-CreateTrackedDeletesTables.sql"
     },
     {
-      "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
-      "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "Name": "Changes.0060-CreateTriggerUpdateChangeVersionGenerator",
+      "Driver": "Changes_0060_CreateTriggerUpdateChangeVersionGenerator",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0060-CreateTriggerUpdateChangeVersionGenerator.sql"
     },
     {
-      "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
-      "Driver": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "Name": "Changes.0070-CreateDeletedForTrackingTriggers",
+      "Driver": "Changes_0070_CreateDeletedForTrackingTriggers",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0060-CreateDeletedForTrackingTriggers.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0070-CreateDeletedForTrackingTriggers.sql"
     },
     {
-      "Name": "Changes_0070_AddIndexChangeVersionForTables",
-      "Driver": "Changes_0070_AddIndexChangeVersionForTables",
+      "Name": "Changes.0080-AddIndexChangeVersionForTables",
+      "Driver": "Changes_0080_AddIndexChangeVersionForTables",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0070-AddIndexChangeVersionForTables.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0080-AddIndexChangeVersionForTables.sql"
     }
   ],
   "database": [
@@ -250,46 +250,52 @@
       "OutputPath": "Resources\\Resources.generated.cs"
     },
     {
-      "Name": "Changes_0010_CreateChangesSchema",
+      "Name": "Changes.0010-CreateChangesSchema",
       "Driver": "Changes_0010_CreateChangesSchema",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0010-CreateChangesSchema.sql"
     },
     {
-      "Name": "Changes_0020_CreateChangeVersionSequence",
+      "Name": "Changes.0020-CreateChangeVersionSequence",
       "Driver": "Changes_0020_CreateChangeVersionSequence",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0020-CreateChangeVersionSequence.sql"
     },
     {
-      "Name": "Changes_0030_AddColumnChangeVersionForTables",
+      "Name": "Changes.0030-AddColumnChangeVersionForTables",
       "Driver": "Changes_0030_AddColumnChangeVersionForTables",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0030-AddColumnChangeVersionForTables.sql"
     },
     {
-      "Name": "Changes_0035_CreateTrackedChangeTables",
-      "Driver": "Changes_0035_CreateTrackedChangeTables",
+      "Name": "Changes.0040-CreateTrackedDeletesSchema",
+      "Driver": "Changes_0040_CreateTrackedDeletesSchema",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0035_CreateTrackedChangeTables"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTrackedDeletesSchema.sql"
     },
     {
-      "Name": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
-      "Driver": "Changes_0040_CreateTriggerUpdateChangeVersionGenerator",
+      "Name": "Changes.0050-CreateTrackedDeletesTables",
+      "Driver": "Changes_0050_CreateTrackedDeletesTables",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0040-CreateTriggerUpdateChangeVersionGenerator.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0050-CreateTrackedDeletesTables.sql"
     },
     {
-      "Name": "Changes_0060_CreateDeletedForTrackingTriggers",
-      "Driver": "Changes_0060_CreateDeletedForTrackingTriggers",
+      "Name": "Changes.0060-CreateTriggerUpdateChangeVersionGenerator",
+      "Driver": "Changes_0060_CreateTriggerUpdateChangeVersionGenerator",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0060-CreateDeletedForTrackingTriggers.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0060-CreateTriggerUpdateChangeVersionGenerator.sql"
     },
     {
-      "Name": "Changes_0070_AddIndexChangeVersionForTables",
-      "Driver": "Changes_0070_AddIndexChangeVersionForTables",
+      "Name": "Changes.0070-CreateDeletedForTrackingTriggers",
+      "Driver": "Changes_0070_CreateDeletedForTrackingTriggers",
       "DatabaseEngine": "sqlServer",
-      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0070-AddIndexChangeVersionForTables.sql"
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0070-CreateDeletedForTrackingTriggers.sql"
+    },
+    {
+      "Name": "Changes.0080-AddIndexChangeVersionForTables",
+      "Driver": "Changes_0080_AddIndexChangeVersionForTables",
+      "DatabaseEngine": "sqlServer",
+      "OutputPath": "Artifacts\\MsSql\\Structure\\Ods\\Changes\\0080-AddIndexChangeVersionForTables.sql"
     }
   ]
 }

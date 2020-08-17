@@ -8,9 +8,9 @@ using System.Linq;
 using EdFi.Ods.CodeGen.Generators.Changes.Models;
 using EdFi.Ods.Common.Models.Domain;
 
-namespace EdFi.Ods.CodeGen.Generators
+namespace EdFi.Ods.CodeGen.Generators.Changes
 {
-    public class Changes_0070_AddIndexChangeVersionForTables : GeneratorBase
+    public class Changes_0080_AddIndexChangeVersionForTables : GeneratorBase
     {
         private Func<Entity, bool> _shouldRenderEntityForSchema;
 
