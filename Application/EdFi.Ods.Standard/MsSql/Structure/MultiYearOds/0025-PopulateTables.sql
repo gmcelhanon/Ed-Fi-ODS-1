@@ -28582,7 +28582,6 @@ BEGIN
     )
 
     
-
     -- enable all constraints
     EXEC sp_MSforeachtable @command1="print '?'", @command2="ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all"
 END

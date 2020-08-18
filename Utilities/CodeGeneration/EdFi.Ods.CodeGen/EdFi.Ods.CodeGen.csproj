@@ -46,11 +46,11 @@
     <ProjectReference Include="..\..\..\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Mustache\*.mustache" />
+    <None Remove="Mustache\**\*.mustache" />
     <None Include="../../../LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mustache\*.mustache" />
+    <EmbeddedResource Include="Mustache\**\*.mustache" />
     <None Remove="TemplateSets.json" />
     <EmbeddedResource Include="TemplateSets.json" />
   </ItemGroup>

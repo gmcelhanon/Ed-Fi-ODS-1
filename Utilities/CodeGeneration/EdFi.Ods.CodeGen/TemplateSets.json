@@ -1,19 +1,19 @@
 {
   "standard": [
     {
-      "Name": "MultiYear_0020_Tables",
+      "Name": "MultiYearOds.0020-Tables",
       "Driver": "MultiYear_0020_Tables",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "MsSql\\Structure\\MultiYearOds\\0020-Tables.sql"
     },
     {
-      "Name": "MultiYear_0025_PopulateTables",
+      "Name": "MultiYearOds.0025-PopulateTables",
       "Driver": "MultiYear_0025_PopulateTables",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "MsSql\\Structure\\MultiYearOds\\0025-PopulateTables.sql"
     },
     {
-      "Name": "MultiYear_0030_ForeignKeys",
+      "Name": "MultiYearOds.0030-ForeignKeys",
       "Driver": "MultiYear_0030_ForeignKeys",
       "DatabaseEngine": "sqlServer",
       "OutputPath": "MsSql\\Structure\\MultiYearOds\\0030-ForeignKeys.sql"

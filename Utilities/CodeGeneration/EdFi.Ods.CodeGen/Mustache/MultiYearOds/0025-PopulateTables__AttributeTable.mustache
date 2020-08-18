@@ -2,7 +2,7 @@
     USING EdFi_Ods_2021.{{Schema}}.{{TableName}} AS source
     ON (target.HashKey = HASHBYTES('sha1',
     {{#ParentPrimaryKeyColumns}}
-        {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+        {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
     {{/ParentPrimaryKeyColumns}}
         )
         AND target.SchoolYearContext = @schoolYearContext
@@ -11,7 +11,7 @@
         {{#IdentifyingReferences}}
         AND target.{{#Column}}{{ColumnName}}{{/Column}} = HASHBYTES('sha1',
             {{#ReferenceColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
             {{/ReferenceColumns}}
         )
         {{/IdentifyingReferences}}
@@ -42,7 +42,7 @@
         {{#References}}
             {{#HasBoilerplateColumns}}, {{/HasBoilerplateColumns}}{{^HasBoilerplateColumns}}{{#HasNonKeyColumns}}, {{/HasNonKeyColumns}}{{^HasNonKeyColumns}}{{^IsFirst}}, {{/IsFirst}}{{/HasNonKeyColumns}}{{/HasBoilerplateColumns}}target.{{#Column}}{{ColumnName}}{{/Column}} = HASHBYTES('sha1', 
             {{#ReferenceColumns}}
-                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
             {{/ReferenceColumns}}
             )
         {{/References}}
@@ -87,7 +87,7 @@
         VALUES (
             HASHBYTES('sha1', 
     {{#ParentPrimaryKeyColumns}}
-                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
     {{/ParentPrimaryKeyColumns}}
             )
             , @schoolYearContext
@@ -96,7 +96,7 @@
         {{#IdentifyingReferences}}
             , HASHBYTES('sha1', 
                 {{#ReferenceColumns}}
-                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
                 {{/ReferenceColumns}}
             )
         {{/IdentifyingReferences}}
@@ -118,7 +118,7 @@
         {{#References}}
             , HASHBYTES('sha1', 
             {{#ReferenceColumns}}
-                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
             {{/ReferenceColumns}}
             )
         {{/References}}

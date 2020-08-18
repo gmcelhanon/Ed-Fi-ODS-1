@@ -21,13 +21,13 @@ BEGIN
     SELECT 
         HASHBYTES('sha1', 
         {{#PrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
         {{/PrimaryKeyColumns}})
         -- Identifying references
         {{#IdentifyingReferences}}
         , HASHBYTES('sha1', 
             {{#ReferenceColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
             {{/ReferenceColumns}}
         )
         {{/IdentifyingReferences}}
@@ -39,13 +39,13 @@ BEGIN
         SELECT 1 FROM {{Schema}}.{{TableName}} target 
         WHERE target.HashKey = HASHBYTES('sha1',
         {{#PrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
         {{/PrimaryKeyColumns}}
             )
     )
         {{#HasNonKeyColumnsOrReferences}}
 
-    {{> MultiYear_0025_PopulateTables__AttributeTable}}
+    {{> MultiYearOds.0025-PopulateTables__AttributeTable}}
         {{/HasNonKeyColumnsOrReferences}}
 
     {{/AggregateRoot}}
@@ -69,12 +69,12 @@ BEGIN
     SELECT
         HASHBYTES('sha1', 
         {{#ParentPrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
         {{/ParentPrimaryKeyColumns}})
         {{#IdentifyingReferences}}
         , HASHBYTES('sha1', 
             {{#ReferenceColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPart }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
             {{/ReferenceColumns}}
         )
         {{/IdentifyingReferences}}
@@ -86,13 +86,13 @@ BEGIN
         SELECT 1 FROM {{Schema}}.{{TableName}} target 
         WHERE target.HashKey = HASHBYTES('sha1',
         {{#ParentPrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
         {{/ParentPrimaryKeyColumns}}
             )
         {{#IdentifyingReferences}}
             AND target.{{#Column}}{{ColumnName}}{{/Column}} = HASHBYTES('sha1',
             {{#ReferenceColumns}}
-                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYear_0025_PopulateTables__HashPartFromSource }}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
             {{/ReferenceColumns}}
             )
         {{/IdentifyingReferences}}
@@ -105,7 +105,7 @@ BEGIN
 
         {{#HasNonKeyColumnsOrReferences}}
 
-    {{> MultiYear_0025_PopulateTables__AttributeTable}}
+    {{> MultiYearOds.0025-PopulateTables__AttributeTable}}
 
         {{/HasNonKeyColumnsOrReferences}}
     {{/Members}}
