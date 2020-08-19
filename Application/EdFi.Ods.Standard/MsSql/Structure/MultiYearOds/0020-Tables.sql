@@ -3,8 +3,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AbsenceEventCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -21,8 +19,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AcademicHonorCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -39,8 +35,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AcademicSubjectDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -58,7 +52,6 @@
         -- Primary key references
         , SchoolHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , SchoolId int NOT NULL
         , WeekIdentifier nvarchar(80) NOT NULL
         -- Attributes
         , BeginDate date NOT NULL
@@ -84,8 +77,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AccommodationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -104,7 +95,6 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , AccountIdentifier nvarchar(50) NOT NULL
-        , EducationOrganizationId int NOT NULL
         , FiscalYear int NOT NULL
         -- Attributes
         , AccountName nvarchar(100) NULL
@@ -151,9 +141,7 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , RatingTitle nvarchar(60) NOT NULL
-        , SchoolYear smallint NOT NULL
         -- Attributes
         , Rating nvarchar(35) NOT NULL
         , RatingDate date NULL
@@ -179,8 +167,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AccountClassificationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -199,9 +185,7 @@
         , AccountClassificationDescriptorHashKey uniqueIdentifier NOT NULL
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AccountClassificationDescriptorId int NOT NULL
         , AccountCodeNumber nvarchar(50) NOT NULL
-        , EducationOrganizationId int NOT NULL
         , FiscalYear int NOT NULL
         -- Attributes
         , AccountCodeDescription nvarchar(1024) NULL
@@ -225,8 +209,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AchievementCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -244,10 +226,7 @@
         -- Primary key references
         , AccountHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AccountIdentifier nvarchar(50) NOT NULL
         , AsOfDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , FiscalYear int NOT NULL
         -- Attributes
         , AmountToDate money NOT NULL
         -- Boilerplate
@@ -270,8 +249,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AdditionalCreditTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -288,8 +265,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AddressTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -306,8 +281,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AdministrationEnvironmentDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -324,8 +297,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AdministrativeFundingControlDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -447,7 +418,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , Author nvarchar(100) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -656,8 +627,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AssessmentCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -674,8 +643,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AssessmentIdentificationSystemDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -693,9 +660,7 @@
         -- Primary key references
         , AssessmentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AssessmentIdentifier nvarchar(60) NOT NULL
         , IdentificationCode nvarchar(60) NOT NULL
-        , Namespace nvarchar(255) NOT NULL
         -- Attributes
         , AssessmentItemURI nvarchar(255) NULL
         , CorrectResponse nvarchar(20) NULL
@@ -745,7 +710,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , ResponseValue nvarchar(60) NOT NULL
         -- Attributes
         , CorrectResponse bit NULL
@@ -771,8 +736,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AssessmentItemCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -789,8 +752,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AssessmentItemResultDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -807,8 +768,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AssessmentPeriodDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -825,8 +784,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AssessmentReportingMethodDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -843,8 +800,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AttemptStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -861,8 +816,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , AttendanceEventCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -879,8 +832,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BehaviorDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -899,7 +850,6 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BellScheduleName nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
         -- Attributes
         , AlternateDayName nvarchar(20) NULL
         , EndTime time NULL
@@ -945,7 +895,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , Date date NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -990,10 +940,7 @@
         -- Primary key references
         , AccountHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AccountIdentifier nvarchar(50) NOT NULL
         , AsOfDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , FiscalYear int NOT NULL
         -- Attributes
         , Amount money NOT NULL
         -- Boilerplate
@@ -1019,8 +966,6 @@
         , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , CalendarCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
         -- References
         , CalendarTypeDescriptorHashKey uniqueIdentifier NOT NULL
         -- Boilerplate
@@ -1065,10 +1010,7 @@
         -- Primary key references
         , CalendarHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , CalendarCode nvarchar(60) NOT NULL
         , Date date NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -1110,8 +1052,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CalendarEventDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1128,8 +1068,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CalendarTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1146,8 +1084,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CareerPathwayDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1164,8 +1100,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CharterApprovalAgencyTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1182,8 +1116,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CharterStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1200,8 +1132,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CitizenshipStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1220,7 +1150,6 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , ClassPeriodName nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
         -- Attributes
         , OfficialAttendancePeriod bit NULL
         -- Boilerplate
@@ -1242,7 +1171,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , EndTime time NOT NULL
         , StartTime time NOT NULL
         -- Boilerplate
@@ -1267,8 +1196,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ClassroomPositionDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1287,7 +1214,6 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , CohortIdentifier nvarchar(20) NOT NULL
-        , EducationOrganizationId int NOT NULL
         -- Attributes
         , CohortDescription nvarchar(1024) NULL
         -- References
@@ -1335,8 +1261,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CohortScopeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1353,8 +1277,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CohortTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1371,8 +1293,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CohortYearTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1389,8 +1309,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CommunityOrganizationId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1407,8 +1325,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CommunityProviderId int NOT NULL
         -- Attributes
         , LicenseExemptIndicator bit NULL
         , SchoolIndicator bit NULL
@@ -1434,7 +1350,6 @@
         -- Primary key references
         , CommunityProviderHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , CommunityProviderId int NOT NULL
         , LicenseIdentifier nvarchar(20) NOT NULL
         , LicensingOrganization nvarchar(75) NOT NULL
         -- Attributes
@@ -1467,8 +1382,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CompetencyLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1487,9 +1400,7 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , ObjectiveGradeLevelDescriptorHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , Objective nvarchar(60) NOT NULL
-        , ObjectiveGradeLevelDescriptorId int NOT NULL
         -- Attributes
         , CompetencyObjectiveId nvarchar(60) NULL
         , Description nvarchar(1024) NULL
@@ -1514,8 +1425,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ContactTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1532,8 +1441,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ContentClassDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1550,8 +1457,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ContinuationOfServicesReasonDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1570,11 +1475,7 @@
         , AccountHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AccountIdentifier nvarchar(50) NOT NULL
         , AsOfDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , FiscalYear int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , AmountToDate money NOT NULL
         -- Boilerplate
@@ -1597,8 +1498,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CostRateDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1615,8 +1514,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CountryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1635,7 +1532,6 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , CourseCode nvarchar(60) NOT NULL
-        , EducationOrganizationId int NOT NULL
         -- Attributes
         , CourseDescription nvarchar(1024) NULL
         , CourseTitle nvarchar(60) NOT NULL
@@ -1805,8 +1701,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseAttemptResultDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1823,8 +1717,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseDefinedByDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1841,8 +1733,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseGPAApplicabilityDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1859,8 +1749,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseIdentificationSystemDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1877,8 +1765,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseLevelCharacteristicDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -1898,9 +1784,6 @@
         , SessionHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SessionName nvarchar(60) NOT NULL
         -- Attributes
         , InstructionalTimePlanned int NULL
         , LocalCourseTitle nvarchar(60) NULL
@@ -1989,8 +1872,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseRepeatCodeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2009,14 +1890,6 @@
         , CourseHashKey uniqueIdentifier NOT NULL
         , CourseAttemptResultDescriptorHashKey uniqueIdentifier NOT NULL
         , StudentAcademicRecordHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseAttemptResultDescriptorId int NOT NULL
-        , CourseCode nvarchar(60) NOT NULL
-        , CourseEducationOrganizationId int NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , StudentUSI int NOT NULL
-        , TermDescriptorId int NOT NULL
         -- Attributes
         , AlternativeCourseCode nvarchar(60) NULL
         , AlternativeCourseTitle nvarchar(60) NULL
@@ -2148,7 +2021,6 @@
         , StateOfIssueStateAbbreviationDescriptorHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , CredentialIdentifier nvarchar(60) NOT NULL
-        , StateOfIssueStateAbbreviationDescriptorId int NOT NULL
         -- Attributes
         , EffectiveDate date NULL
         , ExpirationDate date NULL
@@ -2199,7 +2071,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , CredentialEndorsement nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -2243,8 +2115,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CredentialFieldDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2261,8 +2131,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CredentialTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2279,8 +2147,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CreditCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2297,8 +2163,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CreditTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2315,8 +2179,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CTEProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2333,8 +2195,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CurriculumUsedDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2351,8 +2211,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DeliveryMethodDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2398,8 +2256,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DiagnosisDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2416,8 +2272,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DiplomaLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2434,8 +2288,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DiplomaTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2452,8 +2304,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DisabilityDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2470,8 +2320,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DisabilityDesignationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2488,8 +2336,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DisabilityDeterminationSourceTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2509,7 +2355,6 @@
         -- Primary key columns
         , DisciplineActionIdentifier nvarchar(20) NOT NULL
         , DisciplineDate date NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , ActualDisciplineActionLength decimal(5,2) NULL
         , DisciplineActionLength decimal(5,2) NULL
@@ -2603,8 +2448,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DisciplineActionLengthDifferenceReasonDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2621,8 +2464,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DisciplineDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2641,7 +2482,6 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , IncidentIdentifier nvarchar(20) NOT NULL
-        , SchoolId int NOT NULL
         -- Attributes
         , CaseNumber nvarchar(20) NULL
         , IncidentCost money NULL
@@ -2697,7 +2537,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , DisciplineIncidentParticipationCodeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , FirstName nvarchar(75) NOT NULL
         , LastSurname nvarchar(75) NOT NULL
         -- Boilerplate
@@ -2744,8 +2584,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , DisciplineIncidentParticipationCodeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2762,8 +2600,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationalEnvironmentDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -2860,7 +2696,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , Author nvarchar(100) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -2901,7 +2737,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , DerivativeSourceLearningResourceMetadataURI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -2923,7 +2759,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , DerivativeSourceURI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -2995,7 +2831,7 @@
         -- Identifying references
         , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
         , StateAbbreviationDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , City nvarchar(30) NOT NULL
         , PostalCode nvarchar(17) NOT NULL
         , StreetNumberName nvarchar(150) NOT NULL
@@ -3034,7 +2870,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -3129,7 +2965,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -3209,8 +3045,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3227,8 +3061,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationIdentificationSystemDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3246,10 +3078,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , InterventionPrescriptionHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , InterventionPrescriptionEducationOrganizationId int NOT NULL
-        , InterventionPrescriptionIdentificationCode nvarchar(60) NOT NULL
         -- Attributes
         , BeginDate date NULL
         , EndDate date NULL
@@ -3273,8 +3101,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationNetworkId int NOT NULL
         -- References
         , NetworkPurposeDescriptorHashKey uniqueIdentifier NOT NULL
         -- Temporal table artifacts
@@ -3294,9 +3120,6 @@
         -- Primary key references
         , MemberEducationOrganizationHashKey uniqueIdentifier NOT NULL
         , EducationOrganizationNetworkHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationNetworkId int NOT NULL
-        , MemberEducationOrganizationId int NOT NULL
         -- Attributes
         , BeginDate date NULL
         , EndDate date NULL
@@ -3321,9 +3144,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , PeerEducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , PeerEducationOrganizationId int NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -3344,8 +3164,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationPlanDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3362,8 +3180,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationServiceCenterId int NOT NULL
         -- References
         , StateEducationAgencyHashKey uniqueIdentifier NULL
         -- Temporal table artifacts
@@ -3382,8 +3198,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ElectronicMailTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3400,8 +3214,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EmploymentStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3418,8 +3230,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EntryGradeLevelReasonDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3436,8 +3246,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EntryTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3454,8 +3262,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EventCircumstanceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3472,8 +3278,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ExitWithdrawTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3493,8 +3297,6 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , FeederSchoolId int NOT NULL
-        , SchoolId int NOT NULL
         -- Attributes
         , EndDate date NULL
         , FeederRelationshipDescription nvarchar(1024) NULL
@@ -3522,11 +3324,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         , ServedOutsideOfRegularSession bit NULL
@@ -3579,18 +3376,6 @@
         , GradeTypeDescriptorHashKey uniqueIdentifier NOT NULL
         , GradingPeriodHashKey uniqueIdentifier NOT NULL
         , StudentSectionAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , GradeTypeDescriptorId int NOT NULL
-        , GradingPeriodDescriptorId int NOT NULL
-        , GradingPeriodSchoolYear smallint NOT NULL
-        , GradingPeriodSequence int NOT NULL
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , DiagnosticStatement nvarchar(1024) NULL
         , LetterGradeEarned nvarchar(20) NULL
@@ -3647,11 +3432,6 @@
         -- Primary key columns
         , DateAssigned date NOT NULL
         , GradebookEntryTitle nvarchar(60) NOT NULL
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
         -- Attributes
         , Description nvarchar(1024) NULL
         , DueDate date NULL
@@ -3720,8 +3500,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradebookEntryTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3738,8 +3516,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradeLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3756,8 +3532,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradePointAverageTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3774,8 +3548,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradeTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3795,10 +3567,7 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , GradingPeriodDescriptorId int NOT NULL
         , PeriodSequence int NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
         -- Attributes
         , BeginDate date NOT NULL
         , EndDate date NOT NULL
@@ -3823,8 +3592,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradingPeriodDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -3843,10 +3610,6 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , GraduationPlanTypeDescriptorHashKey uniqueIdentifier NOT NULL
         , GraduationSchoolYearTypeHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , GraduationPlanTypeDescriptorId int NOT NULL
-        , GraduationSchoolYear smallint NOT NULL
         -- Attributes
         , IndividualPlan bit NULL
         , TotalRequiredCreditConversion decimal(9,2) NULL
@@ -3872,7 +3635,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , CourseSetName nvarchar(120) NOT NULL
         -- Attributes
         , CreditConversion decimal(9,2) NULL
@@ -4047,8 +3810,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GraduationPlanTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4065,8 +3826,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GunFreeSchoolsActReportingStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4083,8 +3842,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , HomelessPrimaryNighttimeResidenceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4101,8 +3858,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , HomelessProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4119,8 +3874,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IdentificationDocumentUseDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4137,8 +3890,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IncidentLocationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4155,8 +3906,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IndicatorDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4173,8 +3922,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IndicatorGroupDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4191,8 +3938,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IndicatorLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4209,8 +3954,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , InstitutionTelephoneNumberTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4227,8 +3970,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , InteractivityStyleDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4245,8 +3986,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , InternetAccessDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4264,7 +4003,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , InterventionIdentificationCode nvarchar(60) NOT NULL
         -- Attributes
         , BeginDate date NOT NULL
@@ -4398,7 +4136,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , LearningResourceMetadataURI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -4420,7 +4158,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , EndTime time NOT NULL
         , StartTime time NOT NULL
         -- Boilerplate
@@ -4486,7 +4224,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , URI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -4509,8 +4247,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , InterventionClassDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4527,8 +4263,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , InterventionEffectivenessRatingDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4546,7 +4280,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , InterventionPrescriptionIdentificationCode nvarchar(60) NOT NULL
         -- Attributes
         , MaxDosage int NULL
@@ -4657,7 +4390,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , LearningResourceMetadataURI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -4700,7 +4433,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , URI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -4724,7 +4457,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , InterventionStudyIdentificationCode nvarchar(60) NOT NULL
         -- Attributes
         , Participants int NOT NULL
@@ -4843,7 +4575,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , LearningResourceMetadataURI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -4907,7 +4639,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , URI nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -4930,8 +4662,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LanguageDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4948,8 +4678,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LanguageInstructionProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -4966,8 +4694,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LanguageUseDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5063,7 +4789,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , Author nvarchar(100) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -5210,7 +4936,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , Author nvarchar(100) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -5253,7 +4979,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , ContentStandardName nvarchar(65) NOT NULL
         , IdentificationCode nvarchar(60) NOT NULL
         -- Boilerplate
@@ -5297,8 +5023,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LearningStandardCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5318,8 +5042,6 @@
         , TargetLearningStandardHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , Namespace nvarchar(255) NOT NULL
-        , SourceLearningStandardId nvarchar(60) NOT NULL
-        , TargetLearningStandardId nvarchar(60) NOT NULL
         -- Attributes
         , EffectiveDate date NULL
         , LearningStandardEquivalenceStrengthDescription nvarchar(255) NULL
@@ -5345,8 +5067,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LearningStandardEquivalenceStrengthDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5363,8 +5083,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LearningStandardScopeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5381,8 +5099,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LevelOfEducationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5399,8 +5115,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LicenseStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5417,8 +5131,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LicenseTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5435,8 +5147,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LimitedEnglishProficiencyDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5453,8 +5163,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LocaleDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5471,8 +5179,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LocalEducationAgencyId int NOT NULL
         -- References
         , ParentLocalEducationAgencyHashKey uniqueIdentifier NULL
         , CharterStatusDescriptorHashKey uniqueIdentifier NULL
@@ -5518,7 +5224,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , FiscalYear int NOT NULL
         -- Attributes
         , InnovativeDollarsSpent money NULL
@@ -5550,8 +5256,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LocalEducationAgencyCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5570,7 +5274,6 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , ClassroomIdentificationCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
         -- Attributes
         , MaximumNumberOfSeats int NULL
         , OptimalNumberOfSeats int NULL
@@ -5594,8 +5297,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , MagnetSpecialProgramEmphasisSchoolDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5612,8 +5313,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , MediumOfInstructionDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5630,8 +5329,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , MethodCreditEarnedDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5648,8 +5345,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , MigrantEducationProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5666,8 +5361,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , MonitoredDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5684,8 +5377,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , NeglectedOrDelinquentProgramDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5702,8 +5393,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , NeglectedOrDelinquentProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5720,8 +5409,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , NetworkPurposeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5739,9 +5426,7 @@
         -- Primary key references
         , AssessmentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AssessmentIdentifier nvarchar(60) NOT NULL
         , IdentificationCode nvarchar(60) NOT NULL
-        , Namespace nvarchar(255) NOT NULL
         -- Attributes
         , Description nvarchar(1024) NULL
         , MaxRawScore decimal(15,5) NULL
@@ -5887,8 +5572,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , OldEthnicityDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5906,7 +5589,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , RequisitionNumber nvarchar(20) NOT NULL
         -- Attributes
         , DatePosted date NOT NULL
@@ -5979,8 +5661,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , OperationalStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -5997,8 +5677,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , OtherNameTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6049,7 +5727,7 @@
         -- Identifying references
         , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
         , StateAbbreviationDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , City nvarchar(30) NOT NULL
         , PostalCode nvarchar(17) NOT NULL
         , StreetNumberName nvarchar(150) NOT NULL
@@ -6088,7 +5766,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -6113,7 +5791,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , ElectronicMailTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , ElectronicMailAddress nvarchar(128) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -6271,7 +5949,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , TelephoneNumberTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , TelephoneNumber nvarchar(24) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -6299,8 +5977,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ParticipationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6317,8 +5993,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ParticipationStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6337,11 +6011,7 @@
         , AccountHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AccountIdentifier nvarchar(50) NOT NULL
         , AsOfDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , FiscalYear int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , AmountToDate money NOT NULL
         -- Boilerplate
@@ -6364,8 +6034,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PerformanceBaseConversionDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6382,8 +6050,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PerformanceLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6402,7 +6068,6 @@
         , SourceSystemDescriptorHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , PersonId nvarchar(32) NOT NULL
-        , SourceSystemDescriptorId int NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -6423,8 +6088,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PersonalInformationVerificationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6441,8 +6104,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PlatformTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6459,8 +6120,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PopulationServedDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6477,8 +6136,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PostingResultDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6498,8 +6155,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , EventDate date NOT NULL
-        , PostSecondaryEventCategoryDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- References
         , PostSecondaryInstitutionHashKey uniqueIdentifier NULL
         -- Boilerplate
@@ -6522,8 +6177,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PostSecondaryEventCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6540,8 +6193,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PostSecondaryInstitutionId int NOT NULL
         -- References
         , AdministrativeFundingControlDescriptorHashKey uniqueIdentifier NULL
         , PostSecondaryInstitutionLevelDescriptorHashKey uniqueIdentifier NULL
@@ -6582,8 +6233,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PostSecondaryInstitutionLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6600,8 +6249,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProficiencyDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6620,9 +6267,7 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , ProgramTypeDescriptorHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
         , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
         -- Attributes
         , ProgramId nvarchar(20) NULL
         -- Boilerplate
@@ -6750,8 +6395,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgramAssignmentDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6768,8 +6411,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgramCharacteristicDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6786,8 +6427,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgramSponsorDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6804,8 +6443,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgramTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6822,8 +6459,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgressDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6840,8 +6475,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgressLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6858,8 +6491,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProviderCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6876,8 +6507,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProviderProfitabilityDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6894,8 +6523,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProviderStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6912,8 +6539,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , PublicationStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6930,8 +6555,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , QuestionFormDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6948,8 +6571,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , RaceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6966,8 +6587,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ReasonExitedDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -6984,8 +6603,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ReasonNotTestedDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7002,8 +6619,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , RecognitionTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7020,8 +6635,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , RelationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7038,8 +6651,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , RepeatIdentifierDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7058,13 +6669,6 @@
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , GradingPeriodHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , GradingPeriodDescriptorId int NOT NULL
-        , GradingPeriodSchoolId int NOT NULL
-        , GradingPeriodSchoolYear smallint NOT NULL
-        , GradingPeriodSequence int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , GPACumulative decimal(18,4) NULL
         , GPAGivenGradingPeriod decimal(18,4) NULL
@@ -7179,8 +6783,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ReporterDescriptionDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7197,8 +6799,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ResidencyStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7215,8 +6815,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ResponseIndicatorDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7233,8 +6831,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ResponsibilityDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7254,8 +6850,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , RestraintEventIdentifier nvarchar(20) NOT NULL
-        , SchoolId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EventDate date NOT NULL
         -- References
@@ -7322,8 +6916,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , RestraintEventReasonDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7340,8 +6932,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ResultDatatypeTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7358,8 +6948,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , RetestIndicatorDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7376,8 +6964,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SchoolId int NOT NULL
         -- References
         , AdministrativeFundingControlDescriptorHashKey uniqueIdentifier NULL
         , CharterApprovalAgencyTypeDescriptorHashKey uniqueIdentifier NULL
@@ -7446,8 +7032,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SchoolCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7464,8 +7048,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SchoolChoiceImplementStatusDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7482,8 +7064,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SchoolFoodServiceProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7500,8 +7080,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SchoolTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7543,11 +7121,7 @@
         -- Primary key references
         , CourseOfferingHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
         , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
         -- Attributes
         , AvailableCreditConversion decimal(9,2) NULL
         , AvailableCredits decimal(9,3) NULL
@@ -7688,14 +7262,6 @@
         -- Primary key references
         , CalendarDateHashKey uniqueIdentifier NOT NULL
         , SectionHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CalendarCode nvarchar(60) NOT NULL
-        , Date date NOT NULL
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
         -- Attributes
         , EventDate date NOT NULL
         -- References
@@ -7720,8 +7286,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SectionCharacteristicDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7738,8 +7302,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SeparationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7756,8 +7318,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SeparationReasonDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7774,8 +7334,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7794,8 +7352,6 @@
         , SchoolHashKey uniqueIdentifier NOT NULL
         , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
         , SessionName nvarchar(60) NOT NULL
         -- Attributes
         , BeginDate date NOT NULL
@@ -7865,8 +7421,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SexDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7883,8 +7437,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SourceSystemDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7901,8 +7453,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SpecialEducationProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7919,8 +7469,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SpecialEducationSettingDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -7979,7 +7527,7 @@
         -- Identifying references
         , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
         , StateAbbreviationDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , City nvarchar(30) NOT NULL
         , PostalCode nvarchar(17) NOT NULL
         , StreetNumberName nvarchar(150) NOT NULL
@@ -8018,7 +7566,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -8064,7 +7612,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , ElectronicMailTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , ElectronicMailAddress nvarchar(128) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -8332,7 +7880,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , TelephoneNumberTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , TelephoneNumber nvarchar(24) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -8404,9 +7952,7 @@
         , AbsenceEventCategoryDescriptorHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AbsenceEventCategoryDescriptorId int NOT NULL
         , EventDate date NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , AbsenceEventReason nvarchar(40) NULL
         , HoursAbsent decimal(18,2) NULL
@@ -8430,8 +7976,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StaffClassificationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -8451,9 +7995,6 @@
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , CohortIdentifier nvarchar(20) NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         , StudentRecordAccess bit NULL
@@ -8478,10 +8019,6 @@
         -- Primary key references
         , DisciplineIncidentHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IncidentIdentifier nvarchar(20) NOT NULL
-        , SchoolId int NOT NULL
-        , StaffUSI int NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -8527,9 +8064,6 @@
         , StaffClassificationDescriptorHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , StaffClassificationDescriptorId int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         , OrderOfAssignment int NULL
@@ -8560,8 +8094,6 @@
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , ContactTitle nvarchar(75) NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , ElectronicMailAddress nvarchar(128) NOT NULL
         -- References
@@ -8620,7 +8152,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -8645,7 +8177,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , TelephoneNumberTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , TelephoneNumber nvarchar(24) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -8676,10 +8208,7 @@
         , EmploymentStatusDescriptorHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , EmploymentStatusDescriptorId int NOT NULL
         , HireDate date NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , Department nvarchar(60) NULL
         , EndDate date NULL
@@ -8710,8 +8239,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StaffIdentificationSystemDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -8731,8 +8258,6 @@
         , StaffLeaveEventCategoryDescriptorHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , StaffLeaveEventCategoryDescriptorId int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         , Reason nvarchar(40) NULL
@@ -8757,8 +8282,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StaffLeaveEventCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -8778,10 +8301,6 @@
         , StaffHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         , StudentRecordAccess bit NULL
@@ -8807,10 +8326,6 @@
         , ProgramAssignmentDescriptorHashKey uniqueIdentifier NOT NULL
         , SchoolHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ProgramAssignmentDescriptorId int NOT NULL
-        , SchoolId int NOT NULL
-        , StaffUSI int NOT NULL
         -- References
         , CalendarHashKey uniqueIdentifier NULL
         , SchoolYearTypeHashKey uniqueIdentifier NULL
@@ -8877,13 +8392,6 @@
         -- Primary key references
         , SectionHashKey uniqueIdentifier NOT NULL
         , StaffHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , StaffUSI int NOT NULL
         -- Attributes
         , BeginDate date NULL
         , EndDate date NULL
@@ -8912,8 +8420,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StateAbbreviationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -8930,8 +8436,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StateEducationAgencyId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -8970,7 +8474,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , FiscalYear int NOT NULL
         -- Attributes
         , FederalProgramsFundingAllocation money NULL
@@ -9146,11 +8650,6 @@
         , SchoolYearTypeHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
         , TermDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , StudentUSI int NOT NULL
-        , TermDescriptorId int NOT NULL
         -- Attributes
         , CumulativeAttemptedCreditConversion decimal(9,2) NULL
         , CumulativeAttemptedCredits decimal(9,3) NULL
@@ -9191,7 +8690,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , AcademicHonorCategoryDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , HonorDescription nvarchar(80) NOT NULL
         -- Attributes
         , AchievementCategorySystem nvarchar(60) NULL
@@ -9252,7 +8751,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , DiplomaTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , DiplomaAwardDate date NOT NULL
         -- Attributes
         , AchievementCategorySystem nvarchar(60) NULL
@@ -9374,10 +8873,7 @@
         , AssessmentHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AssessmentIdentifier nvarchar(60) NOT NULL
-        , Namespace nvarchar(255) NOT NULL
         , StudentAssessmentIdentifier nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , AdministrationDate datetime2 NOT NULL
         , AdministrationEndDate datetime2 NULL
@@ -9583,8 +9079,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StudentCharacteristicDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -9604,9 +9098,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , CohortIdentifier nvarchar(20) NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         -- Boilerplate
@@ -9652,15 +9143,6 @@
         , ObjectiveCompetencyObjectiveHashKey uniqueIdentifier NOT NULL
         , GradingPeriodHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradingPeriodDescriptorId int NOT NULL
-        , GradingPeriodSchoolId int NOT NULL
-        , GradingPeriodSchoolYear smallint NOT NULL
-        , GradingPeriodSequence int NOT NULL
-        , Objective nvarchar(60) NOT NULL
-        , ObjectiveEducationOrganizationId int NOT NULL
-        , ObjectiveGradeLevelDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , DiagnosticStatement nvarchar(1024) NULL
         -- References
@@ -9727,13 +9209,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , NonTraditionalGenderStatus bit NULL
         , PrivateCTEProgram bit NULL
@@ -9832,10 +9307,6 @@
         -- Primary key references
         , DisciplineIncidentHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , IncidentIdentifier nvarchar(20) NOT NULL
-        , SchoolId int NOT NULL
-        , StudentUSI int NOT NULL
         -- References
         , StudentParticipationCodeDescriptorHashKey uniqueIdentifier NOT NULL
         -- Boilerplate
@@ -9882,9 +9353,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , HispanicLatinoEthnicity bit NULL
         , LoginId nvarchar(60) NULL
@@ -9914,7 +9382,7 @@
         -- Identifying references
         , AddressTypeDescriptorHashKey uniqueIdentifier NOT NULL
         , StateAbbreviationDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , City nvarchar(30) NOT NULL
         , PostalCode nvarchar(17) NOT NULL
         , StreetNumberName nvarchar(150) NOT NULL
@@ -9953,7 +9421,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -10048,7 +9516,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , ElectronicMailTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , ElectronicMailAddress nvarchar(128) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -10238,7 +9706,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -10263,7 +9731,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , StudentIdentificationSystemDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , AssigningOrganizationIdentificationCode nvarchar(60) NOT NULL
         -- Attributes
         , IdentificationCode nvarchar(60) NOT NULL
@@ -10288,7 +9756,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , IndicatorName nvarchar(200) NOT NULL
         -- Attributes
         , DesignatedBy nvarchar(60) NULL
@@ -10314,7 +9782,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , BeginDate date NOT NULL
         -- Attributes
         , EndDate date NULL
@@ -10339,7 +9807,7 @@
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
         , TelephoneNumberTypeDescriptorHashKey uniqueIdentifier NOT NULL
-        -- Contextual primary key
+        -- Primary key columns
         , TelephoneNumber nvarchar(24) NOT NULL
         -- Attributes
         , DoNotPublishIndicator bit NULL
@@ -10392,9 +9860,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ResponsibilityDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         -- Boilerplate
@@ -10418,16 +9883,6 @@
         -- Primary key references
         , GradebookEntryHashKey uniqueIdentifier NOT NULL
         , StudentSectionAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , DateAssigned date NOT NULL
-        , GradebookEntryTitle nvarchar(60) NOT NULL
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , DateFulfilled date NULL
         , DiagnosticStatement nvarchar(1024) NULL
@@ -10455,13 +9910,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , AwaitingFosterCare bit NULL
         , HomelessUnaccompaniedYouth bit NULL
@@ -10508,8 +9956,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StudentIdentificationSystemDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -10527,10 +9973,6 @@
         -- Primary key references
         , InterventionHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , InterventionIdentificationCode nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , DiagnosticStatement nvarchar(1024) NULL
         , Dosage int NULL
@@ -10588,11 +10030,7 @@
         , InterventionHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AttendanceEventCategoryDescriptorId int NOT NULL
-        , EducationOrganizationId int NOT NULL
         , EventDate date NOT NULL
-        , InterventionIdentificationCode nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , AttendanceEventReason nvarchar(255) NULL
         , EventDuration decimal(3,2) NULL
@@ -10619,13 +10057,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , Dosage int NULL
         , EnglishLearnerParticipation bit NULL
@@ -10698,14 +10129,6 @@
         , GradingPeriodHashKey uniqueIdentifier NOT NULL
         , LearningObjectiveHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , GradingPeriodDescriptorId int NOT NULL
-        , GradingPeriodSchoolId int NOT NULL
-        , GradingPeriodSchoolYear smallint NOT NULL
-        , GradingPeriodSequence int NOT NULL
-        , LearningObjectiveId nvarchar(60) NOT NULL
-        , Namespace nvarchar(255) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , DiagnosticStatement nvarchar(1024) NULL
         -- References
@@ -10772,13 +10195,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EligibilityExpirationDate date NULL
         , LastQualifyingMove date NOT NULL
@@ -10831,13 +10247,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- References
         , NeglectedOrDelinquentProgramDescriptorHashKey uniqueIdentifier NULL
         , ELAProgressLevelDescriptorHashKey uniqueIdentifier NULL
@@ -10884,9 +10293,6 @@
         -- Primary key references
         , ParentHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , ParentUSI int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , ContactPriority int NULL
         , ContactRestrictions nvarchar(250) NULL
@@ -10915,8 +10321,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , StudentParticipationCodeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -10933,13 +10337,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -10985,13 +10382,7 @@
         , ProgramHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AttendanceEventCategoryDescriptorId int NOT NULL
-        , EducationOrganizationId int NOT NULL
         , EventDate date NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , AttendanceEventReason nvarchar(255) NULL
         , EventDuration decimal(3,2) NULL
@@ -11021,8 +10412,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , EntryDate date NOT NULL
-        , SchoolId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EmployedWhileEnrolled bit NULL
         , ExitWithdrawDate date NULL
@@ -11107,12 +10496,7 @@
         , SessionHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AttendanceEventCategoryDescriptorId int NOT NULL
         , EventDate date NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , ArrivalTime time NULL
         , AttendanceEventReason nvarchar(255) NULL
@@ -11141,13 +10525,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , DirectCertification bit NULL
         -- Temporal table artifacts
@@ -11194,12 +10571,6 @@
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
         , BeginDate date NOT NULL
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , EndDate date NULL
         , HomeroomIndicator bit NULL
@@ -11230,14 +10601,7 @@
         , SectionHashKey uniqueIdentifier NOT NULL
         , StudentHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , AttendanceEventCategoryDescriptorId int NOT NULL
         , EventDate date NOT NULL
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , ArrivalTime time NULL
         , AttendanceEventReason nvarchar(255) NULL
@@ -11266,13 +10630,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- Attributes
         , IdeaEligibility bit NULL
         , IEPBeginDate date NULL
@@ -11419,13 +10776,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , GeneralStudentProgramAssociationHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , BeginDate date NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , ProgramEducationOrganizationId int NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , StudentUSI int NOT NULL
         -- References
         , TitleIPartAParticipantDescriptorHashKey uniqueIdentifier NOT NULL
         -- Temporal table artifacts
@@ -11524,8 +10874,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SurveyCategoryDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -11543,11 +10891,6 @@
         -- Primary key references
         , CourseHashKey uniqueIdentifier NOT NULL
         , SurveyHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , CourseCode nvarchar(60) NOT NULL
-        , EducationOrganizationId int NOT NULL
-        , Namespace nvarchar(255) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -11568,8 +10911,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , SurveyLevelDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -11587,12 +10928,6 @@
         -- Primary key references
         , ProgramHashKey uniqueIdentifier NOT NULL
         , SurveyHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , Namespace nvarchar(255) NOT NULL
-        , ProgramName nvarchar(60) NOT NULL
-        , ProgramTypeDescriptorId int NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -11614,9 +10949,7 @@
         -- Primary key references
         , SurveyHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
         , QuestionCode nvarchar(60) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
         -- Attributes
         , QuestionText nvarchar(1024) NOT NULL
         -- References
@@ -11641,7 +10974,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , MatrixElement nvarchar(255) NOT NULL
         -- Attributes
         , MaxRawScore int NULL
@@ -11666,7 +10999,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , SortOrder int NOT NULL
         -- Attributes
         , NumericValue int NULL
@@ -11693,11 +11026,6 @@
         -- Primary key references
         , SurveyQuestionHashKey uniqueIdentifier NOT NULL
         , SurveyResponseHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
-        , QuestionCode nvarchar(60) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
-        , SurveyResponseIdentifier nvarchar(60) NOT NULL
         -- Attributes
         , Comment nvarchar(1024) NULL
         , NoResponse bit NULL
@@ -11720,7 +11048,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , MatrixElement nvarchar(255) NOT NULL
         -- Attributes
         , MaxNumericResponse int NULL
@@ -11748,7 +11076,7 @@
         HashKey uniqueidentifier NOT NULL
         , SchoolYearContext smallint NOT NULL
         -- Identifying references
-        -- Contextual primary key
+        -- Primary key columns
         , SurveyQuestionResponseValueIdentifier int NOT NULL
         -- Attributes
         , NumericResponse int NULL
@@ -11775,8 +11103,6 @@
         -- Primary key references
         , SurveyHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
         , SurveyResponseIdentifier nvarchar(60) NOT NULL
         -- Attributes
         , ElectronicMailAddress nvarchar(128) NULL
@@ -11830,11 +11156,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , SurveyResponseHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , Namespace nvarchar(255) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
-        , SurveyResponseIdentifier nvarchar(60) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -11856,11 +11177,6 @@
         -- Primary key references
         , StaffHashKey uniqueIdentifier NOT NULL
         , SurveyResponseHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
-        , StaffUSI int NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
-        , SurveyResponseIdentifier nvarchar(60) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -11882,8 +11198,6 @@
         -- Primary key references
         , SurveyHashKey uniqueIdentifier NOT NULL
         -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
         , SurveySectionTitle nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
@@ -11906,14 +11220,6 @@
         -- Primary key references
         , SectionHashKey uniqueIdentifier NOT NULL
         , SurveyHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , LocalCourseCode nvarchar(60) NOT NULL
-        , Namespace nvarchar(255) NOT NULL
-        , SchoolId int NOT NULL
-        , SchoolYear smallint NOT NULL
-        , SectionIdentifier nvarchar(255) NOT NULL
-        , SessionName nvarchar(60) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -11935,11 +11241,6 @@
         -- Primary key references
         , SurveyResponseHashKey uniqueIdentifier NOT NULL
         , SurveySectionHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
-        , SurveyResponseIdentifier nvarchar(60) NOT NULL
-        , SurveySectionTitle nvarchar(255) NOT NULL
         -- Attributes
         , SectionRating decimal(9,3) NULL
         -- Boilerplate
@@ -11963,12 +11264,6 @@
         -- Primary key references
         , EducationOrganizationHashKey uniqueIdentifier NOT NULL
         , SurveySectionResponseHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , EducationOrganizationId int NOT NULL
-        , Namespace nvarchar(255) NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
-        , SurveyResponseIdentifier nvarchar(60) NOT NULL
-        , SurveySectionTitle nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -11990,12 +11285,6 @@
         -- Primary key references
         , StaffHashKey uniqueIdentifier NOT NULL
         , SurveySectionResponseHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , Namespace nvarchar(255) NOT NULL
-        , StaffUSI int NOT NULL
-        , SurveyIdentifier nvarchar(60) NOT NULL
-        , SurveyResponseIdentifier nvarchar(60) NOT NULL
-        , SurveySectionTitle nvarchar(255) NOT NULL
         -- Boilerplate
         , CreateDate datetime2 NOT NULL
         , Id uniqueidentifier NOT NULL
@@ -12016,8 +11305,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TeachingCredentialBasisDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12034,8 +11321,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TeachingCredentialDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12052,8 +11337,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TechnicalSkillsAssessmentDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12070,8 +11353,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TelephoneNumberTypeDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12088,8 +11369,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TermDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12106,8 +11385,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TitleIPartAParticipantDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12124,8 +11401,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TitleIPartAProgramServiceDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12142,8 +11417,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TitleIPartASchoolDesignationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12160,8 +11433,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , TribalAffiliationDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12178,8 +11449,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , VisaDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
@@ -12196,8 +11465,6 @@
         , SchoolYearContext smallint NOT NULL
         -- Primary key references
         , DescriptorHashKey uniqueIdentifier NOT NULL
-        -- Primary key columns
-        , WeaponDescriptorId int NOT NULL
         -- Temporal table artifacts
         , SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
         , SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL

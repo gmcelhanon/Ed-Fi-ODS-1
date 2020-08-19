@@ -110,6 +110,13 @@ namespace EdFi.Ods.CodeGen.Generators
             public IEnumerable<HashReference> References { get; set; }
 
             public IEnumerable<HashReference> IdentifyingReferences { get; set; }
+
+            public bool HasLocallyDefinedPrimaryKeyColumns
+            {
+                get => LocallyDefinedPrimaryKeyColumns.Any();
+            }
+            
+            public IEnumerable<Column> LocallyDefinedPrimaryKeyColumns { get; set; }
         }
 
         private class Column
@@ -203,6 +210,14 @@ namespace EdFi.Ods.CodeGen.Generators
                     Schema = entity.Schema,
                     TableName = entity.TableNameByDatabaseEngine[databaseEngine],
                     PrimaryKeyColumns = entity.Identifier.Properties.Select(
+                        (p, i) => new Column
+                        {
+                            ColumnName = p.ColumnNameByDatabaseEngine[databaseEngine],
+                            DataType = p.PropertyType.ToSql(),
+                            IsNullable = p.PropertyType.IsNullable,
+                            IsFirst = i == 0,
+                        }),
+                    LocallyDefinedPrimaryKeyColumns = entity.Identifier.Properties.Where(p => p.IsLocallyDefined).Select(
                         (p, i) => new Column
                         {
                             ColumnName = p.ColumnNameByDatabaseEngine[databaseEngine],

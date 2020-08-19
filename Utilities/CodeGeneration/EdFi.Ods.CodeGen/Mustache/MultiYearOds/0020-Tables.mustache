@@ -9,10 +9,12 @@
         , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
             {{/Column}}
         {{/IdentifyingReferences}}
+        {{#HasLocallyDefinedPrimaryKeyColumns}}
         -- Primary key columns
-        {{#PrimaryKeyColumns}}
+            {{#LocallyDefinedPrimaryKeyColumns}}
         , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
-        {{/PrimaryKeyColumns}}
+            {{/LocallyDefinedPrimaryKeyColumns}}
+        {{/HasLocallyDefinedPrimaryKeyColumns}}
         {{> MultiYearOds.0020-Tables__CommonColumns }}
         -- Primary Key Constraint
         , CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (HashKey, SchoolYearContext)
@@ -32,12 +34,12 @@
         , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
             {{/Column}}
         {{/IdentifyingReferences}}
-        {{#HasContextualPrimaryKeyColumns}}
-        -- Contextual primary key
-        {{#ContextualPrimaryKeyColumns}}
+        {{#HasLocallyDefinedPrimaryKeyColumns}}
+        -- Primary key columns
+            {{#LocallyDefinedPrimaryKeyColumns}}
         , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
-        {{/ContextualPrimaryKeyColumns}}
-        {{/HasContextualPrimaryKeyColumns}}
+            {{/LocallyDefinedPrimaryKeyColumns}}
+        {{/HasLocallyDefinedPrimaryKeyColumns}}
         {{> MultiYearOds.0020-Tables__CommonColumns }}
         -- Primary key constraint
         , CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (
