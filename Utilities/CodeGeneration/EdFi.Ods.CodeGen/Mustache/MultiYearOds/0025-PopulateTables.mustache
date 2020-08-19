@@ -6,108 +6,13 @@ BEGIN
 
 {{#Aggregates}}
     {{#AggregateRoot}}
-    INSERT INTO {{Schema}}.{{TableName}} (
-        HashKey
-        -- Identifying references (for aggregate root entity)
-        {{#IdentifyingReferences}}
-            {{#Column}}
-        , {{ColumnName}}
-            {{/Column}}
-        {{/IdentifyingReferences}}
-        -- Primary key columns
-        {{#PrimaryKeyColumns}}
-        , {{ColumnName}}
-        {{/PrimaryKeyColumns}})
-    SELECT 
-        HASHBYTES('sha1', 
-        {{#PrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
-        {{/PrimaryKeyColumns}})
-        -- Identifying references
-        {{#IdentifyingReferences}}
-        , HASHBYTES('sha1', 
-            {{#ReferenceColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
-            {{/ReferenceColumns}}
-        )
-        {{/IdentifyingReferences}}
-        {{#PrimaryKeyColumns}}
-        , {{ColumnName}}
-        {{/PrimaryKeyColumns}}
-    FROM EdFi_Ods_2021.{{Schema}}.{{TableName}} source
-    WHERE NOT EXISTS (
-        SELECT 1 FROM {{Schema}}.{{TableName}} target 
-        WHERE target.HashKey = HASHBYTES('sha1',
-        {{#PrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
-        {{/PrimaryKeyColumns}}
-            )
-    )
-        {{#HasNonKeyColumnsOrReferences}}
-
-    {{> MultiYearOds.0025-PopulateTables__AttributeTable}}
-        {{/HasNonKeyColumnsOrReferences}}
+    {{> MultiYearOds.0025-PopulateTables__MergeInto}}
 
     {{/AggregateRoot}}
     
     {{#Members}}
-    INSERT INTO {{Schema}}.{{TableName}} (
-        HashKey
-        -- Identifying references (for aggregate child entity)
-        {{#IdentifyingReferences}}
-            {{#Column}}
-        , {{ColumnName}}
-            {{/Column}}
-        {{/IdentifyingReferences}}
-        {{#HasContextualPrimaryKeyColumns}}
-        -- Contextual primary key
-        {{/HasContextualPrimaryKeyColumns}}
-        {{#ContextualPrimaryKeyColumns}}
-        , {{ColumnName}}
-        {{/ContextualPrimaryKeyColumns}}
-    )
-    SELECT
-        HASHBYTES('sha1', 
-        {{#ParentPrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
-        {{/ParentPrimaryKeyColumns}})
-        {{#IdentifyingReferences}}
-        , HASHBYTES('sha1', 
-            {{#ReferenceColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPart }}
-            {{/ReferenceColumns}}
-        )
-        {{/IdentifyingReferences}}
-        {{#ContextualPrimaryKeyColumns}}
-            , {{ColumnName}}
-        {{/ContextualPrimaryKeyColumns}}
-    FROM EdFi_Ods_2021.{{Schema}}.{{TableName}} source
-    WHERE NOT EXISTS (
-        SELECT 1 FROM {{Schema}}.{{TableName}} target 
-        WHERE target.HashKey = HASHBYTES('sha1',
-        {{#ParentPrimaryKeyColumns}}
-            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
-        {{/ParentPrimaryKeyColumns}}
-            )
-        {{#IdentifyingReferences}}
-            AND target.{{#Column}}{{ColumnName}}{{/Column}} = HASHBYTES('sha1',
-            {{#ReferenceColumns}}
-                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
-            {{/ReferenceColumns}}
-            )
-        {{/IdentifyingReferences}}
-        {{#ContextualPrimaryKeyColumns}}
-            {{#ContextualPrimaryKeyColumns}}
-            AND target.{{ColumnName}} = source.{{ColumnName}}
-            {{/ContextualPrimaryKeyColumns}} 
-        {{/ContextualPrimaryKeyColumns}}
-    )
+    {{> MultiYearOds.0025-PopulateTables__MergeInto}}
 
-        {{#HasNonKeyColumnsOrReferences}}
-
-    {{> MultiYearOds.0025-PopulateTables__AttributeTable}}
-
-        {{/HasNonKeyColumnsOrReferences}}
     {{/Members}}
 {{/Aggregates}}
     -- enable all constraints

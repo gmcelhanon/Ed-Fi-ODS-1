@@ -1,1 +1,1 @@
-{{#IsString}}{{ColumnName}}{{/IsString}}{{#IsNumber}}CONVERT(nvarchar, {{ColumnName}}){{/IsNumber}}{{#IsDate}}CONVERT(nvarchar, {{ColumnName}}, 23){{/IsDate}}{{#IsTime}}CONVERT(nvarchar, {{ColumnName}}, 14){{/IsTime}}{{#IsGuid}}CONVERT(nchar(36), {{ColumnName}}){{/IsGuid}}
+    {{#IsString}}{{ColumnName}}{{/IsString}}{{#IsNumber}}CONVERT(nvarchar, {{ColumnName}}){{/IsNumber}}{{#IsDate}}CONVERT(nvarchar, {{ColumnName}}, 23){{/IsDate}}{{#IsTime}}CONVERT(nvarchar, {{ColumnName}}, 14){{/IsTime}}{{#IsGuid}}CONVERT(nchar(36), {{ColumnName}}){{/IsGuid}}

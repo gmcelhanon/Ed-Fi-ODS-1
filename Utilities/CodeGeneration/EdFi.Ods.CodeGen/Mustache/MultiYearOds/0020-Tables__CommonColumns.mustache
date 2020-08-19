@@ -1,0 +1,24 @@
+{{#HasNonKeyColumns}}
+-- Attributes
+{{/HasNonKeyColumns}}
+{{#NonKeyColumns}}
+, {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
+{{/NonKeyColumns}}
+{{#HasReferences}}
+-- References
+{{/HasReferences}}
+{{#References}}
+    {{#Column}}
+, {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
+    {{/Column}}
+{{/References}}
+{{#HasBoilerplateColumns}}
+-- Boilerplate
+    {{#BoilerplateColumns}}
+, {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
+    {{/BoilerplateColumns}}
+{{/HasBoilerplateColumns}}
+-- Temporal table artifacts
+, SysStartTime DATETIME2 GENERATED ALWAYS AS ROW START NOT NULL
+, SysEndTime DATETIME2 GENERATED ALWAYS AS ROW END NOT NULL
+, PERIOD FOR SYSTEM_TIME (SysStartTime, SysEndTime)

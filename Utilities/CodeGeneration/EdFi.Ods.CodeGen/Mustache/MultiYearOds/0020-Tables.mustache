@@ -1,45 +1,48 @@
 {{#Aggregates}}
     {{#AggregateRoot}}
     CREATE TABLE {{Schema}}.{{TableName}} (
-        HashKey uniqueidentifier NOT NULL,
+        HashKey uniqueidentifier NOT NULL
+        , SchoolYearContext smallint NOT NULL
         -- Primary key references
         {{#IdentifyingReferences}}
             {{#Column}}
-        {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL,
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
             {{/Column}}
         {{/IdentifyingReferences}}
         -- Primary key columns
         {{#PrimaryKeyColumns}}
-        {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL,
+        , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
         {{/PrimaryKeyColumns}}
-        -- Constraints
-        CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (HashKey ASC)
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-    ) ON [PRIMARY]
+        {{> MultiYearOds.0020-Tables__CommonColumns }}
+        -- Primary Key Constraint
+        , CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (HashKey, SchoolYearContext)
+        WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = {{Schema}}.{{TableName}}_AttributesHistory))
     GO
-
-        {{#HasNonKeyColumnsOrReferences}}
-    {{> MultiYearOds.0020-Tables__AttributeTable}}
-        {{/HasNonKeyColumnsOrReferences}}
-
     {{/AggregateRoot}}
     
     {{#Members}}
     CREATE TABLE {{Schema}}.{{TableName}} (
         HashKey uniqueidentifier NOT NULL
+        , SchoolYearContext smallint NOT NULL
         -- Identifying references
         {{#IdentifyingReferences}}
             {{#Column}}
         , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
             {{/Column}}
         {{/IdentifyingReferences}}
+        {{#HasContextualPrimaryKeyColumns}}
         -- Contextual primary key
         {{#ContextualPrimaryKeyColumns}}
         , {{ColumnName}} {{DataType}} {{^IsNullable}}NOT {{/IsNullable}}NULL
         {{/ContextualPrimaryKeyColumns}}
-        -- Constraints
-        CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (
-            HashKey ASC
+        {{/HasContextualPrimaryKeyColumns}}
+        {{> MultiYearOds.0020-Tables__CommonColumns }}
+        -- Primary key constraint
+        , CONSTRAINT {{TableName}}_PK PRIMARY KEY CLUSTERED (
+            HashKey
+            , SchoolYearContext
         {{#IdentifyingReferences}}
             {{#Column}}
             , {{ColumnName}}
@@ -53,9 +56,5 @@
     ) ON [PRIMARY]
     GO
 
-        {{#HasNonKeyColumnsOrReferences}}
-    {{> MultiYearOds.0020-Tables__AttributeTable }}
-
-        {{/HasNonKeyColumnsOrReferences}}
     {{/Members}}
 {{/Aggregates}}

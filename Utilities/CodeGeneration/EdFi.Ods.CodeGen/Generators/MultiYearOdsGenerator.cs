@@ -54,6 +54,11 @@ namespace EdFi.Ods.CodeGen.Generators
 
             public string TableName { get; set; }
 
+            public bool HasPrimaryKeyColumns
+            {
+                get => PrimaryKeyColumns.Any();
+            }
+            
             public IEnumerable<Column> PrimaryKeyColumns { get; set; }
 
             public bool HasContextualPrimaryKeyColumns

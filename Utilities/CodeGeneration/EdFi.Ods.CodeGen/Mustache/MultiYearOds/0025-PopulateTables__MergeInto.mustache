@@ -1,0 +1,148 @@
+    MERGE {{Schema}}.{{TableName}} AS target
+    USING EdFi_Ods_2021.{{Schema}}.{{TableName}} AS source
+    ON (target.HashKey = HASHBYTES('sha1',
+    {{#ParentPrimaryKeyColumns}}
+        {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
+    {{/ParentPrimaryKeyColumns}}
+        )
+        AND target.SchoolYearContext = @schoolYearContext
+    {{^IsAggregateRoot}}
+        -- Identifying references
+        {{#IdentifyingReferences}}
+        AND target.{{#Column}}{{ColumnName}}{{/Column}} = HASHBYTES('sha1',
+            {{#ReferenceColumns}}
+            {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
+            {{/ReferenceColumns}}
+        )
+        {{/IdentifyingReferences}}
+        {{#HasContextualPrimaryKeyColumns}}
+        -- Contextual primary key
+            {{#ContextualPrimaryKeyColumns}}
+        AND target.{{ColumnName}} = source.{{ColumnName}}
+            {{/ContextualPrimaryKeyColumns}}
+        {{/HasContextualPrimaryKeyColumns}}
+    {{/IsAggregateRoot}}
+    )
+    {{#HasNonKeyColumnsOrReferences}}
+    WHEN MATCHED THEN
+        UPDATE SET
+        {{#HasBoilerplateColumns}}
+        -- Boilerplate columns
+            {{#BoilerplateColumns}}
+            {{^IsFirst}}, {{/IsFirst}}{{ColumnName}} = source.{{ColumnName}}
+            {{/BoilerplateColumns}}
+        {{/HasBoilerplateColumns}}
+        {{#HasNonKeyColumns}}
+        -- Attributes
+            {{#NonKeyColumns}}
+            {{#HasBoilerplateColumns}}, {{/HasBoilerplateColumns}}{{^HasBoilerplateColumns}}{{^IsFirst}}, {{/IsFirst}}{{/HasBoilerplateColumns}}target.{{ColumnName}} = source.{{ColumnName}}
+            {{/NonKeyColumns}}
+        {{/HasNonKeyColumns}}
+        {{#HasReferences}}
+            -- References
+            {{#References}}
+            {{#HasBoilerplateColumns}}, {{/HasBoilerplateColumns}}{{^HasBoilerplateColumns}}{{#HasNonKeyColumns}}, {{/HasNonKeyColumns}}{{^HasNonKeyColumns}}{{^IsFirst}}, {{/IsFirst}}{{/HasNonKeyColumns}}{{/HasBoilerplateColumns}}target.{{#Column}}{{ColumnName}}{{/Column}} = HASHBYTES('sha1', 
+                {{#ReferenceColumns}}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
+                {{/ReferenceColumns}}
+            )
+            {{/References}}
+        {{/HasReferences}}
+    {{/HasNonKeyColumnsOrReferences}}
+    WHEN NOT MATCHED THEN
+        INSERT (
+            HashKey
+            , SchoolYearContext
+    {{#IsAggregateRoot}}
+        {{#HasPrimaryKeyColumns}}
+            -- Primary key columns
+            {{#PrimaryKeyColumns}}
+            , {{ColumnName}}
+            {{/PrimaryKeyColumns}}
+        {{/HasPrimaryKeyColumns}}
+    {{/IsAggregateRoot}}
+            -- Identifying references
+    {{#IdentifyingReferences}}
+        {{#Column}}
+            , {{ColumnName}}
+        {{/Column}}
+    {{/IdentifyingReferences}}
+    {{^IsAggregateRoot}}
+        {{#HasContextualPrimaryKeyColumns}}
+            -- Contextual primary key
+            {{#ContextualPrimaryKeyColumns}}
+            , {{ColumnName}}
+            {{/ContextualPrimaryKeyColumns}}
+        {{/HasContextualPrimaryKeyColumns}}
+    {{/IsAggregateRoot}}
+    {{#HasNonKeyColumns}}
+            -- Attributes
+        {{#NonKeyColumns}}
+            , {{ColumnName}}
+        {{/NonKeyColumns}}
+    {{/HasNonKeyColumns}}
+    {{#HasReferences}}
+            -- References
+        {{#References}}
+            {{#Column}}
+            , {{ColumnName}}
+            {{/Column}}
+        {{/References}}
+    {{/HasReferences}}
+            -- Boilerplate columns
+    {{#BoilerplateColumns}}
+            , {{ColumnName}}
+    {{/BoilerplateColumns}}
+        )
+        VALUES (
+            HASHBYTES('sha1', 
+    {{#ParentPrimaryKeyColumns}}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
+    {{/ParentPrimaryKeyColumns}}
+            )
+            , @schoolYearContext
+    {{#IsAggregateRoot}}
+        {{#HasPrimaryKeyColumns}}
+            -- Primary key columns
+            {{#PrimaryKeyColumns}}
+            , {{ColumnName}}
+            {{/PrimaryKeyColumns}}
+        {{/HasPrimaryKeyColumns}}
+    {{/IsAggregateRoot}}
+            -- Identifying references
+        {{#IdentifyingReferences}}
+            , HASHBYTES('sha1', 
+                {{#ReferenceColumns}}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
+                {{/ReferenceColumns}}
+            )
+        {{/IdentifyingReferences}}
+    {{^IsAggregateRoot}}
+        {{#HasContextualPrimaryKeyColumns}}
+            -- Contextual primary key
+            {{#ContextualPrimaryKeyColumns}}
+            , {{ColumnName}}
+            {{/ContextualPrimaryKeyColumns}}
+        {{/HasContextualPrimaryKeyColumns}}
+    {{/IsAggregateRoot}}
+    {{#HasNonKeyColumns}}
+            -- Attributes
+        {{#NonKeyColumns}}
+            , {{ColumnName}}
+        {{/NonKeyColumns}}
+    {{/HasNonKeyColumns}}
+    {{#HasReferences}}
+            -- References
+        {{#References}}
+            , HASHBYTES('sha1', 
+            {{#ReferenceColumns}}
+                {{^IsFirst}}+ '|' + {{/IsFirst}}{{> MultiYearOds.0025-PopulateTables__HashPartFromSource }}
+            {{/ReferenceColumns}}
+            )
+        {{/References}}
+    {{/HasReferences}}
+            -- Boilerplate columns
+    {{#BoilerplateColumns}}
+            , {{ColumnName}}
+    {{/BoilerplateColumns}}
+        );
