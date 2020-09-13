@@ -5,11 +5,14 @@
  
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using Autofac.Features.Indexed;
 using EdFi.Ods.CodeGen.Database.DatabaseSchema;
 using EdFi.Ods.CodeGen.Extensions;
 using EdFi.Ods.CodeGen.Providers;
 using EdFi.Ods.Common;
+using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Definitions;
@@ -22,16 +25,14 @@ namespace EdFi.Ods.CodeGen.Generators
         private const string QueryModelSuffix = "Q";
         private static readonly object NotRendered = null;
         private readonly IViewsProvider _viewsProvider;
-        private readonly IDatabaseTypeTranslator _databaseTypeTranslator;
+        private readonly IDatabaseTypeTranslatorFactory _databaseTypeTranslatorFactory;
+
         private Func<Entity, bool> _shouldRenderEntityForSchema;
 
-        public EntitiesForQueries(IViewsProvider viewsProvider, IDatabaseTypeTranslator databaseTypeTranslator)
+        public EntitiesForQueries(IViewsProvider viewsProvider, IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory)
         {
-            Preconditions.ThrowIfNull(viewsProvider, nameof(viewsProvider));
-            Preconditions.ThrowIfNull(databaseTypeTranslator, nameof(databaseTypeTranslator));
-
-            _viewsProvider = viewsProvider;
-            _databaseTypeTranslator = databaseTypeTranslator;
+            _databaseTypeTranslatorFactory = Preconditions.ThrowIfNull(databaseTypeTranslatorFactory, nameof(databaseTypeTranslatorFactory));
+            _viewsProvider = Preconditions.ThrowIfNull(viewsProvider, nameof(viewsProvider));
         }
 
         protected override void Configure()
@@ -310,7 +311,7 @@ namespace EdFi.Ods.CodeGen.Generators
                             new EntityProperty(
                                 new EntityPropertyDefinition(
                                     c.Name.ToMixedCase(),
-                                    new PropertyType(_databaseTypeTranslator.GetDbType(c.DbDataType), c.Length ?? 0, c.Precision ?? 0, c.Scale ?? 0, c.Nullable))));
+                                    new PropertyType(DbTypeHelper.GetDbType(_databaseTypeTranslatorFactory, c.DbDataType), c.Length ?? 0, c.Precision ?? 0, c.Scale ?? 0, c.Nullable))));
 
                 yield return context;
             }

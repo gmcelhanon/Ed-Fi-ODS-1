@@ -18,15 +18,15 @@ namespace EdFi.Ods.CodeGen.Generators
     {
         private const string NotRendered = null;
         private readonly IViewsProvider _viewsProvider;
-        private readonly IDatabaseTypeTranslator _databaseTypeTranslator;
+        private readonly IDatabaseTypeTranslatorFactory _databaseTypeTranslatorFactory;
 
-        public EntityOrmMappingsForViews(IViewsProvider viewsProvider, IDatabaseTypeTranslator databaseTypeTranslator)
+        public EntityOrmMappingsForViews(IViewsProvider viewsProvider, IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory)
         {
             Preconditions.ThrowIfNull(viewsProvider, nameof(viewsProvider));
-            Preconditions.ThrowIfNull(databaseTypeTranslator, nameof(databaseTypeTranslator));
+            Preconditions.ThrowIfNull(databaseTypeTranslatorFactory, nameof(databaseTypeTranslatorFactory));
 
             _viewsProvider = viewsProvider;
-            _databaseTypeTranslator = databaseTypeTranslator;
+            _databaseTypeTranslatorFactory = databaseTypeTranslatorFactory;
         }
 
         protected override object Build()
@@ -61,7 +61,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                                     {
                                                         PropertyName = c.Name,
                                                         ColumnName = c.Name,
-                                                        NHibernateTypeName = _databaseTypeTranslator.GetNHType(c.DbDataType),
+                                                        NHibernateTypeName = DbTypeHelper.GetNHType(_databaseTypeTranslatorFactory, c.DbDataType),
                                                         MaxLength = c.Length > 0
                                                             ? c.Length.ToString()
                                                             : NotRendered
@@ -75,7 +75,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                                 {
                                                     PropertyName = c.Name,
                                                     ColumnName = c.Name,
-                                                    NHibernateTypeName = _databaseTypeTranslator.GetNHType(c.DbDataType),
+                                                    NHibernateTypeName = DbTypeHelper.GetNHType(_databaseTypeTranslatorFactory, c.DbDataType),
                                                     MaxLength = c.Length > 0
                                                         ? c.Length.ToString()
                                                         : NotRendered,

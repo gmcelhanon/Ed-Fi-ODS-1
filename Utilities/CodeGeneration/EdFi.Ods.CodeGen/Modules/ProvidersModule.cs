@@ -10,6 +10,7 @@ using EdFi.Ods.CodeGen.Processing;
 using EdFi.Ods.CodeGen.Processing.Impl;
 using EdFi.Ods.CodeGen.Providers;
 using EdFi.Ods.CodeGen.Providers.Impl;
+using EdFi.Ods.Common.Configuration;
 
 namespace EdFi.Ods.CodeGen.Modules
 {
@@ -35,9 +36,6 @@ namespace EdFi.Ods.CodeGen.Modules
             builder.RegisterType<GeneratorProvider>()
                 .As<IGeneratorProvider>();
 
-            builder.RegisterType<DatabaseTypeTranslator>()
-                .As<IDatabaseTypeTranslator>();
-
             builder.RegisterType<MetadataFolderProvider>()
                 .As<IMetadataFolderProvider>();
 
@@ -55,6 +53,26 @@ namespace EdFi.Ods.CodeGen.Modules
 
             builder.RegisterType<SchemaFileProvider>()
                 .As<ISchemaFileProvider>();
+            
+            // Register database-aware factories
+            builder.RegisterType<DatabaseTypeTranslatorFactory>()
+                .As<IDatabaseTypeTranslatorFactory>();
+
+            // Register database-specific support
+            RegisterPostgresSupport();
+            RegisterSqlServerSupport();
+
+            void RegisterPostgresSupport()
+            {
+                builder.RegisterType<PostgresDatabaseTypeTranslator>()
+                    .Keyed<IDatabaseTypeTranslator>(DatabaseEngine.Postgres);
+            }
+
+            void RegisterSqlServerSupport()
+            {
+                builder.RegisterType<SqlServerDatabaseTypeTranslator>()
+                    .Keyed<IDatabaseTypeTranslator>(DatabaseEngine.SqlServer);
+            }
         }
     }
 }

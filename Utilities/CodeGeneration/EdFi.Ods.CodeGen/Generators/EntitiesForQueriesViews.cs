@@ -18,15 +18,13 @@ namespace EdFi.Ods.CodeGen.Generators
     {
         private const object NotRendered = null;
         private readonly IViewsProvider _viewsProvider;
-        private static IDatabaseTypeTranslator _databaseTypeTranslator;
+        private static IDatabaseTypeTranslatorFactory _databaseTypeTranslatorFactory;
 
         public EntitiesForQueriesViews(IViewsProvider viewsProvider,
-            IDatabaseTypeTranslator databaseTypeTranslator)
+            IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory)
         {
-            Preconditions.ThrowIfNull(viewsProvider, nameof(viewsProvider));
-            Preconditions.ThrowIfNull(databaseTypeTranslator, nameof(databaseTypeTranslator));
-            _viewsProvider = viewsProvider;
-            _databaseTypeTranslator = databaseTypeTranslator;
+            _viewsProvider = Preconditions.ThrowIfNull(viewsProvider, nameof(viewsProvider));
+            _databaseTypeTranslatorFactory = Preconditions.ThrowIfNull(databaseTypeTranslatorFactory, nameof(databaseTypeTranslatorFactory));
         }
 
         protected override object Build()
@@ -48,7 +46,7 @@ namespace EdFi.Ods.CodeGen.Generators
             var views = _viewsProvider.LoadViews();
 
             string GetCSharpNullSuffix(DatabaseColumn c)
-                => c.Nullable && _databaseTypeTranslator.GetSysType(c.DbDataType) != "string"
+                => c.Nullable && DbTypeHelper.GetSysType(_databaseTypeTranslatorFactory, c.DbDataType) != "string"
                     ? "?"
                     : string.Empty;
 
@@ -65,9 +63,9 @@ namespace EdFi.Ods.CodeGen.Generators
                             c => new
                             {
                                 PropertyName = c.Name.ToMixedCase(),
-                                CSharpDeclaredType = _databaseTypeTranslator.GetSysType(c.DbDataType) + GetCSharpNullSuffix(c),
+                                CSharpDeclaredType = DbTypeHelper.GetSysType(_databaseTypeTranslatorFactory, c.DbDataType) + GetCSharpNullSuffix(c),
                                 NotInherited = !aggregateRootWithCompositeKeyProperties.Any(
-                                    x => x.Name.EqualsIgnoreCase(c.Name) && x.Type == _databaseTypeTranslator.GetSysType(c.DbDataType))
+                                    x => x.Name.EqualsIgnoreCase(c.Name) && x.Type == DbTypeHelper.GetSysType(_databaseTypeTranslatorFactory, c.DbDataType))
                             })
                     })
             };

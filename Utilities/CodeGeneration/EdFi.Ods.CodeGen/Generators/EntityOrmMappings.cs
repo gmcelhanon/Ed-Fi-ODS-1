@@ -23,17 +23,14 @@ namespace EdFi.Ods.CodeGen.Generators
     {
         private const string HierarchicalViewSuffix = "H";
         private readonly IViewsProvider _viewsProvider;
-        private readonly IDatabaseTypeTranslator _databaseTypeTranslator;
+        private readonly IDatabaseTypeTranslatorFactory _databaseTypeTranslatorFactory;
         private Dictionary<Entity, List<ClassMappingContext>> _classMappingsForEntities;
         private Func<Entity, bool> _shouldRenderEntityForSchema;
 
-        public EntityOrmMappings(IViewsProvider viewsProvider, IDatabaseTypeTranslator databaseTypeTranslator)
+        public EntityOrmMappings(IViewsProvider viewsProvider, IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory)
         {
-            Preconditions.ThrowIfNull(viewsProvider, nameof(viewsProvider));
-            Preconditions.ThrowIfNull(databaseTypeTranslator, nameof(databaseTypeTranslator));
-
             _viewsProvider = viewsProvider;
-            _databaseTypeTranslator = databaseTypeTranslator;
+            _databaseTypeTranslatorFactory = databaseTypeTranslatorFactory;
         }
 
         public bool GenerateQueryModel { get; set; }
@@ -544,7 +541,7 @@ namespace EdFi.Ods.CodeGen.Generators
                             new EntityProperty(
                                 new EntityPropertyDefinition(
                                     p.Name,
-                                    new PropertyType(_databaseTypeTranslator.GetDbType(p.DbDataType), p.Length ?? 0, p.Precision ?? 0, p.Scale ?? 0, p.Nullable))));
+                                    new PropertyType(DbTypeHelper.GetDbType(_databaseTypeTranslatorFactory, p.DbDataType), p.Length ?? 0, p.Precision ?? 0, p.Scale ?? 0, p.Nullable))));
 
                     return true;
                 }
