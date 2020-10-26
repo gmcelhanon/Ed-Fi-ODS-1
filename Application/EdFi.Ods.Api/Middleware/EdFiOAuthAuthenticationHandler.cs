@@ -3,6 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
@@ -17,7 +18,6 @@ namespace EdFi.Ods.Api.Middleware
 {
     public class EdFiOAuthAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        private readonly IApiKeyContextProvider _apiKeyContextProvider;
         private readonly IAuthenticationProvider _authenticationProvider;
 
         public EdFiOAuthAuthenticationHandler(
@@ -25,12 +25,10 @@ namespace EdFi.Ods.Api.Middleware
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock,
-            IAuthenticationProvider authenticationProvider,
-            IApiKeyContextProvider apiKeyContextProvider)
+            IAuthenticationProvider authenticationProvider)
             : base(options, logger, encoder, clock)
         {
             _authenticationProvider = authenticationProvider;
-            _apiKeyContextProvider = apiKeyContextProvider;
         }
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -66,13 +64,22 @@ namespace EdFi.Ods.Api.Middleware
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
 
-            // Set the api key context
-            _apiKeyContextProvider.SetApiKeyContext(authenticationResult.ApiKeyContext);
-
             var principal = new ClaimsPrincipal(authenticationResult.ClaimsIdentity);
-            var ticket = new AuthenticationTicket(principal, Scheme.Name);
+
+            var ticket = new AuthenticationTicket(principal, CreateAuthenticationProperties(), Scheme.Name);
 
             return AuthenticateResult.Success(ticket);
+
+            AuthenticationProperties CreateAuthenticationProperties()
+            {
+                var properties = new Dictionary<string, string>();
+                var parameters = new Dictionary<string, object>()
+                {
+                    {"ApiKeyContext", authenticationResult.ApiKeyContext}
+                };
+
+                return new AuthenticationProperties(properties, parameters);
+            }
         }
     }
 }

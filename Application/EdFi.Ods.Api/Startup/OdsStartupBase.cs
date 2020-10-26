@@ -207,7 +207,7 @@ namespace EdFi.Ods.Api.Startup
 
             app.UseCors(CorsPolicyName);
 
-            app.UseAuthentication();
+            app.UseEdFiApiAuthentication();
             app.UseAuthorization();
 
             // Serves Open API Metadata json files when enabled.
