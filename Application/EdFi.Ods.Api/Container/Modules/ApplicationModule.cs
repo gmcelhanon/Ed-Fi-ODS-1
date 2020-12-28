@@ -11,7 +11,6 @@ using EdFi.Common.Configuration;
 using EdFi.Common.Security;
 using EdFi.Ods.Api.Authentication;
 using EdFi.Ods.Api.Configuration;
-using EdFi.Ods.Api.Controllers;
 using EdFi.Ods.Api.Controllers.DataManagement;
 using EdFi.Ods.Api.Controllers.DataManagement.Authorization;
 using EdFi.Ods.Api.Controllers.DataManagement.Authorization.Claims;
@@ -26,23 +25,12 @@ using EdFi.Ods.Api.Conventions;
 using EdFi.Ods.Api.ExceptionHandling;
 using EdFi.Ods.Api.Filters;
 using EdFi.Ods.Api.IdentityValueMappers;
-using EdFi.Ods.Api.Infrastructure.Pipelines.Factories;
-using EdFi.Ods.Api.Infrastructure.Pipelines.Get;
-using EdFi.Ods.Api.Infrastructure.Pipelines.GetDeletedResource;
-using EdFi.Ods.Api.Infrastructure.Pipelines.GetMany;
-using EdFi.Ods.Api.Infrastructure.Pipelines.Put;
-using EdFi.Ods.Api.Infrastructure.Pipelines.Steps;
 using EdFi.Ods.Api.Providers;
 using EdFi.Ods.Api.Validation;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Context;
 using EdFi.Ods.Common.Conventions;
-using EdFi.Ods.Common.Infrastructure.Extensibility;
-using EdFi.Ods.Common.Infrastructure.Pipelines;
-using EdFi.Ods.Common.Infrastructure.Pipelines.Delete;
-using EdFi.Ods.Common.Infrastructure.Pipelines.GetDeletedResource;
-using EdFi.Ods.Common.Infrastructure.Pipelines.GetMany;
 using EdFi.Ods.Common.IO;
 using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Models.Domain;
@@ -97,10 +85,6 @@ namespace EdFi.Ods.Api.Container.Modules
 
             builder.RegisterType<CallContextStorage>()
                 .As<IContextStorage>()
-                .SingleInstance();
-
-            builder.RegisterType<DescriptorLookupProvider>()
-                .As<IDescriptorLookupProvider>()
                 .SingleInstance();
 
             builder.RegisterType<DomainModelProvider>()
@@ -279,14 +263,6 @@ namespace EdFi.Ods.Api.Container.Modules
                 .As<IAuthenticationProvider>()
                 .SingleInstance();
 
-            builder.RegisterType<PersonIdentifiersProvider>()
-                .As<IPersonIdentifiersProvider>()
-                .SingleInstance();
-
-            builder.RegisterType<PipelineFactory>()
-                .As<IPipelineFactory>()
-                .SingleInstance();
-
             builder.RegisterType<ApiClientAuthenticator>()
                 .As<IApiClientAuthenticator>()
                 .SingleInstance();
@@ -312,104 +288,9 @@ namespace EdFi.Ods.Api.Container.Modules
                 .As<ISecureHasher>()
                 .SingleInstance();
 
-            builder.RegisterType<DataAnnotationsEntityValidator>()
-                .As<IEntityValidator>()
-                .SingleInstance();
-
             builder.RegisterType<DescriptorNamespaceValidator>()
                 .As<IValidator<IEdFiDescriptor>>()
                 .SingleInstance();
-
-            builder.RegisterType<FluentValidationPutPostRequestResourceValidator>()
-                .As<IResourceValidator>()
-                .SingleInstance();
-
-            builder.RegisterType<DataAnnotationsResourceValidator>()
-                .As<IResourceValidator>()
-                .SingleInstance();
-
-            builder.RegisterType<NoEntityExtensionsFactory>()
-                .As<IEntityExtensionsFactory>()
-                .PreserveExistingDefaults()
-                .SingleInstance();
-
-            RegisterPipeLineStepProviders();
-            RegisterModels();
-
-            void RegisterModels()
-            {
-                builder.RegisterGeneric(typeof(GetEntityModelById<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(DetectUnmodifiedEntityModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(MapEntityModelToResourceModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(MapResourceModelToEntityModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(GetEntityModelsBySpecification<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(GetDeletedResourceModelByIds<,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(ValidateResourceModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(DeleteEntityModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(MapResourceModelToEntityModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(MapEntityModelsToResourceModels<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
-                builder.RegisterGeneric(typeof(PersistEntityModel<,,,>))
-                    .AsSelf()
-                    .SingleInstance();
-            }
-
-            void RegisterPipeLineStepProviders()
-            {
-                builder.RegisterType<GetPipelineStepsProvider>()
-                    .As<IGetPipelineStepsProvider>()
-                    .As<IPipelineStepsProvider>()
-                    .SingleInstance();
-
-                builder.RegisterType<GetBySpecificationPipelineStepsProvider>()
-                    .As<IGetBySpecificationPipelineStepsProvider>()
-                    .As<IPipelineStepsProvider>()
-                    .SingleInstance();
-
-                builder.RegisterType<GetDeletedResourceIdsPipelineStepsProvider>()
-                    .As<IGetDeletedResourceIdsPipelineStepsProvider>()
-                    .As<IPipelineStepsProvider>()
-                    .SingleInstance();
-
-                builder.RegisterType<PutPipelineStepsProvider>()
-                    .As<IPutPipelineStepsProvider>()
-                    .As<IPipelineStepsProvider>()
-                    .SingleInstance();
-
-                builder.RegisterType<DeletePipelineStepsProvider>()
-                    .As<IDeletePipelineStepsProvider>()
-                    .As<IPipelineStepsProvider>()
-                    .SingleInstance();
-            }
         }
     }
 }
