@@ -15,6 +15,7 @@ using EdFi.Ods.Common.Database;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Infrastructure.Extensibility;
 using EdFi.Ods.Common.Infrastructure.Filtering;
+using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Providers;
 using EdFi.Ods.Common.Providers.Criteria;
 using EdFi.Ods.Common.Utils.Extensions;
@@ -41,6 +42,7 @@ namespace EdFi.Ods.Common.Infrastructure.Configuration
         private readonly IFilterCriteriaApplicatorProvider _filterCriteriaApplicatorProvider;
         private readonly IOrmMappingFileDataProvider _ormMappingFileDataProvider;
         private readonly IOdsDatabaseConnectionStringProvider _connectionStringProvider;
+        private readonly IDomainModelProvider _domainModelProvider;
 
         public NHibernateConfigurator(IEnumerable<IExtensionNHibernateConfigurationProvider> extensionConfigurationProviders,
             IEnumerable<INHibernateBeforeBindMappingActivity> beforeBindMappingActivities,
@@ -48,9 +50,11 @@ namespace EdFi.Ods.Common.Infrastructure.Configuration
             IFilterCriteriaApplicatorProvider filterCriteriaApplicatorProvider,
             IEnumerable<INHibernateConfigurationActivity> configurationActivities,
             IOrmMappingFileDataProvider ormMappingFileDataProvider,
-            IOdsDatabaseConnectionStringProvider connectionStringProvider)
+            IOdsDatabaseConnectionStringProvider connectionStringProvider,
+            IDomainModelProvider domainModelProvider)
         {
             _connectionStringProvider = connectionStringProvider;
+            _domainModelProvider = domainModelProvider;
 
             _ormMappingFileDataProvider = Preconditions.ThrowIfNull(
                 ormMappingFileDataProvider, nameof(ormMappingFileDataProvider));
@@ -183,7 +187,7 @@ namespace EdFi.Ods.Common.Infrastructure.Configuration
                 }
             }
 
-            configuration.AddCreateDateHooks();
+            configuration.AddCreateDateHooks(_domainModelProvider);
 
             return configuration;
 
