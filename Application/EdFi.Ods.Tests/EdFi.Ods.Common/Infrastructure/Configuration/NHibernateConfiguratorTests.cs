@@ -14,6 +14,7 @@ using EdFi.Ods.Common.Database;
 using EdFi.Ods.Common.Infrastructure.Configuration;
 using EdFi.Ods.Common.Infrastructure.Extensibility;
 using EdFi.Ods.Common.Infrastructure.Filtering;
+using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Providers;
 using EdFi.Ods.Common.Providers.Criteria;
 using EdFi.TestFixture;
@@ -44,6 +45,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Infrastructure.Configuration
                 var authorizationStrategyConfigurators = A.Fake<IEnumerable<INHibernateFilterConfigurator>>();
                 var filterCriteriaApplicatorProvider = A.Fake<IFilterCriteriaApplicatorProvider>();
                 var configurationActivities = A.Fake<IEnumerable<INHibernateConfigurationActivity>>();
+                var domainModelProvider = A.Fake<IDomainModelProvider>();
 
                 var connectionStringProvider = A.Fake<IOdsDatabaseConnectionStringProvider>();
                 var assembliesProvider = A.Fake<AssembliesProvider>();
@@ -51,7 +53,7 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Common.Infrastructure.Configuration
                 var ormMappingFileDataProvider = new OrmMappingFileDataProvider(assembliesProvider, engine, OrmMappingFileConventions.OrmMappingAssembly);
 
                 var nHibernateConfigurator = new NHibernateConfigurator(extensionConfigurationProviders, beforeBindMappingActivities,
-                    authorizationStrategyConfigurators, filterCriteriaApplicatorProvider, configurationActivities, ormMappingFileDataProvider, connectionStringProvider);
+                    authorizationStrategyConfigurators, filterCriteriaApplicatorProvider, configurationActivities, ormMappingFileDataProvider, connectionStringProvider, domainModelProvider);
                 _configuration = nHibernateConfigurator.Configure();
 
                 _persistentClasses = _configuration.ClassMappings
