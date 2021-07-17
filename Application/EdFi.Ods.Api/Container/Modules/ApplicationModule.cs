@@ -262,10 +262,6 @@ namespace EdFi.Ods.Api.Container.Modules
                     .AsSelf()
                     .SingleInstance();
 
-                builder.RegisterGeneric(typeof(GetDeletedResourceModelByIds<,,>))
-                    .AsSelf()
-                    .SingleInstance();
-
                 builder.RegisterGeneric(typeof(ValidateResourceModel<,,,>))
                     .AsSelf()
                     .SingleInstance();
@@ -296,11 +292,6 @@ namespace EdFi.Ods.Api.Container.Modules
 
                 builder.RegisterType<GetBySpecificationPipelineStepsProvider>()
                     .As<IGetBySpecificationPipelineStepsProvider>()
-                    .As<IPipelineStepsProvider>()
-                    .SingleInstance();
-
-                builder.RegisterType<GetDeletedResourceIdsPipelineStepsProvider>()
-                    .As<IGetDeletedResourceIdsPipelineStepsProvider>()
                     .As<IPipelineStepsProvider>()
                     .SingleInstance();
 
