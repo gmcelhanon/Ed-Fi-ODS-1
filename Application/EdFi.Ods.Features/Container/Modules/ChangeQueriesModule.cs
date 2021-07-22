@@ -45,6 +45,10 @@ namespace EdFi.Ods.Features.Container.Modules
                 .As<IApplicationModelConvention>()
                 .SingleInstance();
 
+            builder.RegisterType<KeyChangesRouteConvention>()
+                .As<IApplicationModelConvention>()
+                .SingleInstance();
+
             builder.RegisterType<ChangeQueryMappingNHibernateConfigurationActivity>()
                 .As<INHibernateBeforeBindMappingActivity>()
                 .SingleInstance();
