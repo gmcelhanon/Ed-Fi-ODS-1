@@ -3,6 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System.Data.Common;
 using Autofac;
 using EdFi.Common.Configuration;
 using EdFi.Ods.Common.Configuration;
@@ -11,6 +12,8 @@ using EdFi.Ods.Common.Infrastructure.Activities;
 using EdFi.Ods.Common.Infrastructure.Configuration;
 using EdFi.Ods.Common.Infrastructure.PostgreSql;
 using EdFi.Ods.Security.Authorization;
+using Npgsql;
+using SqlKata.Compilers;
 
 namespace EdFi.Ods.Api.Container.Modules
 {
@@ -34,6 +37,11 @@ namespace EdFi.Ods.Api.Container.Modules
             builder.RegisterType<PostgreSqlDatabaseEngineNHibernateConfigurationActivity>()
                 .As<INHibernateConfigurationActivity>()
                 .SingleInstance();
+
+            builder.RegisterInstance(NpgsqlFactory.Instance)
+                .As<DbProviderFactory>();
+            
+            builder.Register<Compiler>(ctx => new PostgresCompiler());
         }
     }
 }
