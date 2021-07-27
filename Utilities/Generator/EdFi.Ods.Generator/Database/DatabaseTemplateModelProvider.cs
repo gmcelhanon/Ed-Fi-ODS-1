@@ -106,6 +106,7 @@ namespace EdFi.Ods.Generator.Database
                 {
                     IsAggregateRoot = entity.IsAggregateRoot,
                     IsDerived = entity.IsDerived,
+                    IsBase = entity.IsBase,
                     BaseTableSchema = entity.BaseEntity?.Schema,
                     BaseTableName = entity.IsDerived ? databaseNamingConvention.TableName(entity.BaseEntity) : null,
                     BaseAlternateKeyConstraintName = entity.IsDerived ? databaseNamingConvention.GetAlternateKeyConstraintName(entity.BaseEntity) : null,
@@ -225,8 +226,8 @@ namespace EdFi.Ods.Generator.Database
 
                     if (updatableAncestors.Any())
                     {
-                        _logger.Debug($"Starting probe for updatable identifier on association '{association.Association.FullName}'.");
-                        _logger.Debug(sb.ToString());
+                        // _logger.Debug($"Starting probe for updatable identifier on association '{association.Association.FullName}'.");
+                        // _logger.Debug(sb.ToString());
 
                         var sb2 = new StringBuilder();
                         
