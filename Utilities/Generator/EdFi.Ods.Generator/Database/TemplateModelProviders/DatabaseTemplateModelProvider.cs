@@ -19,10 +19,11 @@ using EdFi.Ods.Generator.Database.Domain;
 using EdFi.Ods.Generator.Database.NamingConventions;
 using EdFi.Ods.Generator.Database.TemplateModelProviders;
 using EdFi.Ods.Generator.Models;
+using EdFi.Ods.Generator.Rendering;
 using EdFi.Ods.Generator.Templating;
 using log4net;
 
-namespace EdFi.Ods.Generator.Database
+namespace EdFi.Ods.Generator.Database.TemplateModelProviders
 {
     public class DatabaseTemplateModelProvider : ITemplateModelProvider
     {
@@ -32,11 +33,12 @@ namespace EdFi.Ods.Generator.Database
 
         private readonly IDatabaseTypeTranslatorFactory _databaseTypeTranslatorFactory;
         private readonly IDatabaseNamingConventionFactory _databaseNamingConventionFactory;
-        private readonly string _databaseEngine;
         private readonly Lazy<DomainModel> _domainModel;
 
-        // TODO: Eliminate or refactor
-        private readonly Func<Entity, bool> _shouldRenderEntityForSchema = e => true;
+        private readonly string _databaseEngine;
+        private readonly string _schemaFilter;
+
+        private bool ShouldRenderEntityForSchema(Entity entity) => entity.Schema.Equals(_schemaFilter, StringComparison.OrdinalIgnoreCase);
 
         public DatabaseTemplateModelProvider(
             IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory,
@@ -45,13 +47,16 @@ namespace EdFi.Ods.Generator.Database
             IList<IDomainModelDefinitionsTransformer> domainModelDefinitionsTransformers,
             IList<ITableEnhancer> tableEnhancers,
             IList<IColumnEnhancer> columnEnhancers,
-            IDatabaseOptions databaseOptions)
+            IDatabaseOptions databaseOptions,
+            IGeneratorOptions generatorOptions)
         {
             _tableEnhancers = tableEnhancers;
             _columnEnhancers = columnEnhancers;
             _databaseTypeTranslatorFactory = Preconditions.ThrowIfNull(databaseTypeTranslatorFactory, nameof(databaseTypeTranslatorFactory));
             _databaseNamingConventionFactory = Preconditions.ThrowIfNull(databaseNamingConventionFactory, nameof(databaseNamingConventionFactory));
 
+            _renderingContext = generatorOptions.PropertyByName;
+            
             var domainModelDefinitionProviders = new Lazy<List<IDomainModelDefinitionsProvider>>(
                 () => domainModelDefinitionsProviderSource.GetDomainModelDefinitionProviders()
                     .ToList());
@@ -59,13 +64,23 @@ namespace EdFi.Ods.Generator.Database
             var domainModelProvider = new Lazy<IDomainModelProvider>(
                 () => new DomainModelProvider(domainModelDefinitionProviders.Value, domainModelDefinitionsTransformers.ToArray()));
             
-            _domainModel = new Lazy<DomainModel>(() => domainModelProvider.Value.GetDomainModel());
+            _domainModel = new Lazy<DomainModel>(() =>
+            {
+                var domainModel = domainModelProvider.Value.GetDomainModel();
+
+                _logger.Debug($"Domain model contains the following {domainModel.Schemas.Count} schema(s): {string.Join(", ", domainModel.Schemas.Select(s => s.PhysicalName))}");
+
+                return domainModel;
+            });
             
             _databaseEngine = databaseOptions.DatabaseEngine;
+            _schemaFilter = databaseOptions.SchemaFilter;
         }
 
         private readonly IDictionary<FullName, IList<FullName>> _updatableAncestorsByEntity 
             = new Dictionary<FullName, IList<FullName>>();
+
+        private IDictionary<string, string> _renderingContext;
 
         public object GetTemplateModel(IDictionary<string, string> properties)
         {
@@ -79,12 +94,12 @@ namespace EdFi.Ods.Generator.Database
             var model = new DatabaseTemplateModel
             {
                 Schemas = domainModel.Entities
-                    .Where(e => _shouldRenderEntityForSchema(e))
-                    .Select(e => e.Schema)
+                    .Where(ShouldRenderEntityForSchema)
+                    .Select(e => databaseNamingConvention.Schema(e))
                     .Distinct()
                     .Select(s => new SchemaInfo { Schema = s}),
                 Tables = domainModel.Entities
-                    .Where(e => _shouldRenderEntityForSchema(e))
+                    .Where(ShouldRenderEntityForSchema)
                     .OrderBy(e => e.FullName.Name)
                     .Select(CreateTable)
             };
@@ -107,48 +122,57 @@ namespace EdFi.Ods.Generator.Database
                 {
                     IsAggregateRoot = entity.IsAggregateRoot,
                     IsDerived = entity.IsDerived,
-                    BaseTableSchema = entity.BaseEntity?.Schema,
+                    IsBase = entity.IsBase,
+                    BaseTableSchema = entity.IsDerived ? databaseNamingConvention.Schema(entity.BaseEntity) : null,
                     BaseTableName = entity.IsDerived ? databaseNamingConvention.TableName(entity.BaseEntity) : null,
                     BaseAlternateKeyConstraintName = entity.IsDerived ? databaseNamingConvention.GetAlternateKeyConstraintName(entity.BaseEntity) : null,
                     BaseAlternateKeyColumns = entity.IsDerived ? entity.BaseEntity?.AlternateIdentifiers.FirstOrDefault()?.Properties.Select(
-                        (p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator, entity.BaseEntity.AlternateIdentifiers.First().Properties))
+                        (p, i) => CreateColumn(p, i, entity.BaseEntity.AlternateIdentifiers.First().Properties))
                         : null,
                     IsDescriptorTable = entity.IsDescriptorEntity,
                     IsDescriptorBaseTable = entity.IsDescriptorBaseEntity(),
                     IsPersonTypeTable = entity.IsPersonEntity(),
-                    Schema = entity.Schema,
-                    TableName = databaseNamingConvention.TableName(entity), // entity.TableNameByDatabaseEngine[databaseEngine],
+                    Schema = databaseNamingConvention.Schema(entity),
+                    TableName = databaseNamingConvention.TableName(entity),
                     FullName = entity.FullName,
-                    // TODO: Need to introduce naming strategy
+
+                    // TODO: Move LDS plugin
                     HashKey = new HashKey
                     {
-                        ColumnName = databaseNamingConvention.ColumnName($"{entity.Name}", "HashKey"),
+                        ColumnName = databaseNamingConvention.ColumnName(entity.Name, "HashKey"),
                         IndexName = databaseNamingConvention.GetUniqueIndexName(entity, "HashKey")
                     },
+                    
                     PrimaryKeyConstraintName = databaseNamingConvention.PrimaryKeyConstraintName(entity),
                     PrimaryKeyColumns = entity.Identifier.Properties.Select(
-                        (p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator, entity.Identifier.Properties)),
+                        (p, i) => CreateColumn(p, i, entity.Identifier.Properties)),
                     ContextualPrimaryKeyColumns = entity.Identifier.Properties
                         .Where(p => !entity.IsAggregateRoot)
                         .Where(p => !p.IsFromParent)
                         .Where(p => !entity.Aggregate.AggregateRoot.Identifier.Properties.Any(p2 => p2.PropertyName == p.PropertyName))
                         .Where(p => !p.IncomingAssociations.Any())
-                        .Select((p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator)), 
+                        .Select((p, i) => CreateColumn(p, i)), 
                     HasServerAssignedSurrogateId = entity.Identifier.IsSurrogateIdentifierDefinition(),
                     SurrogateIdColumn = entity.Identifier.Properties
                         .Where(p => p.IsServerAssigned)
-                        .Select((p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator))
+                        .Select((p, i) => CreateColumn(p, i))
                         .SingleOrDefault(),
                     HasAlternateKey = entity.AlternateIdentifiers.Any(),
-                    AlternateKeyConstraintName = databaseNamingConvention.GetAlternateKeyConstraintName(entity), // TODO: Needs Postgres support
+                    AlternateKeyConstraintName = databaseNamingConvention.GetAlternateKeyConstraintName(entity),
                     AlternateKeyColumns = entity.AlternateIdentifiers.FirstOrDefault()?.Properties.Select(
-                        (p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator, entity.AlternateIdentifiers.First().Properties)),
+                        (p, i) => CreateColumn(p, i, entity.AlternateIdentifiers.First().Properties)),
+                    
+                    // TODO: Move LDS plugin
                     IdentifyingReferences = entity.IncomingAssociations
                         .Where(a => a.IsIdentifying && a.OtherEntity != entity.Parent)
                         .Select(CreateHashReference),
+                    
+                    // TODO: Move LDS plugin
                     References = entity.IncomingAssociations
                         .Where(a => !a.IsIdentifying)
                         .Select(CreateHashReference),
+                    
+                    // TODO: Move LDS plugin
                     AllReferences = entity.IncomingAssociations
                         .Select(CreateHashReference),
                     // ForeignKeyColumns = entity.IncomingAssociations
@@ -163,14 +187,15 @@ namespace EdFi.Ods.Generator.Database
                     NonPrimaryOrForeignKeyColumns = entity.Properties
                         .Where(p => !p.IsIdentifying && !p.IncomingAssociations.Any())
                         .Where(p => !p.IsBoilerplate())
-                        .Select( (p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator)),
+                        .Select( (p, i) => CreateColumn(p, i)),
                     // Non-PK columns
                     NonPrimaryKeyColumns = entity.Properties
                         .Where(p => !p.IsIdentifying && !p.IsBoilerplate())
-                        .Select( (p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator)),
+                        .Select( (p, i) => CreateColumn(p, i)),
                     // TODO: Think about whether and where this should be applied to the model through a transform. 
-                    DiscriminatorColumn = entity.HasDiscriminator() ? ColumnHelper.CreateDiscriminatorColumn() : null,
-                    BoilerplateColumns = GetBoilerplateColumns().OrderBy(c => Enum.Parse<ColumnConventions.BoilerplateColumn>(c.ColumnName)),
+                    DiscriminatorColumn = entity.HasDiscriminator() ? ColumnHelper.CreateDiscriminatorColumn(databaseNamingConvention, databaseTypeTranslator) : null,
+                    BoilerplateColumns = GetBoilerplateColumns(ordered: true),
+                    // TODO: Review usage of this property and consider removal
                     BoilerplateColumnsUnsorted = GetBoilerplateColumns(),
                     ForeignKeys = entity.IncomingAssociations
                         .GroupBy(association => databaseNamingConvention.ForeignKeyConstraintName(association), a => a)
@@ -178,9 +203,8 @@ namespace EdFi.Ods.Generator.Database
                         .SelectMany(g => g
                         .Select((a, associationIndex) => new ForeignKey
                         {
-                            // TODO: Need multi-database targeting
                             ConstraintName = databaseNamingConvention.ForeignKeyConstraintName(a, (associationIndex == 0 ? string.Empty : associationIndex.ToString())),
-                            ThisSchema = a.ThisEntity.Schema,
+                            ThisSchema = databaseNamingConvention.Schema(a.ThisEntity),
                             ThisTableName = databaseNamingConvention.TableName(a.ThisEntity),
                             ThisColumns = a.ThisProperties.Select((p, i) => new Column
                             {
@@ -191,10 +215,10 @@ namespace EdFi.Ods.Generator.Database
                                 IsFirst = i == 0,
                                 Index = i,
                             }),
-                            OtherSchema = a.OtherEntity.Schema,
+                            OtherSchema = databaseNamingConvention.Schema(a.OtherEntity),
                             OtherTableName = databaseNamingConvention.TableName(a.OtherEntity),
                             OtherColumns = a.OtherProperties.Select((p, i) => 
-                                CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator, a.OtherProperties)),
+                                CreateColumn(p, i, a.OtherProperties)),
                             IsFromBase = a.AssociationType == AssociationViewType.FromBase,
                             IsOneToOne = a.AssociationType == AssociationViewType.OneToOneIncoming,
                             // IsIdentifying = a.IsIdentifying,
@@ -202,7 +226,7 @@ namespace EdFi.Ods.Generator.Database
                             IsUpdatable = IsAssociationUpdatable(a),
                         })),
                     IdIndexName = databaseNamingConvention.GetUniqueIndexName(entity, "Id"),
-                    // TODO: Move to ChangeQueries plugin as dynamic component?
+                    // TODO: Move to ChangeQueries plugin as dynamic enhancement?
                     KeyValuesCanChange = entity.Identifier.IsUpdatable || (entity.IncomingAssociations.Any(a => a.IsIdentifying && IsAssociationUpdatable(a))),
                     // TODO: Move to LDS plugin as dynamic enhancement
                     IsTemporal = (entityAsDynamic.ReadHistory == true),
@@ -211,7 +235,7 @@ namespace EdFi.Ods.Generator.Database
                 // Enhance the table
                 var enhancedTable = table;
                 
-                foreach (var tableEnhancer in _tableEnhancers)
+                foreach (var tableEnhancer in _tableEnhancers.Where(e => RenderingHelper.ShouldRunEnhancer(e, _renderingContext)))
                 {
                     enhancedTable = tableEnhancer.EnhanceTable(entity, enhancedTable, enhancedTable);
                 }
@@ -226,8 +250,8 @@ namespace EdFi.Ods.Generator.Database
 
                     if (updatableAncestors.Any())
                     {
-                        _logger.Debug($"Starting probe for updatable identifier on association '{association.Association.FullName}'.");
-                        _logger.Debug(sb.ToString());
+                        // _logger.Debug($"Starting probe for updatable identifier on association '{association.Association.FullName}'.");
+                        // _logger.Debug(sb.ToString());
 
                         var sb2 = new StringBuilder();
                         
@@ -311,6 +335,7 @@ namespace EdFi.Ods.Generator.Database
                 //     return indexName;
                 // }
 
+                // TODO: Move to LDS plugin
                 HashReference CreateHashReference(AssociationView association, int index = 0)
                 {
                     if (association == null)
@@ -333,16 +358,23 @@ namespace EdFi.Ods.Generator.Database
                             IsNullable = !association.IsRequired,
                         },
                         ReferenceColumns = association.ThisProperties
-                            .Select((p, i) => CreateColumn(p, i, databaseNamingConvention, databaseTypeTranslator, association.ThisProperties)), 
+                            .Select((p, i) => CreateColumn(p, i, association.ThisProperties)), 
                         IsFirst = index == 0
                     };
                 }
 
-                IEnumerable<Column> GetBoilerplateColumns()
+                IEnumerable<Column> GetBoilerplateColumns(bool ordered = false)
                 {
-                    return entity.Properties
+                    var boilerplateProperties = entity.Properties
                         .Where(p => !p.IsIdentifying)
-                        .Where(p => p.IsBoilerplate())
+                        .Where(p => p.IsBoilerplate());
+
+                    if (ordered)
+                    {
+                        boilerplateProperties = boilerplateProperties.OrderBy(p => Enum.Parse<ColumnConventions.BoilerplateColumn>(p.PropertyName));
+                    }
+                    
+                    return boilerplateProperties
                         .Select((p, i) => new Column
                         {
                             ColumnName = databaseNamingConvention.ColumnName(p.PropertyName),
@@ -358,41 +390,38 @@ namespace EdFi.Ods.Generator.Database
                         });
                 }
             }
-        }
 
-        private Column CreateColumn(
-            EntityProperty property,
-            int index,
-            IDatabaseNamingConvention databaseNamingConvention,
-            IDatabaseTypeTranslator databaseTypeTranslator,
-            IReadOnlyList<EntityProperty> contextualPropertySet = null)
-        {
-            var column = new Column
+            Column CreateColumn(EntityProperty property, int index, IReadOnlyList<EntityProperty> contextualPropertySet = null)
             {
-                ColumnName = databaseNamingConvention.ColumnName(property),
-                DataType = databaseTypeTranslator.GetSqlType(property.PropertyType),
-                IsNullable = property.PropertyType.IsNullable,
-                IsServerAssigned = property.IsServerAssigned,
-                IsConcreteDescriptorId = property.IsLookup || (property.IsIdentifying && property.Entity.IsDescriptorEntity()),
-                IsPersonUSIUsage = property.DefiningProperty.Entity != property.Entity
-                    && property.DefiningProperty.IsIdentifying 
-                    && property.DefiningProperty.Entity.IsPersonEntity(),
-                PersonType = UniqueIdSpecification.GetUSIPersonType(property.DefiningProperty.PropertyName),
-                BaseColumnName = property.BaseProperty != null ? databaseNamingConvention.ColumnName(property.BaseProperty) : null,
-                IsFirst = index == 0,
-                IsLast = contextualPropertySet == null ? (bool?) null : (index == contextualPropertySet.Count - 1),
-                Index = index,
-            };
+                var column = new Column
+                {
+                    ColumnName = databaseNamingConvention.ColumnName(property),
+                    DataType = databaseTypeTranslator.GetSqlType(property.PropertyType),
+                    IsNullable = property.PropertyType.IsNullable,
+                    IsServerAssigned = property.IsServerAssigned,
+                    BaseColumnName = property.BaseProperty != null ? databaseNamingConvention.ColumnName(property.BaseProperty) : null,
+                    IsFirst = index == 0,
+                    IsLast = contextualPropertySet == null ? (bool?) null : (index == contextualPropertySet.Count - 1),
+                    Index = index,
+                    
+                    // Ed-Fi-specific properties
+                    IsConcreteDescriptorId = property.IsLookup || (property.IsIdentifying && property.Entity.IsDescriptorEntity()),
+                    IsPersonUSIUsage = property.DefiningProperty.Entity != property.Entity
+                        && property.DefiningProperty.IsIdentifying 
+                        && property.DefiningProperty.Entity.IsPersonEntity(),
+                    PersonType = UniqueIdSpecification.GetUSIPersonType(property.DefiningProperty.PropertyName),
+                };
 
-            // Enhance the table
-            var enhancedColumn = column;
-                
-            foreach (var columnEnhancer in _columnEnhancers)
-            {
-                enhancedColumn = columnEnhancer.EnhanceColumn(property, enhancedColumn, enhancedColumn);
+                // Enhance the table
+                var enhancedColumn = column;
+
+                foreach (var columnEnhancer in _columnEnhancers.Where(e => RenderingHelper.ShouldRunEnhancer(e, _renderingContext)))
+                {
+                    enhancedColumn = columnEnhancer.EnhanceColumn(property, enhancedColumn, enhancedColumn);
+                }
+
+                return enhancedColumn;
             }
-
-            return enhancedColumn;
         }
     }
 }
