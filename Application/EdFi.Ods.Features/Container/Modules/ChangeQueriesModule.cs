@@ -13,6 +13,12 @@ using EdFi.Ods.Common.Infrastructure.Pipelines;
 using EdFi.Ods.Features.ChangeQueries;
 using EdFi.Ods.Features.ChangeQueries.Providers;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Features.ChangeQueries.DomainModelEnhancers;
+using EdFi.Ods.Features.ChangeQueries.Repositories.Authorization;
+using EdFi.Ods.Features.ChangeQueries.Repositories.DeletedItems;
+using EdFi.Ods.Features.ChangeQueries.Repositories.KeyChanges;
+using EdFi.Ods.Features.ChangeQueries.Repositories.Snapshots;
 
 namespace EdFi.Ods.Features.Container.Modules
 {
@@ -25,33 +31,83 @@ namespace EdFi.Ods.Features.Container.Modules
 
         public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
         {
-            builder.RegisterType<AvailableChangeVersionProvider>()
-                .As<IAvailableChangeVersionProvider>()
-                .SingleInstance();
-
-            builder.RegisterType<DeletedItemsResourceDataProvider>()
-                .As<IDeletedItemsResourceDataProvider>()
-                .SingleInstance();
-
-            builder.RegisterType<GetKeyChanges>()
-                .As<IGetKeyChanges>()
-                .SingleInstance();
-
-            builder.RegisterType<AvailableChangeVersionsRouteConvention>()
-                .As<IApplicationModelConvention>()
-                .SingleInstance();
-
-            builder.RegisterType<DeletesRouteConvention>()
-                .As<IApplicationModelConvention>()
-                .SingleInstance();
-
-            builder.RegisterType<KeyChangesRouteConvention>()
-                .As<IApplicationModelConvention>()
-                .SingleInstance();
-
+            // Change Queries support in NHibernate mappings 
             builder.RegisterType<ChangeQueryMappingNHibernateConfigurationActivity>()
                 .As<INHibernateBeforeBindMappingActivity>()
                 .SingleInstance();
+
+            AddSupportForAvailableChanges();
+            AddSupportForSnapshots();
+            AddSupportForDeletes();
+            AddSupportForKeyChanges();
+            
+            void AddSupportForAvailableChanges()
+            {
+                // Available changes support
+                builder.RegisterType<AvailableChangeVersionsRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
+
+                builder.RegisterType<AvailableChangeVersionProvider>()
+                    .As<IAvailableChangeVersionProvider>()
+                    .SingleInstance();
+            }
+            void AddSupportForSnapshots()
+            {
+                // Snapshots support
+                builder.RegisterType<SnapshotsControllerRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
+                // Publishing components / services
+                builder.RegisterType<SnapshotContextProvider>()
+                    .As<ISnapshotContextProvider>()
+                    .SingleInstance();
+                builder.RegisterType<SnapshotContextActionFilter>()
+                    .As<IFilterMetadata>()
+                    .SingleInstance();
+                builder.RegisterDecorator<
+                    SnapshotSuffixDatabaseNameReplacementTokenProvider,
+                    IDatabaseNameReplacementTokenProvider>();
+
+                builder.RegisterType<SnapshotGoneExceptionTranslator>()
+                    .As<IExceptionTranslator>()
+                    .SingleInstance();
+                builder.RegisterType<GetSnapshots>()
+                    .As<IGetSnapshots>()
+                    .SingleInstance();
+            }
+
+            void AddSupportForDeletes()
+            {
+                // Deletes support
+                builder.RegisterType<DeletesRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
+
+                builder.RegisterType<DeletedItemsResourceDataProvider>()
+                    .As<IDeletedItemsResourceDataProvider>()
+                    .SingleInstance();
+            
+                builder.RegisterType<DeletedItemsQueriesProvider>()
+                    .As<IDeletedItemsQueriesProvider>()
+                    .SingleInstance();
+
+                builder.RegisterType<DeletedItemsQueryMetadataProvider>()
+                    .As<IDeletedItemsQueryMetadataProvider>()
+                    .SingleInstance();
+            }
+
+            void AddSupportForKeyChanges()
+            {
+                // KeyChanges support
+                builder.RegisterType<KeyChangesRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
+
+                builder.RegisterType<GetKeyChanges>()
+                    .As<IGetKeyChanges>()
+                    .SingleInstance();
+            }
         }
     }
 }
