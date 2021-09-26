@@ -12,47 +12,48 @@ using EdFi.Ods.Common.Models.Resource;
 using EdFi.Ods.Features.ChangeQueries.Resources;
 using EdFi.Ods.Generator.Database.NamingConventions;
 
-namespace EdFi.Ods.Features.ChangeQueries.Repositories.DeletedItems
+namespace EdFi.Ods.Features.ChangeQueries.Repositories.KeyChanges
 {
-    public class DeletedItemsResourceDataProvider 
-        : TrackedChangesResourceDataProviderBase<DeletedResourceItem>, IDeletedItemsResourceDataProvider
+    public class KeyChangesResourceDataProvider
+        : TrackedChangesResourceDataProviderBase<KeyChange>, IKeyChangesResourceDataProvider
     {
-        private readonly IDeletedItemsQueryFactory _deletedItemsQueryFactory;
         private readonly IDatabaseNamingConvention _namingConvention;
+        private readonly IKeyChangesQueryFactory _keyChangesQueryFactory;
         private readonly ITrackedChangesIdentifierProjectionsProvider _trackedChangesIdentifierProjectionsProvider;
 
-        public DeletedItemsResourceDataProvider(
+        public KeyChangesResourceDataProvider(
             DbProviderFactory dbProviderFactory,
             IOdsDatabaseConnectionStringProvider odsDatabaseConnectionStringProvider,
-            IDeletedItemsQueriesPreparer deletedItemsQueriesPreparer,
-            IDeletedItemsQueryFactory deletedItemsQueryFactory,
+            IKeyChangesQueriesPreparer keyChangesQueriesPreparer,
             IDatabaseNamingConvention namingConvention,
+            IKeyChangesQueryFactory keyChangesQueryFactory,
             ITrackedChangesIdentifierProjectionsProvider trackedChangesIdentifierProjectionsProvider)
-            : base(dbProviderFactory, odsDatabaseConnectionStringProvider, deletedItemsQueriesPreparer, namingConvention)
+            : base(dbProviderFactory, odsDatabaseConnectionStringProvider, keyChangesQueriesPreparer, namingConvention)
         {
-            _deletedItemsQueryFactory = deletedItemsQueryFactory;
             _namingConvention = namingConvention;
+            _keyChangesQueryFactory = keyChangesQueryFactory;
             _trackedChangesIdentifierProjectionsProvider = trackedChangesIdentifierProjectionsProvider;
         }
 
-        public async Task<ResourceData<DeletedResourceItem>> GetResourceDataAsync(Resource resource, IQueryParameters queryParameters)
+        public async Task<ResourceData<KeyChange>> GetResourceDataAsync(Resource resource, IQueryParameters queryParameters)
         {
-            var templateQuery = _deletedItemsQueryFactory.CreateMainQuery(resource);
+            var changeWindowCteQuery = _keyChangesQueryFactory.CreateMainQuery(resource);
             var identifierProjections = _trackedChangesIdentifierProjectionsProvider.GetIdentifierProjections(resource);
 
             string changeVersionColumnName = _namingConvention.ColumnName(ChangeQueriesDatabaseConstants.ChangeVersionColumnName);
             string idColumnName = _namingConvention.ColumnName("Id");
-
+            
             return await base.GetResourceDataAsync(
-                resource, 
-                queryParameters, 
-                templateQuery, 
+                resource,
+                queryParameters,
+                changeWindowCteQuery,
                 itemData => 
-                    new DeletedResourceItem
-                    { 
-                        Id = (Guid) itemData[idColumnName],
+                    new KeyChange
+                    {
+                        Id = (Guid)itemData[idColumnName],
                         ChangeVersion = (long) itemData[changeVersionColumnName],
-                        KeyValues = GetIdentifierKeyValues(identifierProjections, itemData, ColumnGroups.OldValue),
+                        OldKeyValues = GetIdentifierKeyValues(identifierProjections, itemData, ColumnGroups.OldValue),
+                        NewKeyValues = GetIdentifierKeyValues(identifierProjections, itemData, ColumnGroups.NewValue),
                     });
         }
     }

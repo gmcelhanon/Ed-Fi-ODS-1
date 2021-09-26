@@ -8,13 +8,13 @@ using EdFi.Ods.Common;
 using EdFi.Ods.Common.Models.Resource;
 using EdFi.Ods.Features.ChangeQueries.Resources;
 
-namespace EdFi.Ods.Features.ChangeQueries.Repositories.DeletedItems
+namespace EdFi.Ods.Features.ChangeQueries.Repositories.KeyChanges
 {
     /// <summary>
-    /// Defines a method for obtaining the data needed to provide a response to a deleted item API request.
+    /// Defines a method for obtaining the data needed to provide a response to a key changes API request.
     /// </summary>
-    public interface IDeletedItemsResourceDataProvider
+    public interface IKeyChangesResourceDataProvider
     {
-        Task<ResourceData<DeletedResourceItem>> GetResourceDataAsync(Resource resource, IQueryParameters queryParameters);
+        Task<ResourceData<KeyChange>> GetResourceDataAsync(Resource resource, IQueryParameters queryParameters);
     }
 }

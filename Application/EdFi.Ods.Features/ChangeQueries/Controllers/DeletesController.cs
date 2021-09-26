@@ -5,6 +5,7 @@
 
 using System.Net.Mime;
 using System.Threading.Tasks;
+using EdFi.Ods.Api.Helpers;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Constants;
 using EdFi.Ods.Common.Models;
@@ -48,6 +49,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             _authorizationContextProvider = authorizationContextProvider;
             _resourceClaimUriProvider = resourceClaimUriProvider;
             _securityRepository = securityRepository;
+
             _isEnabled = apiSettings.IsFeatureEnabled(ApiFeature.ChangeQueries.GetConfigKeyName());
         }
 
@@ -58,26 +60,23 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             {
                 _logger.Debug("ChangeQueries is not enabled.");
 
-                // TODO: GKM - Align with other "not found" result handling
-                return NotFound();
+                return ControllerHelpers.NotFound();
             }
             
             var resourceClass = _domainModelProvider.GetDomainModel().ResourceModel.GetResourceByApiCollectionName(schema, resource);
 
             if (resourceClass == null)
             {
-                // TODO: GKM - Align with other "not found" result handling
-                return NotFound();
+                return ControllerHelpers.NotFound();
             }
             
             // Set authorization context (should this be moved?)
             _authorizationContextProvider.SetResourceUris(_resourceClaimUriProvider.GetResourceClaimUris(resourceClass));
             _authorizationContextProvider.SetAction(_securityRepository.GetActionByName("ReadChanges").ActionUri);
 
+            // TODO: Validate the parameter here rather than deeper in the call stack
             var queryParameter = new QueryParameters(urlQueryParametersRequest);
 
-            // TODO: GKM - Validate the parameter here rather than deeper in the call stack
-            
             var deletedItemsResponse = await _deletedItemsResourceDataProvider.GetResourceDataAsync(resourceClass, queryParameter);
 
             // Add the total count, if requested
@@ -89,7 +88,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             // Explicitly serialize the response to remain backwards compatible with pre .net core
             return new ContentResult
             {
-                Content = JsonConvert.SerializeObject(deletedItemsResponse.DeletedResources),
+                Content = JsonConvert.SerializeObject(deletedItemsResponse.Items),
                 ContentType = MediaTypeNames.Application.Json,
                 StatusCode = StatusCodes.Status200OK
             };

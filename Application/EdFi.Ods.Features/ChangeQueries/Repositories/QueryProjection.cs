@@ -3,6 +3,8 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
+
 namespace EdFi.Ods.Features.ChangeQueries.Repositories
 {
     public class QueryProjection
@@ -22,8 +24,18 @@ namespace EdFi.Ods.Features.ChangeQueries.Repositories
     {
         public string ColumnName { get; set; }
         
-        public string ColumnAlias { get; set; }
-        
         public string JsonPropertyName { get; set; }
+
+        /// <summary>
+        /// Indicates whether the column represents an old or new value.
+        /// </summary>
+        public ColumnGroups ColumnGroup { get; set; }
+    }
+
+    [Flags]
+    public enum ColumnGroups
+    {
+        OldValue = 1,
+        NewValue = 2,
     }
 }
