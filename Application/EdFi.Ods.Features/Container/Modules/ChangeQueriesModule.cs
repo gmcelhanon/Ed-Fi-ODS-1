@@ -42,6 +42,11 @@ namespace EdFi.Ods.Features.Container.Modules
             AddSupportForKeyChanges();
             AddSupportForAuthorization();
             
+            // General Tracked Changes query support
+            builder.RegisterType<TrackedChangesQueriesProvider>()
+                .As<ITrackedChangesQueriesProvider>()
+                .SingleInstance();
+            
             void AddSupportForAvailableChanges()
             {
                 // Available changes support
@@ -89,10 +94,6 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IDeletedItemsResourceDataProvider>()
                     .SingleInstance();
             
-                builder.RegisterType<DeletedItemsQueriesProvider>()
-                    .As<IDeletedItemsQueriesProvider>()
-                    .SingleInstance();
-
                 builder.RegisterType<DeletedItemsTemplateQueryProvider>()
                     .As<IDeletedItemsTemplateQueryProvider>()
                     .SingleInstance();
@@ -109,10 +110,6 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IKeyChangesResourceDataProvider>()
                     .SingleInstance();
             
-                builder.RegisterType<KeyChangesQueriesProvider>()
-                    .As<IKeyChangesQueriesProvider>()
-                    .SingleInstance();
-
                 builder.RegisterType<KeyChangesTemplateQueryProvider>()
                     .As<IKeyChangesTemplateQueryProvider>()
                     .SingleInstance();
@@ -125,8 +122,7 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IDomainModelEnhancer>()
                     .SingleInstance();
             
-                builder.RegisterDecorator<KeyChangesQueriesProviderAuthorizationDecorator, IKeyChangesQueriesProvider>();
-                builder.RegisterDecorator<DeletedItemsQueriesProviderAuthorizationDecorator, IDeletedItemsQueriesProvider>();
+                builder.RegisterDecorator<TrackedChangesQueriesProviderAuthorizationDecorator, ITrackedChangesQueriesProvider>();
             }
         }
     }
