@@ -105,8 +105,16 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IApplicationModelConvention>()
                     .SingleInstance();
 
-                builder.RegisterType<GetKeyChanges>()
-                    .As<IGetKeyChanges>()
+                builder.RegisterType<KeyChangesResourceDataProvider>()
+                    .As<IKeyChangesResourceDataProvider>()
+                    .SingleInstance();
+            
+                builder.RegisterType<KeyChangesQueriesProvider>()
+                    .As<IKeyChangesQueriesProvider>()
+                    .SingleInstance();
+
+                builder.RegisterType<KeyChangesQueryMetadataProvider>()
+                    .As<IKeyChangesQueryMetadataProvider>()
                     .SingleInstance();
             }
             
@@ -117,6 +125,7 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IDomainModelEnhancer>()
                     .SingleInstance();
             
+                builder.RegisterDecorator<KeyChangesQueriesProviderAuthorizationDecorator, IKeyChangesQueriesProvider>();
                 builder.RegisterDecorator<DeletedItemsQueriesProviderAuthorizationDecorator, IDeletedItemsQueriesProvider>();
             }
         }
