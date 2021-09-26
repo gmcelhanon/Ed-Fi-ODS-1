@@ -93,8 +93,8 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IDeletedItemsQueriesProvider>()
                     .SingleInstance();
 
-                builder.RegisterType<DeletedItemsQueryMetadataProvider>()
-                    .As<IDeletedItemsQueryMetadataProvider>()
+                builder.RegisterType<DeletedItemsTemplateQueryProvider>()
+                    .As<IDeletedItemsTemplateQueryProvider>()
                     .SingleInstance();
             }
 
@@ -113,8 +113,8 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IKeyChangesQueriesProvider>()
                     .SingleInstance();
 
-                builder.RegisterType<KeyChangesQueryMetadataProvider>()
-                    .As<IKeyChangesQueryMetadataProvider>()
+                builder.RegisterType<KeyChangesTemplateQueryProvider>()
+                    .As<IKeyChangesTemplateQueryProvider>()
                     .SingleInstance();
             }
             
