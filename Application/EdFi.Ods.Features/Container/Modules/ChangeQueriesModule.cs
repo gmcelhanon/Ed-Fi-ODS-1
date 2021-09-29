@@ -43,8 +43,8 @@ namespace EdFi.Ods.Features.Container.Modules
             AddSupportForAuthorization();
             
             // General Tracked Changes query support
-            builder.RegisterType<TrackedChangesQueriesProvider>()
-                .As<ITrackedChangesQueriesProvider>()
+            builder.RegisterType<TrackedChangesIdentifierProjectionsProvider>()
+                .As<ITrackedChangesIdentifierProjectionsProvider>()
                 .SingleInstance();
             
             void AddSupportForAvailableChanges()
@@ -94,8 +94,12 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IDeletedItemsResourceDataProvider>()
                     .SingleInstance();
             
-                builder.RegisterType<DeletedItemsTemplateQueryProvider>()
-                    .As<IDeletedItemsTemplateQueryProvider>()
+                builder.RegisterType<DeletedItemsQueryFactory>()
+                    .As<IDeletedItemsQueryFactory>()
+                    .SingleInstance();
+                
+                builder.RegisterType<DeletedItemsQueriesPreparer>()
+                    .As<IDeletedItemsQueriesPreparer>()
                     .SingleInstance();
             }
 
@@ -110,8 +114,12 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IKeyChangesResourceDataProvider>()
                     .SingleInstance();
             
-                builder.RegisterType<KeyChangesTemplateQueryProvider>()
-                    .As<IKeyChangesTemplateQueryProvider>()
+                builder.RegisterType<KeyChangesQueryFactory>()
+                    .As<IKeyChangesQueryFactory>()
+                    .SingleInstance();
+                
+                builder.RegisterType<KeyChangesQueriesPreparer>()
+                    .As<IKeyChangesQueriesPreparer>()
                     .SingleInstance();
             }
             
@@ -122,7 +130,8 @@ namespace EdFi.Ods.Features.Container.Modules
                     .As<IDomainModelEnhancer>()
                     .SingleInstance();
             
-                builder.RegisterDecorator<TrackedChangesQueriesProviderAuthorizationDecorator, ITrackedChangesQueriesProvider>();
+                builder.RegisterDecorator<KeyChangesQueryFactoryAuthorizationDecorator, ITrackedChangesQueryFactory>();
+                builder.RegisterDecorator<DeletedItemsQueryFactoryAuthorizationDecorator, ITrackedChangesQueryFactory>();
             }
         }
     }
