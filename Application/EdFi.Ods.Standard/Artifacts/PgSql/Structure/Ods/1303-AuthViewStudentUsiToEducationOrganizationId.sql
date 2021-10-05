@@ -5,7 +5,8 @@
 
 CREATE OR REPLACE VIEW auth.StudentUSIToEducationOrganizationId 
 AS
-SELECT tuple.SourceEducationOrganizationId, ssa.StudentUSI
-FROM edfi.StudentSchoolAssociation ssa
-INNER JOIN auth.EducationOrganizationIdToEducationOrganizationId tuple
-ON ssa.SchoolId = tuple.TargetEducationOrganizationId
+    SELECT  edOrgs.SourceEducationOrganizationId, ssa.StudentUSI, COUNT(1) AS Ignored
+    FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs
+        INNER JOIN edfi.StudentSchoolAssociation ssa
+            ON edOrgs.TargetEducationOrganizationId = ssa.SchoolId
+    GROUP BY edOrgs.SourceEducationOrganizationId, ssa.StudentUSI
