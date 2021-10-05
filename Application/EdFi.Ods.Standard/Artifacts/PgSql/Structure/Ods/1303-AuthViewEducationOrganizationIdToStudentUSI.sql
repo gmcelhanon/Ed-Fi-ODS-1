@@ -3,7 +3,7 @@
 -- The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 -- See the LICENSE and NOTICES files in the project root for more information.
 
-CREATE OR REPLACE VIEW auth.StudentUSIToEducationOrganizationId 
+CREATE OR REPLACE VIEW auth.EducationOrganizationIdToStudentUSI
 AS
     SELECT  edOrgs.SourceEducationOrganizationId, ssa.StudentUSI, COUNT(1) AS Ignored
     FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs

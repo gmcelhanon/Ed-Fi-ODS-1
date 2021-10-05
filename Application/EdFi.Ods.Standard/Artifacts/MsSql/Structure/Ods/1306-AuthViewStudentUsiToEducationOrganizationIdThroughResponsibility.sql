@@ -3,10 +3,10 @@
 -- The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 -- See the LICENSE and NOTICES files in the project root for more information.
 
-CREATE OR REPLACE VIEW auth.StudentUSIToEducationOrganizationIdThroughEdOrgAssociation
-AS
-    SELECT  edOrgs.SourceEducationOrganizationId, seora.StudentUSI, Count(1) AS Ignored
+CREATE OR ALTER VIEW auth.EducationOrganizationIdToStudentUSIThroughResponsibility AS
+    SELECT  edOrgs.SourceEducationOrganizationId, seora.StudentUSI, BIG_COUNT(*) AS Ignored
     FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs
             INNER JOIN edfi.StudentEducationOrganizationResponsibilityAssociation seora
                 ON edOrgs.TargetEducationOrganizationId = seora.EducationOrganizationId
     GROUP BY edOrgs.SourceEducationOrganizationId, seora.StudentUSI
+GO

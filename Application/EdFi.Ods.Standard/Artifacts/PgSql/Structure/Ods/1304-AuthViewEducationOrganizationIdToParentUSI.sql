@@ -3,9 +3,9 @@
 -- The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 -- See the LICENSE and NOTICES files in the project root for more information.
 
-CREATE OR ALTER VIEW auth.ParentUSIToEducationOrganizationId 
-    WITH SCHEMABINDING AS
-    SELECT  edOrgs.SourceEducationOrganizationId, spa.ParentUSI, COUNT_BIG(*) AS Ignored
+CREATE OR REPLACE VIEW auth.EducationOrganizationIdToParentUSI
+AS
+    SELECT  edOrgs.SourceEducationOrganizationId, spa.ParentUSI, COUNT(1) AS Ignored
     FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs
             INNER JOIN edfi.StudentSchoolAssociation ssa 
                 ON edOrgs.TargetEducationOrganizationId = ssa.SchoolId
@@ -13,4 +13,3 @@ CREATE OR ALTER VIEW auth.ParentUSIToEducationOrganizationId
                 ON ssa.StudentUSI = spa.StudentUSI
     GROUP BY edOrgs.SourceEducationOrganizationId, spa.ParentUSI
     
-GO
