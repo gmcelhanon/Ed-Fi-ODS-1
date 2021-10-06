@@ -4,7 +4,7 @@
 -- See the LICENSE and NOTICES files in the project root for more information.
 
 CREATE OR ALTER VIEW auth.StudentUSIToEducationOrganizationIdThroughEdOrgAssociation AS
-    SELECT  edOrgs.SourceEducationOrganizationId, seora.StudentUSI, BIG_COUNT(*) AS Ignored
+    SELECT  edOrgs.SourceEducationOrganizationId, seora.StudentUSI
     FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs
             INNER JOIN edfi.StudentEducationOrganizationResponsibilityAssociation seora
                 ON edOrgs.TargetEducationOrganizationId = seora.EducationOrganizationId

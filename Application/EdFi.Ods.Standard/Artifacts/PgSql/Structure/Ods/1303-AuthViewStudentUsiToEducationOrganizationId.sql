@@ -5,7 +5,7 @@
 
 CREATE OR REPLACE VIEW auth.StudentUSIToEducationOrganizationId 
 AS
-    SELECT  edOrgs.SourceEducationOrganizationId, ssa.StudentUSI, COUNT(1) AS Ignored
+    SELECT  edOrgs.SourceEducationOrganizationId, ssa.StudentUSI
     FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs
         INNER JOIN edfi.StudentSchoolAssociation ssa
             ON edOrgs.TargetEducationOrganizationId = ssa.SchoolId

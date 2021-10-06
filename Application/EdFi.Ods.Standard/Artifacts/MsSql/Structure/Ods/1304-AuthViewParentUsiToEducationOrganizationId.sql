@@ -5,7 +5,7 @@
 
 CREATE OR ALTER VIEW auth.ParentUSIToEducationOrganizationId 
     WITH SCHEMABINDING AS
-    SELECT  edOrgs.SourceEducationOrganizationId, spa.ParentUSI, COUNT_BIG(*) AS Ignored
+    SELECT  edOrgs.SourceEducationOrganizationId, spa.ParentUSI
     FROM    auth.EducationOrganizationIdToEducationOrganizationId edOrgs
             INNER JOIN edfi.StudentSchoolAssociation ssa 
                 ON edOrgs.TargetEducationOrganizationId = ssa.SchoolId
