@@ -19,7 +19,6 @@ namespace EdFi.Ods.Generator
         IEnumerable<string> Properties { get; set; }
         IEnumerable<string> Plugins { get; set; }
         IDictionary<string, string> PropertyByName { get; }
-        // IDictionary<string, string> ContextValueByName { get; }
     }
 
     public interface IModelOptions
@@ -43,7 +42,6 @@ namespace EdFi.Ods.Generator
     public class Options : IGeneratorOptions, IModelOptions, IDatabaseOptions
     {
         private readonly Lazy<IDictionary<string, string>> _propertyByName;
-        // private readonly Lazy<IDictionary<string, string>> _contextValueByName;
 
         public Options()
         {
@@ -54,22 +52,6 @@ namespace EdFi.Ods.Generator
                         .Where(x => x.Length == 2)
                         .ToDictionary(x => x[0], x => x[1], StringComparer.OrdinalIgnoreCase);
                 });
-            
-            // _contextValueByName = new Lazy<IDictionary<string, string>>(
-            //     () =>
-            //     {
-            //         var generalContextValues = Context.Select(p => p.Split('='))
-            //             .Where(x => x.Length == 2);
-            //             
-            //         var argsContextValues = this.GetType().GetInterfaces().Where(i => i.Name.EndsWith("Options"))
-            //             .SelectMany(i => i.GetProperties().Where(p => p.GetCustomAttribute<RenderingContextAttribute>() != null && p.PropertyType == typeof(string)))
-            //             .Select(p => new[] { p.Name, (string) p.GetValue(this)})
-            //             .Where(x => !string.IsNullOrEmpty(x[1]));
-            //         
-            //         return generalContextValues
-            //                 .Concat(argsContextValues)
-            //                 .ToDictionary(x => x[0], x => x[1], StringComparer.OrdinalIgnoreCase);
-            //     });
         }
         
         [Option('o', "outputPath", Required = true, HelpText = "The base path for rendered output files.")]
@@ -78,21 +60,13 @@ namespace EdFi.Ods.Generator
         [Option('p', "property", HelpText = "Provides a named value to a template for rendering.")]
         public IEnumerable<string> Properties { get; set; }
 
-        [Option('c', "context", HelpText = "Provides a named context value for determining which templates should be rendered.")]
-        public IEnumerable<string> Context { get; set; }
-
-        [Option('p', "plugin")]
+        [Option('g', "plugin")]
         public IEnumerable<string> Plugins { get; set; }
 
         public IDictionary<string, string> PropertyByName
         {
             get => _propertyByName.Value;
         }
-        
-        // public IDictionary<string, string> ContextValueByName
-        // {
-        //     get => _contextValueByName.Value;
-        // }
         
         // IDatabaseOptions
         [Option("databaseEngine", Required = false, HelpText = "The target database engine (e.g. SqlServer or PostgreSql).", Default = "SqlServer")]
@@ -108,7 +82,4 @@ namespace EdFi.Ods.Generator
         [Option("capabilities", Required = false, HelpText = "Path to the capability statement to use for model-based generation.")]
         public string CapabilityStatementPath { get; set; }
     }
-
-    // [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple = false)]
-    // sealed class RenderingContextAttribute : Attribute { }
 }
