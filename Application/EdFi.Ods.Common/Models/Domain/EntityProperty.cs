@@ -106,7 +106,9 @@ namespace EdFi.Ods.Common.Models.Domain
         /// </summary>
         public EntityProperty BaseProperty
         {
-            get => Entity.BaseAssociation?.PropertyMappingByThisName[PropertyName].OtherProperty;
+            get => IncomingAssociations
+                    .SingleOrDefault(a => a.AssociationType == AssociationViewType.FromBase)
+                        ?.PropertyMappingByThisName[PropertyName].OtherProperty;
         }
 
         /// <summary>
