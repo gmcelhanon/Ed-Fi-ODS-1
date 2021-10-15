@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -109,73 +110,98 @@ namespace EdFi.Ods.Generator.Rendering
                     continue;
                 }
                  
-                _logger.Info($"The following templates will be rendered from assembly '{renderingPlugin.Assembly.FullName}':{Environment.NewLine}    {string.Join($"{Environment.NewLine}    ", matchingRenderings.Select(r => RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, r.Template)))}");
-                
+                _logger.Info($"The following templates will be rendered by plugin '{renderingPlugin.Assembly.GetName().Name}':{Environment.NewLine}    {string.Join($"{Environment.NewLine}    ", matchingRenderings.Select(r => RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, r.Template)))}");
+
                 foreach (var rendering in matchingRenderings)
                 {
-                    string templateName = RenderingHelper.ApplyPropertiesToParameterMarkers(
-                        _optionsPropertyByName,
-                        rendering.Template);
-                    
-                    if (!templateContentByName.TryGetValue(templateName, out string templateContent))
-                    {
-                        _logger.Error($"Unable to find template '{templateName}' in plugin assembly '{pluginAssembly.FullName}'.");
-                        renderingSuccessful = false;
-                        continue;
-                    }
-
-                    // Get the model provider
-                    var templateModelProvider = _templateModelProviders.Where(p => p.GetType().Assembly == pluginAssembly)
-                        .Where(p => p.GetType().Name.Equals(rendering.ModelProvider, StringComparison.OrdinalIgnoreCase))
-                        .Concat(
-                            _templateModelProviders.Where(
-                                p => p.GetType().Name.Equals(rendering.ModelProvider, StringComparison.OrdinalIgnoreCase)))
-                        .FirstOrDefault();
-
-                    if (templateModelProvider == null)
-                    {
-                        _logger.Error($@"Unable to find model provider '{rendering.ModelProvider}' for template '{templateName}' in plugin assembly '{pluginAssembly.FullName}'.");
-                        renderingSuccessful = false;
-                        continue;
-                    }
-                    
-                    // Get the template model
-                    var templateModel = templateModelProvider.GetTemplateModel(_optionsPropertyByName);
-                    
-                    // Determine output filename
-                    string outputFileName = Path.IsPathRooted(rendering.OutputPath)
-                        ? rendering.OutputPath
-                        : Path.Combine(_outputPath, rendering.OutputPath);
-
-                    outputFileName = RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, outputFileName);
-                    
-                    // Render the template
-                    _logger.Info($"Rendering content for template '{templateName}'...");
-
-                    // Process all the templates for parameter markers and pass to the rendering process as the partials 
-                    var partials = templateContentByName
-                        .Select(kvp => new KeyValuePair<string, string>(RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, kvp.Key), kvp.Value))
-                        .ToDictionary(kvp => kvp.Key, kvp => kvp.Value, StringComparer.OrdinalIgnoreCase);
-                    
-                    string renderedContent = await RenderAsync(templateContent, templateModel, partials);
-
-                    string outputFolder = Path.GetDirectoryName(outputFileName);
-
-                    if (!Directory.Exists(outputFolder))
-                    {
-                        _logger.Info($"Creating destination folder '{outputFolder}'...");
-                        Directory.CreateDirectory(outputFolder);
-                    }
-
-                    _logger.Info($"Writing '{outputFileName}'...");
-                    await using var streamWriter = new StreamWriter(outputFileName);
-                    await streamWriter.WriteAsync(renderedContent).ConfigureAwait(false);
+                    renderingSuccessful = renderingSuccessful && await RenderTemplate(rendering, templateContentByName, pluginAssembly);
                 }
             }
-            
+                    
             _logger.Debug($"Generation complete.");
 
             return renderingSuccessful;
+        }
+
+        private async Task<bool> RenderTemplate(
+            Rendering rendering,
+            IDictionary<string, string> templateContentByName,
+            Assembly pluginAssembly)
+        {
+            string templateName = RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, rendering.Template);
+
+            if (!templateContentByName.TryGetValue(templateName, out string templateContent))
+            {
+                _logger.Error($"Unable to find template '{templateName}' in plugin assembly '{pluginAssembly.FullName}'.");
+
+                return false;
+            }
+
+            // Get the model provider, prioritizing the plugin assembly first
+            var templateModelProvider = _templateModelProviders.Where(p => p.GetType().Assembly == pluginAssembly)
+                .Where(p => IsTemplateModelProviderForProviderName(p, rendering.ModelProvider))
+                .Concat(_templateModelProviders.Where(p => IsTemplateModelProviderForProviderName(p, rendering.ModelProvider)))
+                .FirstOrDefault();
+
+            if (templateModelProvider == null)
+            {
+                _logger.Error(
+                    $@"Unable to find model provider '{rendering.ModelProvider}' for template '{templateName}' in plugin assembly '{pluginAssembly.FullName}'.");
+
+                return false;
+            }
+
+            // Get the template model
+            var templateModel = templateModelProvider.GetTemplateModel(_optionsPropertyByName);
+
+            // Determine output filename
+            string outputFileName = Path.IsPathRooted(rendering.OutputPath)
+                ? rendering.OutputPath
+                : Path.Combine(_outputPath, rendering.OutputPath);
+
+            outputFileName = Path.GetFullPath(
+                RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, outputFileName));
+
+            // Render the template
+            _logger.Info($"Rendering content for template '{templateName}'...");
+
+            // Process all the templates for parameter markers and pass to the rendering process as the partials 
+            var partials = templateContentByName
+                .Select(
+                    kvp => new KeyValuePair<string, string>(
+                        RenderingHelper.ApplyPropertiesToParameterMarkers(_optionsPropertyByName, kvp.Key),
+                        kvp.Value))
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value, StringComparer.OrdinalIgnoreCase);
+
+            string renderedContent = await RenderAsync(templateContent, templateModel, partials);
+
+            string outputFolder = Path.GetDirectoryName(outputFileName);
+
+            if (!Directory.Exists(outputFolder))
+            {
+                _logger.Info($"Creating destination folder '{outputFolder}'...");
+                Directory.CreateDirectory(outputFolder);
+            }
+
+            _logger.Info($"Writing '{outputFileName}'...");
+
+            await using var streamWriter = new StreamWriter(outputFileName);
+
+            await streamWriter.WriteAsync(renderedContent).ConfigureAwait(false);
+
+            return true;
+
+            bool IsTemplateModelProviderForProviderName(ITemplateModelProvider p, string renderingModelProvider)
+            {
+                var result = p.GetType().Name.Equals(renderingModelProvider, StringComparison.OrdinalIgnoreCase)
+                    || p.GetType()
+                        .Name.Equals(renderingModelProvider + "TemplateModelProvider", StringComparison.OrdinalIgnoreCase);
+
+                _logger.Debug(
+                    $"Evaluated template model provider '{p.GetType().Name}' against model provider name '{renderingModelProvider}': {result}");
+
+                return result;
+            }
         }
 
         private async Task<string> RenderAsync(string templateContent, object templateModel, IDictionary<string, string> partials)
