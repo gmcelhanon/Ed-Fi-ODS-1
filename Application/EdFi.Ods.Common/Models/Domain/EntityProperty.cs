@@ -9,6 +9,7 @@ using System.Linq;
 using EdFi.Common.Extensions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Definitions;
+using EdFi.Ods.Common.Models.Dynamic;
 using EdFi.Ods.Common.Models.Resource;
 using EdFi.Ods.Common.Specifications;
 
@@ -58,7 +59,8 @@ namespace EdFi.Ods.Common.Models.Domain
         {
             // Property is NOT locally defined when built from an association property
             IsLocallyDefined = false;
-
+            this.CopyDynamicPropertiesFrom(associationProperty);
+            
             InitializeLazyMembers();
         }
 

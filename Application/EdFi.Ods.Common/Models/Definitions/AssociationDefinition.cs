@@ -7,10 +7,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Common.Models.Dynamic;
 
 namespace EdFi.Ods.Common.Models.Definitions
 {
-    public class AssociationDefinition
+    public class AssociationDefinition : DynamicModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AssociationDefinition" /> class.

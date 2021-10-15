@@ -10,11 +10,12 @@ using EdFi.Common.Extensions;
 using EdFi.Common.Utils.Extensions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Definitions;
+using EdFi.Ods.Common.Models.Dynamic;
 using EdFi.Ods.Common.Utils.Extensions;
 
 namespace EdFi.Ods.Common.Models.Domain
 {
-    public class Association
+    public class Association : DynamicModel
     {
         private readonly DomainModel _domainModel;
 
@@ -29,6 +30,7 @@ namespace EdFi.Ods.Common.Models.Domain
                     "The association definition is invalid because a different number of properties were provided for the primary and secondary ends of the association.");
 
             _domainModel = domainModel;
+            this.CopyDynamicPropertiesFrom(associationDefinition);
 
             FullName = associationDefinition.FullName;
 
