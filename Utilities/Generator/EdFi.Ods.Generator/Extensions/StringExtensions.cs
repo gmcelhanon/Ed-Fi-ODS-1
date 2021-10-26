@@ -108,8 +108,6 @@ namespace EdFi.Ods.Generator.Extensions
                 return true;
             }
 
-            ;
-
             return false;
         }
 
@@ -123,6 +121,25 @@ namespace EdFi.Ods.Generator.Extensions
             }
 
             return text;
+        }
+
+        public static bool TryReplaceSuffix(this string text, string oldSuffix, string newSuffix, out string newText)
+        {
+            newText = null;
+
+            if (!text.TryTrimSuffix(oldSuffix, out var trimmedText))
+            {
+                return false;
+            }
+
+            newText = trimmedText + newSuffix;
+
+            return true;
+        }
+
+        public static string ReplaceSuffix(this string text, string oldSuffix, string newSuffix)
+        {
+            return !text.TryReplaceSuffix(oldSuffix, newSuffix, out var newText) ? text : newText;
         }
     }
 }
