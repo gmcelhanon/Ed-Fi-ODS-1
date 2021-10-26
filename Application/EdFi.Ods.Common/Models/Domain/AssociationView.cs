@@ -19,8 +19,7 @@ namespace EdFi.Ods.Common.Models.Domain
 {
     public class AssociationView : IHasNameContext
     {
-        private static readonly IReadOnlyList<PropertyMapping> EmptyPropertyMappingList
-            = new PropertyMapping[0];
+        private static readonly IReadOnlyList<PropertyMapping> EmptyPropertyMappingList = Array.Empty<PropertyMapping>();
         private readonly DomainModel _domainModel;
         private readonly Lazy<ForeignKeyNameParts> _foreignKeyNameParts;
         private readonly bool _isPrimaryEntity;
@@ -34,6 +33,7 @@ namespace EdFi.Ods.Common.Models.Domain
         private readonly Lazy<EntityProperty[]> _thisProperties;
         private readonly Lazy<AssociationProperty[]> _thisAssociationProperties;
         private readonly Lazy<bool> _isSoftDependency;
+        private readonly Lazy<bool> _associatesEntitiesOfTheSameAggregate;
 
         private bool _backReferencesAlreadyInitialized;
 
@@ -126,6 +126,32 @@ namespace EdFi.Ods.Common.Models.Domain
 
                     // All other associations do not represent dependencies
                     return false;
+                });
+
+            _associatesEntitiesOfTheSameAggregate = new Lazy<bool>(
+                () =>
+                {
+                    FullName primaryEntityAggregateName;
+
+                    if (!_domainModel.AggregateFullNameByEntityFullName.TryGetValue(
+                        Association.PrimaryEntityFullName,
+                        out primaryEntityAggregateName))
+                    {
+                        throw new Exception(
+                            string.Format("Entity '{0}' was not found in any aggregate.", Association.PrimaryEntityFullName));
+                    }
+
+                    FullName secondaryEntityAggregateName;
+
+                    if (!_domainModel.AggregateFullNameByEntityFullName.TryGetValue(
+                        Association.SecondaryEntityFullName,
+                        out secondaryEntityAggregateName))
+                    {
+                        throw new Exception(
+                            string.Format("Entity '{0}' was not found in any aggregate.", Association.SecondaryEntityFullName));
+                    }
+
+                    return primaryEntityAggregateName == secondaryEntityAggregateName;
                 });
         }
 
@@ -272,30 +298,7 @@ namespace EdFi.Ods.Common.Models.Domain
         /// or whether the association represents a relationship to an Entity in a different Aggregate.
         /// </summary>
         /// <seealso cref="IsNavigable"/>
-        public bool AssociatesEntitiesOfTheSameAggregate
-        {
-            get
-            {
-                FullName primaryEntityAggregateName;
-
-                if (!_domainModel.AggregateFullNameByEntityFullName.TryGetValue(Association.PrimaryEntityFullName, out primaryEntityAggregateName))
-                {
-                    throw new Exception(string.Format("Entity '{0}' was not found in any aggregate.", Association.PrimaryEntityFullName));
-                }
-
-                FullName secondaryEntityAggregateName;
-
-                if (!_domainModel.AggregateFullNameByEntityFullName.TryGetValue(
-                    Association.SecondaryEntityFullName,
-                    out secondaryEntityAggregateName))
-                {
-                    throw new Exception(string.Format("Entity '{0}' was not found in any aggregate.", Association.SecondaryEntityFullName));
-                }
-
-                return
-                    primaryEntityAggregateName == secondaryEntityAggregateName;
-            }
-        }
+        public bool AssociatesEntitiesOfTheSameAggregate => _associatesEntitiesOfTheSameAggregate.Value;
 
         public bool IsIdentifying
         {

@@ -23,6 +23,7 @@ namespace EdFi.Ods.Common.Models.Domain
         private Lazy<Entity> _descriptorEntity;
         private Lazy<bool> _isUnified;
         private Lazy<EntityProperty> _definingProperty;
+        private Lazy<EntityProperty> _baseProperty;
         private Lazy<EntityProperty> _definingConcreteProperty;
 
         /// <summary>
@@ -70,6 +71,11 @@ namespace EdFi.Ods.Common.Models.Domain
             _isUnified = new Lazy<bool>(
                 () => IncomingAssociations.Count > 1);
 
+            _baseProperty = new Lazy<EntityProperty>(() => IncomingAssociations
+                    .SingleOrDefault(a => a.AssociationType == AssociationViewType.FromBase)
+                    ?.PropertyMappingByThisName[PropertyName]
+                    .OtherProperty);
+            
             _definingProperty = new Lazy<EntityProperty>(() => GetDefiningProperty(restrictToConcreteEntity: false));
             
             _definingConcreteProperty = new Lazy<EntityProperty>(() => GetDefiningProperty(restrictToConcreteEntity: true));
@@ -84,6 +90,11 @@ namespace EdFi.Ods.Common.Models.Domain
 
                     return null;
                 });
+
+            _incomingAssociations = new Lazy<IList<AssociationView>>(
+                () => Entity.IncomingAssociations.Where(
+                        a => a.ThisProperties.Any(p => p.PropertyName.EqualsIgnoreCase(PropertyName)))
+                    .ToList());
         }
 
         [Obsolete("Use IsDescriptorUsage.")]
@@ -108,9 +119,7 @@ namespace EdFi.Ods.Common.Models.Domain
         /// </summary>
         public EntityProperty BaseProperty
         {
-            get => IncomingAssociations
-                    .SingleOrDefault(a => a.AssociationType == AssociationViewType.FromBase)
-                        ?.PropertyMappingByThisName[PropertyName].OtherProperty;
+            get => _baseProperty.Value;
         }
 
         /// <summary>
@@ -146,18 +155,12 @@ namespace EdFi.Ods.Common.Models.Domain
         /// </summary>
         public Entity DescriptorEntity => _descriptorEntity.Value;
 
+        private Lazy<IList<AssociationView>> _incomingAssociations;
+
         /// <summary>
         /// Gets the associations that contribute the property to the current entity.
         /// </summary>
-        public IList<AssociationView> IncomingAssociations
-        {
-            get
-            {
-                return Entity.IncomingAssociations.Where(
-                                  a => a.ThisProperties.Any(p => p.PropertyName.EqualsIgnoreCase(PropertyName)))
-                             .ToList();
-            }
-        }
+        public IList<AssociationView> IncomingAssociations => _incomingAssociations.Value;
 
         /// <summary>
         /// Indicates whether the property is defined by (and was migrated from) the parent entity.

@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using System.Security.Policy;
 using Newtonsoft.Json;
 
 namespace EdFi.Ods.Common.Models.Domain
@@ -11,26 +12,38 @@ namespace EdFi.Ods.Common.Models.Domain
     /// <summary>
     /// Represents the fully qualified name that includes a schema and an object name.
     /// </summary>
-    public struct FullName : IComparable<FullName>, IEquatable<FullName>
+    public readonly struct FullName : IComparable<FullName>, IEquatable<FullName>
     {
+        private readonly int _hashCode;
+        private readonly string _asLowerCase;
+        private readonly string _toString;
+
         public FullName(string schema, string name)
             : this()
         {
             Schema = schema;
-            Name = name;
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            
+            var schemaSegment = Schema != null
+                ? $"{Schema}."
+                : string.Empty;
+
+            _toString = $"{schemaSegment}{Name}";
+            _asLowerCase = _toString.ToLower();
+            _hashCode = _asLowerCase.GetHashCode();
         }
 
         /// <summary>
         /// Gets the name of the schema.
         /// </summary>
         [JsonProperty]
-        public string Schema { get; private set; }
+        public string Schema { get; } // private set; }
 
         /// <summary>
         /// Gets the name of the object.
         /// </summary>
         [JsonProperty]
-        public string Name { get; private set; }
+        public string Name { get; } // private set; }
 
         /// <summary>
         /// Compares the current object with another object of the same type.
@@ -41,24 +54,23 @@ namespace EdFi.Ods.Common.Models.Domain
         /// <param name="other">An object to compare with this object.</param>
         public int CompareTo(FullName other)
         {
-            int schemaCompareResult = string.Compare(Schema, other.Schema, StringComparison.InvariantCultureIgnoreCase);
-
-            if (schemaCompareResult != 0)
-            {
-                return schemaCompareResult;
-            }
-
-            return string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase);
+            // ReSharper disable once StringCompareIsCultureSpecific.1
+            return string.Compare(_asLowerCase, other._asLowerCase);
         }
 
         public static bool operator ==(FullName first, FullName second)
         {
-            return first.CompareTo(second) == 0;
+            if (first._hashCode != second._hashCode)
+            {
+                return false;
+            }
+
+            return first._asLowerCase.Equals(second._asLowerCase);
         }
 
         public static bool operator !=(FullName first, FullName second)
         {
-            return first.CompareTo(second) != 0;
+            return first._hashCode != second._hashCode;
         }
 
         /// <summary>
@@ -98,9 +110,7 @@ namespace EdFi.Ods.Common.Models.Domain
         /// </returns>
         public override int GetHashCode()
         {
-            return ToString()
-                  .ToLower()
-                  .GetHashCode();
+            return _hashCode;
         }
 
         /// <summary>
@@ -111,11 +121,7 @@ namespace EdFi.Ods.Common.Models.Domain
         /// </returns>
         public override string ToString()
         {
-            var schemaSegment = Schema != null
-                ? $"{Schema}."
-                : string.Empty;
-
-            return $"{schemaSegment}{Name}";
+            return _toString;
         }
     }
 }

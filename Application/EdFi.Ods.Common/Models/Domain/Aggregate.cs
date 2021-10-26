@@ -53,6 +53,9 @@ namespace EdFi.Ods.Common.Models.Domain
             }
         }
 
+        /// <summary>
+        /// Returns all entities that are members of the aggregate, including the aggregate root.
+        /// </summary>
         public IReadOnlyList<Entity> Members
         {
             get
