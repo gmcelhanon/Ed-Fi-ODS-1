@@ -8,10 +8,10 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
 
         public string ThisSchema { get; set; }
         public string ThisTableName { get; set; }
-        public IEnumerable<Column> ThisColumns { get; set; }
+        public IReadOnlyList<Column> ThisColumns { get; set; }
         public string OtherSchema { get; set; }
         public string OtherTableName { get; set; }
-        public IEnumerable<Column> OtherColumns { get; set; }
+        public IReadOnlyList<Column> OtherColumns { get; set; }
 
         public bool IsFromBase { get; set; }
 

@@ -16,16 +16,16 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
             get => PrimaryKeyColumns.Any();
         }
 
-        public IEnumerable<Column> PrimaryKeyColumns { get; set; }
+        public IReadOnlyList<Column> PrimaryKeyColumns { get; set; }
 
         public bool HasContextualPrimaryKeyColumns
         {
             get => ContextualPrimaryKeyColumns.Any();
         }
 
-        public IEnumerable<Column> ContextualPrimaryKeyColumns { get; set; }
+        public IReadOnlyList<Column> ContextualPrimaryKeyColumns { get; set; }
 
-        public IEnumerable<Column> ParentPrimaryKeyColumns
+        public IReadOnlyList<Column> ParentPrimaryKeyColumns
         {
             get =>
                 PrimaryKeyColumns.Where(pkc => !ContextualPrimaryKeyColumns.Any(c => c.ColumnName == pkc.ColumnName))
@@ -36,7 +36,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
                             DataType = pkc.DataType,
                             IsNullable = pkc.IsNullable,
                             IsFirst = i == 0,
-                        });
+                        }).ToArray();
         }
 
         public bool IsAggregateRoot { get; set; }
@@ -54,7 +54,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         /// <summary>
         /// Gets the columns that are not part of any primary or foreign key.
         /// </summary>
-        public IEnumerable<Column> NonPrimaryOrForeignKeyColumns { get; set; }
+        public IReadOnlyList<Column> NonPrimaryOrForeignKeyColumns { get; set; }
 
         public bool HasBoilerplateColumns
         {
@@ -65,8 +65,8 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         
         public Column DiscriminatorColumn { get; set; }
 
-        public IEnumerable<Column> BoilerplateColumns { get; set; }
-        public IEnumerable<Column> BoilerplateColumnsUnsorted { get; set; }
+        public IReadOnlyList<Column> BoilerplateColumns { get; set; }
+        public IReadOnlyList<Column> BoilerplateColumnsUnsorted { get; set; }
 
         public bool HasReferences
         {
@@ -76,9 +76,9 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         /// <summary>
         /// Gets non-identifying references.
         /// </summary>
-        public IEnumerable<HashReference> References { get; set; }
+        public IReadOnlyList<HashReference> References { get; set; }
 
-        public IEnumerable<HashReference> IdentifyingReferences { get; set; }
+        public IReadOnlyList<HashReference> IdentifyingReferences { get; set; }
 
         public string PrimaryKeyConstraintName { get; set; }
 
@@ -87,9 +87,9 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         /// <summary>
         /// Gets all columns that are not part of the primary key, but are also not the boilerplate columns.
         /// </summary>
-        public IEnumerable<Column> NonPrimaryKeyColumns { get; set; }
+        public IReadOnlyList<Column> NonPrimaryKeyColumns { get; set; }
 
-        public IEnumerable<ForeignKey> ForeignKeys { get; set; }
+        public IReadOnlyList<ForeignKey> ForeignKeys { get; set; }
 
         public string IdIndexName { get; set; }
 
@@ -102,7 +102,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         /// <summary>
         /// Gets all references, identifying and non-identifying.
         /// </summary>
-        public IEnumerable<HashReference> AllReferences { get; set; }
+        public IReadOnlyList<HashReference> AllReferences { get; set; }
 
         public HashKey HashKey { get; set; }
 
@@ -114,18 +114,22 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
 
         public Column SurrogateIdColumn { get; set; }
 
-        public IEnumerable<Column> AlternateKeyColumns { get; set; }
+        public IReadOnlyList<Column> AlternateKeyColumns { get; set; }
 
         public bool IsDescriptorTable { get; set; }
 
         public bool IsDescriptorBaseTable { get; set; }
+        
+        public bool IsEducationOrganizationDerivedTable { get; set; }
+
+        public bool IsEducationOrganizationBaseTable { get; set; }
 
         public FullName FullName { get; set; }
 
         public bool IsPersonTypeTable { get; set; }
 
         // TODO: Move to LDS plugin
-        public bool IsTemporal { get; set; }
+        public bool IsTemporalTable { get; set; }
 
         // TODO: Move to ChangeQueries plugin
         public bool KeyValuesCanChange { get; set; }
@@ -133,7 +137,8 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         public string BaseTableSchema { get; set; }
         public string BaseTableName { get; set; }
         public string BaseAlternateKeyConstraintName { get; set; }
-        public IEnumerable<Column> BaseAlternateKeyColumns { get; set; }
+        public IReadOnlyList<Column> BaseAlternateKeyColumns { get; set; }
+        public Table AggregateRootTable { get; set; }
 
         // /// <summary>
         // /// Gets the reference back to the parent.

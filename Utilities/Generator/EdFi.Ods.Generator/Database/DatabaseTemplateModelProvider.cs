@@ -82,18 +82,40 @@ namespace EdFi.Ods.Generator.Database
             var databaseTypeTranslator = _databaseTypeTranslatorFactory.CreateTranslator(databaseEngine);
             
             var domainModel = _domainModel.Value;
+
+            var entitiesAndTables = domainModel.Entities
+                .Where(ShouldRenderEntityForSchema)
+                .OrderBy(e => e.FullName.Name)
+                .Select(e => new { Entity = e, Table = CreateTable(e) })
+                .ToArray();
+
             
+            // Provide each table with access to aggregate root table to support common child table operations
+            var entityAndTableByName = entitiesAndTables.ToDictionary(x => x.Entity.FullName, x => x);
+
+            foreach (var entry in entityAndTableByName)
+            {
+                if (!entry.Value.Entity.IsAggregateRoot)
+                {
+                    if (entityAndTableByName.TryGetValue(entry.Value.Entity.Aggregate.FullName, out var aggregateRootEntry))
+                    {
+                        entry.Value.Table.AggregateRootTable = aggregateRootEntry.Table;
+                    }
+                }
+            }
+
+            // Create the database template model for code generation
             var model = new DatabaseTemplateModel
             {
                 Schemas = domainModel.Entities
                     .Where(ShouldRenderEntityForSchema)
                     .Select(e => databaseNamingConvention.Schema(e))
                     .Distinct()
-                    .Select(s => new SchemaInfo { Schema = s}),
-                Tables = domainModel.Entities
-                    .Where(ShouldRenderEntityForSchema)
-                    .OrderBy(e => e.FullName.Name)
-                    .Select(CreateTable)
+                    .Select(s => new SchemaInfo { Schema = s})
+                    .ToArray(),
+                Tables = entitiesAndTables
+                    .Select(e => e.Table)
+                    .ToArray(),
             };
 
             var dynamicModel = model as IDynamicModel; 
@@ -120,9 +142,12 @@ namespace EdFi.Ods.Generator.Database
                     BaseAlternateKeyConstraintName = entity.IsDerived ? databaseNamingConvention.GetAlternateKeyConstraintName(entity.BaseEntity) : null,
                     BaseAlternateKeyColumns = entity.IsDerived ? entity.BaseEntity?.AlternateIdentifiers.FirstOrDefault()?.Properties.Select(
                         (p, i) => CreateColumn(p, i, entity.BaseEntity.AlternateIdentifiers.First().Properties))
+                            .ToArray()
                         : null,
                     IsDescriptorTable = entity.IsDescriptorEntity,
                     IsDescriptorBaseTable = entity.IsDescriptorBaseEntity(),
+                    IsEducationOrganizationDerivedTable = entity.IsEducationOrganizationDerivedEntity(),
+                    IsEducationOrganizationBaseTable = entity.IsEducationOrganizationBaseEntity(),
                     IsPersonTypeTable = entity.IsPersonEntity(),
                     Schema = databaseNamingConvention.Schema(entity),
                     TableName = databaseNamingConvention.TableName(entity),
@@ -137,13 +162,14 @@ namespace EdFi.Ods.Generator.Database
                     
                     PrimaryKeyConstraintName = databaseNamingConvention.PrimaryKeyConstraintName(entity),
                     PrimaryKeyColumns = entity.Identifier.Properties.Select(
-                        (p, i) => CreateColumn(p, i, entity.Identifier.Properties)),
+                        (p, i) => CreateColumn(p, i, entity.Identifier.Properties)).ToArray(),
                     ContextualPrimaryKeyColumns = entity.Identifier.Properties
                         .Where(p => !entity.IsAggregateRoot)
                         .Where(p => !p.IsFromParent)
                         .Where(p => !entity.Aggregate.AggregateRoot.Identifier.Properties.Any(p2 => p2.PropertyName == p.PropertyName))
                         .Where(p => !p.IncomingAssociations.Any())
-                        .Select((p, i) => CreateColumn(p, i)), 
+                        .Select((p, i) => CreateColumn(p, i))
+                        .ToArray(), 
                     HasServerAssignedSurrogateId = entity.HasServerAssignedSurrogateId(),
                     SurrogateIdColumn = entity.Identifier.Properties
                         .Where(p => p.IsServerAssigned)
@@ -152,21 +178,25 @@ namespace EdFi.Ods.Generator.Database
                     HasAlternateKey = entity.AlternateIdentifiers.Any(),
                     AlternateKeyConstraintName = databaseNamingConvention.GetAlternateKeyConstraintName(entity),
                     AlternateKeyColumns = entity.AlternateIdentifiers.FirstOrDefault()?.Properties.Select(
-                        (p, i) => CreateColumn(p, i, entity.AlternateIdentifiers.First().Properties)),
+                        (p, i) => CreateColumn(p, i, entity.AlternateIdentifiers.First().Properties))
+                        .ToArray(),
                     
                     // TODO: Move LDS plugin
                     IdentifyingReferences = entity.IncomingAssociations
                         .Where(a => a.IsIdentifying && a.OtherEntity != entity.Parent)
-                        .Select(CreateHashReference),
+                        .Select(CreateHashReference)
+                        .ToArray(),
                     
                     // TODO: Move LDS plugin
                     References = entity.IncomingAssociations
                         .Where(a => !a.IsIdentifying)
-                        .Select(CreateHashReference),
+                        .Select(CreateHashReference)
+                        .ToArray(),
                     
                     // TODO: Move LDS plugin
                     AllReferences = entity.IncomingAssociations
-                        .Select(CreateHashReference),
+                        .Select(CreateHashReference)
+                        .ToArray(),
                     // ForeignKeyColumns = entity.IncomingAssociations
                     //     .Where(a => !a.IsNavigable)
                     //     .SelectMany(a => a.ThisProperties.Select(p => new Column
@@ -179,16 +209,18 @@ namespace EdFi.Ods.Generator.Database
                     NonPrimaryOrForeignKeyColumns = entity.Properties
                         .Where(p => !p.IsIdentifying && !p.IncomingAssociations.Any())
                         .Where(p => !p.IsBoilerplate())
-                        .Select( (p, i) => CreateColumn(p, i)),
+                        .Select( (p, i) => CreateColumn(p, i))
+                        .ToArray(),
                     // Non-PK columns
                     NonPrimaryKeyColumns = entity.Properties
                         .Where(p => !p.IsIdentifying && !p.IsBoilerplate())
-                        .Select( (p, i) => CreateColumn(p, i)),
+                        .Select( (p, i) => CreateColumn(p, i))
+                        .ToArray(),
                     // TODO: Think about whether and where this should be applied to the model through a transform. 
                     DiscriminatorColumn = entity.HasDiscriminator() ? ColumnHelper.CreateDiscriminatorColumn(databaseNamingConvention, databaseTypeTranslator) : null,
-                    BoilerplateColumns = GetBoilerplateColumns(ordered: true),
+                    BoilerplateColumns = GetBoilerplateColumns(ordered: true).ToArray(),
                     // TODO: Review usage of this property and consider removal
-                    BoilerplateColumnsUnsorted = GetBoilerplateColumns(),
+                    BoilerplateColumnsUnsorted = GetBoilerplateColumns().ToArray(),
                     ForeignKeys = entity.IncomingAssociations
                         .GroupBy(association => databaseNamingConvention.ForeignKeyConstraintName(association), a => a)
                         .OrderBy(g => g.Key)
@@ -203,25 +235,27 @@ namespace EdFi.Ods.Generator.Database
                                 ColumnName = databaseNamingConvention.ColumnName(p),
                                 DataType = databaseTypeTranslator.GetSqlType(p.PropertyType),
                                 IsNullable = p.PropertyType.IsNullable,
-                                IsConcreteDescriptorId = p.IsDescriptorUsage || (p.IsIdentifying && p.Entity.IsDescriptorEntity()),
+                                IsDescriptorUsage = p.IsDescriptorUsage || (p.IsIdentifying && p.Entity.IsDescriptorEntity()),
                                 IsFirst = i == 0,
                                 Index = i,
-                            }),
+                            }).ToArray(),
                             OtherSchema = databaseNamingConvention.Schema(a.OtherEntity),
                             OtherTableName = databaseNamingConvention.TableName(a.OtherEntity),
                             OtherColumns = a.OtherProperties.Select((p, i) => 
-                                CreateColumn(p, i, a.OtherProperties)),
+                                CreateColumn(p, i, a.OtherProperties))
+                                .ToArray(),
                             IsFromBase = a.AssociationType == AssociationViewType.FromBase,
                             IsOneToOne = a.AssociationType == AssociationViewType.OneToOneIncoming,
                             // IsIdentifying = a.IsIdentifying,
                             IsNavigable = a.IsNavigable,
                             IsUpdatable = IsAssociationUpdatable(a),
-                        })),
+                        }))
+                        .ToArray(),
                     IdIndexName = databaseNamingConvention.GetUniqueIndexName(entity, "Id"),
                     // TODO: Move to ChangeQueries plugin as dynamic enhancement?
                     KeyValuesCanChange = entity.Identifier.IsUpdatable || (entity.IncomingAssociations.Any(a => a.IsIdentifying && IsAssociationUpdatable(a))),
                     // TODO: Move to LDS plugin as dynamic enhancement
-                    IsTemporal = (entityAsDynamic.ReadHistory == true),
+                    IsTemporalTable = (entityAsDynamic.ReadHistory == true),
                 };
 
                 // Enhance the table
@@ -379,6 +413,8 @@ namespace EdFi.Ods.Generator.Database
                                     : null),
                             DefaultConstraintName = databaseNamingConvention.DefaultConstraintName(p),
                             IsFirst = i == 0,
+                            IsBoilerplateId = p.PropertyName == ColumnConventions.BoilerplateColumn.Id.ToString()
+                                && p.PropertyType.DbType == DbType.Guid
                         });
                 }
             }
@@ -397,7 +433,7 @@ namespace EdFi.Ods.Generator.Database
                     Index = index,
                     
                     // Ed-Fi-specific properties
-                    IsConcreteDescriptorId = property.IsDescriptorUsage || (property.IsIdentifying && property.Entity.IsDescriptorEntity()),
+                    IsDescriptorUsage = property.IsDescriptorUsage || (property.IsIdentifying && property.Entity.IsDescriptorEntity()),
                     IsPersonUSIUsage = property.DefiningProperty.Entity != property.Entity
                         && property.DefiningProperty.IsIdentifying 
                         && property.DefiningProperty.Entity.IsPersonEntity(),

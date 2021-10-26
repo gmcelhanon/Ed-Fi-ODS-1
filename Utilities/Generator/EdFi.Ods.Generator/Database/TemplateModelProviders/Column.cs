@@ -49,7 +49,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
 
         public int Index { get; set; }
 
-        public bool IsConcreteDescriptorId { get; set; }
+        public bool IsDescriptorUsage { get; set; }
 
         /// <summary>
         /// Indicates whether the column represents an identifier (i.e the USI) for a specific type of person (e.g. Student/Staff/Parent).
@@ -62,5 +62,10 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         /// For primary key columns on derived entities/tables, gets or sets the name of the corresponding column in the base table.
         /// </summary>
         public string BaseColumnName { get; set; }
+
+        /// <summary>
+        /// Indicates whether the column is the boilerplate GUID-based Id column on an aggregate root table. 
+        /// </summary>
+        public bool IsBoilerplateId { get; set; }
     }
 }
