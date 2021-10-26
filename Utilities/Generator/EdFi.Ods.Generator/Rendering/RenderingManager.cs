@@ -29,6 +29,7 @@ namespace EdFi.Ods.Generator.Rendering
         private readonly RenderSettings _renderSettings;
 
         private readonly IDictionary<string, string> _optionsPropertyByName;
+        private IEnumerable<string> _templates;
 
         public RenderingManager(
             IList<Plugin> renderingPlugins, 
@@ -46,6 +47,8 @@ namespace EdFi.Ods.Generator.Rendering
             _outputPath = generatorOptions.OutputPath;
 
             _optionsPropertyByName = generatorOptions.PropertyByName;
+
+            _templates = generatorOptions.Templates;
             
             foreach (var enhancer in renderingPropertiesEnhancers)
             {
@@ -102,7 +105,10 @@ namespace EdFi.Ods.Generator.Rendering
                         }
 
                         return Regex.IsMatch(optionValue, c.Value, RegexOptions.IgnoreCase);
-                    })).ToArray();
+                    }))
+                    // Eliminate renderings if a subset of templates has been specified
+                    .Where(r => !_templates.Any() || _templates.Contains(r.Template))
+                    .ToArray();
 
                 if (!matchingRenderings.Any())
                 {

@@ -19,6 +19,7 @@ namespace EdFi.Ods.Generator
         IEnumerable<string> Properties { get; set; }
         IEnumerable<string> Plugins { get; set; }
         IDictionary<string, string> PropertyByName { get; }
+        IEnumerable<string> Templates { get; set; }
     }
 
     public interface IModelOptions
@@ -81,5 +82,8 @@ namespace EdFi.Ods.Generator
 
         [Option("capabilities", Required = false, HelpText = "Path to the capability statement to use for model-based generation.")]
         public string CapabilityStatementPath { get; set; }
+        
+        [Option('t', "template", HelpText = "The name(s) of the subset of templates to be rendered.")]
+        public IEnumerable<string> Templates { get; set; }
     }
 }
