@@ -29,7 +29,7 @@ namespace EdFi.Ods.Generator.Rendering
         private readonly RenderSettings _renderSettings;
 
         private readonly IDictionary<string, string> _optionsPropertyByName;
-        private IEnumerable<string> _templates;
+        private readonly string _templatePath;
 
         public RenderingManager(
             IList<Plugin> renderingPlugins, 
@@ -48,7 +48,7 @@ namespace EdFi.Ods.Generator.Rendering
 
             _optionsPropertyByName = generatorOptions.PropertyByName;
 
-            _templates = generatorOptions.Templates;
+            _templatePath = generatorOptions.TemplatePath;
             
             foreach (var enhancer in renderingPropertiesEnhancers)
             {
@@ -106,8 +106,8 @@ namespace EdFi.Ods.Generator.Rendering
 
                         return Regex.IsMatch(optionValue, c.Value, RegexOptions.IgnoreCase);
                     }))
-                    // Eliminate renderings if a subset of templates has been specified
-                    .Where(r => !_templates.Any() || _templates.Contains(r.Template))
+                    // Filter renderings to those template whose names match the pattern supplied
+                    .Where(r => r.Template.StartsWith(_templatePath, StringComparison.OrdinalIgnoreCase))
                     .ToArray();
 
                 if (!matchingRenderings.Any())
