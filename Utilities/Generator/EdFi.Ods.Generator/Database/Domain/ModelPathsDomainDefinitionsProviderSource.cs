@@ -7,11 +7,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using EdFi.Ods.Common.Models;
+using log4net;
+using log4net.Repository.Hierarchy;
 
 namespace EdFi.Ods.Generator.Database.Domain
 {
     public class ModelPathsDomainDefinitionsProviderSource : IDomainModelDefinitionsProviderSource
     {
+        private readonly ILog _logger = LogManager.GetLogger(typeof(ModelPathsDomainDefinitionsProviderSource));
+        
         private readonly IEnumerable<string> _modelPaths;
 
         public ModelPathsDomainDefinitionsProviderSource(IModelOptions options)
@@ -21,20 +25,25 @@ namespace EdFi.Ods.Generator.Database.Domain
         
         public IEnumerable<IDomainModelDefinitionsProvider> GetDomainModelDefinitionProviders()
         {
-            var executionPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            
             foreach (string modelPath in _modelPaths)
             {
                 string resolveModelPath = Path.IsPathRooted(modelPath)
                     ? modelPath
-                    : Path.Combine(executionPath, modelPath);
+                    : Path.Combine(GetExecutionBasePath(), modelPath);
                 
                 if (!File.Exists(resolveModelPath))
                 {
                     throw new FileNotFoundException("Model file not found.", resolveModelPath);
                 }
                 
+                _logger.Info($"Loading model file '{resolveModelPath}'...");
+                
                 yield return new DomainModelDefinitionsJsonFileSystemProvider(modelPath);
+            }
+
+            string GetExecutionBasePath()
+            {
+                return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             }
         }
     }
