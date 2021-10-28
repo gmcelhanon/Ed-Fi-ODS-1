@@ -32,7 +32,7 @@ namespace EdFi.Ods.Generator
     {
         string DatabaseEngine { get; set; }
         
-        string SchemaFilter { get; set; }
+        IEnumerable<string> Schemas { get; set; }
     }
 
     public interface IRenderingPropertiesEnhancer
@@ -73,8 +73,8 @@ namespace EdFi.Ods.Generator
         [Option("databaseEngine", Required = false, HelpText = "The target database engine (e.g. SqlServer or PostgreSql).", Default = "SqlServer")]
         public string DatabaseEngine { get; set; }
         
-        [Option("schemaFilter", Required = false, HelpText = "The schema whose artifacts should be included in code generation.", Default = "edfi")]
-        public string SchemaFilter { get; set; }
+        [Option('s', "schema", Required = false, HelpText = "The schema whose artifacts should be included in code generation.")]
+        public IEnumerable<string> Schemas { get; set; }
 
         // IModelOptions
         [Option("model", HelpText = "The path to the API model file from MetaEd.")]

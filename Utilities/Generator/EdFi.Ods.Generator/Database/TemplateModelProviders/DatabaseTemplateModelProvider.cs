@@ -35,9 +35,9 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         private readonly Lazy<DomainModel> _domainModel;
 
         private readonly string _databaseEngine;
-        private readonly string _schemaFilter;
+        private readonly IEnumerable<string> _schemas;
 
-        private bool ShouldRenderEntityForSchema(Entity entity) => entity.Schema.Equals(_schemaFilter, StringComparison.OrdinalIgnoreCase);
+        private bool ShouldRenderEntityForSchema(Entity entity) => !_schemas.Any() || _schemas.Contains(entity.Schema, StringComparer.OrdinalIgnoreCase);
 
         public DatabaseTemplateModelProvider(
             IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory,
@@ -67,13 +67,13 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
             {
                 var domainModel = domainModelProvider.Value.GetDomainModel();
 
-                _logger.Debug($"Domain model contains the following {domainModel.Schemas.Count} schema(s): {string.Join(", ", domainModel.Schemas.Select(s => s.PhysicalName))}");
+                _logger.Info($"Domain model contains the following {domainModel.Schemas.Count} schema(s): {string.Join(", ", domainModel.Schemas.Select(s => $"{s.PhysicalName} ({domainModel.Entities.Count(e => e.Schema == s.PhysicalName)} entities)"))}");
 
                 return domainModel;
             });
             
             _databaseEngine = databaseOptions.DatabaseEngine;
-            _schemaFilter = databaseOptions.SchemaFilter;
+            _schemas = databaseOptions.Schemas;
         }
 
         private readonly IDictionary<FullName, IList<FullName>> _updatableAncestorsByEntity 

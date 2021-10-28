@@ -17,7 +17,6 @@ namespace EdFi.Ods.Generator.Database
         public void EnhanceProperties(IDictionary<string, string> properties)
         {
             properties["DatabaseEngine"] = _databaseOptions.DatabaseEngine;
-            properties["SchemaFilter"] = _databaseOptions.SchemaFilter;
             properties["DatabaseEngineCode"] = _namingConvention.DatabaseEngineCode;
         }
     }
