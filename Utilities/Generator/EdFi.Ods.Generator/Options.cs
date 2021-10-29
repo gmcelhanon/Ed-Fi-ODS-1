@@ -64,6 +64,9 @@ namespace EdFi.Ods.Generator
         [Option('g', "plugin")]
         public IEnumerable<string> Plugins { get; set; }
 
+        [Option('f', "pluginFeed", HelpText = "The nuget feed for the plugin.")]
+        public string PluginFeedUrl { get; set; }
+
         public IDictionary<string, string> PropertyByName
         {
             get => _propertyByName.Value;

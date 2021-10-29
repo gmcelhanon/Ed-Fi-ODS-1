@@ -13,8 +13,10 @@ using EdFi.Ods.Generator.Modules;
 using EdFi.Ods.Generator.Rendering;
 using log4net;
 using log4net.Config;
+using Weikio.NugetDownloader;
 using Weikio.PluginFramework.Abstractions;
 using Weikio.PluginFramework.Catalogs;
+using Weikio.PluginFramework.Catalogs.NuGet;
 
 namespace EdFi.Ods.Generator
 {
@@ -121,7 +123,7 @@ namespace EdFi.Ods.Generator
             containerBuilder.RegisterInstance(configuration);
             
             // Handle plugins with paths through Options / command-line parameter
-            var pluginCatalogs = GetPluginCatalogs(options.Plugins).ToArray();
+            var pluginCatalogs = GetPluginCatalogs(options.Plugins, options.PluginFeedUrl).ToArray();
             var compositePluginCatalog = new CompositePluginCatalog(pluginCatalogs);
             compositePluginCatalog.Initialize();
 
@@ -143,7 +145,7 @@ namespace EdFi.Ods.Generator
             return containerBuilder.Build();
         }
 
-        private static IEnumerable<IPluginCatalog> GetPluginCatalogs(IEnumerable<string> pluginsArgument)
+        private static IEnumerable<IPluginCatalog> GetPluginCatalogs(IEnumerable<string> pluginsArgument, string pluginFeedUrl)
         {
             // Start with the current assembly's built-in plugins
             var builtinAssemblyPluginCatalog = new AssemblyPluginCatalog(Assembly.GetExecutingAssembly(),type => type.Implements<IRenderingPlugin>());
@@ -177,8 +179,19 @@ namespace EdFi.Ods.Generator
                 }
                 else
                 {
-                    throw new ArgumentException(
-                        $"Plugin '{pluginArgument}' could not be resolved as a relative or full path to an assembly or plugins folder.");
+                    _logger.Info($"Nuget feed: {pluginFeedUrl}");
+                    _logger.Info($"Nuget package: {pluginArgument}");
+
+
+                    var feed = pluginFeedUrl == null ? null : new NuGetFeed("edufied", pluginFeedUrl);
+                    
+                    yield return new NugetPackagePluginCatalog(pluginArgument,
+                        // options: new NugetPluginCatalogOptions { PluginNameOptions = new PluginNameOptions(){}}
+                        packageFeed: feed, 
+                        configureFinder: type => type.Implements<IRenderingPlugin>()); 
+
+                    // throw new ArgumentException(
+                    //     $"Plugin '{pluginArgument}' could not be resolved as a relative or full path to an assembly or plugins folder.");
                 }
             }
         }
