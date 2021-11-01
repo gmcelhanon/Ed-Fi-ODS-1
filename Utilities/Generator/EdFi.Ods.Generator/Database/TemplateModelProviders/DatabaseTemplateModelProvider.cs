@@ -35,9 +35,9 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         private readonly Lazy<DomainModel> _domainModel;
 
         private readonly string _databaseEngine;
-        private readonly IEnumerable<string> _schemas;
+        private readonly string _schema;
 
-        private bool ShouldRenderEntityForSchema(Entity entity) => !_schemas.Any() || _schemas.Contains(entity.Schema, StringComparer.OrdinalIgnoreCase);
+        private bool ShouldRenderEntityForSchema(Entity entity) => string.IsNullOrEmpty(_schema) || _schema.Equals(entity.Schema, StringComparison.OrdinalIgnoreCase);
 
         public DatabaseTemplateModelProvider(
             IDatabaseTypeTranslatorFactory databaseTypeTranslatorFactory,
@@ -73,7 +73,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
             });
             
             _databaseEngine = databaseOptions.DatabaseEngine;
-            _schemas = databaseOptions.Schemas;
+            _schema = databaseOptions.Schema;
         }
 
         private readonly IDictionary<FullName, IList<FullName>> _updatableAncestorsByEntity 

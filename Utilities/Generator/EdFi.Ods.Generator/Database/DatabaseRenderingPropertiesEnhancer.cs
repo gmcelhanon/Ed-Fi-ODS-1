@@ -18,6 +18,11 @@ namespace EdFi.Ods.Generator.Database
         {
             properties["DatabaseEngine"] = _databaseOptions.DatabaseEngine;
             properties["DatabaseEngineCode"] = _namingConvention.DatabaseEngineCode;
+
+            if (!string.IsNullOrEmpty(_databaseOptions.Schema))
+            {
+                properties["Schema"] = _databaseOptions.Schema;
+            }
         }
     }
 }

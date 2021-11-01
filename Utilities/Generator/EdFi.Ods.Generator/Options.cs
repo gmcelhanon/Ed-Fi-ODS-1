@@ -32,7 +32,7 @@ namespace EdFi.Ods.Generator
     {
         string DatabaseEngine { get; set; }
         
-        IEnumerable<string> Schemas { get; set; }
+        string Schema { get; set; }
     }
 
     public interface IRenderingPropertiesEnhancer
@@ -77,7 +77,7 @@ namespace EdFi.Ods.Generator
         public string DatabaseEngine { get; set; }
         
         [Option('s', "schema", Required = false, HelpText = "The schema whose artifacts should be included in code generation.")]
-        public IEnumerable<string> Schemas { get; set; }
+        public string Schema { get; set; }
 
         // IModelOptions
         [Option("model", HelpText = "The path to the API model file from MetaEd.")]
