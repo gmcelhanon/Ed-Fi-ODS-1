@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Autofac;
 using CommandLine;
 using EdFi.Ods.Generator.Helpers;
@@ -34,9 +36,6 @@ namespace EdFi.Ods.Generator
 
         private static async Task<int> Main(string[] args)
         {
-            ConfigureLogging();
-            _logger = LogManager.GetLogger(typeof(Program));
-
             int result = 0;
             
             Options options = null;
@@ -60,7 +59,10 @@ namespace EdFi.Ods.Generator
             {
                 return result;
             }
-            
+
+            ConfigureLogging(options.LogLevel);
+            _logger = LogManager.GetLogger(typeof(Program));
+
             var container = InitializeContainer(options);
             
             Console.CancelKeyPress += (o, e) =>
@@ -102,13 +104,18 @@ namespace EdFi.Ods.Generator
             }
         }
 
-        private static void ConfigureLogging()
+        private static void ConfigureLogging(string logLevel)
         {
             var assembly = typeof(Program).GetTypeInfo().Assembly;
 
             string configPath = Path.Combine(Path.GetDirectoryName(assembly.Location), "log4net.config");
 
-            XmlConfigurator.Configure(LogManager.GetRepository(assembly), new FileInfo(configPath));
+            var doc = XDocument.Parse(File.ReadAllText(configPath));
+            var logLevelAttribute = doc.Element("log4net").Element("root").Element("level").Attribute("value");
+            logLevelAttribute?.SetValue(logLevel);
+            
+            // XmlConfigurator.Configure(LogManager.GetRepository(assembly), new FileInfo(configPath));
+            XmlConfigurator.Configure(LogManager.GetRepository(assembly), new MemoryStream(Encoding.UTF8.GetBytes(doc.ToString())));
         }
 
         private static IContainer InitializeContainer(Options options)

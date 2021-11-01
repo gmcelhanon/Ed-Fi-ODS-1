@@ -20,6 +20,7 @@ namespace EdFi.Ods.Generator
         IEnumerable<string> Plugins { get; set; }
         IDictionary<string, string> PropertyByName { get; }
         string TemplatePath { get; set; }
+        string LogLevel { get; set; }
     }
 
     public interface IModelOptions
@@ -55,6 +56,7 @@ namespace EdFi.Ods.Generator
                 });
         }
         
+        // IGeneratorOptions
         [Option('o', "outputPath", Required = true, HelpText = "The base path for rendered output files.")]
         public string OutputPath { get; set; }
         
@@ -66,6 +68,9 @@ namespace EdFi.Ods.Generator
 
         [Option('t', "templatePath", Required = false, HelpText = "A path to use as a name prefix to match the templates to be rendered.")]
         public string TemplatePath { get; set; }
+
+        [Option('l', "logLevel", HelpText = "Sets the logging output level as DEBUG, INFO, WARN, or ERROR.", Default = "INFO")]
+        public string LogLevel { get; set; }
 
         [Option('f', "pluginFeed", HelpText = "The nuget feed for the plugin.")]
         public string PluginFeedUrl { get; set; }
