@@ -64,6 +64,9 @@ namespace EdFi.Ods.Generator
         [Option('g', "plugin")]
         public IEnumerable<string> Plugins { get; set; }
 
+        [Option('t', "templatePath", Required = false, HelpText = "A path to use as a name prefix to match the templates to be rendered.")]
+        public string TemplatePath { get; set; }
+
         [Option('f', "pluginFeed", HelpText = "The nuget feed for the plugin.")]
         public string PluginFeedUrl { get; set; }
 
@@ -85,8 +88,6 @@ namespace EdFi.Ods.Generator
 
         [Option("capabilities", Required = false, HelpText = "Path to the capability statement to use for model-based generation.")]
         public string CapabilityStatementPath { get; set; }
-        
-        [Option('t', "templatePath", Required = false, HelpText = "A path to use as a name prefix to match the templates to be rendered.", Default = ".*")]
-        public string TemplatePath { get; set; }
+
     }
 }

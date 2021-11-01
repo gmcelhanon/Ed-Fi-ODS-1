@@ -107,7 +107,7 @@ namespace EdFi.Ods.Generator.Rendering
                         return Regex.IsMatch(optionValue, c.Value, RegexOptions.IgnoreCase);
                     }))
                     // Filter renderings to those template whose names match the pattern supplied
-                    .Where(r => r.Template.StartsWith(_templatePath, StringComparison.OrdinalIgnoreCase))
+                    .Where(r => string.IsNullOrEmpty(_templatePath) || r.Template.StartsWith(_templatePath, StringComparison.OrdinalIgnoreCase))
                     .ToArray();
 
                 if (!matchingRenderings.Any())
