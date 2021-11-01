@@ -3,6 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -25,9 +26,9 @@ namespace EdFi.Ods.Generator.Rendering
 
             if (renderingsManifestStream == null)
             {
-                _logger.Debug($@"No 'renderings.settings' file was found in plugin assembly '{pluginAssembly.FullName}'.");
+                _logger.Debug($@"No 'renderings.json' file was found in plugin assembly '{pluginAssembly.FullName}'. No templates will be rendered for this plugin.");
 
-                return new Rendering[0];
+                return Array.Empty<Rendering>();
             }
 
             string renderingsManifestContents = await GetStreamContents(renderingsManifestStream);

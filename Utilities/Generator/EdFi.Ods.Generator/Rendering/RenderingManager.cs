@@ -93,7 +93,7 @@ namespace EdFi.Ods.Generator.Rendering
                     continue;
                 }
                 
-                _logger.Debug($"Global rendering context: {string.Join(", ", _optionsPropertyByName.Select(kvp => $"{kvp.Key}={kvp.Value}"))}");
+                _logger.Info($"Global rendering context: {string.Join(", ", _optionsPropertyByName.Select(kvp => $"{kvp.Key}={kvp.Value}"))}");
                 
                 var matchingRenderings = renderings.Where(r => r.Conditions.All(
                     c =>
