@@ -1,3 +1,4 @@
+using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Models.Dynamic;
 
 namespace EdFi.Ods.Generator.Database.TemplateModelProviders
@@ -67,5 +68,10 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
         /// Indicates whether the column is the boilerplate GUID-based Id column on an aggregate root table. 
         /// </summary>
         public bool IsBoilerplateId { get; set; }
+
+        /// <summary>
+        /// If the column is based on an <see cref="EntityProperty" />, gets or sets a reference to the property. 
+        /// </summary>
+        public EntityProperty EntityProperty { get; set; }
     }
 }

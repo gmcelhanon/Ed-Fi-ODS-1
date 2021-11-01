@@ -17,7 +17,6 @@ using EdFi.Ods.Generator.Database.Conventions;
 using EdFi.Ods.Generator.Database.DataTypes;
 using EdFi.Ods.Generator.Database.Domain;
 using EdFi.Ods.Generator.Database.NamingConventions;
-using EdFi.Ods.Generator.Database.TemplateModelProviders;
 using EdFi.Ods.Generator.Rendering;
 using EdFi.Ods.Generator.Templating;
 using log4net;
@@ -239,6 +238,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
                             ThisTableName = databaseNamingConvention.TableName(a.ThisEntity),
                             ThisColumns = a.ThisProperties.Select((p, i) => new Column
                             {
+                                EntityProperty = p,
                                 ColumnName = databaseNamingConvention.ColumnName(p),
                                 DataType = databaseTypeTranslator.GetSqlType(p.PropertyType),
                                 IsNullable = p.PropertyType.IsNullable,
@@ -410,6 +410,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
                     return boilerplateProperties
                         .Select((p, i) => new Column
                         {
+                            EntityProperty = p,
                             ColumnName = databaseNamingConvention.ColumnName(p.PropertyName),
                             DataType = databaseTypeTranslator.GetSqlType(p.PropertyType),
                             IsNullable = p.PropertyType.IsNullable,
@@ -430,6 +431,7 @@ namespace EdFi.Ods.Generator.Database.TemplateModelProviders
             {
                 var column = new Column
                 {
+                    EntityProperty = property, 
                     ColumnName = databaseNamingConvention.ColumnName(property),
                     DataType = databaseTypeTranslator.GetSqlType(property.PropertyType),
                     IsNullable = property.PropertyType.IsNullable,
