@@ -13,6 +13,8 @@ namespace EdFi.Ods.Generator.Database.NamingConventions
 
         string TableName(Entity entity);
 
+        string TriggerName(Entity entity, TriggerType triggerType);
+
         string ColumnName(EntityProperty property, string contextualSuffix = null);
 
         string ColumnName(string name, string contextualSuffix = null);

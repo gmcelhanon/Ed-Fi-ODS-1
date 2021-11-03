@@ -112,6 +112,8 @@ namespace EdFi.Ods.Generator.Database.NamingConventions
 
         public abstract string DefaultGuidConstraintValue();
         
+        public abstract string TriggerName(Entity entity, TriggerType triggerType);
+        
         /// <summary>
         /// Gets a short code representing the database engine.
         /// </summary>
