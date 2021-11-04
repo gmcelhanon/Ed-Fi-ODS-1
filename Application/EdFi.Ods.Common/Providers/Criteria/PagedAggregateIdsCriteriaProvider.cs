@@ -26,9 +26,9 @@ namespace EdFi.Ods.Common.Providers.Criteria
         /// <param name="specification">An instance of the entity containing parameters to be added to the query.</param>
         /// <param name="queryParameters">The query parameters to be applied to the filtering.</param>
         /// <returns>The NHibernate <see cref="NHibernate.ICriteria"/> instance representing the query.</returns>
-        public ICriteria GetCriteriaQuery(TEntity specification, IQueryParameters queryParameters)
+        public DetachedCriteria GetCriteriaQuery(TEntity specification, IQueryParameters queryParameters)
         {
-            var idQueryCriteria = Session.CreateCriteria<TEntity>("aggregateRoot")
+            var idQueryCriteria = DetachedCriteria.For<TEntity>("aggregateRoot")
                 .SetProjection(Projections.Property("Id"))
                 .SetFirstResult(queryParameters.Offset ?? 0)
                 .SetMaxResults(queryParameters.Limit ?? 25);
@@ -44,7 +44,7 @@ namespace EdFi.Ods.Common.Providers.Criteria
             return idQueryCriteria;
         }
 
-        private void AddDefaultOrdering(ICriteria queryCriteria)
+        private void AddDefaultOrdering(DetachedCriteria queryCriteria)
         {
             var persister = (AbstractEntityPersister) SessionFactory.GetClassMetadata(typeof(TEntity));
 

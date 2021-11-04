@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace EdFi.Ods.Common.Providers.Criteria
 {
@@ -21,6 +22,6 @@ namespace EdFi.Ods.Common.Providers.Criteria
         /// <param name="specification">An instance of the entity containing parameters to be added to the query.</param>
         /// <param name="queryParameters">The query parameters to be applied to the filtering.</param>
         /// <returns>The NHibernate <see cref="NHibernate.ICriteria"/> instance representing the query.</returns>
-        ICriteria GetCriteriaQuery(TEntity specification, IQueryParameters queryParameters);
+        DetachedCriteria GetCriteriaQuery(TEntity specification, IQueryParameters queryParameters);
     }
 }

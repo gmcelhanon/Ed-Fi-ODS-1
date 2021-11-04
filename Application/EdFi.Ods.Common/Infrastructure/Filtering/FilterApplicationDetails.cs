@@ -45,7 +45,7 @@ namespace EdFi.Ods.Common.Infrastructure.Filtering
             string filterName,
             string friendlyDefaultConditionFormat,
             string friendlyHqlConditionFormat,
-            Action<ICriteria, Junction, IDictionary<string, object>, JoinType> criteriaApplicator,
+            Action<DetachedCriteria, Junction, IDictionary<string, object>, JoinType> criteriaApplicator,
             Func<Type, PropertyInfo[], bool> shouldApply)
         {
             ShouldApply = shouldApply;
@@ -128,7 +128,7 @@ namespace EdFi.Ods.Common.Infrastructure.Filtering
         /// <summary>
         /// Gets the function for applying the filter using NHibernate's <see cref="NHibernate.ICriteria"/> API.
         /// </summary>
-        public Action<ICriteria, Junction, IDictionary<string, object>, JoinType> CriteriaApplicator { get; }
+        public Action<DetachedCriteria, Junction, IDictionary<string, object>, JoinType> CriteriaApplicator { get; }
 
         /// <summary>
         /// Gets the predicate functional for determining whether the filter should be applied to a particular entity.

@@ -29,7 +29,7 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.Relationships.Filters
         /// <param name="joinType">The <see cref="JoinType" /> to be used.</param>
         /// <param name="authViewAlias">The name of the property to be used for auth View Alias name.</param>
         public static void ApplyJoinFilter(
-            this ICriteria criteria,
+            this DetachedCriteria criteria,
             Junction whereJunction,
             IDictionary<string, object> parameters,
             string viewName,
@@ -42,10 +42,12 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.Relationships.Filters
             authViewAlias = string.IsNullOrWhiteSpace(authViewAlias) ? $"authView{viewName}" : $"authView{authViewAlias}";
 
             // Apply authorization join using ICriteria
-            criteria.CreateEntityAlias(
-                authViewAlias,
-                Restrictions.EqProperty($"aggregateRoot.{aggregateRootPropertyName}", $"{authViewAlias}.{authViewPropertyName}"),
-                joinType, $"{viewName.GetAuthorizationViewClassName()}".GetFullNameForView());
+            criteria.CreateAlias($"{viewName.GetAuthorizationViewClassName()}".GetFullNameForView(), authViewAlias, joinType, Restrictions.EqProperty($"aggregateRoot.{aggregateRootPropertyName}", $"{authViewAlias}.{authViewPropertyName}"));
+            
+            // criteria.CreateEntityAlias(
+            //     authViewAlias,
+            //     Restrictions.EqProperty($"aggregateRoot.{aggregateRootPropertyName}", $"{authViewAlias}.{authViewPropertyName}"),
+            //     joinType, $"{viewName.GetAuthorizationViewClassName()}".GetFullNameForView());
 
             object value;
 

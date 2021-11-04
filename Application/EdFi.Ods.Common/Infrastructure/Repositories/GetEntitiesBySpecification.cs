@@ -91,16 +91,22 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     var idQueryCriteria = _pagedAggregateIdsCriteriaProvider.GetCriteriaQuery(specification, queryParameters);
                     SetChangeQueriesCriteria(idQueryCriteria);
 
-                    queryBatch.Add<Guid>(idQueryCriteria);
+                    queryBatch.Add<Guid>(idQueryCriteria.GetExecutableCriteria(SessionFactory.GetCurrentSession()));
                 }
 
                 // If requested, get a total count of available records
                 if (CountRequested())
                 {
                     var countQueryCriteria = _totalCountCriteriaProvider.GetCriteriaQuery(specification, queryParameters);
+                    
+                    // Perform the count
+                    DetachedCriteria.For<TEntity>()
+                        .SetProjection(Projections.RowCountInt64())
+                        .Add(Subqueries.Select(countQueryCriteria));
+                    
                     SetChangeQueriesCriteria(countQueryCriteria);
 
-                    queryBatch.Add<long>(countQueryCriteria);
+                    queryBatch.Add<long>(countQueryCriteria.GetExecutableCriteria(SessionFactory.GetCurrentSession()));
                 }
 
                 int resultIndex = 0;
@@ -119,7 +125,7 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     TotalCount = totalCount
                 };
 
-                void SetChangeQueriesCriteria(ICriteria criteria)
+                void SetChangeQueriesCriteria(DetachedCriteria criteria)
                 {
                     if (queryParameters.MinChangeVersion.HasValue)
                     {

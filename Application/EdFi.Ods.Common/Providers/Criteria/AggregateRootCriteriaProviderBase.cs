@@ -50,7 +50,7 @@ namespace EdFi.Ods.Common.Providers.Criteria
             _descriptorsCache = Preconditions.ThrowIfNull(descriptorsCache, nameof(descriptorsCache));
         }
 
-        protected void ProcessSpecification(ICriteria queryCriteria, TEntity specification)
+        protected void ProcessSpecification(DetachedCriteria queryCriteria, TEntity specification)
         {
             if (specification != null)
             {
@@ -86,7 +86,7 @@ namespace EdFi.Ods.Common.Providers.Criteria
             }
         }
 
-        protected static void ProcessQueryParameters(ICriteria queryCriteria, IQueryParameters parameters)
+        protected static void ProcessQueryParameters(DetachedCriteria queryCriteria, IQueryParameters parameters)
         {
             foreach (IQueryCriteriaBase criteria in parameters.QueryCriteria)
             {

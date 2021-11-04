@@ -22,7 +22,7 @@ namespace EdFi.Ods.Common.Providers.Criteria
         /// <param name="filterName">The name of the filter.</param>
         /// <param name="entityType">The entity to which the filter applies.</param>
         /// <param name="criteriaApplicator">The function that applies the filter's criteria to the <see cref="NHibernate.ICriteria"/> instance.</param>
-        void AddCriteriaApplicator(string filterName, Type entityType, Action<ICriteria, Junction, IDictionary<string, object>, JoinType> criteriaApplicator);
+        void AddCriteriaApplicator(string filterName, Type entityType, Action<DetachedCriteria, Junction, IDictionary<string, object>, JoinType> criteriaApplicator);
 
         /// <summary>
         /// Attempts to retrieve the applicator functions for the specified filter name and entity.
@@ -31,6 +31,6 @@ namespace EdFi.Ods.Common.Providers.Criteria
         /// <param name="entityType">The entity being queried.</param>
         /// <param name="criteriaApplicators">The function that applies the filter's criteria to the <see cref="NHibernate.ICriteria"/> instance.</param>
         /// <returns><b>true</b> if an applicator was found; otherwise <b>false</b>.</returns>
-        bool TryGetCriteriaApplicator(string filterName, Type entityType, out IReadOnlyList<Action<ICriteria, Junction, IDictionary<string, object>, JoinType>> criteriaApplicators);
+        bool TryGetCriteriaApplicator(string filterName, Type entityType, out IReadOnlyList<Action<DetachedCriteria, Junction, IDictionary<string, object>, JoinType>> criteriaApplicators);
     }
 }

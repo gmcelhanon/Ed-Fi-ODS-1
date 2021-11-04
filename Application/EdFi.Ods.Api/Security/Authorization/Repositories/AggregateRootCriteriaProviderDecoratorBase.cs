@@ -50,7 +50,7 @@ namespace EdFi.Ods.Api.Security.Authorization.Repositories
         /// <param name="specification">An instance of the entity representing the parameters to the query.</param>
         /// <param name="queryParameters">The parameter values to apply to the query.</param>
         /// <returns>The criteria created by the decorated instance.</returns>
-        public ICriteria GetCriteriaQuery(TEntity specification, IQueryParameters queryParameters)
+        public DetachedCriteria GetCriteriaQuery(TEntity specification, IQueryParameters queryParameters)
         {
             var criteria = _decoratedInstance.GetCriteriaQuery(specification, queryParameters);
 
@@ -87,7 +87,7 @@ namespace EdFi.Ods.Api.Security.Authorization.Repositories
                     if (!_authorizationCriteriaApplicatorProvider.TryGetCriteriaApplicator(
                         filterDetails.FilterName,
                         typeof(TEntity),
-                        out IReadOnlyList<Action<ICriteria, Junction, IDictionary<string, object>, JoinType>> applicators))
+                        out IReadOnlyList<Action<DetachedCriteria, Junction, IDictionary<string, object>, JoinType>> applicators))
                     {
                         unsupportedAuthorizationFilters.Add(filterDetails.FilterName);
 
@@ -95,7 +95,7 @@ namespace EdFi.Ods.Api.Security.Authorization.Repositories
                     }
 
                     // Invoke the filter applicators against the current query
-                    foreach (var applicator in applicators)
+                    foreach (Action<DetachedCriteria, Junction, IDictionary<string, object>, JoinType> applicator in applicators)
                     {
                         var parameterValues = new Dictionary<string, object>
                         {
