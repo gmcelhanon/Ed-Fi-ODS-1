@@ -1,0 +1,29 @@
+using System.Collections.Generic;
+using EdFi.Ods.Generator.Common.Database.NamingConventions;
+using EdFi.Ods.Generator.Common.Options;
+
+namespace EdFi.Ods.Generator.Common.Database
+{
+    public class DatabaseRenderingPropertiesEnhancer : IRenderingPropertiesEnhancer
+    {
+        private readonly IDatabaseOptions _databaseOptions;
+        private readonly IDatabaseNamingConvention _namingConvention;
+
+        public DatabaseRenderingPropertiesEnhancer(IDatabaseOptions databaseOptions, IDatabaseNamingConventionFactory databaseNamingConventionFactory)
+        {
+            _databaseOptions = databaseOptions;
+            _namingConvention = databaseNamingConventionFactory.CreateNamingConvention(databaseOptions.DatabaseEngine);
+        }
+        
+        public void EnhanceProperties(IDictionary<string, string> properties)
+        {
+            properties["DatabaseEngine"] = _databaseOptions.DatabaseEngine;
+            properties["DatabaseEngineCode"] = _namingConvention.DatabaseEngineCode;
+
+            if (!string.IsNullOrEmpty(_databaseOptions.Schema))
+            {
+                properties["Schema"] = _databaseOptions.Schema;
+            }
+        }
+    }
+}

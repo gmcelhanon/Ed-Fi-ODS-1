@@ -5,16 +5,18 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Autofac;
 using CommandLine;
+using EdFi.Ods.Generator.Common.Modules;
+using EdFi.Ods.Generator.Common.Rendering;
 using EdFi.Ods.Generator.Helpers;
-using EdFi.Ods.Generator.Modules;
-using EdFi.Ods.Generator.Rendering;
 using log4net;
 using log4net.Config;
+using Microsoft.CodeAnalysis;
 using Weikio.NugetDownloader;
 using Weikio.PluginFramework.Abstractions;
 using Weikio.PluginFramework.Catalogs;
@@ -155,7 +157,7 @@ namespace EdFi.Ods.Generator
         private static IEnumerable<IPluginCatalog> GetPluginCatalogs(IEnumerable<string> pluginsArgument, string pluginFeedUrl)
         {
             // Start with the current assembly's built-in plugins
-            var builtinAssemblyPluginCatalog = new AssemblyPluginCatalog(Assembly.GetExecutingAssembly(),type => type.Implements<IRenderingPlugin>());
+            var builtinAssemblyPluginCatalog = new AssemblyPluginCatalog(typeof(GeneratorModule).Assembly,type => type.Implements<IRenderingPlugin>());
             yield return builtinAssemblyPluginCatalog;
             
             // Get the base path for any relative paths supplied
@@ -186,16 +188,11 @@ namespace EdFi.Ods.Generator
                 }
                 else
                 {
-                    _logger.Info($"Nuget feed: {pluginFeedUrl}");
-                    _logger.Info($"Nuget package: {pluginArgument}");
-
-
-                    var feed = pluginFeedUrl == null ? null : new NuGetFeed("edufied", pluginFeedUrl);
+                    _logger.Info($"Processing plugin '{pluginArgument}' using nuget...");
+                    var catalog = NugetPluginHelper.ProcessPluginsUsingNuget(pluginFeedUrl, pluginArgument);
+                    _logger.Info($"Nuget processing for plugin '{pluginArgument}' complete.");
                     
-                    yield return new NugetPackagePluginCatalog(pluginArgument,
-                        // options: new NugetPluginCatalogOptions { PluginNameOptions = new PluginNameOptions(){}}
-                        packageFeed: feed, 
-                        configureFinder: type => type.Implements<IRenderingPlugin>()); 
+                    yield return catalog;
 
                     // throw new ArgumentException(
                     //     $"Plugin '{pluginArgument}' could not be resolved as a relative or full path to an assembly or plugins folder.");

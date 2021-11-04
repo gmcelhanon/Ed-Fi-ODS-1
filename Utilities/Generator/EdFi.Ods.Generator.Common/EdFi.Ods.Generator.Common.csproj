@@ -1,12 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <PackAsTool>true</PackAsTool>
-    <ToolCommandName>generate</ToolCommandName>
-    <PackageOutputPath>./nupkg</PackageOutputPath>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <Version>1.0.2</Version>
   </PropertyGroup>
 
@@ -27,17 +22,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj" />
-    <ProjectReference Include="..\EdFi.Ods.Generator.Common\EdFi.Ods.Generator.Common.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <None Update="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\LICENSE.txt" Pack="true" PackagePath="" />
-  </ItemGroup>
-
 </Project>

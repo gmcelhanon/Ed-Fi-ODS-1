@@ -4,43 +4,13 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using CommandLine;
-using EdFi.Ods.Generator.Database;
+using EdFi.Ods.Generator.Common.Options;
 
 namespace EdFi.Ods.Generator
 {
-    public interface IGeneratorOptions
-    {
-        string OutputPath { get; set; }
-        IEnumerable<string> Properties { get; set; }
-        IEnumerable<string> Plugins { get; set; }
-        IDictionary<string, string> PropertyByName { get; }
-        string TemplatePath { get; set; }
-        string LogLevel { get; set; }
-    }
-
-    public interface IModelOptions
-    {
-        IEnumerable<string> ModelPaths { get; set; }
-        string CapabilityStatementPath { get; set; }
-    }
-
-    public interface IDatabaseOptions
-    {
-        string DatabaseEngine { get; set; }
-        
-        string Schema { get; set; }
-    }
-
-    public interface IRenderingPropertiesEnhancer
-    {
-        void EnhanceProperties(IDictionary<string, string> properties);
-    }
-    
     public class Options : IGeneratorOptions, IModelOptions, IDatabaseOptions
     {
         private readonly Lazy<IDictionary<string, string>> _propertyByName;
