@@ -22,7 +22,7 @@ using EdFi.Ods.Generator.Rendering;
 using EdFi.Ods.Generator.Templating;
 using log4net;
 
-namespace EdFi.Ods.Generator.Database
+namespace EdFi.Ods.Generator.Database.TemplateModelProviders
 {
     public class DatabaseTemplateModelProvider : ITemplateModelProvider
     {
@@ -63,7 +63,14 @@ namespace EdFi.Ods.Generator.Database
             var domainModelProvider = new Lazy<IDomainModelProvider>(
                 () => new DomainModelProvider(domainModelDefinitionProviders.Value, domainModelDefinitionsTransformers.ToArray()));
             
-            _domainModel = new Lazy<DomainModel>(() => domainModelProvider.Value.GetDomainModel());
+            _domainModel = new Lazy<DomainModel>(() =>
+            {
+                var domainModel = domainModelProvider.Value.GetDomainModel();
+
+                _logger.Debug($"Domain model contains the following {domainModel.Schemas.Count} schema(s): {string.Join(", ", domainModel.Schemas.Select(s => s.PhysicalName))}");
+
+                return domainModel;
+            });
             
             _databaseEngine = databaseOptions.DatabaseEngine;
             _schemaFilter = databaseOptions.SchemaFilter;

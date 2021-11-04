@@ -123,7 +123,7 @@ namespace EdFi.Ods.Generator.Rendering
                     renderingSuccessful = renderingSuccessful && await RenderTemplate(rendering, templateContentByName, pluginAssembly);
                 }
             }
-                    
+            
             _logger.Debug($"Generation complete.");
 
             return renderingSuccessful;
