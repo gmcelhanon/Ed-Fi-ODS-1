@@ -72,6 +72,14 @@ namespace EdFi.Ods.CodeGen.Generators
             return new
                    {
                        ModelName = resourceClass.Name,
+                       ResourceClassTypeName = string.Format(
+                           "{0}.{1}",
+                           EdFiConventions.BuildNamespace(
+                               Namespaces.Resources.BaseNamespace,
+                               TemplateContext.GetSchemaProperCaseNameForResource(resourceClass),
+                               resourceClass.ResourceRoot.Name,
+                               resourceClass.Entity.IsExtensionEntity),
+                           resourceClass.Name),
                        ModelParentName = resourceClass.Entity?.Parent?.Name ?? resourceClass.Name.TrimSuffix("Extension"),
                        ExtensionName = TemplateContext.SchemaProperCaseName, IsEntityExtension = resourceClass.IsResourceExtensionClass,
                        BaseClassName = resourceClass.Entity?.BaseEntity?.Name, AllowPrimaryKeyUpdates = resourceClass.Entity?.Identifier.IsUpdatable,
@@ -93,7 +101,9 @@ namespace EdFi.Ods.CodeGen.Generators
                                                                                                                          p => new
                                                                                                                               {
                                                                                                                                   BasePropertyName =
-                                                                                                                                      p.PropertyName
+                                                                                                                                      p.PropertyName,
+                                                                                                                                  BaseJsonPropertyName =
+                                                                                                                                      p.JsonPropertyName
                                                                                                                               }),
                        NonPrimaryKeyList = resourceClass.NonIdentifyingProperties
                                                         .Where(p => !p.IsInherited && p.IsSynchronizedProperty())
@@ -104,7 +114,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                                         .Select(
                                                              p => new
                                                                   {
-                                                                      p.PropertyName, CSharpSafePropertyName =
+                                                                      p.PropertyName, JsonPropertyName = p.JsonPropertyName, CSharpSafePropertyName =
                                                                           p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)
                                                                   }),
                        HasOneToOneRelationships = resourceClass.EmbeddedObjects.Any(), OneToOneClassList = resourceClass.EmbeddedObjects
@@ -112,14 +122,16 @@ namespace EdFi.Ods.CodeGen.Generators
                                                                                                                              x => new
                                                                                                                                   {
                                                                                                                                       OtherClassName =
-                                                                                                                                          x.PropertyName
+                                                                                                                                          x.PropertyName,
+                                                                                                                                      JsonPropertyName = x.JsonPropertyName
                                                                                                                                   }),
                        BaseNavigableChildrenList = resourceClass.Collections
                                                                 .Where(c => c.IsInherited)
                                                                 .Select(
                                                                      c => new
                                                                           {
-                                                                              OtherClassPlural = c.PropertyName, OtherClassSingular = c.ItemType.Name
+                                                                              OtherClassPlural = c.PropertyName, OtherClassSingular = c.ItemType.Name,
+                                                                              JsonPropertyName = c.JsonPropertyName
                                                                           }),
                        NavigableChildrenList = resourceClass.Collections
                                                             .Where(c => !c.IsInherited)
@@ -129,7 +141,8 @@ namespace EdFi.Ods.CodeGen.Generators
                                                                           IsExtensionClass = resourceClass.IsResourceExtensionClass,
                                                                           IsCollectionAggregateExtension = c.ItemType.Entity.IsAggregateExtensionTopLevelEntity,
                                                                           ParentName = (resourceClass as ResourceChildItem)?.Parent.Name,
-                                                                          ChildClassPlural = c.PropertyName, ChildClassSingular = c.ItemType.Name
+                                                                          ChildClassPlural = c.PropertyName, ChildClassSingular = c.ItemType.Name,
+                                                                          JsonPropertyName = c.JsonPropertyName
                                                                       }),
 
                        // Only Ed-Fi Standard entities that are non-lookups can have extensions
@@ -137,6 +150,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                       && !resourceClass.IsLookup()
                                       && !resourceClass.IsDescriptorEntity()
                                       && !resourceClass.IsAbstract(),
+                       IsAbstract = resourceClass.IsAbstract(),
                        IsBaseClassConcrete = IsBaseClassConcrete(resourceClass), IsBaseEntity = resourceClass.Entity?.IsBase,
                        DerivedEntitiesList = BuildDerivedEntities(resourceClass), IsRootEntity = resourceClass is Resource, ContextualKeysList =
                            resourceClass.IdentifyingProperties
@@ -144,6 +158,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                         .Select(
                                              p => new
                                                   {
+                                                      JsonPropertyName = p.JsonPropertyName,
                                                       CSharpSafePropertyName = p.PropertyName.MakeSafeForCSharpClass(resourceClass.Name)
                                                   }),
                        SourceSupportPropertyList = BuildSourceSupportProperties(resourceClass), FilterDelegatePropertyList = resourceClass.Collections

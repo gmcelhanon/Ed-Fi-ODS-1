@@ -78,7 +78,7 @@ namespace EdFi.Ods.CodeGen.Processing.Impl
                 domainModelDefinitionsToLoad = GetDomainModelDefinitionProviders(assemblyData.SchemaName);
             }
 
-            return new DomainModelProvider(domainModelDefinitionsToLoad ?? _domainModelDefinitionProviders.Value);
+            return new DomainModelProvider(domainModelDefinitionsToLoad ?? _domainModelDefinitionProviders.Value, Array.Empty<IDomainModelDefinitionsTransformer>());
         }
 
         private List<IDomainModelDefinitionsProvider> GetDomainModelDefinitionProviders(string schemaName)

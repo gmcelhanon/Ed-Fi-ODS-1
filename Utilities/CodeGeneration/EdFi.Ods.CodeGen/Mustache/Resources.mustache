@@ -15,6 +15,7 @@ using EdFi.Ods.Common.Adapters;
 using EdFi.Ods.Common.Attributes;
 using EdFi.Ods.Common.Dependencies;
 using EdFi.Ods.Common.Models;
+using EdFi.Ods.Common.Patch;
 using EdFi.Ods.Common.Validation;
 {{#SchemaNamespaces}}
 using {{Namespace}};
@@ -1171,9 +1172,9 @@ namespace {{ResourceClassesNamespace}}
         // ============================================================
         //                      Data Synchronization
         // ------------------------------------------------------------
-        bool ISynchronizable.Synchronize(object target)
+        bool ISynchronizable.Synchronize(object target, EdFiApiPatchBuilder patchBuilder)
         {
-            return {{NamespacePrefix}}{{EntityName}}Mapper.SynchronizeTo(this, ({{NamespacePrefix}}I{{EntityName}})target);
+            return {{NamespacePrefix}}{{EntityName}}Mapper.SynchronizeTo(this, ({{NamespacePrefix}}I{{EntityName}})target, patchBuilder);
         }
 
         void IMappable.Map(object target)

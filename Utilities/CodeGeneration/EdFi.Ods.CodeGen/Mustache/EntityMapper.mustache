@@ -8,6 +8,7 @@ using EdFi.Ods.Common;
 using EdFi.Ods.Common.Constants;
 using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Extensions;
+using EdFi.Ods.Common.Patch;
 {{#HasDerivedResources}}
 using EdFi.Ods.Entities.Common.EdFi;
 {{/HasDerivedResources}}
@@ -20,7 +21,19 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
     [ExcludeFromCodeCoverage]
     public static class {{ModelName}}Mapper
     {
-        public static bool SynchronizeTo(this I{{ModelName}} source, I{{ModelName}} target)
+        {{^IsAbstract}}
+        private static Type _resourceModelType = typeof(global::{{ResourceClassTypeName}}); 
+    
+        public static I{{ModelName}} MapToResource(this I{{ModelName}} entity)
+        {
+            var resourceItem = (I{{ModelName}}) Activator.CreateInstance(_resourceModelType);
+            entity.Map(resourceItem);
+    
+            return resourceItem;
+        }
+        
+        {{/IsAbstract}}
+        public static bool SynchronizeTo(this I{{ModelName}} source, I{{ModelName}} target, EdFiApiPatchBuilder patchBuilder)
         {
             bool isModified = false;
 
@@ -49,7 +62,9 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                     var targetWithNewKeyValues = target as IHasCascadableKeyValues;
 
                     if (targetWithNewKeyValues != null)
+                    {
                         targetWithNewKeyValues.NewKeyValues = sourceWithPrimaryKeyValues.GetPrimaryKeyValues();
+                    }
                 }
             }
             {{/AllowPrimaryKeyUpdates}}
@@ -70,6 +85,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             if ((sourceSupport == null || sourceSupport.Is{{BasePropertyName}}Supported)
                 && target.{{BasePropertyName}} != source.{{BasePropertyName}})
             {
+                patchBuilder?.PropertyChanged("{{BaseJsonPropertyName}}", source.{{BasePropertyName}}, target.{{BasePropertyName}});
                 target.{{BasePropertyName}} = source.{{BasePropertyName}};
                 isModified = true;
             }
@@ -82,6 +98,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             if ((sourceSupport == null || sourceSupport.Is{{PropertyName}}Supported)
                 && target.{{CSharpSafePropertyName}} != source.{{CSharpSafePropertyName}})
             {
+                patchBuilder?.PropertyChanged("{{JsonPropertyName}}", source.{{CSharpSafePropertyName}}, target.{{CSharpSafePropertyName}});
                 target.{{CSharpSafePropertyName}} = source.{{CSharpSafePropertyName}};
                 isModified = true;
             }
@@ -99,6 +116,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                 {
                     if (target.{{OtherClassName}} != null)
                     {
+                        patchBuilder?.PropertyChanged("{{JsonPropertyName}}", target.{{OtherClassName}}, null);
                         target.{{OtherClassName}} = null;
                         isModified = true;
                     }
@@ -110,9 +128,17 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                         var itemType = target.GetType().GetProperty("{{OtherClassName}}").PropertyType;
                         var newItem = Activator.CreateInstance(itemType);
                         target.{{OtherClassName}} = (I{{OtherClassName}}) newItem;
-                    }
 
-                    isModified |= source.{{OtherClassName}}.Synchronize(target.{{OtherClassName}});
+                        isModified |= source.{{OtherClassName}}.Synchronize(target.{{OtherClassName}}, null);
+
+                        patchBuilder?.PropertyChanged("{{JsonPropertyName}}", null, target.{{OtherClassName}}.MapToResource());
+                    }
+                    else
+                    {
+                        patchBuilder?.PushCollectionContext("{{JsonPropertyName}}");
+                        isModified |= source.{{OtherClassName}}.Synchronize(target.{{OtherClassName}}, patchBuilder);
+                        patchBuilder?.PopContext();
+                    }
                 }
             }
             {{/OneToOneClassList}}
@@ -124,8 +150,19 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             // Synch inherited lists
             {{#BaseNavigableChildrenList}}
             if (sourceSupport == null || sourceSupport.Is{{OtherClassPlural}}Supported)
-                isModified |= source.{{OtherClassPlural}}.SynchronizeCollectionTo(target.{{OtherClassPlural}}, child => child.{{BaseClassName}} = target,
+            {
+                patchBuilder?.PushCollectionContext("{{JsonPropertyName}}");
+            
+                isModified |= source.{{OtherClassPlural}}.SynchronizeCollectionTo(target.{{OtherClassPlural}},
+                    child => 
+                    {
+                        child.{{BaseClassName}} = target;
+                        patchBuilder?.ItemAdded(child.MapToResource());
+                    },
                                 sourceSupport == null ? null : sourceSupport.Is{{OtherClassSingular}}Included);
+
+                patchBuilder?.PopContext();
+            }
 
             {{/BaseNavigableChildrenList}}
             {{/IsDerivedEntity}}
@@ -134,6 +171,8 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             {{#NavigableChildrenList}}
             if (sourceSupport == null || sourceSupport.Is{{ChildClassPlural}}Supported)
             {
+                patchBuilder?.PushCollectionContext("{{JsonPropertyName}}");
+            
                 isModified |=
                     source.{{ChildClassPlural}}.SynchronizeCollectionTo(
                         target.{{ChildClassPlural}},
@@ -145,10 +184,14 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                                 // Extension class "children" need to reference the Ed-Fi Standard entity as the parent
                                 (child as IChildEntity)?.SetParent(target.{{ParentName}});
                 {{/IsExtensionClass}}
+
+                                patchBuilder?.ItemAdded(child.MapToResource());
                             },
                         includeItem: sourceSupport == null
                             ? null
                             : sourceSupport.Is{{ChildClassSingular}}Included);
+
+                patchBuilder?.PopContext();
             }
 
             {{/NavigableChildrenList}}
