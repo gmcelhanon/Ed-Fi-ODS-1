@@ -521,7 +521,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                                ReferenceAggregateRelativeNamespace =
                                                    x.InheritanceRootEntity.GetRelativeAggregateNamespace(
                                                        x.InheritanceRootEntity.SchemaProperCaseName()),
-                                               ReferenceDataClassName = x.InheritanceRootEntity + "ReferenceData",
+                                               ReferenceDataClassName = x.InheritanceRootEntity.Name + "ReferenceData",
                                                ReferenceDataPropertyName = x.AssociationName + "ReferenceData",
                                                ReferenceAssociationName = x.AssociationName,
                                                MappedReferenceDataHasDiscriminator = x.OtherEntity.HasDiscriminator(),
