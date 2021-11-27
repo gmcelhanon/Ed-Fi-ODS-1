@@ -7,6 +7,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using EdFi.Ods.Common.Patch;
 
 namespace EdFi.Ods.Common.Extensions
 {
@@ -19,7 +20,8 @@ namespace EdFi.Ods.Common.Extensions
             this ICollection<T> sourceList,
             ICollection<T> targetList,
             Action<T> onChildAdded,
-            Func<T, bool> includeItem = null)
+            Func<T, bool> includeItem = null,
+            EdFiApiPatchBuilder patchBuilder = null)
             where T : ISynchronizable //<T>
         {
             var isModified = false;
@@ -59,7 +61,7 @@ namespace EdFi.Ods.Common.Extensions
                 .ToList();
 
             isModified = itemsToUpdate.Aggregate(
-                isModified, (current, pair) => current | pair.Submitted.Synchronize(pair.Persisted));
+                isModified, (current, pair) => current | pair.Submitted.Synchronize(pair.Persisted, patchBuilder));
 
             // Find items to add
             var itemsToAdd = sourceList

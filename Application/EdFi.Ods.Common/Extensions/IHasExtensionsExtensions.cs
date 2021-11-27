@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using EdFi.Ods.Common.Conventions;
+using EdFi.Ods.Common.Patch;
 
 namespace EdFi.Ods.Common.Extensions
 {
@@ -50,7 +51,7 @@ namespace EdFi.Ods.Common.Extensions
         /// <param name="source"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static bool SynchronizeExtensionsTo<TSource, TTarget>(this TSource source, TTarget target)
+        public static bool SynchronizeExtensionsTo<TSource, TTarget>(this TSource source, TTarget target, EdFiApiPatchBuilder patchBuilder = null)
             where TSource : ISynchronizable, IHasExtensions
             where TTarget : IHasExtensions
         {
@@ -139,7 +140,7 @@ namespace EdFi.Ods.Common.Extensions
                     }
 
                     // Synchronize the extension object to the target extension object
-                    isModified |= sourceExtensionObject.Synchronize(targetExtensionObject);
+                    isModified |= sourceExtensionObject.Synchronize(targetExtensionObject, patchBuilder);
                 }
             }
 

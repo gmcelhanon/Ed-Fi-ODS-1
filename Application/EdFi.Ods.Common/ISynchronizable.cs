@@ -3,6 +3,8 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using EdFi.Ods.Common.Patch;
+
 namespace EdFi.Ods.Common
 {
     /// <summary>
@@ -18,6 +20,6 @@ namespace EdFi.Ods.Common
         /// </summary>
         /// <param name="target">A pre-existing instance (of the same abstract entity type) to be synchronized from the current object.</param>
         /// <returns><b>true</b> if any changes were made; otherwise <b>false</b>.</returns>
-        bool Synchronize(object target);
+        bool Synchronize(object target, EdFiApiPatchBuilder patchBuilder);
     }
 }

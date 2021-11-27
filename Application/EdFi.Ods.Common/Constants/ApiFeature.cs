@@ -10,6 +10,7 @@ namespace EdFi.Ods.Common.Constants
     public class ApiFeature : Enumeration<ApiFeature, string>
     {
         public static readonly ApiFeature Extensions = new ApiFeature("extensions", "Extensions");
+        public static readonly ApiFeature ChangeEvents = new ApiFeature("changeEvents", "Change Events");
         public static readonly ApiFeature ChangeQueries = new ApiFeature("changeQueries", "Change Queries");
         public static readonly ApiFeature OpenApiMetadata = new ApiFeature("openApiMetadata", "Open Api Metadata");
         public static readonly ApiFeature AggregateDependencies = new ApiFeature("aggregateDependencies", "Aggregate Dependencies");

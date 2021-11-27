@@ -85,7 +85,8 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     }
 
                     // Synchronize using strongly-typed generated code
-                    isModified = entity.Synchronize(persistedEntity);
+                    var patchBuilder = new EdFiApiPatchBuilder();
+                    isModified = entity.Synchronize(persistedEntity, patchBuilder);
 
                     // Force aggregate root to be touched with an updated date if aggregate has been modified
                     if (isModified)
