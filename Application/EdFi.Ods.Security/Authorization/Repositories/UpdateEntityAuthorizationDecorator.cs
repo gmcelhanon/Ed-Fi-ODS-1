@@ -47,8 +47,10 @@ namespace EdFi.Ods.Security.Authorization.Repositories
         /// Authorizes a call to get a update an entity.
         /// </summary>
         /// <param name="persistentEntity">An entity instance that has all the primary key properties assigned with values.</param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="jsonPatch"></param>
         /// <returns>The specified entity if found; otherwise null.</returns>
-        public async Task UpdateAsync(T persistentEntity, CancellationToken cancellationToken)
+        public async Task UpdateAsync(T persistentEntity, CancellationToken cancellationToken, string jsonPatch)
         {
             // POST comes in as an "Upsert", but at this point we know it's actually about to update an entity,
             // so we'll use the more explicit action for authorization.
@@ -58,7 +60,7 @@ namespace EdFi.Ods.Security.Authorization.Repositories
             await AuthorizeSingleItemAsync(persistentEntity, updateActionUri, cancellationToken);
 
             // Pass call through to the repository operation
-            await _next.UpdateAsync(persistentEntity, cancellationToken);
+            await _next.UpdateAsync(persistentEntity, cancellationToken, string jsonPatch);
         }
     }
 }

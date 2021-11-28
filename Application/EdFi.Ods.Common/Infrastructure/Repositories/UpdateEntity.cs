@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using EdFi.Ods.Common.Dependencies;
+using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Repositories;
 using NHibernate;
@@ -16,10 +18,15 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
     public class UpdateEntity<TEntity> : ValidatingNHibernateRepositoryOperationBase, IUpdateEntity<TEntity>
         where TEntity : DomainObjectBase, IHasIdentifier, IDateVersionedEntity
     {
-        public UpdateEntity(ISessionFactory sessionFactory, IEnumerable<IEntityValidator> validators)
-            : base(sessionFactory, validators) { }
+        private readonly IDomainModelProvider _domainModelProvider;
 
-        public async Task UpdateAsync(TEntity persistentEntity, CancellationToken cancellationToken)
+        public UpdateEntity(ISessionFactory sessionFactory, IEnumerable<IEntityValidator> validators, IDomainModelProvider domainModelProvider)
+            : base(sessionFactory, validators)
+        {
+            _domainModelProvider = domainModelProvider;
+        }
+
+        public async Task UpdateAsync(TEntity persistentEntity, CancellationToken cancellationToken, string jsonPatch)
         {
             using (new SessionScope(SessionFactory))
             {
@@ -30,6 +37,9 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     try
                     {
                         await Session.UpdateAsync(persistentEntity, cancellationToken);
+                        
+                        // Capture update event
+                        
                     }
                     catch (Exception)
                     {

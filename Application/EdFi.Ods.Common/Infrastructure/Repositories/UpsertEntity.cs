@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EdFi.Ods.Common.Exceptions;
 using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Common.Patch;
 using EdFi.Ods.Common.Repositories;
 using NHibernate;
 
@@ -91,11 +92,11 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     // Force aggregate root to be touched with an updated date if aggregate has been modified
                     if (isModified)
                     {
-                        // Make root dirty, NHibernate will override the value during insert (through a hook)
+                        // Make root dirty, NHibernate will override the value during update (through a hook)
                         persistedEntity.LastModifiedDate = persistedEntity.LastModifiedDate.AddSeconds(1);
-                    }
 
-                    await _updateEntity.UpdateAsync(persistedEntity, cancellationToken);
+                        await _updateEntity.UpdateAsync(persistedEntity, cancellationToken, patchBuilder.ToJson());
+                    }
                 }
 
                 return new UpsertEntityResult<TEntity>

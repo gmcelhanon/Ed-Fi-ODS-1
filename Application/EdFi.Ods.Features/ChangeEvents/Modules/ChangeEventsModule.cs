@@ -38,9 +38,9 @@ namespace EdFi.Ods.Features.ChangeEvents.Modules
         public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
         {
             // Change Queries support in NHibernate mappings 
-            builder.RegisterType<ChangeEventsMappingNHibernateConfigurationActivity>()
-                .As<INHibernateBeforeBindMappingActivity>()
-                .SingleInstance();
+            // builder.RegisterType<ChangeEventsMappingNHibernateConfigurationActivity>()
+            //     .As<INHibernateBeforeBindMappingActivity>()
+            //     .SingleInstance();
 
             // AddSupportForAvailableChanges();
             AddSupportForSnapshots();

@@ -11,6 +11,6 @@ namespace EdFi.Ods.Common.Repositories
     public interface IUpdateEntity<TEntity>
         where TEntity : IHasIdentifier, IDateVersionedEntity
     {
-        Task UpdateAsync(TEntity persistentEntity, CancellationToken cancellationToken);
+        Task UpdateAsync(TEntity persistentEntity, CancellationToken cancellationToken, string jsonPatch);
     }
 }
