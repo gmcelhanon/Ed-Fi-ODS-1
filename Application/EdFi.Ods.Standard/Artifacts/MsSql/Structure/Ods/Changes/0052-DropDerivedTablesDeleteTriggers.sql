@@ -15,8 +15,6 @@ DROP TRIGGER IF EXISTS [edfi].[edfi_EducationServiceCenter_TR_DeleteTracking]
 GO
 DROP TRIGGER IF EXISTS [edfi].[edfi_LocalEducationAgency_TR_DeleteTracking]
 GO
-DROP TRIGGER IF EXISTS [edfi].[edfi_OrganizationDepartment_TR_DeleteTracking]
-GO
 DROP TRIGGER IF EXISTS [edfi].[edfi_PostSecondaryInstitution_TR_DeleteTracking]
 GO
 DROP TRIGGER IF EXISTS [edfi].[edfi_School_TR_DeleteTracking]

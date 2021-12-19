@@ -17,8 +17,6 @@ CREATE INDEX IF NOT EXISTS ux_7808ee_changeversion ON edfi.assessment(changevers
 
 CREATE INDEX IF NOT EXISTS ux_dc3dcf_changeversion ON edfi.assessmentitem(changeversion);
 
-CREATE INDEX IF NOT EXISTS ux_a20588_changeversion ON edfi.assessmentscorerangelearningstandard(changeversion);
-
 CREATE INDEX IF NOT EXISTS ux_9bbaf5_changeversion ON edfi.bellschedule(changeversion);
 
 CREATE INDEX IF NOT EXISTS ux_1c6225_changeversion ON edfi.budget(changeversion);
@@ -146,10 +144,6 @@ CREATE INDEX IF NOT EXISTS ux_369ddc_changeversion ON edfi.studentcohortassociat
 CREATE INDEX IF NOT EXISTS ux_395c07_changeversion ON edfi.studentcompetencyobjective(changeversion);
 
 CREATE INDEX IF NOT EXISTS ux_679174_changeversion ON edfi.studentdisciplineincidentassociation(changeversion);
-
-CREATE INDEX IF NOT EXISTS ux_f4934f_changeversion ON edfi.studentdisciplineincidentbehaviorassociation(changeversion);
-
-CREATE INDEX IF NOT EXISTS ux_4b43da_changeversion ON edfi.studentdisciplineincidentnonoffenderassociation(changeversion);
 
 CREATE INDEX IF NOT EXISTS ux_8e1257_changeversion ON edfi.studenteducationorganizationassociation(changeversion);
 

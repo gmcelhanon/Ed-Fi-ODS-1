@@ -123,22 +123,6 @@ CREATE TABLE [tracked_changes_edfi].[AssessmentItem]
        CONSTRAINT AssessmentItem_PK PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_edfi].[AssessmentScoreRangeLearningStandard]'))
-CREATE TABLE [tracked_changes_edfi].[AssessmentScoreRangeLearningStandard]
-(
-       OldAssessmentIdentifier nvarchar(60) NOT NULL,
-       OldNamespace nvarchar(255) NOT NULL,
-       OldScoreRangeId nvarchar(60) NOT NULL,
-       NewAssessmentIdentifier nvarchar(60) NULL,
-       NewNamespace nvarchar(255) NULL,
-       NewScoreRangeId nvarchar(60) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator nvarchar(128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT AssessmentScoreRangeLearningStandard_PK PRIMARY KEY CLUSTERED (ChangeVersion)
-)
-
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_edfi].[BellSchedule]'))
 CREATE TABLE [tracked_changes_edfi].[BellSchedule]
 (
@@ -1348,48 +1332,6 @@ CREATE TABLE [tracked_changes_edfi].[StudentDisciplineIncidentAssociation]
        Discriminator nvarchar(128) NULL,
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT StudentDisciplineIncidentAssociation_PK PRIMARY KEY CLUSTERED (ChangeVersion)
-)
-
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_edfi].[StudentDisciplineIncidentBehaviorAssociation]'))
-CREATE TABLE [tracked_changes_edfi].[StudentDisciplineIncidentBehaviorAssociation]
-(
-       OldBehaviorDescriptorId int NOT NULL,
-       OldBehaviorDescriptorNamespace nvarchar(255) NOT NULL,
-       OldBehaviorDescriptorCodeValue nvarchar(50) NOT NULL,
-       OldIncidentIdentifier nvarchar(20) NOT NULL,
-       OldSchoolId int NOT NULL,
-       OldStudentUSI int NOT NULL,
-       OldStudentUniqueId nvarchar(32) NOT NULL,
-       NewBehaviorDescriptorId int NULL,
-       NewBehaviorDescriptorNamespace nvarchar(255) NULL,
-       NewBehaviorDescriptorCodeValue nvarchar(50) NULL,
-       NewIncidentIdentifier nvarchar(20) NULL,
-       NewSchoolId int NULL,
-       NewStudentUSI int NULL,
-       NewStudentUniqueId nvarchar(32) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator nvarchar(128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT StudentDisciplineIncidentBehaviorAssociation_PK PRIMARY KEY CLUSTERED (ChangeVersion)
-)
-
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_edfi].[StudentDisciplineIncidentNonOffenderAssociation]'))
-CREATE TABLE [tracked_changes_edfi].[StudentDisciplineIncidentNonOffenderAssociation]
-(
-       OldIncidentIdentifier nvarchar(20) NOT NULL,
-       OldSchoolId int NOT NULL,
-       OldStudentUSI int NOT NULL,
-       OldStudentUniqueId nvarchar(32) NOT NULL,
-       NewIncidentIdentifier nvarchar(20) NULL,
-       NewSchoolId int NULL,
-       NewStudentUSI int NULL,
-       NewStudentUniqueId nvarchar(32) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator nvarchar(128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT StudentDisciplineIncidentNonOffenderAssociation_PK PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_edfi].[StudentEducationOrganizationAssociation]'))

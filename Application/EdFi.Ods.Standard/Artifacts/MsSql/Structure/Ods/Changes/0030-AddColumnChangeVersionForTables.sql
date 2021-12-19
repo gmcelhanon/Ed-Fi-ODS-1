@@ -24,7 +24,6 @@ ALTER TABLE [edfi].[Assessment] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[AssessmentItem]') AND name = 'ChangeVersion')
 ALTER TABLE [edfi].[AssessmentItem] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
 
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[AssessmentScoreRangeLearningStandard]') AND name = 'ChangeVersion')
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[BellSchedule]') AND name = 'ChangeVersion')
 ALTER TABLE [edfi].[BellSchedule] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
 
@@ -217,8 +216,6 @@ ALTER TABLE [edfi].[StudentCompetencyObjective] ADD [ChangeVersion] [BIGINT] DEF
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[StudentDisciplineIncidentAssociation]') AND name = 'ChangeVersion')
 ALTER TABLE [edfi].[StudentDisciplineIncidentAssociation] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
 
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[StudentDisciplineIncidentBehaviorAssociation]') AND name = 'ChangeVersion')
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[StudentDisciplineIncidentNonOffenderAssociation]') AND name = 'ChangeVersion')
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[edfi].[StudentEducationOrganizationAssociation]') AND name = 'ChangeVersion')
 ALTER TABLE [edfi].[StudentEducationOrganizationAssociation] ADD [ChangeVersion] [BIGINT] DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) NOT NULL;
 

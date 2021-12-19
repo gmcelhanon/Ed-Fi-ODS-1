@@ -40,11 +40,6 @@ IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'up
         FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'edfi' AND event_object_table = 'assessmentscorerangelearningstandard') THEN
-    CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON edfi.assessmentscorerangelearningstandard
-        FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
-END IF;
-
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'edfi' AND event_object_table = 'bellschedule') THEN
     CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON edfi.bellschedule
         FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
@@ -603,16 +598,6 @@ END IF;
 
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'edfi' AND event_object_table = 'studentdisciplineincidentassociation') THEN
     CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON edfi.studentdisciplineincidentassociation
-        FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
-END IF;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'edfi' AND event_object_table = 'studentdisciplineincidentbehaviorassociation') THEN
-    CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON edfi.studentdisciplineincidentbehaviorassociation
-        FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
-END IF;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'edfi' AND event_object_table = 'studentdisciplineincidentnonoffenderassociation') THEN
-    CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON edfi.studentdisciplineincidentnonoffenderassociation
         FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 

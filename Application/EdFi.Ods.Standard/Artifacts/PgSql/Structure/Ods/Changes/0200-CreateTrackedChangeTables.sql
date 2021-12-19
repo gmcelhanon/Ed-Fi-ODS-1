@@ -133,23 +133,6 @@ CREATE TABLE tracked_changes_edfi.assessmentitem
 );
 END IF;
 
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_edfi' AND table_name = 'assessmentscorerangelearningstandard') THEN
-CREATE TABLE tracked_changes_edfi.assessmentscorerangelearningstandard
-(
-       oldassessmentidentifier varchar(60) NOT NULL,
-       oldnamespace varchar(255) NOT NULL,
-       oldscorerangeid varchar(60) NOT NULL,
-       newassessmentidentifier varchar(60) NULL,
-       newnamespace varchar(255) NULL,
-       newscorerangeid varchar(60) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT assessmentscorerangelearningstandard_pk PRIMARY KEY (changeversion)
-);
-END IF;
-
 IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_edfi' AND table_name = 'bellschedule') THEN
 CREATE TABLE tracked_changes_edfi.bellschedule
 (
@@ -1422,50 +1405,6 @@ CREATE TABLE tracked_changes_edfi.studentdisciplineincidentassociation
        discriminator varchar(128) NULL,
        createdate timestamp NOT NULL DEFAULT (now()),
        CONSTRAINT studentdisciplineincidentassociation_pk PRIMARY KEY (changeversion)
-);
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_edfi' AND table_name = 'studentdisciplineincidentbehaviorassociation') THEN
-CREATE TABLE tracked_changes_edfi.studentdisciplineincidentbehaviorassociation
-(
-       oldbehaviordescriptorid integer NOT NULL,
-       oldbehaviordescriptornamespace varchar(255) NOT NULL,
-       oldbehaviordescriptorcodevalue varchar(50) NOT NULL,
-       oldincidentidentifier varchar(20) NOT NULL,
-       oldschoolid integer NOT NULL,
-       oldstudentusi integer NOT NULL,
-       oldstudentuniqueid varchar(32) NOT NULL,
-       newbehaviordescriptorid integer NULL,
-       newbehaviordescriptornamespace varchar(255) NULL,
-       newbehaviordescriptorcodevalue varchar(50) NULL,
-       newincidentidentifier varchar(20) NULL,
-       newschoolid integer NULL,
-       newstudentusi integer NULL,
-       newstudentuniqueid varchar(32) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT studentdisciplineincidentbehaviorassociation_pk PRIMARY KEY (changeversion)
-);
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_edfi' AND table_name = 'studentdisciplineincidentnonoffenderassociation') THEN
-CREATE TABLE tracked_changes_edfi.studentdisciplineincidentnonoffenderassociation
-(
-       oldincidentidentifier varchar(20) NOT NULL,
-       oldschoolid integer NOT NULL,
-       oldstudentusi integer NOT NULL,
-       oldstudentuniqueid varchar(32) NOT NULL,
-       newincidentidentifier varchar(20) NULL,
-       newschoolid integer NULL,
-       newstudentusi integer NULL,
-       newstudentuniqueid varchar(32) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT studentdisciplineincidentnonoffenderassociation_pk PRIMARY KEY (changeversion)
 );
 END IF;
 

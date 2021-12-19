@@ -94,9 +94,6 @@ BEGIN
 END	
 GO
 
-DROP TRIGGER IF EXISTS [edfi].[edfi_AssessmentScoreRangeLearningStandard_TR_UpdateChangeVersion]
-GO
-
 DROP TRIGGER IF EXISTS [edfi].[edfi_BellSchedule_TR_UpdateChangeVersion]
 GO
 
@@ -1060,12 +1057,6 @@ BEGIN
     FROM [edfi].[StudentDisciplineIncidentAssociation] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
 END	
-GO
-
-DROP TRIGGER IF EXISTS [edfi].[edfi_StudentDisciplineIncidentBehaviorAssociation_TR_UpdateChangeVersion]
-GO
-
-DROP TRIGGER IF EXISTS [edfi].[edfi_StudentDisciplineIncidentNonOffenderAssociation_TR_UpdateChangeVersion]
 GO
 
 DROP TRIGGER IF EXISTS [edfi].[edfi_StudentEducationOrganizationAssociation_TR_UpdateChangeVersion]

@@ -290,25 +290,6 @@ GO
 
 ALTER TABLE [edfi].[AdministrativeFundingControlDescriptor] ENABLE TRIGGER [edfi_AdministrativeFundingControlDescriptor_TR_DeleteTracking]
 GO
-DROP TRIGGER IF EXISTS [edfi].[edfi_AncestryEthnicOriginDescriptor_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [edfi].[edfi_AncestryEthnicOriginDescriptor_TR_DeleteTracking] ON [edfi].[AncestryEthnicOriginDescriptor] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
-    SELECT  d.AncestryEthnicOriginDescriptorId, b.CodeValue, b.Namespace, b.Id, 'edfi.AncestryEthnicOriginDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.AncestryEthnicOriginDescriptorId = b.DescriptorId
-END
-GO
-
-ALTER TABLE [edfi].[AncestryEthnicOriginDescriptor] ENABLE TRIGGER [edfi_AncestryEthnicOriginDescriptor_TR_DeleteTracking]
-GO
 DROP TRIGGER IF EXISTS [edfi].[edfi_Assessment_TR_DeleteTracking]
 GO
 
@@ -461,25 +442,6 @@ GO
 
 ALTER TABLE [edfi].[AssessmentReportingMethodDescriptor] ENABLE TRIGGER [edfi_AssessmentReportingMethodDescriptor_TR_DeleteTracking]
 GO
-DROP TRIGGER IF EXISTS [edfi].[edfi_AssessmentScoreRangeLearningStandard_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [edfi].[edfi_AssessmentScoreRangeLearningStandard_TR_DeleteTracking] ON [edfi].[AssessmentScoreRangeLearningStandard] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[AssessmentScoreRangeLearningStandard](OldAssessmentIdentifier, OldNamespace, OldScoreRangeId, Id, Discriminator, ChangeVersion)
-    SELECT  d.AssessmentIdentifier, d.Namespace, d.ScoreRangeId, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-END
-GO
-
-ALTER TABLE [edfi].[AssessmentScoreRangeLearningStandard] ENABLE TRIGGER [edfi_AssessmentScoreRangeLearningStandard_TR_DeleteTracking]
-GO
-
 DROP TRIGGER IF EXISTS [edfi].[edfi_AttemptStatusDescriptor_TR_DeleteTracking]
 GO
 
@@ -4522,50 +4484,6 @@ END
 GO
 
 ALTER TABLE [edfi].[StudentDisciplineIncidentAssociation] ENABLE TRIGGER [edfi_StudentDisciplineIncidentAssociation_TR_DeleteTracking]
-GO
-
-DROP TRIGGER IF EXISTS [edfi].[edfi_StudentDisciplineIncidentBehaviorAssociation_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [edfi].[edfi_StudentDisciplineIncidentBehaviorAssociation_TR_DeleteTracking] ON [edfi].[StudentDisciplineIncidentBehaviorAssociation] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[StudentDisciplineIncidentBehaviorAssociation](OldBehaviorDescriptorId, OldBehaviorDescriptorNamespace, OldBehaviorDescriptorCodeValue, OldIncidentIdentifier, OldSchoolId, OldStudentUSI, OldStudentUniqueId, Id, Discriminator, ChangeVersion)
-    SELECT  d.BehaviorDescriptorId, j0.Namespace, j0.CodeValue, d.IncidentIdentifier, d.SchoolId, d.StudentUSI, j3.StudentUniqueId, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-        INNER JOIN edfi.Descriptor j0
-            ON d.BehaviorDescriptorId = j0.DescriptorId 
-        INNER JOIN edfi.Student j3
-            ON d.StudentUSI = j3.StudentUSI 
-END
-GO
-
-ALTER TABLE [edfi].[StudentDisciplineIncidentBehaviorAssociation] ENABLE TRIGGER [edfi_StudentDisciplineIncidentBehaviorAssociation_TR_DeleteTracking]
-GO
-
-DROP TRIGGER IF EXISTS [edfi].[edfi_StudentDisciplineIncidentNonOffenderAssociation_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [edfi].[edfi_StudentDisciplineIncidentNonOffenderAssociation_TR_DeleteTracking] ON [edfi].[StudentDisciplineIncidentNonOffenderAssociation] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[StudentDisciplineIncidentNonOffenderAssociation](OldIncidentIdentifier, OldSchoolId, OldStudentUSI, OldStudentUniqueId, Id, Discriminator, ChangeVersion)
-    SELECT  d.IncidentIdentifier, d.SchoolId, d.StudentUSI, j2.StudentUniqueId, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-        INNER JOIN edfi.Student j2
-            ON d.StudentUSI = j2.StudentUSI 
-END
-GO
-
-ALTER TABLE [edfi].[StudentDisciplineIncidentNonOffenderAssociation] ENABLE TRIGGER [edfi_StudentDisciplineIncidentNonOffenderAssociation_TR_DeleteTracking]
 GO
 
 DROP TRIGGER IF EXISTS [edfi].[edfi_StudentEducationOrganizationAssociation_TR_DeleteTracking]
