@@ -6,6 +6,7 @@
 using EdFi.Ods.Api.Infrastructure.Pipelines.Get;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetDeletedResource;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetMany;
+using EdFi.Ods.Api.Infrastructure.Pipelines.Patch;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Put;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Infrastructure.Pipelines.Delete;
@@ -26,6 +27,10 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Factories
             where TEntityModel : class;
 
         PutPipeline<TResourceModel, TEntityModel> CreatePutPipeline<TResourceModel, TEntityModel>()
+            where TEntityModel : class, IHasIdentifier, new()
+            where TResourceModel : IHasETag;
+
+        PatchPipeline<TResourceModel, TEntityModel> CreatePatchPipeline<TResourceModel, TEntityModel>()
             where TEntityModel : class, IHasIdentifier, new()
             where TResourceModel : IHasETag;
 

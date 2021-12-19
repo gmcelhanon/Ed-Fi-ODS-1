@@ -85,25 +85,7 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                 ValidateEntity(entity);
 
                 // Save the incoming entity
-                using (var trans = Session.BeginTransaction())
-                {
-                    try
-                    {
-                        await Session.SaveAsync(entity, cancellationToken);
-                    }
-                    catch (Exception)
-                    {
-                        await trans.RollbackAsync(cancellationToken);
-                        throw;
-                    }
-                    finally
-                    {
-                        if (!trans.WasRolledBack)
-                        {
-                            await trans.CommitAsync(cancellationToken);
-                        }
-                    }
-                }
+                await Session.SaveAsync(entity, cancellationToken);
 
                 bool IdHasValue()
                 {

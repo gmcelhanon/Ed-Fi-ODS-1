@@ -17,14 +17,13 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Steps
         where TResourceModel : class, IMappable, IHasETag
         where TEntityModel : class, new()
     {
-        public void Execute(TContext context, TResult result)
+        public Task ExecuteAsync(TContext context, TResult result, CancellationToken cancellationToken)
         {
-            // NOTE this step will always run synchronously so we are not moving the logic to the async method.
             try
             {
                 if (context.Resource == default(TResourceModel))
                 {
-                    return;
+                    return Task.CompletedTask;
                 }
 
                 var model = new TEntityModel();
@@ -35,11 +34,7 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Steps
             {
                 result.Exception = ex;
             }
-        }
 
-        public Task ExecuteAsync(TContext context, TResult result, CancellationToken cancellationToken)
-        {
-            Execute(context, result);
             return Task.CompletedTask;
         }
     }

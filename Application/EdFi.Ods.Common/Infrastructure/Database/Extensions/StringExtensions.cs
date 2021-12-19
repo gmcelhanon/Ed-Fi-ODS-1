@@ -7,9 +7,9 @@ using System;
 using System.Collections.Concurrent;
 using System.Security.Cryptography;
 using System.Text;
-using EdFi.Ods.Generator.Common.Database.NamingConventions;
+using EdFi.Ods.Common.Infrastructure.Database.NamingConventions;
 
-namespace EdFi.Ods.Generator.Common.Extensions
+namespace EdFi.Ods.Common.Infrastructure.Database.Extensions
 {
     public static class StringExtensions
     {

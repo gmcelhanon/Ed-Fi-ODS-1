@@ -5,9 +5,9 @@
 
 using System.Reflection;
 using Autofac;
+using EdFi.Ods.Common.Infrastructure.Database.NamingConventions;
 using EdFi.Ods.Generator.Common.Database.DataTypes;
 using EdFi.Ods.Generator.Common.Database.Domain;
-using EdFi.Ods.Generator.Common.Database.NamingConventions;
 using EdFi.Ods.Generator.Common.Database.TemplateModelProviders;
 using EdFi.Ods.Generator.Common.Options;
 using EdFi.Ods.Generator.Common.Rendering;

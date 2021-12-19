@@ -5,7 +5,7 @@
 
 using EdFi.Ods.Common.Models.Domain;
 
-namespace EdFi.Ods.Generator.Common.Database.NamingConventions
+namespace EdFi.Ods.Common.Infrastructure.Database.NamingConventions
 {
     public interface IDatabaseNamingConvention
     {

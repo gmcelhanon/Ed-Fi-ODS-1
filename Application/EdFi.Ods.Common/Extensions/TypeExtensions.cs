@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using EdFi.Ods.Common.Attributes;
+using EdFi.Ods.Common.Models.Domain;
 
 namespace EdFi.Ods.Common.Extensions
 {
@@ -89,6 +90,21 @@ namespace EdFi.Ods.Common.Extensions
         public static bool IsScalar(this Type type)
         {
             return type.IsValueType || type == typeof(string);
+        }
+
+        public static FullName GetFullName(this Type type)
+        {
+            var schemaAttribute = type.GetCustomAttribute<SchemaAttribute>();
+
+            return new FullName(schemaAttribute.Schema, type.Name);
+        }
+
+        public static FullName GetFullName<TEntity>(this TEntity entity)
+            where TEntity : DomainObjectBase
+        {
+            var schemaAttribute = typeof(TEntity).GetCustomAttribute<SchemaAttribute>();
+
+            return new FullName(schemaAttribute.Schema, typeof(TEntity).Name);
         }
     }
 }

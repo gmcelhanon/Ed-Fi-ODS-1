@@ -4,10 +4,10 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using EdFi.Ods.Common.Infrastructure.Database.Extensions;
 using EdFi.Ods.Common.Models.Domain;
-using EdFi.Ods.Generator.Common.Extensions;
 
-namespace EdFi.Ods.Generator.Common.Database.NamingConventions
+namespace EdFi.Ods.Common.Infrastructure.Database.NamingConventions
 {
     public abstract class DatabaseNamingConventionBase : IDatabaseNamingConvention
     {

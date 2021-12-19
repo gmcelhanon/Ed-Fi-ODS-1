@@ -33,6 +33,10 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
         }
         
         {{/IsAbstract}}
+        {{#IsAbstract}}
+        {{! For some reason the Entities has logic in the template to not generate for Abstract classes, but this doesn't seem to be working as intended, thus this method is required here for the compiler. It shouldn't ever be called. }}
+        public static I{{ModelName}} MapToResource(this I{{ModelName}} entity) { throw new NotSupportedException(); }
+        {{/IsAbstract}}
         public static bool SynchronizeTo(this I{{ModelName}} source, I{{ModelName}} target, EdFiApiPatchBuilder patchBuilder)
         {
             bool isModified = false;
@@ -85,7 +89,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             if ((sourceSupport == null || sourceSupport.Is{{BasePropertyName}}Supported)
                 && target.{{BasePropertyName}} != source.{{BasePropertyName}})
             {
-                patchBuilder?.PropertyChanged("{{BaseJsonPropertyName}}", source.{{BasePropertyName}}, target.{{BasePropertyName}});
+                patchBuilder?.PropertyChanged("{{BaseJsonPropertyName}}", target.{{BasePropertyName}}, source.{{BasePropertyName}});
                 target.{{BasePropertyName}} = source.{{BasePropertyName}};
                 isModified = true;
             }
@@ -98,7 +102,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             if ((sourceSupport == null || sourceSupport.Is{{PropertyName}}Supported)
                 && target.{{CSharpSafePropertyName}} != source.{{CSharpSafePropertyName}})
             {
-                patchBuilder?.PropertyChanged("{{JsonPropertyName}}", source.{{CSharpSafePropertyName}}, target.{{CSharpSafePropertyName}});
+                patchBuilder?.PropertyChanged("{{JsonPropertyName}}", target.{{CSharpSafePropertyName}}, source.{{CSharpSafePropertyName}});
                 target.{{CSharpSafePropertyName}} = source.{{CSharpSafePropertyName}};
                 isModified = true;
             }
@@ -135,7 +139,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                     }
                     else
                     {
-                        patchBuilder?.PushCollectionContext("{{JsonPropertyName}}");
+                        patchBuilder?.PushNameContext("{{JsonPropertyName}}");
                         isModified |= source.{{OtherClassName}}.Synchronize(target.{{OtherClassName}}, patchBuilder);
                         patchBuilder?.PopContext();
                     }
@@ -151,15 +155,12 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             {{#BaseNavigableChildrenList}}
             if (sourceSupport == null || sourceSupport.Is{{OtherClassPlural}}Supported)
             {
-                patchBuilder?.PushCollectionContext("{{JsonPropertyName}}");
+                patchBuilder?.PushNameContext("{{JsonPropertyName}}");
             
                 isModified |= source.{{OtherClassPlural}}.SynchronizeCollectionTo(target.{{OtherClassPlural}},
-                    child => 
-                    {
-                        child.{{BaseClassName}} = target;
-                        patchBuilder?.ItemAdded(child.MapToResource());
-                    },
-                                sourceSupport == null ? null : sourceSupport.Is{{OtherClassSingular}}Included);
+                    child => child.{{BaseClassName}} = target,
+                    sourceSupport == null ? null : sourceSupport.Is{{OtherClassSingular}}Included,
+                    patchBuilder);
 
                 patchBuilder?.PopContext();
             }
@@ -171,7 +172,7 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
             {{#NavigableChildrenList}}
             if (sourceSupport == null || sourceSupport.Is{{ChildClassPlural}}Supported)
             {
-                patchBuilder?.PushCollectionContext("{{JsonPropertyName}}");
+                patchBuilder?.PushNameContext("{{JsonPropertyName}}");
             
                 isModified |=
                     source.{{ChildClassPlural}}.SynchronizeCollectionTo(
@@ -185,11 +186,12 @@ namespace {{NamespaceName}} //.{{AggregateName}}Aggregate
                                 (child as IChildEntity)?.SetParent(target.{{ParentName}});
                 {{/IsExtensionClass}}
 
-                                patchBuilder?.ItemAdded(child.MapToResource());
+                                // To be removed -- patchBuilder?.ItemAdded(child.MapToResource());
                             },
                         includeItem: sourceSupport == null
                             ? null
-                            : sourceSupport.Is{{ChildClassSingular}}Included);
+                            : sourceSupport.Is{{ChildClassSingular}}Included,
+                        patchBuilder: patchBuilder);
 
                 patchBuilder?.PopContext();
             }

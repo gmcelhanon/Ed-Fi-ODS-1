@@ -21,5 +21,13 @@ namespace EdFi.Ods.Common
         /// <param name="target">A pre-existing instance (of the same abstract entity type) to be synchronized from the current object.</param>
         /// <returns><b>true</b> if any changes were made; otherwise <b>false</b>.</returns>
         bool Synchronize(object target, EdFiApiPatchBuilder patchBuilder);
+
+        /// <summary>
+        /// Maps the current entity to the corresponding resource model (unconstrained by Profile considerations for the client).
+        /// </summary>
+        /// <returns>A new instance of the full resource representation of the model.</returns>
+        /// <remarks>This method supports the creation of the resource representation of all or part of an aggregate for inclusion
+        /// in a JSON Patch document.</remarks>
+        object MapToResource();
     }
 }

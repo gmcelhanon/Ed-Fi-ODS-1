@@ -60,7 +60,7 @@ namespace EdFi.Ods.Security.Authorization.Repositories
             await AuthorizeSingleItemAsync(persistentEntity, updateActionUri, cancellationToken);
 
             // Pass call through to the repository operation
-            await _next.UpdateAsync(persistentEntity, cancellationToken, string jsonPatch);
+            await _next.UpdateAsync(persistentEntity, cancellationToken, jsonPatch);
         }
     }
 }

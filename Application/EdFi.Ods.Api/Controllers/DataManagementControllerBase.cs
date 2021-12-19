@@ -16,7 +16,9 @@ using EdFi.Ods.Api.Infrastructure.Pipelines.Factories;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Get;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetDeletedResource;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetMany;
+using EdFi.Ods.Api.Infrastructure.Pipelines.Patch;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Put;
+using EdFi.Ods.Api.Models;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Context;
@@ -26,6 +28,7 @@ using EdFi.Ods.Common.Infrastructure.Pipelines.GetMany;
 using EdFi.Ods.Common.Models.Queries;
 using log4net;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
@@ -66,6 +69,8 @@ namespace EdFi.Ods.Api.Controllers
         protected Lazy<GetManyPipeline<TResourceReadModel, TAggregateRoot>> GetManyPipeline;
 
         protected Lazy<PutPipeline<TResourceWriteModel, TAggregateRoot>> PutPipeline;
+        
+        protected Lazy<PatchPipeline<TResourceWriteModel, TAggregateRoot>> PatchPipeline;
 
         //protected IRepository<TAggregateRoot> repository;
         protected ISchoolYearContextProvider SchoolYearContextProvider;
@@ -93,6 +98,9 @@ namespace EdFi.Ods.Api.Controllers
 
             PutPipeline = new Lazy<PutPipeline<TResourceWriteModel, TAggregateRoot>>
                 (pipelineFactory.CreatePutPipeline<TResourceWriteModel, TAggregateRoot>);
+
+            PatchPipeline = new Lazy<PatchPipeline<TResourceWriteModel, TAggregateRoot>>
+                (pipelineFactory.CreatePatchPipeline<TResourceWriteModel, TAggregateRoot>);
 
             DeletePipeline = new Lazy<DeletePipeline>
                 (pipelineFactory.CreateDeletePipeline<TResourceReadModel, TAggregateRoot>);
@@ -249,6 +257,80 @@ namespace EdFi.Ods.Api.Controllers
             return result.ResourceWasCreated
                 ? (IActionResult) Created(new Uri(GetResourceUrl(result.ResourceId.GetValueOrDefault())), null)
                 : NoContent();
+        }
+        
+        [CheckModelForNull]
+        [HttpPatch("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status412PreconditionFailed)]
+        [Produces(MediaTypeNames.Application.Json)]
+        public virtual async Task<IActionResult> Patch([FromBody] EdFiJsonPatchRequest request, Guid id)
+        {
+            // Manual binding of Id to main request model
+            request.Id = id;
+
+            // Read the If-Match header and populate the resource DTO with an etag value.
+            string etag;
+            bool enforceOptimisticLock = Request.TryGetRequestHeader(HeaderConstants.IfMatch, out etag);
+            request.ETag = Unquoted(etag);
+
+            var validationState = new ValidationState();
+
+            // Execute the pipeline (synchronously)
+            var result = await PatchPipeline.Value.ProcessAsync(
+                new PatchContext<TResourceWriteModel, TAggregateRoot>(request, validationState), CancellationToken.None);
+
+            // Check for exceptions
+            if (result.Exception != null)
+            {
+                Logger.Error("Patch", result.Exception);
+                return CreateActionResultFromException(result.Exception, enforceOptimisticLock);
+            }
+
+            Response.GetTypedHeaders().ETag = GetEtag(result.ETag);
+
+            return NoContent();
+            // return result.ResourceWasCreated
+            //     ? (IActionResult) Created(new Uri(GetResourceUrl(result.ResourceId.GetValueOrDefault())), null)
+            //     : NoContent();
+        }
+        
+        [CheckModelForNull]
+        [HttpPatch]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status412PreconditionFailed)]
+        [Produces(MediaTypeNames.Application.Json)]
+        public virtual async Task<IActionResult> Patch([FromBody] EdFiJsonPatchRequest request)
+        {
+            // Read the If-Match header and populate the resource DTO with an etag value.
+            string etag;
+            bool enforceOptimisticLock = Request.TryGetRequestHeader(HeaderConstants.IfMatch, out etag);
+            request.ETag = Unquoted(etag);
+
+            var validationState = new ValidationState();
+
+            // Execute the pipeline (synchronously)
+            var result = await PatchPipeline.Value.ProcessAsync(
+                new PatchContext<TResourceWriteModel, TAggregateRoot>(request, validationState), CancellationToken.None);
+
+            // Check for exceptions
+            if (result.Exception != null)
+            {
+                Logger.Error("Put", result.Exception);
+                return CreateActionResultFromException(result.Exception, enforceOptimisticLock);
+            }
+
+            Response.GetTypedHeaders().ETag = GetEtag(result.ETag);
+
+            return NoContent();
+            
+            // return result.ResourceWasCreated
+            //     ? (IActionResult) Created(new Uri(GetResourceUrl(result.ResourceId.GetValueOrDefault())), null)
+            //     : NoContent();
         }
 
         [CheckModelForNull]

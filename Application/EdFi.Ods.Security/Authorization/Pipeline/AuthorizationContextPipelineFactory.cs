@@ -62,6 +62,23 @@ namespace EdFi.Ods.Security.Authorization.Pipeline
         }
     }
 
+    public class AuthorizationContextPatchPipelineStepsProviderDecorator : IPatchPipelineStepsProvider
+    {
+        private readonly IPatchPipelineStepsProvider _next;
+
+        public AuthorizationContextPatchPipelineStepsProviderDecorator(IPatchPipelineStepsProvider next)
+        {
+            _next = next;
+        }
+
+        public Type[] GetSteps()
+        {
+            return _next.GetSteps()
+                        .InsertAtHead(typeof(SetAuthorizationContextForPatch<,,,>))
+                        .ToArray();
+        }
+    }
+
     public class AuthorizationContextDeletePipelineStepsProviderDecorator : IDeletePipelineStepsProvider
     {
         private readonly IDeletePipelineStepsProvider _next;

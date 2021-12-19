@@ -84,6 +84,11 @@ namespace {{AggregateNamespace}}
             return keyValues;
         }
 
+        OrderedDictionary IHasPrimaryKeyValues.GetResourceKeyValues()
+        {
+            throw new NotSupportedException("Deriving resource key values from the reference data class is not supported.");
+        }
+
         {{/PrimaryKeyMap}}
         #region Overrides for Equals() and GetHashCode()
         public override bool Equals(object obj)
@@ -520,6 +525,19 @@ namespace {{AggregateNamespace}}
             return keyValues;
         }
 
+        OrderedDictionary IHasPrimaryKeyValues.GetResourceKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            {{#PropertyNames}}
+            keyValues.Add("{{JsonPropertyName}}", {{JsonPropertySourceEntityPropertyName}});
+            {{/PropertyNames}}
+
+            return keyValues;
+        }
+
         {{/PrimaryKeyMap}}
         {{#AllowsPrimaryKeyUpdates}}
         /// <summary>
@@ -610,6 +628,11 @@ namespace {{AggregateNamespace}}
         bool ISynchronizable.Synchronize(object target, EdFiApiPatchBuilder patchBuilder)
         {
             return this.SynchronizeTo(({{NamespacePrefix}}I{{ClassName}})target, patchBuilder);
+        }
+            
+        object ISynchronizable.MapToResource()
+        {
+            return this.MapToResource();
         }
 
         void IMappable.Map(object target)

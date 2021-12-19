@@ -282,6 +282,23 @@ namespace EdFi.Ods.Api.Container.Modules
                 builder.RegisterGeneric(typeof(PersistEntityModel<,,,>))
                     .AsSelf()
                     .SingleInstance();
+                
+                // Patch steps
+                builder.RegisterGeneric(typeof(MapPatchKeyToEntitySpecificationModel<,,,>))
+                    .AsSelf()
+                    .SingleInstance();
+
+                builder.RegisterGeneric(typeof(ApplyPatchToResourceModel<,,,>))
+                    .AsSelf()
+                    .SingleInstance();
+
+                builder.RegisterGeneric(typeof(ResolvePatchEntity<,,,>))
+                    .AsSelf()
+                    .SingleInstance();
+                
+                builder.RegisterGeneric(typeof(ResolvePatchEntity<,,,>))
+                    .AsSelf()
+                    .SingleInstance();
             }
 
             void RegisterPipeLineStepProviders()
@@ -303,6 +320,11 @@ namespace EdFi.Ods.Api.Container.Modules
 
                 builder.RegisterType<PutPipelineStepsProvider>()
                     .As<IPutPipelineStepsProvider>()
+                    .As<IPipelineStepsProvider>()
+                    .SingleInstance();
+
+                builder.RegisterType<PatchPipelineStepsProvider>()
+                    .As<IPatchPipelineStepsProvider>()
                     .As<IPipelineStepsProvider>()
                     .SingleInstance();
 

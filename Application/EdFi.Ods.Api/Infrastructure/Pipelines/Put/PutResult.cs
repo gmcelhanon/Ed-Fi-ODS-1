@@ -4,11 +4,12 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using EdFi.Ods.Common;
 using EdFi.Ods.Common.Infrastructure.Pipelines;
 
 namespace EdFi.Ods.Api.Infrastructure.Pipelines.Put
 {
-    public class PutResult : PipelineResultBase, IHasResourceChangeDetails
+    public class PutResult : PipelineResultBase, IHasResourceChangeDetails, IHasETag, IPersistenceResult
     {
         /// <summary>
         /// True if the resource was successfully handled by the PersistModel step.  This includes resources that are unchanged

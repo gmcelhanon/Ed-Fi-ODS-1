@@ -127,6 +127,11 @@
             return ({{EntityParentFieldName}} as IHasPrimaryKeyValues).GetPrimaryKeyValues();
         }
 
+        OrderedDictionary IHasPrimaryKeyValues.GetResourceKeyValues()
+        {
+            return ({{EntityParentFieldName}} as IHasPrimaryKeyValues).GetResourceKeyValues();
+        }
+
         // =========================================
         //        Synchronization Support
         // -----------------------------------------

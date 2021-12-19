@@ -3,26 +3,26 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using EdFi.Ods.Common.Infrastructure.Database.NamingConventions;
 using EdFi.Ods.Common.Models.Domain;
-using EdFi.Ods.Generator.Common.Database.NamingConventions;
 
-namespace EdFi.Ods.Generator.Common.Database.Engines.SqlServer
+namespace EdFi.Ods.Common.Infrastructure.PostgreSql
 {
-    public class SqlServerDatabaseNamingConvention : DatabaseNamingConventionBase
+    public class PostgreSqlDatabaseNamingConvention : DatabaseNamingConventionBase
     {
-        protected override int MaximumNameLength => 128;
+        protected override int MaximumNameLength => 63;
 
-        protected override bool LowerCaseNames => false;
+        protected override bool LowerCaseNames => true;
 
-        public override string DefaultDateConstraintValue() => "GETUTCDATE()";
+        public override string DefaultDateConstraintValue() => "now()";
 
-        public override string DefaultGuidConstraintValue() => "NEWID()";
+        public override string DefaultGuidConstraintValue() => "uuid_generate_v4()";
         
         public override string TriggerName(Entity entity, TriggerType triggerType)
         {
             return IdentifierName(entity.Name, prefix: $"{entity.Schema}_", suffix: $"_TR_{triggerType}");
         }
 
-        public override string DatabaseEngineCode => "MsSql";
+        public override string DatabaseEngineCode => "PgSql";
     }
 }

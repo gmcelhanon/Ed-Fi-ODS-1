@@ -47,6 +47,7 @@ namespace EdFi.Ods.Security.Container.Modules
                 typeof(AuthorizationContextGetBySpecificationPipelineStepsProviderDecorator)
             },
             {typeof(IPutPipelineStepsProvider), typeof(AuthorizationContextPutPipelineStepsProviderDecorator)},
+            {typeof(IPatchPipelineStepsProvider), typeof(AuthorizationContextPatchPipelineStepsProviderDecorator)},
             {typeof(IDeletePipelineStepsProvider), typeof(AuthorizationContextDeletePipelineStepsProviderDecorator)}
         };
 

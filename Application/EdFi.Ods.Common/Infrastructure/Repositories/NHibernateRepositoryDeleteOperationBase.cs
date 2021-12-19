@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using EdFi.Ods.Common.Exceptions;
 using EdFi.Ods.Common.Models.Domain;
 using NHibernate;
-using NHibernate.Persister.Entity;
 
 namespace EdFi.Ods.Common.Infrastructure.Repositories
 {
@@ -19,7 +18,7 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
     {
         private readonly IETagProvider _eTagProvider;
 
-        public NHibernateRepositoryDeleteOperationBase(ISessionFactory sessionFactory, IETagProvider eTagProvider)
+        protected NHibernateRepositoryDeleteOperationBase(ISessionFactory sessionFactory, IETagProvider eTagProvider)
             : base(sessionFactory)
         {
             _eTagProvider = eTagProvider;
@@ -45,28 +44,31 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     }
                 }
 
-                using (var trans = Session.BeginTransaction())
-                {
-                    try
-                    {
-                        var classMetadata = (AbstractEntityPersister) Session.SessionFactory.GetClassMetadata(typeof(TEntity));
+                await Session.DeleteAsync(persistedEntity, cancellationToken);
 
-                        string entityName = classMetadata.IsInherited
-                            ? classMetadata.MappedSuperclass
-                            : classMetadata.Name;
+                // using (var trans = Session.BeginTransaction())
+                // {
+                    // try
+                    // {
+                    
+                    // var classMetadata = (AbstractEntityPersister) Session.SessionFactory.GetClassMetadata(typeof(TEntity));
+                    //
+                    // string entityName = classMetadata.IsInherited
+                    //     ? classMetadata.MappedSuperclass
+                    //     : classMetadata.Name;
+                    //
+                    // await Session.CreateQuery($"delete from {entityName} where Id = :id")
+                    //     .SetParameter("id", persistedEntity.Id)
+                    //     .ExecuteUpdateAsync(cancellationToken);
 
-                        await Session.CreateQuery($"delete from {entityName} where Id = :id")
-                            .SetParameter("id", persistedEntity.Id)
-                            .ExecuteUpdateAsync(cancellationToken);
-
-                        await trans.CommitAsync(cancellationToken);
-                    }
-                    catch (Exception)
-                    {
-                        await trans.RollbackAsync(cancellationToken);
-                        throw;
-                    }
-                }
+                    //     await trans.CommitAsync(cancellationToken);
+                    // }
+                    // catch (Exception)
+                    // {
+                    //     await trans.RollbackAsync(cancellationToken);
+                    //     throw;
+                    // }
+                // }
             }
         }
     }

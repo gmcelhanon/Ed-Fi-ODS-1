@@ -32,7 +32,7 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines
 
         async Task<object> IPipeline.ProcessAsync(object context, CancellationToken cancellationToken)
         {
-            return await ProcessAsync((TContext) context, cancellationToken);
+            return await ProcessAsync((TContext) context, cancellationToken).ConfigureAwait(false);
         }
 
         public async Task<TResult> ProcessAsync(TContext context, CancellationToken cancellationToken)
@@ -41,7 +41,7 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines
 
             foreach (var step in steps)
             {
-                await step.ExecuteAsync(context, result, cancellationToken);
+                await step.ExecuteAsync(context, result, cancellationToken).ConfigureAwait(false);
 
                 // If we have experienced an exception, quit processing steps now
                 if (result.Exception != null)

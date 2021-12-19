@@ -415,22 +415,20 @@ namespace EdFi.Ods.CodeGen.Generators
                                                                ValueEntityName = p.GetLookupValueEntityName()
                                                            }),
                         PrimaryKeyMap = new
-                                        {
-                                            ParentClassName = GetEntityParentClassName(entity), PropertyNames = entity.Identifier.Properties
-                                                                                                                      .Where(p => !p.IsFromParent)
-                                                                                                                      .OrderBy(p => p.PropertyName)
-                                                                                                                      .Select(
-                                                                                                                           p => new
-                                                                                                                                {
-                                                                                                                                    p.PropertyName,
-                                                                                                                                    CSharpSafePropertyName
-                                                                                                                                        = p
-                                                                                                                                         .PropertyName
-                                                                                                                                         .MakeSafeForCSharpClass(
-                                                                                                                                              entity
-                                                                                                                                                 .Name)
-                                                                                                                                })
-                                        },
+                        {
+                            ParentClassName = GetEntityParentClassName(entity),
+                            PropertyNames = entity.Identifier.Properties.Where(p => !p.IsFromParent)
+                            .OrderBy(p => p.PropertyName)
+                            .Select(
+                                p => new
+                                {
+                                    PropertyName = p.PropertyName,
+                                    JsonPropertyName = GetJsonPropertyName(p),
+                                    JsonPropertySourceEntityPropertyName =
+                                        GetJsonPropertySourceEntityPropertyName(p).MakeSafeForCSharpClass(entity.Name),
+                                    CSharpSafePropertyName = p.PropertyName.MakeSafeForCSharpClass(entity.Name)
+                                })
+                        },
                         AlternateKeyProperties = entity.Name == "Descriptor" // Added only for equivalence to legacy templates
                             ? entity.AlternateIdentifiers.FirstOrDefault()
                                     .Properties
@@ -531,6 +529,27 @@ namespace EdFi.Ods.CodeGen.Generators
             }
         }
 
+        private static string GetJsonPropertySourceEntityPropertyName(EntityProperty p)
+        {
+            if (p.IsDescriptorUsage)
+            {
+                // TODO: Embedded convention (descriptor URI available on entity property without "Id" suffix)
+                return p.PropertyName.TrimSuffix("Id");
+            }
+            
+            if (p.DefiningProperty.Entity.IsPersonEntity())
+            {
+                return p.PropertyName.ReplaceSuffix("USI", "UniqueId");
+            }
+
+            return p.PropertyName;
+        }
+        
+        private static string GetJsonPropertyName(EntityProperty p)
+        {
+            return GetJsonPropertySourceEntityPropertyName(p).ToCamelCase();
+        }
+        
         private static bool PropertyHasPrecisionAndScale(EntityProperty p)
         {
             return p.PropertyType.Precision != 0 && p.PropertyType.Scale != 0;

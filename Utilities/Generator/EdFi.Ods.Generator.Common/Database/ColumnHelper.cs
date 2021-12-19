@@ -1,7 +1,7 @@
 using System.Data;
+using EdFi.Ods.Common.Infrastructure.Database.NamingConventions;
 using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Generator.Common.Database.DataTypes;
-using EdFi.Ods.Generator.Common.Database.NamingConventions;
 using EdFi.Ods.Generator.Common.Database.TemplateModelProviders;
 
 namespace EdFi.Ods.Generator.Common.Database

@@ -3,6 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,9 +36,10 @@ namespace EdFi.Ods.Common.Adapters
 
     public delegate void ItemAddedEventHandler(object sender, ItemAddedEventArgs e);
 
-    public class CollectionAdapterWithAddNotifications<T> : ICollection<T>
+    public class CollectionAdapterWithAddNotifications<T> : ICollection<T>, IList
     {
         protected readonly ICollection<T> Source;
+        private readonly IList _sourceAsList;
 
         public CollectionAdapterWithAddNotifications(ICollection<T> source)
             : this(source, null) { }
@@ -51,6 +53,7 @@ namespace EdFi.Ods.Common.Adapters
             AddingItemEventHandler addingEventHandler)
         {
             Source = source;
+            _sourceAsList = (IList) source; 
 
             if (addingEventHandler != null)
             {
@@ -102,6 +105,41 @@ namespace EdFi.Ods.Common.Adapters
             Source.Clear();
         }
 
+        #region IList implementation
+        
+        int IList.Add(object value) => _sourceAsList.Add(value);
+
+        bool IList.Contains(object value) => _sourceAsList.Contains(value);
+
+        int IList.IndexOf(object value) => _sourceAsList.IndexOf(value);
+
+        void IList.Insert(int index, object value)
+        {
+            _sourceAsList.Insert(index, value);
+        }
+
+        void IList.Remove(object value)
+        {
+            _sourceAsList.Remove(value);
+        }
+
+        void IList.RemoveAt(int index)
+        {
+            _sourceAsList.RemoveAt(index);
+        }
+
+        bool IList.IsFixedSize
+        {
+            get => _sourceAsList.IsFixedSize;
+        }
+
+        object IList.this[int index]
+        {
+            get => _sourceAsList[index];
+            set => _sourceAsList[index] = value;
+        }
+        #endregion
+
         public bool Contains(T item)
         {
             return Source.Contains(item);
@@ -120,10 +158,26 @@ namespace EdFi.Ods.Common.Adapters
             return Source.Remove(item);
         }
 
+        void ICollection.CopyTo(Array array, int index)
+        {
+            throw new NotImplementedException();
+        }
+
         public int Count => Source.Count;
+
+        bool ICollection.IsSynchronized
+        {
+            get => throw new NotImplementedException();
+        }
+
+        object ICollection.SyncRoot
+        {
+            get => throw new NotImplementedException();
+        }
 
         public bool IsReadOnly => Source.IsReadOnly;
 
+        
         public event ItemAddedEventHandler ItemAdded;
 
         private void OnItemAdded(T item)

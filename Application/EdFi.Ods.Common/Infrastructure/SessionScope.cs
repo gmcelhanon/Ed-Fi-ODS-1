@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using System.Threading.Tasks;
 using NHibernate;
 using NHibernate.Context;
 
@@ -46,7 +47,7 @@ namespace EdFi.Ods.Common.Infrastructure
                 _session.Dispose();
             }
         }
-
+        
         private bool EnsureSessionBinding()
         {
             if (!CurrentSessionContext.HasBind(_sessionFactory))

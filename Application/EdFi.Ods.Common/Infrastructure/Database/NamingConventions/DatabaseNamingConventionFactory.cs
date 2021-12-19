@@ -1,6 +1,6 @@
 using Autofac.Features.Indexed;
 
-namespace EdFi.Ods.Generator.Common.Database.NamingConventions
+namespace EdFi.Ods.Common.Infrastructure.Database.NamingConventions
 {
     public class DatabaseNamingConventionFactory : IDatabaseNamingConventionFactory
     {

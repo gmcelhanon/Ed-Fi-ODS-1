@@ -10,6 +10,7 @@ using EdFi.Common.InversionOfControl;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Get;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetDeletedResource;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetMany;
+using EdFi.Ods.Api.Infrastructure.Pipelines.Patch;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Put;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Infrastructure.Pipelines;
@@ -27,6 +28,7 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Factories
         private readonly IGetPipelineStepsProvider getPipelineStepsProvider;
         private readonly IGetDeletedResourceIdsPipelineStepsProvider getDeletedResourceIdsPipelineStepsProvider;
         private readonly IPutPipelineStepsProvider putPipelineStepsProvider;
+        private readonly IPatchPipelineStepsProvider patchPipelineStepsProvider;
 
         public PipelineFactory(
             IServiceLocator locator,
@@ -34,6 +36,7 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Factories
             IGetBySpecificationPipelineStepsProvider getBySpecificationPipelineStepsProvider,
             IGetDeletedResourceIdsPipelineStepsProvider getDeletedResourceIdsPipelineStepsProvider,
             IPutPipelineStepsProvider putPipelineStepsProvider,
+            IPatchPipelineStepsProvider patchPipelineStepsProvider,
             IDeletePipelineStepsProvider deletePipelineStepsProvider)
         {
             _locator = locator;
@@ -41,6 +44,7 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Factories
             this.getBySpecificationPipelineStepsProvider = getBySpecificationPipelineStepsProvider;
             this.getDeletedResourceIdsPipelineStepsProvider = getDeletedResourceIdsPipelineStepsProvider;
             this.putPipelineStepsProvider = putPipelineStepsProvider;
+            this.patchPipelineStepsProvider = patchPipelineStepsProvider;
             this.deletePipelineStepsProvider = deletePipelineStepsProvider;
         }
 
@@ -94,6 +98,19 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Factories
                     stepTypes);
 
             return new PutPipeline<TResourceModel, TEntityModel>(steps);
+        }
+
+        public PatchPipeline<TResourceModel, TEntityModel> CreatePatchPipeline<TResourceModel, TEntityModel>()
+            where TResourceModel : IHasETag
+            where TEntityModel : class, IHasIdentifier, new()
+        {
+            var stepTypes = patchPipelineStepsProvider.GetSteps();
+
+            var steps =
+                ResolvePipelineSteps<PatchContext<TResourceModel, TEntityModel>, PatchResult<TResourceModel>, TResourceModel, TEntityModel>(
+                    stepTypes);
+
+            return new PatchPipeline<TResourceModel, TEntityModel>(steps);
         }
 
         public DeletePipeline CreateDeletePipeline<TResourceModel, TEntityModel>()

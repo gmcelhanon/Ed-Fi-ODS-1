@@ -18,5 +18,7 @@ namespace EdFi.Ods.Common
         /// </summary>
         /// <returns>The dictionary containing the name/value pairs of the primary key fields.</returns>
         OrderedDictionary GetPrimaryKeyValues();
+        
+        OrderedDictionary GetResourceKeyValues();
     }
 }

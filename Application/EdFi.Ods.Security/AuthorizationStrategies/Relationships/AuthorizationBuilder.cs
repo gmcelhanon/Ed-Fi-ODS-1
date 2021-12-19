@@ -17,6 +17,7 @@ using EdFi.Ods.Common.Security;
 using EdFi.Ods.Common.Security.Authorization;
 using EdFi.Ods.Common.Security.Claims;
 using log4net;
+// using FastExpressionCompiler.LightExpression;
 
 namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
 {
@@ -367,6 +368,7 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
             // Get (or save) the compiled Func, by name
             var getValue = (Func<TContextData, TResult>) _propertyAccessorsByName
                .GetOrAdd(name, n => propertySelection.Compile());
+               // .GetOrAdd(name, n => propertySelection.CompileFast());
 
             // Get the value off the authorization context data instance
             object authorizationValue = _contextData == null

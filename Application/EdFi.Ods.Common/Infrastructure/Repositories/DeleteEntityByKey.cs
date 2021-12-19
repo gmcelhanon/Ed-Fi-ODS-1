@@ -3,36 +3,51 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
 using System.Threading;
 using System.Threading.Tasks;
-using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Repositories;
 using NHibernate;
 
 namespace EdFi.Ods.Common.Infrastructure.Repositories
 {
-    public class DeleteEntityByKey<TEntity> : NHibernateRepositoryDeleteOperationBase<TEntity>, IDeleteEntityByKey<TEntity>
-        where TEntity : DomainObjectBase, IHasIdentifier, IDateVersionedEntity
+    public class DeleteEntityByKey<TEntity> : IDeleteEntityByKey<TEntity>
+        where TEntity : IHasIdentifier
     {
+        private readonly ISessionFactory _sessionFactory;
         private readonly IGetEntityByKey<TEntity> _getEntityByKey;
+        private readonly IDeleteEntity<TEntity> _deleteEntity;
 
         public DeleteEntityByKey(
             ISessionFactory sessionFactory,
             IGetEntityByKey<TEntity> getEntityByKey,
-            IETagProvider eTagProvider)
-            : base(sessionFactory, eTagProvider)
+            IDeleteEntity<TEntity> deleteEntity)
         {
+            _sessionFactory = sessionFactory;
             _getEntityByKey = getEntityByKey;
+            _deleteEntity = deleteEntity;
         }
 
         public async Task DeleteByKeyAsync(TEntity specification, string etag, CancellationToken cancellationToken)
         {
-            using (new SessionScope(SessionFactory))
+            using (var sessionScope = new SessionScope(_sessionFactory))
             {
                 // First we must load the entity
                 var persistedEntity = await _getEntityByKey.GetByKeyAsync(specification, cancellationToken);
 
-                await DeleteAsync(persistedEntity, etag, cancellationToken);
+                using (var trans = sessionScope.Session.BeginTransaction())
+                {
+                    try
+                    {
+                        await _deleteEntity.DeleteAsync(persistedEntity, etag, cancellationToken);
+                        await trans.CommitAsync(cancellationToken);
+                    }
+                    catch (Exception)
+                    {
+                        await trans.RollbackAsync(cancellationToken);
+                        throw;
+                    }
+                }
             }
         }
     }

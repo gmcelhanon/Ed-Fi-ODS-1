@@ -15,8 +15,8 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Steps
 {
     public class PersistEntityModel<TContext, TResult, TResourceModel, TEntityModel>
         : IStep<TContext, TResult>
-        where TContext : PutContext<TResourceModel, TEntityModel> // TODO: Is there a PersistenceContext? Maybe only when supporting PUT creational semantics?
-        where TResult : PutResult
+        where TContext : IPersistenceContext<TEntityModel> // PutContext<TResourceModel, TEntityModel> // TODO: Is there a PersistenceContext? Maybe only when supporting PUT creational semantics?
+        where TResult : PipelineResultBase, IPersistenceResult, IHasETag
         where TEntityModel : class, IHasIdentifier, IDateVersionedEntity
         where TResourceModel : IHasETag
     {
@@ -34,8 +34,10 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Steps
             try
             {
                 var updatedEntityResult = await _upsertEntity.UpsertAsync(
-                    context.PersistentModel,
-                    context.EnforceOptimisticLock, cancellationToken);
+                        context.PersistentModel,
+                        context.EnforceOptimisticLock,
+                        cancellationToken)
+                    .ConfigureAwait(false);
 
                 context.PersistentModel = updatedEntityResult.Entity;
 

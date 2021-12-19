@@ -18,13 +18,14 @@ using EdFi.Ods.Common.Database;
 using EdFi.Ods.Features.ChangeQueries.ExceptionHandling;
 using EdFi.Ods.Api.ExceptionHandling;
 using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Common.Repositories;
 using EdFi.Ods.Features.ChangeQueries.Repositories;
 using EdFi.Ods.Features.ChangeQueries.Conventions;
-using EdFi.Ods.Features.ChangeQueries.DomainModelEnhancers;
-using EdFi.Ods.Features.ChangeQueries.Repositories.Authorization;
-using EdFi.Ods.Features.ChangeQueries.Repositories.DeletedItems;
-using EdFi.Ods.Features.ChangeQueries.Repositories.KeyChanges;
-using EdFi.Ods.Features.ChangeQueries.Repositories.Snapshots;
+// using EdFi.Ods.Features.ChangeQueries.DomainModelEnhancers;
+// using EdFi.Ods.Features.ChangeQueries.Repositories.Authorization;
+// using EdFi.Ods.Features.ChangeQueries.Repositories.DeletedItems;
+// using EdFi.Ods.Features.ChangeQueries.Repositories.KeyChanges;
+// using EdFi.Ods.Features.ChangeQueries.Repositories.Snapshots;
 
 namespace EdFi.Ods.Features.ChangeEvents.Modules
 {
@@ -33,7 +34,7 @@ namespace EdFi.Ods.Features.ChangeEvents.Modules
         public ChangeEventsModule(ApiSettings apiSettings)
             : base(apiSettings, nameof(ChangeEventsModule)) { }
 
-        public override bool IsSelected() => IsFeatureEnabled(ApiFeature.ChangeQueries);
+        public override bool IsSelected() => IsFeatureEnabled(ApiFeature.ChangeEvents);
 
         public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
         {
@@ -41,6 +42,10 @@ namespace EdFi.Ods.Features.ChangeEvents.Modules
             // builder.RegisterType<ChangeEventsMappingNHibernateConfigurationActivity>()
             //     .As<INHibernateBeforeBindMappingActivity>()
             //     .SingleInstance();
+            
+            // Perform logging of events on Update
+            builder.RegisterGenericDecorator(typeof(TrackedEventInsertEntityDecorator<>), typeof(ICreateEntity<>));
+            builder.RegisterGenericDecorator(typeof(TrackedEventUpdateEntityDecorator<>), typeof(IUpdateEntity<>));
 
             // AddSupportForAvailableChanges();
             AddSupportForSnapshots();

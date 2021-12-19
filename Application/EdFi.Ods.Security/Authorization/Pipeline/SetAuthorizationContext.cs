@@ -100,6 +100,26 @@ namespace EdFi.Ods.Security.Authorization.Pipeline
             get => SecurityRepository.GetActionByName("Update").ActionUri;
         }
     }
+    
+    /// <summary>
+    /// Sets the action to Update in context for downstream authorization processing.
+    /// </summary>
+    public class SetAuthorizationContextForPatch<TContext, TResult, TResourceModel, TEntityModel>
+        : SetAuthorizationContextBase<TContext, TResult, TResourceModel, TEntityModel>
+        where TContext : class
+        where TResult : class
+    {
+        public SetAuthorizationContextForPatch(
+            IAuthorizationContextProvider authorizationContextProvider,
+            ISecurityRepository securityRepository,
+            IResourceClaimUriProvider resourceClaimUriProvider)
+            : base(authorizationContextProvider, securityRepository, resourceClaimUriProvider) { }
+
+        protected override string Action
+        {
+            get => SecurityRepository.GetActionByName("Update").ActionUri;
+        }
+    }
 
     /// <summary>
     /// Sets the action to Upsert in context for downstream authorization processing.

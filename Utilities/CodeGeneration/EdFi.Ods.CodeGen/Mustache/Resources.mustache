@@ -1172,11 +1172,17 @@ namespace {{ResourceClassesNamespace}}
         // ============================================================
         //                      Data Synchronization
         // ------------------------------------------------------------
+        {{! This interface should probably not be on the main model interfaces since it really only applies to entities }}
         bool ISynchronizable.Synchronize(object target, EdFiApiPatchBuilder patchBuilder)
         {
-            return {{NamespacePrefix}}{{EntityName}}Mapper.SynchronizeTo(this, ({{NamespacePrefix}}I{{EntityName}})target, patchBuilder);
+            throw new NotImplementedException();
         }
 
+        object ISynchronizable.MapToResource()
+        {
+            throw new NotImplementedException();
+        }
+    
         void IMappable.Map(object target)
         {
             {{^IsBaseClassConcrete}}

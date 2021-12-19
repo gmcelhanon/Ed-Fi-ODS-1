@@ -94,12 +94,12 @@ namespace EdFi.Ods.Api.Container.Modules
                 .As<IFilterCriteriaApplicatorProvider>()
                 .SingleInstance();
 
-            builder.RegisterGeneric(typeof(NHibernateRepository<>))
-                .As(typeof(IRepository<>))
-                .SingleInstance();
-
             builder.RegisterGeneric(typeof(CreateEntity<>))
                 .As(typeof(ICreateEntity<>))
+                .SingleInstance();
+
+            builder.RegisterGeneric(typeof(DeleteEntity<>))
+                .As(typeof(IDeleteEntity<>))
                 .SingleInstance();
 
             builder.RegisterGeneric(typeof(DeleteEntityById<>))

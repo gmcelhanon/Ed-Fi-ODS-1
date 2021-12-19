@@ -4,8 +4,9 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using Autofac;
+using EdFi.Ods.Common.Infrastructure.Database.NamingConventions;
+using EdFi.Ods.Common.Infrastructure.PostgreSql;
 using EdFi.Ods.Generator.Common.Database.DataTypes;
-using EdFi.Ods.Generator.Common.Database.NamingConventions;
 using EdFi.Ods.Generator.Common.Rendering;
 
 namespace EdFi.Ods.Generator.Common.Database.Engines.PostgreSql

@@ -1,4 +1,4 @@
-namespace EdFi.Ods.Generator.Common.Database.NamingConventions
+namespace EdFi.Ods.Common.Infrastructure.Database.NamingConventions
 {
     public enum TriggerType
     {

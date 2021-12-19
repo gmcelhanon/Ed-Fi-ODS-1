@@ -69,6 +69,39 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Factories
                    };
         }
     }
+    
+    /// <summary>
+    /// Provides the core Ed-Fi ODS API steps for "patch" persistence.
+    /// </summary>
+    public class PatchPipelineStepsProvider : IPatchPipelineStepsProvider
+    {
+        public virtual Type[] GetSteps()
+        {
+            return new[]
+                   {
+                       // Validate the patch (e.g. id vs. key)
+                       // typeof(ValidatePatch<,,,>),
+                       
+                       // Copy the patch resource key values to the specification entity
+                       typeof(MapPatchKeyToEntitySpecificationModel<,,,>),
+                       
+                       // Use specification entity to get the persistent entity
+                       typeof(ResolvePatchEntity<,,,>),
+                       
+                       // Map the existing persistent entity back to a canonical resource model
+                       // TODO: For Profiles, this needs to be the *writable* model, not the readable one
+                       typeof(MapEntityModelToResourceModel<,,,>),
+                       
+                       // Apply the patch document to the canonical resource model
+                       typeof(ApplyPatchToResourceModel<,,,>),
+
+                       // Repeat the Put pipeline steps
+                       typeof(ValidateResourceModel<,,,>), 
+                       typeof(MapResourceModelToEntityModel<,,,>), 
+                       typeof(PersistEntityModel<,,,>)
+                   };
+        }
+    }
 
     /// <summary>
     /// Provides the core Ed-Fi ODS API steps for "Delete" persistence.

@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using EdFi.Ods.Common.Patch;
 
@@ -38,6 +39,7 @@ namespace EdFi.Ods.Common.Extensions
             {
                 // This statement causes failure in NHibernate when no version column is present.
                 //  --> (item as IChildEntity).SetParent(null);
+                patchBuilder?.ItemRemoved((item as IHasPrimaryKeyValues)?.GetResourceKeyValues());
                 targetList.Remove(item);
                 isModified = true;
             }
@@ -61,7 +63,15 @@ namespace EdFi.Ods.Common.Extensions
                 .ToList();
 
             isModified = itemsToUpdate.Aggregate(
-                isModified, (current, pair) => current | pair.Submitted.Synchronize(pair.Persisted, patchBuilder));
+                isModified, 
+                (current, pair) =>
+                {
+                    patchBuilder?.PushItemKeyContext((pair.Persisted as IHasPrimaryKeyValues)?.GetResourceKeyValues());
+                    bool itemModified = pair.Submitted.Synchronize(pair.Persisted, patchBuilder);
+                    patchBuilder?.PopContext();
+                    
+                    return current | itemModified;
+                });
 
             // Find items to add
             var itemsToAdd = sourceList
@@ -73,6 +83,7 @@ namespace EdFi.Ods.Common.Extensions
             {
                 targetList.Add(item);
 
+                patchBuilder?.ItemAdded(item.MapToResource());
                 onChildAdded?.Invoke(item);
 
                 isModified = true;

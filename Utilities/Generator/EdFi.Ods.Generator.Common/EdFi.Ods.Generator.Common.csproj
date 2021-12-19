@@ -23,4 +23,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\NamingConventions" />
+  </ItemGroup>
 </Project>

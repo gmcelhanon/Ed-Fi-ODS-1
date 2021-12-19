@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using EdFi.Ods.Generator.Common.Database.NamingConventions;
+using EdFi.Ods.Common.Infrastructure.Database.NamingConventions;
 using EdFi.Ods.Generator.Common.Options;
 
 namespace EdFi.Ods.Generator.Common.Database

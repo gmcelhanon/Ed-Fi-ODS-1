@@ -200,7 +200,7 @@ namespace EdFi.Ods.Api.Caching
             if (!_cacheProvider.TryGetCachedObject(cacheKey, out personCacheAsObject))
             {
                 // Make sure there is only one cache set being initialized at a time
-                lock (_identityValueMapsLock)
+                if (!_identityValueMapsLock.IsWriteLockHeld && _identityValueMapsLock.TryEnterWriteLock(TimeSpan.FromMilliseconds(100)))
                 {
                     // Make sure that the entry still doesn't exist yet
                     if (!_cacheProvider.TryGetCachedObject(cacheKey, out personCacheAsObject))
@@ -231,7 +231,7 @@ namespace EdFi.Ods.Api.Caching
                     || identityValueMaps.UsiByUniqueId == null))
             {
                 // Wait for the initialization task to complete
-                identityValueMaps.InitializationTask.WaitSafely();
+                identityValueMaps.InitializationTask.ConfigureAwait(false).GetAwaiter().GetResult();
 
                 //If initialization failed, return false.
                 if (identityValueMaps.UniqueIdByUsi == null
@@ -265,13 +265,15 @@ namespace EdFi.Ods.Api.Caching
                 HttpContextStorageTransfer.TransferContext();
             }
 
-            var task = InitializePersonTypeValueMapsAsync(entry, personType, context);
+            var task = Task.Run(async () => await InitializePersonTypeValueMapsAsync(entry, personType, context));
 
-            if (task.Status == TaskStatus.Created)
-            {
-                task.Start();
-            }
+            // if (task.Status == TaskStatus.Created)
+            // {
+            //     task.Start();
+            // }
 
+            _logger.Info($"Started background task for cache initialization for person type '{personType}'.");
+            
             return task;
         }
 
@@ -292,6 +294,8 @@ namespace EdFi.Ods.Api.Caching
                     stopwatch.Start();
                 }
 
+                _logger.Info($"Obtaining all person identifiers for person type '{personType}'...");
+                
                 foreach (
                     var valueMap in await _personIdentifiersProvider.GetAllPersonIdentifiers(personType))
                 {
@@ -301,6 +305,8 @@ namespace EdFi.Ods.Api.Caching
                     string key2 = GetUsiByUniqueIdCacheKey(personType, valueMap.UniqueId, context);
                     usiByUniqueId.TryAdd(key2, valueMap.Usi);
                 }
+
+                _logger.Info($"Finished loading value maps for person identifiers for person type '{personType}'...");
 
                 if (_logger.IsDebugEnabled)
                 {
@@ -318,6 +324,8 @@ namespace EdFi.Ods.Api.Caching
 
                 //Now that it's loaded extend the cache expiration.
                 _cacheProvider.Insert(cacheKey, entry, GetAbsoluteExpiration(), _slidingExpiration);
+                
+                _logger.Info($"Extending cache duration for person type '{personType}' with {entry.UniqueIdByUsi.Count} items...");
             }
             catch (Exception ex)
             {

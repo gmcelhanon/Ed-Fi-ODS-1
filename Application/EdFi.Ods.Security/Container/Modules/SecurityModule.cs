@@ -118,6 +118,10 @@ namespace EdFi.Ods.Security.Container.Modules
                 .AsSelf()
                 .SingleInstance();
 
+            builder.RegisterGeneric(typeof(SetAuthorizationContextForPatch<,,,>))
+                .AsSelf()
+                .SingleInstance();
+
             builder.RegisterGeneric(typeof(SetAuthorizationContextForDelete<,,,>))
                 .AsSelf()
                 .SingleInstance();
