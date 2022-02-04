@@ -4,7 +4,6 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using Autofac;
-using EdFi.Ods.Api.Infrastructure.Pipelines;
 using EdFi.Ods.Features.Conventions;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Constants;
@@ -18,8 +17,14 @@ using EdFi.Ods.Features.ChangeQueries.DatabaseNaming;
 using EdFi.Ods.Common.Database;
 using EdFi.Ods.Features.ChangeQueries.ExceptionHandling;
 using EdFi.Ods.Api.ExceptionHandling;
+using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Features.ChangeQueries.Repositories;
 using EdFi.Ods.Features.ChangeQueries.Conventions;
+using EdFi.Ods.Features.ChangeQueries.DomainModelEnhancers;
+using EdFi.Ods.Features.ChangeQueries.Repositories.Authorization;
+using EdFi.Ods.Features.ChangeQueries.Repositories.DeletedItems;
+using EdFi.Ods.Features.ChangeQueries.Repositories.KeyChanges;
+using EdFi.Ods.Features.ChangeQueries.Repositories.Snapshots;
 
 namespace EdFi.Ods.Features.ChangeQueries.Modules
 {
@@ -32,51 +37,112 @@ namespace EdFi.Ods.Features.ChangeQueries.Modules
 
         public override void ApplyConfigurationSpecificRegistrations(ContainerBuilder builder)
         {
-            builder.RegisterType<AvailableChangeVersionProvider>()
-                .As<IAvailableChangeVersionProvider>()
-                .SingleInstance();
-
-            builder.RegisterType<GetDeletedResourceIds>()
-                .As<IGetDeletedResourceIds>()
-                .SingleInstance();
-
-            builder.RegisterType<AvailableChangeVersionsRouteConvention>()
-                .As<IApplicationModelConvention>()
-                .SingleInstance();
-
-            builder.RegisterType<DeletesRouteConvention>()
-                .As<IApplicationModelConvention>()
-                .SingleInstance();
-
+            // Change Queries support in NHibernate mappings 
             builder.RegisterType<ChangeQueryMappingNHibernateConfigurationActivity>()
                 .As<INHibernateBeforeBindMappingActivity>()
                 .SingleInstance();
 
-            // Routing
-            builder.RegisterType<SnapshotsControllerRouteConvention>()
-                .As<IApplicationModelConvention>()
+            AddSupportForAvailableChanges();
+            AddSupportForSnapshots();
+            AddSupportForDeletes();
+            AddSupportForKeyChanges();
+            AddSupportForAuthorization();
+            
+            // General Tracked Changes query support
+            builder.RegisterType<TrackedChangesIdentifierProjectionsProvider>()
+                .As<ITrackedChangesIdentifierProjectionsProvider>()
                 .SingleInstance();
+            
+            void AddSupportForAvailableChanges()
+            {
+                // Available changes support
+                builder.RegisterType<AvailableChangeVersionsRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
 
-            // Publishing components / services
-            builder.RegisterType<SnapshotContextProvider>()
-                .As<ISnapshotContextProvider>()
-                .SingleInstance();
+                builder.RegisterType<AvailableChangeVersionProvider>()
+                    .As<IAvailableChangeVersionProvider>()
+                    .SingleInstance();
+            }
 
-            builder.RegisterType<SnapshotContextActionFilter>()
-                .As<IFilterMetadata>()
-                .SingleInstance();
+            void AddSupportForSnapshots()
+            {
+                // Snapshots support
+                builder.RegisterType<SnapshotsControllerRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
 
-            builder.RegisterDecorator<
+                builder.RegisterType<SnapshotContextProvider>()
+                    .As<ISnapshotContextProvider>()
+                    .SingleInstance();
+
+                builder.RegisterType<SnapshotContextActionFilter>()
+                    .As<IFilterMetadata>()
+                    .SingleInstance();
+
+                builder.RegisterDecorator<
                     SnapshotSuffixDatabaseNameReplacementTokenProvider,
                     IDatabaseNameReplacementTokenProvider>();
 
-            builder.RegisterType<SnapshotGoneExceptionTranslator>()
-                .As<IExceptionTranslator>()
-                .SingleInstance();
+                builder.RegisterType<SnapshotGoneExceptionTranslator>()
+                    .As<IExceptionTranslator>()
+                    .SingleInstance();
 
-            builder.RegisterType<GetSnapshots>()
-                .As<IGetSnapshots>()
-                .SingleInstance();
+                builder.RegisterType<GetSnapshots>()
+                    .As<IGetSnapshots>()
+                    .SingleInstance();
+            }
+
+            void AddSupportForDeletes()
+            {
+                // Deletes support
+                builder.RegisterType<DeletesRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
+
+                builder.RegisterType<DeletedItemsResourceDataProvider>()
+                    .As<IDeletedItemsResourceDataProvider>()
+                    .SingleInstance();
+            
+                builder.RegisterType<DeletedItemsQueryFactory>()
+                    .As<IDeletedItemsQueryFactory>()
+                    .SingleInstance();
+                
+                builder.RegisterType<DeletedItemsQueriesPreparer>()
+                    .As<IDeletedItemsQueriesPreparer>()
+                    .SingleInstance();
+            }
+
+            void AddSupportForKeyChanges()
+            {
+                // KeyChanges support
+                builder.RegisterType<KeyChangesRouteConvention>()
+                    .As<IApplicationModelConvention>()
+                    .SingleInstance();
+
+                builder.RegisterType<KeyChangesResourceDataProvider>()
+                    .As<IKeyChangesResourceDataProvider>()
+                    .SingleInstance();
+            
+                builder.RegisterType<KeyChangesQueryFactory>()
+                    .As<IKeyChangesQueryFactory>()
+                    .SingleInstance();
+                
+                builder.RegisterType<KeyChangesQueriesPreparer>()
+                    .As<IKeyChangesQueriesPreparer>()
+                    .SingleInstance();
+            }
+            
+            void AddSupportForAuthorization()
+            {
+                // General authorization support
+                builder.RegisterType<NHibernateEntityTypeDomainModelEnhancer>()
+                    .As<IDomainModelEnhancer>()
+                    .SingleInstance();
+            
+                builder.RegisterDecorator<KeyChangesQueryFactoryAuthorizationDecorator, IKeyChangesQueryFactory>();
+                builder.RegisterDecorator<DeletedItemsQueryFactoryAuthorizationDecorator, IDeletedItemsQueryFactory>();
+            }
         }
     }
 }
