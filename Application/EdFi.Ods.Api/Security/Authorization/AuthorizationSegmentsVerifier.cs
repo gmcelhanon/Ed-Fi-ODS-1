@@ -89,12 +89,14 @@ namespace EdFi.Ods.Api.Security.Authorization
                     string[] claimEndpointNames =
                         authorizationSegments.FirstOrDefault()?.ClaimsEndpoints.Select(x => x.Name)
                             .Distinct()
+                            .OrderBy(x => x)
                             .ToArray()
                         ?? Array.Empty<string>();
 
                     // NOTE: Embedded convention - UniqueId is suffix used for external representation of USI values
                     string[] subjectEndpointNames = authorizationSegments
                         .Select(x => x.SubjectEndpoint.Name.ReplaceSuffix("USI", "UniqueId"))
+                        .OrderBy(x => x)
                         .Distinct()
                         .ToArray();
 
@@ -110,8 +112,9 @@ namespace EdFi.Ods.Api.Security.Authorization
                     const int MaximumEdOrgClaimValuesToDisplay = 5;
 
                     var claimEndpointValues =
-                        (authorizationSegments.FirstOrDefault()?.ClaimsEndpoints.Select(x => x.Value.ToString())
+                        (authorizationSegments.FirstOrDefault()?.ClaimsEndpoints.OrderBy(epv => epv.Value).Select(x => x.Value.ToString())
                             ?? Array.Empty<string>())
+                        .OrderBy(x => x)
                         .Take(MaximumEdOrgClaimValuesToDisplay + 1)
                         .ToArray();
 
