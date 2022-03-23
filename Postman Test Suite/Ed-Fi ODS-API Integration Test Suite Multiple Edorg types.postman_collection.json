@@ -1379,7 +1379,7 @@
 											"});",
 											"const responseItems = pm.response.json();",
 											"pm.test(\"Should match with Error Message Response \", () => {    ",
-											"        pm.expect(responseItems.message).to.equal(\"Authorization denied. No relationships have been established between the caller's education organization id claim (value 5001 of type 'CommunityProviderId') and the requested resource's 'SchoolId' value.\");",
+											"        pm.expect(responseItems.message).to.equal(\"Authorization denied. No relationships have been established between the caller's education organization id claims (values 5001, 255901001 of types 'CommunityProviderId', 'SchoolId') and the requested resource's 'SchoolId' value.\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1531,7 +1531,7 @@
 											"});",
 											"const responseItems = pm.response.json();",
 											"pm.test(\"Should match with Error Message Response \", () => {    ",
-											"        pm.expect(responseItems.message).to.equal(\"Authorization denied. No relationships have been established between the caller's education organization id claim (value 255901001 of type 'SchoolId') and the requested resource's 'CommunityProviderId' value.\");",
+											"        pm.expect(responseItems.message).to.equal(\"Authorization denied. No relationships have been established between the caller's education organization id claim (values 5001, 255901001 of types 'CommunityProviderId', 'SchoolId') and the requested resource's 'CommunityProviderId' value.\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1746,7 +1746,7 @@
 											"});",
 											"const responseItems = pm.response.json();",
 											"pm.test(\"Should match with Error Message Response \", () => {    ",
-											"        pm.expect(responseItems.message).to.equal(\"Authorization denied. The claims associated with an identifier of 'PostSecondaryInstitutionId' cannot be used to authorize a request associated with an identifier of 'SchoolId'. The claims associated with an identifier of 'CommunityProviderId' cannot be used to authorize a request associated with an identifier of 'SchoolId'.\");",
+											"        pm.expect(responseItems.message).to.equal(\"Authorization denied. No relationships have been established between the caller's education organization id claims (values 5001, 255901001 of types 'CommunityProviderId', 'SchoolId') and the requested resource's 'SchoolId' value.\");        ",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1962,10 +1962,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n   \"studentUniqueId\": \"{{supplied:{{scenarioId}}:StudentUniqueId}}\",\r\n  \"birthDate\":\"{{supplied:{{scenarioId}}:BirthDate}}\",\r\n  \"firstName\": \"{{supplied:{{scenarioId}}:FirstName}}\",\r\n  \"lastSurname\": \"{{supplied:{{scenarioId}}:LastSurname}}\"\r\n}",
-									"options": {
-										"raw": {}
-									}
+									"raw": "{\r\n   \"studentUniqueId\": \"{{supplied:{{scenarioId}}:StudentUniqueId}}\",\r\n  \"birthDate\":\"{{supplied:{{scenarioId}}:BirthDate}}\",\r\n  \"firstName\": \"{{supplied:{{scenarioId}}:FirstName}}\",\r\n  \"lastSurname\": \"{{supplied:{{scenarioId}}:LastSurname}}\"\r\n}"
 								},
 								"url": {
 									"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/students",
@@ -2034,10 +2031,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \r\n   \"schoolReference\":{ \r\n      \"schoolId\":\"{{known:schoolId3}}\"\r\n   },\r\n   \"studentReference\":{ \r\n      \"studentUniqueId\":\"{{supplied:{{scenarioId}}:StudentUniqueId}}\"\r\n   },\r\n   \"entryDate\":\"{{supplied:{{scenarioId}}:entryDate}}\",\r\n   \"entryGradeLevelDescriptor\":\"{{supplied:{{scenarioId}}:entryGradeLevelDescriptor}}\"\r\n }",
-									"options": {
-										"raw": {}
-									}
+									"raw": "{ \r\n   \"schoolReference\":{ \r\n      \"schoolId\":\"{{known:schoolId3}}\"\r\n   },\r\n   \"studentReference\":{ \r\n      \"studentUniqueId\":\"{{supplied:{{scenarioId}}:StudentUniqueId}}\"\r\n   },\r\n   \"entryDate\":\"{{supplied:{{scenarioId}}:entryDate}}\",\r\n   \"entryGradeLevelDescriptor\":\"{{supplied:{{scenarioId}}:entryGradeLevelDescriptor}}\"\r\n }"
 								},
 								"url": {
 									"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/StudentSchoolAssociations",
@@ -2105,10 +2099,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \r\n     \"educationOrganizationReference\":{ \r\n      \"educationOrganizationId\":\"{{known:schoolId3}}\"\r\n   },\r\n   \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n   \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\",\r\n   \"programId\":\"{{supplied:{{scenarioId}}:programId}}\"\r\n}",
-									"options": {
-										"raw": {}
-									}
+									"raw": "{ \r\n     \"educationOrganizationReference\":{ \r\n      \"educationOrganizationId\":\"{{known:schoolId3}}\"\r\n   },\r\n   \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n   \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\",\r\n   \"programId\":\"{{supplied:{{scenarioId}}:programId}}\"\r\n}"
 								},
 								"url": {
 									"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/programs",
@@ -2178,10 +2169,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "  {\r\n    \"educationOrganizationReference\": {\r\n     \"educationOrganizationId\": \"{{known:schoolId3}}\"\r\n    },\r\n    \"programReference\": {\r\n      \"educationOrganizationId\": \"{{known:schoolId3}}\",\r\n       \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n      \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\"\r\n    },\r\n    \"studentReference\": {\r\n      \"studentUniqueId\": \"{{supplied:{{scenarioId}}:StudentUniqueId}}\"\r\n    },\r\n    \"beginDate\": \"2010-08-30\",\r\n    \"endDate\": \"2010-12-17\",\r\n    \"reasonExitedDescriptor\": \"uri://ed-fi.org/ReasonExitedDescriptor#Moved out of state\"\r\n  }\r\n",
-									"options": {
-										"raw": {}
-									}
+									"raw": "  {\r\n    \"educationOrganizationReference\": {\r\n     \"educationOrganizationId\": \"{{known:schoolId3}}\"\r\n    },\r\n    \"programReference\": {\r\n      \"educationOrganizationId\": \"{{known:schoolId3}}\",\r\n       \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n      \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\"\r\n    },\r\n    \"studentReference\": {\r\n      \"studentUniqueId\": \"{{supplied:{{scenarioId}}:StudentUniqueId}}\"\r\n    },\r\n    \"beginDate\": \"2010-08-30\",\r\n    \"endDate\": \"2010-12-17\",\r\n    \"reasonExitedDescriptor\": \"uri://ed-fi.org/ReasonExitedDescriptor#Moved out of state\"\r\n  }\r\n"
 								},
 								"url": {
 									"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/studentProgramAssociations",
@@ -2249,10 +2237,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{ \r\n     \"educationOrganizationReference\":{ \r\n      \"educationOrganizationId\":\"{{known:postSecondaryInstitutionId}}\"\r\n   },\r\n   \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n   \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\",\r\n   \"programId\":\"{{supplied:{{scenarioId}}:programId}}\"\r\n}",
-									"options": {
-										"raw": {}
-									}
+									"raw": "{ \r\n     \"educationOrganizationReference\":{ \r\n      \"educationOrganizationId\":\"{{known:postSecondaryInstitutionId}}\"\r\n   },\r\n   \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n   \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\",\r\n   \"programId\":\"{{supplied:{{scenarioId}}:programId}}\"\r\n}"
 								},
 								"url": {
 									"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/programs",
@@ -2322,10 +2307,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "  {\r\n    \"educationOrganizationReference\": {\r\n     \"educationOrganizationId\": \"{{known:postSecondaryInstitutionId}}\"\r\n    },\r\n    \"programReference\": {\r\n      \"educationOrganizationId\": \"{{known:postSecondaryInstitutionId}}\",\r\n       \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n      \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\"\r\n    },\r\n    \"studentReference\": {\r\n      \"studentUniqueId\": \"{{supplied:{{scenarioId}}:StudentUniqueId}}\"\r\n    },\r\n    \"beginDate\": \"2010-08-30\",\r\n    \"endDate\": \"2010-12-17\",\r\n    \"reasonExitedDescriptor\": \"uri://ed-fi.org/ReasonExitedDescriptor#Moved out of state\"\r\n  }",
-									"options": {
-										"raw": {}
-									}
+									"raw": "  {\r\n    \"educationOrganizationReference\": {\r\n     \"educationOrganizationId\": \"{{known:postSecondaryInstitutionId}}\"\r\n    },\r\n    \"programReference\": {\r\n      \"educationOrganizationId\": \"{{known:postSecondaryInstitutionId}}\",\r\n       \"programName\":\"{{supplied:{{scenarioId}}:programName}}\",\r\n      \"programTypeDescriptor\":\"{{supplied:{{scenarioId}}:programTypeDescriptor}}\"\r\n    },\r\n    \"studentReference\": {\r\n      \"studentUniqueId\": \"{{supplied:{{scenarioId}}:StudentUniqueId}}\"\r\n    },\r\n    \"beginDate\": \"2010-08-30\",\r\n    \"endDate\": \"2010-12-17\",\r\n    \"reasonExitedDescriptor\": \"uri://ed-fi.org/ReasonExitedDescriptor#Moved out of state\"\r\n  }"
 								},
 								"url": {
 									"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/studentProgramAssociations",
@@ -3045,6 +3027,5 @@
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
