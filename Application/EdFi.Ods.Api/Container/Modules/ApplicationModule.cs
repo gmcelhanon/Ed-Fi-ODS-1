@@ -178,7 +178,7 @@ namespace EdFi.Ods.Api.Container.Modules
                 .As<IApiClientDetailsCacheKeyProvider>()
                 .SingleInstance();
             
-            builder.RegisterDecorator<CachingApiClientDetailsProviderDecorator, IApiClientDetailsProvider>();
+            // builder.RegisterDecorator<CachingApiClientDetailsProviderDecorator, IApiClientDetailsProvider>();
 
             builder.RegisterType<OAuthTokenAuthenticator>()
                 .As<IOAuthTokenAuthenticator>()
