@@ -133,7 +133,7 @@ namespace EdFi.Ods.Api.Authentication
             {
                 dto.EducationOrganizationIds = tokenClientRecords
                     .Where(x => x.EducationOrganizationId.HasValue)
-                    .Select(x => x.EducationOrganizationId.Value)
+                    .Select(x => (long) x.EducationOrganizationId.Value)
                     .Distinct()
                     .ToArray();
 

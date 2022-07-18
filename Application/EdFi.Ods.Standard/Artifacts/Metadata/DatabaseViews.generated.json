@@ -5,10 +5,10 @@
     "Columns": [
       {
         "Name": "EducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       },
@@ -23,73 +23,73 @@
       },
       {
         "Name": "StateEducationAgencyId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "EducationServiceCenterId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "LocalEducationAgencyId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "CommunityOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "CommunityProviderId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "PostSecondaryInstitutionId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "OrganizationDepartmentId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
       {
         "Name": "SchoolId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": true
       },
@@ -119,10 +119,10 @@
     "Columns": [
       {
         "Name": "SourceEducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       },
@@ -143,10 +143,10 @@
     "Columns": [
       {
         "Name": "SourceEducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       },
@@ -167,10 +167,10 @@
     "Columns": [
       {
         "Name": "SourceEducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       },
@@ -191,10 +191,10 @@
     "Columns": [
       {
         "Name": "SourceEducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": false,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       },
@@ -257,19 +257,19 @@
     "Columns": [
       {
         "Name": "SourceEducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": true,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       },
       {
         "Name": "TargetEducationOrganizationId",
-        "DbDataType": "int",
+        "DbDataType": "bigint",
         "IsPrimaryKey": true,
         "Length": null,
-        "Precision": 10,
+        "Precision": 19,
         "Scale": 0,
         "Nullable": false
       }

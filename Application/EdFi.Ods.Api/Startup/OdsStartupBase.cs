@@ -403,6 +403,8 @@ namespace EdFi.Ods.Api.Startup
 
         private PluginInfo[] LoadPlugins()
         {
+            return new PluginInfo[0];
+
             var pluginFolder = GetPluginFolder();
             var pluginFolderSettingsName = $"{nameof(Plugin)}:{nameof(Plugin.Folder)}";
 
