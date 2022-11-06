@@ -20,8 +20,11 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
             var filters = new List<FilterApplicationDetails>
                           {
                               // EdOrg to EdOrg relationships
+                              RelationshipsAuthorizationFilters.EducationOrganizationIdToEducationServiceCenterId,
                               RelationshipsAuthorizationFilters.EducationOrganizationIdToLocalEducationAgencyId,
                               RelationshipsAuthorizationFilters.EducationOrganizationIdToSchoolId,
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToLocalEducationAgencyId,
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToSchoolId,
                               RelationshipsAuthorizationFilters.LocalEducationAgencyIdToSchoolId,
                               RelationshipsAuthorizationFilters.CommunityOrganizationIdToEducationOrganizationId,
                               RelationshipsAuthorizationFilters.CommunityProviderIdToEducationOrganizationId,
@@ -29,6 +32,7 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
                               RelationshipsAuthorizationFilters.EducationOrganizationIdToPostSecondaryInstitutionId,
 
                               // Property-based filter authorizations (for direct API Client associations)
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToEducationServiceCenterId,
                               RelationshipsAuthorizationFilters.LocalEducationAgencyIdToLocalEducationAgencyId,
                               RelationshipsAuthorizationFilters.SchoolIdToSchoolId,
                               RelationshipsAuthorizationFilters.CommunityProviderIdToCommunityProviderId,

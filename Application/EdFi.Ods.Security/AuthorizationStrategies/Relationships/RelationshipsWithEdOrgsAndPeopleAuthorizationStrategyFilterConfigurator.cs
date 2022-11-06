@@ -20,11 +20,14 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
         {
             var filters = new List<FilterApplicationDetails>
                           {
-                              // Local Education Agency/School to Person relationships
+                              // ESC/LEA/School to Person relationships
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToStudentUSI,
                               RelationshipsAuthorizationFilters.LocalEducationAgencyIdToStudentUSI,
                               RelationshipsAuthorizationFilters.SchoolIdToStudentUSI,
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToStaffUSI,
                               RelationshipsAuthorizationFilters.LocalEducationAgencyIdToStaffUSI,
                               RelationshipsAuthorizationFilters.SchoolIdToStaffUSI,
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToParentUSI,
                               RelationshipsAuthorizationFilters.LocalEducationAgencyIdToParentUSI,
                               RelationshipsAuthorizationFilters.ParentUSIToSchoolId,
 
@@ -38,6 +41,7 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
                               RelationshipsAuthorizationFilters.EducationOrganizationIdToPostSecondaryInstitutionId,
 
                               // Property-based filter authorizations (for direct API Client associations)
+                              RelationshipsAuthorizationFilters.EducationServiceCenterIdToEducationServiceCenterId,
                               RelationshipsAuthorizationFilters.LocalEducationAgencyIdToLocalEducationAgencyId,
                               RelationshipsAuthorizationFilters.SchoolIdToSchoolId,
                               RelationshipsAuthorizationFilters.CommunityProviderIdToCommunityProviderId,
