@@ -9,7 +9,7 @@ using EdFi.Ods.Security.AuthorizationStrategies.Relationships.Filters;
 
 namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
 {
-    public class RelationshipsWithLocalEducationAgenciesAndPeopleIncludingDeletesAuthorizationStrategyFilterConfigurator
+    public class RelationshipsWithEdOrgsAndPeopleIncludingDeletesAuthorizationStrategyFilterConfigurator
         : INHibernateFilterConfigurator
     {
         /// <summary>
@@ -20,6 +20,11 @@ namespace EdFi.Ods.Security.AuthorizationStrategies.Relationships
         {
             var filters = new List<FilterApplicationDetails>
             {
+                // Education Service Center to Person relationships
+                RelationshipsAuthorizationFilters.EducationServiceCenterIdToStudentUSIIncludingDeletes,
+                RelationshipsAuthorizationFilters.EducationServiceCenterIdToStaffUSIIncludingDeletes,
+                RelationshipsAuthorizationFilters.EducationServiceCenterIdToParentUSIIncludingDeletes,
+                
                 // Local Education Agency to Person relationships
                 RelationshipsAuthorizationFilters.LocalEducationAgencyIdToStudentUSIIncludingDeletes,
                 RelationshipsAuthorizationFilters.LocalEducationAgencyIdToStaffUSIIncludingDeletes,
