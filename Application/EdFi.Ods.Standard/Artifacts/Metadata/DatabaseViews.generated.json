@@ -559,6 +559,30 @@
   },
   {
     "SchemaOwner": "auth",
+    "Name": "EducationServiceCenterIdToParentUSIIncludingDeletes",
+    "Columns": [
+      {
+        "Name": "EducationServiceCenterId",
+        "DbDataType": "int",
+        "IsPrimaryKey": false,
+        "Length": null,
+        "Precision": 10,
+        "Scale": 0,
+        "Nullable": true
+      },
+      {
+        "Name": "ParentUSI",
+        "DbDataType": "int",
+        "IsPrimaryKey": false,
+        "Length": null,
+        "Precision": 10,
+        "Scale": 0,
+        "Nullable": false
+      }
+    ]
+  },
+  {
+    "SchemaOwner": "auth",
     "Name": "EducationServiceCenterIdToSchoolId",
     "Columns": [
       {
@@ -584,6 +608,30 @@
   {
     "SchemaOwner": "auth",
     "Name": "EducationServiceCenterIdToStaffUSI",
+    "Columns": [
+      {
+        "Name": "EducationServiceCenterId",
+        "DbDataType": "int",
+        "IsPrimaryKey": false,
+        "Length": null,
+        "Precision": 10,
+        "Scale": 0,
+        "Nullable": true
+      },
+      {
+        "Name": "StaffUSI",
+        "DbDataType": "int",
+        "IsPrimaryKey": false,
+        "Length": null,
+        "Precision": 10,
+        "Scale": 0,
+        "Nullable": false
+      }
+    ]
+  },
+  {
+    "SchemaOwner": "auth",
+    "Name": "EducationServiceCenterIdToStaffUSIIncludingDeletes",
     "Columns": [
       {
         "Name": "EducationServiceCenterId",
@@ -635,6 +683,30 @@
         "Precision": 19,
         "Scale": 0,
         "Nullable": true
+      }
+    ]
+  },
+  {
+    "SchemaOwner": "auth",
+    "Name": "EducationServiceCenterIdToStudentUSIIncludingDeletes",
+    "Columns": [
+      {
+        "Name": "EducationServiceCenterId",
+        "DbDataType": "int",
+        "IsPrimaryKey": false,
+        "Length": null,
+        "Precision": 10,
+        "Scale": 0,
+        "Nullable": true
+      },
+      {
+        "Name": "StudentUSI",
+        "DbDataType": "int",
+        "IsPrimaryKey": false,
+        "Length": null,
+        "Precision": 10,
+        "Scale": 0,
+        "Nullable": false
       }
     ]
   },
