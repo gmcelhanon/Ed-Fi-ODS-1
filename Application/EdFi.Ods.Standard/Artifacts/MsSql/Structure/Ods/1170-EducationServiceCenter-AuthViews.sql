@@ -48,6 +48,24 @@ GO
 
 CREATE VIEW [auth].[EducationServiceCenterIdToStaffUSI]
 AS
+    -- ESC to Staff (through ESC employment)
+    SELECT lea.EducationServiceCenterId
+        ,emp.StaffUSI
+    FROM edfi.LocalEducationAgency lea
+        INNER JOIN auth.EducationOrganizationToStaffUSI_Employment emp
+            ON lea.EducationServiceCenterId = emp.EducationOrganizationId
+
+    UNION
+
+    -- ESC to Staff (through ESC assignment)
+    SELECT lea.EducationServiceCenterId
+         ,assgn.StaffUSI
+    FROM edfi.LocalEducationAgency lea
+        INNER JOIN auth.EducationOrganizationToStaffUSI_Assignment assgn
+            ON lea.EducationServiceCenterId = assgn.EducationOrganizationId
+
+    UNION
+
     -- ESC to Staff (through LEA employment)
     SELECT lea.EducationServiceCenterId
         ,emp.StaffUSI
@@ -66,7 +84,7 @@ AS
 
     UNION
 
-    -- LEA to Staff (through School employment)
+    -- ESC to Staff (through School employment)
     SELECT lea.EducationServiceCenterId
          ,emp.StaffUSI
     FROM edfi.LocalEducationAgency lea
@@ -77,7 +95,7 @@ AS
 
     UNION
 
-    -- LEA to Staff (through School assignment)
+    -- ESC to Staff (through School assignment)
     SELECT lea.EducationServiceCenterId
          ,assgn.StaffUSI
     FROM edfi.LocalEducationAgency lea
@@ -92,7 +110,7 @@ GO
 CREATE VIEW [auth].[EducationServiceCenterIdToStudentUSI]
     WITH SCHEMABINDING
 AS
--- LEA to Student GUID
+-- LEA to Student
 SELECT lea.EducationServiceCenterId
      ,ssa.StudentUSI
      ,COUNT_BIG(*) AS Ignored

@@ -36,6 +36,38 @@ CREATE VIEW [auth].[EducationServiceCenterIdToParentUSIIncludingDeletes] AS
 GO
 
 CREATE VIEW [auth].[EducationServiceCenterIdToStaffUSIIncludingDeletes] AS
+    -- ESC employment
+    SELECT lea.EducationServiceCenterId, emp.StaffUSI
+    FROM edfi.LocalEducationAgency lea
+        JOIN edfi.StaffEducationOrganizationEmploymentAssociation emp
+            ON lea.EducationServiceCenterId = emp.EducationOrganizationId
+
+    UNION
+
+    -- ESC employment (deleted employment)
+    SELECT lea.EducationServiceCenterId, emp_tc.OldStaffUSI as StaffUSI
+    FROM edfi.LocalEducationAgency lea
+        JOIN tracked_changes_edfi.StaffEducationOrganizationEmploymentAssociation emp_tc
+            ON lea.EducationServiceCenterId = emp_tc.OldEducationOrganizationId
+
+    UNION
+
+    -- ESC assignment
+    SELECT lea.EducationServiceCenterId, assgn.StaffUSI
+    FROM edfi.LocalEducationAgency lea
+        JOIN edfi.StaffEducationOrganizationAssignmentAssociation assgn
+            ON lea.EducationServiceCenterId = assgn.EducationOrganizationId
+
+    UNION
+
+    -- ESC assignment (deleted assignment)
+    SELECT lea.EducationServiceCenterId, assgn_tc.OldStaffUSI as StaffUSI
+    FROM edfi.LocalEducationAgency lea
+        JOIN tracked_changes_edfi.StaffEducationOrganizationAssignmentAssociation assgn_tc
+            ON lea.EducationServiceCenterId = assgn_tc.OldEducationOrganizationId
+
+    UNION
+
     -- LEA employment
     SELECT lea.EducationServiceCenterId, emp.StaffUSI
     FROM edfi.LocalEducationAgency lea
