@@ -388,12 +388,13 @@ namespace EdFi.Ods.Api.Caching
             // Get the cache first, initializing it if necessary
             var usiByUniqueId = GetUsiByUniqueIdMap(personType, context);
 
-            _logger.DebugFormat(
-                "For person type: {0}, there are {1} records cached.",
-                personType,
-                usiByUniqueId != null
-                    ? usiByUniqueId.Count
-                    : 0);
+            if (_logger.IsDebugEnabled)
+            {
+                _logger.DebugFormat(
+                    "For person type: {0}, there are {1} records cached.",
+                    personType,
+                    usiByUniqueId?.Count ?? 0);
+            }
 
             // Check the cache for the value
             if (usiByUniqueId != null && usiByUniqueId.TryGetValue(uniqueId, out usi))

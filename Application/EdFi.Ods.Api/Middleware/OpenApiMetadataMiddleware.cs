@@ -28,7 +28,7 @@ namespace EdFi.Ods.Api.Middleware
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             // if the request is not a get or ends with swagger.json we abort and move to the next pipeline step
-            if (context.Request.Method != HttpMethods.Get || !context.Request.Path.ToString().EndsWithIgnoreCase("swagger.json"))
+            if (context.Request.Method != HttpMethods.Get || !context.Request.Path.Value.EndsWithIgnoreCase("swagger.json"))
             {
                 await next(context);
                 return;

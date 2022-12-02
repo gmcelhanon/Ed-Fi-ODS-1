@@ -53,7 +53,10 @@ namespace EdFi.Ods.Api.Attributes
 
             if (isReadable || isWritable)
             {
-                _logger.Debug($"Profile is being applied to request {context.RouteContext.HttpContext.Request.GetDisplayUrl()}");
+                if (_logger.IsDebugEnabled)
+                {
+                    _logger.Debug($"Profile is being applied to request {context.RouteContext.HttpContext.Request.GetDisplayUrl()}");
+                }
             }
 
             return isReadable || isWritable;

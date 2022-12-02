@@ -138,11 +138,14 @@ public class AuthorizationBasisMetadataSelector : IAuthorizationBasisMetadataSel
                     relevantPrincipalClaim.Type));
         }
 
-        _logger.DebugFormat(
-            "Authorization strategy '{0}' selected for request against resource '{1}'.",
-            string.Join("', '", authorizationStrategyNames),
-            authorizationContext.ResourceClaims.First()
-                .Value);
+        if (_logger.IsDebugEnabled)
+        {
+            _logger.DebugFormat(
+                "Authorization strategy '{0}' selected for request against resource '{1}'.",
+                string.Join("', '", authorizationStrategyNames),
+                authorizationContext.ResourceClaims.First()
+                    .Value);
+        }
 
         // Look for an authorization validation rule set name override on the caller's claims (flow the overrides down, even if they aren't the first claim encountered going up the hierarchy)
         string ruleSetNameOverride =

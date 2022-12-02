@@ -48,7 +48,7 @@ namespace EdFi.Ods.Features.OpenApiMetadata.Providers
         {
             document = null;
 
-            var openApiMetadataRequest = CreateOpenApiMetadataRequest(request.Path);
+            var openApiMetadataRequest = CreateOpenApiMetadataRequest(request.Path.Value);
 
             var openApiContent = _openApiMetadataCacheProvider.GetOpenApiContentByFeedName(openApiMetadataRequest.GetFeedName());
 

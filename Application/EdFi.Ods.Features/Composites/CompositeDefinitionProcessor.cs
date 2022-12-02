@@ -294,7 +294,10 @@ namespace EdFi.Ods.Features.Composites
                         return null;
                     }
 
-                    _logger.Debug($"Current element '{currentElementName}' is a collection named '{childMemberName}'.");
+                    if (_logger.IsDebugEnabled)
+                    {
+                        _logger.Debug($"Current element '{currentElementName}' is a collection named '{childMemberName}'.");
+                    }
 
                     childModel = collection.ItemType;
                     childEntityMemberName = childMemberName;
@@ -310,7 +313,11 @@ namespace EdFi.Ods.Features.Composites
 
                     if (resource == null)
                     {
-                        _logger.Debug($"Current resource class '{currentResourceClass.Name} is not an aggregate root.");
+                        if (_logger.IsDebugEnabled)
+                        {
+                            _logger.Debug($"Current resource class '{currentResourceClass.Name} is not an aggregate root.");
+                        }
+                        
                         return null;
                     }
 
@@ -321,8 +328,11 @@ namespace EdFi.Ods.Features.Composites
                         return null;
                     }
 
-                    _logger.Debug(
-                        $"Current element '{currentElementName} is a linked collection named '{childMemberName}' for resource '{currentResourceClass.Name}'.");
+                    if (_logger.IsDebugEnabled)
+                    {
+                        _logger.Debug(
+                            $"Current element '{currentElementName} is a linked collection named '{childMemberName}' for resource '{currentResourceClass.Name}'.");
+                    }
 
                     childModel = linkedCollection.Resource;
                     childEntityMemberName = childMemberName;
@@ -342,7 +352,10 @@ namespace EdFi.Ods.Features.Composites
                         return null;
                     }
 
-                    _logger.Debug($"Current element '{currentElementName}' is an embedded object named '{childMemberName}'.");
+                    if (_logger.IsDebugEnabled)
+                    {
+                        _logger.Debug($"Current element '{currentElementName}' is an embedded object named '{childMemberName}'.");
+                    }
 
                     childModel = embeddedObject.ObjectType;
                     childEntityMemberName = embeddedObject.Association.Name;
@@ -352,7 +365,10 @@ namespace EdFi.Ods.Features.Composites
 
                     if (CompositeDefinitionHelper.ShouldFlatten(childElement))
                     {
-                        _logger.Debug($"Flattening embedded object {childModel.Name}");
+                        if (_logger.IsDebugEnabled)
+                        {
+                            _logger.Debug($"Flattening embedded object {childModel.Name}");
+                        }
 
                         _compositeBuilder.ApplyFlattenedMember(embeddedObject, parentingBuilderContext);
 
@@ -404,8 +420,11 @@ namespace EdFi.Ods.Features.Composites
                     }
                     else
                     {
-                        _logger.Debug(
-                            $"Current element '{currentElementName}' is a referenced resourced named '{childMemberName}'.");
+                        if (_logger.IsDebugEnabled)
+                        {
+                            _logger.Debug(
+                                $"Current element '{currentElementName}' is a referenced resourced named '{childMemberName}'.");
+                        }
 
                         resourceMemberToUseForFlattening = reference;
                         childModel = reference.ReferencedResource;
@@ -418,7 +437,10 @@ namespace EdFi.Ods.Features.Composites
                     // If reference is flattened, process recursively without adding another query at this level.
                     if (CompositeDefinitionHelper.ShouldFlatten(childElement))
                     {
-                        _logger.Debug($"Flattening referenced resource {childModel.Name}");
+                        if (_logger.IsDebugEnabled)
+                        {
+                            _logger.Debug($"Flattening referenced resource {childModel.Name}");
+                        }
 
                         _compositeBuilder.ApplyFlattenedMember(resourceMemberToUseForFlattening, parentingBuilderContext);
 
