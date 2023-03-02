@@ -670,6 +670,12 @@ namespace EdFi.Ods.CodeGen.Generators
 
         private static bool CSharpDefaultHasDomainMeaning(EntityProperty property)
         {
+            // Any min/max range definition implies domain meaning
+            if (property.PropertyType.MinValue.HasValue || property.PropertyType.MaxValue.HasValue)
+            {
+                return true;
+            }
+            
             switch (property.PropertyType.ToCSharp())
             {
                 case "string":
