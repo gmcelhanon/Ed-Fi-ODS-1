@@ -20552,7 +20552,8 @@
             "maxLength": 0,
             "precision": 10,
             "scale": 0,
-            "isNullable": false
+            "isNullable": false,
+            "minValue": 0
           },
           "description": "The school year for which the accountability is reported.",
           "isIdentifying": true,

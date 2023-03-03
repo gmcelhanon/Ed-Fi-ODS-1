@@ -109,18 +109,23 @@ namespace EdFi.Ods.CodeGen.Extensions
         /// <returns></returns>
         public static string ToRangeAttributeCSharp(this ResourceProperty property)
         {
+            return ToRangeAttributeCSharp(property.EntityProperty);
+        }
+        
+        public static string ToRangeAttributeCSharp(this EntityProperty property)
+        {
             //TODO SqlServer specific
-            switch (property.EntityProperty.PropertyType.DbType)
+            switch (property.PropertyType.DbType)
             {
                 case DbType.Decimal:
                     var minRange = Convert.ToDecimal(string.Format(
                         "-{0}.{1}",
                         new string(
                             '9',
-                            property.EntityProperty.PropertyType.Precision - property.EntityProperty.PropertyType.Scale),
-                        new string('9', property.EntityProperty.PropertyType.Scale)));
+                            property.PropertyType.Precision - property.PropertyType.Scale),
+                        new string('9', property.PropertyType.Scale)));
 
-                    var minValue = property.EntityProperty.PropertyType.MinValue ?? minRange;
+                    var minValue = property.PropertyType.MinValue ?? minRange;
 
                     var minToUse = Math.Max(minRange, minValue);
 
@@ -128,10 +133,10 @@ namespace EdFi.Ods.CodeGen.Extensions
                         "{0}.{1}",
                         new string(
                             '9',
-                            property.EntityProperty.PropertyType.Precision - property.EntityProperty.PropertyType.Scale),
-                        new string('9', property.EntityProperty.PropertyType.Scale)));
+                            property.PropertyType.Precision - property.PropertyType.Scale),
+                        new string('9', property.PropertyType.Scale)));
 
-                    var maxValue = property.EntityProperty.PropertyType.MaxValue ?? maxRange;
+                    var maxValue = property.PropertyType.MaxValue ?? maxRange;
 
                     var maxToUse = Math.Min(maxRange, maxValue);
 
@@ -145,14 +150,14 @@ namespace EdFi.Ods.CodeGen.Extensions
 
                 case DbType.Int32:
 
-                    if (!property.EntityProperty.PropertyType.MinValue.HasValue ||
-                        !property.EntityProperty.PropertyType.MaxValue.HasValue)
+                    if (!property.PropertyType.MinValue.HasValue ||
+                        !property.PropertyType.MaxValue.HasValue)
                         return null;
 
                     return string.Format(
-                        "[Range(typeof(Int32), \"-{0}\", \"{1}\")]",
-                        property.EntityProperty.PropertyType.MinValue ?? int.MinValue,
-                        property.EntityProperty.PropertyType.MaxValue ?? int.MaxValue);
+                        "[Range(typeof(Int32), \"{0}\", \"{1}\")]",
+                        property.PropertyType.MinValue ?? int.MinValue,
+                        property.PropertyType.MaxValue ?? int.MaxValue);
 
                 case DbType.Currency:
                     return "[Range(typeof(decimal), \"-922337203685477.5808\", \"922337203685477.5807\")]";

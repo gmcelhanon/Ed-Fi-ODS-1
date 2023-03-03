@@ -283,7 +283,18 @@ namespace EdFi.Ods.CodeGen.Generators
                                                                                      || IsNonDerivedDateProperty(entity, p)
                                                                                      || IsDateTimeProperty(p)
                                                                                      || IsDelegatedToBaseProperty(entity, p)),
-                                                              PropertyAccessors = GetPropertyAccessors(entity, p)
+                                                              PropertyAccessors = GetPropertyAccessors(entity, p),
+                                                              RangeAttribute = PropertyHasPrecisionAndScale(p)
+                                                                  ? new
+                                                                  {
+                                                                      CSharpBaseType = p.PropertyType.ToCSharp(), MinimumRangeValue =
+                                                                          "-".PadRight(p.PropertyType.Precision - p.PropertyType.Scale + 1, '9')
+                                                                          + ".".PadRight(p.PropertyType.Scale + 1, '9'),
+                                                                      MaximumRangeValue =
+                                                                          "".PadRight(p.PropertyType.Precision - p.PropertyType.Scale, '9')
+                                                                          + ".".PadRight(p.PropertyType.Scale + 1, '9')
+                                                                  }
+                                                                  : _notRendered,
                                                           })
                                      },
                         InheritedProperties = entity.IsDerived
@@ -340,17 +351,7 @@ namespace EdFi.Ods.CodeGen.Generators
                                                                     }
                                                                   : new string[0]
                                                           )),
-                                                  RangeAttribute = PropertyHasPrecisionAndScale(p)
-                                                      ? new
-                                                        {
-                                                            CSharpBaseType = p.PropertyType.ToCSharp(), MinimumRangeValue =
-                                                                "-".PadRight(p.PropertyType.Precision - p.PropertyType.Scale + 1, '9')
-                                                                + ".".PadRight(p.PropertyType.Scale + 1, '9'),
-                                                            MaximumRangeValue =
-                                                                "".PadRight(p.PropertyType.Precision - p.PropertyType.Scale, '9')
-                                                                + ".".PadRight(p.PropertyType.Scale + 1, '9')
-                                                        }
-                                                      : _notRendered,
+                                                  RangeAttribute = GetRangeBasedValidation(p),
                                                   IsStandardProperty =
                                                       !(p.IsLookup
                                                         || UniqueIdSpecification.IsUSI(p.PropertyName)
@@ -536,6 +537,23 @@ namespace EdFi.Ods.CodeGen.Generators
                                            })
                     };
             }
+        }
+
+        private object GetRangeBasedValidation(EntityProperty p)
+        {
+            if (PropertyHasPrecisionAndScale(p))
+            {
+                return new
+                {
+                    CSharpBaseType = p.PropertyType.ToCSharp(),
+                    MinimumRangeValue = "-".PadRight(p.PropertyType.Precision - p.PropertyType.Scale + 1, '9')
+                        + ".".PadRight(p.PropertyType.Scale + 1, '9'),
+                    MaximumRangeValue = "".PadRight(p.PropertyType.Precision - p.PropertyType.Scale, '9')
+                        + ".".PadRight(p.PropertyType.Scale + 1, '9')
+                };
+            }
+
+            return null;
         }
 
         private static bool PropertyHasPrecisionAndScale(EntityProperty p)
