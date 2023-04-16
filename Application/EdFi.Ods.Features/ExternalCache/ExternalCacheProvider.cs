@@ -3,26 +3,22 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-using EdFi.Ods.Api.Caching;
-using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Exceptions;
 using log4net;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
 using System;
-using System.Globalization;
-using EdFi.Common.Security;
-using EdFi.Ods.Api.Authentication;
+using EdFi.Ods.Features.ExternalCache.Serialization;
 
 namespace EdFi.Ods.Features.ExternalCache
 {
     public class ExternalCacheProvider<TKey> : IExternalCacheProvider<TKey>
     {
-        private const string GuidPrefix = "(Guid)";
-        private const string IntPrefix = "(int)";
         private const string DefaultExceptionMessage = "Unable to access distributed cache.";
 
         private readonly IDistributedCache _distributedCache;
+        private readonly IDistributedCacheSerializationHandler[] _serializationHandlers;
+        private readonly IDistributedCacheDeserializationHandler[] _deserializationHandlers;
         private readonly TimeSpan _absoluteExpiration;
         private readonly TimeSpan _slidingExpiration;
         private readonly ILog _logger = LogManager.GetLogger(typeof(ExternalCacheProvider<TKey>));
@@ -34,9 +30,16 @@ namespace EdFi.Ods.Features.ExternalCache
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         };
 
-        public ExternalCacheProvider(IDistributedCache distributedCache, TimeSpan slidingExpiration, TimeSpan absoluteExpiration)
+        public ExternalCacheProvider(
+            IDistributedCache distributedCache,
+            IDistributedCacheSerializationHandler[] serializationHandlers,
+            IDistributedCacheDeserializationHandler[] deserializationHandlers,
+            TimeSpan slidingExpiration,
+            TimeSpan absoluteExpiration)
         {
             _distributedCache = distributedCache;
+            _serializationHandlers = serializationHandlers;
+            _deserializationHandlers = deserializationHandlers;
             _slidingExpiration = slidingExpiration;
             _absoluteExpiration = absoluteExpiration;
         }
@@ -51,46 +54,7 @@ namespace EdFi.Ods.Features.ExternalCache
 
                 if (!string.IsNullOrEmpty(cachedValue))
                 {
-                    // NOTE: This code doesn't follow SOLID principles. If this logic ever needs to change again, should introduce
-                    // an interface (e.g. IDistributeCacheDeserializationHandler) with a method signature as follows:
-                    //    bool TryHandle(string key, string cachedValue, out object deserializedValue)
-                    // Implementations should return true if it handled the deserialization.
-                    //
-                    // Inject an array of handlers into the constructor and iterate through them and if deserialization is not
-                    // handled, then just deserialize using JsonConvert.DeserializeObject method as is done at the end of the
-                    // Deserialize method below.
-                    //
-                    // Suggested handler implementations: 
-                    //   - PersonIdentityValueMapDistributeCacheDeserializationHandler
-                    //   - ApiClientDetailsDistributeCacheDeserializationHandler
-                    //   - GuidDistributeCacheDeserializationHandler
-                    //   - IntDistributeCacheDeserializationHandler
-                    //
-                    // A similar approach is recommended for serialization, though implementations are only needed for int/guid.
-                    if (keyAsString.StartsWith(PersonUniqueIdToUsiCache.CacheKeyPrefix))
-                    {
-                        var identityValueMaps = JsonConvert.DeserializeObject<PersonUniqueIdToUsiCache.IdentityValueMaps>(cachedValue); 
-                        
-                        if (identityValueMaps.UsiByUniqueId == null && identityValueMaps.UniqueIdByUsi == null)
-                        {
-                            // initialized but not set
-                            value = null;
-                        }
-                        else
-                        {
-                            value = identityValueMaps;
-                        }
-                    }
-                    else if (keyAsString.StartsWith(ApiClientDetailsCacheKeyProvider.CacheKeyPrefix))
-                    {
-                        value = JsonConvert.DeserializeObject<ApiClientDetails>(cachedValue);
-                    }
-                    else
-                    {
-                        // Simple cache like descriptors can be deserialized without explicit type names
-                        value = Deserialize(cachedValue);
-                    }
-
+                    value = Deserialize(keyAsString, cachedValue);
                     return true;
                 }
 
@@ -138,42 +102,38 @@ namespace EdFi.Ods.Features.ExternalCache
             }
         }
 
-        private static string Serialize(object @object)
+        private string Serialize(object value)
         {
-            if (@object is Guid guid)
+            foreach (var serializationHandler in _serializationHandlers)
             {
-                return $"{GuidPrefix}{guid.ToString("N", CultureInfo.InvariantCulture)}";
+                if (serializationHandler.TryHandle(value, out string serializedValue))
+                {
+                    return serializedValue;
+                }
             }
-
-            if (@object is int @int)
-            {
-                return $"{IntPrefix}{@int.ToString(CultureInfo.InvariantCulture)}";
-            }
-
-            return JsonConvert.SerializeObject(@object, _defaultSerializerSettings);
+            
+            return JsonConvert.SerializeObject(value, _defaultSerializerSettings);
         }
 
-        private object Deserialize(string @string)
+        private object Deserialize(string key, string cachedValue)
         {
-            if (@string.StartsWith(GuidPrefix, StringComparison.InvariantCulture) &&
-                Guid.TryParse(@string[GuidPrefix.Length..], out Guid guid))
+            // Try to deserialize cached value using a special handler
+            foreach (var deserializationHandler in _deserializationHandlers)
             {
-                return guid;
-            }
-
-            if (@string.StartsWith(IntPrefix, StringComparison.InvariantCulture) &&
-                int.TryParse(@string[IntPrefix.Length..], out int @int))
-            {
-                return @int;
+                if (deserializationHandler.TryHandle(key, cachedValue, out object value))
+                {
+                    return value;
+                }
             }
 
             try
             {
-                return JsonConvert.DeserializeObject(@string, _defaultSerializerSettings);
+                // Simple cache like descriptors can be deserialized without explicit type names
+                return JsonConvert.DeserializeObject(cachedValue, _defaultSerializerSettings);
             }
             catch (JsonException e)
             {
-                _logger.Warn($"Exception during deserialization of the string \"{@string}\". Message: \"{e.Message}\"");
+                _logger.Warn($"Exception during deserialization of the string \"{cachedValue}\". Message: \"{e.Message}\"");
                 return null;
             }
         }

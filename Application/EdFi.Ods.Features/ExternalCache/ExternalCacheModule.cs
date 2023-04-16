@@ -12,9 +12,11 @@ using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Container;
 using Microsoft.Extensions.Caching.Distributed;
 using System;
+using System.Reflection;
 using Castle.DynamicProxy;
 using EdFi.Common.Security;
 using EdFi.Ods.Common.Descriptors;
+using EdFi.Ods.Features.ExternalCache.Serialization;
 
 namespace EdFi.Ods.Features.ExternalCache
 {
@@ -33,6 +35,8 @@ namespace EdFi.Ods.Features.ExternalCache
             
             RegisterProvider(builder);
 
+            RegisterSerializationSupport(builder);
+            
             if (ApiSettings.Caching.ApiClientDetails.UseExternalCache)
             {
                 OverrideApiClientDetailsCache(builder);
@@ -47,6 +51,15 @@ namespace EdFi.Ods.Features.ExternalCache
             {
                 OverridePersonUniqueIdToUsiCache(builder);
             }
+        }
+
+        private void RegisterSerializationSupport(ContainerBuilder builder)
+        {
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(t => 
+                    t.IsAssignableTo<IDistributedCacheSerializationHandler>()
+                    || t.IsAssignableTo<IDistributedCacheDeserializationHandler>())
+                .AsImplementedInterfaces();
         }
 
         public abstract string ExternalCacheProvider { get; }
@@ -102,6 +115,8 @@ namespace EdFi.Ods.Features.ExternalCache
 
                         return (ICacheProvider<ulong>) new ExternalCacheProvider<ulong>(
                             ctx.Resolve<IDistributedCache>(),
+                            ctx.Resolve<IDistributedCacheSerializationHandler[]>(),
+                            ctx.Resolve<IDistributedCacheDeserializationHandler[]>(),
                             TimeSpan.Zero,
                             TimeSpan.FromSeconds(absoluteExpirationSeconds));
                     })
@@ -122,6 +137,8 @@ namespace EdFi.Ods.Features.ExternalCache
 
                       return new ExternalCacheProvider<string>(
                               c.Resolve<IDistributedCache>(),
+                              c.Resolve<IDistributedCacheSerializationHandler[]>(),
+                              c.Resolve<IDistributedCacheDeserializationHandler[]>(),
                               TimeSpan.FromSeconds(period),
                               TimeSpan.FromSeconds(expirationPeriod));
                   }))
