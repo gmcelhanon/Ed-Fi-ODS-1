@@ -314,7 +314,8 @@ namespace EdFi.Ods.Api.Container.Modules
                         return (ICacheProvider<ulong>) new ExpiringConcurrentDictionaryCacheProvider<ulong>(
                             "ODS Instance Configuration",
                             TimeSpan.FromSeconds(apiSettings.Caching.OdsInstances.AbsoluteExpirationSeconds));
-                    });
+                    })
+                .SingleInstance();
 
             RegisterPipeLineStepProviders();
             RegisterModels();
