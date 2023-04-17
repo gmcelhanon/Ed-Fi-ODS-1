@@ -137,19 +137,5 @@ namespace EdFi.Ods.Features.ExternalCache
                 return null;
             }
         }
-
-        private static TimeSpan DetermineEarlier(DateTime absoluteExpiration, TimeSpan slidingExpiration)
-        {
-            TimeSpan timeUntilAbsolute = absoluteExpiration.Subtract(DateTime.Now);
-
-            if (slidingExpiration <= TimeSpan.Zero)
-            {
-                return timeUntilAbsolute;
-            }
-
-            return timeUntilAbsolute < slidingExpiration
-                ? timeUntilAbsolute
-                : slidingExpiration;
-        }
     }
 }

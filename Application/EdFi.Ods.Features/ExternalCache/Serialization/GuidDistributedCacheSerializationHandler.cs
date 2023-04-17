@@ -14,7 +14,7 @@ public class GuidDistributedCacheSerializationHandler : IDistributedCacheSeriali
     {
         if (value is Guid guidValue)
         {
-            serializedValue = $"{SerializationPrefixes.Guid}{guidValue.ToString("N", CultureInfo.InvariantCulture)}";
+            serializedValue = $"{SerializationPrefixes.Guid}{guidValue:N}";
             return true;
         }
 
