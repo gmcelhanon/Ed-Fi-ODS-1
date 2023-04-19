@@ -157,7 +157,6 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.Relationships
 
                 // Apply claim value criteria
                 queryBuilder.OrWhereIn($"rba{filterIndex}.{viewBasedFilterDefinition.ViewSourceEndpointName}", filterContext.ClaimParameterValues);
-                queryBuilder.OrWhereNull($"rba{filterIndex}.{viewBasedFilterDefinition.ViewSourceEndpointName}");
             }
             else
             {
