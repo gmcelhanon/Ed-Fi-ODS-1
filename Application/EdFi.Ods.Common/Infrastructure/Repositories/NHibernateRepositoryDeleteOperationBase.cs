@@ -4,11 +4,20 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using EdFi.Common.Utils.Extensions;
+using EdFi.Ods.Common.Context;
 using EdFi.Ods.Common.Exceptions;
 using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Common.Security.Claims;
 using NHibernate;
+using NHibernate.Dialect.Schema;
 using NHibernate.Persister.Entity;
 
 namespace EdFi.Ods.Common.Infrastructure.Repositories
@@ -18,11 +27,16 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
         where TEntity : DomainObjectBase, IHasIdentifier, IDateVersionedEntity
     {
         private readonly IETagProvider _eTagProvider;
+        private readonly IContextProvider<DataManagementResourceContext> _dataManagementResourceContextProvider;
 
-        public NHibernateRepositoryDeleteOperationBase(ISessionFactory sessionFactory, IETagProvider eTagProvider)
+        public NHibernateRepositoryDeleteOperationBase(
+            ISessionFactory sessionFactory,
+            IETagProvider eTagProvider,
+            IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider)
             : base(sessionFactory)
         {
             _eTagProvider = eTagProvider;
+            _dataManagementResourceContextProvider = dataManagementResourceContextProvider;
         }
 
         protected async Task DeleteAsync(TEntity persistedEntity, string etag, CancellationToken cancellationToken)
@@ -45,19 +59,18 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     }
                 }
 
-                using (var trans = Session.BeginTransaction())
+                using (var trans = await Session.Connection.BeginTransactionAsync(cancellationToken))
                 {
                     try
                     {
-                        var classMetadata = (AbstractEntityPersister) Session.SessionFactory.GetClassMetadata(typeof(TEntity));
+                        Entity entity = _dataManagementResourceContextProvider.Get().Resource.Entity;
 
-                        string entityName = classMetadata.IsInherited
-                            ? classMetadata.MappedSuperclass
-                            : classMetadata.Name;
+                        await DeleteRecordForEntity(trans, entity);
 
-                        await Session.CreateQuery($"delete from {entityName} where Id = :id")
-                            .SetParameter("id", persistedEntity.Id)
-                            .ExecuteUpdateAsync(cancellationToken);
+                        if (entity.IsDerived)
+                        {
+                            await DeleteRecordForEntity(trans, entity.BaseEntity);
+                        }
 
                         await trans.CommitAsync(cancellationToken);
                     }
@@ -67,6 +80,43 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                         throw;
                     }
                 }
+            }
+
+            async Task DeleteRecordForEntity(DbTransaction trans, Entity entity)
+            {
+                var cmd = Session.Connection.CreateCommand();
+                cmd.Transaction = trans;
+
+                if (entity.IsDerived)
+                {
+                    var builder = new StringBuilder($"DELETE FROM {entity.FullName} WHERE ");
+
+                    entity.Identifier.Properties.ForEach(
+                        (property, i) =>
+                        {
+                            builder.Append($"{property.PropertyName} = @pk{i}");
+
+                            var idParm = cmd.CreateParameter();
+                            idParm.ParameterName = $"pk{i}";
+                            idParm.DbType = property.PropertyType.DbType;
+                            idParm.Value = persistedEntity.GetType().GetProperty(property.PropertyName).GetValue(persistedEntity);
+                            cmd.Parameters.Add(idParm);
+                        });
+
+                    cmd.CommandText = builder.ToString();
+                }
+                else
+                {
+                    cmd.CommandText = $"DELETE FROM {entity.FullName} WHERE Id = @id";
+
+                    var idParm = cmd.CreateParameter();
+                    idParm.ParameterName = "id";
+                    idParm.DbType = DbType.Guid;
+                    idParm.Value = persistedEntity.Id;
+                    cmd.Parameters.Add(idParm);
+                }
+
+                await cmd.ExecuteNonQueryAsync(cancellationToken);
             }
         }
     }
