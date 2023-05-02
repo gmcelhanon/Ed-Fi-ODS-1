@@ -71,46 +71,50 @@ namespace EdFi.Ods.Api.Controllers
 
             Dictionary<string, string> GetUrlsByName()
             {
-                var currentYear = _systemDateProvider.GetDate().Year.ToString();
-
                 // since instance is dynamic and given through url, this value is just a place holder
-                var urlsByName = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
+                var urlsByName = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
                 var rootUrl = Request.RootUrl(_apiSettings.GetReverseProxySettings());
 
+                if (_apiSettings.IsFeatureEnabled(ApiFeature.MultiTenancy.Value))
+                {
+                    rootUrl = $"{rootUrl}/{{tenantIdentifier}}";
+                }
+                
                 if (_apiSettings.IsFeatureEnabled(ApiFeature.AggregateDependencies.GetConfigKeyName()))
                 {
-                    urlsByName["dependencies"] = rootUrl + $"/metadata/data/v{ApiVersionConstants.Ods}/dependencies";
+                    urlsByName["dependencies"] = $"{rootUrl}/metadata/data/v{ApiVersionConstants.Ods}/dependencies";
                 }
 
                 if (_apiSettings.IsFeatureEnabled(ApiFeature.OpenApiMetadata.GetConfigKeyName()))
                 {
-                    urlsByName["openApiMetadata"] = rootUrl + "/metadata/";
+                    urlsByName["openApiMetadata"] = $"{rootUrl}/metadata/";
                 }
 
-                urlsByName["oauth"] = rootUrl + "/oauth/token";
+                urlsByName["oauth"] = $"{rootUrl}/oauth/token";
 
-                urlsByName["dataManagementApi"] = rootUrl + $"/data/v{ApiVersionConstants.Ods}/";
+                urlsByName["dataManagementApi"] = $"{rootUrl}/data/v{ApiVersionConstants.Ods}/";
 
                 if (_apiSettings.IsFeatureEnabled(ApiFeature.XsdMetadata.GetConfigKeyName()))
                 {
-                    urlsByName["xsdMetadata"] = rootUrl + "/metadata/xsd";
+                    urlsByName["xsdMetadata"] = $"{rootUrl}/metadata/xsd";
                 }
 
                 if (_apiSettings.IsFeatureEnabled(ApiFeature.ChangeQueries.GetConfigKeyName()))
                 {
-                    urlsByName["changeQueries"] = rootUrl + $"/changeQueries/v{ApiVersionConstants.ChangeQuery}/";
+                    urlsByName["changeQueries"] = $"{rootUrl}/changeQueries/v{ApiVersionConstants.ChangeQuery}/";
                 }
 
                 if (_apiSettings.IsFeatureEnabled(ApiFeature.Composites.GetConfigKeyName()))
                 {
-                    urlsByName["composites"] = rootUrl + $"/composites/v{ApiVersionConstants.Composite}/";
+                    urlsByName["composites"] = $"{rootUrl}/composites/v{ApiVersionConstants.Composite}/";
                 }
 
                 if (_apiSettings.IsFeatureEnabled(ApiFeature.IdentityManagement.GetConfigKeyName()))
                 {
-                    urlsByName["identity"] = rootUrl + $"/identity/v{ApiVersionConstants.Identity}/";
+                    urlsByName["identity"] = $"{rootUrl}/identity/v{ApiVersionConstants.Identity}/";
                 }
+
                 return urlsByName;
             }
         }
