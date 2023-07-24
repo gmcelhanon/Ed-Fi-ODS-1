@@ -41,6 +41,11 @@ namespace EdFi.Ods.Api.Middleware
 
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
+            if (context.Request.Query.ContainsKey("reqId"))
+            {
+                LogicalThreadContext.Properties["reqId"] = context.Request.Query["reqId"].Single();
+            }
+
             if (_logRequestResponseContent && DateTime.UtcNow > _logRequestResponseContentUntil)
             {
                 _logRequestResponseContent = false;
