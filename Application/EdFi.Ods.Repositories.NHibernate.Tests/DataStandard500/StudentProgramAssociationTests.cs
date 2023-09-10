@@ -110,10 +110,10 @@ namespace EdFi.Ods.Repositories.NHibernate.Tests.DataStandard500
                 
                 Environment.ObjectsFactory = new NHibernateAutofacObjectsFactory(_container);
 
-                IPersonUniqueIdToUsiCache personUniqueIdToUsiCache = null;
+                // IPersonUniqueIdToUsiCache personUniqueIdToUsiCache = null;
 
-                PersonUniqueIdToUsiCache.GetCache = ()
-                    => personUniqueIdToUsiCache ??= _container.Resolve<IPersonUniqueIdToUsiCache>();
+                // PersonUniqueIdToUsiCache.GetCache = ()
+                //     => personUniqueIdToUsiCache ??= _container.Resolve<IPersonUniqueIdToUsiCache>();
 
                 var assembly = typeof(Program).GetTypeInfo().Assembly;
                 XmlConfigurator.Configure(LogManager.GetRepository(assembly));
