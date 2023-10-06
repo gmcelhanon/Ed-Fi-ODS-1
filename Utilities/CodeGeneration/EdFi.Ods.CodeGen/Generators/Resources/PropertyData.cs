@@ -157,7 +157,7 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
                     ? AssembleOtherUnifiedChild(ExtensionAssociations)
                     : null,
                 ImplicitPropertyName = Associations.Any()
-                    ? Associations.OrderByDescending(x => x.IsRequired)
+                    ? Associations.OrderByDescending(x => x.Association.IsRequired)
                         .First()
                         .Name
                     : null,
