@@ -98,7 +98,7 @@ namespace EdFi.Ods.Common.Extensions
             var targetListType = targetList.GetType();
             var itemType = GetItemType();
 
-            foreach (var sourceItem in sourceList.Distinct())
+            foreach (var sourceItem in sourceList)
             {
                 var targetItem = (TTarget) Activator.CreateInstance(itemType);
 

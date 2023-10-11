@@ -131,6 +131,7 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
             {
                 Description = desc,
                 Misc = this[ResourceRenderer.MiscellaneousComment],
+                StringComparer = this[ResourceRenderer.StringComparer],
                 JsonPropertyName = Property.JsonPropertyName,
                 PropertyName = propertyName,
                 CSharpSafePropertyName = Property.PropertyName.MakeSafeForCSharpClass(Property.ParentFullName.Name),
@@ -240,6 +241,12 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
             var data = new PropertyData(property);
             data[ResourceRenderer.RenderType] = ResourceRenderer.RenderStandard;
 
+            data[ResourceRenderer.StringComparer] = property.IsDescriptorUsage
+                ? "StringComparer.OrdinalIgnoreCase"
+                : property.PropertyType.IsString()
+                    ? "GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer"
+                    : null;
+
             data[ResourceRenderer.MiscellaneousComment] = property.IsDescriptorUsage
                 ? "// NOT in a reference, IS a lookup column "
                 : "// NOT in a reference, NOT a lookup column ";
@@ -251,6 +258,12 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
         {
             var data = new PropertyData(property);
             data[ResourceRenderer.RenderType] = ResourceRenderer.RenderDerived;
+
+            data[ResourceRenderer.StringComparer] = property.IsDescriptorUsage
+                ? "StringComparer.OrdinalIgnoreCase"
+                : property.PropertyType.IsString()
+                    ? "GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer"
+                    : null;
 
             data[ResourceRenderer.MiscellaneousComment] = property.IsDescriptorUsage
                 ? "// NOT in a reference, IS a lookup column "
@@ -325,6 +338,8 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
             {
                 propertyData[ResourceRenderer.RenderType] = ResourceRenderer.RenderUnified;
 
+                propertyData[ResourceRenderer.StringComparer] = "StringComparer.OrdinalIgnoreCase";
+
                 propertyData[ResourceRenderer.MiscellaneousComment] =
                     string.Format(
                         "// IS in a reference ({0}.{1}Id), IS a lookup column ",
@@ -335,6 +350,11 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
             {
                 propertyData[ResourceRenderer.MiscellaneousComment] = "// IS in a reference, NOT a lookup column ";
                 propertyData[ResourceRenderer.RenderType] = ResourceRenderer.RenderReferenced;
+                
+                propertyData[ResourceRenderer.StringComparer] = 
+                    property.PropertyType.IsString()
+                        ? "GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer"
+                        : null;
             }
 
             return propertyData;
