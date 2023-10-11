@@ -6,7 +6,6 @@
 using System;
 using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Context;
-using EdFi.Ods.Common.Database;
 using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Security.Claims;
 
