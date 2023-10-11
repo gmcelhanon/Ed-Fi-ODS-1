@@ -292,7 +292,7 @@ namespace EdFi.Ods.Api.Container.Modules
                 .As(typeof(IContextProvider<>))
                 .SingleInstance();
 
-            builder.RegisterType<DatabaseEngineSpecificStringComparerProvider>()
+            builder.RegisterType<TexasDatabaseEngineSpecificStringComparerProvider>()
                 .As<IDatabaseEngineSpecificEqualityComparerProvider<string>>()
                 .SingleInstance();
             
