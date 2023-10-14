@@ -23,6 +23,7 @@ namespace EdFi.Ods.Common.Attributes
     {
         private readonly Lazy<Entity> _parentEntity;
         
+        private readonly NoDuplicateMembersAttribute _validateNoDuplicateMembers = new();
         private readonly ValidateEnumerableAttribute _validateEnumerable = new();
         private readonly RequiredCollectionAttribute _validateRequiredCollection = new();
 
@@ -155,8 +156,10 @@ namespace EdFi.Ods.Common.Attributes
                 AppendValidationResults(compositeResults, requiredCollectionValidationResult);
             }
 
-            var enumerableValidationResult = _validateEnumerable.GetValidationResult(enumerable, context);
+            var duplicateItemValidationResult = _validateNoDuplicateMembers.GetValidationResult(enumerable, context);
+            AppendValidationResults(compositeResults, duplicateItemValidationResult);
 
+            var enumerableValidationResult = _validateEnumerable.GetValidationResult(enumerable, context);
             AppendValidationResults(compositeResults, enumerableValidationResult);
         }
 
