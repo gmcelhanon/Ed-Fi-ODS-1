@@ -1278,6 +1278,7 @@ namespace {{ResourceClassesNamespace}}
         {{#IsExtendable}}
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "{{ResourceName}}", "{{EntityName}}")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         {{/IsExtendable}}
         {{^IsExtendable}}
