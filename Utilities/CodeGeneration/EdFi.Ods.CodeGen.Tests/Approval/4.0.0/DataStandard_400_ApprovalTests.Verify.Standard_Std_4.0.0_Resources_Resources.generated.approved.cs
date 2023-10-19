@@ -1152,6 +1152,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicWeek.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AcademicWeek", "AcademicWeek")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -1889,6 +1890,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AccountabilityRating", "AccountabilityRating")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -4268,6 +4270,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "Assessment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -5078,6 +5081,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -5298,6 +5302,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentAssessedGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -5622,6 +5627,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentContentStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -5930,6 +5936,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentContentStandardAuthor")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -6164,6 +6171,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -6384,6 +6392,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentLanguage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -6648,6 +6657,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentPerformanceLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -6882,6 +6892,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -7102,6 +7113,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentPlatformType")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -7435,6 +7447,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentProgram")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -7690,6 +7703,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentScore")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -8092,6 +8106,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Assessment", "AssessmentSection")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -9087,6 +9102,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AssessmentItem", "AssessmentItem")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -9507,6 +9523,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AssessmentItem", "AssessmentItemLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -9755,6 +9772,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AssessmentItem", "AssessmentItemPossibleResponse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -11323,6 +11341,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AssessmentScoreRangeLearningStandard", "AssessmentScoreRangeLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -11756,6 +11775,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "AssessmentScoreRangeLearningStandard", "AssessmentScoreRangeLearningStandardLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -12921,6 +12941,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "BalanceSheetDimension", "BalanceSheetDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -13222,6 +13243,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "BalanceSheetDimension", "BalanceSheetDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -14154,6 +14176,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "BellSchedule", "BellSchedule")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -14742,6 +14765,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "BellSchedule", "BellScheduleClassPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -15006,6 +15030,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "BellSchedule", "BellScheduleDate")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -15226,6 +15251,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "BellSchedule", "BellScheduleGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -15661,6 +15687,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Calendar", "Calendar")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -15976,6 +16003,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Calendar", "CalendarGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -16408,6 +16436,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CalendarDate", "CalendarDate")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -16723,6 +16752,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CalendarDate", "CalendarDateCalendarEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -19000,6 +19030,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ChartOfAccount", "ChartOfAccount")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -19512,6 +19543,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ChartOfAccount", "ChartOfAccountReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -20150,6 +20182,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ClassPeriod", "ClassPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -20474,6 +20507,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ClassPeriod", "ClassPeriodMeetingTime")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -21133,6 +21167,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Cohort", "Cohort")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -21561,6 +21596,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Cohort", "CohortProgram")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -22815,6 +22851,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CommunityOrganization", "CommunityOrganization")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -23495,6 +23532,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProvider.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CommunityProvider", "CommunityProvider")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -24091,6 +24129,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLicense.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CommunityProviderLicense", "CommunityProviderLicense")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -24772,6 +24811,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CompetencyObjective", "CompetencyObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -26653,6 +26693,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "Course")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -27243,6 +27284,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "CourseCompetencyLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -27484,6 +27526,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "CourseIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -27787,6 +27830,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "CourseLearningObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -28071,6 +28115,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "CourseLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -28305,6 +28350,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "CourseLevelCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -28525,6 +28571,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Course", "CourseOfferedGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -30450,6 +30497,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseOffering", "CourseOffering")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -30923,6 +30971,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseOffering", "CourseOfferingCourseLevelCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -31143,6 +31192,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseOffering", "CourseOfferingCurriculumUsed")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -31363,6 +31413,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseOffering", "CourseOfferingOfferedGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -32416,6 +32467,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseTranscript", "CourseTranscript")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -32979,6 +33031,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseTranscript", "CourseTranscriptAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -33220,6 +33273,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseTranscript", "CourseTranscriptAlternativeCourseIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -33440,6 +33494,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseTranscript", "CourseTranscriptCreditCategory")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -33688,6 +33743,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseTranscript", "CourseTranscriptEarnedAdditionalCredits")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -33957,6 +34013,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "CourseTranscript", "CourseTranscriptPartialCourseTranscriptAwards")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -34325,6 +34382,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Credential", "Credential")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -34736,6 +34794,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Credential", "CredentialAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -34956,6 +35015,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Credential", "CredentialEndorsement")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -35176,6 +35236,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Credential", "CredentialGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -37487,6 +37548,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DescriptorMapping", "DescriptorMapping")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -37788,6 +37850,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DescriptorMapping", "DescriptorMappingModelEntity")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -39966,6 +40029,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineAction", "DisciplineAction")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -40460,6 +40524,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineAction", "DisciplineActionDiscipline")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -40731,6 +40796,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineAction", "DisciplineActionStaff")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -41176,6 +41242,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineAction", "DisciplineActionStudentDisciplineIncidentAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -41685,6 +41752,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineAction", "DisciplineActionStudentDisciplineIncidentBehaviorAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -42756,6 +42824,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineIncident", "DisciplineIncident")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -43195,6 +43264,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineIncident", "DisciplineIncidentBehavior")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -43447,6 +43517,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineIncident", "DisciplineIncidentExternalParticipant")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -43667,6 +43738,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "DisciplineIncident", "DisciplineIncidentWeapon")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -44671,6 +44743,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -45316,6 +45389,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentAppropriateGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -45536,6 +45610,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentAppropriateSex")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -45756,6 +45831,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentAuthor")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -46026,6 +46102,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentDerivativeSourceEducationContent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -46260,6 +46337,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentDerivativeSourceLearningResourceMetadataURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -46480,6 +46558,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentDerivativeSourceURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -46700,6 +46779,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationContent", "EducationContentLanguage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -47142,6 +47222,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -47443,6 +47524,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationAddressPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -47663,6 +47745,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationCategory")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -47890,6 +47973,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -48142,6 +48226,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationIndicator")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -48443,6 +48528,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationIndicatorPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -48670,6 +48756,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationInstitutionTelephone")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -48953,6 +49040,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganization", "EducationOrganizationInternationalAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -50221,6 +50309,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganizationInterventionPrescriptionAssociation", "EducationOrganizationInterventionPrescriptionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -50690,6 +50779,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetwork.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganizationNetwork", "EducationOrganizationNetwork")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -51267,6 +51357,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganizationNetworkAssociation", "EducationOrganizationNetworkAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -51700,6 +51791,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationOrganizationPeerAssociation", "EducationOrganizationPeerAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -52493,6 +52585,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationServiceCenter.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "EducationServiceCenter", "EducationServiceCenter")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -54722,6 +54815,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "FeederSchoolAssociation", "FeederSchoolAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -55352,6 +55446,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "FunctionDimension", "FunctionDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -55653,6 +55748,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "FunctionDimension", "FunctionDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -55991,6 +56087,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "FundDimension", "FundDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -56292,6 +56389,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "FundDimension", "FundDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -56639,6 +56737,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GeneralStudentProgramAssociation", "GeneralStudentProgramAssociationParticipationStatus")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -56889,6 +56988,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GeneralStudentProgramAssociation", "GeneralStudentProgramAssociationProgramParticipationStatus")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -57658,6 +57758,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Grade", "Grade")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -58092,6 +58193,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Grade", "GradeLearningStandardGrade")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -58742,6 +58844,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GradebookEntry", "GradebookEntry")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -59175,6 +59278,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GradebookEntry", "GradebookEntryLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -60758,6 +60862,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GradingPeriod", "GradingPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -61530,6 +61635,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlan")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -62070,6 +62176,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanCreditsByCourse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -62447,6 +62554,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanCreditsByCourseCourse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -62723,6 +62831,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanCreditsByCreditCategory")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -62985,6 +63094,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanCreditsBySubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -63304,6 +63414,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanRequiredAssessment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -63638,6 +63749,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanRequiredAssessmentPerformanceLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -63879,6 +63991,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "GraduationPlan", "GraduationPlanRequiredAssessmentScore")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -68091,6 +68204,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "Intervention")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -68901,6 +69015,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionAppropriateGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -69121,6 +69236,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionAppropriateSex")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -69341,6 +69457,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionDiagnosis")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -69611,6 +69728,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionEducationContent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -69928,6 +70046,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionInterventionPrescription")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -70162,6 +70281,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionLearningResourceMetadataURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -70398,6 +70518,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionMeetingTime")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -70618,6 +70739,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionPopulationServed")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -70889,6 +71011,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionStaff")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -71123,6 +71246,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Intervention", "InterventionURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -72066,6 +72190,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescription")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -72711,6 +72836,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionAppropriateGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -72931,6 +73057,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionAppropriateSex")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -73151,6 +73278,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionDiagnosis")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -73421,6 +73549,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionEducationContent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -73655,6 +73784,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionLearningResourceMetadataURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -73875,6 +74005,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionPopulationServed")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -74095,6 +74226,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionPrescription", "InterventionPrescriptionURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -74590,6 +74722,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudy")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -75304,6 +75437,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyAppropriateGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -75524,6 +75658,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyAppropriateSex")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -75794,6 +75929,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyEducationContent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -76074,6 +76210,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyInterventionEffectiveness")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -76294,6 +76431,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyLearningResourceMetadataURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -76514,6 +76652,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyPopulationServed")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -76734,6 +76873,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyStateAbbreviation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -76954,6 +77094,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "InterventionStudy", "InterventionStudyURI")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -78206,6 +78347,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningObjective", "LearningObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -78631,6 +78773,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningObjective", "LearningObjectiveAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -78955,6 +79098,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningObjective", "LearningObjectiveContentStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -79263,6 +79407,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningObjective", "LearningObjectiveContentStandardAuthor")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -79483,6 +79628,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningObjective", "LearningObjectiveGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -79753,6 +79899,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningObjective", "LearningObjectiveLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -80189,6 +80336,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -80669,6 +80817,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandardAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -80993,6 +81142,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandardContentStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -81301,6 +81451,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandardContentStandardAuthor")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -81521,6 +81672,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandardGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -81757,6 +81909,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandardIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -82027,6 +82180,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandard", "LearningStandardPrerequisiteLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -82757,6 +82911,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LearningStandardEquivalenceAssociation", "LearningStandardEquivalenceAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -84919,6 +85074,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalAccount", "LocalAccount")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -85277,6 +85433,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalAccount", "LocalAccountReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -85740,6 +85897,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalActual.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalActual", "LocalActual")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -86224,6 +86382,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalBudget.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalBudget", "LocalBudget")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -86786,6 +86945,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalContractedStaff", "LocalContractedStaff")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -87713,6 +87873,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalEducationAgency", "LocalEducationAgency")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -88286,6 +88447,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalEducationAgency", "LocalEducationAgencyAccountability")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -88569,6 +88731,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalEducationAgency", "LocalEducationAgencyFederalFunds")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -89303,6 +89466,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEncumbrance.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalEncumbrance", "LocalEncumbrance")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -89865,6 +90029,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "LocalPayroll", "LocalPayroll")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -90270,6 +90435,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Location.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Location", "Location")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -93061,6 +93227,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectDimension", "ObjectDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -93362,6 +93529,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectDimension", "ObjectDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -93863,6 +94031,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectiveAssessment", "ObjectiveAssessment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -94593,6 +94762,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectiveAssessment", "ObjectiveAssessmentAssessmentItem")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -94929,6 +95099,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectiveAssessment", "ObjectiveAssessmentLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -95207,6 +95378,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectiveAssessment", "ObjectiveAssessmentPerformanceLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -95448,6 +95620,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ObjectiveAssessment", "ObjectiveAssessmentScore")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -96129,6 +96302,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "OpenStaffPosition", "OpenStaffPosition")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -96499,6 +96673,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "OpenStaffPosition", "OpenStaffPositionAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -96719,6 +96894,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "OpenStaffPosition", "OpenStaffPositionInstructionalGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -97328,6 +97504,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "OperationalUnitDimension", "OperationalUnitDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -97629,6 +97806,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "OperationalUnitDimension", "OperationalUnitDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -98123,6 +98301,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OrganizationDepartment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "OrganizationDepartment", "OrganizationDepartment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -99027,6 +99206,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "Parent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -99803,6 +99983,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -100104,6 +100285,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentAddressPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -100354,6 +100536,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentElectronicMail")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -100637,6 +100820,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentInternationalAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -100861,6 +101045,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentLanguage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -101155,6 +101340,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentLanguageUse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -101410,6 +101596,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentOtherName")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -101681,6 +101868,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentPersonalIdentificationDocument")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -101938,6 +102126,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Parent", "ParentTelephone")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -103328,6 +103517,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Person.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Person", "Person")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -104863,6 +105053,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "PostSecondaryEvent", "PostSecondaryEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -105604,6 +105795,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "PostSecondaryInstitution", "PostSecondaryInstitution")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -106037,6 +106229,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "PostSecondaryInstitution", "PostSecondaryInstitutionMediumOfInstruction")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -107782,6 +107975,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Program", "Program")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -108317,6 +108511,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Program", "ProgramCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -108620,6 +108815,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Program", "ProgramLearningObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -108904,6 +109100,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Program", "ProgramLearningStandard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -109138,6 +109335,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Program", "ProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -109358,6 +109556,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Program", "ProgramSponsor")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -110238,6 +110437,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ProgramDimension", "ProgramDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -110539,6 +110739,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ProgramDimension", "ProgramDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -111961,6 +112162,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ProjectDimension", "ProjectDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -112262,6 +112464,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ProjectDimension", "ProjectDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -115873,6 +116076,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ReportCard", "ReportCard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -116810,6 +117014,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ReportCard", "ReportCardGrade")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -117182,6 +117387,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ReportCard", "ReportCardGradePointAverage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -117695,6 +117901,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ReportCard", "ReportCardStudentCompetencyObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -118306,6 +118513,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "ReportCard", "ReportCardStudentLearningObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -120246,6 +120454,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "RestraintEvent", "RestraintEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -120736,6 +120945,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "RestraintEvent", "RestraintEventProgram")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -120970,6 +121180,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "RestraintEvent", "RestraintEventReason")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -122380,6 +122591,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "School", "School")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -122882,6 +123094,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "School", "SchoolCategory")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -123102,6 +123315,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "School", "SchoolGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -124483,6 +124697,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolYearType.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SchoolYearType", "SchoolYearType")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -125160,6 +125375,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Section", "Section")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -125743,6 +125959,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Section", "SectionCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -126133,6 +126350,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Section", "SectionClassPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -126397,6 +126615,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Section", "SectionCourseLevelCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -126617,6 +126836,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Section", "SectionOfferedGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -126950,6 +127170,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Section", "SectionProgram")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -127624,6 +127845,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SectionAttendanceTakenEvent", "SectionAttendanceTakenEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -129289,6 +129511,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Session", "Session")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -129829,6 +130052,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Session", "SessionAcademicWeek")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -130309,6 +130533,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Session", "SessionGradingPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -130984,6 +131209,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SourceDimension", "SourceDimension")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -131285,6 +131511,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SourceDimension", "SourceDimensionReportingTag")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -132616,6 +132843,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "Staff")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -133832,6 +134060,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -134133,6 +134362,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffAddressPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -134353,6 +134583,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffAncestryEthnicOrigin")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -134653,6 +134884,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffCredential")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -134917,6 +135149,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffElectronicMail")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -135151,6 +135384,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -135422,6 +135656,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffIdentificationDocument")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -135705,6 +135940,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffInternationalAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -135929,6 +136165,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffLanguage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -136223,6 +136460,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffLanguageUse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -136478,6 +136716,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffOtherName")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -136749,6 +136988,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffPersonalIdentificationDocument")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -136969,6 +137209,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffRace")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -137273,6 +137514,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffRecognition")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -137530,6 +137772,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffTelephone")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -137750,6 +137993,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffTribalAffiliation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -137970,6 +138214,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Staff", "StaffVisa")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -138369,6 +138614,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffAbsenceEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffAbsenceEvent", "StaffAbsenceEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -139145,6 +139391,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffCohortAssociation", "StaffCohortAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -139635,6 +139882,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffDisciplineIncidentAssociation", "StaffDisciplineIncidentAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -139964,6 +140212,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffDisciplineIncidentAssociation", "StaffDisciplineIncidentAssociationDisciplineIncidentParticipationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -140640,6 +140889,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffEducationOrganizationAssignmentAssociation", "StaffEducationOrganizationAssignmentAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -141194,6 +141444,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffEducationOrganizationContactAssociation", "StaffEducationOrganizationContactAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -141609,6 +141860,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffEducationOrganizationContactAssociation", "StaffEducationOrganizationContactAssociationAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -141910,6 +142162,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffEducationOrganizationContactAssociation", "StaffEducationOrganizationContactAssociationAddressPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -142167,6 +142420,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffEducationOrganizationContactAssociation", "StaffEducationOrganizationContactAssociationTelephone")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -142751,6 +143005,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffEducationOrganizationEmploymentAssociation", "StaffEducationOrganizationEmploymentAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -143477,6 +143732,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeave.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffLeave", "StaffLeave")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -144286,6 +144542,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffProgramAssociation", "StaffProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -144892,6 +145149,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffSchoolAssociation", "StaffSchoolAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -145344,6 +145602,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffSchoolAssociation", "StaffSchoolAssociationAcademicSubject")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -145564,6 +145823,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffSchoolAssociation", "StaffSchoolAssociationGradeLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -146165,6 +146425,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StaffSectionAssociation", "StaffSectionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -146900,6 +147161,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StateEducationAgency", "StateEducationAgency")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -147445,6 +147707,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StateEducationAgency", "StateEducationAgencyAccountability")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -147679,6 +147942,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StateEducationAgency", "StateEducationAgencyFederalFunds")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -148179,6 +148443,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Student", "Student")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -148710,6 +148975,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Student", "StudentIdentificationDocument")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -148965,6 +149231,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Student", "StudentOtherName")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -149236,6 +149503,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Student", "StudentPersonalIdentificationDocument")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -149456,6 +149724,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Student", "StudentVisa")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -150104,6 +150373,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecord")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -150753,6 +151023,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecordAcademicHonor")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -151022,6 +151293,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecordClassRanking")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -151349,6 +151621,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecordDiploma")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -151611,6 +151884,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecordGradePointAverage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -151915,6 +152189,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecordRecognition")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -152429,6 +152704,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAcademicRecord", "StudentAcademicRecordReportCard")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -153194,6 +153470,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -153757,6 +154034,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentAccommodation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -154208,6 +154486,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentItem")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -154517,6 +154796,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentPerformanceLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -154742,6 +155022,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -154976,6 +155257,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentScoreResult")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -155404,6 +155686,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentStudentObjectiveAssessment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -155836,6 +156119,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentStudentObjectiveAssessmentPerformanceLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -156070,6 +156354,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessment", "StudentAssessmentStudentObjectiveAssessmentScoreResult")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -156671,6 +156956,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentAssessmentEducationOrganizationAssociation", "StudentAssessmentEducationOrganizationAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -157465,6 +157751,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCohortAssociation", "StudentCohortAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -157976,6 +158263,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCohortAssociation", "StudentCohortAssociationSection")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -158666,6 +158954,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCompetencyObjective", "StudentCompetencyObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -159383,6 +159672,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCompetencyObjective", "StudentCompetencyObjectiveGeneralStudentProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -160006,6 +160296,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCompetencyObjective", "StudentCompetencyObjectiveStudentSectionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -160679,6 +160970,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCTEProgramAssociation", "StudentCTEProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -161175,6 +161467,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCTEProgramAssociation", "StudentCTEProgramAssociationCTEProgram")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -161423,6 +161716,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCTEProgramAssociation", "StudentCTEProgramAssociationCTEProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -161664,6 +161958,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentCTEProgramAssociation", "StudentCTEProgramAssociationService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -162126,6 +162421,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentDisciplineIncidentAssociation", "StudentDisciplineIncidentAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -162462,6 +162758,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentDisciplineIncidentAssociation", "StudentDisciplineIncidentAssociationBehavior")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -162943,6 +163240,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentDisciplineIncidentBehaviorAssociation", "StudentDisciplineIncidentBehaviorAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -163272,6 +163570,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentDisciplineIncidentBehaviorAssociation", "StudentDisciplineIncidentBehaviorAssociationDisciplineIncidentParticipationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -163727,6 +164026,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentDisciplineIncidentNonOffenderAssociation", "StudentDisciplineIncidentNonOffenderAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -164056,6 +164356,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentDisciplineIncidentNonOffenderAssociation", "StudentDisciplineIncidentNonOffenderAssociationDisciplineIncidentParticipationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -164579,6 +164880,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -165754,6 +166056,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -166055,6 +166358,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationAddressPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -166275,6 +166579,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationAncestryEthnicOrigin")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -166568,6 +166873,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationCohortYear")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -166820,6 +167126,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationDisability")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -167114,6 +167421,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationDisabilityDesignation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -167364,6 +167672,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationElectronicMail")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -167647,6 +167956,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationInternationalAddress")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -167871,6 +168181,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationLanguage")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -168165,6 +168476,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationLanguageUse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -168410,6 +168722,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationProgramParticipation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -168704,6 +169017,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationProgramParticipationProgramCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -168924,6 +169238,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationRace")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -169155,6 +169470,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationStudentCharacteristic")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -169456,6 +169772,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationStudentCharacteristicPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -169699,6 +170016,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationStudentIdentificationCode")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -169944,6 +170262,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationStudentIndicator")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -170245,6 +170564,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationStudentIndicatorPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -170502,6 +170822,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationTelephone")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -170722,6 +171043,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationAssociation", "StudentEducationOrganizationAssociationTribalAffiliation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -171182,6 +171504,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentEducationOrganizationResponsibilityAssociation", "StudentEducationOrganizationResponsibilityAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -171731,6 +172054,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentGradebookEntry", "StudentGradebookEntry")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -172393,6 +172717,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentHomelessProgramAssociation", "StudentHomelessProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -172779,6 +173104,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentHomelessProgramAssociation", "StudentHomelessProgramAssociationHomelessProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -173605,6 +173931,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentInterventionAssociation", "StudentInterventionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -173994,6 +174321,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentInterventionAssociation", "StudentInterventionAssociationInterventionEffectiveness")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -174511,6 +174839,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentInterventionAttendanceEvent", "StudentInterventionAttendanceEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -175167,6 +175496,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentLanguageInstructionProgramAssociation", "StudentLanguageInstructionProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -175665,6 +175995,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentLanguageInstructionProgramAssociation", "StudentLanguageInstructionProgramAssociationEnglishLanguageProficiencyAssessment")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -175913,6 +176244,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentLanguageInstructionProgramAssociation", "StudentLanguageInstructionProgramAssociationLanguageInstructionProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -176556,6 +176888,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentLearningObjective", "StudentLearningObjective")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -177273,6 +177606,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentLearningObjective", "StudentLearningObjectiveGeneralStudentProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -177896,6 +178230,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentLearningObjective", "StudentLearningObjectiveStudentSectionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -178630,6 +178965,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentMigrantEducationProgramAssociation", "StudentMigrantEducationProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -179016,6 +179352,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentMigrantEducationProgramAssociation", "StudentMigrantEducationProgramAssociationMigrantEducationProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -179643,6 +179980,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentNeglectedOrDelinquentProgramAssociation", "StudentNeglectedOrDelinquentProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -180029,6 +180367,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentNeglectedOrDelinquentProgramAssociation", "StudentNeglectedOrDelinquentProgramAssociationNeglectedOrDelinquentProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -180503,6 +180842,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentParentAssociation", "StudentParentAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -181415,6 +181755,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentProgramAssociation", "StudentProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -181801,6 +182142,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentProgramAssociation", "StudentProgramAssociationService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -182419,6 +182761,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentProgramAttendanceEvent", "StudentProgramAttendanceEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -183291,6 +183634,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSchoolAssociation", "StudentSchoolAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -183877,6 +184221,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSchoolAssociation", "StudentSchoolAssociationAlternativeGraduationPlan")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -184111,6 +184456,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSchoolAssociation", "StudentSchoolAssociationEducationPlan")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -184714,6 +185060,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSchoolAttendanceEvent", "StudentSchoolAttendanceEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -185396,6 +185743,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSchoolFoodServiceProgramAssociation", "StudentSchoolFoodServiceProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -185782,6 +186130,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSchoolFoodServiceProgramAssociation", "StudentSchoolFoodServiceProgramAssociationSchoolFoodServiceProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -186395,6 +186744,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSectionAssociation", "StudentSectionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -187073,6 +187423,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSectionAttendanceEvent", "StudentSectionAttendanceEvent")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -187572,6 +187923,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSectionAttendanceEvent", "StudentSectionAttendanceEventClassPeriod")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -188294,6 +188646,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSpecialEducationProgramAssociation", "StudentSpecialEducationProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -188794,6 +189147,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSpecialEducationProgramAssociation", "StudentSpecialEducationProgramAssociationDisability")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -189088,6 +189442,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSpecialEducationProgramAssociation", "StudentSpecialEducationProgramAssociationDisabilityDesignation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -189366,6 +189721,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSpecialEducationProgramAssociation", "StudentSpecialEducationProgramAssociationServiceProvider")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -189625,6 +189981,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSpecialEducationProgramAssociation", "StudentSpecialEducationProgramAssociationSpecialEducationProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -189977,6 +190334,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentSpecialEducationProgramAssociation", "StudentSpecialEducationProgramAssociationSpecialEducationProgramServiceProvider")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -190605,6 +190963,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentTitleIPartAProgramAssociation", "StudentTitleIPartAProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -191046,6 +191405,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentTitleIPartAProgramAssociation", "StudentTitleIPartAProgramAssociationService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -191287,6 +191647,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "StudentTitleIPartAProgramAssociation", "StudentTitleIPartAProgramAssociationTitleIPartAProgramService")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -192100,6 +192461,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "Survey", "Survey")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -192917,6 +193279,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyCourseAssociation", "SurveyCourseAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -193733,6 +194096,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyProgramAssociation", "SurveyProgramAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -194246,6 +194610,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyQuestion", "SurveyQuestion")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -194698,6 +195063,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyQuestion", "SurveyQuestionMatrix")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -194953,6 +195319,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyQuestion", "SurveyQuestionResponseChoice")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -195457,6 +195824,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyQuestionResponse", "SurveyQuestionResponse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -195930,6 +196298,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyQuestionResponse", "SurveyQuestionResponseSurveyQuestionMatrixElementResponse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -196185,6 +196554,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyQuestionResponse", "SurveyQuestionResponseValue")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -196796,6 +197166,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyResponse", "SurveyResponse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -197153,6 +197524,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyResponse", "SurveyResponseSurveyLevel")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -197630,6 +198002,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyResponseEducationOrganizationTargetAssociation", "SurveyResponseEducationOrganizationTargetAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -198152,6 +198525,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveyResponseStaffTargetAssociation", "SurveyResponseStaffTargetAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -198579,6 +198953,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySection.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveySection", "SurveySection")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -199185,6 +199560,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveySectionAssociation", "SurveySectionAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -199712,6 +200088,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveySectionResponse", "SurveySectionResponse")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -200314,6 +200691,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveySectionResponseEducationOrganizationTargetAssociation", "SurveySectionResponseEducationOrganizationTargetAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
@@ -200872,6 +201250,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
         // -------------------------------------------------------------
         [JsonProperty("_ext")]
         [JsonConverter(typeof(ExtensionsConverter), "SurveySectionResponseStaffTargetAssociation", "SurveySectionResponseStaffTargetAssociation")]
+        [ValidateExtensions]
         public System.Collections.IDictionary Extensions { get; set; }
         // -------------------------------------------------------------
 
