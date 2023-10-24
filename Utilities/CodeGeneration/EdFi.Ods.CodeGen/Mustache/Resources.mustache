@@ -36,7 +36,7 @@ namespace {{ResourceClassesNamespace}}
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class {{ReferenceName}}Reference
+    public class {{ReferenceName}}Reference : IResourceReference
     {
         {{#ReferenceIdentifiers}}
         [DataMember(Name="{{JsonPropertyName}}"), NaturalKeyMember]{{#IsDateOnlyProperty}}[JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]{{/IsDateOnlyProperty}}{{#IsTimeSpanProperty}}[JsonConverter(typeof(UtcTimeConverter))]{{/IsTimeSpanProperty}}
@@ -99,6 +99,17 @@ namespace {{ResourceClassesNamespace}}
             return {{#ReferenceIdentifiers}}{{#IsFirstProperty}}{{PropertyName}} != default({{PropertyType}}){{/IsFirstProperty}}{{^IsFirstProperty}} && {{PropertyName}} != default({{PropertyType}}){{/IsFirstProperty}}{{/ReferenceIdentifiers}};
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            {{#ReferenceIdentifiers}}
+            if ({{PropertyName}} == default)
+            {
+                yield return "{{PropertyName}}";
+            }
+
+            {{/ReferenceIdentifiers}}
+        }
+
         {{#HRef}}
         private Link CreateLink()
         {
@@ -149,7 +160,7 @@ namespace {{ResourceClassesNamespace}}
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class {{ReferenceName}}Reference
+    public class {{ReferenceName}}Reference : IResourceReference
     {
         private {{NamespacePrefix}}I{{ThisEntityName}} backReference;
 
@@ -254,6 +265,17 @@ namespace {{ResourceClassesNamespace}}
             return {{#ReferenceIdentifiers}}{{#IsFirstProperty}}{{{PropertyName}}} != default({{PropertyType}}){{/IsFirstProperty}}{{^IsFirstProperty}}
                 && {{{PropertyName}}} != default({{PropertyType}}){{/IsFirstProperty}}{{/ReferenceIdentifiers}}{{^ReferenceIdentifiers}}true{{/ReferenceIdentifiers}}
                 ;
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            {{#ReferenceIdentifiers}}
+            if ({{PropertyName}} == default)
+            {
+                yield return "{{PropertyName}}";
+            }
+
+            {{/ReferenceIdentifiers}}
         }
 
         {{#HRef}}
@@ -376,6 +398,7 @@ namespace {{ResourceClassesNamespace}}
         }
 
         [DataMember(Name="{{JsonPropertyName}}")]{{#IsIdentifying}}[NaturalKeyMember]{{/IsIdentifying}}
+        [FullyDefinedReference]
         public {{ReferenceTypeName}} {{PropertyName}}
         {
             get
@@ -412,6 +435,7 @@ namespace {{ResourceClassesNamespace}}
         }
 
         [DataMember(Name="{{JsonPropertyName}}")]{{#IsIdentifying}}[NaturalKeyMember]{{/IsIdentifying}}
+        [FullyDefinedReference]
         public {{BackReferenceType}} {{PropertyName}}
         {
             get
