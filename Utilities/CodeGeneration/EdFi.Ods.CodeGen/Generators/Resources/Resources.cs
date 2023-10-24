@@ -58,6 +58,7 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
                     .Select(
                         x => new {Namespace = EdFiConventions.BuildNamespace(Namespaces.Entities.Common.BaseNamespace, x)}),
                 ProperCaseName = TemplateContext.SchemaProperCaseName,
+                SchemaName = TemplateContext.SchemaPhysicalName,
                 IsExtensionContext = TemplateContext.IsExtension
             };
         }

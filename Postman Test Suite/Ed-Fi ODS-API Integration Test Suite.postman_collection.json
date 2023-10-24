@@ -8274,6 +8274,192 @@
 					"name": "References",
 					"item": [
 						{
+							"name": "Required References",
+							"item": [
+								{
+									"name": "Invalid (Required reference missing)",
+									"item": [
+										{
+											"name": "Update Course Offering (missing reference)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Response is  400\", () => {\r",
+															"    pm.expect(pm.response.code).to.equal(400);\r",
+															"});\r",
+															"\r",
+															"const response = pm.response.json();\r",
+															"\r",
+															"pm.test(\"Message indicates the request is invalid.\", () => {\r",
+															"    pm.expect(response.message).to.equal(\"The request is invalid.\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Validation error indicates which properties are missing from the reference.\", () => {\r",
+															"    pm.expect(response.modelState).to.deep.contain(\r",
+															"        {\r",
+															"            \"request.CourseReference\": [\r",
+															"                \"CourseReference is required.\"\r",
+															"            ]\r",
+															"        }\r",
+															"    );\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"schoolReference\": {\r\n        \"schoolId\": 255901001\r\n    },\r\n    \"sessionReference\": {\r\n        \"schoolId\": 255901001,\r\n        \"schoolYear\": 2022,\r\n        \"sessionName\": \"2021-2022 Fall Semester\"\r\n    },\r\n    \"localCourseCode\": \"ALG-1\",\r\n    \"instructionalTimePlanned\": 66,\r\n    \"courseLevelCharacteristics\": [],\r\n    \"curriculumUseds\": [],\r\n    \"offeredGradeLevels\": []\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/courseOfferings",
+													"host": [
+														"{{ApiBaseUrl}}"
+													],
+													"path": [
+														"data",
+														"v3",
+														"ed-fi",
+														"courseOfferings"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update StudentGrade (child item missing reference)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Response is  400\", () => {\r",
+															"    pm.expect(pm.response.code).to.equal(400);\r",
+															"});\r",
+															"\r",
+															"const response = pm.response.json();\r",
+															"\r",
+															"pm.test(\"Message indicates the request is invalid.\", () => {\r",
+															"    pm.expect(response.message).to.equal(\"The request is invalid.\");\r",
+															"});\r",
+															"\r",
+															"pm.test(\"Validation error indicates which properties are missing from the reference.\", () => {\r",
+															"    pm.expect(response.modelState).to.deep.contain(\r",
+															"        {\r",
+															"            \"request.GradeLearningStandardGrades[0].LearningStandardReference\": [\r",
+															"                \"LearningStandardReference is required.\"\r",
+															"            ]\r",
+															"        }\r",
+															"    );\r",
+															"});\r",
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": " {\r\n    \"gradingPeriodReference\": {\r\n      \"gradingPeriodDescriptor\": \"uri://ed-fi.org/GradingPeriodDescriptor#First Six Weeks\",\r\n      \"periodSequence\": 1,\r\n      \"schoolId\": 255901044,\r\n      \"schoolYear\": 2022,\r\n      \"link\": {\r\n        \"rel\": \"GradingPeriod\",\r\n        \"href\": \"/ed-fi/gradingPeriods/611f010c239a4866a045517187f3903a\"\r\n      }\r\n    },\r\n    \"studentSectionAssociationReference\": {\r\n      \"beginDate\": \"2021-08-23\",\r\n      \"localCourseCode\": \"ART-06\",\r\n      \"schoolId\": 255901044,\r\n      \"schoolYear\": 2022,\r\n      \"sectionIdentifier\": \"25590104405Trad114ART0612011\",\r\n      \"sessionName\": \"2021-2022 Fall Semester\",\r\n      \"studentUniqueId\": \"604828\",\r\n      \"link\": {\r\n        \"rel\": \"StudentSectionAssociation\",\r\n        \"href\": \"/ed-fi/studentSectionAssociations/b3853854dfc348c2b4d330ed97453a28\"\r\n      }\r\n    },\r\n    \"gradeTypeDescriptor\": \"uri://ed-fi.org/GradeTypeDescriptor#Grading Period\",\r\n    \"numericGradeEarned\": 88.00,\r\n    \"learningStandardGrades\": [\r\n      {\r\n        \"diagnosticStatement\": \"Something-a-rather\"\r\n      }\r\n    ]\r\n  }",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/grades",
+													"host": [
+														"{{ApiBaseUrl}}"
+													],
+													"path": [
+														"data",
+														"v3",
+														"ed-fi",
+														"grades"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Valid (Required reference missing, but excluded by Profile)",
+									"item": [
+										{
+											"name": "Update Course Offering (missing excluded reference)",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"Response is 200\", () => {\r",
+															"    pm.expect(pm.response.code).to.equal(400);\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"protocolProfileBehavior": {
+												"disabledSystemHeaders": {
+													"content-type": true
+												}
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/vnd.ed-fi.courseoffering.resource-with-excluded-required-reference.writable+json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"schoolReference\": {\r\n        \"schoolId\": 255901001\r\n    },\r\n    \"sessionReference\": {\r\n        \"schoolId\": 255901001,\r\n        \"schoolYear\": 2022,\r\n        \"sessionName\": \"2021-2022 Fall Semester\"\r\n    },\r\n    \"localCourseCode\": \"ALG-1\",\r\n    \"instructionalTimePlanned\": {{$randomInt}},\r\n    \"courseLevelCharacteristics\": [],\r\n    \"curriculumUseds\": [],\r\n    \"offeredGradeLevels\": []\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/courseOfferings",
+													"host": [
+														"{{ApiBaseUrl}}"
+													],
+													"path": [
+														"data",
+														"v3",
+														"ed-fi",
+														"courseOfferings"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
 							"name": "Fully Formed References",
 							"item": [
 								{

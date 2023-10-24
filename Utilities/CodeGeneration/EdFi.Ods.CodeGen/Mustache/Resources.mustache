@@ -398,7 +398,7 @@ namespace {{ResourceClassesNamespace}}
         }
 
         [DataMember(Name="{{JsonPropertyName}}")]{{#IsIdentifying}}[NaturalKeyMember]{{/IsIdentifying}}
-        [FullyDefinedReference]
+        [FullyDefinedReference]{{#IsRequired}}[RequiredReference({{#IsIdentifying}}isIdentifying: true{{/IsIdentifying}}{{^IsIdentifying}}"{{SchemaName}}", "{{ResourceName}}"{{/IsIdentifying}})]{{/IsRequired}}
         public {{ReferenceTypeName}} {{PropertyName}}
         {
             get
@@ -435,7 +435,7 @@ namespace {{ResourceClassesNamespace}}
         }
 
         [DataMember(Name="{{JsonPropertyName}}")]{{#IsIdentifying}}[NaturalKeyMember]{{/IsIdentifying}}
-        [FullyDefinedReference]
+        [FullyDefinedReference]{{#IsRequired}}[RequiredReference({{#IsIdentifying}}isIdentifying: true{{/IsIdentifying}}{{^IsIdentifying}}"{{SchemaName}}", "{{ResourceName}}"{{/IsIdentifying}})]{{/IsRequired}}
         public {{BackReferenceType}} {{PropertyName}}
         {
             get
