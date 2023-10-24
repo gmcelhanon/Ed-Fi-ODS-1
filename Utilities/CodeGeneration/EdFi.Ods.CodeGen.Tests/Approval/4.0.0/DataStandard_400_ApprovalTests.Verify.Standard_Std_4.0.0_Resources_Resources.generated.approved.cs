@@ -843,7 +843,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicWeek.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class AcademicWeekReference
+    public class AcademicWeekReference : IResourceReference
     {
         [DataMember(Name="schoolId"), NaturalKeyMember]
         public int SchoolId { get; set; }
@@ -888,6 +888,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicWeek.EdFi
         public bool IsReferenceFullyDefined()
         {
             return SchoolId != default(int) && WeekIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (WeekIdentifier == default)
+            {
+                yield return "WeekIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -971,6 +985,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicWeek.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -1527,7 +1542,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class AccountabilityRatingReference
+    public class AccountabilityRatingReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -1575,6 +1590,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && RatingTitle != default(string) && SchoolYear != default(short);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (RatingTitle == default)
+            {
+                yield return "RatingTitle";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -1657,6 +1691,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -1689,6 +1724,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -3905,7 +3941,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class AssessmentReference
+    public class AssessmentReference : IResourceReference
     {
         [DataMember(Name="assessmentIdentifier"), NaturalKeyMember]
         public string AssessmentIdentifier { get; set; }
@@ -3950,6 +3986,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AssessmentIdentifier != default(string) && Namespace != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AssessmentIdentifier == default)
+            {
+                yield return "AssessmentIdentifier";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
         }
 
         private Link CreateLink()
@@ -4045,6 +4095,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -5428,6 +5479,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         }
 
         [DataMember(Name="mandatingEducationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference MandatingEducationOrganizationReference
         {
             get
@@ -7235,6 +7287,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -7825,6 +7878,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -8752,7 +8806,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class AssessmentItemReference
+    public class AssessmentItemReference : IResourceReference
     {
         [DataMember(Name="assessmentIdentifier"), NaturalKeyMember]
         public string AssessmentIdentifier { get; set; }
@@ -8800,6 +8854,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AssessmentIdentifier != default(string) && IdentificationCode != default(string) && Namespace != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AssessmentIdentifier == default)
+            {
+                yield return "AssessmentIdentifier";
+            }
+
+            if (IdentificationCode == default)
+            {
+                yield return "IdentificationCode";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
         }
 
         private Link CreateLink()
@@ -8887,6 +8960,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
         }
 
         [DataMember(Name="assessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Assessment.EdFi.AssessmentReference AssessmentReference
         {
             get
@@ -9374,6 +9448,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -10946,7 +11021,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class AssessmentScoreRangeLearningStandardReference
+    public class AssessmentScoreRangeLearningStandardReference : IResourceReference
     {
         [DataMember(Name="assessmentIdentifier"), NaturalKeyMember]
         public string AssessmentIdentifier { get; set; }
@@ -10994,6 +11069,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
         public bool IsReferenceFullyDefined()
         {
             return AssessmentIdentifier != default(string) && Namespace != default(string) && ScoreRangeId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AssessmentIdentifier == default)
+            {
+                yield return "AssessmentIdentifier";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (ScoreRangeId == default)
+            {
+                yield return "ScoreRangeId";
+            }
+
         }
 
         private Link CreateLink()
@@ -11080,6 +11174,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
         }
 
         [DataMember(Name="assessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Assessment.EdFi.AssessmentReference AssessmentReference
         {
             get
@@ -11112,6 +11207,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
         }
 
         [DataMember(Name="objectiveAssessmentReference")]
+        [FullyDefinedReference]
         public ObjectiveAssessment.EdFi.ObjectiveAssessmentReference ObjectiveAssessmentReference
         {
             get
@@ -11626,6 +11722,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -12692,7 +12789,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class BalanceSheetDimensionReference
+    public class BalanceSheetDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -12737,6 +12834,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -13875,7 +13986,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class BellScheduleReference
+    public class BellScheduleReference : IResourceReference
     {
         [DataMember(Name="bellScheduleName"), NaturalKeyMember]
         public string BellScheduleName { get; set; }
@@ -13920,6 +14031,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BellScheduleName != default(string) && SchoolId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BellScheduleName == default)
+            {
+                yield return "BellScheduleName";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
         }
 
         private Link CreateLink()
@@ -14008,6 +14133,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -14459,7 +14585,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class BellScheduleClassPeriodToClassPeriodReference
+    public class BellScheduleClassPeriodToClassPeriodReference : IResourceReference
     {
         private Entities.Common.EdFi.IBellScheduleClassPeriod backReference;
 
@@ -14536,6 +14662,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ClassPeriodName == default)
+            {
+                yield return "ClassPeriodName";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -14609,6 +14744,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
         }
 
         [DataMember(Name="classPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public BellScheduleClassPeriodToClassPeriodReference ClassPeriodReference
         {
             get
@@ -15341,7 +15477,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CalendarReference
+    public class CalendarReference : IResourceReference
     {
         [DataMember(Name="calendarCode"), NaturalKeyMember]
         public string CalendarCode { get; set; }
@@ -15389,6 +15525,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CalendarCode != default(string) && SchoolId != default(int) && SchoolYear != default(short);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CalendarCode == default)
+            {
+                yield return "CalendarCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -15475,6 +15630,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -15507,6 +15663,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -16093,7 +16250,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CalendarDateReference
+    public class CalendarDateReference : IResourceReference
     {
         [DataMember(Name="calendarCode"), NaturalKeyMember]
         public string CalendarCode { get; set; }
@@ -16144,6 +16301,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CalendarCode != default(string) && Date != default(DateTime) && SchoolId != default(int) && SchoolYear != default(short);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CalendarCode == default)
+            {
+                yield return "CalendarCode";
+            }
+
+            if (Date == default)
+            {
+                yield return "Date";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -16230,6 +16411,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
         }
 
         [DataMember(Name="calendarReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Calendar.EdFi.CalendarReference CalendarReference
         {
             get
@@ -18197,7 +18379,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ChartOfAccountReference
+    public class ChartOfAccountReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -18245,6 +18427,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && EducationOrganizationId != default(int) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -18332,6 +18533,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="balanceSheetDimensionReference")]
+        [FullyDefinedReference]
         public BalanceSheetDimension.EdFi.BalanceSheetDimensionReference BalanceSheetDimensionReference
         {
             get
@@ -18364,6 +18566,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -18396,6 +18599,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="functionDimensionReference")]
+        [FullyDefinedReference]
         public FunctionDimension.EdFi.FunctionDimensionReference FunctionDimensionReference
         {
             get
@@ -18428,6 +18632,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="fundDimensionReference")]
+        [FullyDefinedReference]
         public FundDimension.EdFi.FundDimensionReference FundDimensionReference
         {
             get
@@ -18460,6 +18665,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="objectDimensionReference")]
+        [FullyDefinedReference]
         public ObjectDimension.EdFi.ObjectDimensionReference ObjectDimensionReference
         {
             get
@@ -18492,6 +18698,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="operationalUnitDimensionReference")]
+        [FullyDefinedReference]
         public OperationalUnitDimension.EdFi.OperationalUnitDimensionReference OperationalUnitDimensionReference
         {
             get
@@ -18524,6 +18731,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="programDimensionReference")]
+        [FullyDefinedReference]
         public ProgramDimension.EdFi.ProgramDimensionReference ProgramDimensionReference
         {
             get
@@ -18556,6 +18764,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="projectDimensionReference")]
+        [FullyDefinedReference]
         public ProjectDimension.EdFi.ProjectDimensionReference ProjectDimensionReference
         {
             get
@@ -18588,6 +18797,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
         }
 
         [DataMember(Name="sourceDimensionReference")]
+        [FullyDefinedReference]
         public SourceDimension.EdFi.SourceDimensionReference SourceDimensionReference
         {
             get
@@ -19904,7 +20114,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ClassPeriodReference
+    public class ClassPeriodReference : IResourceReference
     {
         [DataMember(Name="classPeriodName"), NaturalKeyMember]
         public string ClassPeriodName { get; set; }
@@ -19949,6 +20159,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
         public bool IsReferenceFullyDefined()
         {
             return ClassPeriodName != default(string) && SchoolId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ClassPeriodName == default)
+            {
+                yield return "ClassPeriodName";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
         }
 
         private Link CreateLink()
@@ -20035,6 +20259,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -20868,7 +21093,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CohortReference
+    public class CohortReference : IResourceReference
     {
         [DataMember(Name="cohortIdentifier"), NaturalKeyMember]
         public string CohortIdentifier { get; set; }
@@ -20913,6 +21138,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CohortIdentifier != default(string) && EducationOrganizationId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CohortIdentifier == default)
+            {
+                yield return "CohortIdentifier";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
         }
 
         private Link CreateLink()
@@ -20999,6 +21238,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -21384,6 +21624,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -22513,7 +22754,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityOrganization.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CommunityOrganizationReference
+    public class CommunityOrganizationReference : IResourceReference
     {
         [DataMember(Name="communityOrganizationId"), NaturalKeyMember]
         public int CommunityOrganizationId { get; set; }
@@ -22549,6 +22790,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityOrganization.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CommunityOrganizationId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CommunityOrganizationId == default)
+            {
+                yield return "CommunityOrganizationId";
+            }
+
         }
 
         private Link CreateLink()
@@ -23099,7 +23349,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProvider.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CommunityProviderReference
+    public class CommunityProviderReference : IResourceReference
     {
         [DataMember(Name="communityProviderId"), NaturalKeyMember]
         public int CommunityProviderId { get; set; }
@@ -23135,6 +23385,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProvider.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CommunityProviderId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CommunityProviderId == default)
+            {
+                yield return "CommunityProviderId";
+            }
+
         }
 
         private Link CreateLink()
@@ -23209,6 +23468,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProvider.EdFi
         }
 
         [DataMember(Name="communityOrganizationReference")]
+        [FullyDefinedReference]
         public CommunityOrganization.EdFi.CommunityOrganizationReference CommunityOrganizationReference
         {
             get
@@ -23787,7 +24047,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLicense.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CommunityProviderLicenseReference
+    public class CommunityProviderLicenseReference : IResourceReference
     {
         [DataMember(Name="communityProviderId"), NaturalKeyMember]
         public int CommunityProviderId { get; set; }
@@ -23835,6 +24095,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLicense.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CommunityProviderId != default(int) && LicenseIdentifier != default(string) && LicensingOrganization != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CommunityProviderId == default)
+            {
+                yield return "CommunityProviderId";
+            }
+
+            if (LicenseIdentifier == default)
+            {
+                yield return "LicenseIdentifier";
+            }
+
+            if (LicensingOrganization == default)
+            {
+                yield return "LicensingOrganization";
+            }
+
         }
 
         private Link CreateLink()
@@ -23917,6 +24196,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLicense.EdFi
         }
 
         [DataMember(Name="communityProviderReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public CommunityProvider.EdFi.CommunityProviderReference CommunityProviderReference
         {
             get
@@ -24504,7 +24784,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CompetencyObjectiveReference
+    public class CompetencyObjectiveReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -24552,6 +24832,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyObjective.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && Objective != default(string) && ObjectiveGradeLevelDescriptor != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (Objective == default)
+            {
+                yield return "Objective";
+            }
+
+            if (ObjectiveGradeLevelDescriptor == default)
+            {
+                yield return "ObjectiveGradeLevelDescriptor";
+            }
+
         }
 
         private Link CreateLink()
@@ -24634,6 +24933,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyObjective.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -26277,7 +26577,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CourseReference
+    public class CourseReference : IResourceReference
     {
         [DataMember(Name="courseCode"), NaturalKeyMember]
         public string CourseCode { get; set; }
@@ -26322,6 +26622,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CourseCode != default(string) && EducationOrganizationId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CourseCode == default)
+            {
+                yield return "CourseCode";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
         }
 
         private Link CreateLink()
@@ -26414,6 +26728,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -27648,6 +27963,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         }
 
         [DataMember(Name="learningObjectiveReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningObjective.EdFi.LearningObjectiveReference LearningObjectiveReference
         {
             get
@@ -27966,6 +28282,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -30016,7 +30333,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CourseOfferingReference
+    public class CourseOfferingReference : IResourceReference
     {
         [DataMember(Name="localCourseCode"), NaturalKeyMember]
         public string LocalCourseCode { get; set; }
@@ -30067,6 +30384,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SessionName != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
         }
 
         private Link CreateLink()
@@ -30155,6 +30496,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         }
 
         [DataMember(Name="courseReference")]
+        [FullyDefinedReference][RequiredReference("edfi", "CourseOffering")]
         public Course.EdFi.CourseReference CourseReference
         {
             get
@@ -30187,6 +30529,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -30219,6 +30562,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
         }
 
         [DataMember(Name="sessionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Session.EdFi.SessionReference SessionReference
         {
             get
@@ -31774,7 +32118,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CourseTranscriptReference
+    public class CourseTranscriptReference : IResourceReference
     {
         [DataMember(Name="courseAttemptResultDescriptor"), NaturalKeyMember]
         public string CourseAttemptResultDescriptor { get; set; }
@@ -31843,6 +32187,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CourseAttemptResultDescriptor != default(string) && CourseCode != default(string) && CourseEducationOrganizationId != default(int) && EducationOrganizationId != default(int) && SchoolYear != default(short) && StudentUniqueId != default(string) && TermDescriptor != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CourseAttemptResultDescriptor == default)
+            {
+                yield return "CourseAttemptResultDescriptor";
+            }
+
+            if (CourseCode == default)
+            {
+                yield return "CourseCode";
+            }
+
+            if (CourseEducationOrganizationId == default)
+            {
+                yield return "CourseEducationOrganizationId";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
+            if (TermDescriptor == default)
+            {
+                yield return "TermDescriptor";
+            }
+
         }
 
         private Link CreateLink()
@@ -31934,6 +32317,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         }
 
         [DataMember(Name="courseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Course.EdFi.CourseReference CourseReference
         {
             get
@@ -31966,6 +32350,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         }
 
         [DataMember(Name="externalEducationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference ExternalEducationOrganizationReference
         {
             get
@@ -31998,6 +32383,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
         }
 
         [DataMember(Name="studentAcademicRecordReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentAcademicRecord.EdFi.StudentAcademicRecordReference StudentAcademicRecordReference
         {
             get
@@ -34103,7 +34489,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class CredentialReference
+    public class CredentialReference : IResourceReference
     {
         [DataMember(Name="credentialIdentifier"), NaturalKeyMember]
         public string CredentialIdentifier { get; set; }
@@ -34148,6 +34534,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CredentialIdentifier != default(string) && StateOfIssueStateAbbreviationDescriptor != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CredentialIdentifier == default)
+            {
+                yield return "CredentialIdentifier";
+            }
+
+            if (StateOfIssueStateAbbreviationDescriptor == default)
+            {
+                yield return "StateOfIssueStateAbbreviationDescriptor";
+            }
+
         }
 
         private Link CreateLink()
@@ -37223,7 +37623,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Descriptor.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class DescriptorReference
+    public class DescriptorReference : IResourceReference
     {
         [DataMember(Name="descriptorId"), NaturalKeyMember]
         public int DescriptorId { get; set; }
@@ -37261,6 +37661,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Descriptor.EdFi
             return DescriptorId != default(int);
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (DescriptorId == default)
+            {
+                yield return "DescriptorId";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -37289,7 +37698,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class DescriptorMappingReference
+    public class DescriptorMappingReference : IResourceReference
     {
         [DataMember(Name="mappedNamespace"), NaturalKeyMember]
         public string MappedNamespace { get; set; }
@@ -37340,6 +37749,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
         public bool IsReferenceFullyDefined()
         {
             return MappedNamespace != default(string) && MappedValue != default(string) && Namespace != default(string) && Value != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (MappedNamespace == default)
+            {
+                yield return "MappedNamespace";
+            }
+
+            if (MappedValue == default)
+            {
+                yield return "MappedValue";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (Value == default)
+            {
+                yield return "Value";
+            }
+
         }
 
         private Link CreateLink()
@@ -39566,7 +39999,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class DisciplineActionReference
+    public class DisciplineActionReference : IResourceReference
     {
         [DataMember(Name="disciplineActionIdentifier"), NaturalKeyMember]
         public string DisciplineActionIdentifier { get; set; }
@@ -39623,6 +40056,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         public bool IsReferenceFullyDefined()
         {
             return DisciplineActionIdentifier != default(string) && DisciplineDate != default(DateTime) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (DisciplineActionIdentifier == default)
+            {
+                yield return "DisciplineActionIdentifier";
+            }
+
+            if (DisciplineDate == default)
+            {
+                yield return "DisciplineDate";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -39712,6 +40164,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         }
 
         [DataMember(Name="assignmentSchoolReference")]
+        [FullyDefinedReference]
         public School.EdFi.SchoolReference AssignmentSchoolReference
         {
             get
@@ -39744,6 +40197,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         }
 
         [DataMember(Name="responsibilitySchoolReference")]
+        [FullyDefinedReference][RequiredReference("edfi", "DisciplineAction")]
         public School.EdFi.SchoolReference ResponsibilitySchoolReference
         {
             get
@@ -39776,6 +40230,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -40646,6 +41101,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -40895,7 +41351,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class DisciplineActionStudentDisciplineIncidentAssociationToStudentDisciplineIncidentAssociationReference
+    public class DisciplineActionStudentDisciplineIncidentAssociationToStudentDisciplineIncidentAssociationReference : IResourceReference
     {
         private Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentAssociation backReference;
 
@@ -40980,6 +41436,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -41053,6 +41523,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         }
 
         [DataMember(Name="studentDisciplineIncidentAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public DisciplineActionStudentDisciplineIncidentAssociationToStudentDisciplineIncidentAssociationReference StudentDisciplineIncidentAssociationReference
         {
             get
@@ -41371,7 +41842,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class DisciplineActionStudentDisciplineIncidentBehaviorAssociationToStudentDisciplineIncidentBehaviorAssociationReference
+    public class DisciplineActionStudentDisciplineIncidentBehaviorAssociationToStudentDisciplineIncidentBehaviorAssociationReference : IResourceReference
     {
         private Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentBehaviorAssociation backReference;
 
@@ -41460,6 +41931,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BehaviorDescriptor == default)
+            {
+                yield return "BehaviorDescriptor";
+            }
+
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -41533,6 +42023,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
         }
 
         [DataMember(Name="studentDisciplineIncidentBehaviorAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public DisciplineActionStudentDisciplineIncidentBehaviorAssociationToStudentDisciplineIncidentBehaviorAssociationReference StudentDisciplineIncidentBehaviorAssociationReference
         {
             get
@@ -42428,7 +42919,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class DisciplineIncidentReference
+    public class DisciplineIncidentReference : IResourceReference
     {
         [DataMember(Name="incidentIdentifier"), NaturalKeyMember]
         public string IncidentIdentifier { get; set; }
@@ -42473,6 +42964,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         public bool IsReferenceFullyDefined()
         {
             return IncidentIdentifier != default(string) && SchoolId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
         }
 
         private Link CreateLink()
@@ -42561,6 +43066,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -42593,6 +43099,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
         }
 
         [DataMember(Name="staffReference")]
+        [FullyDefinedReference]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -44370,7 +44877,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationContentReference
+    public class EducationContentReference : IResourceReference
     {
         [DataMember(Name="contentIdentifier"), NaturalKeyMember]
         public string ContentIdentifier { get; set; }
@@ -44412,6 +44919,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return ContentIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ContentIdentifier == default)
+            {
+                yield return "ContentIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -44504,6 +45020,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         }
 
         [DataMember(Name="learningStandardReference")]
+        [FullyDefinedReference]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -45953,6 +46470,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
         }
 
         [DataMember(Name="derivativeSourceEducationContentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationContentReference DerivativeSourceEducationContentReference
         {
             get
@@ -46869,7 +47387,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationOrganizationReference
+    public class EducationOrganizationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -46911,6 +47429,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
         }
 
         private Link CreateLink()
@@ -49943,7 +50470,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationOrganizationInterventionPrescriptionAssociationReference
+    public class EducationOrganizationInterventionPrescriptionAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -49991,6 +50518,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && InterventionPrescriptionEducationOrganizationId != default(int) && InterventionPrescriptionIdentificationCode != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (InterventionPrescriptionEducationOrganizationId == default)
+            {
+                yield return "InterventionPrescriptionEducationOrganizationId";
+            }
+
+            if (InterventionPrescriptionIdentificationCode == default)
+            {
+                yield return "InterventionPrescriptionIdentificationCode";
+            }
+
         }
 
         private Link CreateLink()
@@ -50073,6 +50619,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -50105,6 +50652,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
         }
 
         [DataMember(Name="interventionPrescriptionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public InterventionPrescription.EdFi.InterventionPrescriptionReference InterventionPrescriptionReference
         {
             get
@@ -50434,7 +50982,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetwork.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationOrganizationNetworkReference
+    public class EducationOrganizationNetworkReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationNetworkId"), NaturalKeyMember]
         public int EducationOrganizationNetworkId { get; set; }
@@ -50470,6 +51018,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetwork.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationNetworkId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationNetworkId == default)
+            {
+                yield return "EducationOrganizationNetworkId";
+            }
+
         }
 
         private Link CreateLink()
@@ -51027,7 +51584,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationOrganizationNetworkAssociationReference
+    public class EducationOrganizationNetworkAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationNetworkId"), NaturalKeyMember]
         public int EducationOrganizationNetworkId { get; set; }
@@ -51072,6 +51629,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationNetworkId != default(int) && MemberEducationOrganizationId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationNetworkId == default)
+            {
+                yield return "EducationOrganizationNetworkId";
+            }
+
+            if (MemberEducationOrganizationId == default)
+            {
+                yield return "MemberEducationOrganizationId";
+            }
+
         }
 
         private Link CreateLink()
@@ -51154,6 +51725,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
         }
 
         [DataMember(Name="educationOrganizationNetworkReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganizationNetwork.EdFi.EducationOrganizationNetworkReference EducationOrganizationNetworkReference
         {
             get
@@ -51186,6 +51758,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
         }
 
         [DataMember(Name="memberEducationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference MemberEducationOrganizationReference
         {
             get
@@ -51475,7 +52048,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationOrganizationPeerAssociationReference
+    public class EducationOrganizationPeerAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -51520,6 +52093,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && PeerEducationOrganizationId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (PeerEducationOrganizationId == default)
+            {
+                yield return "PeerEducationOrganizationId";
+            }
+
         }
 
         private Link CreateLink()
@@ -51602,6 +52189,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -51634,6 +52222,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
         }
 
         [DataMember(Name="peerEducationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference PeerEducationOrganizationReference
         {
             get
@@ -52187,7 +52776,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationServiceCenter.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class EducationServiceCenterReference
+    public class EducationServiceCenterReference : IResourceReference
     {
         [DataMember(Name="educationServiceCenterId"), NaturalKeyMember]
         public int EducationServiceCenterId { get; set; }
@@ -52223,6 +52812,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationServiceCenter.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationServiceCenterId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationServiceCenterId == default)
+            {
+                yield return "EducationServiceCenterId";
+            }
+
         }
 
         private Link CreateLink()
@@ -52297,6 +52895,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationServiceCenter.EdFi
         }
 
         [DataMember(Name="stateEducationAgencyReference")]
+        [FullyDefinedReference]
         public StateEducationAgency.EdFi.StateEducationAgencyReference StateEducationAgencyReference
         {
             get
@@ -54466,7 +55065,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class FeederSchoolAssociationReference
+    public class FeederSchoolAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -54514,6 +55113,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && FeederSchoolId != default(int) && SchoolId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (FeederSchoolId == default)
+            {
+                yield return "FeederSchoolId";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
         }
 
         private Link CreateLink()
@@ -54596,6 +55214,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
         }
 
         [DataMember(Name="feederSchoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference FeederSchoolReference
         {
             get
@@ -54628,6 +55247,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -55197,7 +55817,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class FunctionDimensionReference
+    public class FunctionDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -55242,6 +55862,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -55838,7 +56472,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class FundDimensionReference
+    public class FundDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -55883,6 +56517,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -56479,7 +57127,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class GeneralStudentProgramAssociationReference
+    public class GeneralStudentProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -56545,6 +57193,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -57078,7 +57760,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class GradeReference
+    public class GradeReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -57159,6 +57841,65 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && GradeTypeDescriptor != default(string) && GradingPeriodDescriptor != default(string) && GradingPeriodSchoolYear != default(short) && GradingPeriodSequence != default(int) && LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (GradeTypeDescriptor == default)
+            {
+                yield return "GradeTypeDescriptor";
+            }
+
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (GradingPeriodSchoolYear == default)
+            {
+                yield return "GradingPeriodSchoolYear";
+            }
+
+            if (GradingPeriodSequence == default)
+            {
+                yield return "GradingPeriodSequence";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -57245,6 +57986,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
         }
 
         [DataMember(Name="gradingPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public GradingPeriod.EdFi.GradingPeriodReference GradingPeriodReference
         {
             get
@@ -57277,6 +58019,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
         }
 
         [DataMember(Name="studentSectionAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentSectionAssociation.EdFi.StudentSectionAssociationReference StudentSectionAssociationReference
         {
             get
@@ -58016,6 +58759,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -58297,7 +59041,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class GradebookEntryReference
+    public class GradebookEntryReference : IResourceReference
     {
         [DataMember(Name="gradebookEntryIdentifier"), NaturalKeyMember]
         public string GradebookEntryIdentifier { get; set; }
@@ -58342,6 +59086,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
         public bool IsReferenceFullyDefined()
         {
             return GradebookEntryIdentifier != default(string) && Namespace != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradebookEntryIdentifier == default)
+            {
+                yield return "GradebookEntryIdentifier";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
         }
 
         private Link CreateLink()
@@ -58428,6 +59186,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
         }
 
         [DataMember(Name="gradingPeriodReference")]
+        [FullyDefinedReference]
         public GradingPeriod.EdFi.GradingPeriodReference GradingPeriodReference
         {
             get
@@ -58460,6 +59219,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
         }
 
         [DataMember(Name="sectionReference")]
+        [FullyDefinedReference]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -59129,6 +59889,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -60466,7 +61227,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class GradingPeriodReference
+    public class GradingPeriodReference : IResourceReference
     {
         [DataMember(Name="gradingPeriodDescriptor"), NaturalKeyMember]
         public string GradingPeriodDescriptor { get; set; }
@@ -60517,6 +61278,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
         public bool IsReferenceFullyDefined()
         {
             return GradingPeriodDescriptor != default(string) && PeriodSequence != default(int) && SchoolId != default(int) && SchoolYear != default(short);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (PeriodSequence == default)
+            {
+                yield return "PeriodSequence";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -60600,6 +61385,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -60632,6 +61418,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -61244,7 +62031,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class GraduationPlanReference
+    public class GraduationPlanReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -61292,6 +62079,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && GraduationPlanTypeDescriptor != default(string) && GraduationSchoolYear != default(short);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (GraduationPlanTypeDescriptor == default)
+            {
+                yield return "GraduationPlanTypeDescriptor";
+            }
+
+            if (GraduationSchoolYear == default)
+            {
+                yield return "GraduationSchoolYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -61382,6 +62188,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -61414,6 +62221,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         }
 
         [DataMember(Name="graduationSchoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference GraduationSchoolYearTypeReference
         {
             get
@@ -62372,6 +63180,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         }
 
         [DataMember(Name="courseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Course.EdFi.CourseReference CourseReference
         {
             get
@@ -63220,6 +64029,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
         }
 
         [DataMember(Name="assessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Assessment.EdFi.AssessmentReference AssessmentReference
         {
             get
@@ -67875,7 +68685,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class InterventionReference
+    public class InterventionReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -67920,6 +68730,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && InterventionIdentificationCode != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (InterventionIdentificationCode == default)
+            {
+                yield return "InterventionIdentificationCode";
+            }
+
         }
 
         private Link CreateLink()
@@ -68015,6 +68839,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -69579,6 +70404,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         }
 
         [DataMember(Name="educationContentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationContent.EdFi.EducationContentReference EducationContentReference
         {
             get
@@ -69864,6 +70690,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         }
 
         [DataMember(Name="interventionPrescriptionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public InterventionPrescription.EdFi.InterventionPrescriptionReference InterventionPrescriptionReference
         {
             get
@@ -70861,6 +71688,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -71878,7 +72706,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class InterventionPrescriptionReference
+    public class InterventionPrescriptionReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -71923,6 +72751,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && InterventionPrescriptionIdentificationCode != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (InterventionPrescriptionIdentificationCode == default)
+            {
+                yield return "InterventionPrescriptionIdentificationCode";
+            }
+
         }
 
         private Link CreateLink()
@@ -72015,6 +72857,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -73400,6 +74243,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
         }
 
         [DataMember(Name="educationContentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationContent.EdFi.EducationContentReference EducationContentReference
         {
             get
@@ -74316,7 +75160,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class InterventionStudyReference
+    public class InterventionStudyReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -74361,6 +75205,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && InterventionStudyIdentificationCode != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (InterventionStudyIdentificationCode == default)
+            {
+                yield return "InterventionStudyIdentificationCode";
+            }
+
         }
 
         private Link CreateLink()
@@ -74455,6 +75313,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -74487,6 +75346,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         }
 
         [DataMember(Name="interventionPrescriptionReference")]
+        [FullyDefinedReference][RequiredReference("edfi", "InterventionStudy")]
         public InterventionPrescription.EdFi.InterventionPrescriptionReference InterventionPrescriptionReference
         {
             get
@@ -75780,6 +76640,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
         }
 
         [DataMember(Name="educationContentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationContent.EdFi.EducationContentReference EducationContentReference
         {
             get
@@ -77997,7 +78858,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LearningObjectiveReference
+    public class LearningObjectiveReference : IResourceReference
     {
         [DataMember(Name="learningObjectiveId"), NaturalKeyMember]
         public string LearningObjectiveId { get; set; }
@@ -78042,6 +78903,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LearningObjectiveId != default(string) && Namespace != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LearningObjectiveId == default)
+            {
+                yield return "LearningObjectiveId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
         }
 
         private Link CreateLink()
@@ -78130,6 +79005,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         }
 
         [DataMember(Name="parentLearningObjectiveReference")]
+        [FullyDefinedReference]
         public LearningObjectiveReference ParentLearningObjectiveReference
         {
             get
@@ -78899,6 +79775,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         }
 
         [DataMember(Name="mandatingEducationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference MandatingEducationOrganizationReference
         {
             get
@@ -79750,6 +80627,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -80003,7 +80881,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LearningStandardReference
+    public class LearningStandardReference : IResourceReference
     {
         [DataMember(Name="learningStandardId"), NaturalKeyMember]
         public string LearningStandardId { get; set; }
@@ -80045,6 +80923,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LearningStandardId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LearningStandardId == default)
+            {
+                yield return "LearningStandardId";
+            }
+
         }
 
         private Link CreateLink()
@@ -80134,6 +81021,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         }
 
         [DataMember(Name="parentLearningStandardReference")]
+        [FullyDefinedReference]
         public LearningStandardReference ParentLearningStandardReference
         {
             get
@@ -80943,6 +81831,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         }
 
         [DataMember(Name="mandatingEducationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference MandatingEducationOrganizationReference
         {
             get
@@ -82031,6 +82920,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
         }
 
         [DataMember(Name="prerequisiteLearningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandardReference PrerequisiteLearningStandardReference
         {
             get
@@ -82555,7 +83445,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LearningStandardEquivalenceAssociationReference
+    public class LearningStandardEquivalenceAssociationReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -82603,6 +83493,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && SourceLearningStandardId != default(string) && TargetLearningStandardId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SourceLearningStandardId == default)
+            {
+                yield return "SourceLearningStandardId";
+            }
+
+            if (TargetLearningStandardId == default)
+            {
+                yield return "TargetLearningStandardId";
+            }
+
         }
 
         private Link CreateLink()
@@ -82685,6 +83594,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
         }
 
         [DataMember(Name="sourceLearningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference SourceLearningStandardReference
         {
             get
@@ -82717,6 +83627,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
         }
 
         [DataMember(Name="targetLearningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference TargetLearningStandardReference
         {
             get
@@ -84662,7 +85573,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalAccountReference
+    public class LocalAccountReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -84710,6 +85621,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && EducationOrganizationId != default(int) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -84797,6 +85727,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
         }
 
         [DataMember(Name="chartOfAccountReference")]
+        [FullyDefinedReference][RequiredReference("edfi", "LocalAccount")]
         public ChartOfAccount.EdFi.ChartOfAccountReference ChartOfAccountReference
         {
             get
@@ -84829,6 +85760,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -85523,7 +86455,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalActual.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalActualReference
+    public class LocalActualReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -85574,6 +86506,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalActual.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && AsOfDate != default(DateTime) && EducationOrganizationId != default(int) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (AsOfDate == default)
+            {
+                yield return "AsOfDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -85657,6 +86613,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalActual.EdFi
         }
 
         [DataMember(Name="localAccountReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LocalAccount.EdFi.LocalAccountReference LocalAccountReference
         {
             get
@@ -86008,7 +86965,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalBudget.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalBudgetReference
+    public class LocalBudgetReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -86059,6 +87016,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalBudget.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && AsOfDate != default(DateTime) && EducationOrganizationId != default(int) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (AsOfDate == default)
+            {
+                yield return "AsOfDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -86142,6 +87123,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalBudget.EdFi
         }
 
         [DataMember(Name="localAccountReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LocalAccount.EdFi.LocalAccountReference LocalAccountReference
         {
             get
@@ -86493,7 +87475,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalContractedStaffReference
+    public class LocalContractedStaffReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -86556,6 +87538,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && AsOfDate != default(DateTime) && EducationOrganizationId != default(int) && FiscalYear != default(int) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (AsOfDate == default)
+            {
+                yield return "AsOfDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -86639,6 +87650,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
         }
 
         [DataMember(Name="localAccountReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LocalAccount.EdFi.LocalAccountReference LocalAccountReference
         {
             get
@@ -86671,6 +87683,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -87341,7 +88354,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalEducationAgencyReference
+    public class LocalEducationAgencyReference : IResourceReference
     {
         [DataMember(Name="localEducationAgencyId"), NaturalKeyMember]
         public int LocalEducationAgencyId { get; set; }
@@ -87377,6 +88390,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LocalEducationAgencyId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LocalEducationAgencyId == default)
+            {
+                yield return "LocalEducationAgencyId";
+            }
+
         }
 
         private Link CreateLink()
@@ -87453,6 +88475,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         }
 
         [DataMember(Name="educationServiceCenterReference")]
+        [FullyDefinedReference]
         public EducationServiceCenter.EdFi.EducationServiceCenterReference EducationServiceCenterReference
         {
             get
@@ -87485,6 +88508,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         }
 
         [DataMember(Name="parentLocalEducationAgencyReference")]
+        [FullyDefinedReference]
         public LocalEducationAgencyReference ParentLocalEducationAgencyReference
         {
             get
@@ -87517,6 +88541,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         }
 
         [DataMember(Name="stateEducationAgencyReference")]
+        [FullyDefinedReference]
         public StateEducationAgency.EdFi.StateEducationAgencyReference StateEducationAgencyReference
         {
             get
@@ -88284,6 +89309,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -89092,7 +90118,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEncumbrance.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalEncumbranceReference
+    public class LocalEncumbranceReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -89143,6 +90169,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEncumbrance.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && AsOfDate != default(DateTime) && EducationOrganizationId != default(int) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (AsOfDate == default)
+            {
+                yield return "AsOfDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -89226,6 +90276,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEncumbrance.EdFi
         }
 
         [DataMember(Name="localAccountReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LocalAccount.EdFi.LocalAccountReference LocalAccountReference
         {
             get
@@ -89577,7 +90628,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocalPayrollReference
+    public class LocalPayrollReference : IResourceReference
     {
         [DataMember(Name="accountIdentifier"), NaturalKeyMember]
         public string AccountIdentifier { get; set; }
@@ -89640,6 +90691,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AccountIdentifier != default(string) && AsOfDate != default(DateTime) && EducationOrganizationId != default(int) && FiscalYear != default(int) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AccountIdentifier == default)
+            {
+                yield return "AccountIdentifier";
+            }
+
+            if (AsOfDate == default)
+            {
+                yield return "AsOfDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -89723,6 +90803,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
         }
 
         [DataMember(Name="localAccountReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LocalAccount.EdFi.LocalAccountReference LocalAccountReference
         {
             get
@@ -89755,6 +90836,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -90154,7 +91236,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Location.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class LocationReference
+    public class LocationReference : IResourceReference
     {
         [DataMember(Name="classroomIdentificationCode"), NaturalKeyMember]
         public string ClassroomIdentificationCode { get; set; }
@@ -90199,6 +91281,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Location.EdFi
         public bool IsReferenceFullyDefined()
         {
             return ClassroomIdentificationCode != default(string) && SchoolId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ClassroomIdentificationCode == default)
+            {
+                yield return "ClassroomIdentificationCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
         }
 
         private Link CreateLink()
@@ -90281,6 +91377,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Location.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -92978,7 +94075,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ObjectDimensionReference
+    public class ObjectDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -93023,6 +94120,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -93619,7 +94730,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ObjectiveAssessmentReference
+    public class ObjectiveAssessmentReference : IResourceReference
     {
         [DataMember(Name="assessmentIdentifier"), NaturalKeyMember]
         public string AssessmentIdentifier { get; set; }
@@ -93667,6 +94778,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AssessmentIdentifier != default(string) && IdentificationCode != default(string) && Namespace != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AssessmentIdentifier == default)
+            {
+                yield return "AssessmentIdentifier";
+            }
+
+            if (IdentificationCode == default)
+            {
+                yield return "IdentificationCode";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
         }
 
         private Link CreateLink()
@@ -93756,6 +94886,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         }
 
         [DataMember(Name="assessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Assessment.EdFi.AssessmentReference AssessmentReference
         {
             get
@@ -93788,6 +94919,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         }
 
         [DataMember(Name="parentObjectiveAssessmentReference")]
+        [FullyDefinedReference]
         public ObjectiveAssessmentReference ParentObjectiveAssessmentReference
         {
             get
@@ -94444,7 +95576,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ObjectiveAssessmentAssessmentItemToAssessmentItemReference
+    public class ObjectiveAssessmentAssessmentItemToAssessmentItemReference : IResourceReference
     {
         private Entities.Common.EdFi.IObjectiveAssessmentAssessmentItem backReference;
 
@@ -94532,6 +95664,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IdentificationCode == default)
+            {
+                yield return "IdentificationCode";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -94605,6 +95746,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         }
 
         [DataMember(Name="assessmentItemReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public ObjectiveAssessmentAssessmentItemToAssessmentItemReference AssessmentItemReference
         {
             get
@@ -94950,6 +96092,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -95981,7 +97124,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class OpenStaffPositionReference
+    public class OpenStaffPositionReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -96026,6 +97169,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && RequisitionNumber != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (RequisitionNumber == default)
+            {
+                yield return "RequisitionNumber";
+            }
+
         }
 
         private Link CreateLink()
@@ -96113,6 +97270,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -97255,7 +98413,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class OperationalUnitDimensionReference
+    public class OperationalUnitDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -97300,6 +98458,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -97896,7 +99068,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OrganizationDepartment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class OrganizationDepartmentReference
+    public class OrganizationDepartmentReference : IResourceReference
     {
         [DataMember(Name="organizationDepartmentId"), NaturalKeyMember]
         public int OrganizationDepartmentId { get; set; }
@@ -97932,6 +99104,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OrganizationDepartment.EdFi
         public bool IsReferenceFullyDefined()
         {
             return OrganizationDepartmentId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (OrganizationDepartmentId == default)
+            {
+                yield return "OrganizationDepartmentId";
+            }
+
         }
 
         private Link CreateLink()
@@ -98006,6 +99187,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OrganizationDepartment.EdFi
         }
 
         [DataMember(Name="parentEducationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference ParentEducationOrganizationReference
         {
             get
@@ -98834,7 +100016,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ParentReference
+    public class ParentReference : IResourceReference
     {
         [DataMember(Name="parentUniqueId"), NaturalKeyMember]
         public string ParentUniqueId 
@@ -98885,6 +100067,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return ParentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ParentUniqueId == default)
+            {
+                yield return "ParentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -98977,6 +100168,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
         }
 
         [DataMember(Name="personReference")]
+        [FullyDefinedReference]
         public Person.EdFi.PersonReference PersonReference
         {
             get
@@ -103300,7 +104492,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Person.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class PersonReference
+    public class PersonReference : IResourceReference
     {
         [DataMember(Name="personId"), NaturalKeyMember]
         public string PersonId { get; set; }
@@ -103345,6 +104537,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Person.EdFi
         public bool IsReferenceFullyDefined()
         {
             return PersonId != default(string) && SourceSystemDescriptor != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (PersonId == default)
+            {
+                yield return "PersonId";
+            }
+
+            if (SourceSystemDescriptor == default)
+            {
+                yield return "SourceSystemDescriptor";
+            }
+
         }
 
         private Link CreateLink()
@@ -104698,7 +105904,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class PostSecondaryEventReference
+    public class PostSecondaryEventReference : IResourceReference
     {
         [DataMember(Name="eventDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime EventDate { get; set; }
@@ -104755,6 +105961,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EventDate != default(DateTime) && PostSecondaryEventCategoryDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EventDate == default)
+            {
+                yield return "EventDate";
+            }
+
+            if (PostSecondaryEventCategoryDescriptor == default)
+            {
+                yield return "PostSecondaryEventCategoryDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -104837,6 +106062,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
         }
 
         [DataMember(Name="postSecondaryInstitutionReference")]
+        [FullyDefinedReference]
         public PostSecondaryInstitution.EdFi.PostSecondaryInstitutionReference PostSecondaryInstitutionReference
         {
             get
@@ -104869,6 +106095,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -105442,7 +106669,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class PostSecondaryInstitutionReference
+    public class PostSecondaryInstitutionReference : IResourceReference
     {
         [DataMember(Name="postSecondaryInstitutionId"), NaturalKeyMember]
         public int PostSecondaryInstitutionId { get; set; }
@@ -105478,6 +106705,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
         public bool IsReferenceFullyDefined()
         {
             return PostSecondaryInstitutionId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (PostSecondaryInstitutionId == default)
+            {
+                yield return "PostSecondaryInstitutionId";
+            }
+
         }
 
         private Link CreateLink()
@@ -107674,7 +108910,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ProgramReference
+    public class ProgramReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -107722,6 +108958,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
         }
 
         private Link CreateLink()
@@ -107812,6 +109067,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -108633,6 +109889,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         }
 
         [DataMember(Name="learningObjectiveReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningObjective.EdFi.LearningObjectiveReference LearningObjectiveReference
         {
             get
@@ -108951,6 +110208,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
         }
 
         [DataMember(Name="learningStandardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningStandard.EdFi.LearningStandardReference LearningStandardReference
         {
             get
@@ -110188,7 +111446,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ProgramDimensionReference
+    public class ProgramDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -110233,6 +111491,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -111913,7 +113185,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ProjectDimensionReference
+    public class ProjectDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -111958,6 +113230,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -115535,7 +116821,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ReportCardReference
+    public class ReportCardReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -115601,6 +116887,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && GradingPeriodDescriptor != default(string) && GradingPeriodSchoolId != default(int) && GradingPeriodSchoolYear != default(short) && GradingPeriodSequence != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (GradingPeriodSchoolId == default)
+            {
+                yield return "GradingPeriodSchoolId";
+            }
+
+            if (GradingPeriodSchoolYear == default)
+            {
+                yield return "GradingPeriodSchoolYear";
+            }
+
+            if (GradingPeriodSequence == default)
+            {
+                yield return "GradingPeriodSequence";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -115690,6 +117010,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -115722,6 +117043,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         }
 
         [DataMember(Name="gradingPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public GradingPeriod.EdFi.GradingPeriodReference GradingPeriodReference
         {
             get
@@ -115754,6 +117076,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -116449,7 +117772,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ReportCardGradeToGradeReference
+    public class ReportCardGradeToGradeReference : IResourceReference
     {
         private Entities.Common.EdFi.IReportCardGrade backReference;
 
@@ -116587,6 +117910,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (GradeTypeDescriptor == default)
+            {
+                yield return "GradeTypeDescriptor";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -116660,6 +118022,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         }
 
         [DataMember(Name="gradeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public ReportCardGradeToGradeReference GradeReference
         {
             get
@@ -117472,7 +118835,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ReportCardStudentCompetencyObjectiveToStudentCompetencyObjectiveReference
+    public class ReportCardStudentCompetencyObjectiveToStudentCompetencyObjectiveReference : IResourceReference
     {
         private Entities.Common.EdFi.IReportCardStudentCompetencyObjective backReference;
 
@@ -117605,6 +118968,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Objective == default)
+            {
+                yield return "Objective";
+            }
+
+            if (ObjectiveEducationOrganizationId == default)
+            {
+                yield return "ObjectiveEducationOrganizationId";
+            }
+
+            if (ObjectiveGradeLevelDescriptor == default)
+            {
+                yield return "ObjectiveGradeLevelDescriptor";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -117678,6 +119060,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         }
 
         [DataMember(Name="studentCompetencyObjectiveReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public ReportCardStudentCompetencyObjectiveToStudentCompetencyObjectiveReference StudentCompetencyObjectiveReference
         {
             get
@@ -118118,7 +119501,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class ReportCardStudentLearningObjectiveToStudentLearningObjectiveReference
+    public class ReportCardStudentLearningObjectiveToStudentLearningObjectiveReference : IResourceReference
     {
         private Entities.Common.EdFi.IReportCardStudentLearningObjective backReference;
 
@@ -118247,6 +119630,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LearningObjectiveId == default)
+            {
+                yield return "LearningObjectiveId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -118320,6 +119717,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
         }
 
         [DataMember(Name="studentLearningObjectiveReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public ReportCardStudentLearningObjectiveToStudentLearningObjectiveReference StudentLearningObjectiveReference
         {
             get
@@ -120090,7 +121488,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class RestraintEventReference
+    public class RestraintEventReference : IResourceReference
     {
         [DataMember(Name="restraintEventIdentifier"), NaturalKeyMember]
         public string RestraintEventIdentifier { get; set; }
@@ -120147,6 +121545,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return RestraintEventIdentifier != default(string) && SchoolId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (RestraintEventIdentifier == default)
+            {
+                yield return "RestraintEventIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -120234,6 +121651,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -120266,6 +121684,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -120733,6 +122152,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -122083,7 +123503,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SchoolReference
+    public class SchoolReference : IResourceReference
     {
         [DataMember(Name="schoolId"), NaturalKeyMember]
         public int SchoolId { get; set; }
@@ -122119,6 +123539,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
         public bool IsReferenceFullyDefined()
         {
             return SchoolId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
         }
 
         private Link CreateLink()
@@ -122195,6 +123624,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
         }
 
         [DataMember(Name="charterApprovalSchoolYearTypeReference")]
+        [FullyDefinedReference]
         public SchoolYearType.EdFi.SchoolYearTypeReference CharterApprovalSchoolYearTypeReference
         {
             get
@@ -122227,6 +123657,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
         }
 
         [DataMember(Name="localEducationAgencyReference")]
+        [FullyDefinedReference]
         public LocalEducationAgency.EdFi.LocalEducationAgencyReference LocalEducationAgencyReference
         {
             get
@@ -124489,7 +125920,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolYearType.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SchoolYearTypeReference
+    public class SchoolYearTypeReference : IResourceReference
     {
         [DataMember(Name="schoolYear"), NaturalKeyMember]
         public short SchoolYear { get; set; }
@@ -124525,6 +125956,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolYearType.EdFi
         public bool IsReferenceFullyDefined()
         {
             return SchoolYear != default(short);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -124794,7 +126234,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SectionReference
+    public class SectionReference : IResourceReference
     {
         [DataMember(Name="localCourseCode"), NaturalKeyMember]
         public string LocalCourseCode { get; set; }
@@ -124848,6 +126288,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
         }
 
         private Link CreateLink()
@@ -124938,6 +126407,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         }
 
         [DataMember(Name="courseOfferingReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public CourseOffering.EdFi.CourseOfferingReference CourseOfferingReference
         {
             get
@@ -124970,6 +126440,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         }
 
         [DataMember(Name="locationReference")]
+        [FullyDefinedReference]
         public Location.EdFi.LocationReference LocationReference
         {
             get
@@ -125002,6 +126473,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         }
 
         [DataMember(Name="locationSchoolReference")]
+        [FullyDefinedReference]
         public School.EdFi.SchoolReference LocationSchoolReference
         {
             get
@@ -126044,7 +127516,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SectionClassPeriodToClassPeriodReference
+    public class SectionClassPeriodToClassPeriodReference : IResourceReference
     {
         private Entities.Common.EdFi.ISectionClassPeriod backReference;
 
@@ -126121,6 +127593,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ClassPeriodName == default)
+            {
+                yield return "ClassPeriodName";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -126194,6 +127675,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         }
 
         [DataMember(Name="classPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SectionClassPeriodToClassPeriodReference ClassPeriodReference
         {
             get
@@ -126958,6 +128440,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -127274,7 +128757,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SectionAttendanceTakenEventReference
+    public class SectionAttendanceTakenEventReference : IResourceReference
     {
         [DataMember(Name="calendarCode"), NaturalKeyMember]
         public string CalendarCode { get; set; }
@@ -127334,6 +128817,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CalendarCode != default(string) && Date != default(DateTime) && LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CalendarCode == default)
+            {
+                yield return "CalendarCode";
+            }
+
+            if (Date == default)
+            {
+                yield return "Date";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
         }
 
         private Link CreateLink()
@@ -127416,6 +128938,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
         }
 
         [DataMember(Name="calendarDateReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public CalendarDate.EdFi.CalendarDateReference CalendarDateReference
         {
             get
@@ -127448,6 +128971,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -127480,6 +129004,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
         }
 
         [DataMember(Name="staffReference")]
+        [FullyDefinedReference]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -129122,7 +130647,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SessionReference
+    public class SessionReference : IResourceReference
     {
         [DataMember(Name="schoolId"), NaturalKeyMember]
         public int SchoolId { get; set; }
@@ -129170,6 +130695,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         public bool IsReferenceFullyDefined()
         {
             return SchoolId != default(int) && SchoolYear != default(short) && SessionName != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
         }
 
         private Link CreateLink()
@@ -129258,6 +130802,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -129290,6 +130835,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -129746,7 +131292,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SessionAcademicWeekToAcademicWeekReference
+    public class SessionAcademicWeekToAcademicWeekReference : IResourceReference
     {
         private Entities.Common.EdFi.ISessionAcademicWeek backReference;
 
@@ -129823,6 +131369,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (WeekIdentifier == default)
+            {
+                yield return "WeekIdentifier";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -129896,6 +131451,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         }
 
         [DataMember(Name="academicWeekReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SessionAcademicWeekToAcademicWeekReference AcademicWeekReference
         {
             get
@@ -130181,7 +131737,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SessionGradingPeriodToGradingPeriodReference
+    public class SessionGradingPeriodToGradingPeriodReference : IResourceReference
     {
         private Entities.Common.EdFi.ISessionGradingPeriod backReference;
 
@@ -130273,6 +131829,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (PeriodSequence == default)
+            {
+                yield return "PeriodSequence";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -130346,6 +131916,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
         }
 
         [DataMember(Name="gradingPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SessionGradingPeriodToGradingPeriodReference GradingPeriodReference
         {
             get
@@ -130960,7 +132531,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SourceDimensionReference
+    public class SourceDimensionReference : IResourceReference
     {
         [DataMember(Name="code"), NaturalKeyMember]
         public string Code { get; set; }
@@ -131005,6 +132576,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Code != default(string) && FiscalYear != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Code == default)
+            {
+                yield return "Code";
+            }
+
+            if (FiscalYear == default)
+            {
+                yield return "FiscalYear";
+            }
+
         }
 
         private Link CreateLink()
@@ -132414,7 +133999,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffReference
+    public class StaffReference : IResourceReference
     {
         [DataMember(Name="staffUniqueId"), NaturalKeyMember]
         public string StaffUniqueId 
@@ -132465,6 +134050,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         public bool IsReferenceFullyDefined()
         {
             return StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -132565,6 +134159,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         }
 
         [DataMember(Name="personReference")]
+        [FullyDefinedReference]
         public Person.EdFi.PersonReference PersonReference
         {
             get
@@ -134705,6 +136300,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
         }
 
         [DataMember(Name="credentialReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Credential.EdFi.CredentialReference CredentialReference
         {
             get
@@ -138304,7 +139900,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffAbsenceEvent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffAbsenceEventReference
+    public class StaffAbsenceEventReference : IResourceReference
     {
         [DataMember(Name="absenceEventCategoryDescriptor"), NaturalKeyMember]
         public string AbsenceEventCategoryDescriptor { get; set; }
@@ -138361,6 +139957,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffAbsenceEvent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AbsenceEventCategoryDescriptor != default(string) && EventDate != default(DateTime) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AbsenceEventCategoryDescriptor == default)
+            {
+                yield return "AbsenceEventCategoryDescriptor";
+            }
+
+            if (EventDate == default)
+            {
+                yield return "EventDate";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -138443,6 +140058,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffAbsenceEvent.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -138996,7 +140612,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffCohortAssociationReference
+    public class StaffCohortAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -139056,6 +140672,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && CohortIdentifier != default(string) && EducationOrganizationId != default(int) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (CohortIdentifier == default)
+            {
+                yield return "CohortIdentifier";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -139138,6 +140778,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
         }
 
         [DataMember(Name="cohortReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Cohort.EdFi.CohortReference CohortReference
         {
             get
@@ -139170,6 +140811,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -139516,7 +141158,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffDisciplineIncidentAssociationReference
+    public class StaffDisciplineIncidentAssociationReference : IResourceReference
     {
         [DataMember(Name="incidentIdentifier"), NaturalKeyMember]
         public string IncidentIdentifier { get; set; }
@@ -139573,6 +141215,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
         public bool IsReferenceFullyDefined()
         {
             return IncidentIdentifier != default(string) && SchoolId != default(int) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -139659,6 +141320,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
         }
 
         [DataMember(Name="disciplineIncidentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public DisciplineIncident.EdFi.DisciplineIncidentReference DisciplineIncidentReference
         {
             get
@@ -139691,6 +141353,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -140302,7 +141965,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffEducationOrganizationAssignmentAssociationReference
+    public class StaffEducationOrganizationAssignmentAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -140362,6 +142025,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && StaffClassificationDescriptor != default(string) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (StaffClassificationDescriptor == default)
+            {
+                yield return "StaffClassificationDescriptor";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -140444,6 +142131,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
         }
 
         [DataMember(Name="credentialReference")]
+        [FullyDefinedReference]
         public Credential.EdFi.CredentialReference CredentialReference
         {
             get
@@ -140476,6 +142164,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -140508,6 +142197,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
         }
 
         [DataMember(Name="employmentStaffEducationOrganizationEmploymentAssociationReference")]
+        [FullyDefinedReference]
         public StaffEducationOrganizationEmploymentAssociation.EdFi.StaffEducationOrganizationEmploymentAssociationReference EmploymentStaffEducationOrganizationEmploymentAssociationReference
         {
             get
@@ -140540,6 +142230,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -141069,7 +142760,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffEducationOrganizationContactAssociationReference
+    public class StaffEducationOrganizationContactAssociationReference : IResourceReference
     {
         [DataMember(Name="contactTitle"), NaturalKeyMember]
         public string ContactTitle { get; set; }
@@ -141126,6 +142817,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         public bool IsReferenceFullyDefined()
         {
             return ContactTitle != default(string) && EducationOrganizationId != default(int) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ContactTitle == default)
+            {
+                yield return "ContactTitle";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -141212,6 +142922,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -141244,6 +142955,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -142510,7 +144222,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffEducationOrganizationEmploymentAssociationReference
+    public class StaffEducationOrganizationEmploymentAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -142570,6 +144282,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && EmploymentStatusDescriptor != default(string) && HireDate != default(DateTime) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (EmploymentStatusDescriptor == default)
+            {
+                yield return "EmploymentStatusDescriptor";
+            }
+
+            if (HireDate == default)
+            {
+                yield return "HireDate";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -142652,6 +144388,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
         }
 
         [DataMember(Name="credentialReference")]
+        [FullyDefinedReference]
         public Credential.EdFi.CredentialReference CredentialReference
         {
             get
@@ -142684,6 +144421,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -142716,6 +144454,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -143415,7 +145154,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeave.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffLeaveReference
+    public class StaffLeaveReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -143472,6 +145211,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeave.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && StaffLeaveEventCategoryDescriptor != default(string) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (StaffLeaveEventCategoryDescriptor == default)
+            {
+                yield return "StaffLeaveEventCategoryDescriptor";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -143554,6 +145312,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeave.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -144114,7 +145873,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffProgramAssociationReference
+    public class StaffProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -144177,6 +145936,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -144259,6 +146047,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -144291,6 +146080,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -144667,7 +146457,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffSchoolAssociationReference
+    public class StaffSchoolAssociationReference : IResourceReference
     {
         [DataMember(Name="programAssignmentDescriptor"), NaturalKeyMember]
         public string ProgramAssignmentDescriptor { get; set; }
@@ -144724,6 +146514,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return ProgramAssignmentDescriptor != default(string) && SchoolId != default(int) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ProgramAssignmentDescriptor == default)
+            {
+                yield return "ProgramAssignmentDescriptor";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -144811,6 +146620,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         }
 
         [DataMember(Name="calendarReference")]
+        [FullyDefinedReference]
         public Calendar.EdFi.CalendarReference CalendarReference
         {
             get
@@ -144843,6 +146653,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -144875,6 +146686,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")]
+        [FullyDefinedReference]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -144907,6 +146719,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -145913,7 +147726,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StaffSectionAssociationReference
+    public class StaffSectionAssociationReference : IResourceReference
     {
         [DataMember(Name="localCourseCode"), NaturalKeyMember]
         public string LocalCourseCode { get; set; }
@@ -145979,6 +147792,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string) && StaffUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -146061,6 +147908,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -146093,6 +147941,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -146821,7 +148670,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StateEducationAgencyReference
+    public class StateEducationAgencyReference : IResourceReference
     {
         [DataMember(Name="stateEducationAgencyId"), NaturalKeyMember]
         public int StateEducationAgencyId { get; set; }
@@ -146857,6 +148706,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
         public bool IsReferenceFullyDefined()
         {
             return StateEducationAgencyId != default(int);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (StateEducationAgencyId == default)
+            {
+                yield return "StateEducationAgencyId";
+            }
+
         }
 
         private Link CreateLink()
@@ -147551,6 +149409,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -148032,7 +149891,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentReference
+    public class StudentReference : IResourceReference
     {
         [DataMember(Name="studentUniqueId"), NaturalKeyMember]
         public string StudentUniqueId 
@@ -148083,6 +149942,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         public bool IsReferenceFullyDefined()
         {
             return StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -148172,6 +150040,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
         }
 
         [DataMember(Name="personReference")]
+        [FullyDefinedReference]
         public Person.EdFi.PersonReference PersonReference
         {
             get
@@ -149814,7 +151683,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentAcademicRecordReference
+    public class StudentAcademicRecordReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -149874,6 +151743,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && SchoolYear != default(short) && StudentUniqueId != default(string) && TermDescriptor != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
+            if (TermDescriptor == default)
+            {
+                yield return "TermDescriptor";
+            }
+
         }
 
         private Link CreateLink()
@@ -149964,6 +151857,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -149996,6 +151890,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -150028,6 +151923,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -152274,7 +154170,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentAcademicRecordReportCardToReportCardReference
+    public class StudentAcademicRecordReportCardToReportCardReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentAcademicRecordReportCard backReference;
 
@@ -152378,6 +154274,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (GradingPeriodSchoolId == default)
+            {
+                yield return "GradingPeriodSchoolId";
+            }
+
+            if (GradingPeriodSchoolYear == default)
+            {
+                yield return "GradingPeriodSchoolYear";
+            }
+
+            if (GradingPeriodSequence == default)
+            {
+                yield return "GradingPeriodSequence";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -152451,6 +154371,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
         }
 
         [DataMember(Name="reportCardReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentAcademicRecordReportCardToReportCardReference ReportCardReference
         {
             get
@@ -152860,7 +154781,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentAssessmentReference
+    public class StudentAssessmentReference : IResourceReference
     {
         [DataMember(Name="assessmentIdentifier"), NaturalKeyMember]
         public string AssessmentIdentifier { get; set; }
@@ -152920,6 +154841,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AssessmentIdentifier != default(string) && Namespace != default(string) && StudentAssessmentIdentifier != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AssessmentIdentifier == default)
+            {
+                yield return "AssessmentIdentifier";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (StudentAssessmentIdentifier == default)
+            {
+                yield return "StudentAssessmentIdentifier";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -153010,6 +154955,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         }
 
         [DataMember(Name="assessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Assessment.EdFi.AssessmentReference AssessmentReference
         {
             get
@@ -153042,6 +154988,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         }
 
         [DataMember(Name="reportedSchoolReference")]
+        [FullyDefinedReference]
         public School.EdFi.SchoolReference ReportedSchoolReference
         {
             get
@@ -153074,6 +155021,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")]
+        [FullyDefinedReference]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -153106,6 +155054,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -154119,7 +156068,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentAssessmentItemToAssessmentItemReference
+    public class StudentAssessmentItemToAssessmentItemReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentAssessmentItem backReference;
 
@@ -154207,6 +156156,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IdentificationCode == default)
+            {
+                yield return "IdentificationCode";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -154280,6 +156238,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         }
 
         [DataMember(Name="assessmentItemReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentAssessmentItemToAssessmentItemReference AssessmentItemReference
         {
             get
@@ -155342,7 +157301,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentAssessmentStudentObjectiveAssessmentToObjectiveAssessmentReference
+    public class StudentAssessmentStudentObjectiveAssessmentToObjectiveAssessmentReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessment backReference;
 
@@ -155430,6 +157389,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IdentificationCode == default)
+            {
+                yield return "IdentificationCode";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -155508,6 +157476,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
         }
 
         [DataMember(Name="objectiveAssessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentAssessmentStudentObjectiveAssessmentToObjectiveAssessmentReference ObjectiveAssessmentReference
         {
             get
@@ -156444,7 +158413,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentAssessmentEducationOrganizationAssociationReference
+    public class StudentAssessmentEducationOrganizationAssociationReference : IResourceReference
     {
         [DataMember(Name="assessmentIdentifier"), NaturalKeyMember]
         public string AssessmentIdentifier { get; set; }
@@ -156510,6 +158479,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
         public bool IsReferenceFullyDefined()
         {
             return AssessmentIdentifier != default(string) && EducationOrganizationAssociationTypeDescriptor != default(string) && EducationOrganizationId != default(int) && Namespace != default(string) && StudentAssessmentIdentifier != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AssessmentIdentifier == default)
+            {
+                yield return "AssessmentIdentifier";
+            }
+
+            if (EducationOrganizationAssociationTypeDescriptor == default)
+            {
+                yield return "EducationOrganizationAssociationTypeDescriptor";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (StudentAssessmentIdentifier == default)
+            {
+                yield return "StudentAssessmentIdentifier";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -156592,6 +158595,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -156624,6 +158628,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
         }
 
         [DataMember(Name="schoolYearTypeReference")]
+        [FullyDefinedReference]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -156656,6 +158661,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
         }
 
         [DataMember(Name="studentAssessmentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentAssessment.EdFi.StudentAssessmentReference StudentAssessmentReference
         {
             get
@@ -157359,7 +159365,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentCohortAssociationReference
+    public class StudentCohortAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -157419,6 +159425,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && CohortIdentifier != default(string) && EducationOrganizationId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (CohortIdentifier == default)
+            {
+                yield return "CohortIdentifier";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -157505,6 +159535,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
         }
 
         [DataMember(Name="cohortReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Cohort.EdFi.CohortReference CohortReference
         {
             get
@@ -157537,6 +159568,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -157982,6 +160014,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -158367,7 +160400,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentCompetencyObjectiveReference
+    public class StudentCompetencyObjectiveReference : IResourceReference
     {
         [DataMember(Name="gradingPeriodDescriptor"), NaturalKeyMember]
         public string GradingPeriodDescriptor { get; set; }
@@ -158439,6 +160472,50 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         public bool IsReferenceFullyDefined()
         {
             return GradingPeriodDescriptor != default(string) && GradingPeriodSchoolId != default(int) && GradingPeriodSchoolYear != default(short) && GradingPeriodSequence != default(int) && Objective != default(string) && ObjectiveEducationOrganizationId != default(int) && ObjectiveGradeLevelDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (GradingPeriodSchoolId == default)
+            {
+                yield return "GradingPeriodSchoolId";
+            }
+
+            if (GradingPeriodSchoolYear == default)
+            {
+                yield return "GradingPeriodSchoolYear";
+            }
+
+            if (GradingPeriodSequence == default)
+            {
+                yield return "GradingPeriodSequence";
+            }
+
+            if (Objective == default)
+            {
+                yield return "Objective";
+            }
+
+            if (ObjectiveEducationOrganizationId == default)
+            {
+                yield return "ObjectiveEducationOrganizationId";
+            }
+
+            if (ObjectiveGradeLevelDescriptor == default)
+            {
+                yield return "ObjectiveGradeLevelDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -158526,6 +160603,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         }
 
         [DataMember(Name="gradingPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public GradingPeriod.EdFi.GradingPeriodReference GradingPeriodReference
         {
             get
@@ -158558,6 +160636,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         }
 
         [DataMember(Name="objectiveCompetencyObjectiveReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public CompetencyObjective.EdFi.CompetencyObjectiveReference ObjectiveCompetencyObjectiveReference
         {
             get
@@ -158590,6 +160669,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -159217,7 +161297,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentCompetencyObjectiveGeneralStudentProgramAssociationToGeneralStudentProgramAssociationReference
+    public class StudentCompetencyObjectiveGeneralStudentProgramAssociationToGeneralStudentProgramAssociationReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentCompetencyObjectiveGeneralStudentProgramAssociation backReference;
 
@@ -159314,6 +161394,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -159387,6 +161496,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         }
 
         [DataMember(Name="generalStudentProgramAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentCompetencyObjectiveGeneralStudentProgramAssociationToGeneralStudentProgramAssociationReference GeneralStudentProgramAssociationReference
         {
             get
@@ -159801,7 +161911,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentCompetencyObjectiveStudentSectionAssociationToStudentSectionAssociationReference
+    public class StudentCompetencyObjectiveStudentSectionAssociationToStudentSectionAssociationReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentCompetencyObjectiveStudentSectionAssociation backReference;
 
@@ -159902,6 +162012,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -159975,6 +162119,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
         }
 
         [DataMember(Name="studentSectionAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentCompetencyObjectiveStudentSectionAssociationToStudentSectionAssociationReference StudentSectionAssociationReference
         {
             get
@@ -160430,7 +162575,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentCTEProgramAssociationReference
+    public class StudentCTEProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -160490,6 +162635,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -160562,6 +162741,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -160594,6 +162774,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -160626,6 +162807,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -162048,7 +164230,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentDisciplineIncidentAssociationReference
+    public class StudentDisciplineIncidentAssociationReference : IResourceReference
     {
         [DataMember(Name="incidentIdentifier"), NaturalKeyMember]
         public string IncidentIdentifier { get; set; }
@@ -162105,6 +164287,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
         public bool IsReferenceFullyDefined()
         {
             return IncidentIdentifier != default(string) && SchoolId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -162191,6 +164392,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
         }
 
         [DataMember(Name="disciplineIncidentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public DisciplineIncident.EdFi.DisciplineIncidentReference DisciplineIncidentReference
         {
             get
@@ -162223,6 +164425,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -162848,7 +165051,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentDisciplineIncidentBehaviorAssociationReference
+    public class StudentDisciplineIncidentBehaviorAssociationReference : IResourceReference
     {
         [DataMember(Name="behaviorDescriptor"), NaturalKeyMember]
         public string BehaviorDescriptor { get; set; }
@@ -162908,6 +165111,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
         public bool IsReferenceFullyDefined()
         {
             return BehaviorDescriptor != default(string) && IncidentIdentifier != default(string) && SchoolId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BehaviorDescriptor == default)
+            {
+                yield return "BehaviorDescriptor";
+            }
+
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -162994,6 +165221,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
         }
 
         [DataMember(Name="disciplineIncidentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public DisciplineIncident.EdFi.DisciplineIncidentReference DisciplineIncidentReference
         {
             get
@@ -163026,6 +165254,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -163660,7 +165889,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentDisciplineIncidentNonOffenderAssociationReference
+    public class StudentDisciplineIncidentNonOffenderAssociationReference : IResourceReference
     {
         [DataMember(Name="incidentIdentifier"), NaturalKeyMember]
         public string IncidentIdentifier { get; set; }
@@ -163717,6 +165946,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
         public bool IsReferenceFullyDefined()
         {
             return IncidentIdentifier != default(string) && SchoolId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (IncidentIdentifier == default)
+            {
+                yield return "IncidentIdentifier";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -163803,6 +166051,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
         }
 
         [DataMember(Name="disciplineIncidentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public DisciplineIncident.EdFi.DisciplineIncidentReference DisciplineIncidentReference
         {
             get
@@ -163835,6 +166084,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -164446,7 +166696,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentEducationOrganizationAssociationReference
+    public class StudentEducationOrganizationAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -164500,6 +166750,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -164599,6 +166863,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -164631,6 +166896,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -166701,6 +168967,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -171133,7 +173400,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentEducationOrganizationResponsibilityAssociationReference
+    public class StudentEducationOrganizationResponsibilityAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -171193,6 +173460,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ResponsibilityDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ResponsibilityDescriptor == default)
+            {
+                yield return "ResponsibilityDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -171275,6 +173566,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -171307,6 +173599,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -171629,7 +173922,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentGradebookEntryReference
+    public class StudentGradebookEntryReference : IResourceReference
     {
         [DataMember(Name="gradebookEntryIdentifier"), NaturalKeyMember]
         public string GradebookEntryIdentifier { get; set; }
@@ -171686,6 +173979,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
         public bool IsReferenceFullyDefined()
         {
             return GradebookEntryIdentifier != default(string) && Namespace != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradebookEntryIdentifier == default)
+            {
+                yield return "GradebookEntryIdentifier";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -171768,6 +174080,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
         }
 
         [DataMember(Name="gradebookEntryReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public GradebookEntry.EdFi.GradebookEntryReference GradebookEntryReference
         {
             get
@@ -171800,6 +174113,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -172179,7 +174493,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentHomelessProgramAssociationReference
+    public class StudentHomelessProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -172239,6 +174553,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -172309,6 +174657,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -172341,6 +174690,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -172373,6 +174723,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -173465,7 +175816,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentInterventionAssociationReference
+    public class StudentInterventionAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -173522,6 +175873,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && InterventionIdentificationCode != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (InterventionIdentificationCode == default)
+            {
+                yield return "InterventionIdentificationCode";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -173608,6 +175978,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
         }
 
         [DataMember(Name="cohortReference")]
+        [FullyDefinedReference]
         public Cohort.EdFi.CohortReference CohortReference
         {
             get
@@ -173640,6 +176011,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
         }
 
         [DataMember(Name="interventionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Intervention.EdFi.InterventionReference InterventionReference
         {
             get
@@ -173672,6 +176044,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -174411,7 +176784,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentInterventionAttendanceEventReference
+    public class StudentInterventionAttendanceEventReference : IResourceReference
     {
         [DataMember(Name="attendanceEventCategoryDescriptor"), NaturalKeyMember]
         public string AttendanceEventCategoryDescriptor { get; set; }
@@ -174474,6 +176847,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
         public bool IsReferenceFullyDefined()
         {
             return AttendanceEventCategoryDescriptor != default(string) && EducationOrganizationId != default(int) && EventDate != default(DateTime) && InterventionIdentificationCode != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AttendanceEventCategoryDescriptor == default)
+            {
+                yield return "AttendanceEventCategoryDescriptor";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (EventDate == default)
+            {
+                yield return "EventDate";
+            }
+
+            if (InterventionIdentificationCode == default)
+            {
+                yield return "InterventionIdentificationCode";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -174556,6 +176958,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
         }
 
         [DataMember(Name="interventionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Intervention.EdFi.InterventionReference InterventionReference
         {
             get
@@ -174588,6 +176991,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -174964,7 +177368,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentLanguageInstructionProgramAssociationReference
+    public class StudentLanguageInstructionProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -175024,6 +177428,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -175095,6 +177533,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -175127,6 +177566,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -175159,6 +177599,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -175818,6 +178259,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         }
 
         [DataMember(Name="schoolYearTypeReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -176334,7 +178776,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentLearningObjectiveReference
+    public class StudentLearningObjectiveReference : IResourceReference
     {
         [DataMember(Name="gradingPeriodDescriptor"), NaturalKeyMember]
         public string GradingPeriodDescriptor { get; set; }
@@ -176403,6 +178845,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         public bool IsReferenceFullyDefined()
         {
             return GradingPeriodDescriptor != default(string) && GradingPeriodSchoolId != default(int) && GradingPeriodSchoolYear != default(short) && GradingPeriodSequence != default(int) && LearningObjectiveId != default(string) && Namespace != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (GradingPeriodDescriptor == default)
+            {
+                yield return "GradingPeriodDescriptor";
+            }
+
+            if (GradingPeriodSchoolId == default)
+            {
+                yield return "GradingPeriodSchoolId";
+            }
+
+            if (GradingPeriodSchoolYear == default)
+            {
+                yield return "GradingPeriodSchoolYear";
+            }
+
+            if (GradingPeriodSequence == default)
+            {
+                yield return "GradingPeriodSequence";
+            }
+
+            if (LearningObjectiveId == default)
+            {
+                yield return "LearningObjectiveId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -176490,6 +178971,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         }
 
         [DataMember(Name="gradingPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public GradingPeriod.EdFi.GradingPeriodReference GradingPeriodReference
         {
             get
@@ -176522,6 +179004,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         }
 
         [DataMember(Name="learningObjectiveReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public LearningObjective.EdFi.LearningObjectiveReference LearningObjectiveReference
         {
             get
@@ -176554,6 +179037,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -177151,7 +179635,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentLearningObjectiveGeneralStudentProgramAssociationToGeneralStudentProgramAssociationReference
+    public class StudentLearningObjectiveGeneralStudentProgramAssociationToGeneralStudentProgramAssociationReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentLearningObjectiveGeneralStudentProgramAssociation backReference;
 
@@ -177248,6 +179732,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -177321,6 +179834,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         }
 
         [DataMember(Name="generalStudentProgramAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentLearningObjectiveGeneralStudentProgramAssociationToGeneralStudentProgramAssociationReference GeneralStudentProgramAssociationReference
         {
             get
@@ -177735,7 +180249,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentLearningObjectiveStudentSectionAssociationToStudentSectionAssociationReference
+    public class StudentLearningObjectiveStudentSectionAssociationToStudentSectionAssociationReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentLearningObjectiveStudentSectionAssociation backReference;
 
@@ -177836,6 +180350,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -177909,6 +180457,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
         }
 
         [DataMember(Name="studentSectionAssociationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentLearningObjectiveStudentSectionAssociationToStudentSectionAssociationReference StudentSectionAssociationReference
         {
             get
@@ -178364,7 +180913,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentMigrantEducationProgramAssociationReference
+    public class StudentMigrantEducationProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -178424,6 +180973,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -178495,6 +181078,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -178527,6 +181111,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -178559,6 +181144,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -179442,7 +182028,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentNeglectedOrDelinquentProgramAssociationReference
+    public class StudentNeglectedOrDelinquentProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -179502,6 +182088,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -179572,6 +182192,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -179604,6 +182225,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -179636,6 +182258,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -180457,7 +183080,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentParentAssociationReference
+    public class StudentParentAssociationReference : IResourceReference
     {
         [DataMember(Name="parentUniqueId"), NaturalKeyMember]
         public string ParentUniqueId 
@@ -180520,6 +183143,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return ParentUniqueId != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ParentUniqueId == default)
+            {
+                yield return "ParentUniqueId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -180602,6 +183239,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
         }
 
         [DataMember(Name="parentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Parent.EdFi.ParentReference ParentReference
         {
             get
@@ -180634,6 +183272,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -181238,7 +183877,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentProgramAssociationReference
+    public class StudentProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -181298,6 +183937,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -181368,6 +184041,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -181400,6 +184074,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -181432,6 +184107,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -182232,7 +184908,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentProgramAttendanceEventReference
+    public class StudentProgramAttendanceEventReference : IResourceReference
     {
         [DataMember(Name="attendanceEventCategoryDescriptor"), NaturalKeyMember]
         public string AttendanceEventCategoryDescriptor { get; set; }
@@ -182301,6 +184977,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
         public bool IsReferenceFullyDefined()
         {
             return AttendanceEventCategoryDescriptor != default(string) && EducationOrganizationId != default(int) && EventDate != default(DateTime) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AttendanceEventCategoryDescriptor == default)
+            {
+                yield return "AttendanceEventCategoryDescriptor";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (EventDate == default)
+            {
+                yield return "EventDate";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -182383,6 +185098,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -182415,6 +185131,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -182447,6 +185164,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -182900,7 +185618,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSchoolAssociationReference
+    public class StudentSchoolAssociationReference : IResourceReference
     {
         [DataMember(Name="entryDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime EntryDate { get; set; }
@@ -182957,6 +185675,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EntryDate != default(DateTime) && SchoolId != default(int) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EntryDate == default)
+            {
+                yield return "EntryDate";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -183044,6 +185781,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="calendarReference")]
+        [FullyDefinedReference]
         public Calendar.EdFi.CalendarReference CalendarReference
         {
             get
@@ -183076,6 +185814,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="classOfSchoolYearTypeReference")]
+        [FullyDefinedReference]
         public SchoolYearType.EdFi.SchoolYearTypeReference ClassOfSchoolYearTypeReference
         {
             get
@@ -183108,6 +185847,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="graduationPlanReference")]
+        [FullyDefinedReference]
         public GraduationPlan.EdFi.GraduationPlanReference GraduationPlanReference
         {
             get
@@ -183140,6 +185880,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -183172,6 +185913,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")]
+        [FullyDefinedReference]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -183204,6 +185946,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -184009,6 +186752,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
         }
 
         [DataMember(Name="alternativeGraduationPlanReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public GraduationPlan.EdFi.GraduationPlanReference AlternativeGraduationPlanReference
         {
             get
@@ -184546,7 +187290,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSchoolAttendanceEventReference
+    public class StudentSchoolAttendanceEventReference : IResourceReference
     {
         [DataMember(Name="attendanceEventCategoryDescriptor"), NaturalKeyMember]
         public string AttendanceEventCategoryDescriptor { get; set; }
@@ -184612,6 +187356,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
         public bool IsReferenceFullyDefined()
         {
             return AttendanceEventCategoryDescriptor != default(string) && EventDate != default(DateTime) && SchoolId != default(int) && SchoolYear != default(short) && SessionName != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AttendanceEventCategoryDescriptor == default)
+            {
+                yield return "AttendanceEventCategoryDescriptor";
+            }
+
+            if (EventDate == default)
+            {
+                yield return "EventDate";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -184694,6 +187472,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
         }
 
         [DataMember(Name="schoolReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public School.EdFi.SchoolReference SchoolReference
         {
             get
@@ -184726,6 +187505,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
         }
 
         [DataMember(Name="sessionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Session.EdFi.SessionReference SessionReference
         {
             get
@@ -184758,6 +187538,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -185219,7 +188000,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSchoolFoodServiceProgramAssociationReference
+    public class StudentSchoolFoodServiceProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -185279,6 +188060,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -185349,6 +188164,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -185381,6 +188197,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -185413,6 +188230,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -186220,7 +189038,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSectionAssociationReference
+    public class StudentSectionAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -186289,6 +189107,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -186371,6 +189228,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -186403,6 +189261,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -186869,7 +189728,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSectionAttendanceEventReference
+    public class StudentSectionAttendanceEventReference : IResourceReference
     {
         [DataMember(Name="attendanceEventCategoryDescriptor"), NaturalKeyMember]
         public string AttendanceEventCategoryDescriptor { get; set; }
@@ -186941,6 +189800,50 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
         public bool IsReferenceFullyDefined()
         {
             return AttendanceEventCategoryDescriptor != default(string) && EventDate != default(DateTime) && LocalCourseCode != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (AttendanceEventCategoryDescriptor == default)
+            {
+                yield return "AttendanceEventCategoryDescriptor";
+            }
+
+            if (EventDate == default)
+            {
+                yield return "EventDate";
+            }
+
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -187027,6 +189930,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -187059,6 +189963,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -187617,7 +190522,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSectionAttendanceEventClassPeriodToClassPeriodReference
+    public class StudentSectionAttendanceEventClassPeriodToClassPeriodReference : IResourceReference
     {
         private Entities.Common.EdFi.IStudentSectionAttendanceEventClassPeriod backReference;
 
@@ -187694,6 +190599,15 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
                 ;
         }
 
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (ClassPeriodName == default)
+            {
+                yield return "ClassPeriodName";
+            }
+
+        }
+
         private Link CreateLink()
         {
             var link = new Link
@@ -187767,6 +190681,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
         }
 
         [DataMember(Name="classPeriodReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public StudentSectionAttendanceEventClassPeriodToClassPeriodReference ClassPeriodReference
         {
             get
@@ -188057,7 +190972,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentSpecialEducationProgramAssociationReference
+    public class StudentSpecialEducationProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -188117,6 +191032,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -188189,6 +191138,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -188221,6 +191171,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -188253,6 +191204,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -189564,6 +192516,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -190177,6 +193130,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -190438,7 +193392,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class StudentTitleIPartAProgramAssociationReference
+    public class StudentTitleIPartAProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="beginDate"), NaturalKeyMember][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime BeginDate { get; set; }
@@ -190498,6 +193452,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         public bool IsReferenceFullyDefined()
         {
             return BeginDate != default(DateTime) && EducationOrganizationId != default(int) && ProgramEducationOrganizationId != default(int) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (BeginDate == default)
+            {
+                yield return "BeginDate";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ProgramEducationOrganizationId == default)
+            {
+                yield return "ProgramEducationOrganizationId";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
         }
 
         private Link CreateLink()
@@ -190569,6 +193557,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -190601,6 +193590,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -190633,6 +193623,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
         }
 
         [DataMember(Name="studentReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -192008,7 +194999,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyReference
+    public class SurveyReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -192053,6 +195044,20 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && SurveyIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -192135,6 +195140,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
         }
 
         [DataMember(Name="educationOrganizationReference")]
+        [FullyDefinedReference]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -192167,6 +195173,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
         }
 
         [DataMember(Name="schoolYearTypeReference")]
+        [FullyDefinedReference][RequiredReference("edfi", "Survey")]
         public SchoolYearType.EdFi.SchoolYearTypeReference SchoolYearTypeReference
         {
             get
@@ -192199,6 +195206,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
         }
 
         [DataMember(Name="sessionReference")]
+        [FullyDefinedReference]
         public Session.EdFi.SessionReference SessionReference
         {
             get
@@ -192891,7 +195899,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyCourseAssociationReference
+    public class SurveyCourseAssociationReference : IResourceReference
     {
         [DataMember(Name="courseCode"), NaturalKeyMember]
         public string CourseCode { get; set; }
@@ -192942,6 +195950,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return CourseCode != default(string) && EducationOrganizationId != default(int) && Namespace != default(string) && SurveyIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (CourseCode == default)
+            {
+                yield return "CourseCode";
+            }
+
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -193024,6 +196056,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
         }
 
         [DataMember(Name="courseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Course.EdFi.CourseReference CourseReference
         {
             get
@@ -193056,6 +196089,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
         }
 
         [DataMember(Name="surveyReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Survey.EdFi.SurveyReference SurveyReference
         {
             get
@@ -193675,7 +196709,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyProgramAssociationReference
+    public class SurveyProgramAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -193729,6 +196763,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && Namespace != default(string) && ProgramName != default(string) && ProgramTypeDescriptor != default(string) && SurveyIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (ProgramName == default)
+            {
+                yield return "ProgramName";
+            }
+
+            if (ProgramTypeDescriptor == default)
+            {
+                yield return "ProgramTypeDescriptor";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -193811,6 +196874,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
         }
 
         [DataMember(Name="programReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Program.EdFi.ProgramReference ProgramReference
         {
             get
@@ -193843,6 +196907,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
         }
 
         [DataMember(Name="surveyReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Survey.EdFi.SurveyReference SurveyReference
         {
             get
@@ -194221,7 +197286,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyQuestionReference
+    public class SurveyQuestionReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -194269,6 +197334,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && QuestionCode != default(string) && SurveyIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (QuestionCode == default)
+            {
+                yield return "QuestionCode";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -194356,6 +197440,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
         }
 
         [DataMember(Name="surveyReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Survey.EdFi.SurveyReference SurveyReference
         {
             get
@@ -194388,6 +197473,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
         }
 
         [DataMember(Name="surveySectionReference")]
+        [FullyDefinedReference]
         public SurveySection.EdFi.SurveySectionReference SurveySectionReference
         {
             get
@@ -195409,7 +198495,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyQuestionResponseReference
+    public class SurveyQuestionResponseReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -195460,6 +198546,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && QuestionCode != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (QuestionCode == default)
+            {
+                yield return "QuestionCode";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -195547,6 +198657,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
         }
 
         [DataMember(Name="surveyQuestionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveyQuestion.EdFi.SurveyQuestionReference SurveyQuestionReference
         {
             get
@@ -195579,6 +198690,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
         }
 
         [DataMember(Name="surveyResponseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveyResponse.EdFi.SurveyResponseReference SurveyResponseReference
         {
             get
@@ -196644,7 +199756,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyResponseReference
+    public class SurveyResponseReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -196692,6 +199804,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -196778,6 +199909,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         }
 
         [DataMember(Name="parentReference")]
+        [FullyDefinedReference]
         public Parent.EdFi.ParentReference ParentReference
         {
             get
@@ -196810,6 +199942,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         }
 
         [DataMember(Name="staffReference")]
+        [FullyDefinedReference]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -196842,6 +199975,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         }
 
         [DataMember(Name="studentReference")]
+        [FullyDefinedReference]
         public Student.EdFi.StudentReference StudentReference
         {
             get
@@ -196874,6 +200008,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
         }
 
         [DataMember(Name="surveyReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Survey.EdFi.SurveyReference SurveyReference
         {
             get
@@ -197614,7 +200749,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyResponseEducationOrganizationTargetAssociationReference
+    public class SurveyResponseEducationOrganizationTargetAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -197665,6 +200800,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && Namespace != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -197747,6 +200906,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -197779,6 +200939,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
         }
 
         [DataMember(Name="surveyResponseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveyResponse.EdFi.SurveyResponseReference SurveyResponseReference
         {
             get
@@ -198127,7 +201288,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveyResponseStaffTargetAssociationReference
+    public class SurveyResponseStaffTargetAssociationReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -198187,6 +201348,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && StaffUniqueId != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -198269,6 +201454,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -198301,6 +201487,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
         }
 
         [DataMember(Name="surveyResponseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveyResponse.EdFi.SurveyResponseReference SurveyResponseReference
         {
             get
@@ -198650,7 +201837,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySection.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveySectionReference
+    public class SurveySectionReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -198698,6 +201885,25 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySection.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && SurveyIdentifier != default(string) && SurveySectionTitle != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveySectionTitle == default)
+            {
+                yield return "SurveySectionTitle";
+            }
+
         }
 
         private Link CreateLink()
@@ -198780,6 +201986,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySection.EdFi
         }
 
         [DataMember(Name="surveyReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Survey.EdFi.SurveyReference SurveyReference
         {
             get
@@ -199064,7 +202271,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveySectionAssociationReference
+    public class SurveySectionAssociationReference : IResourceReference
     {
         [DataMember(Name="localCourseCode"), NaturalKeyMember]
         public string LocalCourseCode { get; set; }
@@ -199124,6 +202331,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
         public bool IsReferenceFullyDefined()
         {
             return LocalCourseCode != default(string) && Namespace != default(string) && SchoolId != default(int) && SchoolYear != default(short) && SectionIdentifier != default(string) && SessionName != default(string) && SurveyIdentifier != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (LocalCourseCode == default)
+            {
+                yield return "LocalCourseCode";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SchoolId == default)
+            {
+                yield return "SchoolId";
+            }
+
+            if (SchoolYear == default)
+            {
+                yield return "SchoolYear";
+            }
+
+            if (SectionIdentifier == default)
+            {
+                yield return "SectionIdentifier";
+            }
+
+            if (SessionName == default)
+            {
+                yield return "SessionName";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
         }
 
         private Link CreateLink()
@@ -199206,6 +202452,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
         }
 
         [DataMember(Name="sectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Section.EdFi.SectionReference SectionReference
         {
             get
@@ -199238,6 +202485,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
         }
 
         [DataMember(Name="surveyReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Survey.EdFi.SurveyReference SurveyReference
         {
             get
@@ -199685,7 +202933,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveySectionResponseReference
+    public class SurveySectionResponseReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -199736,6 +202984,30 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string) && SurveySectionTitle != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
+            if (SurveySectionTitle == default)
+            {
+                yield return "SurveySectionTitle";
+            }
+
         }
 
         private Link CreateLink()
@@ -199818,6 +203090,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
         }
 
         [DataMember(Name="surveyResponseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveyResponse.EdFi.SurveyResponseReference SurveyResponseReference
         {
             get
@@ -199850,6 +203123,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
         }
 
         [DataMember(Name="surveySectionReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveySection.EdFi.SurveySectionReference SurveySectionReference
         {
             get
@@ -200267,7 +203541,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveySectionResponseEducationOrganizationTargetAssociationReference
+    public class SurveySectionResponseEducationOrganizationTargetAssociationReference : IResourceReference
     {
         [DataMember(Name="educationOrganizationId"), NaturalKeyMember]
         public int EducationOrganizationId { get; set; }
@@ -200321,6 +203595,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
         public bool IsReferenceFullyDefined()
         {
             return EducationOrganizationId != default(int) && Namespace != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string) && SurveySectionTitle != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
+            if (SurveySectionTitle == default)
+            {
+                yield return "SurveySectionTitle";
+            }
+
         }
 
         private Link CreateLink()
@@ -200403,6 +203706,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
         }
 
         [DataMember(Name="educationOrganizationReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
         {
             get
@@ -200435,6 +203739,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
         }
 
         [DataMember(Name="surveySectionResponseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveySectionResponse.EdFi.SurveySectionResponseReference SurveySectionResponseReference
         {
             get
@@ -200816,7 +204121,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
     /// </summary>
     [DataContract]
     [ExcludeFromCodeCoverage]
-    public class SurveySectionResponseStaffTargetAssociationReference
+    public class SurveySectionResponseStaffTargetAssociationReference : IResourceReference
     {
         [DataMember(Name="namespace"), NaturalKeyMember]
         public string Namespace { get; set; }
@@ -200879,6 +204184,35 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
         public bool IsReferenceFullyDefined()
         {
             return Namespace != default(string) && StaffUniqueId != default(string) && SurveyIdentifier != default(string) && SurveyResponseIdentifier != default(string) && SurveySectionTitle != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (Namespace == default)
+            {
+                yield return "Namespace";
+            }
+
+            if (StaffUniqueId == default)
+            {
+                yield return "StaffUniqueId";
+            }
+
+            if (SurveyIdentifier == default)
+            {
+                yield return "SurveyIdentifier";
+            }
+
+            if (SurveyResponseIdentifier == default)
+            {
+                yield return "SurveyResponseIdentifier";
+            }
+
+            if (SurveySectionTitle == default)
+            {
+                yield return "SurveySectionTitle";
+            }
+
         }
 
         private Link CreateLink()
@@ -200961,6 +204295,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
         }
 
         [DataMember(Name="staffReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public Staff.EdFi.StaffReference StaffReference
         {
             get
@@ -200993,6 +204328,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
         }
 
         [DataMember(Name="surveySectionResponseReference")][NaturalKeyMember]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
         public SurveySectionResponse.EdFi.SurveySectionResponseReference SurveySectionResponseReference
         {
             get
