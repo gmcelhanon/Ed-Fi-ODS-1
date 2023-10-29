@@ -173,7 +173,9 @@ namespace EdFi.Ods.CodeGen.Generators.Resources
                     : $"{propertyNamespacePrefix}I{Property.EntityProperty.Entity.ResolvedEdFiEntityName()}.",
                 IsNullable = Property.PropertyType.IsNullable,
                 PropertyIsUnifiedAndLocallyDefined = Property.IsUnified() && Property.IsLocallyDefined,
-                PropertyDefaultHasDomainMeaning = PropertyDefaultHasDomainMeaning          
+                PropertyDefaultHasDomainMeaning = PropertyDefaultHasDomainMeaning,
+                IsDescriptorUsage = Property.EntityProperty.IsDescriptorUsage,
+                DescriptorName = Property.EntityProperty.DescriptorEntity?.Name,
             };
         }
 
