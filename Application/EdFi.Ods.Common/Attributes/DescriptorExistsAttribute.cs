@@ -26,7 +26,7 @@ public sealed class DescriptorExistsAttribute : ValidationAttribute
         
         if (default == GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId(_descriptorName, value.ToString()))
         {
-            return new ValidationResult($"{_descriptorName} '{value}' does not exist.");
+            return new ValidationResult($"{_descriptorName} value '{value}' does not exist.");
         }
 
         return ValidationResult.Success;
