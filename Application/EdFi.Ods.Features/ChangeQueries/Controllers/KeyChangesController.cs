@@ -93,7 +93,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             if (parameterMessages.Any())
             {
                 return BadRequest(
-                    ErrorTranslator.GetErrorMessage(
+                    ErrorResponseHelper.GetErrorMessage(
                         string.Join(" ", parameterMessages),
                         (string) _logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
             }

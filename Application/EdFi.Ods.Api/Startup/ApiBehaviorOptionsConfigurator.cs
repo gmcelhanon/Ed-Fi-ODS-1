@@ -17,11 +17,11 @@ public class ApiBehaviorOptionsConfigurator : IConfigureOptions<ApiBehaviorOptio
 {
     private readonly ILogContextAccessor _logContextAccessor;
     private readonly IContextProvider<DataManagementResourceContext> _dataManagementResourceContextProvider;
-    private readonly ErrorTranslator _errorTranslator;
+    private readonly IErrorTranslator _errorTranslator;
 
     public ApiBehaviorOptionsConfigurator(ILogContextAccessor logContextAccessor,
         IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider,
-        ErrorTranslator errorTranslator)
+        IErrorTranslator errorTranslator)
     {
         _logContextAccessor = logContextAccessor;
         _dataManagementResourceContextProvider = dataManagementResourceContextProvider;

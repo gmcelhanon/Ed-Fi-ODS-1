@@ -13,6 +13,7 @@ using EdFi.Ods.Api.Constants;
 using EdFi.Ods.Api.ExceptionHandling;
 using EdFi.Ods.Api.Extensions;
 using EdFi.Ods.Api.Filters;
+using EdFi.Ods.Api.Infrastructure.Pipelines;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Factories;
 using EdFi.Ods.Api.Infrastructure.Pipelines.Get;
 using EdFi.Ods.Api.Infrastructure.Pipelines.GetMany;
@@ -64,6 +65,7 @@ namespace EdFi.Ods.Api.Controllers
         private readonly IContextProvider<ProfileContentTypeContext> _profileContentTypeContextProvider;
         private readonly IContextProvider<DataManagementResourceContext> _dataManagementResourceContextProvider;
         private readonly ILogContextAccessor _logContextAccessor;
+        private readonly IErrorTranslator _errorTranslator;
         private readonly int _defaultPageLimitSize;
         private readonly ReverseProxySettings _reverseProxySettings;
         private ILog _logger;
@@ -104,12 +106,14 @@ namespace EdFi.Ods.Api.Controllers
             ApiSettings apiSettings,
             IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider,
             IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider,
-            ILogContextAccessor logContextAccessor)
+            ILogContextAccessor logContextAccessor,
+            IErrorTranslator errorTranslator)
         {
             _restErrorProvider = restErrorProvider;
             _profileContentTypeContextProvider = profileContentTypeContextProvider;
             _dataManagementResourceContextProvider = dataManagementResourceContextProvider;
             _logContextAccessor = logContextAccessor;
+            _errorTranslator = errorTranslator;
             _defaultPageLimitSize = defaultPageSizeLimitProvider.GetDefaultPageSizeLimit();
             _reverseProxySettings = apiSettings.GetReverseProxySettings();
 
@@ -158,7 +162,7 @@ namespace EdFi.Ods.Api.Controllers
                 ? (IActionResult)StatusCode(restError.Code ?? default)
                 : StatusCode(
                     restError.Code ?? default,
-                    ErrorTranslator.GetErrorMessage(restError.Message, (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
+                    ErrorResponseHelper.GetErrorMessage(restError.Message, (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
         }
 
         protected abstract void MapAll(TGetByExampleRequest request, TEntityInterface specification);
@@ -189,7 +193,7 @@ namespace EdFi.Ods.Api.Controllers
                 (urlQueryParametersRequest.Limit < 0 || urlQueryParametersRequest.Limit > _defaultPageLimitSize))
             {
                 return BadRequest(
-                    ErrorTranslator.GetErrorMessage(
+                    ErrorResponseHelper.GetErrorMessage(
                         $"Limit must be omitted or set to a value between 0 and {_defaultPageLimitSize}.",
                         (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
             }
@@ -303,7 +307,7 @@ namespace EdFi.Ods.Api.Controllers
             Response.GetTypedHeaders().Location = resourceUri;
             Response.GetTypedHeaders().ETag = GetEtag(result.ETag);
 
-            if (result.ResourceWasCreated)
+            if (result.OperationStatus == OperationStatus.Created)
             {
                 HttpContext.Items.Add("createdResourceUri", resourceUri.ToString());
                 return (IActionResult)Created(resourceUri, null);
@@ -329,7 +333,7 @@ namespace EdFi.Ods.Api.Controllers
             if (request.Id != default(Guid))
             {
                 return BadRequest(
-                    ErrorTranslator.GetErrorMessage(
+                    ErrorResponseHelper.GetErrorMessage(
                         "Resource identifiers cannot be assigned by the client.",
                         (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
             }
@@ -364,7 +368,7 @@ namespace EdFi.Ods.Api.Controllers
             Response.GetTypedHeaders().Location = resourceUri;
             Response.GetTypedHeaders().ETag = GetEtag(result.ETag);
 
-            if (result.ResourceWasCreated)
+            if (result.OperationStatus == OperationStatus.Created)
             {
                 return (IActionResult)Created(resourceUri, null);
             }
@@ -373,10 +377,6 @@ namespace EdFi.Ods.Api.Controllers
                 return Ok();
             }
         }
-
-        // TODO: Either inject these, or just make this functionality available through static helpers
-        // ReSharper disable once StaticMemberInGenericType
-        private static readonly ErrorTranslator _errorTranslator = new(new ModelStateKeyConverter());
 
         private IActionResult ValidationFailedResult(List<ValidationResult> validationResults)
         {

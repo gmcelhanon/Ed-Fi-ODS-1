@@ -129,7 +129,7 @@ namespace EdFi.Ods.Features.Controllers
                         && (limit <= 0 || limit > 100))
                     {
                         return BadRequest(
-                            ErrorTranslator.GetErrorMessage(
+                            ErrorResponseHelper.GetErrorMessage(
                                 "Limit must be omitted or set to a value between 1 and 100.",
                                 (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
                     }
@@ -263,7 +263,7 @@ namespace EdFi.Ods.Features.Controllers
                     ? (IActionResult)StatusCode(restError.Code ?? default)
                     : StatusCode(
                         restError.Code ?? default,
-                        ErrorTranslator.GetErrorMessage(
+                        ErrorResponseHelper.GetErrorMessage(
                             restError.Message,
                             (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
             }

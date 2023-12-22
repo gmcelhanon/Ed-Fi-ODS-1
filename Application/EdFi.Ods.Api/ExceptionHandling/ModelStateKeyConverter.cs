@@ -11,10 +11,14 @@ using EdFi.Ods.Common.Models.Resource;
 namespace EdFi.Ods.Api.ExceptionHandling;
 
 [Intercept("cache-model-state-key")]
-// ReSharper disable once ClassWithVirtualMembersNeverInherited.Global
-public class ModelStateKeyConverter
+public interface IModelStateKeyConverter
 {
-    public virtual string GetJsonPath(Resource resource, string key)
+    string GetJsonPath(Resource resource, string key);
+}
+
+public class ModelStateKeyConverter : IModelStateKeyConverter
+{
+    public string GetJsonPath(Resource resource, string key)
     {
         string jsonPath = string.Join('.', GetJsonPathParts(resource, key));
 

@@ -13,11 +13,21 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace EdFi.Ods.Api.ExceptionHandling
 {
-    public class ErrorTranslator
+    public interface IErrorTranslator
     {
-        private readonly ModelStateKeyConverter _modelStateKeyConverter;
+        EdFiProblemDetails GetErrorMessage(Resource resource, ModelStateDictionary modelState, string correlationId);
 
-        public ErrorTranslator(ModelStateKeyConverter modelStateKeyConverter)
+        EdFiProblemDetails GetErrorMessage(
+            Resource resource,
+            IEnumerable<ValidationResult> validationResults,
+            string correlationId);
+    }
+
+    public class ErrorTranslator : IErrorTranslator
+    {
+        private readonly IModelStateKeyConverter _modelStateKeyConverter;
+
+        public ErrorTranslator(IModelStateKeyConverter modelStateKeyConverter)
         {
             _modelStateKeyConverter = modelStateKeyConverter;
         }
@@ -58,15 +68,6 @@ namespace EdFi.Ods.Api.ExceptionHandling
             };
         }
 
-        public static RESTError GetErrorMessage(string message, string correlationId)
-        {
-            return new RESTError()
-            {
-                Message = message,
-                CorrelationId = correlationId
-            };
-        }
-
         public EdFiProblemDetails GetErrorMessage(Resource resource, IEnumerable<ValidationResult> validationResults, string correlationId)
         {
             ModelStateDictionary modelState = new();
@@ -91,6 +92,18 @@ namespace EdFi.Ods.Api.ExceptionHandling
                 Status = StatusCodes.Status400BadRequest,
                 ValidationErrors = validationErrors,
                 Instance = $"urn:correlation:{correlationId}",
+                CorrelationId = correlationId
+            };
+        }
+    }
+
+    public static class ErrorResponseHelper
+    {
+        public static RESTError GetErrorMessage(string message, string correlationId)
+        {
+            return new RESTError()
+            {
+                Message = message,
                 CorrelationId = correlationId
             };
         }

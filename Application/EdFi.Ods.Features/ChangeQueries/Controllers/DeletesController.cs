@@ -42,6 +42,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
         private readonly IResourceClaimUriProvider _resourceClaimUriProvider;
         private readonly ISecurityRepository _securityRepository;
         private readonly ILogContextAccessor _logContextAccessor;
+        private readonly IErrorTranslator _errorTranslator;
         private readonly int _defaultPageLimitSize;
 
         private readonly ILog _logger = LogManager.GetLogger(typeof(DeletesController));
@@ -55,6 +56,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             ISecurityRepository securityRepository,
             IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider,
             ILogContextAccessor logContextAccessor,
+            IErrorTranslator errorTranslator,
             ApiSettings apiSettings)
         {
             _domainModelProvider = domainModelProvider;
@@ -63,6 +65,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             _resourceClaimUriProvider = resourceClaimUriProvider;
             _securityRepository = securityRepository;
             _logContextAccessor = logContextAccessor;
+            _errorTranslator = errorTranslator;
 
             _defaultPageLimitSize = defaultPageSizeLimitProvider.GetDefaultPageSizeLimit();
 
@@ -90,7 +93,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Controllers
             if (parameterMessages.Any())
             {
                 return BadRequest(
-                    ErrorTranslator.GetErrorMessage(
+                    ErrorResponseHelper.GetErrorMessage(
                         string.Join(" ", parameterMessages),
                         (string)_logContextAccessor.GetValue(CorrelationConstants.LogContextKey)));
             }

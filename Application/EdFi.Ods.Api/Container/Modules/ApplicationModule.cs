@@ -490,8 +490,14 @@ namespace EdFi.Ods.Api.Container.Modules
                     .As<IOdsInstanceSelector>()
                     .SingleInstance();
 
-                builder.RegisterType<ErrorTranslator>().SingleInstance();
-                builder.RegisterType<ModelStateKeyConverter>().EnableClassInterceptors().SingleInstance();
+                builder.RegisterType<ErrorTranslator>()
+                    .As<IErrorTranslator>()
+                    .SingleInstance();
+                
+                builder.RegisterType<ModelStateKeyConverter>()
+                    .As<IModelStateKeyConverter>()
+                    .EnableInterfaceInterceptors()
+                    .SingleInstance();
 
                 builder.RegisterType<CachingInterceptor>()
                     .Named<IInterceptor>("cache-model-state-key")
