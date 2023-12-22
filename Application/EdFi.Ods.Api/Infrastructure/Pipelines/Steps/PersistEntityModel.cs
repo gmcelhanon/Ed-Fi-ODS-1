@@ -45,9 +45,18 @@ namespace EdFi.Ods.Api.Infrastructure.Pipelines.Steps
                     result.ResourceId = updatedEntityResult.Entity.Id;
                 }
 
-                result.ResourceWasCreated = updatedEntityResult.IsCreated;
-                result.ResourceWasUpdated = updatedEntityResult.IsModified;
-                result.ResourceWasPersisted = true;
+                if (updatedEntityResult.IsCreated)
+                {
+                    result.OperationStatus = OperationStatus.Created;
+                }
+                else if (updatedEntityResult.IsModified)
+                {
+                    result.OperationStatus = OperationStatus.Updated;
+                }
+                else
+                {
+                    result.OperationStatus = OperationStatus.Unchanged;
+                }
 
                 // Set the etag value
                 result.ETag = _etagProvider.GetETag(updatedEntityResult.Entity);

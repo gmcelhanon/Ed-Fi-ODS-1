@@ -6,19 +6,25 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EdFi.Ods.Api.Models;
 using EdFi.Ods.Common.Repositories;
 
 namespace EdFi.Ods.Api.Infrastructure.Pipelines
 {
     public abstract class PipelineResultBase
     {
+        public OperationStatus OperationStatus { get; set; }
+
+        public EdFiProblemDetails ProblemDetails { set; get; }
+
         /// <summary>
-        /// Gets or sets the exception that occurred during pipeline processing.
+        /// Gets or sets a raw exception that occurred during pipeline processing and needs to be translated to a response.
         /// </summary>
         public Exception Exception { get; set; }
 
         public ResultMetadata ResultMetadata { get; set; }
 
+        // This might actually be removed from here and packed into a ProblemDetails response prior creating the result object.
         public List<ValidationResult> ValidationResults { get; set; }
     }
 }
