@@ -3,6 +3,8 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
+
 namespace EdFi.Ods.Common.Descriptors;
 
 public class DescriptorResolver : IDescriptorResolver
@@ -18,59 +20,85 @@ public class DescriptorResolver : IDescriptorResolver
         _descriptorDetailsProvider = descriptorDetailsProvider;
     }
 
-    public int GetDescriptorId(string descriptorName, string uri)
+    public (int descriptorId, Exception ex) GetDescriptorId(string descriptorName, string uri)
     {
         if (uri == null)
         {
-            return default;
+            return default(int).AsSuccess();
         }
         
-        var descriptorMaps = _descriptorMapsProvider.GetMaps();
+        var descriptorMapsResult = _descriptorMapsProvider.GetMaps();
+
+        if (!descriptorMapsResult.IsSuccess())
+        {
+            return descriptorMapsResult.ex.AsFailed<int>();
+        }
+
+        var descriptorMaps = descriptorMapsResult.maps;
 
         if (!descriptorMaps.DescriptorIdByUri.TryGetValue(uri, out int descriptorId))
         {
-            var descriptorDetails = _descriptorDetailsProvider.GetDescriptorDetails(descriptorName, uri);
+            var result = _descriptorDetailsProvider.GetDescriptorDetails(descriptorName, uri);
 
-            if (descriptorDetails != null)
+            if (!result.IsSuccess())
+            {
+                return result.ex.AsFailed<int>();
+            }
+            
+            if (result.details != null)
             {
                 // Add the details to the existing descriptor maps
-                descriptorMaps.DescriptorIdByUri.TryAdd(descriptorDetails.Uri, descriptorDetails.DescriptorId);
-                descriptorMaps.UriByDescriptorId.TryAdd(descriptorDetails.DescriptorId, descriptorDetails.Uri);
+                descriptorMaps.DescriptorIdByUri.TryAdd(result.details.Uri, result.details.DescriptorId);
+                descriptorMaps.UriByDescriptorId.TryAdd(result.details.DescriptorId, result.details.Uri);
 
-                return descriptorDetails.DescriptorId;
+                return result.details.DescriptorId.AsSuccess();
             }
 
-            return default;
+            return default(int).AsSuccess();
         }
 
-        return descriptorId;
+        return descriptorId.AsSuccess();
     }
 
-    public string GetUri(string descriptorName, int descriptorId)
+    public (string uri, Exception ex) GetUri(string descriptorName, int descriptorId)
     {
         if (descriptorId == default)
         {
-            return default;
+            return default(string).AsSuccess();
         }
         
-        var descriptorMaps = _descriptorMapsProvider.GetMaps();
+        var descriptorMapsResult = _descriptorMapsProvider.GetMaps();
 
+        if (!descriptorMapsResult.IsSuccess())
+        {
+            return descriptorMapsResult.ex.AsFailed<string>();
+        }
+
+        var descriptorMaps = descriptorMapsResult.maps;
+        
         if (!descriptorMaps.UriByDescriptorId.TryGetValue(descriptorId, out string uri))
         {
-            var descriptorDetails = _descriptorDetailsProvider.GetDescriptorDetails(descriptorName, descriptorId);
+            var result = _descriptorDetailsProvider.GetDescriptorDetails(descriptorName, descriptorId);
 
+            if (!result.IsSuccess())
+            {
+                return result.ex.AsFailed<string>();
+            }
+
+            var descriptorDetails = result.details;
+            
             if (descriptorDetails != null)
             {
                 // Add the details to the existing descriptor maps
                 descriptorMaps.DescriptorIdByUri.TryAdd(descriptorDetails.Uri, descriptorDetails.DescriptorId);
                 descriptorMaps.UriByDescriptorId.TryAdd(descriptorDetails.DescriptorId, descriptorDetails.Uri);
 
-                return descriptorDetails.Uri;
+                return descriptorDetails.Uri.AsSuccess();
             }
 
-            return default;
+            return default(string).AsSuccess();
         }
 
-        return uri;
+        return uri.AsSuccess();
     }
 }

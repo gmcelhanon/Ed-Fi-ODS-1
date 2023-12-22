@@ -22,10 +22,17 @@ public class DescriptorMapsProvider : IDescriptorMapsProvider
     }
 
     /// <inheritdoc cref="IDescriptorMapsProvider.GetMaps" />
-    public DescriptorMaps GetMaps()
+    public (DescriptorMaps maps, Exception ex) GetMaps()
     {
-        var allDescriptors = _descriptorDetailsProvider.GetAllDescriptorDetails();
+        var result = _descriptorDetailsProvider.GetAllDescriptorDetails();
 
+        if (!result.IsSuccess())
+        {
+            return result.ex.AsFailed<DescriptorMaps>();
+        }
+
+        var allDescriptors = result.details;
+        
         // Create dictionary, allowing for 10% growth of known entries before resizing
         var descriptorIdByUri = new ConcurrentDictionary<string, int>(
             Environment.ProcessorCount,
@@ -43,6 +50,6 @@ public class DescriptorMapsProvider : IDescriptorMapsProvider
             uriByDescriptorId.TryAdd(descriptorDetails.DescriptorId, descriptorDetails.Uri);
         }
 
-        return new DescriptorMaps(descriptorIdByUri, uriByDescriptorId);
+        return new DescriptorMaps(descriptorIdByUri, uriByDescriptorId).AsSuccess();
     }
 }

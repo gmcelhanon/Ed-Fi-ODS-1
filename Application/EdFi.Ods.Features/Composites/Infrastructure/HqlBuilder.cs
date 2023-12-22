@@ -273,6 +273,11 @@ namespace EdFi.Ods.Features.Composites.Infrastructure
                     object parametersAsObject;
 
                     // Is this a first time parameter value assignment?
+                    var valueFiltersResult = valueFilter.Values
+                        .Select(x => _descriptorResolver.GetDescriptorId(filterProperty.DescriptorName, x));
+
+                    if (valueFiltersResult.TryGetFailedResults)
+                    
                     if (!builderContext.CurrentQueryFilterParameterValueByName.TryGetValue(parameterName, out parametersAsObject))
                     {
                         // Process filters into the query
@@ -288,8 +293,7 @@ namespace EdFi.Ods.Features.Composites.Infrastructure
 
                         // Set the parameter values
                         builderContext.CurrentQueryFilterParameterValueByName[parameterName]
-                            = valueFilter.Values
-                                .Select(x => _descriptorResolver.GetDescriptorId(filterProperty.DescriptorName, x))
+                            = valueFiltersResult
                                 .ToArray();
                     }
                     else
@@ -298,8 +302,7 @@ namespace EdFi.Ods.Features.Composites.Infrastructure
                         builderContext.CurrentQueryFilterParameterValueByName[parameterName]
                             = (parametersAsObject as int[])
                             .Concat(
-                                valueFilter.Values
-                                    .Select(x => _descriptorResolver.GetDescriptorId(filterProperty.DescriptorName, x))
+                                valueFiltersResult
                             )
                             .ToArray();
                     }

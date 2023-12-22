@@ -3,6 +3,8 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
+
 namespace EdFi.Ods.Common.Descriptors;
 
 /// <summary>
@@ -16,7 +18,7 @@ public interface IDescriptorResolver
     /// <param name="descriptorName">The name of the descriptor.</param>
     /// <param name="uri">The URI representation of the descriptor.</param>
     /// <returns>The descriptorId if it exists; otherwise 0.</returns>
-    int GetDescriptorId(string descriptorName, string uri);
+    (int descriptorId, Exception ex) GetDescriptorId(string descriptorName, string uri);
     
     /// <summary>
     /// Gets the URI for the supplied descriptorId; otherwise <b>null</b>.
@@ -24,5 +26,5 @@ public interface IDescriptorResolver
     /// <param name="descriptorName">The name of the descriptor.</param>
     /// <param name="descriptorId">The DescriptorId for the descriptor.</param>
     /// <returns>The URI representation of the descriptor if it exists; otherwise <b>null</b>.</returns>
-    string GetUri(string descriptorName, int descriptorId);
+    (string uri, Exception ex) GetUri(string descriptorName, int descriptorId);
 }

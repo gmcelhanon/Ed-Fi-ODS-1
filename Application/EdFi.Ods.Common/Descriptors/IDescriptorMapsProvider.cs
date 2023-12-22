@@ -3,6 +3,7 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
 
@@ -19,5 +20,5 @@ public interface IDescriptorMapsProvider
     /// Gets the dictionaries that map descriptors to and from DescriptorId and Uri values.
     /// </summary>
     /// <returns>The object containing the descriptor maps.</returns>
-    DescriptorMaps GetMaps();
+    (DescriptorMaps maps, Exception ex) GetMaps();
 }

@@ -46,7 +46,7 @@ public class DescriptorDetailsProvider : IDescriptorDetailsProvider
     }
 
     /// <inheritdoc cref="IDescriptorDetailsProvider.GetAllDescriptorDetails" />
-    public IList<DescriptorDetails> GetAllDescriptorDetails()
+    public (IList<DescriptorDetails> details, Exception ex) GetAllDescriptorDetails()
     {
         try
         {
@@ -56,20 +56,29 @@ public class DescriptorDetailsProvider : IDescriptorDetailsProvider
             {
                 var queries = GetQueries(session).ToList();
 
-                var results = queries.SelectMany(x => x.ToList()).ToList();
+                if (queries.TryGetFailedResults(out (IList<DescriptorDetails> details, Exception ex) failedResult))
+                {
+                    return failedResult;
+                }
+                
+                var results = queries.SelectMany(x => x.details.ToList())
+                    .ToList();
 
-                return results;
+                return results.AsSuccess();
             }
 
-            IEnumerable<IEnumerable<DescriptorDetails>> GetQueries(ISession session)
+            IEnumerable<(IEnumerable<DescriptorDetails> details, Exception ex)> GetQueries(ISession session)
             {
                 foreach (string descriptorName in _descriptorTypeNameByEntityName.Value.Keys)
                 {
-                    var query = 
-                        GetDescriptorCriteria(descriptorName, session)
-                        .Future<DescriptorDetails>();
+                    var criteriaResult = GetDescriptorCriteria(descriptorName, session);
 
-                    yield return query;
+                    if (criteriaResult.IsSuccess())
+                    {
+                        var query = criteriaResult.criteria.Future<DescriptorDetails>();
+
+                        yield return query.AsSuccess();
+                    }
                 }
             }
         }
@@ -86,22 +95,36 @@ public class DescriptorDetailsProvider : IDescriptorDetailsProvider
     }
 
     /// <inheritdoc cref="IDescriptorDetailsProvider.GetDescriptorDetails(string,int)" />
-    public DescriptorDetails GetDescriptorDetails(string descriptorName, int descriptorId)
+    public (DescriptorDetails details, Exception ex) GetDescriptorDetails(string descriptorName, int descriptorId)
     {
         using var session = _sessionFactory.OpenSession();
         
-        return GetDescriptorCriteria(descriptorName, session, descriptorId).UniqueResult<DescriptorDetails>();
+        var result = GetDescriptorCriteria(descriptorName, session, descriptorId);
+
+        if (result.IsSuccess())
+        {
+            return result.criteria.UniqueResult<DescriptorDetails>().AsSuccess();
+        }
+
+        return result.ex.AsFailed<DescriptorDetails>();
     }
 
     /// <inheritdoc cref="IDescriptorDetailsProvider.GetDescriptorDetails(string,string)" />
-    public DescriptorDetails GetDescriptorDetails(string descriptorName, string uri)
+    public (DescriptorDetails details, Exception ex) GetDescriptorDetails(string descriptorName, string uri)
     {
         using var session = _sessionFactory.OpenSession();
         
-        return GetDescriptorCriteria(descriptorName, session, uri: uri).UniqueResult<DescriptorDetails>();
+        var result = GetDescriptorCriteria(descriptorName, session, uri: uri);
+
+        if (result.IsSuccess())
+        {
+            return result.criteria.UniqueResult<DescriptorDetails>().AsSuccess(); 
+        }
+
+        return result.ex.AsFailed<DescriptorDetails>();
     }
 
-    private ICriteria GetDescriptorCriteria(
+    private (ICriteria criteria, Exception ex) GetDescriptorCriteria(
         string descriptorName,
         ISession session,
         int? descriptorId = null,
@@ -109,7 +132,7 @@ public class DescriptorDetailsProvider : IDescriptorDetailsProvider
     {
         if (!_descriptorTypeNameByEntityName.Value.TryGetValue(descriptorName, out string descriptorTypeName))
         {
-            throw new ArgumentException($"Descriptor '{descriptorName}' is not a known descriptor entity name.");
+            return (default, new ArgumentException($"Descriptor '{descriptorName}' is not a known descriptor entity name."));
         }
 
         var descriptorIdColumnName = descriptorName + "Id";
@@ -132,7 +155,8 @@ public class DescriptorDetailsProvider : IDescriptorDetailsProvider
 
             if (pos < 0)
             {
-                throw new FormatException($"{descriptorName} value '{uri}' is not a valid descriptor value.");
+                return new FormatException($"{descriptorName} value '{uri}' is not a valid descriptor value.")
+                    .AsFailed<ICriteria>();
             }
 
             criteria.Add(Restrictions.Eq("Namespace", uri.Substring(0, pos)));
@@ -141,6 +165,6 @@ public class DescriptorDetailsProvider : IDescriptorDetailsProvider
 
         criteria.SetResultTransformer(Transformers.AliasToBean<DescriptorDetails>());
 
-        return criteria;
+        return criteria.AsSuccess();
     }
 }
