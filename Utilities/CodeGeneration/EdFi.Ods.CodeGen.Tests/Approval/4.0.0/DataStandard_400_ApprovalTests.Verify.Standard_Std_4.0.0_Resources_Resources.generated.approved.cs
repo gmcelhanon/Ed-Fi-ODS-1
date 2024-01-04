@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Diagnostics.CodeAnalysis;
 using EdFi.Common.Extensions;
+using EdFi.Ods.Api.Extensions;
 using EdFi.Ods.Api.Models;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common;
@@ -275,10 +276,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AbsenceEventCategoryDescriptor.Ed
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -550,10 +547,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicHonorCategoryDescriptor.E
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -823,10 +816,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicSubjectDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -1314,10 +1303,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicWeek.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -1587,10 +1572,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccommodationDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -2153,10 +2134,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -2426,10 +2403,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -2701,10 +2674,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AchievementCategoryDescriptor.EdF
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -2974,10 +2943,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AdditionalCreditTypeDescriptor.Ed
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -3249,10 +3214,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AddressTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -3522,10 +3483,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AdministrationEnvironmentDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -3797,10 +3754,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AdministrativeFundingControlDescr
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -4070,10 +4023,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AncestryEthnicOriginDescriptor.Ed
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -5254,10 +5203,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -5535,10 +5480,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -5815,10 +5756,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -6299,10 +6236,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -6579,10 +6512,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -6878,10 +6807,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -7158,10 +7083,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -7490,10 +7411,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -7785,10 +7702,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -8065,10 +7978,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -8473,10 +8382,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -8777,10 +8682,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -9254,10 +9155,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -9528,10 +9425,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentCategoryDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -9801,10 +9694,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentIdentificationSystemDes
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -10487,10 +10376,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -10831,10 +10716,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -11127,10 +11008,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -11400,10 +11277,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItemCategoryDescriptor.
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -11675,10 +11548,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItemResultDescriptor.Ed
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -11949,10 +11818,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentPeriodDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -12222,10 +12087,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentReportingMethodDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -12840,6 +12701,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources().ToArray();
+
+                if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForAssessmentIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForAssessmentIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'assessmentIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForAssessmentIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetAssessmentIdentifierSources()
+                {
+                    // Obtain value from other references
+                    var valueFromAssessmentReference = this.AssessmentReference?.AssessmentIdentifier;
+    
+                    if (valueFromAssessmentReference != null)
+                    {
+                        yield return ("assessmentReference.assessmentIdentifier", this.AssessmentReference.AssessmentIdentifier);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromObjectiveAssessmentReference = this.ObjectiveAssessmentReference?.AssessmentIdentifier;
+    
+                    if (valueFromObjectiveAssessmentReference != null)
+                    {
+                        yield return ("objectiveAssessmentReference.assessmentIdentifier", this.ObjectiveAssessmentReference.AssessmentIdentifier);
+                    }
+    
+                }
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from other references
+                    var valueFromAssessmentReference = this.AssessmentReference?.Namespace;
+    
+                    if (valueFromAssessmentReference != null)
+                    {
+                        yield return ("assessmentReference.namespace", this.AssessmentReference.Namespace);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromObjectiveAssessmentReference = this.ObjectiveAssessmentReference?.Namespace;
+    
+                    if (valueFromObjectiveAssessmentReference != null)
+                    {
+                        yield return ("objectiveAssessmentReference.namespace", this.ObjectiveAssessmentReference.Namespace);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -12904,64 +12836,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("AssessmentScoreRangeLearningStandardLearningStandards", $"A supplied 'AssessmentScoreRangeLearningStandardLearningStandard' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources();
-
-            if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("AssessmentIdentifier",
-                    $"Supplied values for unified key property 'assessmentIdentifier' on 'AssessmentScoreRangeLearningStandard' are not consistent: {string.Join(", ", sourcesForAssessmentIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetAssessmentIdentifierSources()
-            {
-                // Obtain value from other references
-                var valueFromAssessmentReference = instance.AssessmentReference?.AssessmentIdentifier;
-
-                if (valueFromAssessmentReference != null)
-                {
-                    yield return Tuple.Create("assessmentReference.assessmentIdentifier", instance.AssessmentReference.AssessmentIdentifier);
-                }
-
-                // Obtain value from other references
-                var valueFromObjectiveAssessmentReference = instance.ObjectiveAssessmentReference?.AssessmentIdentifier;
-
-                if (valueFromObjectiveAssessmentReference != null)
-                {
-                    yield return Tuple.Create("objectiveAssessmentReference.assessmentIdentifier", instance.ObjectiveAssessmentReference.AssessmentIdentifier);
-                }
-
-            }
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'AssessmentScoreRangeLearningStandard' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from other references
-                var valueFromAssessmentReference = instance.AssessmentReference?.Namespace;
-
-                if (valueFromAssessmentReference != null)
-                {
-                    yield return Tuple.Create("assessmentReference.namespace", instance.AssessmentReference.Namespace);
-                }
-
-                // Obtain value from other references
-                var valueFromObjectiveAssessmentReference = instance.ObjectiveAssessmentReference?.Namespace;
-
-                if (valueFromObjectiveAssessmentReference != null)
-                {
-                    yield return Tuple.Create("objectiveAssessmentReference.namespace", instance.ObjectiveAssessmentReference.Namespace);
                 }
 
             }
@@ -13306,10 +13180,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -13579,10 +13449,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssignmentLateStatusDescriptor.Ed
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -13854,10 +13720,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AttemptStatusDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -14127,10 +13989,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AttendanceEventCategoryDescriptor
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -14629,10 +14487,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -14910,10 +14764,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -15184,10 +15034,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BarrierToInternetAccessInResidenc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -15457,10 +15303,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BehaviorDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -16136,10 +15978,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -16451,6 +16289,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IBellScheduleClassPeriod).BellSchedule.SchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromClassPeriodReference = this.ClassPeriodReference?.SchoolId;
+    
+                    if (valueFromClassPeriodReference != null)
+                    {
+                        yield return ("classPeriodReference.schoolId", this.ClassPeriodReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -16491,32 +16363,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'BellScheduleClassPeriod' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("schoolId (from parent context)", (instance as Entities.Common.EdFi.IBellScheduleClassPeriod).BellSchedule.SchoolId);
-
-                // Obtain value from other references
-                var valueFromClassPeriodReference = instance.ClassPeriodReference?.SchoolId;
-
-                if (valueFromClassPeriodReference != null)
-                {
-                    yield return Tuple.Create("classPeriodReference.schoolId", instance.ClassPeriodReference.SchoolId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -16794,10 +16640,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -17074,10 +16916,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -17694,10 +17532,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -17974,10 +17808,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -18592,10 +18422,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -18873,10 +18699,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -19146,10 +18968,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarEventDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -19421,10 +19239,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -19694,10 +19508,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CareerPathwayDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -19969,10 +19779,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CharterApprovalAgencyTypeDescript
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -20242,10 +20048,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CharterStatusDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -21402,6 +21204,96 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForFiscalYear = GetFiscalYearSources().ToArray();
+
+                if (!sourcesForFiscalYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForFiscalYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForFiscalYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'fiscalYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForFiscalYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetFiscalYearSources()
+                {
+                    // Obtain value from the locally defined property
+                    yield return ("FiscalYear", this.FiscalYear);
+                    
+                    // Obtain value from other references
+                    var valueFromBalanceSheetDimensionReference = this.BalanceSheetDimensionReference?.FiscalYear;
+    
+                    if (valueFromBalanceSheetDimensionReference != null)
+                    {
+                        yield return ("balanceSheetDimensionReference.fiscalYear", this.BalanceSheetDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromFunctionDimensionReference = this.FunctionDimensionReference?.FiscalYear;
+    
+                    if (valueFromFunctionDimensionReference != null)
+                    {
+                        yield return ("functionDimensionReference.fiscalYear", this.FunctionDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromFundDimensionReference = this.FundDimensionReference?.FiscalYear;
+    
+                    if (valueFromFundDimensionReference != null)
+                    {
+                        yield return ("fundDimensionReference.fiscalYear", this.FundDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromObjectDimensionReference = this.ObjectDimensionReference?.FiscalYear;
+    
+                    if (valueFromObjectDimensionReference != null)
+                    {
+                        yield return ("objectDimensionReference.fiscalYear", this.ObjectDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromOperationalUnitDimensionReference = this.OperationalUnitDimensionReference?.FiscalYear;
+    
+                    if (valueFromOperationalUnitDimensionReference != null)
+                    {
+                        yield return ("operationalUnitDimensionReference.fiscalYear", this.OperationalUnitDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromProgramDimensionReference = this.ProgramDimensionReference?.FiscalYear;
+    
+                    if (valueFromProgramDimensionReference != null)
+                    {
+                        yield return ("programDimensionReference.fiscalYear", this.ProgramDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromProjectDimensionReference = this.ProjectDimensionReference?.FiscalYear;
+    
+                    if (valueFromProjectDimensionReference != null)
+                    {
+                        yield return ("projectDimensionReference.fiscalYear", this.ProjectDimensionReference.FiscalYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSourceDimensionReference = this.SourceDimensionReference?.FiscalYear;
+    
+                    if (valueFromSourceDimensionReference != null)
+                    {
+                        yield return ("sourceDimensionReference.fiscalYear", this.SourceDimensionReference.FiscalYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -21466,88 +21358,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("ChartOfAccountReportingTags", $"A supplied 'ChartOfAccountReportingTag' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForFiscalYear = GetFiscalYearSources();
-
-            if (!sourcesForFiscalYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("FiscalYear",
-                    $"Supplied values for unified key property 'fiscalYear' on 'ChartOfAccount' are not consistent: {string.Join(", ", sourcesForFiscalYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetFiscalYearSources()
-            {
-                // Obtain value from the locally defined property
-                yield return Tuple.Create("fiscalYear", instance.FiscalYear);
-                
-                // Obtain value from other references
-                var valueFromBalanceSheetDimensionReference = instance.BalanceSheetDimensionReference?.FiscalYear;
-
-                if (valueFromBalanceSheetDimensionReference != null)
-                {
-                    yield return Tuple.Create("balanceSheetDimensionReference.fiscalYear", instance.BalanceSheetDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromFunctionDimensionReference = instance.FunctionDimensionReference?.FiscalYear;
-
-                if (valueFromFunctionDimensionReference != null)
-                {
-                    yield return Tuple.Create("functionDimensionReference.fiscalYear", instance.FunctionDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromFundDimensionReference = instance.FundDimensionReference?.FiscalYear;
-
-                if (valueFromFundDimensionReference != null)
-                {
-                    yield return Tuple.Create("fundDimensionReference.fiscalYear", instance.FundDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromObjectDimensionReference = instance.ObjectDimensionReference?.FiscalYear;
-
-                if (valueFromObjectDimensionReference != null)
-                {
-                    yield return Tuple.Create("objectDimensionReference.fiscalYear", instance.ObjectDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromOperationalUnitDimensionReference = instance.OperationalUnitDimensionReference?.FiscalYear;
-
-                if (valueFromOperationalUnitDimensionReference != null)
-                {
-                    yield return Tuple.Create("operationalUnitDimensionReference.fiscalYear", instance.OperationalUnitDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromProgramDimensionReference = instance.ProgramDimensionReference?.FiscalYear;
-
-                if (valueFromProgramDimensionReference != null)
-                {
-                    yield return Tuple.Create("programDimensionReference.fiscalYear", instance.ProgramDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromProjectDimensionReference = instance.ProjectDimensionReference?.FiscalYear;
-
-                if (valueFromProjectDimensionReference != null)
-                {
-                    yield return Tuple.Create("projectDimensionReference.fiscalYear", instance.ProjectDimensionReference.FiscalYear);
-                }
-
-                // Obtain value from other references
-                var valueFromSourceDimensionReference = instance.SourceDimensionReference?.FiscalYear;
-
-                if (valueFromSourceDimensionReference != null)
-                {
-                    yield return Tuple.Create("sourceDimensionReference.fiscalYear", instance.SourceDimensionReference.FiscalYear);
                 }
 
             }
@@ -21837,10 +21647,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -22110,10 +21916,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CitizenshipStatusDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -22647,10 +22449,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -22944,10 +22742,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -23217,10 +23011,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassroomPositionDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -23787,10 +23577,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -24194,10 +23980,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -24467,10 +24249,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CohortScopeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -24742,10 +24520,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CohortTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -25015,10 +24789,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CohortYearTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -25723,10 +25493,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityOrganization.EdFi
                 }
 
             }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -26540,10 +26306,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProvider.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -27071,10 +26833,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLicense.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -27344,10 +27102,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyLevelDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -27847,10 +27601,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyObjective.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -28120,10 +27870,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ContactTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -28395,10 +28141,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ContentClassDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -28668,10 +28410,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ContinuationOfServicesReasonDescr
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -28943,10 +28681,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CostRateDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -29216,10 +28950,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CountryDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -30209,10 +29939,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -30489,10 +30215,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -30795,10 +30517,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -31173,10 +30891,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -31517,10 +31231,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -31797,10 +31507,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -32079,10 +31785,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -32352,10 +32054,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseAttemptResultDescriptor.EdF
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -32627,10 +32325,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseDefinedByDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -32900,10 +32594,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseGPAApplicabilityDescriptor.
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -33175,10 +32865,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseIdentificationSystemDescrip
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -33448,10 +33134,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseLevelCharacteristicDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -34256,6 +33938,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSchoolReference = this.SchoolReference?.SchoolId;
+    
+                    if (valueFromSchoolReference != null)
+                    {
+                        yield return ("schoolReference.schoolId", this.SchoolReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSessionReference = this.SessionReference?.SchoolId;
+    
+                    if (valueFromSessionReference != null)
+                    {
+                        yield return ("sessionReference.schoolId", this.SessionReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -34344,37 +34065,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("CourseOfferingOfferedGradeLevels", $"A supplied 'CourseOfferingOfferedGradeLevel' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'CourseOffering' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromSchoolReference = instance.SchoolReference?.SchoolId;
-
-                if (valueFromSchoolReference != null)
-                {
-                    yield return Tuple.Create("schoolReference.schoolId", instance.SchoolReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromSessionReference = instance.SessionReference?.SchoolId;
-
-                if (valueFromSessionReference != null)
-                {
-                    yield return Tuple.Create("sessionReference.schoolId", instance.SessionReference.SchoolId);
                 }
 
             }
@@ -34656,10 +34346,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -34936,10 +34622,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -35218,10 +34900,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -35491,10 +35169,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseRepeatCodeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -36758,10 +36432,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -37038,10 +36708,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -37345,10 +37011,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -37625,10 +37287,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -37935,10 +37593,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -38268,10 +37922,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -38926,10 +38576,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -39206,10 +38852,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -39488,10 +39130,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -39769,10 +39407,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -40042,10 +39676,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CredentialFieldDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -40317,10 +39947,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CredentialTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -40590,10 +40216,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CreditCategoryDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -40865,10 +40487,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CreditTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -41138,10 +40756,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CTEProgramServiceDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -41413,10 +41027,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CurriculumUsedDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -41686,10 +41296,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DeliveryMethodDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -42287,10 +41893,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -42568,10 +42170,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -42841,10 +42439,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DiagnosisDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -43116,10 +42710,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DiplomaLevelDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -43389,10 +42979,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DiplomaTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -43664,10 +43250,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisabilityDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -43938,10 +43520,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisabilityDesignationDescriptor.E
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -44211,10 +43789,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisabilityDeterminationSourceType
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -45142,10 +44716,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -45422,10 +44992,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -45767,10 +45333,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -46116,6 +45678,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentAssociation).DisciplineAction.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentDisciplineIncidentAssociationReference = this.StudentDisciplineIncidentAssociationReference?.StudentUniqueId;
+    
+                    if (valueFromStudentDisciplineIncidentAssociationReference != null)
+                    {
+                        yield return ("studentDisciplineIncidentAssociationReference.studentUniqueId", this.StudentDisciplineIncidentAssociationReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -46156,32 +45752,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'DisciplineActionStudentDisciplineIncidentAssociation' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentAssociation).DisciplineAction.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromStudentDisciplineIncidentAssociationReference = instance.StudentDisciplineIncidentAssociationReference?.StudentUniqueId;
-
-                if (valueFromStudentDisciplineIncidentAssociationReference != null)
-                {
-                    yield return Tuple.Create("studentDisciplineIncidentAssociationReference.studentUniqueId", instance.StudentDisciplineIncidentAssociationReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -46557,6 +46127,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentBehaviorAssociation).DisciplineAction.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentDisciplineIncidentBehaviorAssociationReference = this.StudentDisciplineIncidentBehaviorAssociationReference?.StudentUniqueId;
+    
+                    if (valueFromStudentDisciplineIncidentBehaviorAssociationReference != null)
+                    {
+                        yield return ("studentDisciplineIncidentBehaviorAssociationReference.studentUniqueId", this.StudentDisciplineIncidentBehaviorAssociationReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -46597,32 +46201,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'DisciplineActionStudentDisciplineIncidentBehaviorAssociation' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentBehaviorAssociation).DisciplineAction.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromStudentDisciplineIncidentBehaviorAssociationReference = instance.StudentDisciplineIncidentBehaviorAssociationReference?.StudentUniqueId;
-
-                if (valueFromStudentDisciplineIncidentBehaviorAssociationReference != null)
-                {
-                    yield return Tuple.Create("studentDisciplineIncidentBehaviorAssociationReference.studentUniqueId", instance.StudentDisciplineIncidentBehaviorAssociationReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -46894,10 +46472,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineActionLengthDifferenceR
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -47167,10 +46741,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -47962,10 +47532,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -48250,10 +47816,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -48568,10 +48130,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -48849,10 +48407,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -49123,10 +48677,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncidentParticipationCo
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -49396,10 +48946,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationalEnvironmentDescriptor.
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -50397,10 +49943,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -50677,10 +50219,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -50959,10 +50497,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -51239,10 +50773,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -51584,10 +51114,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -51864,10 +51390,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -52146,10 +51668,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -52426,10 +51944,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -53035,10 +52549,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -53322,10 +52832,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -53602,10 +53108,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -53892,10 +53394,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -54290,10 +53788,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -54576,10 +54070,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -54866,10 +54356,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -55220,10 +54706,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -55493,10 +54975,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationAssociationT
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -55768,10 +55246,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationCategoryDesc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -56041,10 +55515,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIdentificati
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -56610,10 +56080,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -57328,10 +56794,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetwork.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -57849,10 +57311,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -58363,10 +57821,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -58636,10 +58090,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationPlanDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -59413,10 +58863,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationServiceCenter.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -59686,10 +59132,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ElectronicMailTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -59961,10 +59403,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EmploymentStatusDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -60234,10 +59672,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EntryGradeLevelReasonDescriptor.E
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -60509,10 +59943,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EntryTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -60783,10 +60213,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EventCircumstanceDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -61056,10 +60482,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ExitWithdrawTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -61597,10 +61019,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -61870,10 +61288,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FinancialCollectionDescriptor.EdF
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -62372,10 +61786,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -62652,10 +62062,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -63154,10 +62560,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -63434,10 +62836,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -63878,10 +63276,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -64190,10 +63584,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -65132,6 +64522,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromGradingPeriodReference = this.GradingPeriodReference?.SchoolId;
+    
+                    if (valueFromGradingPeriodReference != null)
+                    {
+                        yield return ("gradingPeriodReference.schoolId", this.GradingPeriodReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromStudentSectionAssociationReference = this.StudentSectionAssociationReference?.SchoolId;
+    
+                    if (valueFromStudentSectionAssociationReference != null)
+                    {
+                        yield return ("studentSectionAssociationReference.schoolId", this.StudentSectionAssociationReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -65196,37 +64625,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("GradeLearningStandardGrades", $"A supplied 'GradeLearningStandardGrade' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'Grade' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromGradingPeriodReference = instance.GradingPeriodReference?.SchoolId;
-
-                if (valueFromGradingPeriodReference != null)
-                {
-                    yield return Tuple.Create("gradingPeriodReference.schoolId", instance.GradingPeriodReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromStudentSectionAssociationReference = instance.StudentSectionAssociationReference?.SchoolId;
-
-                if (valueFromStudentSectionAssociationReference != null)
-                {
-                    yield return Tuple.Create("studentSectionAssociationReference.schoolId", instance.StudentSectionAssociationReference.SchoolId);
                 }
 
             }
@@ -65602,10 +65000,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -66373,6 +65767,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromGradingPeriodReference = this.GradingPeriodReference?.SchoolId;
+    
+                    if (valueFromGradingPeriodReference != null)
+                    {
+                        yield return ("gradingPeriodReference.schoolId", this.GradingPeriodReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSectionReference = this.SectionReference?.SchoolId;
+    
+                    if (valueFromSectionReference != null)
+                    {
+                        yield return ("sectionReference.schoolId", this.SectionReference.SchoolId);
+                    }
+    
+                }
+                var sourcesForSchoolYear = GetSchoolYearSources().ToArray();
+
+                if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetSchoolYearSources()
+                {
+                    // Obtain value from other references
+                    var valueFromGradingPeriodReference = this.GradingPeriodReference?.SchoolYear;
+    
+                    if (valueFromGradingPeriodReference != null)
+                    {
+                        yield return ("gradingPeriodReference.schoolYear", this.GradingPeriodReference.SchoolYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSectionReference = this.SectionReference?.SchoolYear;
+    
+                    if (valueFromSectionReference != null)
+                    {
+                        yield return ("sectionReference.schoolYear", this.SectionReference.SchoolYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -66437,64 +65902,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("GradebookEntryLearningStandards", $"A supplied 'GradebookEntryLearningStandard' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'GradebookEntry' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromGradingPeriodReference = instance.GradingPeriodReference?.SchoolId;
-
-                if (valueFromGradingPeriodReference != null)
-                {
-                    yield return Tuple.Create("gradingPeriodReference.schoolId", instance.GradingPeriodReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromSectionReference = instance.SectionReference?.SchoolId;
-
-                if (valueFromSectionReference != null)
-                {
-                    yield return Tuple.Create("sectionReference.schoolId", instance.SectionReference.SchoolId);
-                }
-
-            }
-            var sourcesForSchoolYear = GetSchoolYearSources();
-
-            if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolYear",
-                    $"Supplied values for unified key property 'schoolYear' on 'GradebookEntry' are not consistent: {string.Join(", ", sourcesForSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetSchoolYearSources()
-            {
-                // Obtain value from other references
-                var valueFromGradingPeriodReference = instance.GradingPeriodReference?.SchoolYear;
-
-                if (valueFromGradingPeriodReference != null)
-                {
-                    yield return Tuple.Create("gradingPeriodReference.schoolYear", instance.GradingPeriodReference.SchoolYear);
-                }
-
-                // Obtain value from other references
-                var valueFromSectionReference = instance.SectionReference?.SchoolYear;
-
-                if (valueFromSectionReference != null)
-                {
-                    yield return Tuple.Create("sectionReference.schoolYear", instance.SectionReference.SchoolYear);
                 }
 
             }
@@ -66839,10 +66246,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -67112,10 +66515,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntryTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -67387,10 +66786,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradeLevelDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -67661,10 +67056,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradePointAverageTypeDescriptor.E
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -67934,10 +67325,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradeTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -68531,10 +67918,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -68804,10 +68187,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriodDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -69654,10 +69033,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -70072,10 +69447,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -70449,10 +69820,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -70775,10 +70142,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -71100,10 +70463,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -71587,10 +70946,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -71900,10 +71255,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -72205,10 +71556,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -72478,10 +71825,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlanTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -72753,10 +72096,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GunFreeSchoolsActReportingStatusD
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -73026,10 +72365,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.HomelessPrimaryNighttimeResidence
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -73301,10 +72636,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.HomelessProgramServiceDescriptor.
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -73574,10 +72905,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IdentificationDocumentUseDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -73849,10 +73176,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IncidentLocationDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -74122,10 +73445,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IndicatorDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -74397,10 +73716,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IndicatorGroupDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -74670,10 +73985,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IndicatorLevelDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -74945,10 +74256,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InstitutionTelephoneNumberTypeDes
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -75218,10 +74525,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InteractivityStyleDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -75493,10 +74796,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InternetAccessDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -75767,10 +75066,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InternetAccessTypeInResidenceDesc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -76040,10 +75335,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InternetPerformanceInResidenceDes
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -77172,10 +76463,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -77452,10 +76739,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -77734,10 +77017,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -78014,10 +77293,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -78358,10 +77633,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -78736,10 +78007,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -79016,10 +78283,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -79314,10 +78577,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -79594,10 +78853,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -79940,10 +79195,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -80221,10 +79472,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -80495,10 +79742,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionClassDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -80768,10 +80011,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionEffectivenessRatingDe
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -81705,10 +80944,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -81985,10 +81220,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -82267,10 +81498,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -82547,10 +81774,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -82892,10 +82115,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -83172,10 +82391,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -83454,10 +82669,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -83734,10 +82945,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -84838,10 +84045,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -85119,10 +84322,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -85399,10 +84598,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -85744,10 +84939,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -86077,10 +85268,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -86357,10 +85544,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -86639,10 +85822,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -86919,10 +86098,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -87201,10 +86376,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -87474,10 +86645,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LanguageDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -87749,10 +86916,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LanguageInstructionProgramService
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -88022,10 +87185,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LanguageUseDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -88776,10 +87935,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -89056,10 +88211,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -89540,10 +88691,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -89821,10 +88968,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -90101,10 +89244,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -90445,10 +89584,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -91239,10 +90374,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -91519,10 +90650,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -92003,10 +91130,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -92284,10 +91407,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -92564,10 +91683,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -92863,10 +91978,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -93208,10 +92319,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -93481,10 +92588,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardCategoryDescripto
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -94045,10 +93148,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -94318,10 +93417,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceStreng
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -94593,10 +93688,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardScopeDescriptor.E
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -94866,10 +93957,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LevelOfEducationDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -95141,10 +94228,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LicenseStatusDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -95415,10 +94498,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LicenseTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -95688,10 +94767,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LimitedEnglishProficiencyDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -96320,6 +95395,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForFiscalYear = GetFiscalYearSources().ToArray();
+
+                if (!sourcesForFiscalYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForFiscalYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForFiscalYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'fiscalYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForFiscalYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetFiscalYearSources()
+                {
+                    // Obtain value from the locally defined property
+                    yield return ("FiscalYear", this.FiscalYear);
+                    
+                    // Obtain value from other references
+                    var valueFromChartOfAccountReference = this.ChartOfAccountReference?.FiscalYear;
+    
+                    if (valueFromChartOfAccountReference != null)
+                    {
+                        yield return ("chartOfAccountReference.fiscalYear", this.ChartOfAccountReference.FiscalYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -96384,32 +95493,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("LocalAccountReportingTags", $"A supplied 'LocalAccountReportingTag' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForFiscalYear = GetFiscalYearSources();
-
-            if (!sourcesForFiscalYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("FiscalYear",
-                    $"Supplied values for unified key property 'fiscalYear' on 'LocalAccount' are not consistent: {string.Join(", ", sourcesForFiscalYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetFiscalYearSources()
-            {
-                // Obtain value from the locally defined property
-                yield return Tuple.Create("fiscalYear", instance.FiscalYear);
-                
-                // Obtain value from other references
-                var valueFromChartOfAccountReference = instance.ChartOfAccountReference?.FiscalYear;
-
-                if (valueFromChartOfAccountReference != null)
-                {
-                    yield return Tuple.Create("chartOfAccountReference.fiscalYear", instance.ChartOfAccountReference.FiscalYear);
                 }
 
             }
@@ -96698,10 +95781,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -97269,10 +96348,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalActual.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -97838,10 +96913,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalBudget.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -98507,10 +97578,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -98780,10 +97847,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocaleDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -99828,10 +98891,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -100181,10 +99240,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -100525,10 +99580,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -100798,10 +99849,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgencyCategoryDescr
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -101368,10 +100415,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEncumbrance.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -102037,10 +101080,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -102496,10 +101535,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Location.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -102769,10 +101804,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MagnetSpecialProgramEmphasisSchoo
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -103044,10 +102075,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MediumOfInstructionDescriptor.EdF
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -103317,10 +102344,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MethodCreditEarnedDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -103592,10 +102615,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MigrantEducationProgramServiceDes
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -103865,10 +102884,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ModelEntityDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -104140,10 +103155,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MonitoredDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -104413,10 +103424,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.NeglectedOrDelinquentProgramDescr
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -104688,10 +103695,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.NeglectedOrDelinquentProgramServi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -104961,10 +103964,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.NetworkPurposeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -105463,10 +104462,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -105743,10 +104738,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -106519,6 +105510,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources().ToArray();
+
+                if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForAssessmentIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForAssessmentIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'assessmentIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForAssessmentIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetAssessmentIdentifierSources()
+                {
+                    // Obtain value from other references
+                    var valueFromAssessmentReference = this.AssessmentReference?.AssessmentIdentifier;
+    
+                    if (valueFromAssessmentReference != null)
+                    {
+                        yield return ("assessmentReference.assessmentIdentifier", this.AssessmentReference.AssessmentIdentifier);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromParentObjectiveAssessmentReference = this.ParentObjectiveAssessmentReference?.AssessmentIdentifier;
+    
+                    if (valueFromParentObjectiveAssessmentReference != null)
+                    {
+                        yield return ("parentObjectiveAssessmentReference.assessmentIdentifier", this.ParentObjectiveAssessmentReference.AssessmentIdentifier);
+                    }
+    
+                }
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from other references
+                    var valueFromAssessmentReference = this.AssessmentReference?.Namespace;
+    
+                    if (valueFromAssessmentReference != null)
+                    {
+                        yield return ("assessmentReference.namespace", this.AssessmentReference.Namespace);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromParentObjectiveAssessmentReference = this.ParentObjectiveAssessmentReference?.Namespace;
+    
+                    if (valueFromParentObjectiveAssessmentReference != null)
+                    {
+                        yield return ("parentObjectiveAssessmentReference.namespace", this.ParentObjectiveAssessmentReference.Namespace);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -106619,64 +105681,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("ObjectiveAssessmentScores", $"A supplied 'ObjectiveAssessmentScore' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources();
-
-            if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("AssessmentIdentifier",
-                    $"Supplied values for unified key property 'assessmentIdentifier' on 'ObjectiveAssessment' are not consistent: {string.Join(", ", sourcesForAssessmentIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetAssessmentIdentifierSources()
-            {
-                // Obtain value from other references
-                var valueFromAssessmentReference = instance.AssessmentReference?.AssessmentIdentifier;
-
-                if (valueFromAssessmentReference != null)
-                {
-                    yield return Tuple.Create("assessmentReference.assessmentIdentifier", instance.AssessmentReference.AssessmentIdentifier);
-                }
-
-                // Obtain value from other references
-                var valueFromParentObjectiveAssessmentReference = instance.ParentObjectiveAssessmentReference?.AssessmentIdentifier;
-
-                if (valueFromParentObjectiveAssessmentReference != null)
-                {
-                    yield return Tuple.Create("parentObjectiveAssessmentReference.assessmentIdentifier", instance.ParentObjectiveAssessmentReference.AssessmentIdentifier);
-                }
-
-            }
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'ObjectiveAssessment' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from other references
-                var valueFromAssessmentReference = instance.AssessmentReference?.Namespace;
-
-                if (valueFromAssessmentReference != null)
-                {
-                    yield return Tuple.Create("assessmentReference.namespace", instance.AssessmentReference.Namespace);
-                }
-
-                // Obtain value from other references
-                var valueFromParentObjectiveAssessmentReference = instance.ParentObjectiveAssessmentReference?.Namespace;
-
-                if (valueFromParentObjectiveAssessmentReference != null)
-                {
-                    yield return Tuple.Create("parentObjectiveAssessmentReference.namespace", instance.ParentObjectiveAssessmentReference.Namespace);
                 }
 
             }
@@ -106993,6 +105997,67 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources().ToArray();
+
+                if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForAssessmentIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForAssessmentIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'assessmentIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForAssessmentIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetAssessmentIdentifierSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IObjectiveAssessmentAssessmentItem).ObjectiveAssessment.AssessmentIdentifier);
+    
+                    // Obtain value from other references
+                    var valueFromAssessmentItemReference = this.AssessmentItemReference?.AssessmentIdentifier;
+    
+                    if (valueFromAssessmentItemReference != null)
+                    {
+                        yield return ("assessmentItemReference.assessmentIdentifier", this.AssessmentItemReference.AssessmentIdentifier);
+                    }
+    
+                }
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IObjectiveAssessmentAssessmentItem).ObjectiveAssessment.Namespace);
+    
+                    // Obtain value from other references
+                    var valueFromAssessmentItemReference = this.AssessmentItemReference?.Namespace;
+    
+                    if (valueFromAssessmentItemReference != null)
+                    {
+                        yield return ("assessmentItemReference.namespace", this.AssessmentItemReference.Namespace);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -107033,54 +106098,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources();
-
-            if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("AssessmentIdentifier",
-                    $"Supplied values for unified key property 'assessmentIdentifier' on 'ObjectiveAssessmentAssessmentItem' are not consistent: {string.Join(", ", sourcesForAssessmentIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetAssessmentIdentifierSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("assessmentIdentifier (from parent context)", (instance as Entities.Common.EdFi.IObjectiveAssessmentAssessmentItem).ObjectiveAssessment.AssessmentIdentifier);
-
-                // Obtain value from other references
-                var valueFromAssessmentItemReference = instance.AssessmentItemReference?.AssessmentIdentifier;
-
-                if (valueFromAssessmentItemReference != null)
-                {
-                    yield return Tuple.Create("assessmentItemReference.assessmentIdentifier", instance.AssessmentItemReference.AssessmentIdentifier);
-                }
-
-            }
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'ObjectiveAssessmentAssessmentItem' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("namespace (from parent context)", (instance as Entities.Common.EdFi.IObjectiveAssessmentAssessmentItem).ObjectiveAssessment.Namespace);
-
-                // Obtain value from other references
-                var valueFromAssessmentItemReference = instance.AssessmentItemReference?.Namespace;
-
-                if (valueFromAssessmentItemReference != null)
-                {
-                    yield return Tuple.Create("assessmentItemReference.namespace", instance.AssessmentItemReference.Namespace);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -107422,10 +106439,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -107753,10 +106766,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -108058,10 +107067,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -108331,10 +107336,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OldEthnicityDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -108985,10 +107986,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -109265,10 +108262,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -109547,10 +108540,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -109820,10 +108809,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalStatusDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -110322,10 +109307,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -110602,10 +109583,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -111394,10 +110371,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OrganizationDepartment.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -111667,10 +110640,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OtherNameTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -112666,10 +111635,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -113174,10 +112139,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -113460,10 +112421,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -113773,10 +112730,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -114126,10 +113079,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -114492,10 +113441,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -114772,10 +113717,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -115095,10 +114036,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -115434,10 +114371,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -115755,10 +114688,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -116028,10 +114957,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ParticipationDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -116303,10 +115228,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ParticipationStatusDescriptor.EdF
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -116577,10 +115498,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PerformanceBaseConversionDescript
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -116850,10 +115767,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PerformanceLevelDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -117240,10 +116153,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Person.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -117513,10 +116422,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PersonalInformationVerificationDe
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -117788,10 +116693,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PlatformTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -118062,10 +116963,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PopulationServedDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -118335,10 +117232,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostingResultDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -118890,10 +117783,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -119163,10 +118052,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEventCategoryDescrip
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -119948,10 +118833,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -120229,10 +119110,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -120502,10 +119379,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitutionLevelDesc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -120777,10 +119650,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PrimaryLearningDeviceAccessDescri
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -121050,10 +119919,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PrimaryLearningDeviceAwayFromScho
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -121325,10 +120190,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PrimaryLearningDeviceProviderDesc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -121598,10 +120459,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProficiencyDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -122409,10 +121266,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -122689,10 +121542,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -123067,10 +121916,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -123411,10 +122256,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -123691,10 +122532,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -123973,10 +122810,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -124247,10 +123080,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramAssignmentDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -124520,10 +123349,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramCharacteristicDescriptor.E
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -125022,10 +123847,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -125303,10 +124124,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -125576,10 +124393,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramSponsorDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -125851,10 +124664,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -126125,10 +124934,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgressDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -126398,10 +125203,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgressLevelDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -126900,10 +125701,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -127181,10 +125978,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -127454,10 +126247,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProviderCategoryDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -127729,10 +126518,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProviderProfitabilityDescriptor.E
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -128002,10 +126787,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProviderStatusDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -128277,10 +127058,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PublicationStatusDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -128550,10 +127327,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.QuestionFormDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -128825,10 +127598,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RaceDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -129098,10 +127867,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReasonExitedDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -129373,10 +128138,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReasonNotTestedDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -129646,10 +128407,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RecognitionTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -129921,10 +128678,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RelationDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -130194,10 +128947,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RepeatIdentifierDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -131231,10 +129980,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -131744,6 +130489,121 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForGradingPeriodDescriptor = GetGradingPeriodDescriptorSources().ToArray();
+
+                if (!sourcesForGradingPeriodDescriptor.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodDescriptor.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodDescriptor.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodDescriptor' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodDescriptor.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetGradingPeriodDescriptorSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardGrade).ReportCard.GradingPeriodDescriptor);
+    
+                    // Obtain value from other references
+                    var valueFromGradeReference = this.GradeReference?.GradingPeriodDescriptor;
+    
+                    if (valueFromGradeReference != null)
+                    {
+                        yield return ("gradeReference.gradingPeriodDescriptor", this.GradeReference.GradingPeriodDescriptor);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSequence = GetGradingPeriodSequenceSources().ToArray();
+
+                if (!sourcesForGradingPeriodSequence.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSequence.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSequence.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSequence' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSequence.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetGradingPeriodSequenceSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardGrade).ReportCard.GradingPeriodSequence);
+    
+                    // Obtain value from other references
+                    var valueFromGradeReference = this.GradeReference?.GradingPeriodSequence;
+    
+                    if (valueFromGradeReference != null)
+                    {
+                        yield return ("gradeReference.gradingPeriodSequence", this.GradeReference.GradingPeriodSequence);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSchoolYear = GetGradingPeriodSchoolYearSources().ToArray();
+
+                if (!sourcesForGradingPeriodSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSchoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetGradingPeriodSchoolYearSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardGrade).ReportCard.GradingPeriodSchoolYear);
+    
+                    // Obtain value from other references
+                    var valueFromGradeReference = this.GradeReference?.GradingPeriodSchoolYear;
+    
+                    if (valueFromGradeReference != null)
+                    {
+                        yield return ("gradeReference.gradingPeriodSchoolYear", this.GradeReference.GradingPeriodSchoolYear);
+                    }
+    
+                }
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardGrade).ReportCard.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromGradeReference = this.GradeReference?.StudentUniqueId;
+    
+                    if (valueFromGradeReference != null)
+                    {
+                        yield return ("gradeReference.studentUniqueId", this.GradeReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -131784,98 +130644,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForGradingPeriodDescriptor = GetGradingPeriodDescriptorSources();
-
-            if (!sourcesForGradingPeriodDescriptor.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("GradingPeriodDescriptor",
-                    $"Supplied values for unified key property 'gradingPeriodDescriptor' on 'ReportCardGrade' are not consistent: {string.Join(", ", sourcesForGradingPeriodDescriptor.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetGradingPeriodDescriptorSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodDescriptor (from parent context)", (instance as Entities.Common.EdFi.IReportCardGrade).ReportCard.GradingPeriodDescriptor);
-
-                // Obtain value from other references
-                var valueFromGradeReference = instance.GradeReference?.GradingPeriodDescriptor;
-
-                if (valueFromGradeReference != null)
-                {
-                    yield return Tuple.Create("gradeReference.gradingPeriodDescriptor", instance.GradeReference.GradingPeriodDescriptor);
-                }
-
-            }
-            var sourcesForGradingPeriodSequence = GetGradingPeriodSequenceSources();
-
-            if (!sourcesForGradingPeriodSequence.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSequence",
-                    $"Supplied values for unified key property 'gradingPeriodSequence' on 'ReportCardGrade' are not consistent: {string.Join(", ", sourcesForGradingPeriodSequence.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetGradingPeriodSequenceSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSequence (from parent context)", (instance as Entities.Common.EdFi.IReportCardGrade).ReportCard.GradingPeriodSequence);
-
-                // Obtain value from other references
-                var valueFromGradeReference = instance.GradeReference?.GradingPeriodSequence;
-
-                if (valueFromGradeReference != null)
-                {
-                    yield return Tuple.Create("gradeReference.gradingPeriodSequence", instance.GradeReference.GradingPeriodSequence);
-                }
-
-            }
-            var sourcesForGradingPeriodSchoolYear = GetGradingPeriodSchoolYearSources();
-
-            if (!sourcesForGradingPeriodSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSchoolYear",
-                    $"Supplied values for unified key property 'gradingPeriodSchoolYear' on 'ReportCardGrade' are not consistent: {string.Join(", ", sourcesForGradingPeriodSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetGradingPeriodSchoolYearSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSchoolYear (from parent context)", (instance as Entities.Common.EdFi.IReportCardGrade).ReportCard.GradingPeriodSchoolYear);
-
-                // Obtain value from other references
-                var valueFromGradeReference = instance.GradeReference?.GradingPeriodSchoolYear;
-
-                if (valueFromGradeReference != null)
-                {
-                    yield return Tuple.Create("gradeReference.gradingPeriodSchoolYear", instance.GradeReference.GradingPeriodSchoolYear);
-                }
-
-            }
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'ReportCardGrade' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IReportCardGrade).ReportCard.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromGradeReference = instance.GradeReference?.StudentUniqueId;
-
-                if (valueFromGradeReference != null)
-                {
-                    yield return Tuple.Create("gradeReference.studentUniqueId", instance.GradeReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -132197,10 +130965,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -132580,6 +131344,148 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForGradingPeriodDescriptor = GetGradingPeriodDescriptorSources().ToArray();
+
+                if (!sourcesForGradingPeriodDescriptor.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodDescriptor.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodDescriptor.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodDescriptor' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodDescriptor.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetGradingPeriodDescriptorSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodDescriptor);
+    
+                    // Obtain value from other references
+                    var valueFromStudentCompetencyObjectiveReference = this.StudentCompetencyObjectiveReference?.GradingPeriodDescriptor;
+    
+                    if (valueFromStudentCompetencyObjectiveReference != null)
+                    {
+                        yield return ("studentCompetencyObjectiveReference.gradingPeriodDescriptor", this.StudentCompetencyObjectiveReference.GradingPeriodDescriptor);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSequence = GetGradingPeriodSequenceSources().ToArray();
+
+                if (!sourcesForGradingPeriodSequence.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSequence.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSequence.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSequence' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSequence.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetGradingPeriodSequenceSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodSequence);
+    
+                    // Obtain value from other references
+                    var valueFromStudentCompetencyObjectiveReference = this.StudentCompetencyObjectiveReference?.GradingPeriodSequence;
+    
+                    if (valueFromStudentCompetencyObjectiveReference != null)
+                    {
+                        yield return ("studentCompetencyObjectiveReference.gradingPeriodSequence", this.StudentCompetencyObjectiveReference.GradingPeriodSequence);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSchoolId = GetGradingPeriodSchoolIdSources().ToArray();
+
+                if (!sourcesForGradingPeriodSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSchoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetGradingPeriodSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodSchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentCompetencyObjectiveReference = this.StudentCompetencyObjectiveReference?.GradingPeriodSchoolId;
+    
+                    if (valueFromStudentCompetencyObjectiveReference != null)
+                    {
+                        yield return ("studentCompetencyObjectiveReference.gradingPeriodSchoolId", this.StudentCompetencyObjectiveReference.GradingPeriodSchoolId);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSchoolYear = GetGradingPeriodSchoolYearSources().ToArray();
+
+                if (!sourcesForGradingPeriodSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSchoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetGradingPeriodSchoolYearSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodSchoolYear);
+    
+                    // Obtain value from other references
+                    var valueFromStudentCompetencyObjectiveReference = this.StudentCompetencyObjectiveReference?.GradingPeriodSchoolYear;
+    
+                    if (valueFromStudentCompetencyObjectiveReference != null)
+                    {
+                        yield return ("studentCompetencyObjectiveReference.gradingPeriodSchoolYear", this.StudentCompetencyObjectiveReference.GradingPeriodSchoolYear);
+                    }
+    
+                }
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentCompetencyObjectiveReference = this.StudentCompetencyObjectiveReference?.StudentUniqueId;
+    
+                    if (valueFromStudentCompetencyObjectiveReference != null)
+                    {
+                        yield return ("studentCompetencyObjectiveReference.studentUniqueId", this.StudentCompetencyObjectiveReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -132620,120 +131526,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForGradingPeriodDescriptor = GetGradingPeriodDescriptorSources();
-
-            if (!sourcesForGradingPeriodDescriptor.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("GradingPeriodDescriptor",
-                    $"Supplied values for unified key property 'gradingPeriodDescriptor' on 'ReportCardStudentCompetencyObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodDescriptor.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetGradingPeriodDescriptorSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodDescriptor (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodDescriptor);
-
-                // Obtain value from other references
-                var valueFromStudentCompetencyObjectiveReference = instance.StudentCompetencyObjectiveReference?.GradingPeriodDescriptor;
-
-                if (valueFromStudentCompetencyObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentCompetencyObjectiveReference.gradingPeriodDescriptor", instance.StudentCompetencyObjectiveReference.GradingPeriodDescriptor);
-                }
-
-            }
-            var sourcesForGradingPeriodSequence = GetGradingPeriodSequenceSources();
-
-            if (!sourcesForGradingPeriodSequence.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSequence",
-                    $"Supplied values for unified key property 'gradingPeriodSequence' on 'ReportCardStudentCompetencyObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodSequence.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetGradingPeriodSequenceSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSequence (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodSequence);
-
-                // Obtain value from other references
-                var valueFromStudentCompetencyObjectiveReference = instance.StudentCompetencyObjectiveReference?.GradingPeriodSequence;
-
-                if (valueFromStudentCompetencyObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentCompetencyObjectiveReference.gradingPeriodSequence", instance.StudentCompetencyObjectiveReference.GradingPeriodSequence);
-                }
-
-            }
-            var sourcesForGradingPeriodSchoolId = GetGradingPeriodSchoolIdSources();
-
-            if (!sourcesForGradingPeriodSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSchoolId",
-                    $"Supplied values for unified key property 'gradingPeriodSchoolId' on 'ReportCardStudentCompetencyObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetGradingPeriodSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSchoolId (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodSchoolId);
-
-                // Obtain value from other references
-                var valueFromStudentCompetencyObjectiveReference = instance.StudentCompetencyObjectiveReference?.GradingPeriodSchoolId;
-
-                if (valueFromStudentCompetencyObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentCompetencyObjectiveReference.gradingPeriodSchoolId", instance.StudentCompetencyObjectiveReference.GradingPeriodSchoolId);
-                }
-
-            }
-            var sourcesForGradingPeriodSchoolYear = GetGradingPeriodSchoolYearSources();
-
-            if (!sourcesForGradingPeriodSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSchoolYear",
-                    $"Supplied values for unified key property 'gradingPeriodSchoolYear' on 'ReportCardStudentCompetencyObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetGradingPeriodSchoolYearSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSchoolYear (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.GradingPeriodSchoolYear);
-
-                // Obtain value from other references
-                var valueFromStudentCompetencyObjectiveReference = instance.StudentCompetencyObjectiveReference?.GradingPeriodSchoolYear;
-
-                if (valueFromStudentCompetencyObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentCompetencyObjectiveReference.gradingPeriodSchoolYear", instance.StudentCompetencyObjectiveReference.GradingPeriodSchoolYear);
-                }
-
-            }
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'ReportCardStudentCompetencyObjective' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentCompetencyObjective).ReportCard.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromStudentCompetencyObjectiveReference = instance.StudentCompetencyObjectiveReference?.StudentUniqueId;
-
-                if (valueFromStudentCompetencyObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentCompetencyObjectiveReference.studentUniqueId", instance.StudentCompetencyObjectiveReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -133083,6 +131875,148 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForGradingPeriodDescriptor = GetGradingPeriodDescriptorSources().ToArray();
+
+                if (!sourcesForGradingPeriodDescriptor.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodDescriptor.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodDescriptor.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodDescriptor' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodDescriptor.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetGradingPeriodDescriptorSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodDescriptor);
+    
+                    // Obtain value from other references
+                    var valueFromStudentLearningObjectiveReference = this.StudentLearningObjectiveReference?.GradingPeriodDescriptor;
+    
+                    if (valueFromStudentLearningObjectiveReference != null)
+                    {
+                        yield return ("studentLearningObjectiveReference.gradingPeriodDescriptor", this.StudentLearningObjectiveReference.GradingPeriodDescriptor);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSequence = GetGradingPeriodSequenceSources().ToArray();
+
+                if (!sourcesForGradingPeriodSequence.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSequence.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSequence.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSequence' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSequence.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetGradingPeriodSequenceSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodSequence);
+    
+                    // Obtain value from other references
+                    var valueFromStudentLearningObjectiveReference = this.StudentLearningObjectiveReference?.GradingPeriodSequence;
+    
+                    if (valueFromStudentLearningObjectiveReference != null)
+                    {
+                        yield return ("studentLearningObjectiveReference.gradingPeriodSequence", this.StudentLearningObjectiveReference.GradingPeriodSequence);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSchoolId = GetGradingPeriodSchoolIdSources().ToArray();
+
+                if (!sourcesForGradingPeriodSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSchoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetGradingPeriodSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodSchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentLearningObjectiveReference = this.StudentLearningObjectiveReference?.GradingPeriodSchoolId;
+    
+                    if (valueFromStudentLearningObjectiveReference != null)
+                    {
+                        yield return ("studentLearningObjectiveReference.gradingPeriodSchoolId", this.StudentLearningObjectiveReference.GradingPeriodSchoolId);
+                    }
+    
+                }
+                var sourcesForGradingPeriodSchoolYear = GetGradingPeriodSchoolYearSources().ToArray();
+
+                if (!sourcesForGradingPeriodSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForGradingPeriodSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForGradingPeriodSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'gradingPeriodSchoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForGradingPeriodSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetGradingPeriodSchoolYearSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodSchoolYear);
+    
+                    // Obtain value from other references
+                    var valueFromStudentLearningObjectiveReference = this.StudentLearningObjectiveReference?.GradingPeriodSchoolYear;
+    
+                    if (valueFromStudentLearningObjectiveReference != null)
+                    {
+                        yield return ("studentLearningObjectiveReference.gradingPeriodSchoolYear", this.StudentLearningObjectiveReference.GradingPeriodSchoolYear);
+                    }
+    
+                }
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentLearningObjectiveReference = this.StudentLearningObjectiveReference?.StudentUniqueId;
+    
+                    if (valueFromStudentLearningObjectiveReference != null)
+                    {
+                        yield return ("studentLearningObjectiveReference.studentUniqueId", this.StudentLearningObjectiveReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -133123,120 +132057,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForGradingPeriodDescriptor = GetGradingPeriodDescriptorSources();
-
-            if (!sourcesForGradingPeriodDescriptor.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("GradingPeriodDescriptor",
-                    $"Supplied values for unified key property 'gradingPeriodDescriptor' on 'ReportCardStudentLearningObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodDescriptor.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetGradingPeriodDescriptorSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodDescriptor (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodDescriptor);
-
-                // Obtain value from other references
-                var valueFromStudentLearningObjectiveReference = instance.StudentLearningObjectiveReference?.GradingPeriodDescriptor;
-
-                if (valueFromStudentLearningObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentLearningObjectiveReference.gradingPeriodDescriptor", instance.StudentLearningObjectiveReference.GradingPeriodDescriptor);
-                }
-
-            }
-            var sourcesForGradingPeriodSequence = GetGradingPeriodSequenceSources();
-
-            if (!sourcesForGradingPeriodSequence.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSequence",
-                    $"Supplied values for unified key property 'gradingPeriodSequence' on 'ReportCardStudentLearningObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodSequence.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetGradingPeriodSequenceSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSequence (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodSequence);
-
-                // Obtain value from other references
-                var valueFromStudentLearningObjectiveReference = instance.StudentLearningObjectiveReference?.GradingPeriodSequence;
-
-                if (valueFromStudentLearningObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentLearningObjectiveReference.gradingPeriodSequence", instance.StudentLearningObjectiveReference.GradingPeriodSequence);
-                }
-
-            }
-            var sourcesForGradingPeriodSchoolId = GetGradingPeriodSchoolIdSources();
-
-            if (!sourcesForGradingPeriodSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSchoolId",
-                    $"Supplied values for unified key property 'gradingPeriodSchoolId' on 'ReportCardStudentLearningObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetGradingPeriodSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSchoolId (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodSchoolId);
-
-                // Obtain value from other references
-                var valueFromStudentLearningObjectiveReference = instance.StudentLearningObjectiveReference?.GradingPeriodSchoolId;
-
-                if (valueFromStudentLearningObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentLearningObjectiveReference.gradingPeriodSchoolId", instance.StudentLearningObjectiveReference.GradingPeriodSchoolId);
-                }
-
-            }
-            var sourcesForGradingPeriodSchoolYear = GetGradingPeriodSchoolYearSources();
-
-            if (!sourcesForGradingPeriodSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("GradingPeriodSchoolYear",
-                    $"Supplied values for unified key property 'gradingPeriodSchoolYear' on 'ReportCardStudentLearningObjective' are not consistent: {string.Join(", ", sourcesForGradingPeriodSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetGradingPeriodSchoolYearSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("gradingPeriodSchoolYear (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.GradingPeriodSchoolYear);
-
-                // Obtain value from other references
-                var valueFromStudentLearningObjectiveReference = instance.StudentLearningObjectiveReference?.GradingPeriodSchoolYear;
-
-                if (valueFromStudentLearningObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentLearningObjectiveReference.gradingPeriodSchoolYear", instance.StudentLearningObjectiveReference.GradingPeriodSchoolYear);
-                }
-
-            }
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'ReportCardStudentLearningObjective' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IReportCardStudentLearningObjective).ReportCard.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromStudentLearningObjectiveReference = instance.StudentLearningObjectiveReference?.StudentUniqueId;
-
-                if (valueFromStudentLearningObjectiveReference != null)
-                {
-                    yield return Tuple.Create("studentLearningObjectiveReference.studentUniqueId", instance.StudentLearningObjectiveReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -133508,10 +132328,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReporterDescriptionDescriptor.EdF
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -133781,10 +132597,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportingTagDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -134056,10 +132868,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResidencyStatusDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -134330,10 +133138,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResponseIndicatorDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -134603,10 +133407,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResponsibilityDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -135307,10 +134107,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -135714,10 +134510,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -135995,10 +134787,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -136268,10 +135056,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEventReasonDescriptor.Ed
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -136543,10 +135327,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResultDatatypeTypeDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -136816,10 +135596,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RetestIndicatorDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -137836,10 +136612,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -138116,10 +136888,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -138398,10 +137166,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -138671,10 +137435,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolCategoryDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -138946,10 +137706,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolChoiceImplementStatusDescri
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -139220,10 +137976,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolFoodServiceProgramServiceDe
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -139493,10 +138245,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolTypeDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -139867,10 +138615,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolYearType.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -140881,6 +139625,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForLocationSchoolId = GetLocationSchoolIdSources().ToArray();
+
+                if (!sourcesForLocationSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForLocationSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForLocationSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'locationSchoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForLocationSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetLocationSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromLocationReference = this.LocationReference?.SchoolId;
+    
+                    if (valueFromLocationReference != null)
+                    {
+                        yield return ("locationReference.schoolId", this.LocationReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromLocationSchoolReference = this.LocationSchoolReference?.SchoolId;
+    
+                    if (valueFromLocationSchoolReference != null)
+                    {
+                        yield return ("locationSchoolReference.schoolId", this.LocationSchoolReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -140993,37 +139776,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("SectionPrograms", $"A supplied 'SectionProgram' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForLocationSchoolId = GetLocationSchoolIdSources();
-
-            if (!sourcesForLocationSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("LocationSchoolId",
-                    $"Supplied values for unified key property 'locationSchoolId' on 'Section' are not consistent: {string.Join(", ", sourcesForLocationSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetLocationSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromLocationReference = instance.LocationReference?.SchoolId;
-
-                if (valueFromLocationReference != null)
-                {
-                    yield return Tuple.Create("locationReference.schoolId", instance.LocationReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromLocationSchoolReference = instance.LocationSchoolReference?.SchoolId;
-
-                if (valueFromLocationSchoolReference != null)
-                {
-                    yield return Tuple.Create("locationSchoolReference.schoolId", instance.LocationSchoolReference.SchoolId);
                 }
 
             }
@@ -141304,10 +140056,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -141620,6 +140368,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.ISectionClassPeriod).Section.SchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromClassPeriodReference = this.ClassPeriodReference?.SchoolId;
+    
+                    if (valueFromClassPeriodReference != null)
+                    {
+                        yield return ("classPeriodReference.schoolId", this.ClassPeriodReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -141660,32 +140442,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'SectionClassPeriod' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("schoolId (from parent context)", (instance as Entities.Common.EdFi.ISectionClassPeriod).Section.SchoolId);
-
-                // Obtain value from other references
-                var valueFromClassPeriodReference = instance.ClassPeriodReference?.SchoolId;
-
-                if (valueFromClassPeriodReference != null)
-                {
-                    yield return Tuple.Create("classPeriodReference.schoolId", instance.ClassPeriodReference.SchoolId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -141964,10 +140720,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -142244,10 +140996,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -142651,10 +141399,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -143421,6 +142165,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromCalendarDateReference = this.CalendarDateReference?.SchoolId;
+    
+                    if (valueFromCalendarDateReference != null)
+                    {
+                        yield return ("calendarDateReference.schoolId", this.CalendarDateReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSectionReference = this.SectionReference?.SchoolId;
+    
+                    if (valueFromSectionReference != null)
+                    {
+                        yield return ("sectionReference.schoolId", this.SectionReference.SchoolId);
+                    }
+    
+                }
+                var sourcesForSchoolYear = GetSchoolYearSources().ToArray();
+
+                if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetSchoolYearSources()
+                {
+                    // Obtain value from other references
+                    var valueFromCalendarDateReference = this.CalendarDateReference?.SchoolYear;
+    
+                    if (valueFromCalendarDateReference != null)
+                    {
+                        yield return ("calendarDateReference.schoolYear", this.CalendarDateReference.SchoolYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSectionReference = this.SectionReference?.SchoolYear;
+    
+                    if (valueFromSectionReference != null)
+                    {
+                        yield return ("sectionReference.schoolYear", this.SectionReference.SchoolYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -143461,64 +142276,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'SectionAttendanceTakenEvent' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromCalendarDateReference = instance.CalendarDateReference?.SchoolId;
-
-                if (valueFromCalendarDateReference != null)
-                {
-                    yield return Tuple.Create("calendarDateReference.schoolId", instance.CalendarDateReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromSectionReference = instance.SectionReference?.SchoolId;
-
-                if (valueFromSectionReference != null)
-                {
-                    yield return Tuple.Create("sectionReference.schoolId", instance.SectionReference.SchoolId);
-                }
-
-            }
-            var sourcesForSchoolYear = GetSchoolYearSources();
-
-            if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolYear",
-                    $"Supplied values for unified key property 'schoolYear' on 'SectionAttendanceTakenEvent' are not consistent: {string.Join(", ", sourcesForSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetSchoolYearSources()
-            {
-                // Obtain value from other references
-                var valueFromCalendarDateReference = instance.CalendarDateReference?.SchoolYear;
-
-                if (valueFromCalendarDateReference != null)
-                {
-                    yield return Tuple.Create("calendarDateReference.schoolYear", instance.CalendarDateReference.SchoolYear);
-                }
-
-                // Obtain value from other references
-                var valueFromSectionReference = instance.SectionReference?.SchoolYear;
-
-                if (valueFromSectionReference != null)
-                {
-                    yield return Tuple.Create("sectionReference.schoolYear", instance.SectionReference.SchoolYear);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -143790,10 +142547,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionCharacteristicDescriptor.E
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -144063,10 +142816,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SeparationDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -144338,10 +143087,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SeparationReasonDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -144611,10 +143356,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ServiceDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -145336,10 +144077,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -145651,6 +144388,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.ISessionAcademicWeek).Session.SchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromAcademicWeekReference = this.AcademicWeekReference?.SchoolId;
+    
+                    if (valueFromAcademicWeekReference != null)
+                    {
+                        yield return ("academicWeekReference.schoolId", this.AcademicWeekReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -145691,32 +144462,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'SessionAcademicWeek' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("schoolId (from parent context)", (instance as Entities.Common.EdFi.ISessionAcademicWeek).Session.SchoolId);
-
-                // Obtain value from other references
-                var valueFromAcademicWeekReference = instance.AcademicWeekReference?.SchoolId;
-
-                if (valueFromAcademicWeekReference != null)
-                {
-                    yield return Tuple.Create("academicWeekReference.schoolId", instance.AcademicWeekReference.SchoolId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -146060,6 +144805,67 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.ISessionGradingPeriod).Session.SchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromGradingPeriodReference = this.GradingPeriodReference?.SchoolId;
+    
+                    if (valueFromGradingPeriodReference != null)
+                    {
+                        yield return ("gradingPeriodReference.schoolId", this.GradingPeriodReference.SchoolId);
+                    }
+    
+                }
+                var sourcesForSchoolYear = GetSchoolYearSources().ToArray();
+
+                if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetSchoolYearSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.ISessionGradingPeriod).Session.SchoolYear);
+    
+                    // Obtain value from other references
+                    var valueFromGradingPeriodReference = this.GradingPeriodReference?.SchoolYear;
+    
+                    if (valueFromGradingPeriodReference != null)
+                    {
+                        yield return ("gradingPeriodReference.schoolYear", this.GradingPeriodReference.SchoolYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -146100,54 +144906,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'SessionGradingPeriod' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("schoolId (from parent context)", (instance as Entities.Common.EdFi.ISessionGradingPeriod).Session.SchoolId);
-
-                // Obtain value from other references
-                var valueFromGradingPeriodReference = instance.GradingPeriodReference?.SchoolId;
-
-                if (valueFromGradingPeriodReference != null)
-                {
-                    yield return Tuple.Create("gradingPeriodReference.schoolId", instance.GradingPeriodReference.SchoolId);
-                }
-
-            }
-            var sourcesForSchoolYear = GetSchoolYearSources();
-
-            if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolYear",
-                    $"Supplied values for unified key property 'schoolYear' on 'SessionGradingPeriod' are not consistent: {string.Join(", ", sourcesForSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetSchoolYearSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("schoolYear (from parent context)", (instance as Entities.Common.EdFi.ISessionGradingPeriod).Session.SchoolYear);
-
-                // Obtain value from other references
-                var valueFromGradingPeriodReference = instance.GradingPeriodReference?.SchoolYear;
-
-                if (valueFromGradingPeriodReference != null)
-                {
-                    yield return Tuple.Create("gradingPeriodReference.schoolYear", instance.GradingPeriodReference.SchoolYear);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -146418,10 +145176,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SexDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -146920,10 +145674,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -147201,10 +145951,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -147474,10 +146220,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceSystemDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -147749,10 +146491,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SpecialEducationProgramServiceDes
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -148022,10 +146760,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SpecialEducationSettingDescriptor
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -149554,10 +148288,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -150062,10 +148792,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -150349,10 +149075,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -150629,10 +149351,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -151004,10 +149722,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -151317,10 +150031,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -151614,10 +150324,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -151952,10 +150658,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -152305,10 +151007,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -152671,10 +151369,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -152951,10 +151645,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -153274,10 +151964,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -153613,10 +152299,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -153893,10 +152575,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -154269,10 +152947,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -154590,10 +153264,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -154871,10 +153541,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -155151,10 +153817,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -155655,10 +154317,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffAbsenceEvent.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -155928,10 +154586,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffClassificationDescriptor.EdF
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -156532,10 +155186,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -157182,10 +155832,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -157462,10 +156108,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -158254,6 +156896,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStaffUniqueId = GetStaffUniqueIdSources().ToArray();
+
+                if (!sourcesForStaffUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStaffUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStaffUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'staffUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStaffUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStaffUniqueIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromStaffReference = this.StaffReference?.StaffUniqueId;
+    
+                    if (valueFromStaffReference != null)
+                    {
+                        yield return ("staffReference.staffUniqueId", this.StaffReference.StaffUniqueId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromEmploymentStaffEducationOrganizationEmploymentAssociationReference = this.EmploymentStaffEducationOrganizationEmploymentAssociationReference?.StaffUniqueId;
+    
+                    if (valueFromEmploymentStaffEducationOrganizationEmploymentAssociationReference != null)
+                    {
+                        yield return ("employmentStaffEducationOrganizationEmploymentAssociationReference.staffUniqueId", this.EmploymentStaffEducationOrganizationEmploymentAssociationReference.StaffUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -158294,37 +156975,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStaffUniqueId = GetStaffUniqueIdSources();
-
-            if (!sourcesForStaffUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StaffUniqueId",
-                    $"Supplied values for unified key property 'staffUniqueId' on 'StaffEducationOrganizationAssignmentAssociation' are not consistent: {string.Join(", ", sourcesForStaffUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStaffUniqueIdSources()
-            {
-                // Obtain value from other references
-                var valueFromStaffReference = instance.StaffReference?.StaffUniqueId;
-
-                if (valueFromStaffReference != null)
-                {
-                    yield return Tuple.Create("staffReference.staffUniqueId", instance.StaffReference.StaffUniqueId);
-                }
-
-                // Obtain value from other references
-                var valueFromEmploymentStaffEducationOrganizationEmploymentAssociationReference = instance.EmploymentStaffEducationOrganizationEmploymentAssociationReference?.StaffUniqueId;
-
-                if (valueFromEmploymentStaffEducationOrganizationEmploymentAssociationReference != null)
-                {
-                    yield return Tuple.Create("employmentStaffEducationOrganizationEmploymentAssociationReference.staffUniqueId", instance.EmploymentStaffEducationOrganizationEmploymentAssociationReference.StaffUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -158998,10 +157648,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -159461,10 +158107,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -159747,10 +158389,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -160068,10 +158706,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -160796,10 +159430,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -161069,10 +159699,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffIdentificationSystemDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -161579,10 +160205,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeave.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -161852,10 +160474,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeaveEventCategoryDescriptor
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -162494,10 +161112,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -163257,6 +161871,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSchoolReference = this.SchoolReference?.SchoolId;
+    
+                    if (valueFromSchoolReference != null)
+                    {
+                        yield return ("schoolReference.schoolId", this.SchoolReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromCalendarReference = this.CalendarReference?.SchoolId;
+    
+                    if (valueFromCalendarReference != null)
+                    {
+                        yield return ("calendarReference.schoolId", this.CalendarReference.SchoolId);
+                    }
+    
+                }
+                var sourcesForSchoolYear = GetSchoolYearSources().ToArray();
+
+                if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetSchoolYearSources()
+                {
+                    // Obtain value from other references
+                    var valueFromCalendarReference = this.CalendarReference?.SchoolYear;
+    
+                    if (valueFromCalendarReference != null)
+                    {
+                        yield return ("calendarReference.schoolYear", this.CalendarReference.SchoolYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSchoolYearTypeReference = this.SchoolYearTypeReference?.SchoolYear;
+    
+                    if (valueFromSchoolYearTypeReference != null)
+                    {
+                        yield return ("schoolYearTypeReference.schoolYear", this.SchoolYearTypeReference.SchoolYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -163333,64 +162018,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("StaffSchoolAssociationGradeLevels", $"A supplied 'StaffSchoolAssociationGradeLevel' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'StaffSchoolAssociation' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromSchoolReference = instance.SchoolReference?.SchoolId;
-
-                if (valueFromSchoolReference != null)
-                {
-                    yield return Tuple.Create("schoolReference.schoolId", instance.SchoolReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromCalendarReference = instance.CalendarReference?.SchoolId;
-
-                if (valueFromCalendarReference != null)
-                {
-                    yield return Tuple.Create("calendarReference.schoolId", instance.CalendarReference.SchoolId);
-                }
-
-            }
-            var sourcesForSchoolYear = GetSchoolYearSources();
-
-            if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolYear",
-                    $"Supplied values for unified key property 'schoolYear' on 'StaffSchoolAssociation' are not consistent: {string.Join(", ", sourcesForSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetSchoolYearSources()
-            {
-                // Obtain value from other references
-                var valueFromCalendarReference = instance.CalendarReference?.SchoolYear;
-
-                if (valueFromCalendarReference != null)
-                {
-                    yield return Tuple.Create("calendarReference.schoolYear", instance.CalendarReference.SchoolYear);
-                }
-
-                // Obtain value from other references
-                var valueFromSchoolYearTypeReference = instance.SchoolYearTypeReference?.SchoolYear;
-
-                if (valueFromSchoolYearTypeReference != null)
-                {
-                    yield return Tuple.Create("schoolYearTypeReference.schoolYear", instance.SchoolYearTypeReference.SchoolYear);
                 }
 
             }
@@ -163672,10 +162299,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -163952,10 +162575,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -164686,10 +163305,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -164959,10 +163574,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateAbbreviationDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -165788,10 +164399,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -166132,10 +164739,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -166419,10 +165022,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -167284,10 +165883,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -167622,10 +166217,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -167944,10 +166535,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -168283,10 +166870,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -168563,10 +167146,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -169687,10 +168266,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -170072,10 +168647,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -170399,10 +168970,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -170800,10 +169367,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -171124,10 +169687,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -171499,10 +170058,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -171912,6 +170467,67 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForEducationOrganizationId = GetEducationOrganizationIdSources().ToArray();
+
+                if (!sourcesForEducationOrganizationId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForEducationOrganizationId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForEducationOrganizationId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'educationOrganizationId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForEducationOrganizationId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetEducationOrganizationIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentAcademicRecordReportCard).StudentAcademicRecord.EducationOrganizationId);
+    
+                    // Obtain value from other references
+                    var valueFromReportCardReference = this.ReportCardReference?.EducationOrganizationId;
+    
+                    if (valueFromReportCardReference != null)
+                    {
+                        yield return ("reportCardReference.educationOrganizationId", this.ReportCardReference.EducationOrganizationId);
+                    }
+    
+                }
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentAcademicRecordReportCard).StudentAcademicRecord.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromReportCardReference = this.ReportCardReference?.StudentUniqueId;
+    
+                    if (valueFromReportCardReference != null)
+                    {
+                        yield return ("reportCardReference.studentUniqueId", this.ReportCardReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -171952,54 +170568,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForEducationOrganizationId = GetEducationOrganizationIdSources();
-
-            if (!sourcesForEducationOrganizationId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("EducationOrganizationId",
-                    $"Supplied values for unified key property 'educationOrganizationId' on 'StudentAcademicRecordReportCard' are not consistent: {string.Join(", ", sourcesForEducationOrganizationId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetEducationOrganizationIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("educationOrganizationId (from parent context)", (instance as Entities.Common.EdFi.IStudentAcademicRecordReportCard).StudentAcademicRecord.EducationOrganizationId);
-
-                // Obtain value from other references
-                var valueFromReportCardReference = instance.ReportCardReference?.EducationOrganizationId;
-
-                if (valueFromReportCardReference != null)
-                {
-                    yield return Tuple.Create("reportCardReference.educationOrganizationId", instance.ReportCardReference.EducationOrganizationId);
-                }
-
-            }
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'StudentAcademicRecordReportCard' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IStudentAcademicRecordReportCard).StudentAcademicRecord.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromReportCardReference = instance.ReportCardReference?.StudentUniqueId;
-
-                if (valueFromReportCardReference != null)
-                {
-                    yield return Tuple.Create("reportCardReference.studentUniqueId", instance.ReportCardReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -173172,10 +171740,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -173452,10 +172016,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -173825,6 +172385,67 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources().ToArray();
+
+                if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForAssessmentIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForAssessmentIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'assessmentIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForAssessmentIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetAssessmentIdentifierSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentAssessmentItem).StudentAssessment.AssessmentIdentifier);
+    
+                    // Obtain value from other references
+                    var valueFromAssessmentItemReference = this.AssessmentItemReference?.AssessmentIdentifier;
+    
+                    if (valueFromAssessmentItemReference != null)
+                    {
+                        yield return ("assessmentItemReference.assessmentIdentifier", this.AssessmentItemReference.AssessmentIdentifier);
+                    }
+    
+                }
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentAssessmentItem).StudentAssessment.Namespace);
+    
+                    // Obtain value from other references
+                    var valueFromAssessmentItemReference = this.AssessmentItemReference?.Namespace;
+    
+                    if (valueFromAssessmentItemReference != null)
+                    {
+                        yield return ("assessmentItemReference.namespace", this.AssessmentItemReference.Namespace);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -173865,54 +172486,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources();
-
-            if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("AssessmentIdentifier",
-                    $"Supplied values for unified key property 'assessmentIdentifier' on 'StudentAssessmentItem' are not consistent: {string.Join(", ", sourcesForAssessmentIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetAssessmentIdentifierSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("assessmentIdentifier (from parent context)", (instance as Entities.Common.EdFi.IStudentAssessmentItem).StudentAssessment.AssessmentIdentifier);
-
-                // Obtain value from other references
-                var valueFromAssessmentItemReference = instance.AssessmentItemReference?.AssessmentIdentifier;
-
-                if (valueFromAssessmentItemReference != null)
-                {
-                    yield return Tuple.Create("assessmentItemReference.assessmentIdentifier", instance.AssessmentItemReference.AssessmentIdentifier);
-                }
-
-            }
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'StudentAssessmentItem' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("namespace (from parent context)", (instance as Entities.Common.EdFi.IStudentAssessmentItem).StudentAssessment.Namespace);
-
-                // Obtain value from other references
-                var valueFromAssessmentItemReference = instance.AssessmentItemReference?.Namespace;
-
-                if (valueFromAssessmentItemReference != null)
-                {
-                    yield return Tuple.Create("assessmentItemReference.namespace", instance.AssessmentItemReference.Namespace);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -174217,10 +172790,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -174502,10 +173071,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -174801,10 +173366,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -175238,6 +173799,67 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources().ToArray();
+
+                if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForAssessmentIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForAssessmentIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'assessmentIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForAssessmentIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetAssessmentIdentifierSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessment).StudentAssessment.AssessmentIdentifier);
+    
+                    // Obtain value from other references
+                    var valueFromObjectiveAssessmentReference = this.ObjectiveAssessmentReference?.AssessmentIdentifier;
+    
+                    if (valueFromObjectiveAssessmentReference != null)
+                    {
+                        yield return ("objectiveAssessmentReference.assessmentIdentifier", this.ObjectiveAssessmentReference.AssessmentIdentifier);
+                    }
+    
+                }
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessment).StudentAssessment.Namespace);
+    
+                    // Obtain value from other references
+                    var valueFromObjectiveAssessmentReference = this.ObjectiveAssessmentReference?.Namespace;
+    
+                    if (valueFromObjectiveAssessmentReference != null)
+                    {
+                        yield return ("objectiveAssessmentReference.namespace", this.ObjectiveAssessmentReference.Namespace);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -175314,54 +173936,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("StudentAssessmentStudentObjectiveAssessmentScoreResults", $"A supplied 'StudentAssessmentStudentObjectiveAssessmentScoreResult' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForAssessmentIdentifier = GetAssessmentIdentifierSources();
-
-            if (!sourcesForAssessmentIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("AssessmentIdentifier",
-                    $"Supplied values for unified key property 'assessmentIdentifier' on 'StudentAssessmentStudentObjectiveAssessment' are not consistent: {string.Join(", ", sourcesForAssessmentIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetAssessmentIdentifierSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("assessmentIdentifier (from parent context)", (instance as Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessment).StudentAssessment.AssessmentIdentifier);
-
-                // Obtain value from other references
-                var valueFromObjectiveAssessmentReference = instance.ObjectiveAssessmentReference?.AssessmentIdentifier;
-
-                if (valueFromObjectiveAssessmentReference != null)
-                {
-                    yield return Tuple.Create("objectiveAssessmentReference.assessmentIdentifier", instance.ObjectiveAssessmentReference.AssessmentIdentifier);
-                }
-
-            }
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'StudentAssessmentStudentObjectiveAssessment' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("namespace (from parent context)", (instance as Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessment).StudentAssessment.Namespace);
-
-                // Obtain value from other references
-                var valueFromObjectiveAssessmentReference = instance.ObjectiveAssessmentReference?.Namespace;
-
-                if (valueFromObjectiveAssessmentReference != null)
-                {
-                    yield return Tuple.Create("objectiveAssessmentReference.namespace", instance.ObjectiveAssessmentReference.Namespace);
                 }
 
             }
@@ -175669,10 +174243,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -175967,10 +174537,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -176708,10 +175274,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -176981,10 +175543,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCharacteristicDescriptor.E
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -177663,10 +176221,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -178138,10 +176692,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -179111,10 +177661,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -179555,6 +178101,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentCompetencyObjectiveGeneralStudentProgramAssociation).StudentCompetencyObjective.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromGeneralStudentProgramAssociationReference = this.GeneralStudentProgramAssociationReference?.StudentUniqueId;
+    
+                    if (valueFromGeneralStudentProgramAssociationReference != null)
+                    {
+                        yield return ("generalStudentProgramAssociationReference.studentUniqueId", this.GeneralStudentProgramAssociationReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -179595,32 +178175,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'StudentCompetencyObjectiveGeneralStudentProgramAssociation' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IStudentCompetencyObjectiveGeneralStudentProgramAssociation).StudentCompetencyObjective.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromGeneralStudentProgramAssociationReference = instance.GeneralStudentProgramAssociationReference?.StudentUniqueId;
-
-                if (valueFromGeneralStudentProgramAssociationReference != null)
-                {
-                    yield return Tuple.Create("generalStudentProgramAssociationReference.studentUniqueId", instance.GeneralStudentProgramAssociationReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -180098,6 +178652,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentCompetencyObjectiveStudentSectionAssociation).StudentCompetencyObjective.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentSectionAssociationReference = this.StudentSectionAssociationReference?.StudentUniqueId;
+    
+                    if (valueFromStudentSectionAssociationReference != null)
+                    {
+                        yield return ("studentSectionAssociationReference.studentUniqueId", this.StudentSectionAssociationReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -180138,32 +178726,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'StudentCompetencyObjectiveStudentSectionAssociation' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IStudentCompetencyObjectiveStudentSectionAssociation).StudentCompetencyObjective.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromStudentSectionAssociationReference = instance.StudentSectionAssociationReference?.StudentUniqueId;
-
-                if (valueFromStudentSectionAssociationReference != null)
-                {
-                    yield return Tuple.Create("studentSectionAssociationReference.studentUniqueId", instance.StudentSectionAssociationReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -181178,10 +179740,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -181480,10 +180038,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -181791,10 +180345,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -182092,10 +180642,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -182751,10 +181297,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -183039,10 +181581,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -183723,10 +182261,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -184003,10 +182537,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -184653,10 +183183,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -184933,10 +183459,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -186425,10 +184947,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -186933,10 +185451,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -187220,10 +185734,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -187500,10 +186010,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -187863,10 +186369,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -188252,10 +186754,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -188532,10 +187030,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -188845,10 +187339,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -189198,10 +187688,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -189564,10 +188050,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -189844,10 +188326,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -190232,10 +188710,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -190513,10 +188987,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -190793,10 +189263,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -191167,10 +189633,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -191453,10 +189915,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -191761,10 +190219,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -192152,10 +190606,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -192438,10 +190888,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -192760,10 +191206,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -193040,10 +191482,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -193622,10 +192060,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -194257,10 +192691,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -195155,10 +193585,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -195457,10 +193883,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -195730,10 +194152,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentIdentificationSystemDescri
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -196496,10 +194914,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -196828,10 +195242,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -197476,10 +195886,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -198426,10 +196832,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -198795,10 +197197,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -199096,10 +197494,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -200031,10 +198425,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -200475,6 +198865,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentLearningObjectiveGeneralStudentProgramAssociation).StudentLearningObjective.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromGeneralStudentProgramAssociationReference = this.GeneralStudentProgramAssociationReference?.StudentUniqueId;
+    
+                    if (valueFromGeneralStudentProgramAssociationReference != null)
+                    {
+                        yield return ("generalStudentProgramAssociationReference.studentUniqueId", this.GeneralStudentProgramAssociationReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -200515,32 +198939,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'StudentLearningObjectiveGeneralStudentProgramAssociation' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IStudentLearningObjectiveGeneralStudentProgramAssociation).StudentLearningObjective.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromGeneralStudentProgramAssociationReference = instance.GeneralStudentProgramAssociationReference?.StudentUniqueId;
-
-                if (valueFromGeneralStudentProgramAssociationReference != null)
-                {
-                    yield return Tuple.Create("generalStudentProgramAssociationReference.studentUniqueId", instance.GeneralStudentProgramAssociationReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -201018,6 +199416,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForStudentUniqueId = GetStudentUniqueIdSources().ToArray();
+
+                if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForStudentUniqueId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForStudentUniqueId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'studentUniqueId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForStudentUniqueId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetStudentUniqueIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentLearningObjectiveStudentSectionAssociation).StudentLearningObjective.StudentUniqueId);
+    
+                    // Obtain value from other references
+                    var valueFromStudentSectionAssociationReference = this.StudentSectionAssociationReference?.StudentUniqueId;
+    
+                    if (valueFromStudentSectionAssociationReference != null)
+                    {
+                        yield return ("studentSectionAssociationReference.studentUniqueId", this.StudentSectionAssociationReference.StudentUniqueId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -201058,32 +199490,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForStudentUniqueId = GetStudentUniqueIdSources();
-
-            if (!sourcesForStudentUniqueId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("StudentUniqueId",
-                    $"Supplied values for unified key property 'studentUniqueId' on 'StudentLearningObjectiveStudentSectionAssociation' are not consistent: {string.Join(", ", sourcesForStudentUniqueId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetStudentUniqueIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("studentUniqueId (from parent context)", (instance as Entities.Common.EdFi.IStudentLearningObjectiveStudentSectionAssociation).StudentLearningObjective.StudentUniqueId);
-
-                // Obtain value from other references
-                var valueFromStudentSectionAssociationReference = instance.StudentSectionAssociationReference?.StudentUniqueId;
-
-                if (valueFromStudentSectionAssociationReference != null)
-                {
-                    yield return Tuple.Create("studentSectionAssociationReference.studentUniqueId", instance.StudentSectionAssociationReference.StudentUniqueId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -202042,10 +200448,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -202343,10 +200745,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -203243,10 +201641,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -203544,10 +201938,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -204130,10 +202520,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -204403,10 +202789,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParticipationCodeDescripto
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -205279,10 +203661,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -205580,10 +203958,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -206354,10 +204728,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -207399,6 +205769,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSchoolReference = this.SchoolReference?.SchoolId;
+    
+                    if (valueFromSchoolReference != null)
+                    {
+                        yield return ("schoolReference.schoolId", this.SchoolReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromCalendarReference = this.CalendarReference?.SchoolId;
+    
+                    if (valueFromCalendarReference != null)
+                    {
+                        yield return ("calendarReference.schoolId", this.CalendarReference.SchoolId);
+                    }
+    
+                }
+                var sourcesForSchoolYear = GetSchoolYearSources().ToArray();
+
+                if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetSchoolYearSources()
+                {
+                    // Obtain value from other references
+                    var valueFromCalendarReference = this.CalendarReference?.SchoolYear;
+    
+                    if (valueFromCalendarReference != null)
+                    {
+                        yield return ("calendarReference.schoolYear", this.CalendarReference.SchoolYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSchoolYearTypeReference = this.SchoolYearTypeReference?.SchoolYear;
+    
+                    if (valueFromSchoolYearTypeReference != null)
+                    {
+                        yield return ("schoolYearTypeReference.schoolYear", this.SchoolYearTypeReference.SchoolYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -207475,64 +205916,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("StudentSchoolAssociationEducationPlans", $"A supplied 'StudentSchoolAssociationEducationPlan' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'StudentSchoolAssociation' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromSchoolReference = instance.SchoolReference?.SchoolId;
-
-                if (valueFromSchoolReference != null)
-                {
-                    yield return Tuple.Create("schoolReference.schoolId", instance.SchoolReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromCalendarReference = instance.CalendarReference?.SchoolId;
-
-                if (valueFromCalendarReference != null)
-                {
-                    yield return Tuple.Create("calendarReference.schoolId", instance.CalendarReference.SchoolId);
-                }
-
-            }
-            var sourcesForSchoolYear = GetSchoolYearSources();
-
-            if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolYear",
-                    $"Supplied values for unified key property 'schoolYear' on 'StudentSchoolAssociation' are not consistent: {string.Join(", ", sourcesForSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetSchoolYearSources()
-            {
-                // Obtain value from other references
-                var valueFromCalendarReference = instance.CalendarReference?.SchoolYear;
-
-                if (valueFromCalendarReference != null)
-                {
-                    yield return Tuple.Create("calendarReference.schoolYear", instance.CalendarReference.SchoolYear);
-                }
-
-                // Obtain value from other references
-                var valueFromSchoolYearTypeReference = instance.SchoolYearTypeReference?.SchoolYear;
-
-                if (valueFromSchoolYearTypeReference != null)
-                {
-                    yield return Tuple.Create("schoolYearTypeReference.schoolYear", instance.SchoolYearTypeReference.SchoolYear);
                 }
 
             }
@@ -207940,10 +206323,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -208220,10 +206599,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -208927,6 +207302,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSchoolReference = this.SchoolReference?.SchoolId;
+    
+                    if (valueFromSchoolReference != null)
+                    {
+                        yield return ("schoolReference.schoolId", this.SchoolReference.SchoolId);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSessionReference = this.SessionReference?.SchoolId;
+    
+                    if (valueFromSessionReference != null)
+                    {
+                        yield return ("sessionReference.schoolId", this.SessionReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -208967,37 +207381,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'StudentSchoolAttendanceEvent' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from other references
-                var valueFromSchoolReference = instance.SchoolReference?.SchoolId;
-
-                if (valueFromSchoolReference != null)
-                {
-                    yield return Tuple.Create("schoolReference.schoolId", instance.SchoolReference.SchoolId);
-                }
-
-                // Obtain value from other references
-                var valueFromSessionReference = instance.SessionReference?.SchoolId;
-
-                if (valueFromSessionReference != null)
-                {
-                    yield return Tuple.Create("sessionReference.schoolId", instance.SessionReference.SchoolId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -209877,10 +208260,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -210178,10 +208557,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -210928,10 +209303,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -211798,10 +210169,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -212113,6 +210480,40 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolId = GetSchoolIdSources().ToArray();
+
+                if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolId.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolId.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolId' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolId.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, int value)> GetSchoolIdSources()
+                {
+                    // Obtain value from the parent
+                    yield return (null, (this as Entities.Common.EdFi.IStudentSectionAttendanceEventClassPeriod).StudentSectionAttendanceEvent.SchoolId);
+    
+                    // Obtain value from other references
+                    var valueFromClassPeriodReference = this.ClassPeriodReference?.SchoolId;
+    
+                    if (valueFromClassPeriodReference != null)
+                    {
+                        yield return ("classPeriodReference.schoolId", this.ClassPeriodReference.SchoolId);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -212153,32 +210554,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolId = GetSchoolIdSources();
-
-            if (!sourcesForSchoolId.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolId",
-                    $"Supplied values for unified key property 'schoolId' on 'StudentSectionAttendanceEventClassPeriod' are not consistent: {string.Join(", ", sourcesForSchoolId.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, int>> GetSchoolIdSources()
-            {
-                // Obtain value from the parent
-                yield return Tuple.Create("schoolId (from parent context)", (instance as Entities.Common.EdFi.IStudentSectionAttendanceEventClassPeriod).StudentSectionAttendanceEvent.SchoolId);
-
-                // Obtain value from other references
-                var valueFromClassPeriodReference = instance.ClassPeriodReference?.SchoolId;
-
-                if (valueFromClassPeriodReference != null)
-                {
-                    yield return Tuple.Create("classPeriodReference.schoolId", instance.ClassPeriodReference.SchoolId);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -213244,10 +211619,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -213632,10 +212003,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -213912,10 +212279,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -214264,10 +212627,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -214651,10 +213010,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -215002,10 +213357,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -215947,10 +214298,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -216248,10 +214595,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -216551,10 +214894,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -216824,10 +215163,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SubmissionStatusDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -217450,6 +215785,45 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForSchoolYear = GetSchoolYearSources().ToArray();
+
+                if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSchoolYear.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSchoolYear.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'schoolYear' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSchoolYear.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, short value)> GetSchoolYearSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSchoolYearTypeReference = this.SchoolYearTypeReference?.SchoolYear;
+    
+                    if (valueFromSchoolYearTypeReference != null)
+                    {
+                        yield return ("schoolYearTypeReference.schoolYear", this.SchoolYearTypeReference.SchoolYear);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSessionReference = this.SessionReference?.SchoolYear;
+    
+                    if (valueFromSessionReference != null)
+                    {
+                        yield return ("sessionReference.schoolYear", this.SessionReference.SchoolYear);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -217490,37 +215864,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForSchoolYear = GetSchoolYearSources();
-
-            if (!sourcesForSchoolYear.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual())
-            {
-                failures.Add(new ValidationFailure("SchoolYear",
-                    $"Supplied values for unified key property 'schoolYear' on 'Survey' are not consistent: {string.Join(", ", sourcesForSchoolYear.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, short>> GetSchoolYearSources()
-            {
-                // Obtain value from other references
-                var valueFromSchoolYearTypeReference = instance.SchoolYearTypeReference?.SchoolYear;
-
-                if (valueFromSchoolYearTypeReference != null)
-                {
-                    yield return Tuple.Create("schoolYearTypeReference.schoolYear", instance.SchoolYearTypeReference.SchoolYear);
-                }
-
-                // Obtain value from other references
-                var valueFromSessionReference = instance.SessionReference?.SchoolYear;
-
-                if (valueFromSessionReference != null)
-                {
-                    yield return Tuple.Create("sessionReference.schoolYear", instance.SessionReference.SchoolYear);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -217791,10 +216134,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCategoryDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -218388,10 +216727,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -218661,10 +216996,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyLevelDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -219295,10 +217626,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -219953,6 +218280,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSurveyReference = this.SurveyReference?.Namespace;
+    
+                    if (valueFromSurveyReference != null)
+                    {
+                        yield return ("surveyReference.namespace", this.SurveyReference.Namespace);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSurveySectionReference = this.SurveySectionReference?.Namespace;
+    
+                    if (valueFromSurveySectionReference != null)
+                    {
+                        yield return ("surveySectionReference.namespace", this.SurveySectionReference.Namespace);
+                    }
+    
+                }
+                var sourcesForSurveyIdentifier = GetSurveyIdentifierSources().ToArray();
+
+                if (!sourcesForSurveyIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSurveyIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSurveyIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'surveyIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSurveyIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetSurveyIdentifierSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSurveyReference = this.SurveyReference?.SurveyIdentifier;
+    
+                    if (valueFromSurveyReference != null)
+                    {
+                        yield return ("surveyReference.surveyIdentifier", this.SurveyReference.SurveyIdentifier);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSurveySectionReference = this.SurveySectionReference?.SurveyIdentifier;
+    
+                    if (valueFromSurveySectionReference != null)
+                    {
+                        yield return ("surveySectionReference.surveyIdentifier", this.SurveySectionReference.SurveyIdentifier);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -220029,64 +218427,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("SurveyQuestionResponseChoices", $"A supplied 'SurveyQuestionResponseChoice' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'SurveyQuestion' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from other references
-                var valueFromSurveyReference = instance.SurveyReference?.Namespace;
-
-                if (valueFromSurveyReference != null)
-                {
-                    yield return Tuple.Create("surveyReference.namespace", instance.SurveyReference.Namespace);
-                }
-
-                // Obtain value from other references
-                var valueFromSurveySectionReference = instance.SurveySectionReference?.Namespace;
-
-                if (valueFromSurveySectionReference != null)
-                {
-                    yield return Tuple.Create("surveySectionReference.namespace", instance.SurveySectionReference.Namespace);
-                }
-
-            }
-            var sourcesForSurveyIdentifier = GetSurveyIdentifierSources();
-
-            if (!sourcesForSurveyIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("SurveyIdentifier",
-                    $"Supplied values for unified key property 'surveyIdentifier' on 'SurveyQuestion' are not consistent: {string.Join(", ", sourcesForSurveyIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetSurveyIdentifierSources()
-            {
-                // Obtain value from other references
-                var valueFromSurveyReference = instance.SurveyReference?.SurveyIdentifier;
-
-                if (valueFromSurveyReference != null)
-                {
-                    yield return Tuple.Create("surveyReference.surveyIdentifier", instance.SurveyReference.SurveyIdentifier);
-                }
-
-                // Obtain value from other references
-                var valueFromSurveySectionReference = instance.SurveySectionReference?.SurveyIdentifier;
-
-                if (valueFromSurveySectionReference != null)
-                {
-                    yield return Tuple.Create("surveySectionReference.surveyIdentifier", instance.SurveySectionReference.SurveyIdentifier);
                 }
 
             }
@@ -220381,10 +218721,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -220697,10 +219033,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -221381,6 +219713,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSurveyQuestionReference = this.SurveyQuestionReference?.Namespace;
+    
+                    if (valueFromSurveyQuestionReference != null)
+                    {
+                        yield return ("surveyQuestionReference.namespace", this.SurveyQuestionReference.Namespace);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSurveyResponseReference = this.SurveyResponseReference?.Namespace;
+    
+                    if (valueFromSurveyResponseReference != null)
+                    {
+                        yield return ("surveyResponseReference.namespace", this.SurveyResponseReference.Namespace);
+                    }
+    
+                }
+                var sourcesForSurveyIdentifier = GetSurveyIdentifierSources().ToArray();
+
+                if (!sourcesForSurveyIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSurveyIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSurveyIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'surveyIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSurveyIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetSurveyIdentifierSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSurveyQuestionReference = this.SurveyQuestionReference?.SurveyIdentifier;
+    
+                    if (valueFromSurveyQuestionReference != null)
+                    {
+                        yield return ("surveyQuestionReference.surveyIdentifier", this.SurveyQuestionReference.SurveyIdentifier);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSurveyResponseReference = this.SurveyResponseReference?.SurveyIdentifier;
+    
+                    if (valueFromSurveyResponseReference != null)
+                    {
+                        yield return ("surveyResponseReference.surveyIdentifier", this.SurveyResponseReference.SurveyIdentifier);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -221457,64 +219860,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
                         profileName ??= GeneratedArtifactStaticDependencies.ProfileContentTypeContextProvider.Get().ProfileName;
                         failures.Add(new ValidationFailure("SurveyQuestionResponseValues", $"A supplied 'SurveyQuestionResponseValue' has a descriptor value that does not conform with the filter values defined by profile '{profileName}'."));
                     }
-                }
-
-            }
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'SurveyQuestionResponse' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from other references
-                var valueFromSurveyQuestionReference = instance.SurveyQuestionReference?.Namespace;
-
-                if (valueFromSurveyQuestionReference != null)
-                {
-                    yield return Tuple.Create("surveyQuestionReference.namespace", instance.SurveyQuestionReference.Namespace);
-                }
-
-                // Obtain value from other references
-                var valueFromSurveyResponseReference = instance.SurveyResponseReference?.Namespace;
-
-                if (valueFromSurveyResponseReference != null)
-                {
-                    yield return Tuple.Create("surveyResponseReference.namespace", instance.SurveyResponseReference.Namespace);
-                }
-
-            }
-            var sourcesForSurveyIdentifier = GetSurveyIdentifierSources();
-
-            if (!sourcesForSurveyIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("SurveyIdentifier",
-                    $"Supplied values for unified key property 'surveyIdentifier' on 'SurveyQuestionResponse' are not consistent: {string.Join(", ", sourcesForSurveyIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetSurveyIdentifierSources()
-            {
-                // Obtain value from other references
-                var valueFromSurveyQuestionReference = instance.SurveyQuestionReference?.SurveyIdentifier;
-
-                if (valueFromSurveyQuestionReference != null)
-                {
-                    yield return Tuple.Create("surveyQuestionReference.surveyIdentifier", instance.SurveyQuestionReference.SurveyIdentifier);
-                }
-
-                // Obtain value from other references
-                var valueFromSurveyResponseReference = instance.SurveyResponseReference?.SurveyIdentifier;
-
-                if (valueFromSurveyResponseReference != null)
-                {
-                    yield return Tuple.Create("surveyResponseReference.surveyIdentifier", instance.SurveyResponseReference.SurveyIdentifier);
                 }
 
             }
@@ -221833,10 +220178,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -222148,10 +220489,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -222990,10 +221327,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
 
             }
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -223270,10 +221603,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -223866,10 +222195,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -224473,10 +222798,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -224965,10 +223286,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySection.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -225685,10 +224002,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -226256,6 +224569,77 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
                         yield return result;
                     }
                 }
+
+                // -----------------------
+                //  Validate unified keys
+                // -----------------------
+                pathBuilder.Length = dotLength;
+                string pathPrefix = null;
+
+                var sourcesForNamespace = GetNamespaceSources().ToArray();
+
+                if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForNamespace.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForNamespace.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'namespace' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForNamespace.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetNamespaceSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSurveyResponseReference = this.SurveyResponseReference?.Namespace;
+    
+                    if (valueFromSurveyResponseReference != null)
+                    {
+                        yield return ("surveyResponseReference.namespace", this.SurveyResponseReference.Namespace);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSurveySectionReference = this.SurveySectionReference?.Namespace;
+    
+                    if (valueFromSurveySectionReference != null)
+                    {
+                        yield return ("surveySectionReference.namespace", this.SurveySectionReference.Namespace);
+                    }
+    
+                }
+                var sourcesForSurveyIdentifier = GetSurveyIdentifierSources().ToArray();
+
+                if (!sourcesForSurveyIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
+                {
+                    pathPrefix ??= pathBuilder.ToString();
+
+                    string values = string.Join("', '", sourcesForSurveyIdentifier.Select(src => src.value.ToString().TrimAt(50, true)));
+                    string parentContextNote = sourcesForSurveyIdentifier.Any(src => src.path == null) ? " (including those higher up in the resource's data)" : null;
+
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult($"All values supplied for 'surveyIdentifier' must match. Review all references{parentContextNote} and align the following conflicting values: '{values}'",
+                        sourcesForSurveyIdentifier.Where(src => src.path != null).Select(src => $"{pathPrefix}{src.path}").ToArray());
+                }
+    
+                IEnumerable<(string path, string value)> GetSurveyIdentifierSources()
+                {
+                    // Obtain value from other references
+                    var valueFromSurveyResponseReference = this.SurveyResponseReference?.SurveyIdentifier;
+    
+                    if (valueFromSurveyResponseReference != null)
+                    {
+                        yield return ("surveyResponseReference.surveyIdentifier", this.SurveyResponseReference.SurveyIdentifier);
+                    }
+    
+                    // Obtain value from other references
+                    var valueFromSurveySectionReference = this.SurveySectionReference?.SurveyIdentifier;
+    
+                    if (valueFromSurveySectionReference != null)
+                    {
+                        yield return ("surveySectionReference.surveyIdentifier", this.SurveySectionReference.SurveyIdentifier);
+                    }
+    
+                }
             
                 // Execute the resource's fluent validator
                 var fluentValidationResult = _validator.Validate(this);
@@ -226296,64 +224680,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-            var sourcesForNamespace = GetNamespaceSources();
-
-            if (!sourcesForNamespace.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("Namespace",
-                    $"Supplied values for unified key property 'namespace' on 'SurveySectionResponse' are not consistent: {string.Join(", ", sourcesForNamespace.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetNamespaceSources()
-            {
-                // Obtain value from other references
-                var valueFromSurveyResponseReference = instance.SurveyResponseReference?.Namespace;
-
-                if (valueFromSurveyResponseReference != null)
-                {
-                    yield return Tuple.Create("surveyResponseReference.namespace", instance.SurveyResponseReference.Namespace);
-                }
-
-                // Obtain value from other references
-                var valueFromSurveySectionReference = instance.SurveySectionReference?.Namespace;
-
-                if (valueFromSurveySectionReference != null)
-                {
-                    yield return Tuple.Create("surveySectionReference.namespace", instance.SurveySectionReference.Namespace);
-                }
-
-            }
-            var sourcesForSurveyIdentifier = GetSurveyIdentifierSources();
-
-            if (!sourcesForSurveyIdentifier.Select(t => t.Item2).Where(v => !v.IsDefaultValue()).AllEqual(GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer))
-            {
-                failures.Add(new ValidationFailure("SurveyIdentifier",
-                    $"Supplied values for unified key property 'surveyIdentifier' on 'SurveySectionResponse' are not consistent: {string.Join(", ", sourcesForSurveyIdentifier.Select(x => $"{x.Item1} = {x.Item2}"))}"));
-            }
-
-            IEnumerable<Tuple<string, string>> GetSurveyIdentifierSources()
-            {
-                // Obtain value from other references
-                var valueFromSurveyResponseReference = instance.SurveyResponseReference?.SurveyIdentifier;
-
-                if (valueFromSurveyResponseReference != null)
-                {
-                    yield return Tuple.Create("surveyResponseReference.surveyIdentifier", instance.SurveyResponseReference.SurveyIdentifier);
-                }
-
-                // Obtain value from other references
-                var valueFromSurveySectionReference = instance.SurveySectionReference?.SurveyIdentifier;
-
-                if (valueFromSurveySectionReference != null)
-                {
-                    yield return Tuple.Create("surveySectionReference.surveyIdentifier", instance.SurveySectionReference.SurveyIdentifier);
-                }
-
-            }
 
             if (failures.Any())
             {
@@ -226987,10 +225313,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -227635,10 +225957,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -227908,10 +226226,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TeachingCredentialBasisDescriptor
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -228183,10 +226497,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TeachingCredentialDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -228456,10 +226766,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TechnicalSkillsAssessmentDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -228731,10 +227037,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TelephoneNumberTypeDescriptor.EdF
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -229004,10 +227306,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TermDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -229279,10 +227577,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TitleIPartAParticipantDescriptor.
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -229552,10 +227846,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TitleIPartAProgramServiceDescript
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -229827,10 +228117,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TitleIPartASchoolDesignationDescr
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -230100,10 +228386,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TribalAffiliationDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
@@ -230375,10 +228657,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.VisaDescriptor.EdFi
 
             var failures = new List<ValidationFailure>();
 
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
-
             if (failures.Any())
             {
                 foreach (var failure in failures)
@@ -230648,10 +228926,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.WeaponDescriptor.EdFi
             var instance = context.InstanceToValidate;
 
             var failures = new List<ValidationFailure>();
-
-            // -----------------------
-            //  Validate unified keys
-            // -----------------------
 
             if (failures.Any())
             {
