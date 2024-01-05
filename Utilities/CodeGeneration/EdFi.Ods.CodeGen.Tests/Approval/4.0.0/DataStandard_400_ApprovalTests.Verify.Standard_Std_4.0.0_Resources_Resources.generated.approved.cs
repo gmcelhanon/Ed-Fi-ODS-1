@@ -32,7 +32,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AbsenceEventCategoryDescriptor.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AbsenceEventCategoryDescriptor : Entities.Common.EdFi.IAbsenceEventCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -302,7 +301,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicHonorCategoryDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AcademicHonorCategoryDescriptor : Entities.Common.EdFi.IAcademicHonorCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -572,7 +570,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicSubjectDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AcademicSubjectDescriptor : Entities.Common.EdFi.IAcademicSubjectDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -939,7 +936,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AcademicWeek.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class AcademicWeek : Entities.Common.EdFi.IAcademicWeek, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -1328,7 +1324,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccommodationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AccommodationDescriptor : Entities.Common.EdFi.IAccommodationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -1703,7 +1698,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountabilityRating.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AccountabilityRating : Entities.Common.EdFi.IAccountabilityRating, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -2159,7 +2153,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AccountTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AccountTypeDescriptor : Entities.Common.EdFi.IAccountTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -2429,7 +2422,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AchievementCategoryDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AchievementCategoryDescriptor : Entities.Common.EdFi.IAchievementCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -2699,7 +2691,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AdditionalCreditTypeDescriptor.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AdditionalCreditTypeDescriptor : Entities.Common.EdFi.IAdditionalCreditTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -2969,7 +2960,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AddressTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AddressTypeDescriptor : Entities.Common.EdFi.IAddressTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -3239,7 +3229,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AdministrationEnvironmentDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AdministrationEnvironmentDescriptor : Entities.Common.EdFi.IAdministrationEnvironmentDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -3509,7 +3498,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AdministrativeFundingControlDescr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AdministrativeFundingControlDescriptor : Entities.Common.EdFi.IAdministrativeFundingControlDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -3779,7 +3767,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AncestryEthnicOriginDescriptor.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AncestryEthnicOriginDescriptor : Entities.Common.EdFi.IAncestryEthnicOriginDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -4146,7 +4133,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Assessment : Entities.Common.EdFi.IAssessment, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -5223,7 +5209,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentAcademicSubject : Entities.Common.EdFi.IAssessmentAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -5500,7 +5485,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentAssessedGradeLevel : Entities.Common.EdFi.IAssessmentAssessedGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -5777,7 +5761,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentContentStandard : Entities.Common.EdFi.IAssessmentContentStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -6256,7 +6239,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentContentStandardAuthor : Entities.Common.EdFi.IAssessmentContentStandardAuthor, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -6533,7 +6515,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentIdentificationCode : Entities.Common.EdFi.IAssessmentIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -6827,7 +6808,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentLanguage : Entities.Common.EdFi.IAssessmentLanguage, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -7104,7 +7084,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentPerformanceLevel : Entities.Common.EdFi.IAssessmentPerformanceLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -7431,7 +7410,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentPeriod : Entities.Common.EdFi.IAssessmentPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -7722,7 +7700,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentPlatformType : Entities.Common.EdFi.IAssessmentPlatformType, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -7999,7 +7976,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentProgram : Entities.Common.EdFi.IAssessmentProgram, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -8402,7 +8378,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentScore : Entities.Common.EdFi.IAssessmentScore, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -8703,7 +8678,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Assessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentSection : Entities.Common.EdFi.IAssessmentSection, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -9180,7 +9154,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentCategoryDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentCategoryDescriptor : Entities.Common.EdFi.IAssessmentCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -9450,7 +9423,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentIdentificationSystemDes
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentIdentificationSystemDescriptor : Entities.Common.EdFi.IAssessmentIdentificationSystemDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -9825,7 +9797,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentItem : Entities.Common.EdFi.IAssessmentItem, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -10396,7 +10367,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentItemLearningStandard : Entities.Common.EdFi.IAssessmentItemLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -10736,7 +10706,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItem.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentItemPossibleResponse : Entities.Common.EdFi.IAssessmentItemPossibleResponse, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -11033,7 +11002,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItemCategoryDescriptor.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentItemCategoryDescriptor : Entities.Common.EdFi.IAssessmentItemCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -11303,7 +11271,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentItemResultDescriptor.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentItemResultDescriptor : Entities.Common.EdFi.IAssessmentItemResultDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -11573,7 +11540,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentPeriodDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentPeriodDescriptor : Entities.Common.EdFi.IAssessmentPeriodDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -11843,7 +11809,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentReportingMethodDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentReportingMethodDescriptor : Entities.Common.EdFi.IAssessmentReportingMethodDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -12218,7 +12183,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentScoreRangeLearningStandard : Entities.Common.EdFi.IAssessmentScoreRangeLearningStandard, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -12860,7 +12824,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssessmentScoreRangeLearningStand
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssessmentScoreRangeLearningStandardLearningStandard : Entities.Common.EdFi.IAssessmentScoreRangeLearningStandardLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -13205,7 +13168,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AssignmentLateStatusDescriptor.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AssignmentLateStatusDescriptor : Entities.Common.EdFi.IAssignmentLateStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -13475,7 +13437,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AttemptStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AttemptStatusDescriptor : Entities.Common.EdFi.IAttemptStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -13745,7 +13706,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.AttendanceEventCategoryDescriptor
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class AttendanceEventCategoryDescriptor : Entities.Common.EdFi.IAttendanceEventCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -14112,7 +14072,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class BalanceSheetDimension : Entities.Common.EdFi.IBalanceSheetDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -14507,7 +14466,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BalanceSheetDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BalanceSheetDimensionReportingTag : Entities.Common.EdFi.IBalanceSheetDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -14789,7 +14747,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BarrierToInternetAccessInResidenc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BarrierToInternetAccessInResidenceDescriptor : Entities.Common.EdFi.IBarrierToInternetAccessInResidenceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -15059,7 +15016,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BehaviorDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BehaviorDescriptor : Entities.Common.EdFi.IBehaviorDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -15426,7 +15382,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BellSchedule : Entities.Common.EdFi.IBellSchedule, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -15998,7 +15953,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BellScheduleClassPeriod : Entities.Common.EdFi.IBellScheduleClassPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -16384,7 +16338,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BellScheduleDate : Entities.Common.EdFi.IBellScheduleDate, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -16660,7 +16613,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.BellSchedule.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class BellScheduleGradeLevel : Entities.Common.EdFi.IBellScheduleGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -17047,7 +16999,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Calendar : Entities.Common.EdFi.ICalendar, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -17552,7 +17503,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Calendar.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CalendarGradeLevel : Entities.Common.EdFi.ICalendarGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -17947,7 +17897,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CalendarDate : Entities.Common.EdFi.ICalendarDate, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -18442,7 +18391,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CalendarDateCalendarEvent : Entities.Common.EdFi.ICalendarDateCalendarEvent, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -18724,7 +18672,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarEventDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CalendarEventDescriptor : Entities.Common.EdFi.ICalendarEventDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -18994,7 +18941,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CalendarTypeDescriptor : Entities.Common.EdFi.ICalendarTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -19264,7 +19210,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CareerPathwayDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CareerPathwayDescriptor : Entities.Common.EdFi.ICareerPathwayDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -19534,7 +19479,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CharterApprovalAgencyTypeDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CharterApprovalAgencyTypeDescriptor : Entities.Common.EdFi.ICharterApprovalAgencyTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -19804,7 +19748,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CharterStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CharterStatusDescriptor : Entities.Common.EdFi.ICharterStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -20179,7 +20122,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class ChartOfAccount : Entities.Common.EdFi.IChartOfAccount, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -21382,7 +21324,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ChartOfAccount.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ChartOfAccountReportingTag : Entities.Common.EdFi.IChartOfAccountReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -21672,7 +21613,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CitizenshipStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CitizenshipStatusDescriptor : Entities.Common.EdFi.ICitizenshipStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -22039,7 +21979,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ClassPeriod : Entities.Common.EdFi.IClassPeriod, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -22469,7 +22408,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassPeriod.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ClassPeriodMeetingTime : Entities.Common.EdFi.IClassPeriodMeetingTime, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -22767,7 +22705,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassroomPositionDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ClassroomPositionDescriptor : Entities.Common.EdFi.IClassroomPositionDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -23134,7 +23071,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Cohort : Entities.Common.EdFi.ICohort, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -23597,7 +23533,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Cohort.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CohortProgram : Entities.Common.EdFi.ICohortProgram, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -24005,7 +23940,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CohortScopeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CohortScopeDescriptor : Entities.Common.EdFi.ICohortScopeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -24275,7 +24209,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CohortTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CohortTypeDescriptor : Entities.Common.EdFi.ICohortTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -24545,7 +24478,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CohortYearTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CohortYearTypeDescriptor : Entities.Common.EdFi.ICohortYearTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -24879,7 +24811,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CommunityOrganization : Entities.Common.EdFi.ICommunityOrganization, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -25583,7 +25514,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProvider.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CommunityProvider : Entities.Common.EdFi.ICommunityProvider, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -26436,7 +26366,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLicense.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CommunityProviderLicense : Entities.Common.EdFi.ICommunityProviderLicense, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -26858,7 +26787,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CompetencyLevelDescriptor : Entities.Common.EdFi.ICompetencyLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -27233,7 +27161,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CompetencyObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CompetencyObjective : Entities.Common.EdFi.ICompetencyObjective, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -27626,7 +27553,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ContactTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ContactTypeDescriptor : Entities.Common.EdFi.IContactTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -27896,7 +27822,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ContentClassDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ContentClassDescriptor : Entities.Common.EdFi.IContentClassDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -28166,7 +28091,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ContinuationOfServicesReasonDescr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ContinuationOfServicesReasonDescriptor : Entities.Common.EdFi.IContinuationOfServicesReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -28436,7 +28360,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CostRateDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CostRateDescriptor : Entities.Common.EdFi.ICostRateDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -28706,7 +28629,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CountryDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CountryDescriptor : Entities.Common.EdFi.ICountryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -29073,7 +28995,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class Course : Entities.Common.EdFi.ICourse, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -29959,7 +29880,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseCompetencyLevel : Entities.Common.EdFi.ICourseCompetencyLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -30236,7 +30156,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseIdentificationCode : Entities.Common.EdFi.ICourseIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -30538,7 +30457,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseLearningObjective : Entities.Common.EdFi.ICourseLearningObjective, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -30911,7 +30829,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseLearningStandard : Entities.Common.EdFi.ICourseLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -31251,7 +31168,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseLevelCharacteristic : Entities.Common.EdFi.ICourseLevelCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -31528,7 +31444,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Course.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseOfferedGradeLevel : Entities.Common.EdFi.ICourseOfferedGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -31810,7 +31725,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseAttemptResultDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseAttemptResultDescriptor : Entities.Common.EdFi.ICourseAttemptResultDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -32080,7 +31994,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseDefinedByDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseDefinedByDescriptor : Entities.Common.EdFi.ICourseDefinedByDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -32350,7 +32263,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseGPAApplicabilityDescriptor.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseGPAApplicabilityDescriptor : Entities.Common.EdFi.ICourseGPAApplicabilityDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -32620,7 +32532,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseIdentificationSystemDescrip
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseIdentificationSystemDescriptor : Entities.Common.EdFi.ICourseIdentificationSystemDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -32890,7 +32801,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseLevelCharacteristicDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseLevelCharacteristicDescriptor : Entities.Common.EdFi.ICourseLevelCharacteristicDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -33273,7 +33183,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseOffering : Entities.Common.EdFi.ICourseOffering, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -34089,7 +33998,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseOfferingCourseLevelCharacteristic : Entities.Common.EdFi.ICourseOfferingCourseLevelCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -34366,7 +34274,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseOfferingCurriculumUsed : Entities.Common.EdFi.ICourseOfferingCurriculumUsed, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -34643,7 +34550,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseOffering.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseOfferingOfferedGradeLevel : Entities.Common.EdFi.ICourseOfferingOfferedGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -34925,7 +34831,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseRepeatCodeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseRepeatCodeDescriptor : Entities.Common.EdFi.ICourseRepeatCodeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -35341,7 +35246,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class CourseTranscript : Entities.Common.EdFi.ICourseTranscript, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -36452,7 +36356,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseTranscriptAcademicSubject : Entities.Common.EdFi.ICourseTranscriptAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -36729,7 +36632,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseTranscriptAlternativeCourseIdentificationCode : Entities.Common.EdFi.ICourseTranscriptAlternativeCourseIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -37031,7 +36933,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CourseTranscriptCreditCategory : Entities.Common.EdFi.ICourseTranscriptCreditCategory, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -37308,7 +37209,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class CourseTranscriptEarnedAdditionalCredits : Entities.Common.EdFi.ICourseTranscriptEarnedAdditionalCredits, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -37614,7 +37514,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CourseTranscript.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class CourseTranscriptPartialCourseTranscriptAwards : Entities.Common.EdFi.ICourseTranscriptPartialCourseTranscriptAwards, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -38045,7 +37944,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Credential : Entities.Common.EdFi.ICredential, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -38596,7 +38494,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CredentialAcademicSubject : Entities.Common.EdFi.ICredentialAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -38873,7 +38770,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CredentialEndorsement : Entities.Common.EdFi.ICredentialEndorsement, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -39150,7 +39046,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Credential.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CredentialGradeLevel : Entities.Common.EdFi.ICredentialGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -39432,7 +39327,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CredentialFieldDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CredentialFieldDescriptor : Entities.Common.EdFi.ICredentialFieldDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -39702,7 +39596,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CredentialTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CredentialTypeDescriptor : Entities.Common.EdFi.ICredentialTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -39972,7 +39865,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CreditCategoryDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CreditCategoryDescriptor : Entities.Common.EdFi.ICreditCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -40242,7 +40134,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CreditTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CreditTypeDescriptor : Entities.Common.EdFi.ICreditTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -40512,7 +40403,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CTEProgramServiceDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CTEProgramServiceDescriptor : Entities.Common.EdFi.ICTEProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -40782,7 +40672,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CurriculumUsedDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class CurriculumUsedDescriptor : Entities.Common.EdFi.ICurriculumUsedDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -41052,7 +40941,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DeliveryMethodDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DeliveryMethodDescriptor : Entities.Common.EdFi.IDeliveryMethodDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -41510,7 +41398,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DescriptorMapping : Entities.Common.EdFi.IDescriptorMapping, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -41913,7 +41800,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DescriptorMapping.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DescriptorMappingModelEntity : Entities.Common.EdFi.IDescriptorMappingModelEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -42195,7 +42081,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DiagnosisDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DiagnosisDescriptor : Entities.Common.EdFi.IDiagnosisDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -42465,7 +42350,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DiplomaLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DiplomaLevelDescriptor : Entities.Common.EdFi.IDiplomaLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -42735,7 +42619,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DiplomaTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DiplomaTypeDescriptor : Entities.Common.EdFi.IDiplomaTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -43005,7 +42888,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisabilityDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisabilityDescriptor : Entities.Common.EdFi.IDisabilityDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -43275,7 +43157,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisabilityDesignationDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisabilityDesignationDescriptor : Entities.Common.EdFi.IDisabilityDesignationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -43545,7 +43426,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisabilityDeterminationSourceType
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisabilityDeterminationSourceTypeDescriptor : Entities.Common.EdFi.IDisabilityDeterminationSourceTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -43929,7 +43809,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineAction : Entities.Common.EdFi.IDisciplineAction, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -44736,7 +44615,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineActionDiscipline : Entities.Common.EdFi.IDisciplineActionDiscipline, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -45013,7 +44891,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineActionStaff : Entities.Common.EdFi.IDisciplineActionStaff, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -45354,7 +45231,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineActionStudentDisciplineIncidentAssociation : Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentAssociation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -45773,7 +45649,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineActionStudentDisciplineIncidentBehaviorAssociation : Entities.Common.EdFi.IDisciplineActionStudentDisciplineIncidentBehaviorAssociation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -46227,7 +46102,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineActionLengthDifferenceR
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineActionLengthDifferenceReasonDescriptor : Entities.Common.EdFi.IDisciplineActionLengthDifferenceReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -46497,7 +46371,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineDescriptor : Entities.Common.EdFi.IDisciplineDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -46864,7 +46737,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineIncident : Entities.Common.EdFi.IDisciplineIncident, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -47552,7 +47424,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineIncidentBehavior : Entities.Common.EdFi.IDisciplineIncidentBehavior, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -47837,7 +47708,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineIncidentExternalParticipant : Entities.Common.EdFi.IDisciplineIncidentExternalParticipant, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -48150,7 +48020,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineIncidentWeapon : Entities.Common.EdFi.IDisciplineIncidentWeapon, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -48432,7 +48301,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncidentParticipationCo
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class DisciplineIncidentParticipationCodeDescriptor : Entities.Common.EdFi.IDisciplineIncidentParticipationCodeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -48702,7 +48570,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationalEnvironmentDescriptor.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationalEnvironmentDescriptor : Entities.Common.EdFi.IEducationalEnvironmentDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -49061,7 +48928,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContent : Entities.Common.EdFi.IEducationContent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -49963,7 +49829,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentAppropriateGradeLevel : Entities.Common.EdFi.IEducationContentAppropriateGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -50240,7 +50105,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentAppropriateSex : Entities.Common.EdFi.IEducationContentAppropriateSex, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -50517,7 +50381,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentAuthor : Entities.Common.EdFi.IEducationContentAuthor, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -50794,7 +50657,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentDerivativeSourceEducationContent : Entities.Common.EdFi.IEducationContentDerivativeSourceEducationContent, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -51134,7 +50996,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentDerivativeSourceLearningResourceMetadataURI : Entities.Common.EdFi.IEducationContentDerivativeSourceLearningResourceMetadataURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -51411,7 +51272,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentDerivativeSourceURI : Entities.Common.EdFi.IEducationContentDerivativeSourceURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -51688,7 +51548,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationContent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationContentLanguage : Entities.Common.EdFi.IEducationContentLanguage, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -52065,7 +51924,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationAddress : Entities.Common.EdFi.IEducationOrganizationAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -52569,7 +52427,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationAddressPeriod : Entities.Common.EdFi.IEducationOrganizationAddressPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -52852,7 +52709,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationCategory : Entities.Common.EdFi.IEducationOrganizationCategory, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -53129,7 +52985,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationIdentificationCode : Entities.Common.EdFi.IEducationOrganizationIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -53415,7 +53270,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationIndicator : Entities.Common.EdFi.IEducationOrganizationIndicator, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -53808,7 +53662,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationIndicatorPeriod : Entities.Common.EdFi.IEducationOrganizationIndicatorPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -54091,7 +53944,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationInstitutionTelephone : Entities.Common.EdFi.IEducationOrganizationInstitutionTelephone, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -54377,7 +54229,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganization.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationInternationalAddress : Entities.Common.EdFi.IEducationOrganizationInternationalAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -54731,7 +54582,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationAssociationT
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationAssociationTypeDescriptor : Entities.Common.EdFi.IEducationOrganizationAssociationTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -55001,7 +54851,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationCategoryDesc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationCategoryDescriptor : Entities.Common.EdFi.IEducationOrganizationCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -55271,7 +55120,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIdentificati
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationIdentificationSystemDescriptor : Entities.Common.EdFi.IEducationOrganizationIdentificationSystemDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -55646,7 +55494,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationIntervention
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationInterventionPrescriptionAssociation : Entities.Common.EdFi.IEducationOrganizationInterventionPrescriptionAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -56170,7 +56017,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetwork.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationNetwork : Entities.Common.EdFi.IEducationOrganizationNetwork, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -56916,7 +56762,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationNetworkAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationNetworkAssociation : Entities.Common.EdFi.IEducationOrganizationNetworkAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -57433,7 +57278,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationOrganizationPeerAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationOrganizationPeerAssociation : Entities.Common.EdFi.IEducationOrganizationPeerAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -57846,7 +57690,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationPlanDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationPlanDescriptor : Entities.Common.EdFi.IEducationPlanDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -58180,7 +58023,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EducationServiceCenter.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EducationServiceCenter : Entities.Common.EdFi.IEducationServiceCenter, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -58888,7 +58730,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ElectronicMailTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ElectronicMailTypeDescriptor : Entities.Common.EdFi.IElectronicMailTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -59158,7 +58999,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EmploymentStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EmploymentStatusDescriptor : Entities.Common.EdFi.IEmploymentStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -59428,7 +59268,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EntryGradeLevelReasonDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EntryGradeLevelReasonDescriptor : Entities.Common.EdFi.IEntryGradeLevelReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -59698,7 +59537,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EntryTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EntryTypeDescriptor : Entities.Common.EdFi.IEntryTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -59968,7 +59806,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EventCircumstanceDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class EventCircumstanceDescriptor : Entities.Common.EdFi.IEventCircumstanceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -60238,7 +60075,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ExitWithdrawTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ExitWithdrawTypeDescriptor : Entities.Common.EdFi.IExitWithdrawTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -60613,7 +60449,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FeederSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class FeederSchoolAssociation : Entities.Common.EdFi.IFeederSchoolAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -61044,7 +60879,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FinancialCollectionDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class FinancialCollectionDescriptor : Entities.Common.EdFi.IFinancialCollectionDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -61411,7 +61245,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class FunctionDimension : Entities.Common.EdFi.IFunctionDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -61806,7 +61639,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FunctionDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class FunctionDimensionReportingTag : Entities.Common.EdFi.IFunctionDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -62185,7 +62017,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class FundDimension : Entities.Common.EdFi.IFundDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -62580,7 +62411,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.FundDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class FundDimensionReportingTag : Entities.Common.EdFi.IFundDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -63006,7 +62836,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GeneralStudentProgramAssociationParticipationStatus : Entities.Common.EdFi.IGeneralStudentProgramAssociationParticipationStatus, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -63296,7 +63125,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GeneralStudentProgramAssociation.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GeneralStudentProgramAssociationProgramParticipationStatus : Entities.Common.EdFi.IGeneralStudentProgramAssociationProgramParticipationStatus, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -63788,7 +63616,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Grade : Entities.Common.EdFi.IGrade, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -64649,7 +64476,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Grade.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradeLearningStandardGrade : Entities.Common.EdFi.IGradeLearningStandardGrade, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -65123,7 +64949,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradebookEntry : Entities.Common.EdFi.IGradebookEntry, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -65926,7 +65751,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntry.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradebookEntryLearningStandard : Entities.Common.EdFi.IGradebookEntryLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -66271,7 +66095,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradebookEntryTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradebookEntryTypeDescriptor : Entities.Common.EdFi.IGradebookEntryTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -66541,7 +66364,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradeLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradeLevelDescriptor : Entities.Common.EdFi.IGradeLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -66811,7 +66633,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradePointAverageTypeDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradePointAverageTypeDescriptor : Entities.Common.EdFi.IGradePointAverageTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -67081,7 +66902,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradeTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradeTypeDescriptor : Entities.Common.EdFi.IGradeTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -67464,7 +67284,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriod.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class GradingPeriod : Entities.Common.EdFi.IGradingPeriod, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -67943,7 +67762,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GradingPeriodDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GradingPeriodDescriptor : Entities.Common.EdFi.IGradingPeriodDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -68318,7 +68136,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class GraduationPlan : Entities.Common.EdFi.IGraduationPlan, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -69053,7 +68870,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class GraduationPlanCreditsByCourse : Entities.Common.EdFi.IGraduationPlanCreditsByCourse, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -69467,7 +69283,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GraduationPlanCreditsByCourseCourse : Entities.Common.EdFi.IGraduationPlanCreditsByCourseCourse, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -69840,7 +69655,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class GraduationPlanCreditsByCreditCategory : Entities.Common.EdFi.IGraduationPlanCreditsByCreditCategory, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -70162,7 +69976,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class GraduationPlanCreditsBySubject : Entities.Common.EdFi.IGraduationPlanCreditsBySubject, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -70484,7 +70297,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GraduationPlanRequiredAssessment : Entities.Common.EdFi.IGraduationPlanRequiredAssessment, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -70966,7 +70778,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GraduationPlanRequiredAssessmentPerformanceLevel : Entities.Common.EdFi.IGraduationPlanRequiredAssessmentPerformanceLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -71275,7 +71086,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlan.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GraduationPlanRequiredAssessmentScore : Entities.Common.EdFi.IGraduationPlanRequiredAssessmentScore, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -71581,7 +71391,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GraduationPlanTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GraduationPlanTypeDescriptor : Entities.Common.EdFi.IGraduationPlanTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -71851,7 +71660,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.GunFreeSchoolsActReportingStatusD
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class GunFreeSchoolsActReportingStatusDescriptor : Entities.Common.EdFi.IGunFreeSchoolsActReportingStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -72121,7 +71929,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.HomelessPrimaryNighttimeResidence
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class HomelessPrimaryNighttimeResidenceDescriptor : Entities.Common.EdFi.IHomelessPrimaryNighttimeResidenceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -72391,7 +72198,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.HomelessProgramServiceDescriptor.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class HomelessProgramServiceDescriptor : Entities.Common.EdFi.IHomelessProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -72661,7 +72467,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IdentificationDocumentUseDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class IdentificationDocumentUseDescriptor : Entities.Common.EdFi.IIdentificationDocumentUseDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -72931,7 +72736,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IncidentLocationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class IncidentLocationDescriptor : Entities.Common.EdFi.IIncidentLocationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -73201,7 +73005,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IndicatorDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class IndicatorDescriptor : Entities.Common.EdFi.IIndicatorDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -73471,7 +73274,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IndicatorGroupDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class IndicatorGroupDescriptor : Entities.Common.EdFi.IIndicatorGroupDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -73741,7 +73543,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.IndicatorLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class IndicatorLevelDescriptor : Entities.Common.EdFi.IIndicatorLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -74011,7 +73812,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InstitutionTelephoneNumberTypeDes
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InstitutionTelephoneNumberTypeDescriptor : Entities.Common.EdFi.IInstitutionTelephoneNumberTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -74281,7 +74081,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InteractivityStyleDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InteractivityStyleDescriptor : Entities.Common.EdFi.IInteractivityStyleDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -74551,7 +74350,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InternetAccessDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InternetAccessDescriptor : Entities.Common.EdFi.IInternetAccessDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -74821,7 +74619,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InternetAccessTypeInResidenceDesc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InternetAccessTypeInResidenceDescriptor : Entities.Common.EdFi.IInternetAccessTypeInResidenceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -75091,7 +74888,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InternetPerformanceInResidenceDes
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InternetPerformanceInResidenceDescriptor : Entities.Common.EdFi.IInternetPerformanceInResidenceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -75458,7 +75254,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Intervention : Entities.Common.EdFi.IIntervention, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -76483,7 +76278,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionAppropriateGradeLevel : Entities.Common.EdFi.IInterventionAppropriateGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -76760,7 +76554,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionAppropriateSex : Entities.Common.EdFi.IInterventionAppropriateSex, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -77037,7 +76830,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionDiagnosis : Entities.Common.EdFi.IInterventionDiagnosis, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -77314,7 +77106,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionEducationContent : Entities.Common.EdFi.IInterventionEducationContent, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -77654,7 +77445,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionInterventionPrescription : Entities.Common.EdFi.IInterventionInterventionPrescription, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -78027,7 +77817,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionLearningResourceMetadataURI : Entities.Common.EdFi.IInterventionLearningResourceMetadataURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -78304,7 +78093,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionMeetingTime : Entities.Common.EdFi.IInterventionMeetingTime, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -78597,7 +78385,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPopulationServed : Entities.Common.EdFi.IInterventionPopulationServed, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -78874,7 +78661,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStaff : Entities.Common.EdFi.IInterventionStaff, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -79215,7 +79001,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Intervention.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionURI : Entities.Common.EdFi.IInterventionURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -79497,7 +79282,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionClassDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionClassDescriptor : Entities.Common.EdFi.IInterventionClassDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -79767,7 +79551,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionEffectivenessRatingDe
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionEffectivenessRatingDescriptor : Entities.Common.EdFi.IInterventionEffectivenessRatingDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -80134,7 +79917,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescription : Entities.Common.EdFi.IInterventionPrescription, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -80964,7 +80746,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionAppropriateGradeLevel : Entities.Common.EdFi.IInterventionPrescriptionAppropriateGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -81241,7 +81022,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionAppropriateSex : Entities.Common.EdFi.IInterventionPrescriptionAppropriateSex, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -81518,7 +81298,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionDiagnosis : Entities.Common.EdFi.IInterventionPrescriptionDiagnosis, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -81795,7 +81574,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionEducationContent : Entities.Common.EdFi.IInterventionPrescriptionEducationContent, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -82135,7 +81913,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionLearningResourceMetadataURI : Entities.Common.EdFi.IInterventionPrescriptionLearningResourceMetadataURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -82412,7 +82189,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionPopulationServed : Entities.Common.EdFi.IInterventionPrescriptionPopulationServed, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -82689,7 +82465,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionPrescription.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionPrescriptionURI : Entities.Common.EdFi.IInterventionPrescriptionURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -83068,7 +82843,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class InterventionStudy : Entities.Common.EdFi.IInterventionStudy, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -84065,7 +83839,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyAppropriateGradeLevel : Entities.Common.EdFi.IInterventionStudyAppropriateGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -84342,7 +84115,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyAppropriateSex : Entities.Common.EdFi.IInterventionStudyAppropriateSex, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -84619,7 +84391,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyEducationContent : Entities.Common.EdFi.IInterventionStudyEducationContent, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -84959,7 +84730,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyInterventionEffectiveness : Entities.Common.EdFi.IInterventionStudyInterventionEffectiveness, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -85288,7 +85058,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyLearningResourceMetadataURI : Entities.Common.EdFi.IInterventionStudyLearningResourceMetadataURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -85565,7 +85334,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyPopulationServed : Entities.Common.EdFi.IInterventionStudyPopulationServed, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -85842,7 +85610,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyStateAbbreviation : Entities.Common.EdFi.IInterventionStudyStateAbbreviation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -86119,7 +85886,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.InterventionStudy.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class InterventionStudyURI : Entities.Common.EdFi.IInterventionStudyURI, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -86401,7 +86167,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LanguageDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LanguageDescriptor : Entities.Common.EdFi.ILanguageDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -86671,7 +86436,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LanguageInstructionProgramService
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LanguageInstructionProgramServiceDescriptor : Entities.Common.EdFi.ILanguageInstructionProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -86941,7 +86705,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LanguageUseDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LanguageUseDescriptor : Entities.Common.EdFi.ILanguageUseDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -87308,7 +87071,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningObjective : Entities.Common.EdFi.ILearningObjective, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -87955,7 +87717,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningObjectiveAcademicSubject : Entities.Common.EdFi.ILearningObjectiveAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -88232,7 +87993,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningObjectiveContentStandard : Entities.Common.EdFi.ILearningObjectiveContentStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -88711,7 +88471,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningObjectiveContentStandardAuthor : Entities.Common.EdFi.ILearningObjectiveContentStandardAuthor, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -88988,7 +88747,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningObjectiveGradeLevel : Entities.Common.EdFi.ILearningObjectiveGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -89265,7 +89023,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningObjectiveLearningStandard : Entities.Common.EdFi.ILearningObjectiveLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -89699,7 +89456,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandard : Entities.Common.EdFi.ILearningStandard, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -90394,7 +90150,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardAcademicSubject : Entities.Common.EdFi.ILearningStandardAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -90671,7 +90426,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardContentStandard : Entities.Common.EdFi.ILearningStandardContentStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -91150,7 +90904,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardContentStandardAuthor : Entities.Common.EdFi.ILearningStandardContentStandardAuthor, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -91427,7 +91180,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardGradeLevel : Entities.Common.EdFi.ILearningStandardGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -91704,7 +91456,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardIdentificationCode : Entities.Common.EdFi.ILearningStandardIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -91999,7 +91750,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardPrerequisiteLearningStandard : Entities.Common.EdFi.ILearningStandardPrerequisiteLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -92344,7 +92094,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardCategoryDescripto
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardCategoryDescriptor : Entities.Common.EdFi.ILearningStandardCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -92719,7 +92468,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceAssoci
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardEquivalenceAssociation : Entities.Common.EdFi.ILearningStandardEquivalenceAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -93173,7 +92921,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardEquivalenceStreng
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardEquivalenceStrengthDescriptor : Entities.Common.EdFi.ILearningStandardEquivalenceStrengthDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -93443,7 +93190,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LearningStandardScopeDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LearningStandardScopeDescriptor : Entities.Common.EdFi.ILearningStandardScopeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -93713,7 +93459,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LevelOfEducationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LevelOfEducationDescriptor : Entities.Common.EdFi.ILevelOfEducationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -93983,7 +93728,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LicenseStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LicenseStatusDescriptor : Entities.Common.EdFi.ILicenseStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -94253,7 +93997,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LicenseTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LicenseTypeDescriptor : Entities.Common.EdFi.ILicenseTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -94523,7 +94266,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LimitedEnglishProficiencyDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LimitedEnglishProficiencyDescriptor : Entities.Common.EdFi.ILimitedEnglishProficiencyDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -94898,7 +94640,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class LocalAccount : Entities.Common.EdFi.ILocalAccount, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -95517,7 +95258,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalAccount.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LocalAccountReportingTag : Entities.Common.EdFi.ILocalAccountReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -95920,7 +95660,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalActual.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class LocalActual : Entities.Common.EdFi.ILocalActual, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -96486,7 +96225,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalBudget.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class LocalBudget : Entities.Common.EdFi.ILocalBudget, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -97069,7 +96807,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalContractedStaff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class LocalContractedStaff : Entities.Common.EdFi.ILocalContractedStaff, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -97603,7 +97340,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocaleDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LocaleDescriptor : Entities.Common.EdFi.ILocaleDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -97937,7 +97673,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LocalEducationAgency : Entities.Common.EdFi.ILocalEducationAgency, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -98911,7 +98646,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LocalEducationAgencyAccountability : Entities.Common.EdFi.ILocalEducationAgencyAccountability, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -99260,7 +98994,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgency.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LocalEducationAgencyFederalFunds : Entities.Common.EdFi.ILocalEducationAgencyFederalFunds, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -99605,7 +99338,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEducationAgencyCategoryDescr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class LocalEducationAgencyCategoryDescriptor : Entities.Common.EdFi.ILocalEducationAgencyCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -99988,7 +99720,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalEncumbrance.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class LocalEncumbrance : Entities.Common.EdFi.ILocalEncumbrance, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -100571,7 +100302,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.LocalPayroll.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class LocalPayroll : Entities.Common.EdFi.ILocalPayroll, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -101202,7 +100932,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Location.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Location : Entities.Common.EdFi.ILocation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -101560,7 +101289,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MagnetSpecialProgramEmphasisSchoo
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class MagnetSpecialProgramEmphasisSchoolDescriptor : Entities.Common.EdFi.IMagnetSpecialProgramEmphasisSchoolDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -101830,7 +101558,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MediumOfInstructionDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class MediumOfInstructionDescriptor : Entities.Common.EdFi.IMediumOfInstructionDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -102100,7 +101827,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MethodCreditEarnedDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class MethodCreditEarnedDescriptor : Entities.Common.EdFi.IMethodCreditEarnedDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -102370,7 +102096,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MigrantEducationProgramServiceDes
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class MigrantEducationProgramServiceDescriptor : Entities.Common.EdFi.IMigrantEducationProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -102640,7 +102365,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ModelEntityDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ModelEntityDescriptor : Entities.Common.EdFi.IModelEntityDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -102910,7 +102634,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.MonitoredDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class MonitoredDescriptor : Entities.Common.EdFi.IMonitoredDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -103180,7 +102903,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.NeglectedOrDelinquentProgramDescr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class NeglectedOrDelinquentProgramDescriptor : Entities.Common.EdFi.INeglectedOrDelinquentProgramDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -103450,7 +103172,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.NeglectedOrDelinquentProgramServi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class NeglectedOrDelinquentProgramServiceDescriptor : Entities.Common.EdFi.INeglectedOrDelinquentProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -103720,7 +103441,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.NetworkPurposeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class NetworkPurposeDescriptor : Entities.Common.EdFi.INetworkPurposeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -104087,7 +103807,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class ObjectDimension : Entities.Common.EdFi.IObjectDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -104482,7 +104201,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ObjectDimensionReportingTag : Entities.Common.EdFi.IObjectDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -104869,7 +104587,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ObjectiveAssessment : Entities.Common.EdFi.IObjectiveAssessment, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -105705,7 +105422,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ObjectiveAssessmentAssessmentItem : Entities.Common.EdFi.IObjectiveAssessmentAssessmentItem, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -106119,7 +105835,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ObjectiveAssessmentLearningStandard : Entities.Common.EdFi.IObjectiveAssessmentLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -106459,7 +106174,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ObjectiveAssessmentPerformanceLevel : Entities.Common.EdFi.IObjectiveAssessmentPerformanceLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -106786,7 +106500,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ObjectiveAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ObjectiveAssessmentScore : Entities.Common.EdFi.IObjectiveAssessmentScore, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -107092,7 +106805,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OldEthnicityDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OldEthnicityDescriptor : Entities.Common.EdFi.IOldEthnicityDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -107459,7 +107171,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OpenStaffPosition : Entities.Common.EdFi.IOpenStaffPosition, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -108006,7 +107717,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OpenStaffPositionAcademicSubject : Entities.Common.EdFi.IOpenStaffPositionAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -108283,7 +107993,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OpenStaffPosition.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OpenStaffPositionInstructionalGradeLevel : Entities.Common.EdFi.IOpenStaffPositionInstructionalGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -108565,7 +108274,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OperationalStatusDescriptor : Entities.Common.EdFi.IOperationalStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -108932,7 +108640,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class OperationalUnitDimension : Entities.Common.EdFi.IOperationalUnitDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -109327,7 +109034,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OperationalUnitDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OperationalUnitDimensionReportingTag : Entities.Common.EdFi.IOperationalUnitDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -109673,7 +109379,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OrganizationDepartment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OrganizationDepartment : Entities.Common.EdFi.IOrganizationDepartment, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -110396,7 +110101,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.OtherNameTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class OtherNameTypeDescriptor : Entities.Common.EdFi.IOtherNameTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -110764,7 +110468,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Parent : Entities.Common.EdFi.IParent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -111655,7 +111358,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentAddress : Entities.Common.EdFi.IParentAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -112159,7 +111861,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentAddressPeriod : Entities.Common.EdFi.IParentAddressPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -112442,7 +112143,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentElectronicMail : Entities.Common.EdFi.IParentElectronicMail, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -112751,7 +112451,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentInternationalAddress : Entities.Common.EdFi.IParentInternationalAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -113100,7 +112799,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentLanguage : Entities.Common.EdFi.IParentLanguage, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -113461,7 +113159,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentLanguageUse : Entities.Common.EdFi.IParentLanguageUse, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -113738,7 +113435,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentOtherName : Entities.Common.EdFi.IParentOtherName, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -114057,7 +113753,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentPersonalIdentificationDocument : Entities.Common.EdFi.IParentPersonalIdentificationDocument, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -114391,7 +114086,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Parent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParentTelephone : Entities.Common.EdFi.IParentTelephone, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -114713,7 +114407,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ParticipationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParticipationDescriptor : Entities.Common.EdFi.IParticipationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -114983,7 +114676,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ParticipationStatusDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ParticipationStatusDescriptor : Entities.Common.EdFi.IParticipationStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -115253,7 +114945,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PerformanceBaseConversionDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PerformanceBaseConversionDescriptor : Entities.Common.EdFi.IPerformanceBaseConversionDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -115523,7 +115214,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PerformanceLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PerformanceLevelDescriptor : Entities.Common.EdFi.IPerformanceLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -115890,7 +115580,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Person.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Person : Entities.Common.EdFi.IPerson, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -116178,7 +115867,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PersonalInformationVerificationDe
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PersonalInformationVerificationDescriptor : Entities.Common.EdFi.IPersonalInformationVerificationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -116448,7 +116136,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PlatformTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PlatformTypeDescriptor : Entities.Common.EdFi.IPlatformTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -116718,7 +116405,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PopulationServedDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PopulationServedDescriptor : Entities.Common.EdFi.IPopulationServedDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -116988,7 +116674,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostingResultDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PostingResultDescriptor : Entities.Common.EdFi.IPostingResultDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -117372,7 +117057,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PostSecondaryEvent : Entities.Common.EdFi.IPostSecondaryEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -117808,7 +117492,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryEventCategoryDescrip
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PostSecondaryEventCategoryDescriptor : Entities.Common.EdFi.IPostSecondaryEventCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -118142,7 +117825,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PostSecondaryInstitution : Entities.Common.EdFi.IPostSecondaryInstitution, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -118853,7 +118535,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitution.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PostSecondaryInstitutionMediumOfInstruction : Entities.Common.EdFi.IPostSecondaryInstitutionMediumOfInstruction, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -119135,7 +118816,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostSecondaryInstitutionLevelDesc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PostSecondaryInstitutionLevelDescriptor : Entities.Common.EdFi.IPostSecondaryInstitutionLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -119405,7 +119085,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PrimaryLearningDeviceAccessDescri
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PrimaryLearningDeviceAccessDescriptor : Entities.Common.EdFi.IPrimaryLearningDeviceAccessDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -119675,7 +119354,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PrimaryLearningDeviceAwayFromScho
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PrimaryLearningDeviceAwayFromSchoolDescriptor : Entities.Common.EdFi.IPrimaryLearningDeviceAwayFromSchoolDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -119945,7 +119623,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PrimaryLearningDeviceProviderDesc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PrimaryLearningDeviceProviderDescriptor : Entities.Common.EdFi.IPrimaryLearningDeviceProviderDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -120215,7 +119892,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProficiencyDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProficiencyDescriptor : Entities.Common.EdFi.IProficiencyDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -120590,7 +120266,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Program : Entities.Common.EdFi.IProgram, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -121286,7 +120961,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramCharacteristic : Entities.Common.EdFi.IProgramCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -121563,7 +121237,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramLearningObjective : Entities.Common.EdFi.IProgramLearningObjective, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -121936,7 +121609,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramLearningStandard : Entities.Common.EdFi.IProgramLearningStandard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -122276,7 +121948,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramService : Entities.Common.EdFi.IProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -122553,7 +122224,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Program.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramSponsor : Entities.Common.EdFi.IProgramSponsor, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -122835,7 +122505,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramAssignmentDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramAssignmentDescriptor : Entities.Common.EdFi.IProgramAssignmentDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -123105,7 +122774,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramCharacteristicDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramCharacteristicDescriptor : Entities.Common.EdFi.IProgramCharacteristicDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -123472,7 +123140,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class ProgramDimension : Entities.Common.EdFi.IProgramDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -123867,7 +123534,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramDimensionReportingTag : Entities.Common.EdFi.IProgramDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -124149,7 +123815,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramSponsorDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramSponsorDescriptor : Entities.Common.EdFi.IProgramSponsorDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -124419,7 +124084,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgramTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgramTypeDescriptor : Entities.Common.EdFi.IProgramTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -124689,7 +124353,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgressDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgressDescriptor : Entities.Common.EdFi.IProgressDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -124959,7 +124622,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProgressLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProgressLevelDescriptor : Entities.Common.EdFi.IProgressLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -125326,7 +124988,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class ProjectDimension : Entities.Common.EdFi.IProjectDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -125721,7 +125382,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProjectDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProjectDimensionReportingTag : Entities.Common.EdFi.IProjectDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -126003,7 +125663,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProviderCategoryDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProviderCategoryDescriptor : Entities.Common.EdFi.IProviderCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -126273,7 +125932,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProviderProfitabilityDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProviderProfitabilityDescriptor : Entities.Common.EdFi.IProviderProfitabilityDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -126543,7 +126201,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ProviderStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ProviderStatusDescriptor : Entities.Common.EdFi.IProviderStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -126813,7 +126470,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PublicationStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class PublicationStatusDescriptor : Entities.Common.EdFi.IPublicationStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -127083,7 +126739,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.QuestionFormDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class QuestionFormDescriptor : Entities.Common.EdFi.IQuestionFormDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -127353,7 +127008,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RaceDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RaceDescriptor : Entities.Common.EdFi.IRaceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -127623,7 +127277,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReasonExitedDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReasonExitedDescriptor : Entities.Common.EdFi.IReasonExitedDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -127893,7 +127546,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReasonNotTestedDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReasonNotTestedDescriptor : Entities.Common.EdFi.IReasonNotTestedDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -128163,7 +127815,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RecognitionTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RecognitionTypeDescriptor : Entities.Common.EdFi.IRecognitionTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -128433,7 +128084,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RelationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RelationDescriptor : Entities.Common.EdFi.IRelationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -128703,7 +128353,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RepeatIdentifierDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RepeatIdentifierDescriptor : Entities.Common.EdFi.IRepeatIdentifierDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -129111,7 +128760,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReportCard : Entities.Common.EdFi.IReportCard, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -130000,7 +129648,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReportCardGrade : Entities.Common.EdFi.IReportCardGrade, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -130665,7 +130312,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class ReportCardGradePointAverage : Entities.Common.EdFi.IReportCardGradePointAverage, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -130986,7 +130632,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReportCardStudentCompetencyObjective : Entities.Common.EdFi.IReportCardStudentCompetencyObjective, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -131547,7 +131192,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportCard.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReportCardStudentLearningObjective : Entities.Common.EdFi.IReportCardStudentLearningObjective, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -132083,7 +131727,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReporterDescriptionDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReporterDescriptionDescriptor : Entities.Common.EdFi.IReporterDescriptionDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -132353,7 +131996,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ReportingTagDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ReportingTagDescriptor : Entities.Common.EdFi.IReportingTagDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -132623,7 +132265,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResidencyStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ResidencyStatusDescriptor : Entities.Common.EdFi.IResidencyStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -132893,7 +132534,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResponseIndicatorDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ResponseIndicatorDescriptor : Entities.Common.EdFi.IResponseIndicatorDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -133163,7 +132803,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResponsibilityDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ResponsibilityDescriptor : Entities.Common.EdFi.IResponsibilityDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -133547,7 +133186,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RestraintEvent : Entities.Common.EdFi.IRestraintEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -134127,7 +133765,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RestraintEventProgram : Entities.Common.EdFi.IRestraintEventProgram, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -134530,7 +134167,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RestraintEventReason : Entities.Common.EdFi.IRestraintEventReason, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -134812,7 +134448,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RestraintEventReasonDescriptor.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RestraintEventReasonDescriptor : Entities.Common.EdFi.IRestraintEventReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -135082,7 +134717,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ResultDatatypeTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ResultDatatypeTypeDescriptor : Entities.Common.EdFi.IResultDatatypeTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -135352,7 +134986,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.RetestIndicatorDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class RetestIndicatorDescriptor : Entities.Common.EdFi.IRetestIndicatorDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -135686,7 +135319,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class School : Entities.Common.EdFi.ISchool, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -136632,7 +136264,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SchoolCategory : Entities.Common.EdFi.ISchoolCategory, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -136909,7 +136540,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SchoolGradeLevel : Entities.Common.EdFi.ISchoolGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -137191,7 +136821,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolCategoryDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SchoolCategoryDescriptor : Entities.Common.EdFi.ISchoolCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -137461,7 +137090,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolChoiceImplementStatusDescri
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SchoolChoiceImplementStatusDescriptor : Entities.Common.EdFi.ISchoolChoiceImplementStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -137731,7 +137359,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolFoodServiceProgramServiceDe
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SchoolFoodServiceProgramServiceDescriptor : Entities.Common.EdFi.ISchoolFoodServiceProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -138001,7 +137628,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolTypeDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SchoolTypeDescriptor : Entities.Common.EdFi.ISchoolTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -138335,7 +137961,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SchoolYearType.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class SchoolYearType : Entities.Common.EdFi.ISchoolYearType, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -138762,7 +138387,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Section : Entities.Common.EdFi.ISection, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -139800,7 +139424,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionCharacteristic : Entities.Common.EdFi.ISectionCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -140077,7 +139700,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionClassPeriod : Entities.Common.EdFi.ISectionClassPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -140463,7 +140085,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionCourseLevelCharacteristic : Entities.Common.EdFi.ISectionCourseLevelCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -140740,7 +140361,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionOfferedGradeLevel : Entities.Common.EdFi.ISectionOfferedGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -141017,7 +140637,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionProgram : Entities.Common.EdFi.ISectionProgram, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -141562,7 +141181,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionAttendanceTakenEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionAttendanceTakenEvent : Entities.Common.EdFi.ISectionAttendanceTakenEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -142302,7 +141920,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SectionCharacteristicDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SectionCharacteristicDescriptor : Entities.Common.EdFi.ISectionCharacteristicDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -142572,7 +142189,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SeparationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SeparationDescriptor : Entities.Common.EdFi.ISeparationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -142842,7 +142458,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SeparationReasonDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SeparationReasonDescriptor : Entities.Common.EdFi.ISeparationReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -143112,7 +142727,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ServiceDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class ServiceDescriptor : Entities.Common.EdFi.IServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -143487,7 +143101,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class Session : Entities.Common.EdFi.ISession, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -144097,7 +143710,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SessionAcademicWeek : Entities.Common.EdFi.ISessionAcademicWeek, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -144483,7 +144095,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Session.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SessionGradingPeriod : Entities.Common.EdFi.ISessionGradingPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -144932,7 +144543,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SexDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SexDescriptor : Entities.Common.EdFi.ISexDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -145299,7 +144909,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class SourceDimension : Entities.Common.EdFi.ISourceDimension, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -145694,7 +145303,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceDimension.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SourceDimensionReportingTag : Entities.Common.EdFi.ISourceDimensionReportingTag, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -145976,7 +145584,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SourceSystemDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SourceSystemDescriptor : Entities.Common.EdFi.ISourceSystemDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -146246,7 +145853,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SpecialEducationProgramServiceDes
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SpecialEducationProgramServiceDescriptor : Entities.Common.EdFi.ISpecialEducationProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -146516,7 +146122,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SpecialEducationSettingDescriptor
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SpecialEducationSettingDescriptor : Entities.Common.EdFi.ISpecialEducationSettingDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -146884,7 +146489,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Staff : Entities.Common.EdFi.IStaff, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -148308,7 +147912,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffAddress : Entities.Common.EdFi.IStaffAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -148812,7 +148415,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffAddressPeriod : Entities.Common.EdFi.IStaffAddressPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -149095,7 +148697,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffAncestryEthnicOrigin : Entities.Common.EdFi.IStaffAncestryEthnicOrigin, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -149372,7 +148973,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffCredential : Entities.Common.EdFi.IStaffCredential, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -149742,7 +149342,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffElectronicMail : Entities.Common.EdFi.IStaffElectronicMail, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -150051,7 +149650,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffIdentificationCode : Entities.Common.EdFi.IStaffIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -150345,7 +149943,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffIdentificationDocument : Entities.Common.EdFi.IStaffIdentificationDocument, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -150679,7 +150276,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffInternationalAddress : Entities.Common.EdFi.IStaffInternationalAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -151028,7 +150624,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffLanguage : Entities.Common.EdFi.IStaffLanguage, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -151389,7 +150984,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffLanguageUse : Entities.Common.EdFi.IStaffLanguageUse, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -151666,7 +151260,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffOtherName : Entities.Common.EdFi.IStaffOtherName, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -151985,7 +151578,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffPersonalIdentificationDocument : Entities.Common.EdFi.IStaffPersonalIdentificationDocument, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -152319,7 +151911,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffRace : Entities.Common.EdFi.IStaffRace, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -152596,7 +152187,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffRecognition : Entities.Common.EdFi.IStaffRecognition, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -152967,7 +152557,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffTelephone : Entities.Common.EdFi.IStaffTelephone, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -153284,7 +152873,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffTribalAffiliation : Entities.Common.EdFi.IStaffTribalAffiliation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -153561,7 +153149,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Staff.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffVisa : Entities.Common.EdFi.IStaffVisa, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -153957,7 +153544,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffAbsenceEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffAbsenceEvent : Entities.Common.EdFi.IStaffAbsenceEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -154342,7 +153928,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffClassificationDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffClassificationDescriptor : Entities.Common.EdFi.IStaffClassificationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -154734,7 +154319,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffCohortAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffCohortAssociation : Entities.Common.EdFi.IStaffCohortAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -155326,7 +154910,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffDisciplineIncidentAssociation : Entities.Common.EdFi.IStaffDisciplineIncidentAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -155852,7 +155435,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffDisciplineIncidentAssociatio
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffDisciplineIncidentAssociationDisciplineIncidentParticipationCode : Entities.Common.EdFi.IStaffDisciplineIncidentAssociationDisciplineIncidentParticipationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -156256,7 +155838,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationAssignm
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffEducationOrganizationAssignmentAssociation : Entities.Common.EdFi.IStaffEducationOrganizationAssignmentAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -157115,7 +156696,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffEducationOrganizationContactAssociation : Entities.Common.EdFi.IStaffEducationOrganizationContactAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -157668,7 +157248,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffEducationOrganizationContactAssociationAddress : Entities.Common.EdFi.IStaffEducationOrganizationContactAssociationAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -158127,7 +157706,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffEducationOrganizationContactAssociationAddressPeriod : Entities.Common.EdFi.IStaffEducationOrganizationContactAssociationAddressPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -158410,7 +157988,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationContact
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffEducationOrganizationContactAssociationTelephone : Entities.Common.EdFi.IStaffEducationOrganizationContactAssociationTelephone, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -158854,7 +158431,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffEducationOrganizationEmploym
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffEducationOrganizationEmploymentAssociation : Entities.Common.EdFi.IStaffEducationOrganizationEmploymentAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -159455,7 +159031,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffIdentificationSystemDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffIdentificationSystemDescriptor : Entities.Common.EdFi.IStaffIdentificationSystemDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -159839,7 +159414,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeave.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffLeave : Entities.Common.EdFi.IStaffLeave, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -160230,7 +159804,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffLeaveEventCategoryDescriptor
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffLeaveEventCategoryDescriptor : Entities.Common.EdFi.IStaffLeaveEventCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -160630,7 +160203,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffProgramAssociation : Entities.Common.EdFi.IStaffProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -161252,7 +160824,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffSchoolAssociation : Entities.Common.EdFi.IStaffSchoolAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -162042,7 +161613,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffSchoolAssociationAcademicSubject : Entities.Common.EdFi.IStaffSchoolAssociationAcademicSubject, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -162319,7 +161889,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffSchoolAssociationGradeLevel : Entities.Common.EdFi.IStaffSchoolAssociationGradeLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -162739,7 +162308,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StaffSectionAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StaffSectionAssociation : Entities.Common.EdFi.IStaffSectionAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -163330,7 +162898,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateAbbreviationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StateAbbreviationDescriptor : Entities.Common.EdFi.IStateAbbreviationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -163664,7 +163231,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StateEducationAgency : Entities.Common.EdFi.IStateEducationAgency, Entities.Common.EdFi.IEducationOrganization, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -164419,7 +163985,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StateEducationAgencyAccountability : Entities.Common.EdFi.IStateEducationAgencyAccountability, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -164759,7 +164324,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StateEducationAgency.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StateEducationAgencyFederalFunds : Entities.Common.EdFi.IStateEducationAgencyFederalFunds, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -165146,7 +164710,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Student : Entities.Common.EdFi.IStudent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -165903,7 +165466,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentIdentificationDocument : Entities.Common.EdFi.IStudentIdentificationDocument, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -166237,7 +165799,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentOtherName : Entities.Common.EdFi.IStudentOtherName, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -166556,7 +166117,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentPersonalIdentificationDocument : Entities.Common.EdFi.IStudentPersonalIdentificationDocument, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -166890,7 +166450,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Student.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentVisa : Entities.Common.EdFi.IStudentVisa, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -167294,7 +166853,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAcademicRecord : Entities.Common.EdFi.IStudentAcademicRecord, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -168286,7 +167844,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAcademicRecordAcademicHonor : Entities.Common.EdFi.IStudentAcademicRecordAcademicHonor, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -168667,7 +168224,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class StudentAcademicRecordClassRanking : Entities.Common.EdFi.IStudentAcademicRecordClassRanking, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -168991,7 +168547,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAcademicRecordDiploma : Entities.Common.EdFi.IStudentAcademicRecordDiploma, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -169387,7 +168942,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class StudentAcademicRecordGradePointAverage : Entities.Common.EdFi.IStudentAcademicRecordGradePointAverage, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -169708,7 +169262,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAcademicRecordRecognition : Entities.Common.EdFi.IStudentAcademicRecordRecognition, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -170079,7 +169632,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAcademicRecord.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAcademicRecordReportCard : Entities.Common.EdFi.IStudentAcademicRecordReportCard, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -170716,7 +170268,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessment : Entities.Common.EdFi.IStudentAssessment, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -171760,7 +171311,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentAccommodation : Entities.Common.EdFi.IStudentAssessmentAccommodation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -172037,7 +171587,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentItem : Entities.Common.EdFi.IStudentAssessmentItem, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -172507,7 +172056,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentPerformanceLevel : Entities.Common.EdFi.IStudentAssessmentPerformanceLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -172810,7 +172358,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentPeriod : Entities.Common.EdFi.IStudentAssessmentPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -173092,7 +172639,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentScoreResult : Entities.Common.EdFi.IStudentAssessmentScoreResult, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -173387,7 +172933,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentStudentObjectiveAssessment : Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessment, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -173960,7 +173505,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentStudentObjectiveAssessmentPerformanceLevel : Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessmentPerformanceLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -174263,7 +173807,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessment.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentStudentObjectiveAssessmentScoreResult : Entities.Common.EdFi.IStudentAssessmentStudentObjectiveAssessmentScoreResult, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -174701,7 +174244,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentAssessmentEducationOrganiz
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentAssessmentEducationOrganizationAssociation : Entities.Common.EdFi.IStudentAssessmentEducationOrganizationAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -175299,7 +174841,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCharacteristicDescriptor.E
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCharacteristicDescriptor : Entities.Common.EdFi.IStudentCharacteristicDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -175691,7 +175232,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCohortAssociation : Entities.Common.EdFi.IStudentCohortAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -176241,7 +175781,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCohortAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCohortAssociationSection : Entities.Common.EdFi.IStudentCohortAssociationSection, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -176872,7 +176411,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCompetencyObjective : Entities.Common.EdFi.IStudentCompetencyObjective, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -177681,7 +177219,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCompetencyObjectiveGeneralStudentProgramAssociation : Entities.Common.EdFi.IStudentCompetencyObjectiveGeneralStudentProgramAssociation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -178196,7 +177733,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCompetencyObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCompetencyObjectiveStudentSectionAssociation : Entities.Common.EdFi.IStudentCompetencyObjectiveStudentSectionAssociation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -178865,7 +178401,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCTEProgramAssociation : Entities.Common.EdFi.IStudentCTEProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -179760,7 +179295,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCTEProgramAssociationCTEProgram : Entities.Common.EdFi.IStudentCTEProgramAssociationCTEProgram, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -180059,7 +179593,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCTEProgramAssociationCTEProgramService : Entities.Common.EdFi.IStudentCTEProgramAssociationCTEProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -180365,7 +179898,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentCTEProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentCTEProgramAssociationService : Entities.Common.EdFi.IStudentCTEProgramAssociationService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -180782,7 +180314,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentDisciplineIncidentAssociation : Entities.Common.EdFi.IStudentDisciplineIncidentAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -181317,7 +180848,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentDisciplineIncidentAssociationBehavior : Entities.Common.EdFi.IStudentDisciplineIncidentAssociationBehavior, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -181729,7 +181259,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentDisciplineIncidentBehaviorAssociation : Entities.Common.EdFi.IStudentDisciplineIncidentBehaviorAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -182281,7 +181810,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentDisciplineIncidentBehaviorAssociationDisciplineIncidentParticipationCode : Entities.Common.EdFi.IStudentDisciplineIncidentBehaviorAssociationDisciplineIncidentParticipationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -182677,7 +182205,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentDisciplineIncidentNonOffenderAssociation : Entities.Common.EdFi.IStudentDisciplineIncidentNonOffenderAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -183203,7 +182730,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentNonOffen
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentDisciplineIncidentNonOffenderAssociationDisciplineIncidentParticipationCode : Entities.Common.EdFi.IStudentDisciplineIncidentNonOffenderAssociationDisciplineIncidentParticipationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -183591,7 +183117,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociation : Entities.Common.EdFi.IStudentEducationOrganizationAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -184967,7 +184492,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationAddress : Entities.Common.EdFi.IStudentEducationOrganizationAssociationAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -185471,7 +184995,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationAddressPeriod : Entities.Common.EdFi.IStudentEducationOrganizationAssociationAddressPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -185754,7 +185277,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationAncestryEthnicOrigin : Entities.Common.EdFi.IStudentEducationOrganizationAssociationAncestryEthnicOrigin, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -186031,7 +185553,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationCohortYear : Entities.Common.EdFi.IStudentEducationOrganizationAssociationCohortYear, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -186390,7 +185911,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationDisability : Entities.Common.EdFi.IStudentEducationOrganizationAssociationDisability, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -186774,7 +186294,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationDisabilityDesignation : Entities.Common.EdFi.IStudentEducationOrganizationAssociationDisabilityDesignation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -187051,7 +186570,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationElectronicMail : Entities.Common.EdFi.IStudentEducationOrganizationAssociationElectronicMail, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -187360,7 +186878,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationInternationalAddress : Entities.Common.EdFi.IStudentEducationOrganizationAssociationInternationalAddress, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -187709,7 +187226,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationLanguage : Entities.Common.EdFi.IStudentEducationOrganizationAssociationLanguage, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -188070,7 +187586,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationLanguageUse : Entities.Common.EdFi.IStudentEducationOrganizationAssociationLanguageUse, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -188347,7 +187862,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationProgramParticipation : Entities.Common.EdFi.IStudentEducationOrganizationAssociationProgramParticipation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -188730,7 +188244,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationProgramParticipationProgramCharacteristic : Entities.Common.EdFi.IStudentEducationOrganizationAssociationProgramParticipationProgramCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -189007,7 +188520,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationRace : Entities.Common.EdFi.IStudentEducationOrganizationAssociationRace, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -189284,7 +188796,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationStudentCharacteristic : Entities.Common.EdFi.IStudentEducationOrganizationAssociationStudentCharacteristic, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -189653,7 +189164,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationStudentCharacteristicPeriod : Entities.Common.EdFi.IStudentEducationOrganizationAssociationStudentCharacteristicPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -189936,7 +189446,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationStudentIdentificationCode : Entities.Common.EdFi.IStudentEducationOrganizationAssociationStudentIdentificationCode, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -190240,7 +189749,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationStudentIndicator : Entities.Common.EdFi.IStudentEducationOrganizationAssociationStudentIndicator, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -190626,7 +190134,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationStudentIndicatorPeriod : Entities.Common.EdFi.IStudentEducationOrganizationAssociationStudentIndicatorPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -190909,7 +190416,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationTelephone : Entities.Common.EdFi.IStudentEducationOrganizationAssociationTelephone, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -191226,7 +190732,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationAssociationTribalAffiliation : Entities.Common.EdFi.IStudentEducationOrganizationAssociationTribalAffiliation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -191630,7 +191135,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationRespo
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentEducationOrganizationResponsibilityAssociation : Entities.Common.EdFi.IStudentEducationOrganizationResponsibilityAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -192200,7 +191704,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentGradebookEntry.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentGradebookEntry : Entities.Common.EdFi.IStudentGradebookEntry, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -192830,7 +192333,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentHomelessProgramAssociation : Entities.Common.EdFi.IStudentHomelessProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -193605,7 +193107,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentHomelessProgramAssociation
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentHomelessProgramAssociationHomelessProgramService : Entities.Common.EdFi.IStudentHomelessProgramAssociationHomelessProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -193908,7 +193409,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentIdentificationSystemDescri
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentIdentificationSystemDescriptor : Entities.Common.EdFi.IStudentIdentificationSystemDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -194292,7 +193792,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentInterventionAssociation : Entities.Common.EdFi.IStudentInterventionAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -194934,7 +194433,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAssociation.Ed
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentInterventionAssociationInterventionEffectiveness : Entities.Common.EdFi.IStudentInterventionAssociationInterventionEffectiveness, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -195398,7 +194896,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentInterventionAttendanceEven
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentInterventionAttendanceEvent : Entities.Common.EdFi.IStudentInterventionAttendanceEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -196025,7 +195522,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentLanguageInstructionProgramAssociation : Entities.Common.EdFi.IStudentLanguageInstructionProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -196852,7 +196348,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentLanguageInstructionProgramAssociationEnglishLanguageProficiencyAssessment : Entities.Common.EdFi.IStudentLanguageInstructionProgramAssociationEnglishLanguageProficiencyAssessment, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -197217,7 +196712,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentLanguageInstructionProgramAssociationLanguageInstructionProgramService : Entities.Common.EdFi.IStudentLanguageInstructionProgramAssociationLanguageInstructionProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -197666,7 +197160,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentLearningObjective : Entities.Common.EdFi.IStudentLearningObjective, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -198445,7 +197938,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentLearningObjectiveGeneralStudentProgramAssociation : Entities.Common.EdFi.IStudentLearningObjectiveGeneralStudentProgramAssociation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -198960,7 +198452,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLearningObjective.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentLearningObjectiveStudentSectionAssociation : Entities.Common.EdFi.IStudentLearningObjectiveStudentSectionAssociation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -199629,7 +199120,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class StudentMigrantEducationProgramAssociation : Entities.Common.EdFi.IStudentMigrantEducationProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -200468,7 +199958,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentMigrantEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentMigrantEducationProgramAssociationMigrantEducationProgramService : Entities.Common.EdFi.IStudentMigrantEducationProgramAssociationMigrantEducationProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -200884,7 +200373,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentNeglectedOrDelinquentProgramAssociation : Entities.Common.EdFi.IStudentNeglectedOrDelinquentProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -201661,7 +201149,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentNeglectedOrDelinquentProgr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentNeglectedOrDelinquentProgramAssociationNeglectedOrDelinquentProgramService : Entities.Common.EdFi.IStudentNeglectedOrDelinquentProgramAssociationNeglectedOrDelinquentProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -202079,7 +201566,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParentAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentParentAssociation : Entities.Common.EdFi.IStudentParentAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -202545,7 +202031,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentParticipationCodeDescripto
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentParticipationCodeDescriptor : Entities.Common.EdFi.IStudentParticipationCodeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -202928,7 +202413,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentProgramAssociation : Entities.Common.EdFi.IStudentProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -203681,7 +203165,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentProgramAssociationService : Entities.Common.EdFi.IStudentProgramAssociationService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -204130,7 +203613,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentProgramAttendanceEvent.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentProgramAttendanceEvent : Entities.Common.EdFi.IStudentProgramAttendanceEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -204868,7 +204350,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSchoolAssociation : Entities.Common.EdFi.IStudentSchoolAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -205940,7 +205421,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSchoolAssociationAlternativeGraduationPlan : Entities.Common.EdFi.IStudentSchoolAssociationAlternativeGraduationPlan, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -206343,7 +205823,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSchoolAssociationEducationPlan : Entities.Common.EdFi.IStudentSchoolAssociationEducationPlan, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -206763,7 +206242,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAttendanceEvent.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSchoolAttendanceEvent : Entities.Common.EdFi.IStudentSchoolAttendanceEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -207520,7 +206998,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSchoolFoodServiceProgramAssociation : Entities.Common.EdFi.IStudentSchoolFoodServiceProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -208280,7 +207757,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolFoodServiceProgramAs
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSchoolFoodServiceProgramAssociationSchoolFoodServiceProgramService : Entities.Common.EdFi.IStudentSchoolFoodServiceProgramAssociationSchoolFoodServiceProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -208729,7 +208205,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSectionAssociation : Entities.Common.EdFi.IStudentSectionAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -209483,7 +208958,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSectionAttendanceEvent : Entities.Common.EdFi.IStudentSectionAttendanceEvent, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -210189,7 +209663,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSectionAttendanceEvent.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSectionAttendanceEventClassPeriod : Entities.Common.EdFi.IStudentSectionAttendanceEventClassPeriod, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -210693,7 +210166,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSpecialEducationProgramAssociation : Entities.Common.EdFi.IStudentSpecialEducationProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -211639,7 +211111,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSpecialEducationProgramAssociationDisability : Entities.Common.EdFi.IStudentSpecialEducationProgramAssociationDisability, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -212023,7 +211494,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSpecialEducationProgramAssociationDisabilityDesignation : Entities.Common.EdFi.IStudentSpecialEducationProgramAssociationDisabilityDesignation, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -212300,7 +211770,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSpecialEducationProgramAssociationServiceProvider : Entities.Common.EdFi.IStudentSpecialEducationProgramAssociationServiceProvider, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -212648,7 +212117,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSpecialEducationProgramAssociationSpecialEducationProgramService : Entities.Common.EdFi.IStudentSpecialEducationProgramAssociationSpecialEducationProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -213030,7 +212498,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentSpecialEducationProgramAssociationSpecialEducationProgramServiceProvider : Entities.Common.EdFi.IStudentSpecialEducationProgramAssociationSpecialEducationProgramServiceProvider, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -213496,7 +212963,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentTitleIPartAProgramAssociation : Entities.Common.EdFi.IStudentTitleIPartAProgramAssociation, Entities.Common.EdFi.IGeneralStudentProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -214318,7 +213784,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentTitleIPartAProgramAssociationService : Entities.Common.EdFi.IStudentTitleIPartAProgramAssociationService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -214616,7 +214081,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentTitleIPartAProgramAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class StudentTitleIPartAProgramAssociationTitleIPartAProgramService : Entities.Common.EdFi.IStudentTitleIPartAProgramAssociationTitleIPartAProgramService, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -214919,7 +214383,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SubmissionStatusDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SubmissionStatusDescriptor : Entities.Common.EdFi.ISubmissionStatusDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -215286,7 +214749,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Survey.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class Survey : Entities.Common.EdFi.ISurvey, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -215890,7 +215352,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCategoryDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyCategoryDescriptor : Entities.Common.EdFi.ISurveyCategoryDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -216273,7 +215734,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyCourseAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyCourseAssociation : Entities.Common.EdFi.ISurveyCourseAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -216752,7 +216212,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyLevelDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyLevelDescriptor : Entities.Common.EdFi.ISurveyLevelDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -217143,7 +216602,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyProgramAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyProgramAssociation : Entities.Common.EdFi.ISurveyProgramAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -217757,7 +217215,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyQuestion : Entities.Common.EdFi.ISurveyQuestion, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -218451,7 +217908,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyQuestionMatrix : Entities.Common.EdFi.ISurveyQuestionMatrix, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -218742,7 +218198,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestion.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class SurveyQuestionResponseChoice : Entities.Common.EdFi.ISurveyQuestionResponseChoice, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -219172,7 +218627,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyQuestionResponse : Entities.Common.EdFi.ISurveyQuestionResponse, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -219884,7 +219338,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyQuestionResponseSurveyQuestionMatrixElementResponse : Entities.Common.EdFi.ISurveyQuestionResponseSurveyQuestionMatrixElementResponse, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -220198,7 +219651,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyQuestionResponse.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class SurveyQuestionResponseValue : Entities.Common.EdFi.ISurveyQuestionResponseValue, IHasRequiredMembersWithMeaningfulDefaultValues, IValidatableObject
     {
@@ -220620,7 +220072,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyResponse : Entities.Common.EdFi.ISurveyResponse, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -221347,7 +220798,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponse.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyResponseSurveyLevel : Entities.Common.EdFi.ISurveyResponseSurveyLevel, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -221742,7 +221192,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseEducationOrganizati
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyResponseEducationOrganizationTargetAssociation : Entities.Common.EdFi.ISurveyResponseEducationOrganizationTargetAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -222343,7 +221792,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveyResponseStaffTargetAssociat
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveyResponseStaffTargetAssociation : Entities.Common.EdFi.ISurveyResponseStaffTargetAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -222928,7 +222376,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySection.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveySection : Entities.Common.EdFi.ISurveySection, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -223449,7 +222896,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionAssociation.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveySectionAssociation : Entities.Common.EdFi.ISurveySectionAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -224140,7 +223586,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponse.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveySectionResponse : Entities.Common.EdFi.ISurveySectionResponse, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -224827,7 +224272,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseEducationOrg
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveySectionResponseEducationOrganizationTargetAssociation : Entities.Common.EdFi.ISurveySectionResponseEducationOrganizationTargetAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -225469,7 +224913,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.SurveySectionResponseStaffTargetA
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class SurveySectionResponseStaffTargetAssociation : Entities.Common.EdFi.ISurveySectionResponseStaffTargetAssociation, IHasETag, IDateVersionedEntity, IValidatableObject
     {
         // Fluent validator instance (threadsafe)
@@ -225982,7 +225425,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TeachingCredentialBasisDescriptor
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TeachingCredentialBasisDescriptor : Entities.Common.EdFi.ITeachingCredentialBasisDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -226252,7 +225694,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TeachingCredentialDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TeachingCredentialDescriptor : Entities.Common.EdFi.ITeachingCredentialDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -226522,7 +225963,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TechnicalSkillsAssessmentDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TechnicalSkillsAssessmentDescriptor : Entities.Common.EdFi.ITechnicalSkillsAssessmentDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -226792,7 +226232,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TelephoneNumberTypeDescriptor.EdF
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TelephoneNumberTypeDescriptor : Entities.Common.EdFi.ITelephoneNumberTypeDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -227062,7 +226501,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TermDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TermDescriptor : Entities.Common.EdFi.ITermDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -227332,7 +226770,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TitleIPartAParticipantDescriptor.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TitleIPartAParticipantDescriptor : Entities.Common.EdFi.ITitleIPartAParticipantDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -227602,7 +227039,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TitleIPartAProgramServiceDescript
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TitleIPartAProgramServiceDescriptor : Entities.Common.EdFi.ITitleIPartAProgramServiceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -227872,7 +227308,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TitleIPartASchoolDesignationDescr
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TitleIPartASchoolDesignationDescriptor : Entities.Common.EdFi.ITitleIPartASchoolDesignationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -228142,7 +227577,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.TribalAffiliationDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class TribalAffiliationDescriptor : Entities.Common.EdFi.ITribalAffiliationDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -228412,7 +227846,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.VisaDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class VisaDescriptor : Entities.Common.EdFi.IVisaDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
@@ -228682,7 +228115,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.WeaponDescriptor.EdFi
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    
     public class WeaponDescriptor : Entities.Common.EdFi.IWeaponDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
     {
         // Fluent validator instance (threadsafe)
