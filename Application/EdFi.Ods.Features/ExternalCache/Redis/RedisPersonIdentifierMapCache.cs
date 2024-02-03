@@ -7,7 +7,7 @@ using System;
 using System.Collections.Concurrent;
 using EdFi.Ods.Api.Caching;
 using EdFi.Ods.Api.Caching.Person;
-using StackExchange.Redis;
+using EdFi.Ods.Features.Services.Redis;
 
 namespace EdFi.Ods.Features.ExternalCache.Redis;
 
@@ -23,8 +23,8 @@ public abstract class RedisPersonIdentifierMapCache<TMapKey, TMapValue>
     private readonly ConcurrentDictionary<(ulong odsInstanceHashId, string personType, PersonMapType personMapType), string>
         _cacheKeyAsStringByKey = new();
 
-    protected RedisPersonIdentifierMapCache(string configuration, TimeSpan? absoluteExpirationPeriod, TimeSpan? slidingExpirationPeriod)
-        : base(configuration, absoluteExpirationPeriod, slidingExpirationPeriod) { }
+    protected RedisPersonIdentifierMapCache(IRedisConnectionProvider redisConnectionProvider, TimeSpan? absoluteExpirationPeriod, TimeSpan? slidingExpirationPeriod)
+        : base(redisConnectionProvider, absoluteExpirationPeriod, slidingExpirationPeriod) { }
 
     protected override void ValidateKey((ulong odsInstanceHashId, string personType, PersonMapType personMapType) key)
     {
