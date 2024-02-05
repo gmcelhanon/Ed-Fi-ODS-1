@@ -21,7 +21,7 @@ namespace EdFi.Ods.Features.UnitTests.Notifications
     [TestFixture]
     public class NotificationsMessageSinkTests
     {
-        private MemoryAppender _memoryAppender;
+        private MemoryAppender _memoryAppender = null!;
 
         [SetUp]
         public void Setup()

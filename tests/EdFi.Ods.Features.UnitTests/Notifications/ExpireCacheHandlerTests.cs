@@ -18,11 +18,11 @@ namespace EdFi.Ods.Features.UnitTests.Notifications;
 [TestFixture]
 public class ExpireCacheHandlerTests
 {
-    private MemoryAppender _memoryAppender;
-    private IClearableInterceptor _fakeClearableInterceptor;
+    private MemoryAppender _memoryAppender = null!;
+    private IClearableInterceptor _fakeClearableInterceptor = null!;
 
-    private IInterceptor _interceptorOutPlaceholder;
-    private IIndex<string, IInterceptor> _fakeInterceptorIndex;
+    private IInterceptor _interceptorOutPlaceholder = null!;
+    private IIndex<string, IInterceptor> _fakeInterceptorIndex = null!;
 
     [SetUp]
     public void Setup()
