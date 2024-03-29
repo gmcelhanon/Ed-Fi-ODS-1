@@ -11,6 +11,7 @@ using EdFi.Ods.Common.Exceptions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Repositories;
+using log4net;
 using NHibernate;
 using NHibernate.Id;
 using NHibernate.Persister.Entity;
@@ -20,8 +21,18 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
     public class CreateEntity<TEntity> : ValidatingNHibernateRepositoryOperationBase, ICreateEntity<TEntity>
         where TEntity : AggregateRootWithCompositeKey
     {
+        private readonly ILog _logger = LogManager.GetLogger(typeof(CreateEntity<TEntity>));
+        private readonly Dictionary<string, object> _retryPolicyContextData;
+
         public CreateEntity(ISessionFactory sessionFactory, IEnumerable<IEntityValidator> validators)
-            : base(sessionFactory, validators) { }
+            : base(sessionFactory, validators)
+        {
+            _retryPolicyContextData = new Dictionary<string, object>()
+            {
+                { "Logger", _logger },
+                { "EntityTypeName", typeof(TEntity).Name },
+            };
+        }
 
         public async Task CreateAsync(TEntity entity, bool enforceOptimisticLock, CancellationToken cancellationToken)
         {
@@ -85,25 +96,29 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                 ValidateEntity(entity);
 
                 // Save the incoming entity
-                using (var trans = Session.BeginTransaction())
-                {
-                    try
+                await DeadlockPolicyHelper.RetryPolicy.ExecuteAsync(
+                    async ctx =>
                     {
-                        await Session.SaveAsync(entity, cancellationToken);
-                    }
-                    catch (Exception)
-                    {
-                        await trans.RollbackAsync(cancellationToken);
-                        throw;
-                    }
-                    finally
-                    {
-                        if (!trans.WasRolledBack)
+                        using var trans = Session.BeginTransaction();
+
+                        try
                         {
-                            await trans.CommitAsync(cancellationToken);
+                            await Session.SaveAsync(entity, cancellationToken);
                         }
-                    }
-                }
+                        catch (Exception)
+                        {
+                            await trans.RollbackAsync(cancellationToken);
+                            throw;
+                        }
+                        finally
+                        {
+                            if (!trans.WasRolledBack)
+                            {
+                                await trans.CommitAsync(cancellationToken);
+                            }
+                        }
+                    },
+                    _retryPolicyContextData);
 
                 bool IdHasValue()
                 {
