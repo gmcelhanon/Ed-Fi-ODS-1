@@ -21,7 +21,7 @@ public class AuthorizationFilteringProvider : IAuthorizationFilteringProvider
     /// <param name="authorizationContext">The authorization context to be used in making the authorization decision.</param>
     /// <param name="authorizationBasisMetadata">The authorization metadata that is the basis for making the authorization decision.</param>
     /// <returns>The list of authorization strategy-based filters to be applied to the query for authorization.</returns>
-    public IReadOnlyList<AuthorizationStrategyFiltering> GetAuthorizationFiltering(
+    public AuthorizationPlan GetAuthorizationFiltering(
         EdFiAuthorizationContext authorizationContext, 
         AuthorizationBasisMetadata authorizationBasisMetadata)
     {
@@ -35,7 +35,11 @@ public class AuthorizationFilteringProvider : IAuthorizationFilteringProvider
             .ThenBy(x => x.AuthorizationStrategyName)
             .ToArray();
 
-        return authorizationFiltering;
+        return new AuthorizationPlan
+        {
+            Identifier = authorizationBasisMetadata.HashCode,
+            Filtering = authorizationFiltering,
+        };
     }
 }
 

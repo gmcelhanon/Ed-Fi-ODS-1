@@ -88,7 +88,7 @@ namespace EdFi.Ods.Features.Composites
                 entityType);
 
             // Authorize and apply filtering
-            IReadOnlyList<AuthorizationStrategyFiltering> authorizationFiltering;
+            AuthorizationPlan authorizationPlan;
 
             try
             {
@@ -96,7 +96,7 @@ namespace EdFi.Ods.Features.Composites
                     apiClientContext.ClaimSetName, resourceClaimUris, RequestActions.ReadActionUri);
                 
                 // NOTE: Possible performance optimization - Allow for "Try" semantics (so no exceptions are thrown here)
-                authorizationFiltering = _authorizationFilteringProvider.GetAuthorizationFiltering(
+                authorizationPlan = _authorizationFilteringProvider.GetAuthorizationFiltering(
                     authorizationContext,
                     authorizationBasisMetadata);
             }
@@ -131,7 +131,7 @@ namespace EdFi.Ods.Features.Composites
             }
 
             // Save the filters to be applied to this query for use later in the process
-            builderContext.CurrentQueryAuthorizationFiltering = authorizationFiltering;
+            builderContext.CurrentQueryAuthorizationFiltering = authorizationPlan.Filtering;
 
             return true;
         }

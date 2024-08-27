@@ -46,17 +46,17 @@ public class AuthorizationBasisMetadata
 
     public string ValidationRuleSetName { get; }
 
-    private ulong _hash;
+    private ulong _hashCode;
     
     /// <summary>
     /// Gets a unique value uniquely identifying the authorization basis, incorporating the authorization strategies being applied as well
     /// as the validation rule set, if applicable. 
     /// </summary>
-    public ulong HashId
+    public ulong HashCode
     {
         get
         {
-            if (_hash == 0)
+            if (_hashCode == 0)
             {
                 var hashValues = AuthorizationStrategies
                     .OrderBy(strat => strat.Name)
@@ -67,11 +67,11 @@ public class AuthorizationBasisMetadata
                 {
                     hashValues.Add(XxHash3Code.Combine(ValidationRuleSetName));
                 }
-                
-                _hash = XxHash3Code.Combine(hashValues);
+
+                _hashCode = XxHash3Code.Combine(hashValues);
             }
 
-            return _hash;
+            return _hashCode;
         }
     }
 }

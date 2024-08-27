@@ -82,7 +82,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Repositories.Authorization
                 resourceClaimUris,
                 requestActionUri);
 
-            var authorizationFiltering =
+            var authorizationPlan =
                 _authorizationFilteringProvider.GetAuthorizationFiltering(authorizationContext, authorizationBasisMetadata);
 
             var unsupportedAuthorizationFilters = new HashSet<string>();
@@ -99,7 +99,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Repositories.Authorization
 
             JoinType DetermineRelationshipBasedAuthViewJoinType()
             {
-                var countOfRelationshipBasedAuthorizationFilters = authorizationFiltering.Count(
+                var countOfRelationshipBasedAuthorizationFilters = authorizationPlan.Filtering.Count(
                     af => af.Operator == FilterOperator.Or && af.Filters.Select(
                             afd =>
                             {
@@ -125,7 +125,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Repositories.Authorization
 
             void ApplyAuthorizationStrategiesCombinedWithAndLogic()
             {
-                var andStrategies = authorizationFiltering.Where(x => x.Operator == FilterOperator.And).ToArray();
+                var andStrategies = authorizationPlan.Filtering.Where(x => x.Operator == FilterOperator.And).ToArray();
 
                 // Combine 'AND' strategies
                 if (andStrategies.Any())
@@ -150,7 +150,7 @@ namespace EdFi.Ods.Features.ChangeQueries.Repositories.Authorization
 
             void ApplyAuthorizationStrategiesCombinedWithOrLogic()
             {
-                var orStrategies = authorizationFiltering.Where(x => x.Operator == FilterOperator.Or).ToArray();
+                var orStrategies = authorizationPlan.Filtering.Where(x => x.Operator == FilterOperator.Or).ToArray();
 
                 // Combine 'OR' strategies
                 bool orFiltersApplied = false;

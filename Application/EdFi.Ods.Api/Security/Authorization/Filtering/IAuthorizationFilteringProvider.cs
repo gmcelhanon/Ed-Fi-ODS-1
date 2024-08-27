@@ -20,7 +20,7 @@ public interface IAuthorizationFilteringProvider
     /// <param name="authorizationContext">The authorization context to be used in making the authorization decision.</param>
     /// <param name="authorizationBasisMetadata"></param>
     /// <returns>A collection of filters to be applied to the query.</returns>
-    IReadOnlyList<AuthorizationStrategyFiltering> GetAuthorizationFiltering(
+    AuthorizationPlan GetAuthorizationFiltering(
         EdFiAuthorizationContext authorizationContext,
         AuthorizationBasisMetadata authorizationBasisMetadata);
 }
