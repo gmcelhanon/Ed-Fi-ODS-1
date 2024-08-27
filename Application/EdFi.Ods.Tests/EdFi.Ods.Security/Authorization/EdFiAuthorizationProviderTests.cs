@@ -347,6 +347,15 @@ namespace EdFi.Ods.Tests.EdFi.Ods.Api.Security.Authorization
         {
             public bool FilteringWasCalled { get; private set; }
 
+            public string Name
+            {
+                get
+                {
+                    int pos = GetType().Name.IndexOf("AuthorizationStrategy");
+                    return this.GetType().Name.Substring(0, pos);
+                }
+            }
+
             public AuthorizationStrategyFiltering GetAuthorizationStrategyFiltering(
                 EdFiResourceClaim[] relevantClaims,
                 EdFiAuthorizationContext authorizationContext)

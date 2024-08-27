@@ -21,6 +21,8 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.NoFurtherAuthorization
     {
         private const string AuthorizationStrategyName = "NoFurtherAuthorizationRequired";
 
+        public string Name { get => AuthorizationStrategyName; }
+
         /// <summary>
         /// Applies filtering to a multiple-item request.
         /// </summary>

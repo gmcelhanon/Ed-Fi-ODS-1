@@ -14,6 +14,12 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.OwnershipBased
     {
         private const string AuthorizationStrategyName = "OwnershipBased";
 
+        /// <inheritdoc cref="IAuthorizationStrategy.Name" />
+        public string Name
+        {
+            get => AuthorizationStrategyName;
+        }
+
         /// <summary>
         /// Get authorization filtering context for a multiple-item request.
         /// </summary>

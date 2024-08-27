@@ -5,6 +5,7 @@
 
 using System;
 using System.Buffers;
+using System.Collections.Generic;
 using Standart.Hash.xxHash;
 
 namespace EdFi.Ods.Common.Caching;
@@ -156,4 +157,36 @@ public static class XxHash3Code
             ArrayPool<byte>.Shared.Return(buffer);
         }
     }
+
+    public static ulong Combine(ICollection<ulong> values)
+    {
+        // Calculate the total byte length needed for all ulong values
+        int bufferLength = values.Count * sizeof(ulong);
+
+        // Rent a buffer from the shared pool
+        var buffer = ArrayPool<byte>.Shared.Rent(bufferLength);
+
+        try
+        {
+            // Use a Span to keep track of the portion of the buffer that we're filling
+            var span = buffer.AsSpan(0, bufferLength);
+            int offset = 0;
+
+            // Convert each ulong value to bytes and copy to the buffer
+            foreach (var value in values)
+            {
+                BitConverter.TryWriteBytes(span.Slice(offset, sizeof(ulong)), value);
+                offset += sizeof(ulong);
+            }
+
+            // Compute the hash using the filled portion of the buffer
+            return xxHash3.ComputeHash(buffer, bufferLength);
+        }
+        finally
+        {
+            // Return the buffer to the pool
+            ArrayPool<byte>.Shared.Return(buffer);
+        }
+    }
+
 }

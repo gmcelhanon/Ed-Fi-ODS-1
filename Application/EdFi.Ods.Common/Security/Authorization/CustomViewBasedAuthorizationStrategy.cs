@@ -32,6 +32,12 @@ public class CustomViewBasedAuthorizationStrategy : IAuthorizationStrategy
         _resourceModelProvider = resourceModelProvider;
     }
 
+    /// <inheritdoc cref="IAuthorizationStrategy.Name" />
+    public string Name
+    {
+        get => _authorizationStrategyName;
+    }
+
     public AuthorizationStrategyFiltering GetAuthorizationStrategyFiltering(
         EdFiResourceClaim[] relevantClaims,
         EdFiAuthorizationContext authorizationContext)

@@ -17,7 +17,7 @@ namespace EdFi.Ods.Common.Security.Authorization
         public IAuthorizationStrategy AuthorizationStrategy { get; init; }
 
         /// <summary>
-        /// Gets or sets the filters to be applied.
+        /// Gets or sets the filters to be applied, along with the contextual subject endpoint and claim values to be applied.
         /// </summary>
         public IReadOnlyList<AuthorizationFilterContext> Filters { get; init; }
 

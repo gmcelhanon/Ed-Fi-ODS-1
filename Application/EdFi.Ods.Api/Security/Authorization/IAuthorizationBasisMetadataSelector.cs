@@ -3,7 +3,9 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
+using System.Buffers;
 using System.Collections.Generic;
+using System.Linq;
 using Autofac.Extras.DynamicProxy;
 using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Security.Authorization;
@@ -43,4 +45,33 @@ public class AuthorizationBasisMetadata
     public EdFiResourceClaim RelevantClaim { get; }
 
     public string ValidationRuleSetName { get; }
+
+    private ulong _hash;
+    
+    /// <summary>
+    /// Gets a unique value uniquely identifying the authorization basis, incorporating the authorization strategies being applied as well
+    /// as the validation rule set, if applicable. 
+    /// </summary>
+    public ulong HashId
+    {
+        get
+        {
+            if (_hash == 0)
+            {
+                var hashValues = AuthorizationStrategies
+                    .OrderBy(strat => strat.Name)
+                    .Select(strat => XxHash3Code.Combine(strat.Name))
+                    .ToList();
+
+                if (ValidationRuleSetName != null)
+                {
+                    hashValues.Add(XxHash3Code.Combine(ValidationRuleSetName));
+                }
+                
+                _hash = XxHash3Code.Combine(hashValues);
+            }
+
+            return _hash;
+        }
+    }
 }

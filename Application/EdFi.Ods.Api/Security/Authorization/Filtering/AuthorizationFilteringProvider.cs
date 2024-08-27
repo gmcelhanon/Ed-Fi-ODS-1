@@ -32,8 +32,19 @@ public class AuthorizationFilteringProvider : IAuthorizationFilteringProvider
             .Select(x => x.GetAuthorizationStrategyFiltering(relevantClaims, authorizationContext))
             // Sort authorizations so that those that use system-assigned values are processed after others to avoid disclosing item existence to otherwise unauthorized clients
             .OrderBy(x => x.UsesSystemAssignedValues)
+            .ThenBy(x => x.AuthorizationStrategyName)
             .ToArray();
 
         return authorizationFiltering;
     }
+}
+
+public class AuthorizationPlan
+{
+    /// <summary>
+    /// A value that uniquely identifies the specific combination of authorization strategies to be applied
+    /// </summary>
+    public ulong Identifier { get; init; }
+
+    public IReadOnlyList<AuthorizationStrategyFiltering> Filtering { get; init; }
 }

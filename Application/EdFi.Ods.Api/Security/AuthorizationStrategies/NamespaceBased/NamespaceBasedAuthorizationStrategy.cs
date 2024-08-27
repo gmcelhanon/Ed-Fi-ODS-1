@@ -18,6 +18,11 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.NamespaceBased
 
         private readonly ConcurrentDictionary<FullName, string> _namespacePropertyByResourceFullName = new();
 
+        public string Name
+        {
+            get => AuthorizationStrategyName;
+        }
+
         /// <summary>
         /// Applies filtering to a multiple-item request.
         /// </summary>

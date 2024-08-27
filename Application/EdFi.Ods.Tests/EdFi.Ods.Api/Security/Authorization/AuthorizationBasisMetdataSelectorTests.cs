@@ -252,6 +252,12 @@ public class AuthorizationBasisMetadataSelectorTests
     [AuthorizationStrategyName("Fake1")]
     private class Fake1AuthorizationStrategy : IAuthorizationStrategy
     {
+        /// <inheritdoc cref="IAuthorizationStrategy.Name" />
+        public string Name
+        {
+            get => "Fake1";
+        }
+
         public AuthorizationStrategyFiltering GetAuthorizationStrategyFiltering(
             EdFiResourceClaim[] relevantClaims,
             EdFiAuthorizationContext authorizationContext)
@@ -261,6 +267,12 @@ public class AuthorizationBasisMetadataSelectorTests
     [AuthorizationStrategyName("Fake2")]
     private class Fake2AuthorizationStrategy : IAuthorizationStrategy
     {
+        /// <inheritdoc cref="IAuthorizationStrategy.Name" />
+        public string Name
+        {
+            get => "Fake2";
+        }
+
         public AuthorizationStrategyFiltering GetAuthorizationStrategyFiltering(
             EdFiResourceClaim[] relevantClaims,
             EdFiAuthorizationContext authorizationContext)

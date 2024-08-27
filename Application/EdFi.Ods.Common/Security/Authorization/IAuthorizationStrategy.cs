@@ -13,6 +13,11 @@ namespace EdFi.Ods.Common.Security.Authorization
     public interface IAuthorizationStrategy
     {
         /// <summary>
+        /// Gets the unique name of the authorization strategy.
+        /// </summary>
+        public string Name { get; }
+        
+        /// <summary>
         /// Applies filtering to a multiple-item request.
         /// </summary>
         /// <param name="relevantClaims">The subset of the caller's claims that are relevant for the authorization decision.</param>

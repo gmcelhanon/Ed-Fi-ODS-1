@@ -35,6 +35,11 @@ namespace EdFi.Ods.Api.Security.AuthorizationStrategies.Relationships
         [Required]
         public IRelationshipsAuthorizationContextDataProviderFactory RelationshipsAuthorizationContextDataProviderFactory { get; set; }
 
+        string IAuthorizationStrategy.Name
+        {
+            get => AuthorizationStrategyName;
+        }
+
         /// <summary>
         /// Applies filtering to a multiple-item request.
         /// </summary>
