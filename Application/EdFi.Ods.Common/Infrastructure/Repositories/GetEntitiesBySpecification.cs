@@ -1,4 +1,4 @@
-﻿// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: Apache-2.0
 // Licensed to the Ed-Fi Alliance under one or more agreements.
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
+using EdFi.Ods.Common.Database;
 using EdFi.Ods.Common.Database.Querying;
 using EdFi.Ods.Common.Exceptions;
 using EdFi.Ods.Common.Extensions;
@@ -16,6 +17,7 @@ using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Models.Domain;
 using EdFi.Ods.Common.Providers.Queries;
 using EdFi.Ods.Common.Repositories;
+using EdFi.Ods.Common.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using NHibernate;
 
@@ -25,8 +27,7 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
         : NHibernateRepositoryOperationBase, IGetEntitiesBySpecification<TEntity>
         where TEntity : AggregateRootWithCompositeKey
     {
-        public const string _Id = "Id";
-        private static IList<TEntity> EmptyList = new List<TEntity>();
+        private static readonly IList<ResultItem<TEntity>> _emptyList = Array.Empty<ResultItem<TEntity>>();
 
         private readonly IAggregateRootQueryBuilderProvider _pagedAggregateIdsCriteriaProvider;
         private readonly IDomainModelProvider _domainModelProvider;
@@ -65,11 +66,11 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                 // This approach yields all the data in 2 trips to the database (one for the Ids, and a second for all the aggregates)
                 var specificationResult = await GetPagedAggregateIdsAsync();
 
-                if (specificationResult.Ids.Count == 0)
+                if (specificationResult.ItemData.Count == 0)
                 {
                     return new GetBySpecificationResult<TEntity>
                     {
-                        Results = EmptyList,
+                        Results = _emptyList,
                         ResultMetadata = new ResultMetadata
                         {
                             TotalCount = specificationResult.TotalCount,
@@ -78,23 +79,72 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                     };
                 }
 
-                // Get the full results
-                var aggregateIds = specificationResult.Ids.Select(x => x.AggregateId).ToList();
+                // Get only the results from the ODS for the items without serialized aggregate data, or with mismatching LastModifiedDate value 
+                int[] aggregateIdsToLoad = specificationResult.ItemData
+                    .Where(x => x.AggregateData == null || x.LastModifiedDate != x.AggregateData.ReadLastModifiedDate())
+                    .Select(x => x.AggregateId)
+                    .ToArray();
 
-                var result = await _getEntitiesByAggregateIds.GetByAggregateIdsAsync(aggregateIds, cancellationToken);
+                List<ResultItem<TEntity>> results;
+
+                if (aggregateIdsToLoad.Length == 0)
+                {
+                    results = specificationResult.ItemData
+                        .Select(i => new ResultItem<TEntity>(null, i.AggregateData))
+                        .ToList();
+                }
+                else
+                {
+                    var entityResults = await _getEntitiesByAggregateIds.GetByAggregateIdsAsync(
+                        aggregateIdsToLoad,
+                        cancellationToken);
+
+                    results = new();
+
+                    // Results will be ordered by AggregateId
+                    int itemDataIndex = 0;
+                    int entityResultIndex = 0;
+
+                    while (itemDataIndex < specificationResult.ItemData.Count && entityResultIndex < entityResults.Count)
+                    {
+                        var itemData = specificationResult.ItemData[itemDataIndex];
+                        var entity = entityResults[entityResultIndex];
+
+                        // If the AggregateIds match, assign the entity to the ItemData object
+                        if (itemData.AggregateId == entity.AggregateId)
+                        {
+                            results.Add(new ResultItem<TEntity>(entity));
+
+                            itemDataIndex++;
+                            entityResultIndex++;
+                        }
+                        // If the ItemData's AggregateId is smaller, move to the next ItemData
+                        else if (itemData.AggregateId < entity.AggregateId)
+                        {
+                            results.Add(new ResultItem<TEntity>(null, itemData.AggregateData));
+                            itemDataIndex++;
+                        }
+                        else
+                        {
+                            // If the EntityResult's AggregateId is smaller, move to the next EntityResult
+                            // But this should never happen, so throw an exception
+                            throw new InvalidOperationException("Unexpected entity encountered in entity results.");
+                        }
+                    }
+                }
 
                 string nextPageToken = null;
 
                 if (queryParameters.MinAggregateId != null)
                 {
                     nextPageToken = PagingHelpers.GetPageToken(
-                        specificationResult.Ids[^1].AggregateId + 1,
+                        specificationResult.ItemData[^1].AggregateId + 1,
                         queryParameters.MaxAggregateId!.Value);
                 }
 
                 return new GetBySpecificationResult<TEntity>
                 {
-                    Results = result,
+                    Results = results,
                     ResultMetadata = new ResultMetadata
                     {
                         TotalCount = specificationResult.TotalCount,
@@ -108,7 +158,10 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
                 // Short circuit any work if no items requested, and no count to perform. 
                 if (!ItemsRequested() && !CountRequested())
                 {
-                    return new SpecificationResult { Ids = Array.Empty<PageIds>() };
+                    return new SpecificationResult
+                    {
+                        ItemData = Array.Empty<ItemData<TEntity>>()
+                    };
                 }
 
                 // If any items requested, get the requested page of Ids
@@ -148,23 +201,24 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
 
                     await using var multi = await Session.Connection.QueryMultipleAsync(combinedSql, parameters);
 
-                    var ids = (await multi.ReadAsync<PageIds>()).ToList();
+                    var itemDataResults = (await multi.ReadAsync<ItemData<TEntity>>()).ToArray();
                     var totalCount = await multi.ReadSingleAsync<int>();
 
                     return new SpecificationResult
                     {
-                        Ids = ids, 
+                        ItemData = itemDataResults, 
                         TotalCount = totalCount
                     };
                 }
 
                 if (idsTemplate != null)
                 {
-                    var idsResults = await Session.Connection.QueryAsync<PageIds>(idsTemplate.RawSql, idsTemplate.Parameters);
+                    var itemDataResults =
+                        (await Session.Connection.QueryAsync<ItemData<TEntity>>(idsTemplate.RawSql, idsTemplate.Parameters)).ToArray();
 
                     return new SpecificationResult
                     {
-                        Ids = idsResults.ToArray() 
+                        ItemData = itemDataResults,
                     };
                 }
 
@@ -172,7 +226,7 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
 
                 return new SpecificationResult
                 {
-                    Ids = Array.Empty<PageIds>(),
+                    ItemData = Array.Empty<ItemData<TEntity>>(),
                     TotalCount = countResult 
                 };
 
@@ -195,15 +249,9 @@ namespace EdFi.Ods.Common.Infrastructure.Repositories
             bool CountRequested() => queryParameters.TotalCount;
         }
 
-        private class PageIds
-        {
-            public Guid Id { get; set; }
-            public int AggregateId { get; set; }
-        }
-
         private class SpecificationResult
         {
-            public IList<PageIds> Ids { get; set; }
+            public IList<ItemData<TEntity>> ItemData { get; set; }
             public int TotalCount { get; set; }
         }
     }
