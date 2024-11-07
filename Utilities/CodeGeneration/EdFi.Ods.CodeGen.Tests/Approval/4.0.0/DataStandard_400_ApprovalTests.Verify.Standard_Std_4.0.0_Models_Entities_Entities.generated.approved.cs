@@ -154,13 +154,13 @@ namespace EdFi.Ods.Entities.NHibernate.DescriptorAggregate.EdFi
         }
 
         // Provide alternate key information
-        OrderedDictionary IHasAlternateKeyValues.GetAlternateKeyValues()
+        (OrderedDictionary keyValues, bool isDefinedOnBaseType) IHasAlternateKeyValues.GetAlternateKeyValues()
         {
             // Initialize a new dictionary to hold the key values
             var keyValues = new OrderedDictionary();
             keyValues.Add("Namespace", Namespace);
             keyValues.Add("CodeValue", CodeValue);
-            return keyValues;
+            return (keyValues, true);
         }
         #region Overrides for Equals() and GetHashCode()
         public override bool Equals(object obj)
