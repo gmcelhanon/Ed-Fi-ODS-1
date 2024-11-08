@@ -3643,7 +3643,7 @@ namespace EdFi.Ods.Entities.NHibernate.GeneralStudentProgramAssociationAggregate
                 // -------------------------------------------------------------
                 if (_generalStudentProgramAssociationParticipationStatusPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.GeneralStudentProgramAssociationAggregate.EdFi.GeneralStudentProgramAssociationParticipationStatus> set)
                 {
-                    set.Reattach(this, "GeneralStudentProgramAssociationParticipationStatusPersistentList");
+                    set.Reattach(this, "GeneralStudentProgramAssociationParticipationStatus");
                 }
 
                 foreach (var item in _generalStudentProgramAssociationParticipationStatusPersistentList)
@@ -7464,7 +7464,7 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
                 // -------------------------------------------------------------
                 if (_assessmentContentStandardPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.AssessmentAggregate.EdFi.AssessmentContentStandard> set)
                 {
-                    set.Reattach(this, "AssessmentContentStandardPersistentList");
+                    set.Reattach(this, "AssessmentContentStandard");
                 }
 
                 foreach (var item in _assessmentContentStandardPersistentList)
@@ -53772,7 +53772,7 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
                 // -------------------------------------------------------------
                 if (_graduationPlanRequiredAssessmentPerformanceLevelPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.GraduationPlanAggregate.EdFi.GraduationPlanRequiredAssessmentPerformanceLevel> set)
                 {
-                    set.Reattach(this, "GraduationPlanRequiredAssessmentPerformanceLevelPersistentList");
+                    set.Reattach(this, "GraduationPlanRequiredAssessmentPerformanceLevel");
                 }
 
                 foreach (var item in _graduationPlanRequiredAssessmentPerformanceLevelPersistentList)
@@ -67410,7 +67410,7 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
                 // -------------------------------------------------------------
                 if (_learningObjectiveContentStandardPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.LearningObjectiveAggregate.EdFi.LearningObjectiveContentStandard> set)
                 {
-                    set.Reattach(this, "LearningObjectiveContentStandardPersistentList");
+                    set.Reattach(this, "LearningObjectiveContentStandard");
                 }
 
                 foreach (var item in _learningObjectiveContentStandardPersistentList)
@@ -69461,7 +69461,7 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
                 // -------------------------------------------------------------
                 if (_learningStandardContentStandardPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.LearningStandardAggregate.EdFi.LearningStandardContentStandard> set)
                 {
-                    set.Reattach(this, "LearningStandardContentStandardPersistentList");
+                    set.Reattach(this, "LearningStandardContentStandard");
                 }
 
                 foreach (var item in _learningStandardContentStandardPersistentList)
@@ -119856,7 +119856,7 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationContactAssociat
                 // -------------------------------------------------------------
                 if (_staffEducationOrganizationContactAssociationAddressPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.StaffEducationOrganizationContactAssociationAggregate.EdFi.StaffEducationOrganizationContactAssociationAddress> set)
                 {
-                    set.Reattach(this, "StaffEducationOrganizationContactAssociationAddressPersistentList");
+                    set.Reattach(this, "StaffEducationOrganizationContactAssociationAddress");
                 }
 
                 foreach (var item in _staffEducationOrganizationContactAssociationAddressPersistentList)
@@ -128195,7 +128195,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
                 // -------------------------------------------------------------
                 if (_studentAcademicRecordClassRankingPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.StudentAcademicRecordAggregate.EdFi.StudentAcademicRecordClassRanking> set)
                 {
-                    set.Reattach(this, "StudentAcademicRecordClassRankingPersistentList");
+                    set.Reattach(this, "StudentAcademicRecordClassRanking");
                 }
 
                 foreach (var item in _studentAcademicRecordClassRankingPersistentList)
@@ -131195,7 +131195,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
                 // -------------------------------------------------------------
                 if (_studentAssessmentPeriodPersistentList is DeserializedPersistentGenericSet<Entities.NHibernate.StudentAssessmentAggregate.EdFi.StudentAssessmentPeriod> set)
                 {
-                    set.Reattach(this, "StudentAssessmentPeriodPersistentList");
+                    set.Reattach(this, "StudentAssessmentPeriod");
                 }
 
                 foreach (var item in _studentAssessmentPeriodPersistentList)
