@@ -1066,6 +1066,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -1383,6 +1400,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -1647,6 +1681,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -1912,6 +1963,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -2252,6 +2320,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -2565,6 +2650,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -2830,6 +2932,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -3181,6 +3300,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -4083,6 +4219,23 @@ namespace EdFi.Ods.Entities.NHibernate.GeneralStudentProgramAssociationAggregate
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -4379,6 +4532,23 @@ namespace EdFi.Ods.Entities.NHibernate.GeneralStudentProgramAssociationAggregate
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -5257,6 +5427,23 @@ namespace EdFi.Ods.Entities.NHibernate.AcademicWeekAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -5789,6 +5976,23 @@ namespace EdFi.Ods.Entities.NHibernate.AccountabilityRatingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -7546,6 +7750,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -8367,6 +8588,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -8630,6 +8868,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -8963,6 +9218,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -9266,6 +9538,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -9532,6 +9821,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -9795,6 +10101,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -10137,6 +10460,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -10443,6 +10783,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -10706,6 +11063,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -10975,6 +11349,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -11301,6 +11692,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -11543,6 +11951,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -12294,6 +12719,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentItemAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -12650,6 +13092,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentItemAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -12903,6 +13362,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentItemAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -13986,6 +14462,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentScoreRangeLearningStandardAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -14309,6 +14802,23 @@ namespace EdFi.Ods.Entities.NHibernate.AssessmentScoreRangeLearningStandardAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -15186,6 +15696,23 @@ namespace EdFi.Ods.Entities.NHibernate.BalanceSheetDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -15499,6 +16026,23 @@ namespace EdFi.Ods.Entities.NHibernate.BalanceSheetDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -16183,6 +16727,23 @@ namespace EdFi.Ods.Entities.NHibernate.BellScheduleAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -16582,6 +17143,23 @@ namespace EdFi.Ods.Entities.NHibernate.BellScheduleAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -16839,6 +17417,23 @@ namespace EdFi.Ods.Entities.NHibernate.BellScheduleAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -17101,6 +17696,23 @@ namespace EdFi.Ods.Entities.NHibernate.BellScheduleAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -17455,6 +18067,23 @@ namespace EdFi.Ods.Entities.NHibernate.CalendarAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -17794,6 +18423,23 @@ namespace EdFi.Ods.Entities.NHibernate.CalendarAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -18126,6 +18772,23 @@ namespace EdFi.Ods.Entities.NHibernate.CalendarDateAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -18462,6 +19125,23 @@ namespace EdFi.Ods.Entities.NHibernate.CalendarDateAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -19739,6 +20419,23 @@ namespace EdFi.Ods.Entities.NHibernate.ChartOfAccountAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -20245,6 +20942,23 @@ namespace EdFi.Ods.Entities.NHibernate.ChartOfAccountAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -20740,6 +21454,23 @@ namespace EdFi.Ods.Entities.NHibernate.ClassPeriodAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -21040,6 +21771,23 @@ namespace EdFi.Ods.Entities.NHibernate.ClassPeriodAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -21643,6 +22391,23 @@ namespace EdFi.Ods.Entities.NHibernate.CohortAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -21986,6 +22751,23 @@ namespace EdFi.Ods.Entities.NHibernate.CohortAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -22800,6 +23582,23 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityOrganizationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -23158,6 +23957,23 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -23614,6 +24430,23 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLicenseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -24163,6 +24996,23 @@ namespace EdFi.Ods.Entities.NHibernate.CompetencyObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -25660,6 +26510,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -26270,6 +27137,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -26539,6 +27423,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -26771,6 +27672,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -27021,6 +27939,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -27304,6 +28239,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -27567,6 +28519,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -28806,6 +29775,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseOfferingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -29283,6 +30269,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseOfferingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -29546,6 +30549,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseOfferingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -29809,6 +30829,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseOfferingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -30658,6 +31695,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseTranscriptAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -31262,6 +32316,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseTranscriptAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -31533,6 +32604,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseTranscriptAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -31798,6 +32886,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseTranscriptAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -32065,6 +33170,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseTranscriptAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -32346,6 +33468,23 @@ namespace EdFi.Ods.Entities.NHibernate.CourseTranscriptAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -32892,6 +34031,23 @@ namespace EdFi.Ods.Entities.NHibernate.CredentialAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -33318,6 +34474,23 @@ namespace EdFi.Ods.Entities.NHibernate.CredentialAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -33548,6 +34721,23 @@ namespace EdFi.Ods.Entities.NHibernate.CredentialAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -33811,6 +35001,23 @@ namespace EdFi.Ods.Entities.NHibernate.CredentialAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -35403,6 +36610,23 @@ namespace EdFi.Ods.Entities.NHibernate.DescriptorMappingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -35718,6 +36942,23 @@ namespace EdFi.Ods.Entities.NHibernate.DescriptorMappingAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -37231,6 +38472,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -37753,6 +39011,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -38030,6 +39305,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -38282,6 +39574,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -38572,6 +39881,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -39419,6 +40745,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineIncidentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -39877,6 +41220,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineIncidentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -40146,6 +41506,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineIncidentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -40411,6 +41788,23 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineIncidentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -41237,6 +42631,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -41897,6 +43308,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -42160,6 +43588,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -42389,6 +43834,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -42617,6 +44079,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -42866,6 +44345,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -43094,6 +44590,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -43356,6 +44869,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationContentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -44256,6 +45786,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationInterventionPrescrip
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -44579,6 +46126,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationNetworkAggregate.EdF
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -44927,6 +46491,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationNetworkAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -45267,6 +46848,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationOrganizationPeerAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -45736,6 +47334,23 @@ namespace EdFi.Ods.Entities.NHibernate.EducationServiceCenterAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -47177,6 +48792,23 @@ namespace EdFi.Ods.Entities.NHibernate.FeederSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -47693,6 +49325,23 @@ namespace EdFi.Ods.Entities.NHibernate.FunctionDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -48006,6 +49655,23 @@ namespace EdFi.Ods.Entities.NHibernate.FunctionDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -48320,6 +49986,23 @@ namespace EdFi.Ods.Entities.NHibernate.FundDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -48633,6 +50316,23 @@ namespace EdFi.Ods.Entities.NHibernate.FundDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -49187,6 +50887,23 @@ namespace EdFi.Ods.Entities.NHibernate.GradeAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -49568,6 +51285,23 @@ namespace EdFi.Ods.Entities.NHibernate.GradeAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -50027,6 +51761,23 @@ namespace EdFi.Ods.Entities.NHibernate.GradebookEntryAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -50356,6 +52107,23 @@ namespace EdFi.Ods.Entities.NHibernate.GradebookEntryAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -51479,6 +53247,23 @@ namespace EdFi.Ods.Entities.NHibernate.GradingPeriodAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -52080,6 +53865,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -52634,6 +54436,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -52922,6 +54741,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -53247,6 +55083,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -53552,6 +55405,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -53854,6 +55724,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -54270,6 +56157,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -54575,6 +56479,23 @@ namespace EdFi.Ods.Entities.NHibernate.GraduationPlanAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -57540,6 +59461,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -58362,6 +60300,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -58625,6 +60580,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -58888,6 +60860,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -59117,6 +61106,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -59369,6 +61375,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -59619,6 +61642,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -59850,6 +61890,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -60113,6 +62170,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -60390,6 +62464,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -60639,6 +62730,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -61396,6 +63504,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -62056,6 +64181,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -62319,6 +64461,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -62582,6 +64741,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -62811,6 +64987,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -63060,6 +65253,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -63322,6 +65532,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -63551,6 +65778,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionPrescriptionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -63947,6 +66191,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -64682,6 +66943,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -64945,6 +67223,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -65174,6 +67469,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -65569,6 +67881,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -65803,6 +68132,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -66065,6 +68411,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -66328,6 +68691,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -66557,6 +68937,23 @@ namespace EdFi.Ods.Entities.NHibernate.InterventionStudyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -67492,6 +69889,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -67934,6 +70348,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -68267,6 +70698,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -68570,6 +71018,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -68832,6 +71297,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -69061,6 +71543,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -69543,6 +72042,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -70040,6 +72556,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -70373,6 +72906,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -70676,6 +73226,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -70938,6 +73505,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -71170,6 +73754,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -71399,6 +74000,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -71975,6 +74593,23 @@ namespace EdFi.Ods.Entities.NHibernate.LearningStandardEquivalenceAssociationAgg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -73425,6 +76060,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalAccountAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -73783,6 +76435,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalAccountAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -74152,6 +76821,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalActualAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -74541,6 +77227,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalBudgetAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -74984,6 +77687,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalContractedStaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -75535,6 +78255,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalEducationAgencyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -75978,6 +78715,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalEducationAgencyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -76236,6 +78990,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalEducationAgencyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -76785,6 +79556,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalEncumbranceAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -77228,6 +80016,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocalPayrollAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -77585,6 +80390,23 @@ namespace EdFi.Ods.Entities.NHibernate.LocationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -79542,6 +82364,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -79855,6 +82694,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -80222,6 +83078,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectiveAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -80707,6 +83580,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectiveAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -80956,6 +83846,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectiveAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -81318,6 +84225,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectiveAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -81624,6 +84548,23 @@ namespace EdFi.Ods.Entities.NHibernate.ObjectiveAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -82295,6 +85236,23 @@ namespace EdFi.Ods.Entities.NHibernate.OpenStaffPositionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -82687,6 +85645,23 @@ namespace EdFi.Ods.Entities.NHibernate.OpenStaffPositionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -82950,6 +85925,23 @@ namespace EdFi.Ods.Entities.NHibernate.OpenStaffPositionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -83445,6 +86437,23 @@ namespace EdFi.Ods.Entities.NHibernate.OperationalUnitDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -83758,6 +86767,23 @@ namespace EdFi.Ods.Entities.NHibernate.OperationalUnitDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -84044,6 +87070,23 @@ namespace EdFi.Ods.Entities.NHibernate.OrganizationDepartmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -84729,6 +87772,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -85488,6 +88548,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -85805,6 +88882,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -86076,6 +89170,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -86428,6 +89539,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -86693,6 +89821,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -87010,6 +90155,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -87284,6 +90446,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -87646,6 +90825,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -87921,6 +91117,23 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -88991,6 +92204,23 @@ namespace EdFi.Ods.Entities.NHibernate.PersonAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -90121,6 +93351,23 @@ namespace EdFi.Ods.Entities.NHibernate.PostSecondaryEventAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -90654,6 +93901,23 @@ namespace EdFi.Ods.Entities.NHibernate.PostSecondaryInstitutionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -90969,6 +94233,23 @@ namespace EdFi.Ods.Entities.NHibernate.PostSecondaryInstitutionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -92232,6 +95513,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -92784,6 +96082,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -93017,6 +96332,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -93268,6 +96600,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -93552,6 +96901,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -93816,6 +97182,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -94493,6 +97876,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -94806,6 +98206,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -95844,6 +99261,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProjectDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -96157,6 +99591,23 @@ namespace EdFi.Ods.Entities.NHibernate.ProjectDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -98579,6 +102030,23 @@ namespace EdFi.Ods.Entities.NHibernate.ReportCardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -99148,6 +102616,23 @@ namespace EdFi.Ods.Entities.NHibernate.ReportCardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -99445,6 +102930,23 @@ namespace EdFi.Ods.Entities.NHibernate.ReportCardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -99715,6 +103217,23 @@ namespace EdFi.Ods.Entities.NHibernate.ReportCardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -99971,6 +103490,23 @@ namespace EdFi.Ods.Entities.NHibernate.ReportCardAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -101311,6 +104847,23 @@ namespace EdFi.Ods.Entities.NHibernate.RestraintEventAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -101719,6 +105272,23 @@ namespace EdFi.Ods.Entities.NHibernate.RestraintEventAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -102005,6 +105575,23 @@ namespace EdFi.Ods.Entities.NHibernate.RestraintEventAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -103054,6 +106641,23 @@ namespace EdFi.Ods.Entities.NHibernate.SchoolAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -103452,6 +107056,23 @@ namespace EdFi.Ods.Entities.NHibernate.SchoolAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -103715,6 +107336,23 @@ namespace EdFi.Ods.Entities.NHibernate.SchoolAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -104741,6 +108379,23 @@ namespace EdFi.Ods.Entities.NHibernate.SchoolYearTypeAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -105264,6 +108919,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -105861,6 +109533,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -106090,6 +109779,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -106373,6 +110079,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -106636,6 +110359,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -106905,6 +110645,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -107341,6 +111098,23 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAttendanceTakenEventAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -108506,6 +112280,23 @@ namespace EdFi.Ods.Entities.NHibernate.SessionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -108871,6 +112662,23 @@ namespace EdFi.Ods.Entities.NHibernate.SessionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -109157,6 +112965,23 @@ namespace EdFi.Ods.Entities.NHibernate.SessionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -109674,6 +113499,23 @@ namespace EdFi.Ods.Entities.NHibernate.SourceDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -109987,6 +113829,23 @@ namespace EdFi.Ods.Entities.NHibernate.SourceDimensionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -111124,6 +114983,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -112317,6 +116193,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -112634,6 +116527,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -112898,6 +116808,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -113164,6 +117091,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -113456,6 +117400,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -113724,6 +117685,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -114086,6 +118064,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -114440,6 +118435,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -114705,6 +118717,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -115022,6 +119051,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -115296,6 +119342,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -115658,6 +119721,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -115924,6 +120004,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -116281,6 +120378,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -116554,6 +120668,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -116818,6 +120949,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -117081,6 +121229,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -117492,6 +121657,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAbsenceEventAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -118093,6 +122275,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffCohortAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -118499,6 +122698,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffDisciplineIncidentAssociationAggrega
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -118855,6 +123071,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffDisciplineIncidentAssociationAggrega
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -119390,6 +123623,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationAssignmentAssoc
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -119946,6 +124196,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationContactAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -120397,6 +124664,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationContactAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -120709,6 +124993,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationContactAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -120980,6 +125281,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationContactAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -121550,6 +125868,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffEducationOrganizationEmploymentAssoc
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -122227,6 +126562,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffLeaveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -122868,6 +127220,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffProgramAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -123315,6 +127684,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -123750,6 +128136,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -124014,6 +128417,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -124480,6 +128900,23 @@ namespace EdFi.Ods.Entities.NHibernate.StaffSectionAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -124954,6 +129391,23 @@ namespace EdFi.Ods.Entities.NHibernate.StateEducationAgencyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -125289,6 +129743,23 @@ namespace EdFi.Ods.Entities.NHibernate.StateEducationAgencyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -125531,6 +130002,23 @@ namespace EdFi.Ods.Entities.NHibernate.StateEducationAgencyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -126119,6 +130607,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -126718,6 +131223,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -126994,6 +131516,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -127356,6 +131895,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -127622,6 +132178,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -128289,6 +132862,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -128974,6 +133564,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -129229,6 +133836,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -129614,6 +134238,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -129887,6 +134528,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -130245,6 +134903,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -130519,6 +135194,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAcademicRecordAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -131289,6 +135981,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -131893,6 +136602,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -132204,6 +136930,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -132528,6 +137271,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -132832,6 +137592,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -133132,6 +137909,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -133404,6 +138198,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -133834,6 +138645,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -134137,6 +138965,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -134557,6 +139402,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAssessmentEducationOrganizationAss
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -135193,6 +140055,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCohortAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -135528,6 +140407,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCohortAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -136055,6 +140951,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCompetencyObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -136514,6 +141427,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCompetencyObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -136793,6 +141723,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCompetencyObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -137198,6 +142145,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCTEProgramAssociationAggregate.EdF
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -137632,6 +142596,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCTEProgramAssociationAggregate.EdF
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -137940,6 +142921,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCTEProgramAssociationAggregate.EdF
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -138246,6 +143244,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCTEProgramAssociationAggregate.EdF
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -138649,6 +143664,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -139008,6 +144040,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -139416,6 +144465,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -139774,6 +144840,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -140141,6 +145224,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentNonOffenderAssoc
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -140497,6 +145597,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentNonOffenderAssoc
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -141202,6 +146319,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -142367,6 +147501,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -142684,6 +147835,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -142948,6 +148116,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -143250,6 +148435,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -143568,6 +148770,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -143886,6 +149105,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -144157,6 +149393,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -144509,6 +149762,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -144774,6 +150044,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -145091,6 +150378,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -145398,6 +150702,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -145715,6 +151036,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -145979,6 +151317,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -146245,6 +151600,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -146556,6 +151928,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -146824,6 +152213,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -147061,6 +152467,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -147371,6 +152794,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -147642,6 +153082,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -147906,6 +153363,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -148339,6 +153813,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationResponsibilit
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -148883,6 +154374,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentGradebookEntryAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -149301,6 +154809,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentHomelessProgramAssociationAggregat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -149663,6 +155188,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentHomelessProgramAssociationAggregat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -150219,6 +155761,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentInterventionAssociationAggregate.E
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -150708,6 +156267,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentInterventionAssociationAggregate.E
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -151174,6 +156750,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentInterventionAttendanceEventAggrega
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -151558,6 +157151,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLanguageInstructionProgramAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -152041,6 +157651,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLanguageInstructionProgramAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -152362,6 +157989,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLanguageInstructionProgramAssociat
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -152826,6 +158470,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -153283,6 +158944,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -153561,6 +159239,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLearningObjectiveAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -154091,6 +159786,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentMigrantEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -154453,6 +160165,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentMigrantEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -154898,6 +160627,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentNeglectedOrDelinquentProgramAssoci
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -155262,6 +161008,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentNeglectedOrDelinquentProgramAssoci
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -155718,6 +161481,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentParentAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -156274,6 +162054,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentProgramAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -156635,6 +162432,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentProgramAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -157143,6 +162957,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentProgramAttendanceEventAggregate.Ed
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -157843,6 +163674,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -158328,6 +164176,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -158614,6 +164479,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -159085,6 +164967,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAttendanceEventAggregate.EdF
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -159479,6 +165378,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolFoodServiceProgramAssociatio
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -159840,6 +165756,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolFoodServiceProgramAssociatio
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -160334,6 +166267,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSectionAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -160869,6 +166819,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSectionAttendanceEventAggregate.Ed
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -161198,6 +167165,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSectionAttendanceEventAggregate.Ed
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -161683,6 +167667,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -162152,6 +168153,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -162471,6 +168489,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -162752,6 +168787,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -163079,6 +169131,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -163413,6 +169482,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -163808,6 +169894,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentTitleIPartAProgramAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -164224,6 +170327,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentTitleIPartAProgramAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -164530,6 +170650,23 @@ namespace EdFi.Ods.Entities.NHibernate.StudentTitleIPartAProgramAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -165071,6 +171208,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -165626,6 +171780,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyCourseAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -166210,6 +172381,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyProgramAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -166611,6 +172799,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyQuestionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -166992,6 +173197,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyQuestionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -167224,6 +173446,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyQuestionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -167552,6 +173791,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyQuestionResponseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -167939,6 +174195,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyQuestionResponseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -168171,6 +174444,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyQuestionResponseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -168668,6 +174958,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyResponseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -169066,6 +175373,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyResponseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -169389,6 +175713,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyResponseEducationOrganizationTarget
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -169800,6 +176141,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveyResponseStaffTargetAssociationAggre
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -170157,6 +176515,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveySectionAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -170516,6 +176891,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveySectionAssociationAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -170884,6 +177276,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveySectionResponseAggregate.EdFi
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -171253,6 +177662,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveySectionResponseEducationOrganizatio
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
@@ -171671,6 +178097,23 @@ namespace EdFi.Ods.Entities.NHibernate.SurveySectionResponseStaffTargetAssociati
             }
             set
             {
+                // If the _aggregateExtensions is null, this is being assigned from the constructor
+                // for the first time and no special handling is required
+                if (_aggregateExtensions != null && value != null)
+                {
+                    // For aggregate extensions that have already been initialized by the extensions factory,
+                    // we need to copy any "implicit" aggregate extension object entries over to the incoming
+                    // value dictionary being assigned by NHibernate (or deserialization) because it won't have them,
+                    // but they must be there for correct handling of extensions for the API.
+                    foreach (var key in _aggregateExtensions.Keys)
+                    {
+                        if (!value.Contains(key))
+                        {
+                            value[key] = _aggregateExtensions[key];
+                        }
+                    }
+                }
+
                 _aggregateExtensions = value;
             }
         }
