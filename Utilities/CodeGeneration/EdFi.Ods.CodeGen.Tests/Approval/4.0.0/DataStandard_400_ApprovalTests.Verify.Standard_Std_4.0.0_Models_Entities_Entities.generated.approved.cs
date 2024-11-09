@@ -84449,7 +84449,7 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
     [ExcludeFromCodeCoverage]
     [MessagePackObject]
     public class Parent : AggregateRootWithCompositeKey,
-        Entities.Common.EdFi.IParent, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IHasExtensions
+        Entities.Common.EdFi.IParent, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IPersonUsiMutator, IHasExtensions
     {
         public virtual void SuspendReferenceAssignmentCheck() { }
 
@@ -84496,6 +84496,10 @@ namespace EdFi.Ods.Entities.NHibernate.ParentAggregate.EdFi
 
         private int _parentUSI;
         string IIdentifiablePerson.UniqueId { get { return ParentUniqueId; } }
+        
+        // Supports deserialization of entities that don't have surrogate id available after creation
+        void IPersonUsiMutator.SetUsi(int newValue) => _parentUSI = newValue;
+        int IPersonUsiMutator.GetUsi() => _parentUSI;
 
         // -------------------------------------------------------------
 
@@ -110732,7 +110736,7 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
     [ExcludeFromCodeCoverage]
     [MessagePackObject]
     public class Staff : AggregateRootWithCompositeKey,
-        Entities.Common.EdFi.IStaff, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IHasExtensions
+        Entities.Common.EdFi.IStaff, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IPersonUsiMutator, IHasExtensions
     {
         public virtual void SuspendReferenceAssignmentCheck() { }
 
@@ -110787,6 +110791,10 @@ namespace EdFi.Ods.Entities.NHibernate.StaffAggregate.EdFi
 
         private int _staffUSI;
         string IIdentifiablePerson.UniqueId { get { return StaffUniqueId; } }
+        
+        // Supports deserialization of entities that don't have surrogate id available after creation
+        void IPersonUsiMutator.SetUsi(int newValue) => _staffUSI = newValue;
+        int IPersonUsiMutator.GetUsi() => _staffUSI;
 
         // -------------------------------------------------------------
 
@@ -125728,7 +125736,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
     [ExcludeFromCodeCoverage]
     [MessagePackObject]
     public class Student : AggregateRootWithCompositeKey,
-        Entities.Common.EdFi.IStudent, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IHasExtensions
+        Entities.Common.EdFi.IStudent, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IPersonUsiMutator, IHasExtensions
     {
         public virtual void SuspendReferenceAssignmentCheck() { }
 
@@ -125772,6 +125780,10 @@ namespace EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi
 
         private int _studentUSI;
         string IIdentifiablePerson.UniqueId { get { return StudentUniqueId; } }
+        
+        // Supports deserialization of entities that don't have surrogate id available after creation
+        void IPersonUsiMutator.SetUsi(int newValue) => _studentUSI = newValue;
+        int IPersonUsiMutator.GetUsi() => _studentUSI;
 
         // -------------------------------------------------------------
 
