@@ -15638,7 +15638,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/studentProgramAssociations/{{known:studentProgramAssociationId}}",
+							"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/studentProgramAssociations/{{known:studentProgramAssociation:id}}",
 							"host": [
 								"{{ApiBaseUrl}}"
 							],
@@ -15647,7 +15647,7 @@
 								"v3",
 								"ed-fi",
 								"studentProgramAssociations",
-								"{{known:studentProgramAssociationId}}"
+								"{{known:studentProgramAssociation:id}}"
 							]
 						}
 					},
@@ -15664,7 +15664,8 @@
 									"    pm.expect(pm.response.code).to.equal(204);\r",
 									"});"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -15672,7 +15673,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/studentProgramAssociations/{{known:studentProgramAssociationId}}",
+							"raw": "{{ApiBaseUrl}}/data/v3/ed-fi/studentProgramAssociations/{{known:studentProgramAssociation:id}}",
 							"host": [
 								"{{ApiBaseUrl}}"
 							],
@@ -15681,7 +15682,7 @@
 								"v3",
 								"ed-fi",
 								"studentProgramAssociations",
-								"{{known:studentProgramAssociationId}}"
+								"{{known:studentProgramAssociation:id}}"
 							]
 						}
 					},
