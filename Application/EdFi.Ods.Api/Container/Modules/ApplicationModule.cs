@@ -40,6 +40,7 @@ using EdFi.Ods.Common.Infrastructure.Extensibility;
 using EdFi.Ods.Common.Infrastructure.Pipelines;
 using EdFi.Ods.Common.IO;
 using EdFi.Ods.Common.Logging;
+using EdFi.Ods.Common.Metadata.Custom;
 using EdFi.Ods.Common.Models;
 using EdFi.Ods.Common.Models.Definitions.Transformers;
 using EdFi.Ods.Common.Models.Domain;
@@ -158,6 +159,18 @@ namespace EdFi.Ods.Api.Container.Modules
                         (p, c) => p.ParameterType == typeof(Assembly),
                         (p, c) => c.Resolve<IAssembliesProvider>().GetAssemblies().SingleOrDefault(x => x.IsStandardAssembly())))
                 .As<IDomainModelDefinitionsProvider>()
+                .SingleInstance();
+
+            builder.RegisterType<EmbeddedResourceDomainModelCustomMetadataProvider>()
+                .WithParameter(
+                    new ResolvedParameter(
+                        (p, c) => p.ParameterType == typeof(Assembly),
+                        (p, c) => c.Resolve<IAssembliesProvider>().GetAssemblies().SingleOrDefault(x => x.IsStandardAssembly())))
+                .As<IDomainModelCustomMetadataProvider>()
+                .SingleInstance();
+
+            builder.RegisterType<CustomMetadataDomainModelDefinitionsTransformer>()
+                .As<IDomainModelDefinitionsTransformer>()
                 .SingleInstance();
 
             builder.RegisterType<AssembliesProvider>()

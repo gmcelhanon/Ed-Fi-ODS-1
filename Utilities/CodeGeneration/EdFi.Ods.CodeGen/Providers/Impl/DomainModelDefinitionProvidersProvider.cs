@@ -6,50 +6,38 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using EdFi.Ods.CodeGen.Conventions;
-using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Models;
-using log4net;
 
 namespace EdFi.Ods.CodeGen.Providers.Impl
 {
-    public class DomainModelDefinitionProvidersProvider : IDomainModelDefinitionsProviderProvider
+    public class DomainModelDefinitionProvidersProvider
+        : MetadataProvidersFactoryBase<IDomainModelDefinitionsProvider>, IDomainModelDefinitionsProviderProvider
     {
-        private static readonly string _standardModelsPath = Path.Combine("Artifacts", "Metadata", "ApiModel.json");
-        private static readonly string _extensionModelsPath = Path.Combine("Artifacts", "Metadata", "ApiModel-EXTENSION.json");
-        private readonly IExtensionVersionsPathProvider _extensionVersionsPathProvider;
-        private readonly IStandardVersionPathProvider _standardVersionPathProvider;
         private readonly Lazy<Dictionary<string, IDomainModelDefinitionsProvider>> _domainModelDefinitionProvidersByProjectName;
-        private readonly IExtensionPluginsProvider _extensionPluginsProviderProvider;
-        private readonly string _extensionsPath;
-        
-        private readonly string _solutionPath;
-        private readonly ILog Logger = LogManager.GetLogger(typeof(DomainModelDefinitionProvidersProvider));
 
         public DomainModelDefinitionProvidersProvider(
             ICodeRepositoryProvider codeRepositoryProvider,
             IExtensionPluginsProvider extensionPluginsProviderProvider,
-            IExtensionVersionsPathProvider extensionVersionsPathProvider, 
+            IExtensionVersionsPathProvider extensionVersionsPathProvider,
             IStandardVersionPathProvider standardVersionPathProvider)
+            : base(codeRepositoryProvider, extensionPluginsProviderProvider, extensionVersionsPathProvider, standardVersionPathProvider)
         {
-            _solutionPath = Path.Combine(
-                codeRepositoryProvider.GetCodeRepositoryByName(CodeRepositoryConventions.Implementation),
-                "Application");
-
-            _extensionsPath = codeRepositoryProvider.GetResolvedCodeRepositoryByName(
-                CodeRepositoryConventions.ExtensionsRepositoryName,
-                "Extensions");
-
             _domainModelDefinitionProvidersByProjectName =
-                new Lazy<Dictionary<string, IDomainModelDefinitionsProvider>>(CreateDomainModelDefinitionsByPath);
-
-            _extensionPluginsProviderProvider = extensionPluginsProviderProvider;
-            
-            _extensionVersionsPathProvider = extensionVersionsPathProvider;
-
-            _standardVersionPathProvider = standardVersionPathProvider;
+                new Lazy<Dictionary<string, IDomainModelDefinitionsProvider>>(CreateMetadataProviderByProjectName);
         }
+
+        protected override string StandardMetadataFileRelativePath
+        {
+            get => Path.Combine("Artifacts", "Metadata", "ApiModel.json");
+        }
+
+        protected override string ExtensionMetadataFileRelativePath
+        {
+            get => Path.Combine("Artifacts", "Metadata", "ApiModel-EXTENSION.json");
+        }
+
+        protected override IDomainModelDefinitionsProvider CreateProviderForMetadataFile(string metadataFilePath)
+            => new DomainModelDefinitionsJsonFileSystemProvider(metadataFilePath);
 
         /// <summary>
         /// Discover and instantiate all IDomainModelDefinitionsProviders in the solution
@@ -64,94 +52,6 @@ namespace EdFi.Ods.CodeGen.Providers.Impl
         public IDictionary<string, IDomainModelDefinitionsProvider> DomainModelDefinitionsProvidersByProjectName()
         {
             return _domainModelDefinitionProvidersByProjectName.Value;
-        }
-
-        private Dictionary<string, IDomainModelDefinitionsProvider> CreateDomainModelDefinitionsByPath()
-        {
-            DirectoryInfo[] directoriesToEvaluate;
-
-            var domainModelDefinitionsByPath =
-                new Dictionary<string, IDomainModelDefinitionsProvider>(StringComparer.InvariantCultureIgnoreCase);
-
-            string edFiOdsImplementationApplicationPath = _solutionPath;
-
-            int index = _solutionPath.LastIndexOf(CodeRepositoryConventions.EdFiOdsImplementationFolderName);
-
-            string edFiOdsApplicationPath = _solutionPath
-                .Remove(index, CodeRepositoryConventions.EdFiOdsImplementationFolderName.Length)
-                .Insert(index, CodeRepositoryConventions.EdFiOdsFolderName);
-
-            directoriesToEvaluate = GetProjectDirectoriesToEvaluate(edFiOdsImplementationApplicationPath)
-                .Concat(GetProjectDirectoriesToEvaluate(edFiOdsApplicationPath))
-                .ToArray();
-
-            var extensionPaths = _extensionPluginsProviderProvider.GetExtensionLocationPlugins();
-
-            extensionPaths.ToList()
-                .ForEach(
-                    x =>
-                    {
-                        if (!Directory.Exists(x))
-                        {
-                            throw new Exception($"Unable to find extension Location project path  at location {x}.");
-                        }
-
-                        directoriesToEvaluate = directoriesToEvaluate.Concat(GetProjectDirectoriesToEvaluate(x))
-                            .Append(new DirectoryInfo(x))
-                            .ToArray();
-                    });
-
-            var modelProjects = directoriesToEvaluate.Where(p => p.Name.IsExtensionAssembly() || p.Name.IsStandardAssembly());
-
-            foreach (var modelProject in modelProjects)
-            {
-                var metadataFile = GetMetadataFileInfo(modelProject);
-
-                Logger.Debug($"Loading ApiModels for {metadataFile}.");
-
-                if (!metadataFile.Exists)
-                {
-                    throw new Exception(
-                        $"Unable to find model definitions file for extensions project {modelProject.Name} at location {metadataFile.FullName}.");
-                }
-
-                if (domainModelDefinitionsByPath.ContainsKey(modelProject.Name))
-                {
-                    throw new Exception($"Cannot process duplicate extension projects for '{modelProject.Name}'.");
-                }
-
-                domainModelDefinitionsByPath.Add(
-                    modelProject.Name,
-                    new DomainModelDefinitionsJsonFileSystemProvider(metadataFile.FullName));
-            }
-
-            return domainModelDefinitionsByPath;
-
-            DirectoryInfo[] GetProjectDirectoriesToEvaluate(string basePath)
-            {
-                var directory = new DirectoryInfo(basePath);
-
-                if (directory.Exists)
-                {
-                    return directory.GetDirectories("", SearchOption.AllDirectories);
-                }
-
-                return Array.Empty<DirectoryInfo>();
-            }
-
-            FileInfo GetMetadataFileInfo(DirectoryInfo modelProject)
-            {
-                if(modelProject.Name.IsStandardAssembly())
-                {
-                    return new FileInfo(Path.Combine(modelProject.FullName, 
-                        _standardVersionPathProvider.StandardVersionPath(), 
-                        _standardModelsPath));
-                }
-
-                return new FileInfo(Path.Combine(_extensionVersionsPathProvider.ExtensionVersionsPath(modelProject.FullName),
-                    _standardVersionPathProvider.StandardVersionPath(), 
-                    _extensionModelsPath));
-            }
         }
     }
 }

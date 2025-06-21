@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System.Collections.Generic;
+using EdFi.Ods.Common.Metadata.Custom;
 using EdFi.Ods.Common.Models;
 
 namespace EdFi.Ods.CodeGen.Providers
@@ -13,5 +14,10 @@ namespace EdFi.Ods.CodeGen.Providers
         IEnumerable<IDomainModelDefinitionsProvider> DomainModelDefinitionProviders();
 
         IDictionary<string, IDomainModelDefinitionsProvider> DomainModelDefinitionsProvidersByProjectName();
+    }
+
+    public interface IDomainModelCustomMetadataProviderFactory
+    {
+        IEnumerable<IDomainModelCustomMetadataProvider> CreateProviders();
     }
 }
