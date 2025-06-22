@@ -5,6 +5,9 @@
 
 namespace EdFi.Ods.Common.Metadata.Custom;
 
+/// <summary>
+/// Defines a method for loading custom metadata to be applied to the domain model.
+/// </summary>
 public interface IDomainModelCustomMetadataProvider
 {
     bool TryLoadCustomMetadata(out DomainModelCustomMetadata domainModelCustomMetadata);

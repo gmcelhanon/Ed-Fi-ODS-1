@@ -10,6 +10,10 @@ using EdFi.Ods.Common.Metadata.Custom;
 
 namespace EdFi.Ods.CodeGen.Providers.Impl;
 
+/// <summary>
+/// Implements <see cref="IDomainModelCustomMetadataProviderFactory"/> that loads custom metadata from files discovered in the solution
+/// folder structure and any extension paths.
+/// </summary>
 public class DomainModelCustomMetadataProviderFactory
     : MetadataProvidersFactoryBase<IDomainModelCustomMetadataProvider>, IDomainModelCustomMetadataProviderFactory
 {

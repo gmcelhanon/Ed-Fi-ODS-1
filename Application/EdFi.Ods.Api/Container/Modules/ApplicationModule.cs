@@ -161,17 +161,8 @@ namespace EdFi.Ods.Api.Container.Modules
                 .As<IDomainModelDefinitionsProvider>()
                 .SingleInstance();
 
-            builder.RegisterType<EmbeddedResourceDomainModelCustomMetadataProvider>()
-                .WithParameter(
-                    new ResolvedParameter(
-                        (p, c) => p.ParameterType == typeof(Assembly),
-                        (p, c) => c.Resolve<IAssembliesProvider>().GetAssemblies().SingleOrDefault(x => x.IsStandardAssembly())))
-                .As<IDomainModelCustomMetadataProvider>()
-                .SingleInstance();
-
-            builder.RegisterType<CustomMetadataDomainModelDefinitionsTransformer>()
-                .As<IDomainModelDefinitionsTransformer>()
-                .SingleInstance();
+            // TODO: Uncomment to support custom metadata-based domain model transformers at runtime
+            // RegisterCustomMetadataSupport();
 
             builder.RegisterType<AssembliesProvider>()
                 .As<IAssembliesProvider>()
@@ -520,6 +511,21 @@ namespace EdFi.Ods.Api.Container.Modules
 
                 builder.RegisterType<OdsInstanceSelector>()
                     .As<IOdsInstanceSelector>()
+                    .SingleInstance();
+            }
+
+            void RegisterCustomMetadataSupport()
+            {
+                builder.RegisterType<EmbeddedResourceDomainModelCustomMetadataProvider>()
+                    .WithParameter(
+                        new ResolvedParameter(
+                            (p, c) => p.ParameterType == typeof(Assembly),
+                            (p, c) => c.Resolve<IAssembliesProvider>().GetAssemblies().SingleOrDefault(x => x.IsStandardAssembly())))
+                    .As<IDomainModelCustomMetadataProvider>()
+                    .SingleInstance();
+
+                builder.RegisterType<CustomMetadataDomainModelDefinitionsTransformer>()
+                    .As<IDomainModelDefinitionsTransformer>()
                     .SingleInstance();
             }
         }

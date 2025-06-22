@@ -9,7 +9,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 using Autofac;
-using Autofac.Core;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Constants;
 using EdFi.Ods.Common.Container;
@@ -18,9 +17,7 @@ using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Infrastructure.Extensibility;
 using EdFi.Ods.Common.Models;
 using EdFi.Ods.Api.Security.AuthorizationStrategies.Relationships;
-using EdFi.Ods.Common;
 using EdFi.Ods.Common.Metadata.Custom;
-using EdFi.Ods.Common.Models.Definitions.Transformers;
 
 namespace EdFi.Ods.Api.Container.Modules
 {
@@ -60,12 +57,10 @@ namespace EdFi.Ods.Api.Container.Modules
                         .WithParameter("sourceAssembly", assembly)
                         .As<IDomainModelDefinitionsProvider>()
                         .SingleInstance();
-
-                    builder.RegisterType<EmbeddedResourceDomainModelCustomMetadataProvider>()
-                        .WithParameter("sourceAssembly", assembly)
-                        .As<IDomainModelCustomMetadataProvider>()
-                        .SingleInstance();
                     
+                    // TODO: Uncomment to support custom metadata-based domain model transformers at runtime
+                    // RegisterCustomMetadataSupport();
+
                     builder.RegisterType<ExtensionNHibernateConfigurationProvider>()
                         .WithParameter("assemblyName", assemblyName)
                         .As<IExtensionNHibernateConfigurationProvider>()
@@ -94,6 +89,14 @@ namespace EdFi.Ods.Api.Container.Modules
                                 .MakeGenericType(contextDataType);
 
                         builder.RegisterType(closedServiceType).As(closedInterfaceType)
+                            .SingleInstance();
+                    }
+                    
+                    void RegisterCustomMetadataSupport()
+                    {
+                        builder.RegisterType<EmbeddedResourceDomainModelCustomMetadataProvider>()
+                            .WithParameter("sourceAssembly", assembly)
+                            .As<IDomainModelCustomMetadataProvider>()
                             .SingleInstance();
                     }
                 });

@@ -11,6 +11,11 @@ using Newtonsoft.Json;
 
 namespace EdFi.Ods.Common.Metadata.Custom;
 
+/// <summary>
+/// Implements <see cref="IDomainModelCustomMetadataProvider"/> that loads the custom metadata from an embedded resource
+/// matching one of the expected names used (by convention) for the metadata (either "ApiModel-CustomMetadata.json"
+/// for the Ed-Fi Standard or "ApiModel-EXTENSION-CustomMetadata.json" for an extension).
+/// </summary>
 public class EmbeddedResourceDomainModelCustomMetadataProvider : IDomainModelCustomMetadataProvider
 {
     private readonly Assembly _sourceAssembly;
@@ -23,8 +28,8 @@ public class EmbeddedResourceDomainModelCustomMetadataProvider : IDomainModelCus
     public bool TryLoadCustomMetadata(out DomainModelCustomMetadata domainModelCustomMetadata)
     {
         var resourceName = _sourceAssembly.GetManifestResourceNames()
-            .SingleOrDefault(rn => rn.EndsWith("ApiModelCustomMetadata.json")
-                || rn.EndsWith("ApiModelCustomMetadata-EXTENSION.json"));
+            .SingleOrDefault(rn => rn.EndsWith("ApiModel-CustomMetadata.json")
+                || rn.EndsWith("ApiModel-EXTENSION-CustomMetadata.json"));
 
         if (string.IsNullOrWhiteSpace(resourceName))
         {

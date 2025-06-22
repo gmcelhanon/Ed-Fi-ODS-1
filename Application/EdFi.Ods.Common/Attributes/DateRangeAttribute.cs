@@ -9,6 +9,9 @@ using System.Globalization;
 
 namespace EdFi.Ods.Common.Attributes;
 
+/// <summary>
+/// Provides date validation using supplied inclusive minimum and maximum date values.
+/// </summary>
 public class DateRangeAttribute : ValidationAttribute
 {
     private readonly DateTime _minDate;

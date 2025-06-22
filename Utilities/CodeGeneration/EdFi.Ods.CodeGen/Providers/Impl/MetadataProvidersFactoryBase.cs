@@ -13,6 +13,11 @@ using log4net;
 
 namespace EdFi.Ods.CodeGen.Providers.Impl;
 
+/// <summary>
+/// Provides a base class for creating a collection of metadata providers based on the solution folder structure and
+/// projects using conventions in use by the Ed-Fi ODS API solution.
+/// </summary>
+/// <typeparam name="TMetadataProvider">The Type of the metadata providers to be created.</typeparam>
 public abstract class MetadataProvidersFactoryBase<TMetadataProvider>
 {
     private readonly IExtensionVersionsPathProvider _extensionVersionsPathProvider;
