@@ -15,6 +15,7 @@ using EdFi.Ods.Common;
 using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Extensions;
 using EdFi.Ods.Common.Models.Domain;
+using EdFi.Ods.Common.Models.Dynamic;
 using EdFi.Ods.Common.Models.Resource;
 using EdFi.Ods.Common.Specifications;
 
@@ -162,11 +163,11 @@ namespace EdFi.Ods.CodeGen.Extensions
 
                     if (propertyAsDynamic.MinValueDate != null && propertyAsDynamic.MaxValueDate != null)
                     {
-                        return $"[DateTimeRange(\"{propertyAsDynamic.MinValueDate}\", \"{propertyAsDynamic.MinValueDate}\")]";
+                        return string.Format("[DateRange(\"{0:yyyy-MM-dd}\", \"{1:yyyy-MM-dd}\")]", propertyAsDynamic.MinValueDate, propertyAsDynamic.MaxValueDate);
                     }
 
                     return null;
-                
+
                 default:
                     return null;
             }

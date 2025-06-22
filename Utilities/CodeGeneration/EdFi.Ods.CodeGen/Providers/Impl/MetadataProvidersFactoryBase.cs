@@ -39,7 +39,8 @@ public abstract class MetadataProvidersFactoryBase<TMetadataProvider>
 
     protected abstract string StandardMetadataFileRelativePath { get; } 
     protected abstract string ExtensionMetadataFileRelativePath { get; } 
-
+    protected abstract bool MetadataIsRequired { get; }
+    
     protected abstract TMetadataProvider CreateProviderForMetadataFile(string metadataFilePath);
 
     protected Dictionary<string, TMetadataProvider> CreateMetadataProviderByProjectName()
@@ -81,15 +82,21 @@ public abstract class MetadataProvidersFactoryBase<TMetadataProvider>
             var metadataFile = GetMetadataFileInfo(
                 modelProject,
                 _standardVersionPathProvider.StandardVersionPath(),
-                _extensionVersionsPathProvider.ExtensionVersionsPath(modelProject.FullName));
-
-            Logger.Debug($"Loading ApiModels for {metadataFile}.");
+                () => _extensionVersionsPathProvider.ExtensionVersionsPath(modelProject.FullName));
 
             if (!metadataFile.Exists)
             {
-                throw new Exception(
-                    $"Unable to find model definitions file for extensions project {modelProject.Name} at location {metadataFile.FullName}.");
+                if (MetadataIsRequired)
+                {
+                    throw new Exception(
+                        $"Unable to find model definitions file for extensions project {modelProject.Name} at location {metadataFile.FullName}.");
+                }
+
+                // Metadata is optional, and was not found.
+                continue;
             }
+
+            Logger.Debug($"Loading Metadata from '{metadataFile}'.");
 
             if (metadataProviderByProject.ContainsKey(modelProject.Name))
             {
@@ -116,7 +123,7 @@ public abstract class MetadataProvidersFactoryBase<TMetadataProvider>
         }
     }
 
-    private FileInfo GetMetadataFileInfo(DirectoryInfo modelProject, string standardVersionPath, string extensionsVersionPath)
+    private FileInfo GetMetadataFileInfo(DirectoryInfo modelProject, string standardVersionPath, Func<string> extensionsVersionPath)
     {
         if (modelProject.Name.IsStandardAssembly())
         {
@@ -125,7 +132,7 @@ public abstract class MetadataProvidersFactoryBase<TMetadataProvider>
                 StandardMetadataFileRelativePath));
         }
 
-        return new FileInfo(Path.Combine(extensionsVersionPath,
+        return new FileInfo(Path.Combine(extensionsVersionPath(),
             standardVersionPath, 
             ExtensionMetadataFileRelativePath));
     }

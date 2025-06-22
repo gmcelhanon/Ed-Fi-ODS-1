@@ -37,7 +37,12 @@ public class DomainModelCustomMetadataProviderFactory
 
     protected override string ExtensionMetadataFileRelativePath
     {
-        get => Path.Combine("Artifacts", "Metadata", "ApiModel-CustomMetadata-EXTENSION.json");
+        get => Path.Combine("Artifacts", "Metadata", "ApiModel-EXTENSION-CustomMetadata.json");
+    }
+
+    protected override bool MetadataIsRequired
+    {
+        get => false;
     }
 
     protected override IDomainModelCustomMetadataProvider CreateProviderForMetadataFile(string metadataFilePath)

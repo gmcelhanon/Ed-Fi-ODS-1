@@ -36,6 +36,11 @@ namespace EdFi.Ods.CodeGen.Providers.Impl
             get => Path.Combine("Artifacts", "Metadata", "ApiModel-EXTENSION.json");
         }
 
+        protected override bool MetadataIsRequired
+        {
+            get => true;
+        }
+
         protected override IDomainModelDefinitionsProvider CreateProviderForMetadataFile(string metadataFilePath)
             => new DomainModelDefinitionsJsonFileSystemProvider(metadataFilePath);
 
