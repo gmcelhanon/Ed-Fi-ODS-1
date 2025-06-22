@@ -92,7 +92,9 @@ namespace EdFi.Ods.Api.Container.Modules
                             .SingleInstance();
                     }
                     
+#pragma warning disable CS8321 // Local function is declared but never used
                     void RegisterCustomMetadataSupport()
+#pragma warning restore CS8321 // Local function is declared but never used
                     {
                         builder.RegisterType<EmbeddedResourceDomainModelCustomMetadataProvider>()
                             .WithParameter("sourceAssembly", assembly)
