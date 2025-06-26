@@ -6,8 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using EdFi.Common.Utils.Extensions;
 using EdFi.Ods.Common.Models.Definitions;
 using EdFi.Ods.Common.Models.Definitions.Transformers;
+using EdFi.Ods.Common.Models.Domain;
 
 namespace EdFi.Ods.Common.Metadata.Custom
 {
@@ -66,6 +68,41 @@ namespace EdFi.Ods.Common.Metadata.Custom
                                 propertyDefinition.MinValueDate = range.MinValue;
                                 propertyDefinition.MaxValueDate = range.MaxValue;
                             }
+                        }
+                    }
+
+                    // Process all inheritance relationships to ensure the association properties also have the metadata applied
+                    foreach (var associationDefinition in domainModelDefinition.AssociationDefinitions.Where(d => d.Cardinality == Cardinality.OneToOneInheritance))
+                    {
+                        associationDefinition.PrimaryEntityProperties.ForEach((pd, i) =>
+                        {
+                            string baseRangeMetadataKey = GetRangeMetadataKey(associationDefinition.PrimaryEntityFullName, pd);
+
+                            dynamic basePropertyDefinition = pd;
+                            dynamic derivedPropertyDefinition = associationDefinition.SecondaryEntityProperties[i];
+
+                            // Apply custom date range to base and inherited properties if a match is found
+                            if (dateRangeByProperty.TryGetValue(baseRangeMetadataKey, out var baseRange))
+                            {
+                                basePropertyDefinition.MinValueDate = baseRange.MinValue;
+                                basePropertyDefinition.MaxValueDate = baseRange.MaxValue;
+                                derivedPropertyDefinition.MinValueDate = baseRange.MinValue;
+                                derivedPropertyDefinition.MaxValueDate = baseRange.MaxValue;
+                            }
+
+                            string derivedRangeMetadataKey = GetRangeMetadataKey(associationDefinition.SecondaryEntityFullName, pd);
+
+                            // Override inherited range validation metadata with explicitly assigned metadata on the derived property
+                            if (dateRangeByProperty.TryGetValue(derivedRangeMetadataKey, out var derivedRange))
+                            {
+                                derivedPropertyDefinition.MinValueDate = derivedRange.MinValue;
+                                derivedPropertyDefinition.MaxValueDate = derivedRange.MaxValue;
+                            }
+                        });
+
+                        string GetRangeMetadataKey(FullName entityName, dynamic propertyDefinition)
+                        {
+                            return string.Join(".", entityName, propertyDefinition.PropertyName);
                         }
                     }
                 }

@@ -1,8 +1,12 @@
 {
   "profiles": {
-    "EdFi.CodeGen - SQLServer": {
+    "SQLServer Sample (v4)": {
       "commandName": "Project",
-      "commandLineArgs": "-e SQLServer --standardVersion 5.0.0"
+      "commandLineArgs": "-e SQLServer --standardVersion 4.0.0 --extensionPaths=C:\\Projects\\EdFi\\w\\Ed-Fi-Extensions\\Extensions\\EdFi.Ods.Extensions.Sample\\ --extensionVersion 1.0.0"
+    },
+    "EdFi.CodeGen - SQLServer (Sample)": {
+      "commandName": "Project",
+      "commandLineArgs": "-e SQLServer --standardVersion 5.0.0 --extensionPaths=C:\\Projects\\EdFi\\w\\Ed-Fi-Extensions\\Extensions\\EdFi.Ods.Extensions.Sample\\ --extensionVersion 1.0.0"
     },
     "EdFi.CodeGen - PostgreSQL": {
       "commandName": "Project",
