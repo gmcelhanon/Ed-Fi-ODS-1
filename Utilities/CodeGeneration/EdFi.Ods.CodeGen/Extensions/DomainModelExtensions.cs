@@ -159,6 +159,8 @@ namespace EdFi.Ods.CodeGen.Extensions
                     return $"[Range(typeof(decimal), \"{rangeCurrencyMinValue}\", \"{rangeCurrencyMaxValue}\")]";
 
                 case DbType.Date:
+                case DbType.DateTime:
+                case DbType.DateTime2:
                     dynamic propertyAsDynamic = property;
 
                     if (propertyAsDynamic.MinValueDate != null && propertyAsDynamic.MaxValueDate != null)
