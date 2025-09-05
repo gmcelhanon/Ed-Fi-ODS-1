@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using EdFi.Common.Extensions;
 using EdFi.Common.Utils;
@@ -19,7 +20,8 @@ namespace EdFi.Security.DataAccess.Repositories
         private readonly ReaderWriterLockSlim _cacheLock = new ReaderWriterLockSlim();
         private readonly int _cacheTimeoutInMinutes;
 
-        private DateTime _lastCacheUpdate;
+        // private DateTime _lastCacheUpdate;
+        private long _lastCacheUpdateTimestamp;
 
         public CachedSecurityRepository(ISecurityContextFactory securityContextFactory, int cacheTimeoutInMinutes)
             : base(securityContextFactory)
@@ -32,14 +34,25 @@ namespace EdFi.Security.DataAccess.Repositories
             _cacheTimeoutInMinutes = cacheTimeoutInMinutes;
 
             // Current implementation of the base expects to initialize the data immediately, so reflect that with a cache update
-            _lastCacheUpdate = SystemClock.Now();
+            // _lastCacheUpdate = SystemClock.Now();
+            MarkRefreshed();
         }
+
+        private void MarkRefreshed()
+        {
+            Volatile.Write(ref _lastCacheUpdateTimestamp, Stopwatch.GetTimestamp());
+        }
+
+        // private bool ShouldUpdateCache
+        // {
+        //     get => _lastCacheUpdate.IsDefaultValue() || SystemClock.Now() >= _lastCacheUpdate.AddMinutes(_cacheTimeoutInMinutes);
+        // }
 
         private bool ShouldUpdateCache
-        {
-            get => _lastCacheUpdate.IsDefaultValue() || SystemClock.Now() >= _lastCacheUpdate.AddMinutes(_cacheTimeoutInMinutes);
-        }
-
+            => _lastCacheUpdateTimestamp == 0
+                || Stopwatch.GetElapsedTime(Volatile.Read(ref _lastCacheUpdateTimestamp))
+                >= TimeSpan.FromMinutes(_cacheTimeoutInMinutes);
+        
         public override Action GetActionByHttpVerb(string httpVerb)
             => VerifyCacheAndExecute(() => base.GetActionByHttpVerb(httpVerb));
 
@@ -89,7 +102,17 @@ namespace EdFi.Security.DataAccess.Repositories
                 try
                 {
                     Reset();
-                    _lastCacheUpdate = SystemClock.Now();
+
+                    // Warm everything exactly once while still in the lock
+                    _ = Application.Value;
+                    _ = Actions.Value;
+                    _ = ClaimSets.Value;
+                    _ = ResourceClaims.Value;
+                    _ = AuthorizationStrategies.Value;
+                    _ = ClaimSetResourceClaimActions.Value;
+                    _ = ResourceClaimActions.Value;
+
+                    MarkRefreshed();
                 }
                 finally
                 {
