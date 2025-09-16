@@ -1,4 +1,4 @@
-﻿// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: Apache-2.0
 // Licensed to the Ed-Fi Alliance under one or more agreements.
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
@@ -10,6 +10,8 @@ using Castle.DynamicProxy;
 using EdFi.Ods.Api.Caching;
 using EdFi.Ods.Api.Providers;
 using EdFi.Ods.Common.Caching;
+using EdFi.Ods.Common.Caching.CacheKeyProviders;
+using EdFi.Ods.Common.Caching.SingleFlight;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Container;
 using EdFi.Ods.Common.Descriptors;
@@ -27,20 +29,28 @@ namespace EdFi.Ods.Repositories.NHibernate.Tests.Modules
             builder.RegisterType<DescriptorMapsProvider>()
                 .As<IDescriptorMapsProvider>()
                 .EnableInterfaceInterceptors()
+                //.InterceptedBy(InterceptorCacheKeys.Descriptors)
                 .SingleInstance();
 
-            builder.RegisterType<ContextualCachingInterceptor<OdsInstanceConfiguration>>()
-                .Named<IInterceptor>("cache-descriptors")
+            builder.RegisterType<CachingInterceptor>()
+                .Named<IAsyncInterceptor>(InterceptorCacheKeys.Descriptors)
+                .WithParameter(
+                    (pi, ctx) => pi.ParameterType == typeof(IMethodSignatureCacheKeyProvider),
+                    (pi, ctx) => ctx.Resolve<ContextualMethodSignatureCacheKeyProvider<OdsInstanceConfiguration>>())
                 .WithParameter(
                     ctx =>
                     {
                         var apiSettings = ctx.Resolve<ApiSettings>();
             
-                        return (ICacheProvider<ulong>) new ExpiringConcurrentDictionaryCacheProvider<ulong>(
+                        return (ISingleFlightCache<ulong, object>) new ExpiringSingleFlightCache<ulong, object>(
                             "Descriptors",
                             TimeSpan.FromSeconds(apiSettings.Caching.Descriptors.AbsoluteExpirationSeconds));
                     })
                 .SingleInstance();
+
+            builder.Register(ctx =>
+                    new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.Descriptors)))
+                .Named<IInterceptor>(InterceptorCacheKeys.Descriptors); // Wrap into AsyncDeterminationInterceptor to support async interception
 
             builder.RegisterType<DescriptorDetailsProvider>()
                 .As<IDescriptorDetailsProvider>()

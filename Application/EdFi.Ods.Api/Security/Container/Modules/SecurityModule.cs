@@ -1,4 +1,4 @@
-﻿// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: Apache-2.0
 // Licensed to the Ed-Fi Alliance under one or more agreements.
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
@@ -18,6 +18,7 @@ using EdFi.Ods.Api.Security.AuthorizationStrategies;
 using EdFi.Ods.Api.Security.AuthorizationStrategies.Relationships;
 using EdFi.Ods.Api.Security.Claims;
 using EdFi.Ods.Api.Security.Utilities;
+using EdFi.Ods.Common.Caching;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace EdFi.Ods.Api.Security.Container.Modules
@@ -41,11 +42,15 @@ namespace EdFi.Ods.Api.Security.Container.Modules
             builder.RegisterType<AuthorizationBasisMetadataSelector>()
                 .As<IAuthorizationBasisMetadataSelector>()
                 .EnableInterfaceInterceptors()
+                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<ResourceAuthorizationMetadataProvider>()
                 .As<IResourceAuthorizationMetadataProvider>()
+                //.InterceptedBy(InterceptorCacheKeys.Security)
+                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .EnableInterfaceInterceptors()
+                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<EntityAuthorizer>()
@@ -96,6 +101,7 @@ namespace EdFi.Ods.Api.Security.Container.Modules
             builder.RegisterType<ClaimSetClaimsProvider>()
                 .As<IClaimSetClaimsProvider>()
                 .EnableInterfaceInterceptors()
+                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<ResourceClaimUriProvider>()
