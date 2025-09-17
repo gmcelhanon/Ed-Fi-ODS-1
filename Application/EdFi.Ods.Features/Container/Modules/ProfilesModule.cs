@@ -52,13 +52,11 @@ namespace EdFi.Ods.Features.Container.Modules
             builder.RegisterType<ProfileMetadataProvider>()
                     .As<IProfileMetadataProvider>()
                     .EnableInterfaceInterceptors()
-                    //.InterceptedBy(InterceptorCacheKeys.ProfileMetadata)
                     .SingleInstance();
 
             builder.RegisterType<ProfileResourceNamesProvider>()
                 .AsImplementedInterfaces()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.ProfileMetadata)
                 .SingleInstance();
 
             //When MultiTenancy is enabled, the CachingInterceptor is registered as a ContextualCachingInterceptor<TenantConfiguration> in the MultiTenancyModule 
@@ -74,7 +72,8 @@ namespace EdFi.Ods.Features.Container.Modules
                             return (ISingleFlightCache<ulong, object>) new ExpiringSingleFlightCache<ulong, object>(
                                 "Profile Metadata",
                                 TimeSpan.FromSeconds(_apiSettings.Caching.Profiles.AbsoluteExpirationSeconds),
-                                () => mediator.Publish(new ProfileMetadataCacheExpired()));
+                                () => mediator.Publish(new ProfileMetadataCacheExpired()),
+                                TimeSpan.FromSeconds(_apiSettings.Caching.Profiles.CreationTimeoutSeconds));
                         })
                     .SingleInstance();
                 
@@ -114,7 +113,6 @@ namespace EdFi.Ods.Features.Container.Modules
             builder.RegisterType<ProfileResourceModelProvider>()
                 .AsImplementedInterfaces()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.ProfileMetadata)
                 .SingleInstance();
 
             builder.RegisterType<ProfileValidationReporter>()

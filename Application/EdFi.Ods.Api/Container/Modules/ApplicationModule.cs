@@ -217,7 +217,6 @@ namespace EdFi.Ods.Api.Container.Modules
             builder.RegisterType<ApiClientDetailsProvider>()
                 .As<IApiClientDetailsProvider>()
                 .EnableInterfaceInterceptors()
-                // .InterceptedBy(InterceptorCacheKeys.ApiClientDetails)
                 .SingleInstance();
 
             builder.RegisterType<CachingInterceptor>()
@@ -229,7 +228,8 @@ namespace EdFi.Ods.Api.Container.Modules
 
                         return (ISingleFlightCache<ulong, object>) new ExpiringSingleFlightCache<ulong, object>(                        
                             "API Client Details",
-                            TimeSpan.FromSeconds(apiSettings.Caching.ApiClientDetails.AbsoluteExpirationSeconds));
+                            TimeSpan.FromSeconds(apiSettings.Caching.ApiClientDetails.AbsoluteExpirationSeconds),
+                            TimeSpan.FromSeconds(apiSettings.Caching.ApiClientDetails.CreationTimeoutSeconds));
                     })
                 .SingleInstance();
 
@@ -325,7 +325,6 @@ namespace EdFi.Ods.Api.Container.Modules
             builder.RegisterType<OdsInstanceConfigurationProvider>()
                 .As<IOdsInstanceConfigurationProvider>()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.OdsInstances)
                 .SingleInstance();
 
             builder.RegisterType<ConnectionStringOverridesApplicator>()
@@ -373,7 +372,8 @@ namespace EdFi.Ods.Api.Container.Modules
 
                         var cacheProvider = new ExpiringSingleFlightCache<ulong, object>(
                             "ODS Instance Configurations",
-                            TimeSpan.FromSeconds(apiSettings.Caching.OdsInstances.AbsoluteExpirationSeconds));
+                            TimeSpan.FromSeconds(apiSettings.Caching.OdsInstances.AbsoluteExpirationSeconds),
+                            TimeSpan.FromSeconds(apiSettings.Caching.OdsInstances.CreationTimeoutSeconds));
 
                         // Subscribe to any changes related to the ODS instances section of the configuration, and clear interceptor's cache provider explicitly
                         var options = ctx.Resolve<IOptionsMonitor<OdsInstancesSection>>();

@@ -24,13 +24,11 @@ namespace EdFi.Ods.Api.Container.Modules
             builder.RegisterType<SecurityRepository>()
                 .As<ISecurityRepository>()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<SecurityTableGateway>()
                 .As<ISecurityTableGateway>()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<CachingInterceptor>()
@@ -42,7 +40,8 @@ namespace EdFi.Ods.Api.Container.Modules
 
                         return (ISingleFlightCache<ulong, object>) new ExpiringSingleFlightCache<ulong, object>(
                             "Security",
-                            TimeSpan.FromMinutes(apiSettings.Caching.Security.AbsoluteExpirationMinutes));
+                            TimeSpan.FromMinutes(apiSettings.Caching.Security.AbsoluteExpirationMinutes),
+                            TimeSpan.FromMinutes(apiSettings.Caching.Security.CreationTimeoutSeconds));
                     })
                 .SingleInstance();
             

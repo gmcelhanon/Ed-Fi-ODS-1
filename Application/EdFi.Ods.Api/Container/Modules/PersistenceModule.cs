@@ -70,7 +70,6 @@ namespace EdFi.Ods.Api.Container.Modules
             builder.RegisterType<DescriptorMapsProvider>()
                 .As<IDescriptorMapsProvider>()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.Descriptors)
                 .SingleInstance();
 
             // Method signature builder to use by default
@@ -102,7 +101,8 @@ namespace EdFi.Ods.Api.Container.Modules
             
                         return (ISingleFlightCache<ulong, object>) new ExpiringSingleFlightCache<ulong, object>(
                             "Descriptors",
-                            TimeSpan.FromSeconds(apiSettings.Caching.Descriptors.AbsoluteExpirationSeconds));
+                            TimeSpan.FromSeconds(apiSettings.Caching.Descriptors.AbsoluteExpirationSeconds),
+                            TimeSpan.FromSeconds(apiSettings.Caching.Descriptors.CreationTimeoutSeconds));
                     })
                 .SingleInstance();
 

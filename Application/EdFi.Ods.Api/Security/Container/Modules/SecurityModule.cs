@@ -42,15 +42,11 @@ namespace EdFi.Ods.Api.Security.Container.Modules
             builder.RegisterType<AuthorizationBasisMetadataSelector>()
                 .As<IAuthorizationBasisMetadataSelector>()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<ResourceAuthorizationMetadataProvider>()
                 .As<IResourceAuthorizationMetadataProvider>()
-                //.InterceptedBy(InterceptorCacheKeys.Security)
-                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<EntityAuthorizer>()
@@ -101,7 +97,6 @@ namespace EdFi.Ods.Api.Security.Container.Modules
             builder.RegisterType<ClaimSetClaimsProvider>()
                 .As<IClaimSetClaimsProvider>()
                 .EnableInterfaceInterceptors()
-                //.InterceptedBy(InterceptorCacheKeys.Security)
                 .SingleInstance();
 
             builder.RegisterType<ResourceClaimUriProvider>()
