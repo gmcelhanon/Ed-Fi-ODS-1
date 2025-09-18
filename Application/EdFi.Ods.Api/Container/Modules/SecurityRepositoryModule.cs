@@ -1,4 +1,4 @@
-﻿// SPDX-License-Identifier: Apache-2.0
+// SPDX-License-Identifier: Apache-2.0
 // Licensed to the Ed-Fi Alliance under one or more agreements.
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
@@ -9,6 +9,7 @@ using Autofac.Core;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
 using EdFi.Ods.Api.Caching;
+using EdFi.Ods.Api.Caching.SingleFlight;
 using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Container;
@@ -31,17 +32,23 @@ namespace EdFi.Ods.Api.Container.Modules
                 .SingleInstance();
 
             builder.RegisterType<CachingInterceptor>()
-                .Named<IInterceptor>("cache-security")
+                .Named<IAsyncInterceptor>(InterceptorCacheKeys.Security)
                 .WithParameter(
                     ctx =>
                     {
                         var apiSettings = ctx.Resolve<ApiSettings>();
 
-                        return (ICacheProvider<ulong>) new ExpiringConcurrentDictionaryCacheProvider<ulong>(
+                        return (ISingleFlightCache<ulong, object>) new ExpiringSingleFlightCache<ulong, object>(
                             "Security",
-                            TimeSpan.FromMinutes(apiSettings.Caching.Security.AbsoluteExpirationMinutes));
+                            TimeSpan.FromMinutes(apiSettings.Caching.Security.AbsoluteExpirationMinutes),
+                            TimeSpan.FromMinutes(apiSettings.Caching.Security.CreationTimeoutSeconds));
                     })
                 .SingleInstance();
+            
+            // Wrap into AsyncDeterminationInterceptor to support async interception
+            builder.Register(ctx =>
+                    new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.Security)))
+                .Named<IInterceptor>(InterceptorCacheKeys.Security);
         }
     }
 }
