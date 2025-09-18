@@ -38,6 +38,7 @@ using EdFi.Ods.Common.Container;
 using EdFi.Ods.Common.Context;
 using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Database;
+using EdFi.Ods.Common.Infrastructure.Extensibility;
 using EdFi.Ods.Common.Infrastructure.Pipelines;
 using EdFi.Ods.Common.IO;
 using EdFi.Ods.Common.Logging;
@@ -521,23 +522,6 @@ namespace EdFi.Ods.Api.Container.Modules
                 builder.RegisterType<OdsInstanceSelector>()
                     .As<IOdsInstanceSelector>()
                     .SingleInstance();
-
-                builder.RegisterType<ErrorTranslator>().SingleInstance();
-
-                builder.RegisterType<ModelStateKeyConverter>().EnableClassInterceptors().SingleInstance();
-
-                builder.RegisterType<CachingInterceptor>()
-                    .Named<IAsyncInterceptor>(InterceptorCacheKeys.ModelStateKey)
-                    .WithParameter(ctx
-                        => (ISingleFlightCache<ulong, object>) new SingleFlightCache<ulong, object>(
-                            "Model State",
-                            Timeout.InfiniteTimeSpan))
-                    .SingleInstance();
-                
-                // Wrap into AsyncDeterminationInterceptor to support async interception
-                builder.Register(ctx =>
-                        new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.ModelStateKey)))
-                    .Named<IInterceptor>(InterceptorCacheKeys.ModelStateKey);
             }
         }
     }

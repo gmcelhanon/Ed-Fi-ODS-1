@@ -123,11 +123,19 @@ public class SingleFlightCache<TKey, TValue> : ISingleFlightCache<TKey, TValue>,
 
     private static readonly ILog _cacheEntryLogger = LogManager.GetLogger(typeof(CacheEntry));
 
-    protected sealed class CacheEntry(CancellationToken _cacheExpirationToken)
+    protected sealed class CacheEntry
     {
         private int _producerChosen; // 0 = none, 1 = chosen
 
         private readonly TaskCompletionSource<TValue> _tcs = new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        private readonly CancellationToken _cacheExpirationToken;
+
+        public CacheEntry(CancellationToken cacheExpirationToken)
+        {
+            _cacheExpirationToken = cacheExpirationToken;
+        }
+        
         public bool TryGet(out TValue value)
         {
             EnsureCacheNotExpired();

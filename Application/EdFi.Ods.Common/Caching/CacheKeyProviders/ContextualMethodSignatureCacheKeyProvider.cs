@@ -16,10 +16,16 @@ namespace EdFi.Ods.Common.Caching.CacheKeyProviders;
 /// <typeparam name="TContext">
 /// The type of the context, which must implement <see cref="IContextHashBytesSource"/>.
 /// </typeparam>
-public class ContextualMethodSignatureCacheKeyProvider<TContext>(IContextProvider<TContext> _contextProvider)
-    : IMethodSignatureCacheKeyProvider
+public class ContextualMethodSignatureCacheKeyProvider<TContext> : IMethodSignatureCacheKeyProvider
     where TContext : IContextHashBytesSource
 {
+    private readonly IContextProvider<TContext> _contextProvider;
+
+    public ContextualMethodSignatureCacheKeyProvider(IContextProvider<TContext> contextProvider)
+    {
+        _contextProvider = contextProvider;
+    }
+
     /// <inheritdoc cref="IMethodSignatureCacheKeyProvider.GetKey" />
     public ulong GetKey(MethodInfo method, object[] arguments)
     {

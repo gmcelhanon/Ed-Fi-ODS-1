@@ -11,10 +11,19 @@ using EdFi.Ods.Common.Caching.CacheKeyProviders;
 
 namespace EdFi.Ods.Common.Caching;
 
-public class CachingInterceptor(
-    ISingleFlightCache<ulong, object> _singleFlightCache,
-    IMethodSignatureCacheKeyProvider _cacheKeyProvider) : IAsyncInterceptor, IClearable
+public class CachingInterceptor : IAsyncInterceptor, IClearable
 {
+    private readonly ISingleFlightCache<ulong, object> _singleFlightCache;
+    private readonly IMethodSignatureCacheKeyProvider _cacheKeyProvider;
+
+    public CachingInterceptor(
+        ISingleFlightCache<ulong, object> singleFlightCache,
+        IMethodSignatureCacheKeyProvider cacheKeyProvider)
+    {
+        _singleFlightCache = singleFlightCache;
+        _cacheKeyProvider = cacheKeyProvider;
+    }
+
     public void InterceptSynchronous(IInvocation invocation)
     {
         var returnType = invocation.Method.ReturnType;

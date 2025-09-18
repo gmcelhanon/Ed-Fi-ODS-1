@@ -55,6 +55,7 @@ namespace EdFi.Ods.Api.Security.Claims
             var serviceClaims = _claimsByResourceClaimActions.GetOrCreateAsync(resourceClaimsActions,
                 (key, rca, ct) =>
                 {
+                    // Create a list of service claims to be issued.
                     // Group the resource claims by name to combine actions (and by claim set name if multiple claim sets are supported in the future)
                     var servicesResourceClaimsByClaimName = rca
                         .Where(rc => rc.ResourceClaim.ClaimName.StartsWith(ServicesClaimNamePrefix))
@@ -62,20 +63,20 @@ namespace EdFi.Ods.Api.Security.Claims
 
                     // Create a list of service claims to be issued.
                     return Task.FromResult(servicesResourceClaimsByClaimName.Select(
-                            g => 
-                                new ClaimSetResourceClaimMetadata(g.Key,
-                                    g
-                                Actions = g
-                                    .Select(x => new ResourceAction(x.Action.ActionUri))
-                                    .ToArray()
-                                ))
-                        .Select(x => new Claim(x.ClaimName, string.Join(",", x.Actions.Select(a => a.Name))))
+                            g => new EdFiResourceClaim(g.Key,
+                                new EdFiResourceClaimValue
+                                {
+                                    Actions = g
+                                        .Select(x => new ResourceAction(x.Action.ActionUri))
+                                        .ToArray()
+                                }))
+                        .Select(x => new Claim(x.ClaimName, string.Join(",", x.ClaimValue.Actions.Select(a => a.Name))))
                         .ToList()
                         .AsEnumerable());
                 }, resourceClaimsActions, CancellationToken.None)
                 .ConfigureAwait(false)
                 .GetAwaiter()
-                .GetResult();;
+                .GetResult();
 
             return new ClaimsIdentity(serviceClaims, EdFiAuthenticationTypes.OAuth);
         }
