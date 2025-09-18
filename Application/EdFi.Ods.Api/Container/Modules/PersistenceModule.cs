@@ -18,7 +18,6 @@ using EdFi.Ods.Api.Providers;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Caching.CacheKeyProviders;
-using EdFi.Ods.Common.Caching.SingleFlight;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Constants;
 using EdFi.Ods.Common.Container;
@@ -72,25 +71,19 @@ namespace EdFi.Ods.Api.Container.Modules
                 .EnableInterfaceInterceptors()
                 .SingleInstance();
 
-            // Method signature builder to use by default
+            // Method signature builder to use (by default)
             builder.RegisterType<MethodSignatureCacheKeyProvider>()
                 .As<IMethodSignatureCacheKeyProvider>()
                 .SingleInstance();
 
-            // Contextual method signature builder
+            // Contextual method signature builder (registered as self)
             builder.RegisterGeneric(typeof(ContextualMethodSignatureCacheKeyProvider<>))
                 .AsSelf()
                 .SingleInstance();
 
-            // ContextualCachingInterceptor
-
-            // builder.RegisterType<ContextualMethodSignatureCacheKeyProvider<OdsInstanceConfiguration>>()
-            //     .Named<IMethodSignatureCacheKeyProvider>(InterceptorCacheKeys.Descriptors)
-            //     .AsSelf()
-            //     .SingleInstance();
-
             builder.RegisterType<CachingInterceptor>()
                 .Named<IAsyncInterceptor>(InterceptorCacheKeys.Descriptors)
+                // Method signature built using ODS Instance configuration as context
                 .WithParameter(
                     (pi, ctx) => pi.ParameterType == typeof(IMethodSignatureCacheKeyProvider),
                     (pi, ctx) => ctx.Resolve<ContextualMethodSignatureCacheKeyProvider<OdsInstanceConfiguration>>())
@@ -106,9 +99,10 @@ namespace EdFi.Ods.Api.Container.Modules
                     })
                 .SingleInstance();
 
+            // Wrap into AsyncDeterminationInterceptor to support async interception
             builder.Register(ctx =>
                     new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.Descriptors)))
-                .Named<IInterceptor>(InterceptorCacheKeys.Descriptors); // Wrap into AsyncDeterminationInterceptor to support async interception
+                .Named<IInterceptor>(InterceptorCacheKeys.Descriptors);
 
             builder.RegisterType<DescriptorDetailsProvider>()
                 .As<IDescriptorDetailsProvider>()

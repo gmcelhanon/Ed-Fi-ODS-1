@@ -13,7 +13,6 @@ using EdFi.Ods.Api.Jobs;
 using EdFi.Ods.Api.Middleware;
 using EdFi.Ods.Common.Caching;
 using EdFi.Ods.Common.Caching.CacheKeyProviders;
-using EdFi.Ods.Common.Caching.SingleFlight;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Configuration.Sections;
 using EdFi.Ods.Common.Constants;
@@ -67,6 +66,7 @@ public class MultiTenancyModule : ConditionalModule
         // Override interceptors to include tenant context
         builder.RegisterType<CachingInterceptor>()
             .Named<IAsyncInterceptor>(InterceptorCacheKeys.Security)
+            // Method signature built using tenant configuration as context
             .WithParameter(
                 (pi, ctx) => pi.ParameterType == typeof(IMethodSignatureCacheKeyProvider),
                 (pi, ctx) => ctx.Resolve<ContextualMethodSignatureCacheKeyProvider<TenantConfiguration>>())
@@ -82,12 +82,14 @@ public class MultiTenancyModule : ConditionalModule
                 })
             .SingleInstance();
         
+        // Wrap into AsyncDeterminationInterceptor to support async interception
         builder.Register(ctx =>
                 new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.Security)))
-            .Named<IInterceptor>(InterceptorCacheKeys.Security); // Wrap into AsyncDeterminationInterceptor to support async interception
+            .Named<IInterceptor>(InterceptorCacheKeys.Security);
 
         builder.RegisterType<CachingInterceptor>()
             .Named<IAsyncInterceptor>(InterceptorCacheKeys.ApiClientDetails)
+            // Method signature built using tenant configuration as context
             .WithParameter(
                 (pi, ctx) => pi.ParameterType == typeof(IMethodSignatureCacheKeyProvider),
                 (pi, ctx) => ctx.Resolve<ContextualMethodSignatureCacheKeyProvider<TenantConfiguration>>())
@@ -103,12 +105,14 @@ public class MultiTenancyModule : ConditionalModule
                 })
             .SingleInstance();
         
+        // Wrap into AsyncDeterminationInterceptor to support async interception
         builder.Register(ctx =>
                 new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.ApiClientDetails)))
-            .Named<IInterceptor>(InterceptorCacheKeys.ApiClientDetails); // Wrap into AsyncDeterminationInterceptor to support async interception
+            .Named<IInterceptor>(InterceptorCacheKeys.ApiClientDetails);
 
         builder.RegisterType<CachingInterceptor>()
             .Named<IAsyncInterceptor>(InterceptorCacheKeys.ProfileMetadata)
+            // Method signature built using tenant configuration as context
             .WithParameter(
                 (pi, ctx) => pi.ParameterType == typeof(IMethodSignatureCacheKeyProvider),
                 (pi, ctx) => ctx.Resolve<ContextualMethodSignatureCacheKeyProvider<TenantConfiguration>>())
@@ -126,12 +130,14 @@ public class MultiTenancyModule : ConditionalModule
                 })
             .SingleInstance();
         
+        // Wrap into AsyncDeterminationInterceptor to support async interception
         builder.Register(ctx =>
                 new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.ProfileMetadata)))
-            .Named<IInterceptor>(InterceptorCacheKeys.ProfileMetadata); // Wrap into AsyncDeterminationInterceptor to support async interception
+            .Named<IInterceptor>(InterceptorCacheKeys.ProfileMetadata);
 
         builder.RegisterType<CachingInterceptor>()
             .Named<IAsyncInterceptor>(InterceptorCacheKeys.OdsInstances)
+            // Method signature built using tenant configuration as context
             .WithParameter(
                 (pi, ctx) => pi.ParameterType == typeof(IMethodSignatureCacheKeyProvider),
                 (pi, ctx) => ctx.Resolve<ContextualMethodSignatureCacheKeyProvider<TenantConfiguration>>())
@@ -161,9 +167,10 @@ public class MultiTenancyModule : ConditionalModule
                 })
             .SingleInstance();
 
+        // Wrap into AsyncDeterminationInterceptor to support async interception
         builder.Register(ctx =>
                 new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.OdsInstances)))
-            .Named<IInterceptor>(InterceptorCacheKeys.OdsInstances); // Wrap into AsyncDeterminationInterceptor to support async interception
+            .Named<IInterceptor>(InterceptorCacheKeys.OdsInstances);
 
         builder.RegisterDecorator<MultiTenantApiJobSchedulerDecorator, IApiJobScheduler>();
     }

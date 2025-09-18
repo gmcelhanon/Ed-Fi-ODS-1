@@ -10,7 +10,6 @@ using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
 using EdFi.Ods.Api.Caching;
 using EdFi.Ods.Common.Caching;
-using EdFi.Ods.Common.Caching.SingleFlight;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Container;
 using EdFi.Security.DataAccess.Repositories;
@@ -45,9 +44,10 @@ namespace EdFi.Ods.Api.Container.Modules
                     })
                 .SingleInstance();
             
+            // Wrap into AsyncDeterminationInterceptor to support async interception
             builder.Register(ctx =>
                     new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.Security)))
-                .Named<IInterceptor>(InterceptorCacheKeys.Security); // Wrap into AsyncDeterminationInterceptor to support async interception
+                .Named<IInterceptor>(InterceptorCacheKeys.Security);
         }
     }
 }

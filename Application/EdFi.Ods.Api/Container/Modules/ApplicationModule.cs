@@ -31,14 +31,12 @@ using EdFi.Ods.Api.Serialization;
 using EdFi.Ods.Api.Validation;
 using EdFi.Ods.Common;
 using EdFi.Ods.Common.Caching;
-using EdFi.Ods.Common.Caching.SingleFlight;
 using EdFi.Ods.Common.Configuration;
 using EdFi.Ods.Common.Configuration.Sections;
 using EdFi.Ods.Common.Container;
 using EdFi.Ods.Common.Context;
 using EdFi.Ods.Common.Conventions;
 using EdFi.Ods.Common.Database;
-using EdFi.Ods.Common.Infrastructure.Extensibility;
 using EdFi.Ods.Common.Infrastructure.Pipelines;
 using EdFi.Ods.Common.IO;
 using EdFi.Ods.Common.Logging;
@@ -233,9 +231,10 @@ namespace EdFi.Ods.Api.Container.Modules
                     })
                 .SingleInstance();
 
+            // Wrap into AsyncDeterminationInterceptor to support async interception
             builder.Register(ctx =>
                     new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.ApiClientDetails)))
-                .Named<IInterceptor>(InterceptorCacheKeys.ApiClientDetails); // Wrap into AsyncDeterminationInterceptor to support async interception
+                .Named<IInterceptor>(InterceptorCacheKeys.ApiClientDetails);
 
             builder.RegisterType<OAuthTokenAuthenticator>()
                 .As<IOAuthTokenAuthenticator>()
@@ -391,9 +390,10 @@ namespace EdFi.Ods.Api.Container.Modules
                     })
                 .SingleInstance();
 
+            // Wrap into AsyncDeterminationInterceptor to support async interception
             builder.Register(ctx =>
                     new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.OdsInstances)))
-                .Named<IInterceptor>(InterceptorCacheKeys.OdsInstances); // Wrap into AsyncDeterminationInterceptor to support async interception
+                .Named<IInterceptor>(InterceptorCacheKeys.OdsInstances);
 
             builder.RegisterType<InitializeScheduledJobs>()
                 .As<IExternalTask>();
@@ -533,9 +533,10 @@ namespace EdFi.Ods.Api.Container.Modules
                             Timeout.InfiniteTimeSpan))
                     .SingleInstance();
                 
+                // Wrap into AsyncDeterminationInterceptor to support async interception
                 builder.Register(ctx =>
                         new AsyncDeterminationInterceptor(ctx.ResolveNamed<IAsyncInterceptor>(InterceptorCacheKeys.ModelStateKey)))
-                    .Named<IInterceptor>(InterceptorCacheKeys.ModelStateKey); // Wrap into AsyncDeterminationInterceptor to support async interception
+                    .Named<IInterceptor>(InterceptorCacheKeys.ModelStateKey);
             }
         }
     }
