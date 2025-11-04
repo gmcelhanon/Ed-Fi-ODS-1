@@ -319,14 +319,14 @@ public class MappingContractKey : IEquatable<MappingContractKey>
 
         ProfileResourceName = profileResourceName;
 
-        if (contentTypeUsage == default(ContentTypeUsage))
+        if (contentTypeUsage == default)
         {
             throw new ArgumentException("Content type usage was not specified.");
         }
 
         ContentTypeUsage = contentTypeUsage;
-        
-        TenantIdentifier = tenantIdentifier ?? "";
+
+        TenantIdentifier = tenantIdentifier ?? string.Empty;
     }
 
     public FullName ResourceClassName { get; }

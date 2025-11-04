@@ -84,21 +84,21 @@ public class ProfilesAwareContractResolver : DefaultContractResolver
 
         var resourceClassFullName = GetFullNameFromResourceTypeNamespace(type);
 
-        var tenantName = _tenantConfigurationContextProvider?.Get()?.TenantIdentifier;
+        var tenantIdentifier = _tenantConfigurationContextProvider?.Get()?.TenantIdentifier;
 
         var mappingContractKey = new MappingContractKey(
             resourceClassFullName,
             profileContentTypeContext.ProfileName,
             _dataManagementResourceContextProvider.Get().Resource.FullName,
             profileContentTypeContext.ContentTypeUsage,
-            tenantName);
+            tenantIdentifier);
 
         var contract = _contractByKey.GetOrAdd(mappingContractKey, 
             static (k, args) =>
             {
                 var (type, contractResolver) = args;
                 return contractResolver.CreateContract(type);
-            }, 
+            },
             (type, this));
 
         return contract;

@@ -22,7 +22,7 @@ namespace EdFi.Ods.Common.Metadata.Profiles
         private readonly IProfilesMetadataStreamsProvider[] _metadataStreamsProviders;
         private readonly Lazy<IReadOnlyList<XDocument>> _allDocs;
         private readonly Lazy<IDictionary<string, XElement>> _profileDefinitionByName;
-        public readonly ConcurrentDictionary<(string name, string source), ValidationResult> _validationResultsByMetadataStream = new();
+        private readonly ConcurrentDictionary<(string name, string source), ValidationResult> _validationResultsByMetadataStream = new();
 
         private readonly ILog _logger = LogManager.GetLogger(typeof(EmbeddedResourceProfileDefinitionsProvider));
 

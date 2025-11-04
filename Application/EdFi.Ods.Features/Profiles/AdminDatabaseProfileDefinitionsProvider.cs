@@ -34,11 +34,12 @@ namespace EdFi.Ods.Features.Profiles
             _profileMetadataValidator = Preconditions.ThrowIfNull(profileMetadataValidator, nameof(profileMetadataValidator));
         }
 
-        ConcurrentDictionary<(string name, string source), ValidationResult> 
-            IProfileDefinitionsProvider.ValidationResultsByMetadataStream
-            => _validationResultsByProfile;
+        public ConcurrentDictionary<(string name, string source), ValidationResult> ValidationResultsByMetadataStream
+        {
+            get => _validationResultsByProfile;
+        }
 
-        IDictionary<string, XElement> IProfileDefinitionsProvider.GetProfileDefinitions()
+        public IDictionary<string, XElement> GetProfileDefinitions()
         {
             var profiles = LoadProfilesFromDatabase();
 

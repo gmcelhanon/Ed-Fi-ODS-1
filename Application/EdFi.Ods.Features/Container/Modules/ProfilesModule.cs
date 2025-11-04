@@ -23,20 +23,15 @@ using EdFi.Ods.Common.Profiles;
 using EdFi.Ods.Common.Repositories;
 using EdFi.Ods.Features.Profiles;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 using Microsoft.FeatureManagement;
 
 namespace EdFi.Ods.Features.Container.Modules
 {
-    public class ProfilesModule : ConditionalModule
+    public class ProfilesModule(IFeatureManager _featureManager, ApiSettings _apiSettings, IWebHostEnvironment _hostEnvironment)
+        : ConditionalModule(_featureManager)
     {
-        private readonly ApiSettings _apiSettings;
-
-        public ProfilesModule(IFeatureManager featureManager, ApiSettings apiSettings)
-            : base(featureManager)
-        {
-            _apiSettings = apiSettings;
-        }
-
         protected override bool IsSelected() => IsFeatureEnabled(ApiFeature.Profiles);
 
         protected override void ApplyFeatureDisabledRegistrations(ContainerBuilder builder)
@@ -83,14 +78,31 @@ namespace EdFi.Ods.Features.Container.Modules
                         })
                     .SingleInstance();
             }
-            
+
             builder.RegisterType<AdminProfileNamesPublisher>()
                 .As<IAdminProfileNamesPublisher>()
                 .SingleInstance();
-
+            
             builder.RegisterType<PublishAdminProfileNamesStartupCommand>()
                 .As<IStartupCommand>()
                 .SingleInstance();
+
+            // Development-only behavior for importing profile files into the admin database.
+            if (_hostEnvironment.IsDevelopment())
+            {
+                if (IsFeatureEnabled(ApiFeature.MultiTenancy))
+                {
+                    builder.RegisterType<MultitenantImportProfilesToAdminStartupCommand>()
+                        .As<IStartupCommand>()
+                        .SingleInstance();
+                }
+                else
+                {
+                    builder.RegisterType<ImportProfilesToAdminStartupCommand>()
+                        .As<IStartupCommand>()
+                        .SingleInstance();
+                }
+            }
 
             builder.RegisterType<ApiJobScheduler>()
                 .As<IApiJobScheduler>()
